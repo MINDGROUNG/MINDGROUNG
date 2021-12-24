@@ -1,0 +1,395 @@
+<section class="hostStudioCommonLayout">
+    <article>
+        <div class="commonTitleArea">
+            <h2> <%=translation.dashBoard.Reviews%></h2>
+        </div>
+        <div class="mainContentsArea reviews">
+            <div class="tabs">
+                <ul>
+                    <li>
+                        <button class="tabs-inner hostReivew allReview active" data-tabs="allReview">
+                            <%=translation.Review.All_Review%>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="tabs-inner hostReivew awaitingReply" data-tabs="awaitingReply">
+                            <%=translation.Review.Awaiting_reply_from_you%>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="mainContents">
+                <div class="searchTab">
+                    <div class="searchBox">
+                        <input type="text" placeholder="<%=translation.Review.Reply_Search%>">
+                        <button>
+                            <img src="/web/img/ICN_SEARCH.png" alt="">
+                        </button>
+                    </div>
+                    <div class="selectWrap">
+                        <button class="getDateBtn-on">
+                            <div>
+                                <strong class="getText">2021.05.22 ~ 2021.05.30</strong>
+                            </div>
+                            <span class="icon">
+                                <img src="/web/img/ICN_DROP.png" alt="">
+                            </span>
+                        </button>
+                        <div class="hdnSelectBox">
+                            <div class="moTitleArea">
+                                <div>
+                                    <img src="/web/img/down.png" alt="">
+                                </div>
+                                <div>
+                                    <button>
+                                        <img src="/web/img/btn_close_small.png" alt="">
+                                    </button>
+                                    <h5>Time Period</h5>
+                                </div>
+                            </div>
+                            <div class="selectArea">
+                                <div class="select-cate-date">
+                                    <span class="cateText">
+                                        <%=translation.dashBoard.All%>
+                                    </span>
+                                    <strong class="dateNumber">
+                                        <!-- 2020.05.01 ~ 2021.12.01 -->
+                                    </strong>
+                                </div>
+                                <div class="chkBoxList">
+                                    <div class="chkbox">
+                                        <input type="radio" id="all_classes" name="dateChk">
+                                        <label for="all_classes">
+                                            <span class="box"></span>
+                                            <span class="text"><%=translation.dashBoard.All%></span>
+                                        </label>
+                                    </div>
+                                    <div class="chkbox">
+                                        <input type="radio" id="yesterday_classes" name="dateChk">
+                                        <label for="yesterday_classes">
+                                            <span class="box"></span>
+                                            <span class="text"><%=translation.dashBoard.Yesterday%></span>
+                                        </label>
+                                    </div>
+                                    <div class="chkbox">
+                                        <input type="radio" id="last7_classes" name="dateChk">
+                                        <label for="last7_classes">
+                                            <span class="box"></span>
+                                            <span class="text"><%=translation.dashBoard.Last_7_days%></span>
+                                        </label>
+                                    </div>
+                                    <div class="chkbox">
+                                        <input type="radio" id="last30_classes" name="dateChk">
+                                        <label for="last30_classes">
+                                            <span class="box"></span>
+                                            <span class="text"><%=translation.dashBoard.Last_30_days%></span>
+                                        </label>
+                                    </div>
+                                    <div class="chkbox">
+                                        <div>
+                                            <input type="radio" id="selectPeriod_classes" name="dateChk">
+                                            <label for="selectPeriod_classes">
+                                                <span class="box"></span>
+                                                <span class="text"><%=translation.dashBoard.Select_period%></span>
+                                            </label>
+                                        </div>
+                                        <div class="rawInputBox">
+                                            <input type="text">
+                                            <span>~</span>
+                                            <input type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="saveArea">
+                                <button class="saveBtn-on">
+                                    <%=translation.dashBoard.Save%>
+                                </button>
+                            </div>
+                            <div class="onlyFixed"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="allReview commonList active">
+                    <div class="reviewsWrap">
+
+
+
+
+                        <!-- <div class="reviewCard">
+                            <div class="textInfo">
+                                <div class="textInfo-ring">
+                                    <div class="ring">
+                                        <img src="/web/img/testImg.jpg" alt="">
+                                    </div>
+                                    <div class="name">
+                                        <h5>David Janes</h5>
+                                        <span class="date1">2021.01.01</span>
+                                        <span class="date2">11:30AM</span>
+                                    </div>
+                                </div>
+                                <div class="reviewDetail">
+                                    <p>
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. At, velit provident aliquam eveniet voluptatum dolorem quibusdam, ratione explicabo ab itaque minus voluptatem ad voluptates in. Maiores quas qui voluptatem id.
+                                        Alias maiores inventore eaque libero, maxime delectus quidem excepturi iure repudiandae dolor atque amet cumque nobis vel! Explicabo error dignissimos, voluptates nobis quae consectetur autem ullam incidunt maxime facilis? Quidem.
+                                        At et earum modi delectus. Doloremque laboriosam consectetur, exercitationem iusto pariatur mollitia tempore iste sunt veritatis? Voluptate ratione doloribus aspernatur. Exercitationem corporis architecto repellat reiciendis sequi earum quis maiores vitae?
+                                    </p>
+                                    <button class="seeMoreBtn-on">
+                                        <%=translation.loginAndJoin.See_More%>
+                                    </button>
+                                </div> 
+                                <div class="replyArea">
+
+
+
+                                    <div class="onReply"> 
+                                        <div class="ring">
+                                            <img src="/web/img/testImg.jpg" alt="">
+                                        </div>
+                                        <div class="onReply-detail">
+                                            <div>
+                                                <div class="name">
+                                                    <h6>Daniel Espada</h6>
+                                                    <strong><%=translation.hostStudio.Teacher%></strong>
+                                                </div>
+                                                <div class="detailText">
+                                                    <p>Thank you!Thank you! Thank you!Thank you! Thank you!Thank you! Thank you!</p>
+                                                    <button>
+                                                        <img src="/web/img/ICN_EDIT.png" alt="">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <span class="dateInfo">2021.01.01 11:30AM</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                            <div class="thumbInfo">
+                                <div class="classThumb">
+                                    <div class="classThumb-img" style="background-image: url('/web/img/createEvent/thumb.png');">
+                                        <div class="bar"></div>
+                                    </div>
+                                    <div class="classThumb-title">
+                                        <h4>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque soluta repudiandae inventore unde ipsum placeat fuga nobis laborum
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+
+
+                        <%
+                        if(hasOwnProperty("classAdditionalInfo")){
+
+                            function setDate(date){
+                                var date = new Date(date);
+                                return `${date.getFullYear()}.${date.getMonth()}.${date.getDate()} ${date.getHours()}:${date.getMinutes() }`
+                            }
+
+                            
+                            for(var i = classAdditionalInfo.length-1; i >-1 ; i--)
+                                {
+                                    let additionalInfo=classAdditionalInfo[i];
+                                    let isAnswered = (additionalInfo.reviewAnswer==null)?"notYet":"answered";
+                        %>
+                        <div class="reviewCard <%= isAnswered %>" >
+                            <div class="textInfo">
+                                <div class="textInfo-ring">
+                                    <div class="ring">
+                                        <img src="/web/img/userRing/<%=additionalInfo.reviewerUID%>.png" alt="">
+                                    </div>
+                                    <div class="name">
+                                        <h5><%=additionalInfo.reviewerName%></h5>
+                                        <span class="date1"><%=setDate(additionalInfo.review.writerTime)%></span>
+                                        <span class="date2"></span>
+                                    </div>
+                                </div>
+                                <div class="reviewDetail">
+                                    <p>
+                                        <%=additionalInfo.review.review%>
+                                    </p>
+                                    <button class="seeMoreBtn-on">
+                                        <%=translation.loginAndJoin.See_More%>
+                                    </button>
+                                </div>
+
+
+
+                                <div class="replyArea"  id = "replyArea<%=i%>">
+
+                                <%
+                                    if(isAnswered=='notYet')
+                                    {
+                                %>
+                                    <div class="replyBtn active">
+                                        <button class="replyBtn-on">Reply</button>
+                                    </div>
+                                    <div class="inputReply">
+                                        <textarea id = "replyOnCommentText<%=i%>"style="resize: none;"></textarea>
+                                        <button class="sendBtn-on" onclick="replyOnComment(<%=i%>, '<%=additionalInfo._id%>')">Send</button>
+                                    </div>
+                                <%
+                                    }else{
+                                %>
+
+                                    <div class="onReply"> 
+                                        <div class="ring">
+                                            <img src="/web/img/userRing/<%=user.userUID%>.png" alt="">
+                                        </div>
+                                        <div class="onReply-detail">
+                                            <div>
+                                                <div class="name">
+                                                    <h6><%=user.userName%></h6>
+                                                    <strong><%=translation.hostStudio.Teacher%></strong>
+                                                </div>
+                                                <div class="detailText">
+                                                    <p><%=additionalInfo.reviewAnswer.reply%></p>
+                                                    <button>
+                                                        <img src="/web/img/ICN_EDIT.png" alt="">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <span class="dateInfo"><%=setDate(additionalInfo.reviewAnswer.writeTime)%></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <%
+                                    }
+                                
+
+                                %>
+
+                                </div>
+                            </div>
+
+
+                            <div class="thumbInfo">
+                                <div class="classThumb">
+                                    <div class="classThumb-img" style="background-image: url('<%=additionalInfo.classThumbNail%>');">
+                                        <div class="bar"></div>
+                                    </div>
+                                    <div class="classThumb-title">
+                                        <h4>
+                                            <%=additionalInfo.classTitle%>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <%
+                            }
+                        }
+                        %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>
+<script>
+    var user = <%-JSON.stringify(user)%>
+    //탭버튼
+    $('.tabs-inner.hostReivew').click(function() {
+        console.log($(this).data('tabs') + '           asd')
+        $('.tabs-inner.hostReivew').removeClass('active');
+        // $(this).each(function() {
+        //     $(this).addClass('active')
+        // })
+        // $('.commonList').removeClass('active');
+        var reviewLists = document.getElementsByClassName('reviewCard answered');
+        console.log(reviewLists.length);
+        for(var i =0; i<reviewLists.length; i++) {
+            if($(this).data('tabs')=='awaitingReply'){
+                reviewLists[i].style.display = 'none'
+            }else{
+                reviewLists[i].style.display = ''
+            }
+
+        }
+        $('.'+$(this).data('tabs')+'').addClass('active')
+    });
+
+    //옵션박스 외부 클릭시 옵션박스 닫기
+    $('html').click(function(e) {
+        if(!$(e.target).hasClass('selectBox1-hdnMenu1'))
+        {
+            $('.targetMenu').removeClass('active');
+        }
+    })
+    
+    $(document).on('click', 'input[type="button"]', function() {
+        $(this).parent('.selectView').next('.classesBox').addClass('active');
+    });
+
+    //댓글창
+    $('.replyBtn-on').click(function() {
+        $(this).parent('.replyBtn').removeClass('active');
+        $(this).parent('.replyBtn').next('.inputReply').addClass('active');
+    })
+
+    function replyOnComment(textNum, additionalInfoID){
+
+        var reply = document.getElementById('replyOnCommentText'+textNum).value;
+        console.log(reply);
+        
+        var replyObject= {};
+        replyObject.reply=reply;
+        replyObject.writeTime= new Date();
+
+        var jsonObject = {};
+        jsonObject.protocol = 'replyOnComment';
+        jsonObject.additionalInfoID = additionalInfoID;
+        jsonObject.reply = replyObject;
+        protocolSendAjaxWithCallBack(jsonObject, function(result){
+                    
+                        var replyArea = ` <div class="onReply"> 
+                                            <div class="ring">
+                                                <img src="/web/img/userRing/${user.userUID}.png" alt="">
+                                            </div>
+                                            <div class="onReply-detail">
+                                                <div>
+                                                    <div class="name">
+                                                        <h6>${user.userName}</h6>
+                                                        <strong><%=translation.hostStudio.Teacher%></strong>
+                                                    </div>
+                                                    <div class="detailText">
+                                                        <p>${reply}</p>
+                                                        <button>
+                                                            <img src="/web/img/ICN_EDIT.png" alt="">
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <span class="dateInfo">${replyObject.writeTime}</span>
+                                                </div>
+                                            </div>
+                                        </div>`
+
+                        document.querySelector('#replyArea'+textNum).innerHTML = replyArea
+
+
+                    })
+    }
+
+</script>

@@ -1,0 +1,452 @@
+<!-- 공유하기모달 -->
+<div class="modal modal28">
+    <div>
+        <div class="xBtn">
+            <button onclick="customModalClose(28)">
+                <i class="xi-close"></i>
+            </button>
+        </div>
+        <div class="contents">
+            <div class="top">
+                <div class="userInfo-btns">
+                    <div class="userInfo">
+                        <div class="ring">
+                            <img src="/web/img/userRing/1.png" alt="">
+                        </div>
+                        <strong class="name">Hannah Brown</strong>
+                    </div>
+                    <div class="scopeTypeBtns">
+                        <button class="scopeTypeBtn-on">
+                            <img src="/web/img/ICN_PUBLIC.png" alt="" class="scopeType" id="accessIconControlID">
+                            <span class="typeText" id="Public"><%=translation.setting.Public%></span>
+                            <img src="/web/img/dropDown.png" alt="">
+                        </button>
+                        <ul class="hdnBtns">
+                            <li>
+                                <button class="scopeTypeBtn-on" id="PublicID" style="display: none;">
+                                    <img src="/web/img/ICN_PUBLIC.png" alt="">
+                                    <span class="typeText" id="Public"><%=translation.setting.Public%></span>
+                                </button>
+                            </li>
+                            <li>
+                                <button class="scopeTypeBtn-on" id="FriendID">
+                                    <img src="/web/img/ICN_FRIENDS.png" alt="">
+                                    <span class="typeText" id="Friend"><%=translation.setting.Friends%></span>
+                                </button>
+                            </li>
+                            <li>
+                                <button class="scopeTypeBtn-on" id="PrivateID">
+                                    <img src="/web/img/ICN_PRIVATE.png" alt="">
+                                    <span class="typeText"><%=translation.setting.Private%></span>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="middle">
+                <textarea id="inputShare" maxlength="500" placeholder="What do you want to share about?" onkeyup="limitText('inputShare', 'shereTextCount', 500)"></textarea>
+                <p class="countNum">
+                    <span class="shereTextCount">0</span> / 500
+                </p>
+            </div>
+            <div class="bottom">
+                <div class="shareBtn">
+                    <button class="shareBtn-on" onclick="userPostShareFunc('class', '61664e5aa38cff11846e9cf6')">
+                        <img src="/web/img/ICN_SHARE_L.png" alt="">
+                        <strong>
+                            Share
+                        </strong>
+                    </button>
+                </div>
+                <ul class="moreBtns">
+                    <li>
+                        <button class="snsBtn1-on" onclick="testFunc()">
+                            <span class="icon"></span>
+                            <strong>Facebook</strong>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="snsBtn2-on">
+                            <span class="icon"></span>
+                            <strong>Twitter</strong>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="snsBtn3-on">
+                            <span class="icon"></span>
+                            <strong>LINKEDIN</strong>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="snsBtn4-on">
+                            <span class="icon"></span>
+                            <strong>Copylink</strong>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 좋아요리스트 -->
+<div class="modal modal29">
+    <div>
+        <div class="fixInfo">
+            <div class="icon-text">
+                <img src="/web/img/ICN_LIKE_ON.png" alt="">
+                <strong>
+                    Likes <span>50</span>
+                </strong>
+            </div>
+            <div class="xBtn">
+                <button onclick="customModalClose(29)">
+                    <i class="xi-close"></i>
+                </button>
+            </div>
+        </div>
+        <div class="contents">
+            <div class="friendList-list">
+                <%
+                    for(var i = 0; i < 10; i++)
+                    {
+                %>
+                <div class="friendList-list-content">
+                    <div class="userInfo">
+                        <div class="friendList-list-content-img">
+                            <img src="/web/img/userRing/1.png" alt="">
+                        </div>
+                        <div class="friendList-list-content-text">
+                            <h6>
+                                Hannah Brown
+                            </h6>
+                            <p>
+                                <%=translation.hostStudio.Teacher%>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="friendList-list-content-btn">
+                        <button data-no="0">
+                            Following
+                        </button>
+                    </div>
+                </div>
+                <%
+                    }
+                %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 공유하기 리스트 -->
+<div class="modal modal30">
+    <div>
+        <div class="fixInfo">
+            <div class="icon-text">
+                <img src="/web/img/ICN_SHARE_ON.png" alt="">
+                <strong>
+                    Shares <span>50</span>
+                </strong>
+            </div>
+            <div class="xBtn">
+                <button onclick="customModalClose(30)">
+                    <i class="xi-close"></i>
+                </button>
+            </div>
+        </div>
+        <div class="contents">
+            <div class="friendList-list">
+                <%
+                    for(var i = 0; i < 10; i++)
+                    {
+                %>
+                <div class="friendList-list-content">
+                    <div class="userInfo">
+                        <div class="friendList-list-content-img">
+                            <img src="/web/img/userRing/1.png" alt="">
+                        </div>
+                        <div class="friendList-list-content-text">
+                            <h6>
+                                Hannah Brown
+                            </h6>
+                            <p>
+                                <%=translation.hostStudio.Teacher%>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="friendList-list-content-btn">
+                        <button data-no="0">
+                            Following
+                        </button>
+                    </div>
+                </div>
+                <%
+                    }
+                %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 리포트디테일 -->
+<div class="modal modal31">
+    <div>
+        <div class="hostInfo">
+            <div class="left">
+                <img src="/web/img/userRing/1.png" alt="">
+                <div>
+                    <h6>
+                        Daniel Espada
+                    </h6>
+                    <p>
+                        10 <%=translation.afterlogin.Minutes_Ago%>
+                        <span class="hoverImg" data-text="Public">
+                            <img src="/web/img/main/afterLogin/feed/ICN_PUBLIC.png" alt="">
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="right">
+                <img src="/web/img/main/afterLogin/feed/ICN_BOOKMARK.png" alt="">
+                <span>150</span>
+            </div>
+        </div>
+        <div class="detail">
+            <p class="feedDetail">
+                Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction  Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction  Class Class Introduction Class Introduction Class Introduction Class Introduction Class Class Introduction Class Class Introduction Class Class Introduction Cl ... <%=translation.loginAndJoin.See_More%>
+                Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction  Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction  Class Class Introduction Class Introduction Class Introduction Class Introduction Class Class Introduction Class Class Introduction Class Class Introduction Cl ... <%=translation.loginAndJoin.See_More%>
+                Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction  Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction  Class Class Introduction Class Introduction Class Introduction Class Introduction Class Class Introduction Class Class Introduction Class Class Introduction Cl ... <%=translation.loginAndJoin.See_More%>
+            </p>
+            <button class="moreBtn">
+                <span>...</span><strong><%=translation.loginAndJoin.See_More%></strong>
+            </button>
+            <div class="tagsWrap">
+                <p class="tag">#<%=translation.afterlogin.GratitudeJournal%></p>
+            </div>
+            <div class="figureWrap">
+                <div class="figure" data-number="5">
+                    <span class="text">Embarrassment</span>
+                </div>
+                <div class="figure" data-number="5">
+                    <span class="text">Sadness</span>
+                </div>
+                <div class="figure" data-number="10">
+                    <span class="text"><%=translation.afterlogin.Anger%></span>
+                </div>
+            </div>
+        </div>
+        <div class="feedBox-btns">
+            <div class="feedBox-btns-top">
+                <button class="like">
+                    <img src="/web/img/main/afterLogin/feed/ICN_LIKE_0.png" alt="">
+                    <span><%=translation.afterlogin.Like%></span>
+                </button>
+                <button class="comment">
+                    <img src="/web/img/main/afterLogin/feed/ICN_COMMENT.png" alt="">
+                    <span><%=translation.afterlogin.Comment%></span>
+                </button>
+                <button class="share" onclick="customModal(28)">
+                    <img src="/web/img/main/afterLogin/feed/ICN_SHARE.png" alt="">
+                    <span><%=translation.afterlogin.Share%></span>
+                </button>
+            </div>
+            <div class="feedBox-btns-bottom">
+                <div>
+                    <button class="dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="hdnBtns">
+                        <li>
+                            <button>Report</button>
+                        </li>
+                        <li>
+                            <button>Delete</button>
+                        </li>
+                        <li>
+                            <button>Edit</button>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <button class="likesRep" onclick="customModal(29)">
+                        <span><%=translation.afterlogin.Likes%></span>
+                        <strong>50</strong>
+                    </button>
+                    <button class="commentsRep">
+                        <span><%=translation.afterlogin.Comments%></span>
+                        <strong>60</strong>
+                    </button>
+                    <button class="sharesRep" onclick="customModal(30)">
+                        <span><%=translation.afterlogin.Shares%></span>
+                        <strong>50</strong>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- edit디테일 -->
+<div class="modal modal32">
+    <div>
+        <div class="topTitle">
+            <h5>Edit</h5>
+            <div class="xBtn">
+                <button onclick="customModalClose(32)">
+                    <i class="xi-close"></i>
+                </button>
+            </div>
+        </div>
+        <div class="contents">
+            <div class="hostInfo">
+                <div class="left">
+                    <img src="/web/img/userRing/1.png" alt="">
+                    <div>
+                        <h6>
+                            Daniel Espada
+                        </h6>
+                        <div>
+                            <span>10 <%=translation.afterlogin.Minutes_Ago%></span>
+                            <div class="scopeTypeBtns">
+                                <button class="scopeTypeBtn-on">
+                                    <img src="/web/img/ICN_PUBLIC_L.png" alt="" class="scopeType">
+                                    <span class="typeText">
+                                        Public
+                                    </span>
+                                    <img src="/web/img/dropDown.png" alt="">
+                                </button>
+                                <ul class="hdnBtns">
+                                    <li>
+                                        <button class="scopeTypeBtn-on">
+                                            <img src="/web/img/ICN_FRIENDS.png" alt="">
+                                            <span class="typeText">
+                                                Friends
+                                            </span>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button class="scopeTypeBtn-on">
+                                            <img src="/web/img/ICN_PRIVATE.png" alt="">
+                                            <span class="typeText">
+                                                Private
+                                            </span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="/web/img/main/afterLogin/feed/ICN_BOOKMARK.png" alt="">
+                    <span>150</span>
+                </div>
+            </div>
+            <div class="detail">
+                <p class="feedDetail">
+                    Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction  Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction  Class Class Introduction Class Introduction Class Introduction Class Introduction Class Class Introduction Class Class Introduction Class Class Introduction Cl ... <%=translation.loginAndJoin.See_More%>
+                    Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction  Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction  Class Class Introduction Class Introduction Class Introduction Class Introduction Class Class Introduction Class Class Introduction Class Class Introduction Cl ... <%=translation.loginAndJoin.See_More%>
+                    Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction  Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction Class Introduction  Class Class Introduction Class Introduction Class Introduction Class Introduction Class Class Introduction Class Class Introduction Class Class Introduction Cl ... <%=translation.loginAndJoin.See_More%>
+                </p>
+                <button class="moreBtn">
+                    <span>...</span><strong><%=translation.loginAndJoin.See_More%></strong>
+                </button>
+                <div class="tagsWrap">
+                    <p class="tag">#<%=translation.afterlogin.GratitudeJournal%></p>
+                </div>
+                <div class="figureWrap">
+                    <div class="figure" data-number="5">
+                        <span class="text">Embarrassment</span>
+                    </div>
+                    <div class="figure" data-number="5">
+                        <span class="text">Sadness</span>
+                    </div>
+                    <div class="figure" data-number="10">
+                        <span class="text"><%=translation.afterlogin.Anger%></span>
+                    </div>
+                </div>
+            </div>
+            <div class="saveBtn">
+                <button class="saveBtn-on">
+                    Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+                        
+    //버튼내용 변경
+    function stateChange(imgName, text) {
+        var state =  '<button class="scopeTypeBtn-on">' +
+                        '<img src="/web/img/'+imgName+'.png" alt="" class="scopeType" id="accessIconControlID">' +
+                        '<span class="typeText" id="Public">' + getTranslation('setting', text) + '</span>' +
+                        '<img src="/web/img/dropDown.png" alt="">' +
+                        '</button>';
+        return state;
+    }
+    //게시물 공개범위 히든버튼
+    $('.scopeTypeBtns > button').click(function() {
+        $(this).next('.hdnBtns').toggleClass('active');
+        $('.hdnBtns > li > button').click(function() {
+            var text = $(this).children('span').attr('id');
+            console.log(text);
+            if(text == "Friend") {
+                $(this).parents('.scopeTypeBtns').html(stateChange('ICN_FRIENDS', 'Friends'));
+            } else if(text == 'Public') {
+                $(this).parents('.scopeTypeBtns').children('button').html(stateChange('ICN_Public', 'Public'));
+            } else {
+                $(this).parents('.scopeTypeBtns').children('button').html(stateChange('ICN_PRIVATE', 'Private'));
+            }
+            
+            var testArray = ['Public', 'Friend', 'Private'];
+
+            for(var i = 0; i < testArray.length; i++) {
+                if(testArray[i] == text) { 
+                    var tempText = testArray[i].concat('ID');
+                    $('#' + tempText).css('display', 'none');
+                } else {
+                    var tempText = testArray[i].concat('ID');
+                    $('#' + tempText).css('display', 'flex');
+                }
+            }
+
+            $(this).parent('.hdnBtns').removeClass('active');
+        });
+    });
+
+    function userPostShareFunc(postType, postID) {
+        var shareInfo = {};
+        var shareUserInfo = <%- user ? JSON.stringify(user) : {} %>;
+
+        shareInfo.shareType = postType;
+        shareInfo.postID = postID;
+        shareInfo.userUID = shareUserInfo.userUID;
+        shareInfo.userName = shareUserInfo.userName;
+        shareInfo.hostType = shareUserInfo.hostType;
+        
+        shareInfo.shareComment = document.getElementById('inputShare').value;
+
+        $.ajax({
+            type : "POST",
+            url : "/userPostShare",
+            data : JSON.stringify(shareInfo),
+            async : false,
+            processData : false,
+            contentType : "application/json; charset=UTF-8",
+            success : function(success){
+            },
+            error : function(error)
+            {
+                alert(error.responseJSON.message);
+            }
+        });
+    }
+</script>

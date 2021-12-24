@@ -1,0 +1,104 @@
+<div class="priceBar">
+    <div class="leftInfo">
+        <button onclick="customModal(42)">
+            <img src="/web/img/priceBar/ICN_SHARE.png" alt="">
+        </button>
+        <button class="bookmarkActiveBtn-on" data-num="0">
+            <img src="/web/img/bookmark/BOOKMARK_42_before.png" alt="">
+        </button>
+    </div>
+    <div class="rightInfo">
+        <!-- 가격 -->
+        <span class="price" id = "classPriceArea">
+        </span>
+        <!-- 상태별 마크업 -->
+        <strong class="comingSoon" style="display:none">
+            Coming Soon
+        </strong>
+        <strong class="soldOut" style="display:none">
+            Sold Out
+        </strong>
+        <!-- <button class="purchase">
+            Purchase
+        </button> -->
+        <div id="paypal-button-container-participate" style="width:300px;padding-top: 10px; padding-left:10px; display:none"></div>
+        <button class="participate" id="classPurchaseButton" onclick="purchaseThisClass('<%= ClassObject._id %>')" style="display:none" onclick="enrollClass()">
+            Purchase
+        </button>
+        <button class="participate" id="classParticipateButton" onclick="participateThisClass()" style="display:none">
+            Participate
+        </button>
+        <div class="modal modal42">
+            <div>
+                <div class="xBtn">
+                    <button onclick="customModalClose(42)">
+                        <img src="/web/img/ICN_CLOSE.png" alt="">
+                    </button>
+                </div>
+                <div class="contents">
+                    <div class="titleWrap">
+                        <b>
+                            Purchased Class Title
+                        </b>
+                        <h3 id="transformClassObjectTitleID"></h3>
+                    </div>
+                    <div class="classInfoWrap">
+                        <div class="classInfo-left">
+                            <div class="ring">
+                                <img id="transformClassObjectUserRingID" src="/web/img/userRing/1.png" alt="">
+                            </div>
+                            <div class="type-name">
+                                <span class="type" id="transformClassObjectHostTypeID"></span>
+                                <strong class="name textBox" id="transformClassObjectUserNameID"></strong>
+                            </div>
+                        </div>
+                        <div class="classInfo-right">
+                            <span class="smallTitle textBox">
+                                Class Schedule
+                            </span>
+                            <strong class="date textBox" id="transformClassObjectDateID"></strong>
+                        </div>
+                    </div>
+                    <div class="methodInfoWrap">
+                        <h6 class="fixTitle" id="transformClassObjectOnlineStateID">
+                            Online Method
+                        </h6>
+                        <div class="online" id="onlineMethodControlID" style="display: none;">
+                            <p class="on-text" id="transformClassObjectOnlineMethodID"></p>
+                        </div>
+                        <div class="offline" id="offlinePlaceControlID" style="display: none;">
+                            <span class="address textBox" id="transformClassObjectOfflinePlaceID"></span>
+                            <div class="map">
+                                <div id="modalGoogleMap" style="width:100%; height:100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="okBtnWrap">
+                        <button class="okBtn-on" onclick="customModalClose(42)">
+                            OK
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function() {
+        //북마크 온오프
+        $('.bookmarkActiveBtn-on').on('click', function() {
+            if($(this).attr('data-num') == 0)
+            {
+                $(this).attr('data-num', '1');
+                $(this).children('img').attr('src','/web/img/bookmark/BOOKMARK_42_after.png');
+            }
+            else
+            {
+                $(this).attr('data-num', '0');
+                $(this).children('img').attr('src','/web/img/bookmark/BOOKMARK_42_before.png');
+            }
+        });
+
+        
+    })
+</script>

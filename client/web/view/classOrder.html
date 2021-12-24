@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <%- include ./common/commonHead.html%>
+        <!--공통타이틀로 적용 할 경우 commonHead 안에 넣기-->
+        <script language="javascript" type="text/javascript" src="https://stdpay.inicis.com/stdjs/INIStdPay.js" charset="UTF-8"></script>   
+    </head>
+    <body>
+        <div class="wrap classOrderCommonLayout classOrder">
+            <%- include ./common/commonHeader.html%>
+            <section class="marginAuto_s minHeight">
+                <article class="contents">
+                    <!-- 결제화면, 결제완료화면 다를 때 타이틀 달라짐 -->
+                    <h2 class="pageTitle">
+                        Class Order 
+                    </h2>
+                    <div class="orderFormWrap">
+                        <div class="subTitle">
+                            <!-- 결제화면, 결제완료화면 다를 때 타이틀 달라짐 -->
+                            <h3>Review Your Order</h3>
+                        </div>
+                        <div class="flexArea">
+                            <div class="leftSide">
+                                <div class="leftSide-top">
+                                    <!-- 결제화면, 결제완료화면 다를 때 타이틀 달라짐 -->
+                                    <h4>
+                                        Class Information
+                                    </h4>
+                                    <div class="classInfo">
+                                        <div class="classInfo-thumb" style="background-image: url('/web/img/thumb.png');">
+                                            <div class="bar"></div>
+                                        </div>
+                                        <div class="classInfo-text">
+                                            <div class="classInfo-text-top">
+                                                <h6 class="classInfo-text-title">
+                                                    <%=classObject.classObject.title%>
+                                                </h6>
+                                                <ul class="ringInfo">
+                                                    <li class="ring">
+                                                        <img class="userImg" src="/web/img/userRing/<%=classObject.userUID%>.png" alt="">
+                                                    </li>
+                                                    <li class="name">
+                                                        <%=classObject.userName%>
+                                                    </li>
+                                                    <li class="type">
+                                                        <strong><%=classObject.hostType%></strong>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="classInfo-text-bottom">
+                                                <p class="detailText">
+                                                    <%=classObject.classObject.mainCategory%>
+                                                    <%=classObject.classObject.subCategory%>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="leftSide-bottom">
+                                    <div class="buyerFormWrap">
+                                        <h4>
+                                            Buyer Information
+                                        </h4>
+                                        <div class="buyerForm">
+                                            <div class="inputWrap half">
+                                                <input type="text" placeholder="Last Name" id="lastName">
+                                                <input type="text" placeholder="First Name" id="firstName">
+                                            </div>
+                                            <div class="inputWrap">
+                                                <input type="text" placeholder="Email" id = "buyerEmail">
+                                            </div>
+                                            <div class="inputWrap">
+                                                <input type="text" placeholder="Phone Number" id='phoneNumber'>
+                                            </div>
+                                            <div class="inputWrap">
+                                                <input type="text" placeholder="User name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rightSide">
+                                <!-- 달러결제 -->
+                                <div class="dollar" style="display: none;">
+                                    <div class="rightSide-top">
+                                        <div class="orderSummary">
+                                            <h4>
+                                                Order Summary 
+                                            </h4>
+                                            <div class="info">
+                                                <ul class="info-class">
+                                                    <li class="light">Class</li>
+                                                    <li class="bold">USD 500.00</li>
+                                                </ul>
+                                                <ul class="info-payTotle">
+                                                    <li class="light">Payment Total</li>
+                                                    <li class="bold">USD 500.00</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="rightSide-bottom">
+                                        <div class="chkWrap">
+                                            <input type="checkbox" id="serviceAgree" name="serviceAgree">
+                                            <label for="serviceAgree">
+                                                <span class="box"></span>
+                                                <span class="text">
+                                                    I agree to the privacy policy and  terms of service.
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="btns">
+                                            <button class="paypalBtn-on">
+                                                <img src="/web/img/paypal.png" alt="">
+                                            </button>
+                                            <button class="debitBtn-on">
+                                                Debit or Credit Card
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 원화결제 -->
+                                <div class="krw">
+                                    <div class="orderSummary">
+                                        <h4>
+                                            최종 결제 금액
+                                        </h4>
+                                        <div class="info">
+                                            <ul class="info-class">
+                                                <li class="light">상품가격</li>
+                                                <li class="bold"><%= classObject.classObject.krw %> 원</li>
+                                            </ul>
+                                            <ul class="info-payTotle">
+                                                <li class="light">총 결제 금액</li>
+                                                <li class="bold"><%= classObject.classObject.krw %> 원</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="paymentMethod">
+                                        <h4>
+                                            결제 방법
+                                        </h4>
+                                        <div class="chkBtnWrap">
+                                            <div class="chkBtn">
+                                                <input type="radio" id="method_card" value="0" name="paymentMethod">
+                                                <label for="method_card">
+                                                    <span>신용카드</span>
+                                                </label>
+                                            </div>
+                                            <div class="chkBtn">
+                                                <input type="radio" id="account" value="1" name="paymentMethod">
+                                                <label for="account">
+                                                    <span>실시간 계좌이체</span>
+                                                </label>
+                                            </div>
+                                            <div class="chkBtn">
+                                                <input type="radio" id="deposit" value="2" name="paymentMethod">
+                                                <label for="deposit">
+                                                    <span>무통장입금</span>
+                                                </label>
+                                            </div>
+                                            <div class="chkBtn">
+                                                <input type="radio" id="kakao" value="3" name="paymentMethod">
+                                                <label for="kakao">
+                                                    <span>카카오페이</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="paymentMethod-deposit">
+                                        <!-- <div class="rawInput">
+                                            <input type="text" value="신한은행 1000-034-388257 마인드그라운드 " readonly>
+                                            <input type="text" placeholder="입금자명 (미입력 시 주문자명 적용)">
+                                        </div>
+                                        <div class="cashReceipt">
+                                            <div>
+                                                <h4>
+                                                    현금영수증 신청
+                                                </h4>
+                                                <div class="chkWrapArea">
+                                                    <div class="chkWrap">
+                                                        <input type="radio" id="incomeDeduction" name="cashReceipt">
+                                                        <label for="incomeDeduction">
+                                                            <span class="box"></span>
+                                                            <span class="text">
+                                                                소득공제용
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="chkWrap">
+                                                        <input type="radio" id="expenditure" name="cashReceipt">
+                                                        <label for="expenditure">
+                                                            <span class="box"></span>
+                                                            <span class="text">
+                                                                지출증빙용
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="inputNum">
+                                                    <input type="text" placeholder="휴대전화번호 입력">
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                    <div class="payBtn">
+                                        <div class="chkWrap">
+                                            <input type="checkbox" id="payAgree" name="payAgree">
+                                            <label for="payAgree">
+                                                <span class="box"></span>
+                                                <span class="text">
+                                                    개인정보처리방침 및 약관 확인 후 결재 진행에 동의
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <button class="payBtn-on" onclick="paymentOnClass()">
+                                            결제하기
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- 결제완료 -->
+                                <div class="paymentCompleted" style="display:none">
+                                    <div class="orderSummary">
+                                        <div class="title-dateInfo">
+                                            <h4>
+                                                Order Summary
+                                            </h4>
+                                            <span>
+                                                Order Date 2021. 10 15
+                                            </span>
+                                        </div>
+                                        <div class="info">
+                                            <ul class="info-class">
+                                                <li class="light">Class</li>
+                                                <li class="bold">USD 500.00</li>
+                                            </ul>
+                                            <ul class="info-payTotle">
+                                                <li class="light">Payment method</li>
+                                                <li class="bold">무통장입금</li>
+                                            </ul>
+                                        </div>
+                                        <div class="oderTotal">
+                                            <span>Order Total</span>
+                                            <strong>USD 500.00</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 결제창에서뜨는 글 -->
+                        <div class="refundPolicyText">
+                            <h4>
+                                Refund Policy
+                            </h4>
+                            <p>
+                                According to the refund policy, you can request a refund up to 3 days before the Class Program Listing class and up to 50% of the Class Development & Listing class use.<br/>
+                                <button onclick="customModal(43)">View full refund policy</button>
+                            </p>
+
+                        </div>
+                        <!-- 결제완료시 뜨는 버튼 -->
+                        <!-- <div class="moveToMyClassBtn">
+                            <button class="moveToMyClassBtn-on">
+                                Move to my class
+                            </button>
+                        </div> -->
+                    </div>
+                    <div id = 'paymentInfo'>
+                    </div>
+                </article>
+            </section>
+            <%- include ./common/commonFooter.html%> <%- include ./common/commonScript.html%>
+            
+            <script>
+                // 스크립트 파일 새로 생성 필수
+
+                classObject = <%- JSON.stringify(classObject) %>
+
+                $(function() {
+                    $(document).on('click', 'input[name="paymentMethod"]', function() {
+                        var deoisitTag = `<div class="rawInput">
+                                            <input type="text" value="신한은행 1000-034-388257 마인드그라운드 " readonly>
+                                            <input type="text" placeholder="입금자명 (미입력 시 주문자명 적용)">
+                                        </div>
+                                        <div class="cashReceipt">
+                                            <div>
+                                                <h4>
+                                                    현금영수증 신청
+                                                </h4>
+                                                <div class="chkWrapArea">
+                                                    <div class="chkWrap">
+                                                        <input type="radio" id="incomeDeduction" name="cashReceipt" checked>
+                                                        <label for="incomeDeduction">
+                                                            <span class="box"></span>
+                                                            <span class="text">
+                                                                소득공제용
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="chkWrap">
+                                                        <input type="radio" id="expenditure" name="cashReceipt">
+                                                        <label for="expenditure">
+                                                            <span class="box"></span>
+                                                            <span class="text">
+                                                                지출증빙용
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="inputNum">
+                                                    <input type="text" id="inputNum" placeholder="휴대전화번호 입력">
+                                                </div>
+                                            </div>
+                                        </div>`
+    
+                        if($(this).val() == '2')
+                        {
+                            $('.paymentMethod-deposit').html(deoisitTag);
+                        }
+                        else
+                        {
+                            $('.paymentMethod-deposit').html('')
+                        }
+                        
+                        $('input[name="cashReceipt"]').click(function() {
+                            console.log($(this).attr('id'));
+                            if($(this).attr('id') == 'incomeDeduction')
+                            { 
+                                 $('#inputNum').attr('placeholder', '휴대전화번호 입력')
+                            }
+                            else
+                            {
+                                $('#inputNum').attr('placeholder', '사업자 번호 입력')
+                            }
+                        })
+                    })
+
+
+                });
+
+                function paymentOnClass(){
+
+                    var buyerName = document.querySelector('#lastName').value + document.querySelector('#firstName').value;
+                    var phoneNumber = document.querySelector('#phoneNumber').value
+                    var buyerEmail = document.querySelector('#buyerEmail').value
+                    console.log(phoneNumber + ' lksjd lkasdlfkjlksa')
+                    var price = classObject.classObject.krw;
+                    //local
+                    if(window.location.hostname=='localhost'){
+
+                        var returnUrl = 'http://localhost:8080/payReturnUrl';
+                        var closeUrl = 'http://localhost:8080/web/view/close.html'
+                    }else{
+
+                        var returnUrl = 'https://www.mindground.co/payReturnUrl';
+                        var closeUrl = 'https://www.mindground.co/web/view/close.html'
+                    }
+                    // var signature = 
+                    inicisPayment(buyerName, classObject.classObject.title, buyerEmail, phoneNumber, 3750, returnUrl, closeUrl);
+                    
+                  
+                }
+
+                function inicisPayment(buyerName, title, buyerEmail, phoneNumber, price, returnUrl, closeUrl){
+                    console.log(buyerName + '  ' + title + '   ph  ' + phoneNumber + '   pr  ' + returnUrl + '  cl  ' + closeUrl);
+                    
+                    var signKey = "SU5JTElURV9UUklQTEVERVNfS0VZU1RS";
+                    var mKey = SHA256(signKey);
+                    var dateTime = Date.now();
+                    var oid = 'INIpayTest_'+dateTime;
+                    var signature = `oid=${oid}&price=${price}&timestamp=${dateTime}`
+                    var signatureHash = SHA256(signature);
+                    
+                    var inicisPayForm = document.createElement('form');
+                                        inicisPayForm.setAttribute('id', 'SendPayForm_id')
+                                        inicisPayForm.setAttribute('action', 'https://stdpay.inicis.com/payMain/pay')
+                                        inicisPayForm.setAttribute('method', "POST");
+                    var goodNameInput = document.createElement('input');
+                                        goodNameInput.setAttribute('type', 'hidden');
+                                        goodNameInput.setAttribute('name', 'goodname');
+                                        goodNameInput.setAttribute('value', title);
+                    var buyerNameInput = document.createElement('input');
+                                        buyerNameInput.setAttribute('type', 'hidden');
+                                        buyerNameInput.setAttribute('name', 'buyername');
+                                        buyerNameInput.setAttribute('value', buyerName);
+                    var buyerEmailInput = document.createElement('input');
+                                        buyerEmailInput.setAttribute('type', 'hidden');
+                                        buyerEmailInput.setAttribute('name', 'buyeremail');
+                                        buyerEmailInput.setAttribute('value', buyerEmail);
+                    var buyerTelInput = document.createElement('input');
+                                        buyerTelInput.setAttribute('type', 'hidden');
+                                        buyerTelInput.setAttribute('name', 'buyertel');
+                                        buyerTelInput.setAttribute('value', phoneNumber);
+                    var priceInput  = document.createElement('input');
+                                        priceInput.setAttribute('type', 'hidden');
+                                        priceInput.setAttribute('name', 'price');
+                                        priceInput.setAttribute('value', price);
+                    var midInput    = document.createElement('input');
+                                        midInput.setAttribute('type', 'hidden');
+                                        midInput.setAttribute('name', 'mid');
+                                        //에스크로테스트 : iniescrow0, 빌링(정기과금)테스트 : INIBillTst 
+                                        midInput.setAttribute('value', 'INIpayTest');                                        
+                    var gopaymethodInput = document.createElement('input');
+                                        gopaymethodInput.setAttribute('type', 'hidden');
+                                        gopaymethodInput.setAttribute('name', 'gopaymethod')
+                                        gopaymethodInput.setAttribute('value','Card')
+                    //mkey
+                    var mKeyInput       = document.createElement('input');
+                                        mKeyInput.setAttribute('type', 'hidden');
+                                        mKeyInput.setAttribute('name', 'mKey');
+                                        mKeyInput.setAttribute('value', mKey);
+                    var signatureInput  = document.createElement('input');
+                                        signatureInput.setAttribute('type', 'hidden');
+                                        signatureInput.setAttribute('name', 'signature')
+                                        signatureInput.setAttribute('value', signatureHash)
+                    var oidInput = document.createElement('input');
+                                        oidInput.setAttribute('type', 'hidden');
+                                        oidInput.setAttribute('name', 'oid')
+                                        oidInput.setAttribute('value', oid)
+                    var timestampInput = document.createElement('input');
+                                        timestampInput.setAttribute('type', 'hidden');
+                                        timestampInput.setAttribute('name', 'timestamp')
+                                        timestampInput.setAttribute('value', dateTime);
+                    var versionInput = document.createElement('input');
+                                        versionInput.setAttribute('type', 'hidden');
+                                        versionInput.setAttribute('name', 'version')
+                                        versionInput.setAttribute('value', '1.0')
+                    var currencyInput = document.createElement('input');
+                                        currencyInput.setAttribute('type', 'hidden');
+                                        currencyInput.setAttribute('name', 'currency')
+                                        currencyInput.setAttribute('value', 'WON')
+                    // 에스크로옵션 : useescrow, 빌링(정기과금)옵션 : BILLAUTH(Card)
+                    var acceptedMethodInput = document.createElement('input');
+                                        acceptedMethodInput.setAttribute('type', 'hidden');
+                                        acceptedMethodInput.setAttribute('name', 'acceptedmethod')
+                                        acceptedMethodInput.setAttribute('value', "below1000")
+                    var returnUrlInput = document.createElement('input');
+                                        returnUrlInput.setAttribute('type', 'hidden');
+                                        returnUrlInput.setAttribute('name', 'returnUrl')
+                                        returnUrlInput.setAttribute('value', returnUrl)
+                    var closeUrlInput = document.createElement('input');
+                                        closeUrlInput.setAttribute('type', 'hidden');
+                                        closeUrlInput.setAttribute('name', 'closeUrl')
+                                        closeUrlInput.setAttribute('value', closeUrl);
+                    var jsAcceptInput = document.createElement('input');
+                                        jsAcceptInput.setAttribute('type', 'hidden');
+                                        jsAcceptInput.setAttribute('name', 'requestByJs');
+                                        jsAcceptInput.setAttribute('value', 'true');
+                    
+                    // 팝업일 경우
+                    // var payViewTypeInput = document.createElement('input');
+                    //                     payViewTypeInput.setAttribute('type', 'hidden');
+                    //                     payViewTypeInput.setAttribute('name', 'payViewType')
+                    //                     payViewTypeInput.setAttribute('value', 'popup');
+                    // var popupUrlInput = document.createElement('input');
+                    //                     popupUrlInput.setAttribute('type', 'hidden');
+                    //                     popupUrlInput.setAttribute('name', 'popupUrl')
+                    //                     popupUrlInput.setAttribute('value', 'http://localhost:8080/web/view/popup.html')
+                          
+                    
+
+
+                   inicisPayForm.appendChild(goodNameInput);
+                   inicisPayForm.appendChild(buyerNameInput);
+                   inicisPayForm.appendChild(buyerTelInput);
+                   inicisPayForm.appendChild(buyerEmailInput);
+                   inicisPayForm.appendChild(priceInput);
+                   inicisPayForm.appendChild(midInput);
+                   inicisPayForm.appendChild(gopaymethodInput);
+                   inicisPayForm.appendChild(mKeyInput);
+                   inicisPayForm.appendChild(signatureInput);
+                   inicisPayForm.appendChild(oidInput);
+                   inicisPayForm.appendChild(timestampInput);
+                   inicisPayForm.appendChild(versionInput);
+                   inicisPayForm.appendChild(currencyInput);
+                   inicisPayForm.appendChild(acceptedMethodInput);
+                   inicisPayForm.appendChild(returnUrlInput);
+                   inicisPayForm.appendChild(closeUrlInput);
+                   inicisPayForm.appendChild(jsAcceptInput);
+                //    inicisPayForm.appendChild(payViewTypeInput);
+                //    inicisPayForm.appendChild(popupUrlInput);
+                   console.log(inicisPayForm)
+                   document.querySelector('#paymentInfo').innerHTML ='';
+                   document.querySelector('#paymentInfo').appendChild(inicisPayForm);
+                console.log(<%-JSON.stringify(classObject)%>)
+                jsonObject = {};
+                jsonObject.protocol = 'kgPayRequest'
+                jsonObject.goodType = 'class';
+                jsonObject.goodSellerUID = '<%=classObject.userUID%>'
+                jsonObject.goodSellerName = '<%=classObject.userName%>'
+                jsonObject.goodSellerHostType = '<%=classObject.hostType%>'
+                jsonObject.goodUID = '<%=classObject._id%>'
+                jsonObject.goodName = title;
+                jsonObject.buyerName = buyerName;
+                jsonObject.buyerEmail = buyerEmail;
+                jsonObject.phoneNumber = phoneNumber;
+                jsonObject.price = price;
+                jsonObject.gopaymethod = 'Card';
+                jsonObject.signature = signatureHash;
+                jsonObject.oid = oid;
+                jsonObject.timeStamp = dateTime;
+                jsonObject.version = '1.0';
+                jsonObject.currency = 'WON';
+                jsonObject.acceptedMethod = 'below1000';
+                protocolSendAjaxWithCallBack(jsonObject, function(result){
+                    INIStdPay.pay('SendPayForm_id');
+                })
+
+
+                    // callBack()
+                }
+
+                
+            </script>
+        </div>
+    </body>
+</html>

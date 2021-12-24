@@ -1,0 +1,235 @@
+<section class="hostStudioCommonLayout">
+    <article>
+        <div class="commonTitleArea">
+            <h2> <%=translation.dashBoard.Dashboard%></h2>
+            <div class="sideContents dashboardTitleInner">
+                <div class="selectWrap">
+                    <button class="getDateBtn-on">
+                        <div>
+                            <strong class="getText" id="dashBoardSearchDateID"></strong>
+                        </div>
+                        <span class="icon">
+                            <img src="/web/img/ICN_DROP.png" alt="">
+                        </span>
+                    </button>
+                    <div class="hdnSelectBox">
+                        <div class="moTitleArea">
+                            <div>
+                                <img src="/web/img/down.png" alt="">
+                            </div>
+                            <div>
+                                <button class="moSelectClose">
+                                    <img src="/web/img/btn_close_small.png" alt="">
+                                </button>
+                                <h5>Time Period</h5>
+                            </div>
+                        </div>
+                        <div class="selectArea">
+                            <div class="select-cate-date">
+                                <span class="cateText">
+                                    <%=translation.dashBoard.All%>
+                                </span>
+                                <strong class="dateNumber">
+                                    <!-- 2020.05.01 ~ 2021.12.01 -->
+                                </strong>
+                            </div>
+                            <div class="chkBoxList" id="dashBoardCheckBoxParentID">
+                                <div class="chkbox">
+                                    <input type="radio" id="all_dashboad" name="dateChk" checked>
+                                    <label for="all_dashboad">
+                                        <span class="box"></span>
+                                        <span class="text"><%=translation.dashBoard.All%></span>
+                                    </label>
+                                </div>
+                                <div class="chkbox">
+                                    <input type="radio" id="yesterday_dashboad" name="dateChk">
+                                    <label for="yesterday_dashboad">
+                                        <span class="box"></span>
+                                        <span class="text"><%=translation.dashBoard.Yesterday%></span>
+                                    </label>
+                                </div>
+                                <div class="chkbox">
+                                    <input type="radio" id="last7_dashboad" name="dateChk">
+                                    <label for="last7_dashboad">
+                                        <span class="box"></span>
+                                        <span class="text"><%=translation.dashBoard.Last_7_days%></span>
+                                    </label>
+                                </div>
+                                <div class="chkbox">
+                                    <input type="radio" id="last30_dashboad" name="dateChk">
+                                    <label for="last30_dashboad">
+                                        <span class="box"></span>
+                                        <span class="text"><%=translation.dashBoard.Last_30_days%></span>
+                                    </label>
+                                </div>
+                                <div class="chkbox">
+                                    <div>
+                                        <input type="radio" id="selectPeriod_dashboad" name="dateChk">
+                                        <label for="selectPeriod_dashboad">
+                                            <span class="box"></span>
+                                            <span class="text"><%=translation.dashBoard.Select_period%></span>
+                                        </label>
+                                    </div>
+                                    <div class="rawInputBox hostStudioPickDate">
+                                        <div>
+                                            <input type="text" id="userInputLastDateID" readonly>
+                                            <button class="calBoxBtn-on" id="pickerControlBtn" onclick="dashBoardDatePickerBoxControlFunc('last')">
+                                                <img src="/web/img/ICN_CALENDAR.png" alt="">
+                                            </button>
+                                            <div id="dashBoardLastDatePickerBoxID" style="display: none;">
+                                                <!-- 캘린더영역 -->
+                                            </div>
+                                        </div>
+                                        <span>~</span>
+                                        <div>
+                                            <input type="text" id="userInputRecentDateID" readonly>
+                                            <button class="calBoxBtn-on" id="pickerControlBtn" onclick="dashBoardDatePickerBoxControlFunc('recent')">
+                                                <img src="/web/img/ICN_CALENDAR.png" alt="">
+                                            </button>
+                                            <div id="dashBoardRecentDatePickerBoxID" style="display: none;">
+                                                <!-- 캘린더영역 -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="saveArea">
+                            <button class="saveBtn-on" onclick="checkedChoiceSearch('dashBoard')">
+                                <%=translation.dashBoard.Save%>
+                            </button>
+                        </div>
+                        <div class="onlyFixed"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mainContentsArea dashboard">
+            <div class="top">
+                <div class="top-revenue top-contents">
+                    <div class="innerTitle">
+                        <h6><%=translation.dashBoard.Total_Revenue%></h6>
+                        <span class="hoverInfoText" data-text="<%=translation.dashBoard.Total_revenue_is_the_full_amount_of_total_sales_of_classes%>">
+                            <img src="/web/img/ICN_INFO.png" alt="">
+                        </span>
+                    </div>
+                    <div class="innterDetail">
+                        <strong class="number" id="dashTotalRevenueValueID">
+                            <!-- 사용자 언어에 맞는 기본 금액이 들어가야한다. -->
+                        </strong>
+                        <span class="unit" id="dashTotalRevenueControlID">
+                            <%=translation.dashBoard.Money%>
+                        </span>
+                    </div>
+                </div>
+                <div class="top-participants top-contents">
+                    <div class="innerTitle">
+                        <h6><%=translation.dashBoard.Total_class_audiences_participants%></h6>
+                        <span class="hoverInfoText" data-text="<%=translation.dashBoard.Total_class_participants_is_all_mate_listening_to_your_classes%>">
+                            <img src="/web/img/ICN_INFO.png" alt="">
+                        </span>
+                    </div>
+                    <div class="innterDetail">
+                        <strong class="number">
+                            0
+                        </strong>
+                    </div>
+                </div>
+                <div class="top-sales top-contents">
+                    <div class="innerTitle">
+                        <h6><%=translation.dashBoard.Total_number_of_sales%></h6>
+                        <span class="hoverInfoText" data-text="<%=translation.dashBoard.Total_number_of_sales_is_total_class_sales%>">
+                            <img src="/web/img/ICN_INFO.png" alt="">
+                        </span>
+                    </div>
+                    <div class="innterDetail">
+                        <strong class="number" id="dashBoardTotalClassSellCountID">
+                        </strong>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="bottom-revenueDetail">
+                    <div class="innerTitle">
+                        <h5><%=translation.dashBoard.Revenue%></h5>
+                    </div>
+                    <div class="innerDetail">
+                        <!-- <div class="data-none">
+                            <div>
+                                <strong><%=translation.dashBoard.No_revenue_yet%></strong>
+                            </div>
+                            <div>
+                                <button class="openClassBtn-on" id="classesCreate" onclick="selectContents('classesCreate')">
+                                    <%=translation.dashBoard.Open_a_class%>
+                                </button>
+                            </div>
+                        </div> -->
+                        <div class="hasData" id="chartCanvusParentID">
+                            <canvas id="chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-reviewsDetail">
+                    <div class="innerTitle">
+                        <h5><%=translation.dashBoard.Reviews%></h5>
+                        <strong class="count">
+                            <%=translation.dashBoard.New%>
+                            <span>
+                                <%= (this.classAdditionalInfo)?'1':'' %>
+                            </span>
+                        </strong>
+                    </div>
+                    <div class="innerDetail">
+                        <!-- <div class="reviews-none">
+                            <div>
+                                <strong><%=translation.dashBoard.No_revenue_yet%></strong>
+                            </div>
+                        </div> -->
+                        <div class="reviews-block">
+                            <%
+                                
+                                if(hasOwnProperty("classAdditionalInfo")){
+                                    for(var i = 0; i < classAdditionalInfo.length; i++)
+                                    {
+                                        let additionalInfo=classAdditionalInfo[i];
+                                        if(!additionalInfo.reviewAnswer)
+                                        {    
+                            %>
+                                <div class="review" onclick="selectContents('reviews')">
+                                    <div class="top">
+                                        <div class="top-left">
+                                            <div class="ring">
+                                                <img src="/web/img/userRing/<%=additionalInfo.reviewerUID%>.png" alt="">
+                                            </div>
+                                            <strong class="userName">
+                                                <%=additionalInfo.reviewerName%> 
+                                            </strong>
+                                            <span class="dateText">
+                                                <%=additionalInfo.regeDate%>
+                                            </span>
+                                        </div>
+                                        <div class="top-right">
+                                            <div class="infoBadge">
+                                                New
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bottom">
+                                        <p class="bottom-detail">
+                                            <%=additionalInfo.review.review%>
+                                        </p>
+                                    </div>
+                                </div>  
+                            <%
+                                        }
+                                    }
+                                
+                                }
+                            %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>

@@ -1,0 +1,936 @@
+<section class="hostStudioCommonLayout">
+    <article>
+        <div class="commonTitleArea">
+            <h2><%=translation.dashBoard.Host_Profile%></h2>
+        </div>
+        <div class="mainContentsArea hostProfile">
+            <div class="tabs">
+                <ul>
+                    <!-- 다 입력면 complete가 붙음(체크이미지 생성) -->
+                    <li>
+                        <button class="tabs-inner profile basicInfo active" data-tabs="basicInfo">
+                            <span class="text">1. <%=translation.hostProfile.Basic_Info%></span>
+                            <span class="doneIcon"><img src="/web/img/ICN_DONE.png" alt=""></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="tabs-inner profile hostInfo" data-tabs="hostInfo">
+                            <span class="text">2.<%=translation.hostProfile.Host_Info%></span>
+                            <span class="doneIcon"><img src="/web/img/ICN_DONE.png" alt=""></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="tabs-inner profile hostAccount" data-tabs="hostAccountSetting">
+                            <span class="text">3. Host Account Setting​</span>
+                            <span class="doneIcon"><img src="/web/img/ICN_DONE.png" alt=""></span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="mainContents">
+                <div class="basicInfo commonList profile active">
+                    <div class="contentWrap">
+                        <div>
+                            <div class="basicInput1 basicInput">
+                                <div class="infoInput">
+                                    <div class="namaInput">
+                                        <input id="hostStudioUserNameID" type="text" placeholder="<%=translation.loginAndJoin.Name%>" value="<%= user.userName%>">
+                                    </div>
+                                    <div class="brithDayInput">
+                                        <div>
+                                            <input type="text" id="basicInfoYear" maxlength="4" placeholder="YYYY">
+                                            <span>/</span>
+                                            <input type="text" id="basicInfoMonth" maxlength="2" placeholder="MM">
+                                            <span>/</span>
+                                            <input type="text" id="basicInfoDay" maxlength="2" placeholder="DD">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="genderInput">
+                                    <div class="selectBox1 baiscInfoGender">
+                                        <div class="selectView">
+                                            <input id="basicInfoGenderCategory" type="button" value="<%=user.gender%>" style="color: #fff">
+                                            <img src="/web/img/ICN_DROP.png" alt="">
+                                        </div>
+                                        <ul class="selectBox-hdnMenu basicInfoGenderBox">
+                                            <li>
+                                                <input type="radio" value="<%=translation.loginAndJoin.Female%>" id="female" name="basicInfoGenderSelect" onclick="selectValue(this)">
+                                                <label for="female">
+                                                    <span><%=translation.loginAndJoin.Female%></span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" value="<%=translation.loginAndJoin.Male%>" id="male" name="basicInfoGenderSelect" onclick="selectValue(this)">
+                                                <label for="male">
+                                                    <span><%=translation.loginAndJoin.Male%></span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" value="<%=translation.loginAndJoin.Rather_not_say%>" id="rather not say" name="basicInfoGenderSelect" onclick="selectValue(this)">
+                                                <label for="rather not say">
+                                                    <span><%=translation.loginAndJoin.Rather_not_say%></span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" value="<%=translation.loginAndJoin.Custom%>" id="custom" name="basicInfoGenderSelect" onclick="selectValue(this)">
+                                                <label for="custom">
+                                                    <span><%=translation.loginAndJoin.Custom%></span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="customInput">
+                                        <!-- <input type="text" id="basicInfoCustomGender"> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="basicInput2 basicInput">
+                                <div class="regionInput">
+                                    <div class="selectBox1">
+                                        <div class="selectView regionCate">
+                                            <input id="regionCategory_hostInfo" type="button" value="<%=user.region%>" style="color: #fff;">
+                                            <img src="/web/img/ICN_DROP.png" alt="">
+                                        </div>
+                                        <ul class="selectBox-hdnMenu regionBoxHostInfo">
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="addressInput">
+                                    <input type="text" id="hostStudioUserCountryID" placeholder="Country" value="<%=user.country%>">
+                                </div>
+                            </div>
+                            <div class="basicInput2 basicInput bt5">
+                                <div class="regionInput state-province">
+                                    <input type="text" id="hostStudioUserStateID" placeholder="State / Province" value="<%=user.state%>">
+                                    <input type="text" id="hostStudioUserCityID" placeholder="City" value="<%=user.city%>">
+                                </div>
+                                <div class="addressInput">
+                                    <input type="text" id="hostStudioUserStreetAddressID" placeholder="Street Address" value="<%=user.streetAddress%>">
+                                </div>
+                            </div>
+                            <div class="infoText">
+                                <p>
+                                    *Enter the detailed address to view contents such as classes and gatherings happening around you.​
+                                </p>
+                            </div>
+                            <div class="basicInput3 basicInput">
+                                <textarea id="basicInfoDesc" placeholder="<%=translation.hostProfile.Your_Description%>"></textarea>
+                            </div>
+                        </div>
+                        <div class="updateBtn">
+                            <button class="updateBtn-on" onclick="hostStudioUserInfoUpdateFunc()">
+                                <%=translation.hostProfile.Update%>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="hostInfo commonList profile">
+                    <div class="contentWrap">
+                        <div>
+                            <div class="hostTypeTab">
+                                <h4 class="title">
+                                    <%=translation.hostStudio.What_type_of_Host_are_you%>
+                                </h4>
+                                <div class="selectTypeInfo">
+                                    <div class="typeInfo" id="selectTypeInfo">
+                                        <h5 class="typeText" id="master"><%=translation.hostStudio.Master%></h5>
+                                        <p class="typeDetail">
+                                            <%=translation.hostStudio.Teacher_or_Creator_with_more_than_20years_of_experiences_in_mindfulness_and_wellness%>
+                                        </p>
+                                    </div>
+                                    <button class="tabOpen-on" onclick="openTypeTab(this)">
+                                        <img src="/web/img/ICN_DROP.png" alt="">
+                                    </button>
+                                </div>
+                                <div class="typeListTab">
+                                    <div class="typeTab">
+                                        <button class="typeInfo">
+                                            <h5 class="typeText" id="brand"><%=translation.hostStudio.Brand%></h5>
+                                            <p class="typeDetail">
+                                                <%=translation.hostStudio.Organization_or_Business_in_Mindfulness_and_Wellness%>
+                                            </p>
+                                        </button>
+                                        <button class="typeInfo">
+                                            <h5 class="typeText" id="teacher"><%=translation.hostStudio.Teacher%></h5>
+                                            <p class="typeDetail">
+                                                <%=translation.hostStudio.Professionals_and_teachers_in_mindfulness_wellness_health_related_industry%>
+                                            </p>
+                                        </button>
+                                        <button class="typeInfo">
+                                            <h5 class="typeText" id="creator"><%=translation.hostStudio.Creator%></h5>
+                                            <p class="typeDetail">
+                                                <%=translation.hostStudio.Mindful_content_owners_and_professionals_in_arts_and_culture%>
+                                            </p>
+                                        </button>
+                                        <button class="typeInfo">
+                                            <h5 class="typeText" id="leader"><%=translation.hostStudio.Leader%></h5>
+                                            <p class="typeDetail">
+                                                <%=translation.hostStudio.Business_professionals_and_content_owners_in_HR_CSR_or_mindful_leadership%>
+                                            </p>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="inputIntroduce">
+                                <h4 class="title">
+                                    <%=translation.hostStudio.Introduce_your_self%>
+                                </h4>
+                                <div class="textAreas">
+                                    <textarea id="introduceDesc" placeholder="<%=translation.hostStudio.Your_host_description%>"></textarea>
+                                    <textarea id="introduceExp" placeholder="<%=translation.hostProfile.Other_history_of_your_experience%>"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-brandOnly" id="regHostAddress" style="display: none;">
+                            <div class="addressArea">
+                                <h4>
+                                    <%=translation.hostStudio.Insert_your_organization_or_business_address%>
+                                </h4>
+                                <div class="inputs">
+                                    <input type="text" placeholder="<%=translation.hostStudio.Title_of_place%>" id="titlePlaceInput">
+                                    <div class="input-btn">
+                                        <input type="text" placeholder="<%=translation.hostStudio.Address%>" id="profileGoogleSearchID">
+                                        <button class="searchBtn-on" onclick="googleMapSearch('profile')"><%=translation.openClass.Search%></button>
+                                    </div>
+                                </div>
+                                <div class="mapArea">
+                                    <div id="profileGoogleMap" style="width:100%; height:100%;"></div>
+                                </div>
+                                <div class="chk">
+                                    <div>
+                                        <input type="checkBox" id="type1">
+                                        <label for="type1">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.hostStudio.I_can_provide_my_own_space_for_gathering_events%>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="scheduleArea">
+                                <div class="title-subText">
+                                    <h4>
+                                        <%=translation.hostStudio.Please_set_a_shareable_schedule%>
+                                    </h4>
+                                    <span>
+                                        *<%=translation.hostStudio.You_can_set_a_schedule_for_two_weeks_from_now_on%> 
+                                    </span>
+                                </div>
+                                <div class="dayChk">
+                                    <div class="left">
+                                        <div class="hostStudioProfilePicker" id="datepicker" data-language='en'></div>
+                                    </div>
+                                    <div class="right" id="hostStudioProfileDateID">
+                                        <div class="dateInfo">
+                                            <dl>
+                                                <dt><%=translation.openClass.Date%> </dt>
+                                                <dd><%=translation.openClass.Please_select_a_date%></dd>
+                                            </dl>
+                                        </div>
+                                        <div class="timeInfo">
+                                            <dl>
+                                                <dt><%=translation.openClass.Time%></dt>
+                                                <dd><i class="xi-caret-up-min"></i></dd>
+                                            </dl>
+                                            <div class="timeList">
+                                                <div class="am">
+                                                    <div class="title">
+                                                        <%=translation.hostStudio.AM%>
+                                                    </div>
+                                                    <div class="times times-am">
+            
+                                                    </div>
+                                                </div>
+                                                <div class="pm">
+                                                    <div class="title">
+                                                        <%=translation.hostStudio.PM%>
+                                                    </div>
+                                                    <div class="times times-pm">
+            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="updateBtn">
+                            <button class="updateBtn-on" onclick="profileHostInfoUpdate()">
+                                <%=translation.hostProfile.Update%>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="hostAccountSetting commonList profile">
+                    <div class="contentWrap">
+                        <div>
+                            <button class="delHostAccountBtn-on" onclick="customModal(38)">
+                                Delete Host Account​
+                            </button>
+                            <!-- 호스트삭제 경고모달 -->
+                            <div class="modal modal38">
+                                <div>
+                                    <div class="xBtn">
+                                        <button onclick="customModalClose(38)">
+                                            <i class="xi-close"></i>
+                                        </button>
+                                    </div>
+                                    <div class="contents">
+                                        <h5 class="title">
+                                            Notifications​
+                                        </h5>
+                                        <p class="subText">
+                                            Are you sure you want to delete your account?
+                                        </p>
+                                        <div class="input">
+                                            <input type="password" placeholder="Password" id="passwordChk">
+                                            <p id="hostDeletePasswordFailedMessageControlID" style="display: none;">
+                                                Password is incorrect. ​
+                                            </p>
+                                        </div>
+                                        <div class="btns">
+                                            <button class="delBtn-on" onclick="deleteHostTypeFunc()">
+                                                Delete
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>
+                                Important : Your host data will be deleted permanently.
+                            </p>
+                            <p>
+                                If you become a host again in the future, you won't be able to find any existing data.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>
+<script src="/web/js/customPicker/customPicker.js"></script>
+<script>
+    mindgroundMap('profile');
+
+    var timeWrap2 = {}
+    function changeTime(e)
+    {
+        
+        if($(e).prop('checked'))
+        {
+            if(!timeWrap2[$('[data-schedule].view').data('schedule')])
+            {
+                timeWrap2[$('[data-schedule].view').data('schedule')] = [];
+            }
+            obj={}
+            obj['id'] = $(e)[0].id
+            obj['text'] = $(e).next().text()
+            timeWrap2[$('[data-schedule].view').data('schedule')].push(obj)
+        }
+        else
+        {
+            for(var i = 0; i < timeWrap2[$('[data-schedule].view').data('schedule')].length; i++)
+            {
+                if(timeWrap2[$('[data-schedule].view').data('schedule')][i].id===$(e)[0].id)
+                {
+                    timeWrap2[$('[data-schedule].view').data('schedule')].splice(i,1)
+                }
+            }
+        }
+    }
+    
+    var checkValueFlag = false;
+   
+        // 공유 가능한 일정 - 날짜
+        var shareableScheduleDate;
+
+        // 공유 가능한 일정 - 시간
+        var shareableScheduleTime;
+
+        var option3 = {
+            pastDateNotCheck:true,//과거날짜 선택여부
+            singleDate:true,//싱글데이트 여부
+            nDayCheck:{
+                check:true,
+                days:14
+            },//14일 체크
+        }
+
+        // dashBoard Picker Option
+        var dateOption4 = {
+            pastDateNotCheck:false,//과거날짜 선택여부
+            singleDate:true,//싱글데이트 여부
+        }
+        var dateOption5 = {
+            pastDateNotCheck:false,//과거날짜 선택여부
+            singleDate:true,//싱글데이트 여부
+        }
+
+        var dateOption6 = {
+            pastDateNotCheck:false,//과거날짜 선택여부
+            singleDate:true,//싱글데이트 여부
+        }
+
+        var dateOption7 = {
+            pastDateNotCheck:false,//과거날짜 선택여부
+            singleDate:true,//싱글데이트 여부
+        }
+
+        var datePickerSessionData = 'datePicker';
+        sessionStorage.setItem('datePickerSession', datePickerSessionData);
+        entwizCalendar.init("datepicker",option3);
+        sessionStorage.removeItem('datePickerSession');
+
+        entwizCalendar.init("dashBoardLastDatePickerBoxID",dateOption4);
+        entwizCalendar.init("dashBoardRecentDatePickerBoxID",dateOption5);
+        entwizCalendar.init("revenueLastDatePickerBoxID",dateOption5);
+        entwizCalendar.init("revenueRecentDatePickerBoxID",dateOption5);
+
+        entwizCalendar.on('change',function(data,lastCheckDate)//선택날짜 및 타입 콜백 //0:취소 1: 시작날짜선택 2: 전부선택 
+        {
+            console.log(JSON.stringify(data));
+            if(data.pickerBox1 && data.pickerBox1.length > 0)
+            {
+                var day = new Date(data.pickerBox1[0].slice(0,4) + '-' + data.pickerBox1[0].slice(4, 6) + '-' + data.pickerBox1[0].slice(6,8))
+                var weekDay = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+                var week = weekDay[day.getDay()];
+                day = data.pickerBox1[0].slice(0,4) + '. ' + data.pickerBox1[0].slice(4, 6) + '. ' + data.pickerBox1[0].slice(6,8) +' ('+week+')'
+                saveFirstDate = data.pickerBox1[0].slice(0,4) + '-' + data.pickerBox1[0].slice(4, 6) + '-' + data.pickerBox1[0].slice(6,8)
+                $('.getDate').text(day)
+            }
+            else
+            {
+                $('.getDate').text('<%=translation.openClass.Please_select_a_date%>')
+            }
+            if(data.pickerBox2 && data.pickerBox2.length > 0)
+            {
+                if(data.pickerBox2.length===1)
+                {
+                    var day = data.pickerBox2[0].slice(0,4) + '. ' + data.pickerBox2[0].slice(4, 6) + '. ' + data.pickerBox2[0].slice(6,8)
+                    $('#classSellStartDate').val(day)
+                }
+                else if(data.pickerBox2.length===2)
+                {
+                    var startDay = data.pickerBox2[0].slice(0,4) + '. ' + data.pickerBox2[0].slice(4, 6) + '. ' + data.pickerBox2[0].slice(6,8)
+                    var endDay = data.pickerBox2[1].slice(0,4) + '. ' + data.pickerBox2[1].slice(4, 6) + '. ' + data.pickerBox2[1].slice(6,8)
+                    $('#classSellStartDate').val(startDay)
+                    $('#classSellEndDate').val(endDay)
+                }
+                else
+                {
+                    $('#classSellStartDate').val('<%=translation.openClass.Please_select_a_date%>')
+                    $('#classSellEndDate').val('<%=translation.openClass.Please_select_a_date%>')
+                }
+            }
+
+            if(data.datepicker && data.datepicker.length > 0) {
+                console.log('AllDataDate',data);
+                shareableScheduleDate = data;
+                var text = ''
+                for(var i = 0; i < data.datepicker.length; i++)
+                {
+                    
+                    var day = new Date(data.datepicker[i].slice(0,4) + '-' + data.datepicker[i].slice(4, 6) + '-' + data.datepicker[i].slice(6,8));
+                    var weekDay = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+                    var week = weekDay[day.getDay()];
+                    var checkDay = data.datepicker[i].slice(0,4) + '.' + data.datepicker[i].slice(4, 6) + '.' + data.datepicker[i].slice(6,8) +'('+week+') ' 
+                    
+                    if(i===0)
+                    {
+                        text += '<span style="cursor:pointer;" data-schedule="'+data.datepicker[i]+'" onclick="checkScheduleDate(this,'+data.datepicker[i]+')">'+checkDay+'</span>'
+                    }
+                    else
+                    {
+                        text += '/ <span style="cursor:pointer;" data-schedule="'+data.datepicker[i]+'" onclick="checkScheduleDate(this,'+data.datepicker[i]+')">'+checkDay+'</span>'
+                    }
+                }
+                $('.dateInfo dd').html(text)
+                $('.times input').each(function()
+                {
+                    $(this).prop('checked',false)
+                })
+                $('.times').hide();
+                console.log('체크1')
+                if(data.datepicker.length<Object.keys(timeWrap2).length)
+                {
+                    console.log('체크2')
+                    for(var i = 0; i < Object.keys(timeWrap2).length; i++)
+                    {
+                        console.log('체크3')
+                        if(data.datepicker[i]!==Object.keys(timeWrap2)[i])
+                        {
+                            console.log('체크4')
+                            delete timeWrap2[Object.keys(timeWrap2)[i]]
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    console.log('체크5')
+                    $('[data-schedule="'+lastCheckDate+'"]').trigger('click');
+                }
+            }
+
+            if(data.dashBoardLastDatePickerBoxID && data.dashBoardLastDatePickerBoxID.length > 0) {
+                var day = new Date(data.dashBoardLastDatePickerBoxID[0].slice(0,4) + '-' + data.dashBoardLastDatePickerBoxID[0].slice(4, 6) + '-' + data.dashBoardLastDatePickerBoxID[0].slice(6,8))
+                var weekDay = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+                var week = weekDay[day.getDay()];
+                day = data.dashBoardLastDatePickerBoxID[0].slice(0,4) + '-' + data.dashBoardLastDatePickerBoxID[0].slice(4, 6) + '-' + data.dashBoardLastDatePickerBoxID[0].slice(6,8);
+                saveFirstDate = data.dashBoardLastDatePickerBoxID[0].slice(0,4) + '-' + data.dashBoardLastDatePickerBoxID[0].slice(4, 6) + '-' + data.dashBoardLastDatePickerBoxID[0].slice(6,8)
+                $('#userInputLastDateID').val(day);
+                $('#dashBoardLastDatePickerBoxID').css('display', 'none');
+            }
+
+            if(data.dashBoardRecentDatePickerBoxID && data.dashBoardRecentDatePickerBoxID.length > 0) {
+                var day = new Date(data.dashBoardRecentDatePickerBoxID[0].slice(0,4) + '-' + data.dashBoardRecentDatePickerBoxID[0].slice(4, 6) + '-' + data.dashBoardRecentDatePickerBoxID[0].slice(6,8))
+                var weekDay = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+                var week = weekDay[day.getDay()];
+                day = data.dashBoardRecentDatePickerBoxID[0].slice(0,4) + '-' + data.dashBoardRecentDatePickerBoxID[0].slice(4, 6) + '-' + data.dashBoardRecentDatePickerBoxID[0].slice(6,8);
+                saveFirstDate = data.dashBoardRecentDatePickerBoxID[0].slice(0,4) + '-' + data.dashBoardRecentDatePickerBoxID[0].slice(4, 6) + '-' + data.dashBoardRecentDatePickerBoxID[0].slice(6,8)
+                $('#userInputRecentDateID').val(day);
+                $('#dashBoardRecentDatePickerBoxID').css('display', 'none');
+            }
+
+            if(data.revenueLastDatePickerBoxID && data.revenueLastDatePickerBoxID.length > 0) {
+                var day = new Date(data.revenueLastDatePickerBoxID[0].slice(0,4) + '-' + data.revenueLastDatePickerBoxID[0].slice(4, 6) + '-' + data.revenueLastDatePickerBoxID[0].slice(6,8))
+                var weekDay = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+                var week = weekDay[day.getDay()];
+                day = data.revenueLastDatePickerBoxID[0].slice(0,4) + '-' + data.revenueLastDatePickerBoxID[0].slice(4, 6) + '-' + data.revenueLastDatePickerBoxID[0].slice(6,8);
+                saveFirstDate = data.revenueLastDatePickerBoxID[0].slice(0,4) + '-' + data.revenueLastDatePickerBoxID[0].slice(4, 6) + '-' + data.revenueLastDatePickerBoxID[0].slice(6,8)
+                $('#revenueUserInputLastDateID').val(day);
+                $('#revenueLastDatePickerBoxID').css('display', 'none');
+            }
+
+            if(data.revenueRecentDatePickerBoxID && data.revenueRecentDatePickerBoxID.length > 0) {
+                var day = new Date(data.revenueRecentDatePickerBoxID[0].slice(0,4) + '-' + data.revenueRecentDatePickerBoxID[0].slice(4, 6) + '-' + data.revenueRecentDatePickerBoxID[0].slice(6,8))
+                var weekDay = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+                var week = weekDay[day.getDay()];
+                day = data.revenueRecentDatePickerBoxID[0].slice(0,4) + '-' + data.revenueRecentDatePickerBoxID[0].slice(4, 6) + '-' + data.revenueRecentDatePickerBoxID[0].slice(6,8);
+                saveFirstDate = data.revenueRecentDatePickerBoxID[0].slice(0,4) + '-' + data.revenueRecentDatePickerBoxID[0].slice(4, 6) + '-' + data.revenueRecentDatePickerBoxID[0].slice(6,8)
+                $('#revenueUserInputRecentDateID').val(day);
+                $('#revenueRecentDatePickerBoxID').css('display', 'none');
+            }
+            
+        });
+        // 날짜 체크시 이벤트 실행
+        function checkScheduleDate(e,data)
+        {
+            
+            if($(e).hasClass('view'))
+            {
+                $(e).removeClass('view')
+                $('.times input').each(function()
+                {
+                    $(this).prop('checked',false)
+                })
+                $('.times').hide();
+                return
+            }
+            $('.times').css('display','flex');
+            $('[data-schedule]').each(function()
+            {
+                $(this).removeClass('view')
+            })
+            if(!$('[data-schedule='+data+']').hasClass('view'))
+            {
+                $('[data-schedule='+data+']').addClass('view')
+            }
+            $('#amTime1').prop('checked',false)
+            $('.times input').each(function()
+            {
+                $(this).prop('checked',false)
+            })
+            if(timeWrap2[data])
+            {
+                for(var i = 0; i < timeWrap2[data].length; i++)
+                {
+                    $('#'+timeWrap2[data][i].id).prop('checked',true);
+                }
+            }
+        }
+</script>
+<script>
+    //탭버튼
+    $('.tabs-inner.profile').click(function() {
+        console.log('is come profile')
+        $('.tabs-inner.profile').removeClass('active');
+        $(this).each(function() {
+            $(this).addClass('active')
+        })
+        $('.commonList.profile').removeClass('active');
+        $('.'+$(this).data('tabs')+'').addClass('active')
+    });
+
+    
+    //커스텀 셀렉박스 각 옵션 값가져오기
+    function selectValue(e) {
+        var targetVal = e.value;
+        var basicInfoGenderCategoryVal = document.getElementById('basicInfoGenderCategory');
+        var baiscInfoGender = document.querySelector('.baiscInfoGender');
+        var customInput = document.querySelector('.customInput');
+
+        document.getElementById('basicInfoGenderCategory').value = targetVal;
+        if(targetVal == "여성" || targetVal == "남성" || targetVal == "공개 안함")
+        {
+            baiscInfoGender.classList.remove('custom');
+            basicInfoGenderCategoryVal.style.color = "#fff";
+        }
+        else
+        {
+            baiscInfoGender.classList.add('custom');
+            customInput.innerHTML = '<input type="text" id="basicInfoCustomGender">';
+        }
+    }
+    
+    //셀렉박스 온/오프 옵션박스 외부 클릭시 오프
+    window.addEventListener('click', categoryOnoff);
+    function categoryOnoff(e) {
+        var basicInfoGenderCategory = document.getElementById('basicInfoGenderCategory');
+        var basicInfoGenderBox = document.querySelector('.basicInfoGenderBox');
+        if(basicInfoGenderCategory == e.target)
+        {
+            basicInfoGenderBox.classList.add('active');
+        }
+        else
+        {
+            basicInfoGenderBox.classList.remove('active');
+        }
+    }
+
+    //지역 셀렉박스
+    //주소입력 셀렉박스옵션
+    var regions = [
+        '<%=translation.loginAndJoin.North_America%>',
+        '<%=translation.loginAndJoin.South_America%>',
+        '<%=translation.loginAndJoin.Central_America%>',
+        '<%=translation.loginAndJoin.Caribbean%>',
+        '<%=translation.loginAndJoin.Central_South_Asia%>',
+        '<%=translation.loginAndJoin.Northeastern_Asia%>',
+        '<%=translation.loginAndJoin.Southeastern_Asia%>',
+        '<%=translation.loginAndJoin.Australia_Oceania%>',
+        '<%=translation.loginAndJoin.Northern_Europe%>',
+        '<%=translation.loginAndJoin.Southern_Europe%>',
+        '<%=translation.loginAndJoin.Eastern_Europe%>',
+        '<%=translation.loginAndJoin.Western_Europe%>',
+        '<%=translation.loginAndJoin.Middle_East%>',
+        '<%=translation.loginAndJoin.Northern_Africa%>',
+        '<%=translation.loginAndJoin.Southern_Africa%>'
+    ]
+    for(var i = 0; i < regions.length; i++) 
+    {
+        var regionsSeletOption = '<li>' +
+                                    '<input type="radio" value="'+regions[i]+'" id="hostInfo'+regions[i]+'" name="regionsSelect" onclick="selectValueRegion(this)">' +
+                                    '<label for="hostInfo'+regions[i]+'">' +
+                                        '<span>'+regions[i]+'</span>' +
+                                    '</label>'
+                                '</li>'
+        $('.regionBoxHostInfo').append(regionsSeletOption);
+    }
+    window.addEventListener('click', categoryOnoffRagion);
+    function categoryOnoffRagion(e) {
+        var regionCate = document.getElementById('regionCategory_hostInfo');
+        var regionBoxHostInfo = document.querySelector('.regionBoxHostInfo');
+        if(regionCate == e.target)
+        {
+            regionBoxHostInfo.classList.add('active');
+        }
+        else
+        {
+            regionBoxHostInfo.classList.remove('active');
+        }
+    }
+
+    //커스텀 셀렉박스 각 옵션 값가져오기
+    function selectValueRegion(e) {
+        var targetVal = e.value;
+        var regionCategory_hostInfo = document.getElementById('regionCategory_hostInfo');
+
+        document.getElementById('regionCategory_hostInfo').value = targetVal;
+        regionCategory_hostInfo.style.color = "#fff";
+    }
+
+    //타입리스트 온/오프
+    function openTypeTab(e) {
+        var typeListTab = document.querySelector('.typeListTab');
+        typeListTab.classList.toggle('active');
+        e.classList.toggle('active');
+    }
+
+    //호스트인포 타입변경
+    function typeChange() {
+        var typeInfo = document.getElementsByClassName('typeInfo');
+        var selectTypeInfo = document.getElementById('selectTypeInfo');
+        for(var i = 0; i < typeInfo.length; i++)
+        {
+            typeInfo[i].addEventListener('click', function() {
+                var thisHtml = this.innerHTML.trim();
+                var selectTypeInfoHtml = selectTypeInfo.innerHTML;
+                if(selectTypeInfo != thisHtml)
+                {
+                    selectTypeInfo.innerHTML = thisHtml;
+                    this.innerHTML = selectTypeInfoHtml;
+                    document.querySelector('.typeListTab').classList.remove('active');
+
+                    if($('#selectTypeInfo > h5').attr('id') == 'brand') {
+                        $('#regHostAddress').css('display', 'block');
+                    } else {
+                        $('#regHostAddress').css('display', 'none');
+                    }
+                }
+            });
+        }
+    }
+    typeChange();
+    
+    
+
+    var hostStudioUser = <%-user ? JSON.stringify(user) : {}%>;
+
+    var hostStudioUserIntroduce = JSON.parse(hostStudioUser.introduce);
+    document.getElementById('basicInfoDesc').innerHTML += hostStudioUser.userBio;
+    document.getElementById('introduceDesc').innerHTML += hostStudioUserIntroduce.introduce;
+    document.getElementById('introduceExp').innerHTML += hostStudioUserIntroduce.etc;
+
+    $(document).ready(function(){
+        $('#' + hostStudioUser.hostType).parent().click();
+    });
+
+    var Str = "<%= user.birth%>";
+    console.log(Str);
+    var Arr = Str.split("/");
+
+
+    var year = Arr[0];
+    var month = Arr[1];
+    var day = Arr[2];
+
+    document.getElementById("basicInfoYear").value = year;
+    document.getElementById("basicInfoMonth").value = month;
+    document.getElementById("basicInfoDay").value = day;
+
+    function deleteHostTypeFunc() {
+        var jsonData = {};
+        jsonData.userUID = hostStudioUser.userUID;
+        jsonData.password = SHA256(document.getElementById('passwordChk').value);
+            
+        $.ajax({
+            type : "POST",
+            url : "/userHostTypeDelete",
+            data : JSON.stringify(jsonData),
+            async : false,
+            processData : false,
+            contentType : "application/json; charset=UTF-8",
+            success : function(success){
+                alert('호스트 탈퇴가 완료되었습니다.');
+                window.close();
+            },
+            error : function(error)
+            {
+                document.getElementById('passwordChk').value = '';
+                document.getElementById('hostDeletePasswordFailedMessageControlID').style.display = 'block';
+            }
+        });
+    }
+
+//호스트타입 active
+$('.typeList button').click(function() {
+    $(this).each(function() {
+        $('.typeList button').removeClass('active');
+    })
+    $(this).toggleClass('active');
+});
+
+var timeList = [
+    {
+        title: 'am',
+        id: [
+            'amTime1',
+            'amTime2',
+            'amTime3',
+            'amTime4',
+            'amTime5',
+            'amTime6',
+            'amTime7',
+            'amTime8',
+            'amTime9',
+            'amTime10',
+            'amTime11',
+            'amTime12',
+        ],
+        times: [
+            '12:00 - 01:00',
+            '01:00 - 02:00',
+            '02:00 - 03:00',
+            '03:00 - 04:00',
+            '04:00 - 05:00',
+            '05:00 - 06:00',
+            '06:00 - 07:00',
+            '07:00 - 08:00',
+            '08:00 - 09:00',
+            '09:00 - 10:00',
+            '10:00 - 11:00',
+            '11:00 - 12:00'
+        ]
+    },
+    {
+        title: 'pm',
+        id: [
+            'pmTime1',
+            'pmTime2',
+            'pmTime3',
+            'pmTime4',
+            'pmTime5',
+            'pmTime6',
+            'pmTime7',
+            'pmTime8',
+            'pmTime9',
+            'pmTime10',
+            'pmTime11',
+            'pmTime12',
+        ],
+        times: [
+            '12:00 - 01:00',
+            '01:00 - 02:00',
+            '02:00 - 03:00',
+            '03:00 - 04:00',
+            '04:00 - 05:00',
+            '05:00 - 06:00',
+            '06:00 - 07:00',
+            '07:00 - 08:00',
+            '08:00 - 09:00',
+            '09:00 - 10:00',
+            '10:00 - 11:00',
+            '11:00 - 12:00'
+        ]
+    }
+]
+
+for(var i = 0; i < timeList.length; i++)
+{
+    for(var z = 0; z < timeList[i].times.length; z++)
+    {
+        var chkTime = '<div class="chkBox">' +
+                        '<input onchange="changeTime(this)" type="checkbox" id="'+timeList[i].id[z]+'">' +
+                        '<label for="'+timeList[i].id[z]+'">' +
+                            timeList[i].times[z] +
+                        '</label>' +
+                    '</div>'
+
+        if(timeList[i].title == 'am')
+        {
+            $('.times-am').append(chkTime);
+        }
+        else
+        {
+            $('.times-pm').append(chkTime);
+        }
+    }
+
+}
+
+if(hostStudioUser.hostType == 'brand') {
+    document.getElementById('regHostAddress').style.display = 'block';
+    
+    var brandParseLocation = JSON.parse(hostStudioUser.brandlocation);
+    document.getElementById('titlePlaceInput').value = brandParseLocation.titlePlace;
+    
+    document.getElementById('profileGoogleSearchID').value = brandParseLocation.address;
+    googleMapSearch('profile');
+
+    if(hostStudioUser.brandagree == 'agree') {
+        document.getElementById('type1').checked = true;
+    } else {
+        document.getElementById('type1').checked = false;
+    }
+
+    var dateTime = JSON.parse(hostStudioUser.brandDatetime);
+    timeWrap2 = {};
+    $('#amTime8').click();
+    $('#datepicker').find('td').each( function() {
+        for(var dateKey in dateTime) {
+            if($(this).data('date') == dateKey) {
+                timeWrap2[dateKey] = [];
+                $(this).click();
+
+                for(var i = 0; i < dateTime[dateKey].length; i++) {
+                    timeWrap2[dateKey].push(dateTime[dateKey][i]);
+                }
+            }               
+        }
+    });
+}
+
+function profileHostInfoUpdate() {
+    var profileObject = {};
+    profileObject.protocol = 'updateHostInfo';
+
+    profileObject.hostType = document.querySelector('#selectTypeInfo > h5').getAttribute('id');
+
+    var profileIntro = {};
+    profileIntro.introduce = document.getElementById('introduceDesc').value;
+    profileIntro.etc = document.getElementById('introduceExp').value;
+
+    profileObject.introduce = JSON.stringify(profileIntro);
+
+    if(document.querySelector('#selectTypeInfo > h5').getAttribute('id') == 'brand') {
+        if(document.getElementById('type1').checked == true) {
+            var brandAgree = 'agree';
+        } else {
+            var brandAgree = 'disagree';
+        }
+
+        brandLocation.titlePlace = document.getElementById('titlePlaceInput').value;
+        profileObject.brandlocation = JSON.stringify(brandLocation);
+        profileObject.brandplace = brandLocation.address;
+        profileObject.brandagree = brandAgree;
+        profileObject.brandDatetime = JSON.stringify(timeWrap2);
+    }
+
+    protocolSendAjaxWithCallBack(profileObject, function(result) {
+        if(result.resultCode == 0)
+        {
+            location.reload();
+        }
+        else
+        {
+            alert(result.message);
+        }
+    });
+}
+
+function hostStudioUserInfoUpdateFunc() {
+    var hostStudioUpdateCheckName = /^[a-zA-Z ]+$/;
+    if(!hostStudioUpdateCheckName.test(document.getElementById('hostStudioUserNameID').value)) {
+        alert('영문 입력만 가능합니다.');
+        return false;
+    }
+
+    var hostStudioUserInfoObject = {};
+
+    hostStudioUserInfoObject.protocol = 'hostStudioUserUpdate';
+
+    hostStudioUserInfoObject.userName = document.getElementById('hostStudioUserNameID').value;
+    hostStudioUserInfoObject.birth = document.getElementById('basicInfoYear').value + '/' + ('0' + document.getElementById('basicInfoMonth').value).slice(-2) + '/' + ('0' + document.getElementById('basicInfoDay').value).slice(-2);
+    hostStudioUserInfoObject.location = document.getElementById('regionCategory_hostInfo').value;
+    hostStudioUserInfoObject.country = document.getElementById('hostStudioUserCountryID').value;
+    hostStudioUserInfoObject.state = document.getElementById('hostStudioUserStateID').value;
+    hostStudioUserInfoObject.city = document.getElementById('hostStudioUserCityID').value;
+    hostStudioUserInfoObject.streetAddress = document.getElementById('hostStudioUserStreetAddressID').value;
+    hostStudioUserInfoObject.userBio = (document.getElementById('basicInfoDesc').value).trim();
+
+    protocolSendAjaxWithCallBack(hostStudioUserInfoObject, function(result) {
+        if(result.resultCode == 0)
+        {
+            location.reload();
+        }
+        else
+        {
+            alert(result.message);
+        }
+    });
+}
+</script>

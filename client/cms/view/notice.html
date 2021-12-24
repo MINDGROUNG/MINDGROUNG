@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <%-include common/commonHead.html%>
+    <body>
+        <%-include common/commonHeader.html%>
+        <%- include ./modal.html%>
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+        <!-- START CONTENT -->
+        <div class="content dashboard">
+            <!-- Start Page Header -->
+            <div class="page-header">
+                <h1 class="title">
+                    <a style="color: #fff;">운영 관리</a>
+                    <span style="display: inline-block; margin: 0 15px;"><i class="xi-angle-right-min"></i></span>
+                    <a href="/admin/notice" style="color: #fff;">공지사항 관리</a>
+                </h1>
+                <!-- End Page Header Right Div -->
+            </div>
+            <!-- START CONTAINER -->
+            <div class="container-default">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-12 dashboardBox" style="margin-bottom: 50px; padding-top: 30px; padding-bottom: 30px;">
+                            <div class="row searchChks mainBanner">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label fixText">기간</label>
+                                        <div class="col-sm-10">
+                                            <div style="display: flex; align-items: center;">
+                                                <div class="calendarWrap">
+                                                    <button><img src="/web/img/ICN_CALENDAR.png" alt=""></button>
+                                                    <input type="text" value="0000.00.00 - 0000.00.00" readonly>
+                                                </div>
+                                                <div class="commonChkBox" data-check="checkbox1">
+                                                    <input type="checkbox" id="chk">
+                                                    <label for="chk">
+                                                        <span class="box"></span>
+                                                        <span class="text">전체 기간</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label fixText">타이틀</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="inputText form-control" placeholder="입력" data-check="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 30px; padding-right: 15px;">
+                                <div class="col-md-12">
+                                    <div class="btnsWrap" style="text-align: right;">
+                                        <button type="button" class="cancelBtn">초기화</button>
+                                        <button type="button" class="saveBtn">검색</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row dashboard dataList">
+                    <div class="col-md-12">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                            <h3 class="color4 title-m-bd" style="margin: 0;">
+                                공지사항 리스트
+                            </h3>
+                            <button class="btn btn-primary" style="background: #7548f5;" onclick="location.href='/admin/noticeDetail'">
+                                신규 공지사항 등록
+                            </button>
+                        </div>
+                        <div class="panel-body table-responsive">
+                            <table id="example" class="table display">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>배너 타이틀​</th>
+                                        <th>신규 가입</th>
+                                        <th>게시</th>
+                                        <th>순서</th>
+                                        <th>생성 시간</th>
+                                        <th>삭제/편집</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>509​</td>
+                                        <td>배너 타이틀​</td>
+                                        <td>www.mindground.co​</td>
+                                        <td>
+                                            <div class="activeSwitches">
+                                                <input type="checkbox" id="chk1">
+                                                <label for="chk1">
+                                                    <span></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <input type="number" value="1" min="1">
+                                        </td>
+                                        <td>2021.01.01 09:00:00​</td>
+                                        <td>
+                                            <button class="btn btn-default btn-icon" onclick="openModal('해당 공지사항을 삭제하시겠습니까?')" type="button" style="background: #eb5757;">
+                                                <i class="xi-trash"></i>
+                                            </button>
+                                            <button class="btn btn-default btn-icon" type="button" style="background: #7548f5;">
+                                                <i class="xi-pen"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>509​</td>
+                                        <td>배너 타이틀​</td>
+                                        <td>www.mindground.co​</td>
+                                        <td>
+                                            <div class="activeSwitches">
+                                                <input type="checkbox" id="chk2" checked>
+                                                <label for="chk2">
+                                                    <span></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <input type="number" value="1" min="1">
+                                        </td>
+                                        <td>2021.01.01 09:00:00​</td>
+                                        <td>
+                                            <button class="btn btn-default btn-icon" onclick="openModal('해당 공지사항을 삭제하시겠습니까?')" type="button" style="background: #eb5757;">
+                                                <i class="xi-trash"></i>
+                                            </button>
+                                            <button class="btn btn-default btn-icon" type="button" style="background: #7548f5;">
+                                                <i class="xi-pen"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- <div class="panel panel-default">
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <%-include common/commonFooter.html%>
+        </div>
+        <!-- End Content -->
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+        <%-include common/commonScript.html%>
+        <script>
+        ///////////데이터 테이블//////////////
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'excel', 'print'
+                ]
+            });
+        });
+        ///////////데이터 테이블//////////////
+        </script>
+    </body>
+</html>

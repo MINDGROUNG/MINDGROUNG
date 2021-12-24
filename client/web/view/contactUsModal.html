@@ -1,0 +1,145 @@
+<div class="modal modal27">
+    <div>
+        <div class="xBtn">
+            <button onclick="customModalClose(27)">
+                <i class="xi-close"></i>
+            </button>
+        </div>
+        <div class="contentsModal">
+            <div class="titleArea">
+                <h6>
+                    Contact us
+                </h6>
+                <p>
+                    Contact us about anything related to our service. We’ll do our best to get back to you as soon as possible.
+                </p>
+            </div>
+            <div class="formArea">
+                <div class="inputWrap flexArea">
+                    <strong class="category">
+                        Your Name<span> *</span>
+                    </strong>
+                    <input type="text" placeholder="yourname">
+                </div>
+                <div class="inputWrap flexArea">
+                    <strong class="category">
+                        Email<span> *</span>
+                    </strong>
+                    <input type="text" placeholder="email@.com">
+                </div>
+                <div class="inputWrap flexArea phone">
+                    <strong class="category">
+                        Phone Number
+                    </strong>
+                    <input type="text">
+                </div>
+                <div class="selectWrap flexArea">
+                    <strong class="category">
+                        Category<span> *</span>
+                    </strong>
+                    <div class="selectBox1 categorySelect">
+                        <div class="selectView">
+                            <input class="noneLine" id="contactUsCategory" type="button" value="Select">
+                            <img src="/web/img/ICN_DROP.png" alt="">
+                        </div>
+                        <ul class="selectBox-hdnMenu contactUsCategorySelectBox">
+                            <li>
+                                <input type="radio" value="Customer Service" id="cate1" name="contactUsCategory" onclick="selectVal(this)">
+                                <label for="cate1">
+                                    <span>Customer Service</span>
+                                </label>
+                            </li>
+                            <li>
+                                <input type="radio" value="System issue" id="cate2" name="contactUsCategory" onclick="selectVal(this)">
+                                <label for="cate2">
+                                    <span>System issue</span>
+                                </label>
+                            </li>
+                            <li>
+                                <input type="radio" value="PR & Media" id="cate3" name="contactUsCategory" onclick="selectVal(this)">
+                                <label for="cate3">
+                                    <span>PR & Media</span>
+                                </label>
+                            </li>
+                            <li>
+                                <input type="radio" value="Partnership" id="cate4" name="contactUsCategory" onclick="selectVal(this)">
+                                <label for="cate4">
+                                    <span>Partnership</span>
+                                </label>
+                            </li>
+                            <li>
+                                <input type="radio" value="Invest" id="cate5" name="contactUsCategory" onclick="selectVal(this)">
+                                <label for="cate5">
+                                    <span>Invest</span>
+                                </label>
+                            </li>
+                            <li>
+                                <input type="radio" value="Other" id="cate6" name="contactUsCategory" onclick="selectVal(this)">
+                                <label for="cate6">
+                                    <span>Other</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="inputWrap flexArea">
+                    <strong class="category">
+                        Subject<span> *</span>
+                    </strong>
+                    <input type="text" placeholder="subject">
+                </div>
+                <div class="inputWrap flexArea">
+                    <strong class="category">
+                        Your Question<span> *</span>
+                    </strong>
+                    <textarea placeholder="Your Question"></textarea>
+                </div>
+                <div class="fileUploadWrap flexArea">
+                    <strong class="category">
+                        Attachment
+                    </strong>
+                    <div>
+                        <input type="text" class="getFileName" placeholder="FileName" readonly>
+                        <input type="file" id="contactUsFileUpload">
+                        <label for="contactUsFileUpload">
+                            <strong>File Upload</strong>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="sendBtn">
+                <button class="sendBtn-on">
+                    Send Now
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    //셀렉박스 열기
+    var contactUsCategoryBtn = document.getElementById('contactUsCategory');
+    function cateSelect(e) {
+        var clickTarget = e.target
+        var contactUsCategorySelectBox = document.querySelector('.contactUsCategorySelectBox');
+        if(e.target !== contactUsCategoryBtn)
+        {
+            contactUsCategorySelectBox.classList.remove('active');
+        }
+    }
+    window.addEventListener('click', cateSelect);
+
+    //셀렉박스값 넣기
+    function selectVal(e) {
+        contactUsCategoryBtn.value = e.value;
+        contactUsCategoryBtn.style.color = "#fff";
+    }
+
+    //파일 업로드시 파일명 받아오기
+    var attachmentFile = document.getElementById('contactUsFileUpload');
+    attachmentFile.addEventListener('change', function(e) {
+        var fileName = e.target.files[0].name;
+        var getFileName = document.querySelector('.getFileName');
+        getFileName.value = fileName;
+    })
+
+</script>

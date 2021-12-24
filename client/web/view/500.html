@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css" />
+        <link rel="stylesheet" href="/src/scss/slick-theme.css" />
+        <link rel="stylesheet" href="/src/scss/default.css" />
+        <link rel="shortcut icon" href="" type="favicon" />
+        <link rel="icon" href="/img/faviImg.png" sizes="128x128" />
+
+        <title>MindGround</title>
+        <style>
+            .wrap{width:100%;height:100vh;background-color: #fbf7f4;}
+            .wrap > div{position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);width: 748px;height: 748px;border-radius: 100%;background-color: #fff;text-align: center;}
+            .wrap > div > img{width: 380px; margin-top: 190px; margin-bottom: 50px;}
+            .wrap > div > p{font-size: 48px; line-height: 52px;}
+            .wrap > div > p > strong{color: #60269e;}
+            .wrap > div > p > span{font-size: 30px; line-height: 34px;}
+            .wrap > div > button {border: none; border-radius: 10px; color: #fff; background-color: #60269e; font-size: 20px; line-height: 24px; width: 160px; height: 60px; margin-top: 20px;}
+
+            /*모바일*/
+            @media only screen and (max-width: 768px) {
+                .wrap{width:100%;height:100vh;background-color: #fbf7f4;}
+                .wrap > div{width: 300px;height: 300px;}
+                .wrap > div > img{width: 135px; margin-top: 60px; margin-bottom: 20px;}
+                .wrap > div > p{font-size: 22px; line-height: 25px;}
+                .wrap > div > p > span{font-size: 16px; line-height: 34px;}
+                .wrap > div > button {border: none; border-radius: 10px; color: #fff; background-color: #60269e; font-size: 12px; line-height: 16px; width: 100px; height: 30px; margin-top: 10px;}
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="wrap">
+            <div>
+                <img src="" alt="">
+                <p>
+                    서버에 접속할 수 없습니다.<br />
+                    <span>오류가 지속될 경우 관리자에게 문의하세요.</span>
+                </p>
+                <button onclick="history.back()">돌아가기</button>
+            </div>
+        </div>
+    </body>
+</html>

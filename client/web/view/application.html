@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <%- include ./common/commonHead.html%>
+        <!--공통타이틀로 적용 할 경우 commonHead 안에 넣기-->
+    </head>
+    <body>
+        <div class="wrap footerPages application">
+            <%- include ./common/commonHeader.html%>
+            <section class="minHeight">
+                <div class="fixHeader">
+                    <h2 class="marginAuto_m">
+                        Careers at Mind Ground 
+                    </h2>
+                </div>
+                <article class="marginAuto_s contents">
+                    <div class="formWrap">
+                        <div class="commonLine flexArea1">
+                            <div class="inputTitle">
+                                <strong>Full Name</strong>
+                                <span class="asterisk">*</span>
+                            </div>
+                            <div class="inputArea areaTwo">
+                                <input type="text" id = "applicantFirstName" placeholder="First Name">
+                                <input type="text" id = "applicantLastName" placeholder="Lsat Name">
+                            </div>
+                        </div>
+                        <div class="commonLine flexArea1">
+                            <div class="inputTitle">
+                                <strong>Date of Birthday</strong>
+                                <span class="asterisk">*</span>
+                            </div>
+                            <div class="inputArea areaThree">
+                                <input type="text" id = "birthYear" placeholder="Year">
+                                <input type="text" id = "birthMonth" placeholder="Month">
+                                <input type="text" id = "birthDay" placeholder="Day">
+                            </div>
+                        </div>
+                        <div class="commonLine flexArea1 currentAdd">
+                            <div class="inputTitle">
+                                <strong>Current Address</strong>
+                                <span class="asterisk">*</span>
+                            </div>
+                            <div class="inputArea">
+                                <div class="top areaThree currentAddArea">
+                                    <div class="bottomAfter" data-text="Country">
+                                        <input type="text" id = "applicantCurrentCountry">
+                                    </div>
+                                    <div class="bottomAfter" data-text="State / Province">
+                                        <input type="text" id = "applicantCurrentState">
+                                    </div>
+                                    <div class="bottomAfter" data-text="City">
+                                        <input type="text" id = "applicantCurrentCity">
+                                    </div>
+                                </div>
+                                <div class="bottom areaOne">
+                                    <div class="bottomAfter" data-text="Street Address">
+                                        <input type="text" id = "applicantCurrentAddress">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="commonLine flexArea1">
+                            <div class="inputTitle">
+                                <strong>Email Address</strong>
+                                <span class="asterisk">*</span>
+                            </div>
+                            <div class="inputArea areaOne">
+                                <input type="text" id = "applicantEmailAddress">
+                            </div>
+                        </div>
+                        <div class="commonLine flexArea1 contact">
+                            <div class="inputTitle">
+                                <strong>Contact</strong>
+                                <span class="asterisk">*</span>
+                            </div>
+                            <div class="inputArea unbalArea">
+                                <div class="bottomAfter" data-text="Area Code">
+                                    <input type="text" id = "applicantPhoneCode">
+                                </div>
+                                <div class="bottomAfter" data-text="Phone Number">
+                                    <input type="text" id = "applicantPhoneNumber">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="commonLine flexArea1">
+                            <div class="inputTitle">
+                                <strong>Applying Position</strong>
+                                <span class="asterisk">*</span>
+                            </div>
+                            <div class="inputArea">
+                                <div class="selectBox1 applyingPosition">
+                                    <div class="selectView">
+                                        <input class="noneLine" id="applyingPosition" type="button" value="Select">
+                                        <img src="/web/img/ICN_DROP.png" alt="">
+                                    </div>
+                                    <ul class="selectBox-hdnMenu applyingPositionSelectBox">
+                                        <li>
+                                            <input type="radio" value="Director, Global Business Development" id="position1" name="applyingPositionSelect" onclick="selectVal(this)">
+                                            <label for="position1">
+                                                <span>Director, Global Business Development</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" value="Director, Global Marketing & PR" id="position2" name="applyingPositionSelect" onclick="selectVal(this)">
+                                            <label for="position2">
+                                                <span>Director, Global Marketing & PR</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" value="Director, Global Business Development Director, Global Business Development _2" id="position3" name="applyingPositionSelect" onclick="selectVal(this)">
+                                            <label for="position3">
+                                                <span>Director, Global Business Development Director, Global Business Development _2</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="commonLine flexArea1 workAuthorization">
+                            <div class="inputTitle">
+                                <strong>Work Authorization</strong>
+                                <span class="asterisk">*</span>
+                            </div>
+                            <div class="inputArea">
+                                <div class="top">
+                                    <p>
+                                        Are you legally eligible to work in the country listed above?
+                                    </p>
+                                    <div class="btns">
+                                        <button class="nBtn-on gray">No</button>
+                                        <button class="yBtn-on purple">Yes</button>
+                                    </div>
+                                </div>
+                                <div class="bottom">
+                                    <p>
+                                        Please describe your status of visa, permanent residency, or citizenship.
+                                    </p>
+                                    <div class="inputArea">
+                                        <input type="text" class="noneLine" id="workText" maxlength="30" onkeyup="limitText('workText', 'workTextCount', 30)">
+                                        <p class="countNum">
+                                            <span class="workTextCount">0</span> / 30
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="commonLine flexArea1">
+                            <div class="inputTitle">
+                                <strong>Available to start from</strong>
+                                <span class="asterisk">*</span>
+                            </div>
+                            <div class="inputArea areaThree">
+                                <input type="text" id = "workStartYear" placeholder="Year">
+                                <input type="text" id = "workStartMonth" placeholder="Month">
+                                <input type="text" id = "workStartDay" placeholder="Day">
+                            </div>
+                        </div>
+                        <div class="commonLine flexArea1 introduction">
+                            <div class="inputTitle">
+                                <strong>Introduction/<br/>Cover Letter</strong>
+                            </div>
+                            <div class="inputArea">
+                                <textarea id="introText" maxlength="2000" id = "applicantIntroduction" onkeyup="limitText('introText', 'introTextCount', 2000)"></textarea>
+                                <p class="countNum">
+                                    <span class="introTextCount">0</span> / 2000
+                                </p>
+                            </div>
+                        </div>
+                        <div class="commonLine flexArea1 attachmentMb fileTab">
+                            <div class="inputTitle">
+                                <strong>Attachment</strong>
+                                <span class="asterisk">*</span>
+                            </div>
+                            <div class="inputArea fileUploadArea">
+                                <span class="getFileName">File Name</span>
+                                <input type="file" class="attachmentFile" id="attachmentFile1" onchange="uploadFile(this, 'main')">
+                                <label for="attachmentFile1">
+                                    <strong>File Upload</strong>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="commonLine flexArea1 fileTab">
+                            <div class="inputTitle">
+                                <strong>Attachment 2 (optional)</strong>
+                            </div>
+                            <div class="inputArea fileUploadArea">
+                                <span class="getFileName">File Name</span>
+                                <input type="file" class="attachmentFile" id="attachmentFile2" onchange="uploadFile(this, 'sub')">
+                                <label for="attachmentFile2">
+                                    <strong>File Upload</strong>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="commonLine flexArea1 linksArea">
+                            <div class="inputTitle">
+                                <strong data-text="Any relevant professional and personal links">Links (optional)</strong>
+                            </div>
+                            <div class="inputArea">
+                                <input type="text" id = "applicantLinkWebsite" placeholder="Website">
+                                <input type="text" id = "applicantLinkLinkedIn" placeholder="LinkedIn">
+                                <input type="text" id = "applicantLinkFacebook" placeholder="Facebook">
+                                <input type="text" id = "applicantLinkYouTube" placeholder="YouTube">
+                                <input type="text" id = "applicantLinkOther" placeholder="Other">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="submitBtn">
+                        <button class="submitBtn-on" onclick="applyJob()">
+                            Submit
+                        </button>
+                    </div>
+                </article>
+            </section>
+            <%- include ./common/commonFooter.html%> <%- include ./common/commonScript.html%>
+            <script>
+                
+                //셀렉박스 열기
+                var applySelectBtn = document.getElementById('applyingPosition');
+                function applySelect(e) {
+                    var clickTarget = e.target
+                    var applyingPositionSelectBox = document.querySelector('.applyingPositionSelectBox ');
+                    if(e.target !== applySelectBtn)
+                    {
+                        applyingPositionSelectBox.classList.remove('active');
+                    }
+                }
+                window.addEventListener('click', applySelect);
+
+                //셀렉박스값 넣기
+                function selectVal(e) {
+                    applySelectBtn.value = e.value;
+                    applySelectBtn.style.color = "#fff";
+                }
+
+                //파일 업로드시 파일명 받아오기
+                var attachmentFile = document.querySelectorAll('.attachmentFile')
+                attachmentFile.forEach(function(val) {
+                    var previousSibling = val.previousElementSibling;
+                    val.addEventListener('change', function(e) {
+                        var fileName = e.target.files[0].name; 
+                        previousSibling.innerHTML = fileName;
+                        previousSibling.style.color = '#fff';
+                    });
+                })
+
+                var attachmentMain = {};
+                var attachmentSub = {};
+
+                async function uploadFile(e, type)
+                {
+                    if(type=='main'){
+                        console.log('come check')
+                        attachmentMain = saveFileToServerV2(e.files)
+                    }else if(type=="sub"){
+                        console.log('comecheck2')
+                        attachmentSub = saveFileToServerV2(e.files)
+                    }
+                   
+                }
+
+                function applyJob(){
+
+                    var firstName = document.querySelector('#applicantFirstName').value;
+                    var lastName = document.querySelector('#applicantLastName').value;
+                    
+                    var birthYear = document.querySelector('#birthYear').value;
+                    var birthMonth = document.querySelector('#birthMonth').value;
+                    var birthDay = document.querySelector('#birthDay').value;
+
+                    var applicantCurrentCountry = document.querySelector('#applicantCurrentCountry').value;
+                    var applicantCurrentState = document.querySelector('#applicantCurrentState').value;
+                    var applicantCurrentCity = document.querySelector('#applicantCurrentCity').value
+                    var applicantCurrentAddress = document.querySelector('#applicantCurrentAddress').value;
+
+                    var emailAddress = document.querySelector('#applicantEmailAddress').value;
+                    
+                    var areaCode = document.querySelector('#applicantPhoneCode').value;
+                    var phoneNumber = document.querySelector('#applicantPhoneNumber').value;
+
+                    var applyingPosition = document.querySelector('#applyingPosition').value;
+                    
+                    var workAuthorization = document.querySelector('#workText').value;
+
+                    var workStartYear = document.querySelector('#workStartYear').value;
+                    var workStartMonth = document.querySelector('#workStartMonth').value;
+                    var workStartDay = document.querySelector('#workStartDay').value;
+
+                    var introduction = document.querySelector('#introText').value;
+
+                    var linkWebsite = document.querySelector('#applicantLinkWebsite').value;
+                    var linkLinkedIn = document.querySelector('#applicantLinkLinkedIn').value;
+                    var linkFacebook = document.querySelector('#applicantLinkFacebook').value;
+                    var linkYouTube = document.querySelector('#applicantLinkYouTube').value;
+                    var linkOther = document.querySelector('#applicantLinkOther').value;
+
+                    var jsonObject = {};
+                    jsonObject.protocol = 'application'
+                    jsonObject.firstName = firstName;
+                    jsonObject.lastName = lastName;
+                    jsonObject.birthYear = birthYear;
+                    jsonObject.birthMonth = birthMonth;
+                    jsonObject.birthDay = birthDay;
+                    jsonObject.addressCountry = applicantCurrentCountry;
+                    jsonObject.addressState = applicantCurrentState;
+                    jsonObject.addressCity = applicantCurrentCity;
+                    jsonObject.addressStreetAddress = applicantCurrentAddress;
+                    jsonObject.email = emailAddress;
+                    jsonObject.phoneCode = areaCode;
+                    jsonObject.phoneNumber = phoneNumber;
+                    jsonObject.applyingPosition = applyingPosition;
+                    jsonObject.workAuthorization = workAuthorization;
+                    jsonObject.workStartYear = workStartYear;
+                    jsonObject.workStartMonth = workStartMonth;
+                    jsonObject.workStartDay = workStartDay;
+                    jsonObject.introduction = introduction; 
+                    jsonObject.attachment1 = attachmentMain; 
+                    jsonObject.attachment2 = attachmentSub;
+                    jsonObject.linkWebsite =linkWebsite;
+                    jsonObject.linkLinkedIn = linkLinkedIn;
+                    jsonObject.linkFacebook = linkFacebook;
+                    jsonObject.linkYouTube = linkYouTube;
+                    jsonObject.linkOther = linkOther; 
+                    
+                    protocolSendAjaxWithCallBack(jsonObject, function(result){
+                        if(result.resultCode==0)
+                        {
+                           alert("신청이 완료되었습니다")
+                           location.href = '/'
+                        }
+                        else
+                        {
+                           alert('내용을 확인해주세요')
+                        }
+                    });
+
+                    console.log(JSON.stringify(jsonObject))
+
+                }
+
+            </script>
+        </div>
+    </body>
+</html>

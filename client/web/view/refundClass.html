@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <%- include ./common/commonHead.html%>
+        <!--공통타이틀로 적용 할 경우 commonHead 안에 넣기-->
+    </head>
+    <body>
+        <div class="wrap classOrderCommonLayout refundClass">
+            <%- include ./common/commonHeader.html%>
+            <section class="marginAuto_s minHeight">
+                <article class="contents">
+                    <h2 class="pageTitle">
+                        Purchased Class
+                    </h2>
+                    <div class="orderInfo">
+
+                        <!-- 단계안내 style="display: none;"-->
+                        <%
+                            let stepInfoStatus = 'style=display:none';
+                            let requestButtonStatus = '';
+                            if(payInfoObject.payStatus!='success'){
+                                stepInfoStatus='';
+                                requestButtonStatus = 'style=display:none';
+                            }
+                        %>
+
+
+                        <div class="stepInfo" id = "refundClassStepInfo" <%=stepInfoStatus%> >
+                            <ul class="stepInfo-title">
+                                <li class="step1-title payStatusTitle" id = "refundRequest">Received</li>
+                                <li class="line"></li>
+                                <li class="step2-title payStatusTitle" id = "refundApproved">Approved</li>
+                                <li class="line"></li>
+                                <li class="step3-title payStatusTitle" id = "refunded">Refunded</li>
+                            </ul>
+                            <div class="stepInfo-detailText">
+                                <p class="step1-detail active" id = "refundStatusMsg">
+                                    We have received your refund request and it will be processed soon. You should get your refund result within 20 business days from the date we received your request.
+                                </p>
+                                <p class="step2-detail">
+                                    Your refund was approved on May 15, 2021. if you do not receive your refund after 20 business days, please contact us.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="orderFormWrap" id = 'paymentInfo'>
+                            <div class="subTitle">
+                                <h3>Order No. <%= payInfoObject.orderNum %></h3>
+                            </div>
+                            <div class="flexArea">
+                                <div class="leftSide">
+                                    <div class="leftSide-top">
+                                        <h4>
+                                            Class Information
+                                        </h4>
+                                        <div class="classInfo">
+                                            <div class="classInfo-thumb" style="background-image: url('/web/img/thumb.png');">
+                                                <div class="bar"></div>
+                                            </div>
+                                            <div class="classInfo-text">
+                                                <div class="classInfo-text-top">
+                                                    <h6 class="classInfo-text-title">
+                                                        <%= classObject.classObject.title %>
+                                                    </h6>
+                                                    <ul class="ringInfo">
+                                                        <li class="ring">
+                                                            <img class="userImg" src="/web/img/userRing/<%= classObject.userUID %>.png" alt="">
+                                                        </li>
+                                                        <li class="name">
+                                                            <%= classObject.userName %>
+                                                        </li>
+                                                        <li class="type">
+                                                            <strong><%= classObject.hostType %></strong>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="classInfo-text-bottom">
+                                                    <p class="detailText">
+                                                        <%= classObject.classObject.mainCategory %>
+                                                        <%= classObject.classObject.subCategory %>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rightSide">
+                                    <div class="paymentCompleted">
+                                        <div class="orderSummary">
+                                            <div class="title-dateInfo">
+                                                <h4>
+                                                    Order Summary
+                                                </h4>
+                                            </div>
+                                            <div class="info">
+                                                <ul class="info-class">
+                                                    <li class="light"><%= payInfoObject.goodType %></li>
+                                                    <li class="bold"><%= payInfoObject.currency %> <%= payInfoObject.price %></li>
+                                                </ul>
+                                                <ul class="info-payTotle">
+                                                    <li class="light">Payment method</li>
+                                                    <li class="bold"><%= payInfoObject.payMethod %></li>
+                                                </ul>
+                                            </div>
+                                            <div class="oderTotal">
+                                                <span>Order Total</span>
+                                                <strong><%= payInfoObject.currency %> <%= payInfoObject.price %></strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="refundBtn">
+                                <button class="refundBtn-on" onclick="refundFormShow()" id="refundRequestButton" <%=requestButtonStatus%> >
+                                    Refund
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="reqRawInput" id="refundRequestForm" style="display: none">
+                        <div class="subTitle">
+                            <h3>
+                                Refund Request
+                            </h3>
+                            <span>We are sorry to know that you want a refund. Please let up know what’s wrong.</span>
+                        </div>
+                        <div class="inputWrap">
+                            <div class="inputWrap-selectBox">
+                                <h4>
+                                    Specify witch type of refund
+                                </h4>
+                                <div class="selectBox1 refundType">
+                                    <div class="selectView">
+                                        <input class="noneLine" id="refundType" type="button" value="Specify witch type of refund">
+                                        <img src="/web/img/ICN_DROP.png" alt="">
+                                    </div>
+                                    <ul class="selectBox-hdnMenu refundTypeSelectBox">
+                                        <li>
+                                            <input type="radio" value="I did not mean to buy this" id="type1" name="refundType" onclick="selectVal(this)">
+                                            <label for="type1">
+                                                <span>I did not mean to buy this</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" value="I want to buy other class" id="type2" name="refundType" onclick="selectVal(this)">
+                                            <label for="type2">
+                                                <span>I want to buy other class</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" value="Change payment method" id="type3" name="refundType" onclick="selectVal(this)">
+                                            <label for="type3">
+                                                <span>Change payment method</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" value="I want to buy through other account" id="type4" name="refundType" onclick="selectVal(this)">
+                                            <label for="type4">
+                                                <span>I want to buy through other account</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" value="other" id="type5" name="refundType" onclick="selectVal(this)">
+                                            <label for="type5">
+                                                <span>other</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="inputWrap-inputBox">
+                                <h4>
+                                    Tell us the detailed refund reason
+                                </h4>
+                                <textarea placeholder="Describe your reason" id ="refundReason"></textarea>
+                            </div>
+                        </div>
+                        <div class="btnsArea">
+                            <button class="cancleBtn-on" onclick="refundFormRequest('cancle')">Cancle</button>
+                            <button class="sendBtn-on" onclick="refundFormRequest('request')">Send Request</button>
+                        </div>
+                    </div>
+
+
+                </article>
+            </section>
+            <%- include ./common/commonFooter.html%> <%- include ./common/commonScript.html%>
+            <script>
+                var payStatusInfo = <%-JSON.stringify(payInfoObject)%>
+                var refundInfo = <%-JSON.stringify(refundInfo)%>
+                console.log(JSON.stringify(refundInfo))
+                document.addEventListener("DOMContentLoaded", function(){
+
+                    var refundStatus = '<%=payInfoObject.payStatus%>'
+                    if(refundStatus!='success'){
+                        setProgress(refundStatus)
+                    }
+                });
+
+
+                //셀렉박스 열기
+                var refundTypeBtn = document.getElementById('refundType');
+                function refundTypeSelect(e) {
+                    // var clickTarget = e.target
+                    var refundTypeSelectBoxSelectBox = document.querySelector('.refundTypeSelectBox');
+                    if(e.target !== refundTypeBtn)
+                    {
+                        refundTypeSelectBoxSelectBox.classList.remove('active');
+                    }
+                    console.log(e.target)
+                }
+                window.addEventListener('click', refundTypeSelect);
+
+                //셀렉박스값 넣기
+                function selectVal(e) {
+                    refundTypeBtn.value = e.value;
+                    refundTypeBtn.style.color = "#fff";
+                }
+
+                function setProgress(payStatus){
+                    var titleList = document.querySelectorAll('.payStatusTitle');
+                    titleList.forEach(function(refundTitle){
+                        refundTitle.classList.remove('active');
+                    })
+                    if(payStatus=='refundApproved'){
+                        var refundRequestDate= makeRefundDateForm(refundInfo.createdAt)
+                        var refundStatusMsg = `Your refund was approved on ${refundRequestDate} if you do not receive your refund after 20 business days, please contact us.`
+                        document.querySelector('#refundStatusMsg').innerHTML =refundStatusMsg;
+                    }else if(payStatus=='refunded'){
+                        document.querySelector('#refundStatusMsg').innerHTML ='';
+                    }
+                    document.getElementById(payStatus).classList.add('active');
+                }
+
+                function refundFormShow(){
+                        console.log('comecheck2')
+                        document.querySelector('#refundRequestForm').style.display = '';
+                        document.querySelector('#paymentInfo').style.display = 'none';
+                }
+
+                async function refundFormRequest(requestType){
+                    document.querySelector('#refundRequestForm').style.display = 'none';
+                    
+                    if(requestType=='request'){
+                        var jsonObject = {};
+                        jsonObject.protocol = 'refundRequest'
+                        jsonObject.payResultID = '<%= payInfoObject.payResultUID %>'
+                        jsonObject.refundType = document.querySelector('#refundType').value;
+                        jsonObject.refundReason = document.querySelector('#refundReason').value;
+                        await protocolSendAjaxWithCallBack(jsonObject, function(result){
+                            document.querySelector('#refundClassStepInfo').style.display = '';
+                            document.querySelector('#refundRequestButton').style.display = 'none';
+                        });
+                    }
+                    
+                    document.querySelector('#paymentInfo').style.display = '';
+                    
+                }
+
+            function makeRefundDateForm(thisDate){
+             
+             var createdDate = new Date(thisDate);
+             var createdYear = createdDate.getFullYear();
+             // var createdMonth = ('0' + (1 + createdDate.getMonth())).slice(-2);
+             var createdMonth = Intl.DateTimeFormat('ko', { month: 'short' }).format(createdDate)
+             var createdDay = ('0' + createdDate.getDate()).slice(-2);
+             return `${createdMonth} ${createdDay}.${createdYear}`
+         }
+
+            </script>
+        </div>
+    </body>
+</html>

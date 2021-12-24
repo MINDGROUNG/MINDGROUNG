@@ -1,0 +1,30 @@
+<div class="popUp">
+    <div>
+        <div class="inner" style="text-align: center;">
+            <p class="confirm" style="margin-bottom: 30px;">
+                <!-- 공용으로 사용되는모달이므로 내부 문구는 함수적용시 넣음 -->
+            </p>
+            <div class="btnsWrap">
+                <button class="no" onclick="closeModal()">
+                    아니오
+                </button>
+                <button class="del">
+                    삭제
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 모달 열기
+    function openModal(confirmText) {
+        $('.popUp').show();
+        $('.popUp .confirm').text(confirmText)
+    }
+
+    // 모달 닫기
+    function closeModal() {
+        $('.popUp').hide();
+    }
+</script>

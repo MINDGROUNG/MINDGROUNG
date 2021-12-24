@@ -1,0 +1,2318 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <%- include ./common/commonHead.html%>
+        <!--공통타이틀로 적용 할 경우 commonHead 안에 넣기-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.3/rangeslider.min.css" integrity="sha512-Rp0yZ3NMh1xOUZ4VHYggmX4pq4ZJdpcOETH03qBD5qNDsqTBw1MzUnX0T5PcTJmr2mNTOmtbxsHaGwzjylNpHA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+        <div class="wrap journalWrite">
+            <%- include ./common/commonHeader.html%>
+            <!-- 저널작성 감사일기,생각스캔 이미지 미업로드시 팝업창 -->
+            <div class="modal modal16">
+                <div>
+                    <div class="xBtn">
+                        <button onclick="customModalClose(16)">
+                            <img src="/web/img/ICN_CLOSE.png" alt="">
+                        </button>
+                    </div>
+                    <div class="contentWrap">
+                        <div class="text">
+                            <span>
+                                Please upload at least one image.
+                            </span>
+                        </div>
+                        <div class="btns">
+                            <button>
+                                OK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 이미지 보기 삭제 -->
+            <div class="modal modal44">
+                <div>
+                    <div class="xBtn">
+                        <button onclick="customModalClose(44)">
+                            <i class="xi-close"></i>
+                        </button>
+                    </div>
+                    <div class="contents">
+                        <h3 class="imgNum" id="modal44CountControlID">
+                            <span>5</span>/<span>10</span>
+                        </h3>
+                        <div class="img-btnWrap">
+                            <ul class="imgList" id="journalModalImageModalControlID">
+                                <!-- <li data-no="1" class="active" style="background-image: url('/web/img/thumb.png');"></li>
+                                <li data-no="2" style="background-image: url('/web/img/classesThumb.png');"></li>
+                                <li data-no="3" style="background-image: url('/web/img/cer_guide.png');"></li> -->
+                            </ul>
+                            <div class="delBtn">
+                                <button class="delBtn-on" onclick="imageDeleteFunc()">
+                                    <img src="/web/img/delete.png" alt="">
+                                </button>
+                            </div>
+                            <div class="arrowBtns" id="modal44ArrowBtnID">
+                                <button class="prevBtn-on">
+                                    <i class="xi-angle-left"></i>
+                                </button>
+                                <button class="nextBtn-on">
+                                    <i class="xi-angle-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- <div class="saveBtn">
+                            <button class="saveBtn-on">Save</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <section class="marginAuto_s minHeight">
+                <article>
+                    <!-- 맨 처음 타입고를 때 뜨는 타이틀 -->
+                    <div class="mainTitleArea">
+                        <input type="hidden" id="journalUpdateID" value="">
+                        <h1 id="changeTypeTitle">
+                            <%=translation.journal.WRITE_A_JOURNAL%>
+                        </h1>
+                        <div>
+                            <span id="changeTypeSubTitle">
+                                <%=translation.journal.Write_a_mindfulness_journal_to_record_your_changes_through_daily_practice%>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- 저널 작성할 때 뜨는 타이틀 -->
+                    <!-- <div class="subTitleArea">
+                        <h1>
+                            WRITE A JOURNAL
+                        </h1>
+                    </div> -->
+                    <div class="filterTabArea">
+                        <div class="date">
+                            <div class="fixText">
+                                <span id="setJournalDate">
+                                    2020.01.01 12:50
+                                </span>
+                                <div class="getWeather" id="getWeatherID">
+                                    <input type="hidden" id="sendWeatherData" value="sunny">
+                                    <img id="showChoiceWeather" src="/web/img/weather/sunny.png">
+                                    <img id="getWeatherDropID" src="/web/img/ICN_DROP.png" alt="">
+                                    <ul id="weatherUlID">
+                                        <li id="sunny">
+                                            <img src="/web/img/weather/sunny.png" alt="">
+                                            <span>
+                                                Sunny
+                                            </span>
+                                        </li>
+                                        <li id="overcast">
+                                            <img src="/web/img/weather/overcast.png" alt="">
+                                            <span>
+                                                Overcast
+                                            </span>
+                                        </li>
+                                        <li id="cloudy">
+                                            <img src="/web/img/weather/cloudy.png" alt="">
+                                            <span>
+                                                Cloudy
+                                            </span>
+                                        </li>
+                                        <li id="stormy">
+                                            <img src="/web/img/weather/stormy.png" alt="">
+                                            <span>
+                                                Stormy
+                                            </span>
+                                        </li>
+                                        <li id="rainy">
+                                            <img src="/web/img/weather/rainy.png" alt="">
+                                            <span>
+                                                Rainy
+                                            </span>
+                                        </li>
+                                        <li id="snowy">
+                                            <img src="/web/img/weather/snowy.png" alt="">
+                                            <span>
+                                                Snowy
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="state" id="stateShowControl" style="display: none;">
+                                <button>
+                                    <span class="icon">
+                                        <img id="accessIconControlID" src="/web/img/ICN_PUBLIC.png" alt="">
+                                    </span>
+                                    <strong class="getText" id="getAccessID"><%=translation.setting.Public%></strong>
+                                    <input type="hidden" id="getAccessIDValue" value="Public">
+                                    <span>
+                                        <img src="/web/img/ICN_DROP.png" alt="">
+                                    </span>
+                                </button>
+                                <div class="hdnBtns">
+                                    <button id="PublicID" style="display: none;">
+                                        <img src="/web/img/ICN_PUBLIC.png" alt="">
+                                        <span id="Public"><%=translation.setting.Public%></span>
+                                    </button>
+                                    <button id="FriendID">
+                                        <img src="/web/img/ICN_FRIENDS.png" alt="">
+                                        <span id="Friend"><%=translation.setting.Friends%></span>
+                                    </button>
+                                    <button id="PrivateID">
+                                        <img src="/web/img/ICN_PRIVATE.png" alt="">
+                                        <span id="Private"><%=translation.setting.Private%></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeInfo">
+                            <h5 class="timeInfo-title">
+                                <%=translation.journal.PRACTICE_TIME%>
+                            </h5>
+                            <div class="timeInfo-rawInput">
+                                <div class="inputTimeWrap">
+                                    <div class="inputTime1">
+                                        <input id="journalTime1-1" type="text" value="" maxlength="2" placeholder="00" onkeyup="timeCheck(this,1)">
+                                        <span>:</span>
+                                        <input id="journalTime1-2" type="text" value="" maxlength="2" placeholder="00" onkeyup="timeCheck(this,2)">
+                                    </div>
+                                    <span>&#126;</span>
+                                    <div class="inputTime2">
+                                        <input id="journalTime2-1" type="text" value="" maxlength="2" placeholder="00" onkeyup="timeCheck(this,3)"">
+                                        <span>:</span>
+                                        <input id="journalTime2-2" type="text" value="" maxlength="2" placeholder="00" onkeyup="timeCheck(this,4)">
+                                    </div>
+                                </div>
+                                <div class="minutes">
+                                    <strong id="inputTotalTime">0분</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="typeInfo">
+                            <div class="left">
+                                <h5 class="typeInfo-title left">
+                                    <%=translation.journal.PRACTICE_TYPE%>
+                                </h5>
+                                <div class="typeInfo-filter right">
+                                    <button class="typeSelect" id="journalPracticeTypeID">
+                                        <span class="getText" id="selectTypeShow"><%=translation.journal.Select_up_to_3_types%></span>
+                                        <span>
+                                            <img src="/web/img/ICN_DROP.png" alt="">
+                                        </span>
+                                    </button>
+                                    <div class="dropBox-type filters" id="practiceControlID">
+                                        <div class="moTitle">
+                                            <div class="top">
+                                                <img src="/web/img/down.png" alt="">
+                                            </div>
+                                            <div class="bottom">
+                                                <button class="moCloseBtn">
+                                                    <img src="/web/img/ICN_CLOSE.png" alt="">
+                                                </button>
+                                                <h4>
+                                                    Practice Type
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div class="typeWrap" id="typeWrapCheckID">
+                                            <ul class="self commonChkBox">
+                                                <li>
+                                                    <input type="checkBox" id="self" value="Self Practice" checked>
+                                                    <label for="self">
+                                                        <span class="box"></span>
+                                                        <span class="text" id="Self Practice"><%=translation.mypage.Self_Practice%></span>
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                            <div class="class commonChkBox" id="classCommonChkBoxID">
+                                                <ul>
+                                                    <li>
+                                                        <h6><%=translation.loginAndJoin.Related_Class%></h6>
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkBox" id="class1" value="">
+                                                        <label for="class1">
+                                                            <span class="box"></span>
+                                                            <span class="text" id="class1Text">aAst</span>
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkBox" id="class2">
+                                                        <label for="class2">
+                                                            <span class="box"></span>
+                                                            <span class="text" id="class2Text">class2</span>
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkBox" id="class3">
+                                                        <label for="class3">
+                                                            <span class="box"></span>
+                                                            <span class="text" id="class3Text">class3</span>
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkBox" id="class4">
+                                                        <label for="class4">
+                                                            <span class="box"></span>
+                                                            <span class="text" id="class4Text">class4</span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <ul class="other commonChkBox">
+                                                <li>
+                                                    <input type="checkBox" id="other" value="Other">
+                                                    <label for="other">
+                                                        <span class="box"></span>
+                                                        <span class="text" id="OtherText"><%=translation.openClass.Other%></span>
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="lastBtn">
+                                            <button class="resetBtn" onclick="typeWrapResetFunc()"><%=translation.hostMain.Reset%></button>
+                                            <button class="saveBtn" onclick="typeWrapSaveFunc()"><%=translation.hostMain.Save%></button>
+                                        </div>
+                                    </div>
+                                    <div class="onlyFixed"></div>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <h5 class="typeInfo-title left">
+                                    <%=translation.journal.PRACTICE_CATEGORY%>
+                                </h5>
+                                <div class="categoryInfo-filter right">
+                                    <button class="typeSelect" id="journalPracticeCategoryID">
+                                        <span class="getText" id="selectCategoryShow"><%=translation.journal.Select_up_to_3_types%></span>
+                                        <span>
+                                            <img src="/web/img/ICN_DROP.png" alt="">
+                                        </span>
+                                    </button>
+                                    <div class="dropBox-type filters" id="categoryControlID">
+                                        <div class="moTitle">
+                                            <button class="moCloseBtn">
+                                                <img src="/web/img/ICN_CLOSE.png" alt="">
+                                            </button>
+                                            <div class="top">
+                                                <img src="/web/img/down.png" alt="">
+                                            </div>
+                                            <div class="bottom">
+                                                <h4>
+                                                    <%=translation.journal.PRACTICE_CATEGORY%>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <ul class="commonChkBox" id="categoryCheckedID">
+                                            <li>
+                                                <input type="checkBox" id="mindfulness" value="Mindfulness" value1="<%=translation.openClass.Mindfulness%>">
+                                                <label for="mindfulness">
+                                                    <span class="box"></span>
+                                                    <span class="text"><%=translation.openClass.Mindfulness%></span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <input type="checkBox" id="meditation" value="Meditation" value1="<%=translation.openClass.Meditation%>">
+                                                <label for="meditation">
+                                                    <span class="box"></span>
+                                                    <span class="text"><%=translation.openClass.Meditation%></span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <input type="checkBox" id="yoga" value="Yoga" value1="<%=translation.openClass.Yoga%>">
+                                                <label for="yoga">
+                                                    <span class="box"></span>
+                                                    <span class="text"><%=translation.openClass.Yoga%></span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <input type="checkBox" id="somatic" value="Somatic" value1="<%=translation.openClass.Somatic%>">
+                                                <label for="somatic">
+                                                    <span class="box"></span>
+                                                    <span class="text"><%=translation.openClass.Somatic%></span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <input type="checkBox" id="ma" value="Movement_Activity" value1="<%=translation.openClass.Movement_Activity%>">
+                                                <label for="ma">
+                                                    <span class="box"></span>
+                                                    <span class="text"><%=translation.openClass.Movement_Activity%></span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <input type="checkBox" id="cc" value="Counseling_Coaching" value1="<%=translation.openClass.Counseling_Coaching%>">
+                                                <label for="cc">
+                                                    <span class="box"></span>
+                                                    <span class="text"><%=translation.openClass.Counseling_Coaching%></span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <input type="checkBox" id="Other" value="Others" value1="<%=translation.openClass.Others%>">
+                                                <label for="Other">
+                                                    <span class="box"></span>
+                                                    <span class="text"><%=translation.openClass.Others%></span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                        <div class="lastBtn">
+                                            <button class="resetBtn" onclick="categoryResetFunc()"><%=translation.hostMain.Reset%></button>
+                                            <button class="saveBtn" onclick="categorySaveFunc()"><%=translation.hostMain.Save%></button>
+                                        </div>
+                                    </div>
+                                    <div class="onlyFixed"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 작성할 저널타입 고르기 -->
+                    <div class="typeBtnsArea commonBottom" id="journalWriteTypeCheck">
+                        <div class="typeBtn gratitude">
+                            <button data-title="Gratitude Journal" id="gratitude-Btn" onclick="goWriteJournal('gratitude')">
+                                <div>
+                                    <h4>
+                                        <%=translation.journal.GRATITUDE_JOURNAL%>
+                                    </h4>
+                                    <p class="hoverText">
+                                        Write  five things you are grateful for
+                                        or list five small ways
+                                        that you can share your gratitude today.
+                                    </p>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="typeBtn bodyScan">
+                            <button data-title="Body Scan" id="bodyScan-Btn" onclick="goWriteJournal('bodyScan')">
+                                <div>
+                                    <h4>
+                                        <%=translation.journal.BODY_SCAN%>
+                                    </h4>
+                                    <p class="hoverText">
+                                        Observe your mind-body connection and
+                                        note your body changes
+                                        and sensations experienced during practices.
+                                    </p>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="typeBtn emotionScan">
+                            <button data-title="Emotion Scan" id="emotionScan-Btn" onclick="goWriteJournal('emotionScan')">
+                                <div>
+                                    <h4>
+                                        <%=translation.journal.EMOTION_SCAN%>
+                                    </h4>
+                                    <p class="hoverText">
+                                        Observe and note your emotional changes
+                                        and feelings.
+                                    </p>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="typeBtn moodEntry">
+                            <button data-title="Mood Entry" id="moodEntry-Btn" onclick="goWriteJournal('moodEntry')">
+                                <div>
+                                    <h4>
+                                        <%=translation.journal.MOOD_ENTRY%>
+                                    </h4>
+                                    <p class="hoverText">
+                                        Make a note of your current mood with emojis.
+                                    </p>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="typeBtn thoughtScan">
+                            <button data-title="Thought Scan" id="thoughtScan-Btn" onclick="goWriteJournal('thoughtScan')">
+                                <div>
+                                    <h4>
+                                        <%=translation.journal.THOUGHT_SCAN%>
+                                    </h4>
+                                    <p class="hoverText">
+                                        Write thoughts naturally come up during your practice. (reviewing the past, picturing the future, planning, judging experiences, comparing, etc.)​
+                                    </p>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="typeBtn keywordEntry">
+                            <button data-title="Keyword Entry" id="keyWord-Btn" onclick="goWriteJournal('keyWord')">
+                                <div>
+                                    <h4>
+                                        <%=translation.journal.KEYWORD_ENTRY%>
+                                    </h4>
+                                    <p class="hoverText">
+                                        Select the words best describe your practice
+                                        overall or your mind.
+                                    </p>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="typeBtn stampEntry">
+                            <button data-title="Stamp Entry" id="stampEntry-Btn" onclick="goWriteJournal('stampEntry')">
+                                <div>
+                                    <h4>
+                                        <%=translation.journal.STAMP_ENTRY%>
+                                    </h4>
+                                    <p class="hoverText">
+                                        Stamp how your day and practice was today.
+                                    </p>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="typeBtn mindful">
+                            <button data-title="Mindfulness Challenge Checklist" id="mindful-Btn" onclick="goWriteJournal('mindful')">
+                                <div>
+                                    <h4>
+                                        <%=translation.journal.MINDFUL_CHALLENGE_CHECKLIST%>
+                                    </h4>
+                                    <p class="hoverText">
+                                        Review the challenge checklist and practice
+                                        mindful actions in your daily life.
+                                    </p>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="typeBtn asana">
+                            <button data-title="Asana Journal" id="asana-Btn" onclick="goWriteJournal('asana')">
+                                <div>
+                                    <h4>
+                                        <%=translation.journal.ASANA_JOURNAL%>
+                                    </h4>
+                                    <p class="hoverText">
+                                        Record your asana and track your yoga practice.
+                                    </p>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- 상황에따라 문구가 다름 -->
+                    <div class="defaultFrame" id="defaultFrameControl" style="display: none;">
+                        <div class="writeArea">
+                            <div class="writeArea-title">
+                                <h4 id="changeTitleID">
+                                    <%=translation.journal.How_was_your_practice_today%>
+                                </h4>
+                                <span id="changeTitleChildID" style="display: none;">
+                                    <%=translation.journal.Please_upload_at_least_one_image%>
+                                </span>
+                            </div>
+                            <div class="writeArea-textArea">
+                                <textarea maxlength="3000" id="writeText" placeholder="<%=translation.journal.Leave_notes_on_any_significant_experiences_from_todays_practice%>" style="resize: none;" onkeyup="limitText('writeText', 'classTitleCount', 3000)"></textarea>
+                                <p class="countNum">
+                                    <span class="classTitleCount">0</span> / 3000
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 감사일기,생각스캔,아사나저널 작성시 뜨는 컨텐츠 -->
+                        <div class="contentsUploadBtns" id="gratitudeShow" style="display: none;"">
+                            <button class="recordBtn" id="recordBtnControlID" onclick="audioUploadBtnFunc()" style="display: none;">
+                                <span id="audioCountSpan">0/1</span>
+                                <input type="file" id="inputAudioUpload" accept="audio/*" onchange="audioUploadFunc(this)" style="display: none;">
+                                <img src="/web/img/ICN_RECORD.png" alt="">
+                            </button>
+                            <button class="videodBtn" id="videoBtnControlID" onclick="videoUploadBtnFunc()" style="display: none;">
+                                <span id="videoCountSpan">0/1</span>
+                                <input type="file" id="inputVideoUpload" accept="video/*" onchange="videoUploadFunc(this)" style="display: none;">
+                                <img src="/web/img/ICN_NEWVIDEO.png" alt="">
+                            </button>
+                            
+                            <button class="imageBtn" onclick="imageUploadBtnFunc()">
+                                <input type="file" id="inputImageUpload" accept="image/*" onchange="imageUploadFunc(this)" style="display: none;">
+                                <span id="imageCountSpan">0/10</span>
+                                <img src="/web/img/ICN_IMG.png" alt="">
+                            </button>
+                        </div>
+                        <!-- 오디오 업로드시 레이아웃 -->
+                        <div class="audioArea" id="audioShowControlID" style="display: none;">
+                            <div class="audioWrap">
+                                <button class="delAudioBtn-on" onclick="audioDeleteOnclickFunc()">
+                                    <img src="/web/img/delete.png" alt="">
+                                </button>
+                                <div class="content">
+                                    <h5>Audio Journal</h5>
+                                    <audio id="showAudioFileUploadSrc" class="audio" controls src="/web/audio/test.mp3">
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 영상 업로드 레이아웃 -->
+                        <div class="videoArea" id="videoControlDivID" style="display: none;">
+                            <div class="" id="videoShowDivID">
+                                <div class="icon" style="z-index: 11;">
+                                    <img src="/web/img/icn_video_l.png" alt="">
+                                    <button onclick="videoDeleteOnclickFunc()">
+                                        <img src="/web/img/delete.png" alt="">
+                                    </button>
+                                </div>
+                                <video id="uploadVideoShowThumbNail" preload="metadata" src="">
+                            </div>
+                        </div>
+                        <!-- 이미지 업로드시 레이아웃 -->
+                        <div class="imageArea">
+                            <div class="imageWrap" onclick="customModal(44)">
+                                <!-- 사진이 1개일때, 2개일때, 3개일때, 4개일때로 나눔 **더많을경우는 시안이없어서 못함 -->
+                                <div class="layout-1" id="imageLayout-1" style="background-image: url('/web/img/eventDetail/thumb.png'); position: relative; display: none;">
+                                </div>
+                                
+                                <div class="layout-2" id="imageLayout-2" style="display: none; position: relative;">
+                                    <div class="left" style="background-image: url('/web/img/eventDetail/thumb.png');"></div>
+                                    <div class="right" style="background-image: url('/web/img/eventDetail/thumb.png');"></div>
+                                </div>
+
+                                <div class="layout-3" id="imageLayout-3" style="display: none; position: relative;">
+                                    <div class="left">
+                                        <div class="inner" style="background-image: url('/web/img/eventDetail/thumb.png');">
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="inner" style="background-image: url('/web/img/eventDetail/thumb.png');"></div>
+                                        <div class="inner" style="background-image: url('/web/img/eventDetail/thumb.png');"></div>
+                                    </div>
+                                </div>
+                                <div class="layout-4" id="imageLayout-4" style="display: none; position: relative;">
+                                    <div class="inner" style="background-image: url('/web/img/eventDetail/thumb.png');"></div>
+                                    <div class="inner" style="background-image: url('/web/img/eventDetail/thumb.png');"></div>
+                                    <div class="inner" style="background-image: url('/web/img/eventDetail/thumb.png');"></div>
+                                    <div class="inner" id="moreImageCountID" data-length="" style="background-image: url('/web/img/eventDetail/thumb.png');"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 이모티콘==무드엔트리 -->
+                        <div class="moodEntryArea" id="moodEntryShow" style="display: none;">
+                            <h4>
+                                <%=translation.journal.Which_emojis_best_describe_how_you_feel%>
+                            </h4>
+                            <div class="emojiWrap">
+                                <div id="emoticonListWrapID">
+                                    
+                                </div>
+                                <div class="btn">
+                                    <button onclick="makeChoiceEmoticon()">
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="selectEmoji">
+                                <div class="emojis" id="choiceEmoticonWrapID">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 바디스캔 -->
+                        <div class="bodyScanArea" id="bodyScanShow" style="display: none;">
+                            <div class="stpe1 commonStep">
+                                <button>
+                                    <div class="title">
+                                        <h4>
+                                            Step 1.
+                                        </h4>
+                                        <strong class="getText" id="step1Title">
+                                        </strong>
+                                    </div>
+                                    <div class="icon" id="step1Btn">
+                                        <img src="/web/img/ICN_DROP.png" alt="">
+                                    </div>
+                                </button>
+                                <div class="stpe1-contents commonArea" id="step1ControllID">
+                                    <div class="selectBoxWrap">
+                                        <h5>Select body area</h5>
+                                        <div class="selectBox1">
+                                            <div class="selectView">
+                                                <input id="bodyScanOptionBtn1" type="button" value="Select">
+                                                <img src="/web/img/ICN_DROP.png" alt="">
+                                            </div>
+                                            <ul class="selectBox1-hdnMenu1 bodyScanSelectBox1">
+                                                <li>
+                                                    <input type="radio" value="head" id="headArea" name="bodyArea">
+                                                    <label for="headArea">
+                                                        <span><%=translation.journal.head%></span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" value="upper body" id="upper body" name="bodyArea">
+                                                    <label for="upper body">
+                                                        <span><%=translation.journal.upper_body%></span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" value="lower body" id="lower body" name="bodyArea">
+                                                    <label for="lower body">
+                                                        <span><%=translation.journal.lower_body%></span>
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="selectBoxWrap">
+                                        <h5> Select body part</h5>
+                                        <div class="selectBox1">
+                                            <div class="selectView">
+                                                <input id="bodyScanOptionBtn2" type="button" value="Select" onchange="changeTitleFunc()">
+                                                <img src="/web/img/ICN_DROP.png" alt="">
+                                            </div>
+                                            <ul class="selectBox1-hdnMenu2 bodyScanSelectBox2" id="showBodyPartID">
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="step2 commonStep">
+                                <button>
+                                    <div class="title">
+                                        <h4>
+                                            Step 2.
+                                        </h4>
+                                        <strong class="getText" id="step2TitleID">
+                                        </strong>
+                                    </div>
+                                    <div class="icon" id="step2Btn">
+                                        <img src="/web/img/ICN_DROP.png" alt="">
+                                    </div>
+                                </button>
+                                <div class="stpe2-contents commonArea" id="step2ControllID" style="display: none;">
+                                    <div class="selectBoxWrap">
+                                        <h5>Select sensation you noticed?</h5>
+                                        <div class="selectBox2">
+                                            <div class="selectView">
+                                                <input id="bodyScanOptionBtn3" type="button" value="Select">
+                                                <img src="/web/img/ICN_DROP.png" alt="">
+                                            </div>
+                                            <ul class="selectBox2-hdnMenu2 bodyScanSelectBox3">
+                                        
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="step3 commonStep">
+                                <button>
+                                    <div class="title">
+                                        <h4>
+                                            Step 3.
+                                        </h4>
+                                        <strong class="getText" id="step3TitleID">
+                                        </strong>
+                                    </div>
+                                    <div class="icon" id="step3Btn">
+                                        <img src="/web/img/ICN_DROP.png" alt="">
+                                    </div>
+                                </button>
+                                <div class="stpe3-contents commonArea" id="step3ControllID" style="display: none;">
+                                    <div class="sliderWrap">
+                                        <div class="top">
+                                            <h5>
+                                                <strong>How intense  was the sensation?</strong><span>(0:low, 5:middle, 10:high)</span>
+                                            </h5>
+                                            <div class="sliderBar">
+                                                <input type="range" min="0" max="10" value="0" id="topSlider">
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <h5>
+                                                <strong>How pleasant was the sensation?</strong><span>(0:low, 5:middle, 10:high)</span>
+                                            </h5>
+                                            <div class="sliderBar">
+                                                <input type="range" min="0" max="10" value="0" id="bottomSlider">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn" id="makeScanResultBtnID" style="display: none;">
+                                <button onclick="makeScanResult()">
+                                    +
+                                </button>
+                            </div>
+                            <div class="resultWrap" id="bodyScanResultID" style="display: none;">
+                                <div class="figureBoxWrap" id="figureBoxWrapControlID">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 이모션스캔 -->
+                        <div class="emotionScanArea" id="emotionScanShow" style="display: none;">
+                            <div class="selectBoxWrap">
+                                <h5>
+                                    <%=translation.journal.What_was_the_strongest_emotion_you_observed%>
+                                </h5>
+                                <div class="selectBox2">
+                                    <div class="selectView">
+                                        <input id="emotionOptionBtn" type="button" value="Select" id="emotionObserved">
+                                        <img src="/web/img/ICN_DROP.png" alt="">
+                                    </div>
+                                    <ul class="selectBox2-hdnMenu2 emotionSelectBox">
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sliderWrap">
+                                <h5>
+                                    <strong>How intense was the feeling? </strong><span>(0:low, 5:neutral, 10:high)</span>
+                                </h5>
+                                <div class="sliderBar">
+                                    <input type="range" min="0" max="10" value="0" id="emotionSlider">
+                                </div>
+                            </div>
+                            <div class="btn" id="makeEmotionResultBtnID" onclick="makeEmotionResult()">
+                                <button>
+                                    +
+                                </button>
+                            </div>
+                            <div class="resultWrap" id="emotionResultShowID" style="display: none;">
+                                <div class="figureWrap" id="emotionAppendID">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 스탬프 -->
+                        <div class="stampArea" id="stampEntryShow" style="display: none;">
+                            <h5 id="">
+                                <%=translation.journal.Select_the_stamp_that_best_describes_your_practice%>
+                            </h5>
+                            <div class="stampWrap" id="stampActiveControlID">
+                                <div class="neutral" id="neutral">
+                                    <img src="/web/img/stamp/stamp1.png" onclick="userChoiceStampFunc(this)" alt="">
+                                </div>
+                                <div class="good" id="good">
+                                    <img src="/web/img/stamp/stamp2.png" onclick="userChoiceStampFunc(this)" alt="">
+                                </div>
+                                <div class="bad" id="bad">
+                                    <img src="/web/img/stamp/stamp3.png" onclick="userChoiceStampFunc(this)" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 마인드풀 체크리스트 -->
+                        <div class="mindfulArea" id="mindfulShow" style="display: none;">
+                            <h5>
+                                <%=translation.journal.Reflect_on_your_day_and_your_mindful_actions%>
+                            </h5>
+                            <div class="chkListWrap">
+                                <ul id="chkListUlID">
+                                    <li>
+                                        <input type="checkBox" id="chk1">
+                                        <label for="chk1" id="chk1Label">
+                                            <span class="box"></span>
+                                            <span class="text"><%= translation.journal.Show_respect_toward_nature_animals_and_other_living_beings %></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="chk2">
+                                        <label for="chk2" id="chk2Label">
+                                            <span class="box"></span>
+                                            <span class="text"><%= translation.journal.Love_and_thank_others_more_express_loving_and_grateful_mind_more_often %></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="chk3">
+                                        <label for="chk3" id="chk3Label">
+                                            <span class="box"></span>
+                                            <span class="text"><%= translation.journal.Do_not_blame_or_hate_others %></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="chk4">
+                                        <label for="chk4" id="chk4Label">
+                                            <span class="box"></span>
+                                            <span class="text"><%= translation.journal.Speak_kindly_and_calmly %></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="chk5">
+                                        <label for="chk5" id="chk5Label">
+                                            <span class="box"></span>
+                                            <span class="text"><%= translation.journal.Listen_mindfully_with_an_open_mind %></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="chk6">
+                                        <label for="chk6" id="chk6Label">
+                                            <span class="box"></span>
+                                            <span class="text"><%= translation.journal.Respect_thoughts_and_opinions_that_are_different_from_mine %></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="chk7">
+                                        <label for="chk7" id="chk7Label">
+                                            <span class="box"></span>
+                                            <span class="text"><%= translation.journal.Practice_self_care_and_set_aside_me_time_regularly %></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="chk8">
+                                        <label for="chk8" id="chk8Label">
+                                            <span class="box"></span>
+                                            <span class="text"><%= translation.journal.Reflect_on_my_wrongdoings_and_apologize_quickly %></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="chk9">
+                                        <label for="chk9" id="chk9Label">
+                                            <span class="box"></span>
+                                            <span class="text"><%= translation.journal.Try_practicing_a_zero_waste_lifestyle %></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="chk10">
+                                        <label for="chk10" id="chk10Label">
+                                            <span class="box"></span>
+                                            <span class="text"><%= translation.journal.Do_one_kind_act_daily %></span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- 키워드 -->
+                        <div class="keywordArea" id="keyWordShow" style="display: none;">
+                            <div class="inputKeywordWrap">
+                                <h5>
+                                    <%=translation.journal.Write_down_your_keyword_of_the_day%>
+                                </h5>
+                                <textarea style="resize: none;" id="keyWordTextArea"></textarea>
+                            </div>
+                            <div class="resultWrap">
+                                <div class="keywordWrap" id="resultKeyWordShowID">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="saveBtn cancelBtn commonBottom" id="journalWriteSaveBtn" style="display: none;">
+                        <button class="cancelBtn" onclick="journalCancleBtnFunc()">
+                            Cancel
+                        </button>
+                        <button id="journalSaveAndUpdateBtn" onclick="journalSaveBtnFunc()">
+                            Save
+                        </button>
+                    </div>
+                </article>
+            </section>
+            <%- include ./common/commonFooter.html%> <%- include ./common/commonScript.html%>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.3/rangeslider.min.js" integrity="sha512-BUlWdwDeJo24GIubM+z40xcj/pjw7RuULBkxOTc+0L9BaGwZPwiwtbiSVzv31qR7TWx7bs6OPTE5IyfLOorboQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <script>
+                //이미지보기
+                $('#modal44ArrowBtnID > button').click(function() {
+                    if($(this).hasClass('nextBtn-on'))
+                    {
+                        if(document.getElementById('videoModalVideoControlID') != undefined && document.getElementById('videoModalVideoControlID') != null) {
+                            document.getElementById('videoModalVideoControlID').pause();
+                        }
+
+                        var no = $('.imgList > [data-no].active').data('no') + 1;
+
+                        $('[data-no]').each(function() {
+                            $(this).removeClass('active');
+                        });
+                        if(no >= $('.imgList > li').length + 1)
+                        {
+                            $('[data-no="1"]').addClass('active');
+                            document.querySelector('#modal44CountControlID > span:nth-child(1)').innerText = 1;
+                        }
+                        else
+                        {
+                            $('[data-no='+no+']').each(function()
+                            {
+                                $(this).addClass('active');
+                                document.querySelector('#modal44CountControlID > span:nth-child(1)').innerText = no;
+                            });
+                        }
+                    }
+                    else if($(this).hasClass('prevBtn-on'))
+                    {
+                        if(document.getElementById('videoModalVideoControlID') != undefined && document.getElementById('videoModalVideoControlID') != null) {
+                            document.getElementById('videoModalVideoControlID').pause();
+                        }
+
+                        var no = $('.imgList > [data-no].active').data('no') - 1;
+                        $('[data-no]').each(function() {
+                            $(this).removeClass('active');
+                        });
+                        if(no <= 0)
+                        {
+                            $('[data-no='+$('.imgList > li').length+']').addClass('active');
+                            document.querySelector('#modal44CountControlID > span:nth-child(1)').innerText = $('.imgList > li').length;
+                        }
+                        else
+                        {
+                            $('[data-no='+no+']').each(function()
+                            {
+                                $(this).addClass('active');
+                                document.querySelector('#modal44CountControlID > span:nth-child(1)').innerText = no;
+                            });
+                        }
+                    }
+                })
+
+                var journalEditData = <%- journalEditData ? JSON.stringify(journalEditData) : {} %>;
+
+                $(document).on('click', '#weatherUlID > li', function(e) {
+                    var clickImageSrc = $(this).attr('id');
+                    $('#sendWeatherData').val(clickImageSrc);
+                    
+                    $('#showChoiceWeather').attr('src', '/web/img/weather/'+clickImageSrc+'.png');
+                });
+
+                $('.getWeather').click(function(e) {
+                    $(this).children('#weatherUlID').toggleClass('active');
+
+                    $(document).on('click', 'body', function(e) {
+                        if($('#weatherUlID').hasClass('active')) {
+                            if(e.target.id != 'getWeatherID' && e.target.id != 'showChoiceWeather' && e.target.id != 'getWeatherDropID' && e.target.id != 'weatherUlID' && e.target.id != 'sunny' && e.target.id != 'overcast' && e.target.id != 'cloudy' && e.target.id != 'stormy' && e.target.id != 'rainy' && e.target.id != 'snowy') {
+                                $('#weatherUlID').removeClass('active');
+                            }
+                        }
+                    });
+                })
+
+                
+                    
+
+                $('.typeBtn > button').click(function() {
+                    console.log($(this).data('title'));
+                });
+
+                //버튼내용 변경
+                function stateChange(imgName, text) {
+                    var state =  '<span class="icon">' +
+                                        '<img id="accessIconControlID" src="/web/img/'+imgName+'.png" alt="">' +
+                                    '</span>' +
+                                    '<strong class="getText" id="getAccessID">'+getTranslation('setting', text)+'</strong>' +
+                                    '<input type="hidden" id="getAccessIDValue" value="' + text +'">' +
+                                    '<span>' +
+                                        '<img src="/web/img/ICN_DROP.png" alt="">' +
+                                    '</span>';
+
+                                    return state;
+                }
+                //게시물 공개범위 히든버튼
+                $('.state > button').click(function() {
+                    $(this).next('.hdnBtns').toggleClass('active')
+                    $('.hdnBtns > button').click(function() {
+                        var text = $(this).children('span').attr('id');
+                        if(text == "Friend") {
+                            $(this).parents('.state').children('button').html(stateChange('ICN_FRIENDS', 'Friends'));
+                        } else if(text == 'Public') {
+                            $(this).parents('.state').children('button').html(stateChange('ICN_Public', 'Public'));
+                        } else {
+                            $(this).parents('.state').children('button').html(stateChange('ICN_PRIVATE', 'Private'));
+                        }
+                        
+                        var testArray = ['Public', 'Friend', 'Private'];
+
+                        for(var i = 0; i < testArray.length; i++) {
+                            if(testArray[i] == text) { 
+                                var tempText = testArray[i].concat('ID');
+                                $('#' + tempText).css('display', 'none');
+                            } else {
+                                var tempText = testArray[i].concat('ID');
+                                $('#' + tempText).css('display', 'flex');
+                            }
+                        }
+
+                        $(this).parent('.hdnBtns').removeClass('active');
+                    });
+                });
+
+                //1~10 상태값 레인지바
+                var $element = $('input[type="range"]');
+                var bodyScanCheck = {};
+                bodyScanCheck.intense = 0;
+                bodyScanCheck.pleasant = 0;
+
+                var emotionScanCheck = {};
+                emotionScanCheck.feeling = 0;
+                $element
+                .rangeslider({
+                    from: 1,
+                    polyfill: false,
+                    onInit: function() {
+                        var $handle = $('.rangeslider__handle', this.$range);
+                        updateHandle($handle[0], this.value);
+                    }
+                })
+                .on('input', function(e) {
+                    var $handle = $('.rangeslider__handle', e.target.nextSibling);
+                    updateHandle($handle[0], this.value);
+
+                    if($(this).attr('id') == 'topSlider') {
+                        getRangeSliderValue('intense', this.value);
+                    } else if($(this).attr('id') == 'bottomSlider') {
+                        getRangeSliderValue('pleasant', this.value);
+                    } else if($(this).attr('id') == 'emotionSlider') {
+                        getRangeSliderValue('feeling', this.value);
+                    }
+                });
+
+                function updateHandle(el, val, type) {
+                    el.textContent = val;
+                }
+
+                function getRangeSliderValue(type, value) {
+                    if(type == 'intense') {
+                        bodyScanCheck.intense = value;
+                    } else if(type == 'pleasant') {
+                        bodyScanCheck.pleasant = value;
+                    } else if(type == 'feeling') {
+                        emotionScanCheck.feeling = value;
+                    }
+                }
+                                
+                //저널작성페이지 상단 타입, 카테고리 버튼탭
+                $('.typeSelect').click(function() {
+                    $(this).next('.filters').toggleClass('active');
+                    $(this).next().next().addClass('active');
+                })
+                $('.onlyFixed').click(function() {
+                    $(this).removeClass('active');
+                    $(this).prev('.filters').removeClass('active');
+                });
+
+                //저널작성페이지 이모션 셀렉박스 옵션값
+                var emotionOption = [
+                    'fear',
+                    'anger',
+                    'happiness',
+                    'sadness ',
+                    'surprise',
+                    'disgust',
+                    'amusement',
+                    'contempt',
+                    'embarrassment',
+                    'excitement',
+                    'guilt',
+                    'pride in achievement',
+                    'relief',
+                    'satisfaction',
+                    'shame'
+                ]
+
+                //저널작성페이지 이모션 셀렉박스 온오프
+                $('#emotionOptionBtn').click(function() {
+                    $(this).parents('.selectBox2').children('.emotionSelectBox').toggleClass('active');
+                }); 
+
+                //저널작성페이지 이모션 셀렉박스 값 넣기
+                for(var i = 0; i < emotionOption.length; i++)
+                {
+                    var emotionVal = '<li>'+
+                                        '<input type="radio" value="'+emotionOption[i]+'" id="'+emotionOption[i]+'" name="emotionOption">' +
+                                        '<label for="'+emotionOption[i]+'">' +
+                                            '<span>'+emotionOption[i]+'</span>' +
+                                        '</label>' +
+                                    '</li>'
+
+                    $('.emotionSelectBox').append(emotionVal);
+                }
+
+                //저널작성페이지 이모션 상태값 받아오기
+                $('input[name="emotionOption"]').click(function() {
+                    var value = $(this).val();
+                    $('#emotionOptionBtn').val(value);
+                    emotionScanCheck.observed = $('#emotionOptionBtn').val();
+                    $(this).parents('.emotionSelectBox').removeClass('active');
+                });
+
+                //저널작성페이지 바디스캔-selectBodyArea 셀렉트박스 옵션박스열기
+                $('#bodyScanOptionBtn1').click(function() {
+                    $(this).parents('.selectBox1').children('.bodyScanSelectBox1').toggleClass('active');
+                });
+
+                // $('input[type="button"]').blur(function() {
+                //     $(this).parent('.selectView').next().removeClass('active')
+                // })
+
+                //저널작성페이지 바디스캔-selectBodyArea 셀렉트박스 옵션값 받아오기
+                $('input[name="bodyArea"]').click(function() {
+                    var value = $(this).val();
+                    var text = $(this).parent().find('span').text();
+                    $('#bodyScanOptionBtn1').val(text);
+                    changeBodyPartListValueFunc(value);
+
+                    bodyScanCheck.area = value;
+                    $('#bodyScanOptionBtn2').val('Select');
+                    
+                    if(bodyScanCheck.part != undefined && bodyScanCheck.part != null) {
+                        delete bodyScanCheck.part;
+                    }
+
+                    $(this).parents('.bodyScanSelectBox1').removeClass('active');
+                });
+
+                //모바일 필터 닫기
+                $('.moCloseBtn').click(function() {
+                    $(this).parents('.filters').removeClass('active');
+                    // $(this).parents('.filters').find('.onlyFixed').removeClass('active');
+                });
+
+                function changeBodyPartListValueFunc(bodyAreaValue) {
+                    var headValue = [
+                        'head',
+                        'brain',
+                        'face',
+                        'eyes',
+                        'nose',
+                        'lips',
+                        'neck',
+                        'throat'
+                    ];
+
+                    var upperBodyValue = [
+                        'shoulder',
+                        'arms',
+                        'chest',
+                        'abdomen',
+                        'back'
+                    ];
+
+                    var lowerBodyValue = [
+                        'pelvis',
+                        'genitals',
+                        'buttocks',
+                        'legs',
+                        'fee'
+                    ];
+
+                    document.getElementById('showBodyPartID').innerHTML = '';
+
+                    if(bodyAreaValue == 'head') {
+                        bodyPartValueAppendFunc(headValue);
+                    }
+
+                    if(bodyAreaValue == 'upper body') {
+                        bodyPartValueAppendFunc(upperBodyValue);
+                    }
+                    
+                    if(bodyAreaValue == 'lower body') {
+                        bodyPartValueAppendFunc(lowerBodyValue);
+                    }
+
+                    function bodyPartValueAppendFunc(requestBodyPartArray) {
+                        for(var i = 0; i < requestBodyPartArray.length; i++) {
+                            var appendBodyPartValue = `
+                            <li>
+                                <input type="radio" value="${requestBodyPartArray[i]}" id="${requestBodyPartArray[i]}" name="bodyPart">
+                                <label for="${requestBodyPartArray[i]}">
+                                    <span>`;
+                                appendBodyPartValue += getTranslation('journal', requestBodyPartArray[i]);
+                                appendBodyPartValue += `</span>
+                                </label>
+                            </li>
+                            `;
+
+                            document.getElementById('showBodyPartID').innerHTML += appendBodyPartValue;
+                        }
+                    }
+                }
+
+                //저널작성페이지 바디스캔-selectBodyPart 셀렉트박스 옵션박스열기
+                $('#bodyScanOptionBtn2').click(function() {
+                    $(this).parents('.selectBox1').children('.bodyScanSelectBox2').toggleClass('active');
+                });
+
+                //저널작성페이지 바디스캔-selectBodyPart 셀렉트박스 옵션값 받아오기
+                // $('input[name="bodyPart"]').click(function() {
+                //     var value = $(this).val();
+                //     $('#bodyScanOptionBtn2').val(value);
+                //     bodyScanCheck.part = $('#bodyScanOptionBtn2').val();
+                //     $(this).parents('.bodyScanSelectBox2').removeClass('active');
+                //     changeTitleFunc();
+                // });
+
+                $(document).on('click', 'input[name="bodyPart"]' , function() {
+                    var value = $(this).val();
+                    var text = $(this).parent().find('span').text();
+                    $('#bodyScanOptionBtn2').val(text);
+                    bodyScanCheck.part = value;
+                    $(this).parents('.bodyScanSelectBox2').removeClass('active');
+                    changeTitleFunc();
+                });
+
+                //저널작성페이지 바디스캔 sansation옵션값 받아오기
+                var sensationOption = [
+                    'Tingly',
+                    'Burning',
+                    'Pounding',
+                    'Throbbing',
+                    'Trembling',
+                    'Light',
+                    'Heavy',
+                    'Tight',
+                    'Loose',
+                    'Shooting',
+                    'Stinging',
+                    'Cutting',
+                    'Tense',
+                    'Relaxed',
+                    'Soft',
+                    'Rough',
+                    'Pulling',
+                    'Vibrating',
+                    'Cool',
+                    'Warm',
+                    'Stiff',
+                    'Flexible',
+                    'Numb',
+                    'Achy',
+                    'Sinking',
+                    'Itchy',
+                    'Pulsing',
+                    'Sharp'
+                ]
+
+                //저널작성페이지 sansation옵션값 넣기
+                for(var i = 0; i < sensationOption.length; i++)
+                {
+                    var sensationVal = '<li>'+
+                                        '<input type="radio" value="'+sensationOption[i]+'" id="'+sensationOption[i]+'" name="sensationOption">' +
+                                        '<label for="'+sensationOption[i]+'">' +
+                                            '<span>'+sensationOption[i]+'</span>' +
+                                        '</label>' +
+                                    '</li>'
+
+                    $('.bodyScanSelectBox3').append(sensationVal);
+                }
+
+                //저널작성페이지 바디스캔-sensation 셀렉트박스 옵션박스열기
+                $('#bodyScanOptionBtn3').click(function() {
+                    $(this).parents('.selectBox2').children('.bodyScanSelectBox3').toggleClass('active');
+                });
+
+                //저널작성페이지 바디스캔-sensation 셀렉트박스 옵션값 받아오기
+                $('input[name="sensationOption"]').click(function() {
+                    var value = $(this).val();
+                    $('#bodyScanOptionBtn3').val(value);
+                    bodyScanCheck.sensation = $('#bodyScanOptionBtn3').val();
+                    $(this).parents('.bodyScanSelectBox3').removeClass('active');
+                    
+                    document.getElementById('step2TitleID').innerText = bodyScanCheck.sensation;
+                    document.getElementById('step3ControllID').style.display = 'block';
+                    document.getElementById('bodyScanResultID').style.display = 'block';
+                    document.getElementById('makeScanResultBtnID').style.display = 'flex';
+                });
+
+                defaultSetJournalWrite();
+                function defaultSetJournalWrite() {
+                    document.getElementById('setJournalDate').innerText = getDateTodayAndTime();
+                }
+                
+                function getDateTodayAndTime() {
+                    var todayDate = new Date();
+                    var todayNowYear = todayDate.getFullYear();
+                    var todayNowMonth = ('0' + (1 + todayDate.getMonth())).slice(-2);
+                    var todayNowDate = ('0' + todayDate.getDate()).slice(-2);
+                    var todayNowHours = ('0' + todayDate.getHours()).slice(-2);
+                    var todayNowMinutes = ('0' + todayDate.getMinutes()).slice(-2);
+
+                    return todayNowYear + '.' + todayNowMonth + '.' + todayNowDate + ' ' + todayNowHours  + ':' + todayNowMinutes;
+                }
+
+                var time1 = 0;
+                var time2 = 0;
+                var time3 = 0;
+                var time4 = 0;
+                var calculateTime = '';
+                function timeCheck(e,type) {
+                    var regExpHour = /(^[0-9]{1}$|^[1]{1}[0-9]{1}$|^[2][0-3]{1}|^23$)/g;
+                    var regExpMinute = /(^[0-9]{1}$|^[1-5]{1}[0-9]{1}$|^59$)/g;
+
+                    if(e.value==='') {
+                        return;
+                    }
+
+                    if(type === 1 || type === 3) {
+                        if(!regExpHour.test(e.value)) {
+                            e.value = '';
+                        }
+                    }
+                    
+                    if(type === 2 || type === 4) {
+                        if(!regExpMinute.test(e.value)) {
+                            e.value = '';
+                        }
+                    }
+
+                    switch (type) {
+                        case 1:time1 = e.value;
+                            break;
+                        case 2:time2 = e.value;
+                            break;
+                        case 3:time3 = e.value;
+                            break;
+                        case 4:time4 = e.value;
+                            break;
+                    }
+
+                    calculateTime = ((time3 * 60) + (time4 * 1)) - ((time1 * 60) + (time2 * 1));
+
+                    document.getElementById('inputTotalTime').innerText = calculateTime +'분';
+                }
+
+                setPracticeListClass();
+
+                function setPracticeListClass() {
+                    for(var i = 1; i < 5; i++) {
+                        document.getElementById('class' + i).value = document.getElementById('class' + i + 'Text').innerText;
+                    }
+                }
+
+                
+                // Practice type Save버튼 함수                
+                var selectPracticeObject = {"Self Practice": "Self Practice"};
+                var checkIndex = 0;
+                function typeWrapSaveFunc() {
+                    selectPracticeObject = {};
+                    checkIndex = 0;
+                    $('#typeWrapCheckID input[type="checkBox"]:checked').each(function() {
+                        if(Object.keys(selectPracticeObject).length < 3) {
+                            selectPracticeObject[$(this).val()] = $(this).val();
+                            document.querySelector('#practiceControlID').classList.remove('active');
+
+                            if(checkIndex == 0) {
+                                document.getElementById('selectTypeShow').innerText = '';
+                                if(selectPracticeObject[$(this).val()] == 'Self Practice') {
+                                   document.getElementById('selectTypeShow').innerText += '<%=translation.mypage.Self_Practice%>';
+                                } else if(selectPracticeObject[$(this).val()] == 'Other') {
+                                    document.getElementById('selectTypeShow').innerText += '<%=translation.openClass.Other%>';
+                                } else {
+                                    document.getElementById('selectTypeShow').innerText += selectPracticeObject[$(this).val()];
+                                }
+                            } else {
+                                if(selectPracticeObject[$(this).val()] == 'Self Practice') {
+                                   document.getElementById('selectTypeShow').innerText += ', ' +  '<%=translation.mypage.Self_Practice%>';
+                                } else if(selectPracticeObject[$(this).val()] == 'Other') {
+                                    document.getElementById('selectTypeShow').innerText += ', ' +  '<%=translation.openClass.Other%>';
+                                } else {
+                                    document.getElementById('selectTypeShow').innerText += ', ' + selectPracticeObject[$(this).val()];
+                                }
+                            }
+                            checkIndex++;
+
+                            document.getElementById('journalPracticeTypeID').classList.add('active');
+                            
+                        } else {
+                            alert('최대 3개까지 선택가능합니다.');
+                            selectPracticeObject = {};
+                            document.getElementById('selectTypeShow').innerText = '<%=translation.journal.Select_up_to_3_types%>';
+                            document.getElementById('journalPracticeTypeID').classList.remove('active');
+                            return false;
+                        }
+                    });
+                }
+
+                // Practice type Reset버튼 함수
+                function typeWrapResetFunc() {
+                    $('#typeWrapCheckID input[type="checkBox"]').removeAttr('checked');
+                    selectPracticeObject = {};
+                }
+
+                // Practice Category Save버튼 함수
+                selectPracticeCategoryObject = {};
+                function categorySaveFunc() {
+                    selectPracticeCategoryObject = {};
+                    checkIndex = 0;
+                    $('#categoryCheckedID input[type="checkBox"]:checked').each(function() {
+                        if(Object.keys(selectPracticeCategoryObject).length < 3) {
+                            selectPracticeCategoryObject[$(this).val()] = $(this).val();
+                            document.querySelector('#categoryControlID').classList.remove('active');
+
+                            if(checkIndex == 0) {
+                                document.getElementById('selectCategoryShow').innerText = '';
+                                document.getElementById('selectCategoryShow').innerText += $(this).attr('value1');
+                            } else {
+                                document.getElementById('selectCategoryShow').innerText += ', ' + $(this).attr('value1');
+                            }
+                            checkIndex++;
+
+                            document.getElementById('journalPracticeCategoryID').classList.add('active');
+
+                        } else {
+                            alert('최대 3개까지 선택가능합니다.');
+                            selectPracticeCategoryObject = {};
+                            document.getElementById('selectCategoryShow').innerText = '<%=translation.journal.Select_up_to_3_types%>';
+                            document.getElementById('journalPracticeCategoryID').classList.remove('active');
+                            return false;
+                        }
+                    });
+                }
+
+                 // Practice Category Reset버튼 함수
+                 function categoryResetFunc() {
+                    $('#categoryCheckedID input[type="checkBox"]').removeAttr('checked');
+                    selectPracticeCategoryObject = {};
+                }
+
+                // 저널 글작성 타입 선택 함수
+                function goWriteJournal(writeKind) {
+                    if(document.getElementById('inputTotalTime').innerText == '0분') {
+                        alert('시간을 입력해주세요.');
+                        return false;
+                    }
+
+                    if(Object.keys(selectPracticeObject).length < 1 || Object.keys(selectPracticeCategoryObject).length < 1) {
+                        alert('Practice Type과 Practice Category를 선택해주세요.');
+                        return false;
+                    }
+
+                    if(document.getElementById('selectTypeShow').innerText == '<%=translation.journal.Select_up_to_3_types%>') {
+                        for(var key in selectPracticeCategoryObject) {
+                            document.getElementById('selectTypeShow').innerText = '<%=translation.mypage.Self_Practice%>';
+                        }
+                    }
+                    document.getElementById('journalWriteTypeCheck').style.display = 'none';
+                    document.getElementById('stateShowControl').style.display = 'block';
+                    document.getElementById('defaultFrameControl').style.display = 'block';
+                    document.getElementById('journalWriteSaveBtn').style.display = 'block';
+                    
+                    journalTitleObject = {
+                        "gratitude": "GRATITUDE JOURNAL",
+                        "bodyScan": "BODY SCAN",
+                        "emotionScan": "EMOTION SCAN",
+                        "moodEntry": "MOOD ENTRY",
+                        "thoughtScan": "THOUGHT SCAN",
+                        "keyWord": "KEYWORD ENTRY",
+                        "stampEntry": "STAMP ENTRY",
+                        "mindful": "MINDFUL CHALLENGE CHECKIST",
+                        "asana": "ASANA JOURNAL",
+                        "stampEntry": "STAMP ENTRY"
+                    };
+
+                    document.getElementById('changeTypeTitle').innerText = journalTitleObject[writeKind];
+                    document.getElementById('changeTypeSubTitle').style.display = 'none';
+
+                    // 번역
+                    if(writeKind == 'gratitude') {
+                        document.getElementById('changeTitleID').innerText = '<%= translation.journal.What_are_you_grateful_for_today%>';
+                    }
+                    
+                    if(writeKind == 'bodyScan') {
+                        document.getElementById('changeTitleID').innerText = '<%= translation.journal.How_was_your_practice_today%>';
+                        document.querySelector('#step1ControllID > div:nth-child(1) > h5').innerText = '<%= translation.journal.Select_body_area %>';
+                        document.querySelector('#step1ControllID > div:nth-child(2) > h5').innerText = '<%= translation.journal.Select_body_part %>';
+                        document.querySelector('#step2ControllID > div > h5').innerText = '<%= translation.journal.Select_sensation_you_noticed %>';
+                        document.querySelector('#step3ControllID > .sliderWrap > .top > h5 > strong').innerText = '<%= translation.journal.How_intense_was_the_sensation %>';
+                        document.querySelector('#step3ControllID > .sliderWrap > .top > h5 > span').innerText = '<%= translation.journal.body_scan_intense_desc %>';
+                        document.querySelector('#step3ControllID > .sliderWrap > .bottom > h5 > strong').innerText = '<%= translation.journal.How_pleasant_was_the_sensation %>';
+                        document.querySelector('#step3ControllID > .sliderWrap > .bottom > h5 > span').innerText = '<%= translation.journal.body_scan_pleasant_desc %>';
+                    }
+
+                    if(writeKind == 'emotionScan') {
+                        document.querySelector('#emotionScanShow > .sliderWrap > h5 > strong').innerText = '<%= translation.journal.How_intense_was_the_feeling %>';
+                        document.querySelector('#emotionScanShow > .sliderWrap > h5 > span').innerText = '<%= translation.journal.emotion_scan_feeling_desc %>';
+                    }
+
+                    if(writeKind == 'thoughtScan') {
+                        document.getElementById('changeTitleID').innerText = '<%= translation.journal.Write_your_thoughts_specifically %>';
+                    }
+
+
+
+                    var checkWriteKind = writeKind;
+                    if(writeKind == 'thoughtScan' || writeKind == 'asana') {
+                        writeKind = 'gratitude';
+                    }
+                    
+                    if(writeKind == 'gratitude') {
+                        document.getElementById(writeKind + 'Show').style.display = 'flex';
+                        document.getElementById('changeTitleChildID').style.display = 'block';
+                        
+                        if(checkWriteKind == 'asana') {
+                            document.getElementById('videoBtnControlID').style.display = 'block';
+                        } else if(checkWriteKind == 'thoughtScan' || checkWriteKind == 'gratitude') {
+                            document.getElementById('recordBtnControlID').style.display = 'block';
+                        }
+
+                    } else {
+                        document.getElementById(writeKind + 'Show').style.display = 'block';
+                    }
+                }
+
+                function imageUploadBtnFunc() {
+                    document.getElementById('inputImageUpload').click();
+                }
+
+                var singleFilelist = [];
+                var fileResultList = [];
+                var uploadFileDataList = [];
+                function imageUploadFunc(e)
+                {
+                    if(fileResultList.length >= 10) {
+                        alert('최대 10장까지 업로드 가능합니다.');
+                        return false;
+                    }
+
+                    var file = e.files[0];
+                    singleFileList = [];
+                    singleFileList.push(file)
+                    uploadFileDataList.push(file);
+                    var fileReader = new FileReader();
+
+                    var createImageHtml = '';
+                    fileReader.onload = function() 
+                    {
+                        fileReader.type = file.type;
+                        fileResultList.push(fileReader);
+                        
+                        drawImageLayout();
+                    };
+                    
+                    fileReader.readAsDataURL(file);
+
+                    document.getElementById('inputImageUpload').value = '';
+                }
+
+                
+                var audioFileUploadData = [];
+                function audioUploadFunc(e) {
+                    if(audioFileUploadData.length > 0) {
+                        alert('최대 1개 업로드 가능합니다.');
+                        return false;
+                    }
+
+                    var file = e.files[0];
+                    audioFileUploadData = [];
+                    audioFileUploadData.push(file)
+                    var fileReader = new FileReader();
+
+                    fileReader.onload = function() {
+                        document.getElementById('audioCountSpan').innerText = audioFileUploadData.length + '/1';
+
+                        document.getElementById('showAudioFileUploadSrc').src = fileReader.result;
+
+                        document.getElementById('audioShowControlID').style.display = 'block';
+                    };
+
+                    fileReader.readAsDataURL(file);
+                    document.getElementById('inputAudioUpload').value = '';
+                }
+
+                $('#step1Btn').click(function(){
+                    $('#step1ControllID').fadeToggle(200);
+                });
+                $('#step2Btn').click(function(){
+                    $('#step2ControllID').fadeToggle(200);
+                });
+                $('#step3Btn').click(function(){
+                    $('#step3ControllID').fadeToggle(200);
+                });
+
+                function changeTitleFunc() {
+                    if(Object.keys(bodyScanCheck).length > 1) {
+                        var tempArea = verifyData(bodyScanCheck.area);
+                        document.getElementById('step1Title').innerText = getTranslation('journal', tempArea) + ', ' + getTranslation('journal', bodyScanCheck.part);
+                        document.getElementById('step2ControllID').style.display = 'block';
+                    }
+                }
+
+                var bodyScanResultArray = [];
+                function makeScanResult() {
+                    if(bodyScanCheck.part == 'Select' || bodyScanCheck.part == null || bodyScanCheck.part == undefined || bodyScanCheck.sensation == 'Select' || bodyScanCheck.sensation == null || bodyScanCheck.sensation == undefined) {
+                        alert('바디스캔 항목을 확인해주세요.');
+                        return false;
+                    }
+
+                    var makeScanResultHtml = `
+                        <div class="figureBoxWrap">
+                            <button onclick="bodyScanDeleteFunc(this)"><img src="/web/img/btn_close_small_gy.png"></button>
+                            <div class="figureBox">
+                                <div class="figureBox-top">
+                                    <input type="hidden" id="bodyScanCheckArea" value="${bodyScanCheck.area}">
+                                    <input type="hidden" id="bodyScanCheckPart" value="${bodyScanCheck.part}">
+                                    <input type="hidden" id="bodyScanCheckSensation" value="${bodyScanCheck.sensation}">
+                                    <h6>${bodyScanCheck.part}</h6>
+                                    <span class="dots"></span>
+                                    <h6>Stinging</h6>
+                                </div>
+                                <div class="figureBox-bottom">
+                                    <div class="figure" data-number="${bodyScanCheck.intense}">
+                                        <span class="text">Intense</span>
+                                    </div>
+                                    <div class="figure" data-number="${bodyScanCheck.pleasant}">
+                                        <span class="text">Pleasant</span>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    `;
+                    
+                    var resultBodyScanData = {};
+                    resultBodyScanData.area = bodyScanCheck.area;
+                    resultBodyScanData.part = bodyScanCheck.part;
+                    resultBodyScanData.sensation = bodyScanCheck.sensation;
+                    resultBodyScanData.intense = bodyScanCheck.intense;
+                    resultBodyScanData.pleasant = bodyScanCheck.pleasant;
+
+                    bodyScanResultArray.push(resultBodyScanData);
+
+                    document.getElementById('figureBoxWrapControlID').innerHTML += makeScanResultHtml;
+                }
+
+                function bodyScanDeleteFunc(e) {
+                    var choiceRemoveBodyScanIndex = $(e).closest('.figureBoxWrap').index();
+
+                    $(e).closest('.figureBoxWrap').remove();
+                    bodyScanResultArray.splice(choiceRemoveBodyScanIndex, 1);
+                    console.log(JSON.stringify(bodyScanResultArray));
+                }
+
+                var EmotionScanResultArray = [];
+                function makeEmotionResult() {
+                    if(emotionScanCheck.observed == null || emotionScanCheck.observed == undefined || emotionScanCheck.observed == '') {
+                        alert('감정을 선택해주세요.');
+                        return false;
+                    }
+
+                    document.getElementById('emotionResultShowID').style.display = 'block';
+                    var makeEmotionResultHtml = `
+                        <div class="figure" data-number="${emotionScanCheck.feeling}">
+                            <span class="text">${emotionScanCheck.observed}</span>
+                            <button onclick="emotionDeleteFunc(this)"><img src="/web/img/btn_close_small_gy.png"></button>
+                        </div>
+                    `;
+
+                    var resultEmotionScanData = {};
+                    resultEmotionScanData.feeling = emotionScanCheck.feeling;
+                    resultEmotionScanData.observed = emotionScanCheck.observed;
+                    EmotionScanResultArray.push(resultEmotionScanData);
+                    document.getElementById('emotionAppendID').innerHTML += makeEmotionResultHtml;
+                }
+
+                function emotionDeleteFunc(e) {
+                    var choiceRemoveEmotionIndex = $(e).closest('.figure').index();
+
+                    $(e).closest('.figure').remove();
+                    EmotionScanResultArray.splice(choiceRemoveEmotionIndex, 1);
+                    console.log(JSON.stringify(EmotionScanResultArray));
+                }
+
+                var choiceEmoticon = '';
+                var choiceEmoticonObject = {};
+
+                function choiceEmoticonFunc(target) {
+                    choiceEmoticon = target.id + '@' + target.src;
+                }
+
+                function makeChoiceEmoticon() {
+                    if(choiceEmoticon.length == 0) {
+                        alert('이모티콘을 선택해주세요.');
+                        return false;
+                    } 
+                    var tempEmoticonInfo = choiceEmoticon.split('@');
+
+                    $('#' + tempEmoticonInfo[0]).addClass('active');
+
+                    var choiceEmoticonID = 'choiceEmoticon' + tempEmoticonInfo[0].replace('emoticonList', '');
+
+                    if(choiceEmoticonObject[choiceEmoticonID] != undefined) {
+                        alert('동일한 이모티콘은 선택할 수 없습니다.');
+                        return false;
+                    } else if($('#choiceEmoticonWrapID > img').length >= 15) {
+                        alert('이모티콘은 최대 15개까지 선택가능합니다.');
+                        return false;
+                    }
+                    
+                    innerChoiceEmoticonHtml = `
+                        <div class="emoticonDeleteCheckClassName">
+                            <img id="${choiceEmoticonID}" src="${tempEmoticonInfo[1]}">
+                            <button onclick="emoticonDeleteFunc(this)"><img src="/web/img/btn_close_small_gy.png"></button>
+                        </div>`;
+
+                    choiceEmoticonObject[choiceEmoticonID] = tempEmoticonInfo[1];
+
+                    document.getElementById('choiceEmoticonWrapID').innerHTML += innerChoiceEmoticonHtml;
+                }
+
+                function emoticonDeleteFunc(e) {
+                    var selectDeleteImg = $(e).closest('.emoticonDeleteCheckClassName').children('img').attr('id');
+                    
+                    $('#' + selectDeleteImg.replace('choiceEmoticon', 'emoticonList')).removeClass('active');
+                    
+                    $(e).closest('.emoticonDeleteCheckClassName').remove();
+                    delete choiceEmoticonObject[selectDeleteImg];
+                }
+
+                makeEmotionEmoticon();
+
+                function makeEmotionEmoticon() {
+                    var emoticon = {
+                        "1": "Fear.png",
+                        "2": "Anger.png",
+                        "3": "Happiness.png",
+                        "4": "Sadness.png",
+                        "5": "Surprise.png",
+                        "6": "Disgust.png",
+                        "7": "Amusement.png",
+                        "8": "Contempt.png",
+                        "9": "Embrrassment.png",
+                        "10": "Excitement.png",
+                        "11": "Guilt.png",
+                        "12": "Pride_in_achievement.png",
+                        "13": "Relief.png",
+                        "14": "Satisfaction.png",
+                        "15": "Shame.png"
+                    };
+
+                    for(var fileNum in emoticon) {
+                        innerEmoticonHtml = `<img id="emoticonList${fileNum}" src="/web/img/emoji/${emoticon[fileNum]}" onclick="choiceEmoticonFunc(this)">`;
+
+                        document.getElementById('emoticonListWrapID').innerHTML += innerEmoticonHtml;
+                    }
+                }
+
+                var getTextAreaKeyWord = '';
+                var getTextAreaKeyWordArray = [];
+                document.getElementById('keyWordTextArea').addEventListener('keypress', () => {
+                    if(event.keyCode == 32) {
+                        getTextAreaKeyWord = document.getElementById('keyWordTextArea').value;
+                        document.getElementById('keyWordTextArea').value = '';
+                        makeUserInsertKeyWord();
+                    }
+                });
+
+                function makeUserInsertKeyWord() {
+                    if(getTextAreaKeyWord == '') {
+                        return false;
+                    }
+
+                    createUserKeyWordHtml = `
+                        <div class="keyword checkKeyWordIndex">
+                            ${getTextAreaKeyWord}
+                            <button onclick="userKeywordDelete(this)"><img src="/web/img/btn_close_small_gy.png"></button>
+                        </div>
+                    `;
+
+                    getTextAreaKeyWordArray.push(getTextAreaKeyWord);
+                    document.getElementById('resultKeyWordShowID').innerHTML += createUserKeyWordHtml;
+                }
+                
+                function userKeywordDelete(e) {
+                    var choiceRemoveKeyWordIndex = $(e).closest('.checkKeyWordIndex').index();
+
+                    $(e).closest('.checkKeyWordIndex').remove();
+                    getTextAreaKeyWordArray.splice(choiceRemoveKeyWordIndex, 1);
+                }
+
+                var userChoiceStamp = {};
+                function userChoiceStampFunc(e) {
+                    var choiceStampID = $(e).parent().attr('id');
+                    userChoiceStamp = {};
+                    userChoiceStamp[choiceStampID] = $(e).attr('src');
+
+                    $('#stampActiveControlID > *').removeClass('active');
+                    $(e).parent().addClass('active');
+                }
+                var userMindfulCheckObject = {};
+                function findMindfulChecked() {
+                    userMindfulCheckObject= {};
+                    $('#chkListUlID > li > input[type="checkBox"]:checked').each(function(e) {
+                        var checkedID = $(this).attr('id') + 'Label';
+                        userMindfulCheckObject[$(this).attr('id')] = $('#' + checkedID).children('.text').text();
+                    });
+                }
+
+                function audioUploadBtnFunc() {
+                    document.getElementById('inputAudioUpload').click();
+                }
+
+                function videoUploadBtnFunc() {
+                    document.getElementById('inputVideoUpload').click();
+                }
+
+                var videoFileUploadData = [];
+                function videoUploadFunc(e) {
+                    if(videoFileUploadData.length > 0) {
+                        alert('최대 1개 업로드 가능합니다.');
+                        return false;
+                    }
+
+                    var file = e.files[0];
+                    videoFileUploadData = [];
+                    videoFileUploadData.push(file)
+                    var fileReader = new FileReader();
+
+                    fileReader.onload = function() {
+                        document.getElementById('videoCountSpan').innerText = videoFileUploadData.length + '/1';
+
+                        document.getElementById('videoControlDivID').style.display = 'block';
+                    };
+
+                    fileReader.readAsDataURL(file);
+                    document.getElementById("uploadVideoShowThumbNail").setAttribute('src', URL.createObjectURL(document.getElementById("inputVideoUpload").files[0]));
+                    document.getElementById('inputVideoUpload').value = '';
+                }
+
+                function drawImageLayout() {
+                    document.getElementById('imageCountSpan').innerText = fileResultList.length + '/10';
+
+                    if(fileResultList.length == 1) {
+                        document.getElementById('imageLayout-1').style.display = 'flex';
+                        document.getElementById('imageLayout-2').style.display = 'none';
+                        document.getElementById('imageLayout-3').style.display = 'none';
+                        document.getElementById('imageLayout-4').style.display = 'none';
+                        
+                        $('#imageLayout-1').css('background-image', 'url('+ fileResultList[0].result +')');
+                    }
+
+                    if(fileResultList.length == 2) {
+                        document.getElementById('imageLayout-2').style.display = 'flex';
+                        document.getElementById('imageLayout-1').style.display = 'none';
+                        document.getElementById('imageLayout-3').style.display = 'none';
+                        document.getElementById('imageLayout-4').style.display = 'none';
+                        
+                        $('#imageLayout-2 > .left').css('background-image', 'url('+ fileResultList[0].result +')');
+                        $('#imageLayout-2 > .right').css('background-image', 'url('+ fileResultList[1].result +')');
+                    }
+
+                    if(fileResultList.length == 3) {
+                        document.getElementById('imageLayout-3').style.display = 'flex';
+                        document.getElementById('imageLayout-1').style.display = 'none';
+                        document.getElementById('imageLayout-2').style.display = 'none';
+                        document.getElementById('imageLayout-4').style.display = 'none';
+
+                        $('#imageLayout-3 > .left > .inner').css('background-image', 'url('+ fileResultList[0].result +')');
+                        $('#imageLayout-3 > .right > .inner:first-child').css('background-image', 'url('+ fileResultList[1].result +')');
+                        $('#imageLayout-3 > .right > .inner:last-child').css('background-image', 'url('+ fileResultList[2].result +')');
+                    }
+
+                    if(fileResultList.length >= 4) {
+                        document.getElementById('imageLayout-4').style.display = 'flex';
+                        document.getElementById('imageLayout-1').style.display = 'none';
+                        document.getElementById('imageLayout-2').style.display = 'none';
+                        document.getElementById('imageLayout-3').style.display = 'none';
+                        
+                        $('#imageLayout-4 > .inner:nth-child(1)').css('background-image', 'url('+ fileResultList[0].result +')');
+                        $('#imageLayout-4 > .inner:nth-child(2)').css('background-image', 'url('+ fileResultList[1].result +')');
+                        $('#imageLayout-4 > .inner:nth-child(3)').css('background-image', 'url('+ fileResultList[2].result +')');
+                        $('#imageLayout-4 > .inner:nth-child(4)').css('background-image', 'url('+ fileResultList[3].result +')');
+
+                        if(fileResultList.length > 4) {
+                            var dataLength = fileResultList.length - 4;
+                            document.getElementById('moreImageCountID').classList.add('lastImg');
+                            document.getElementById('moreImageCountID').setAttribute('data-length', '+' + dataLength);
+                        }
+                    }
+
+                    document.getElementById('journalModalImageModalControlID').innerHTML = '';
+                    // 이미지 모달 셋팅
+                    for(var i = 0; i < fileResultList.length; i++) {
+                        if(i == 0) {
+                            imageModalHtml = `<li data-no="${i + 1}" class="active" style="background-image: url('${fileResultList[i].result}');"></li>`;
+                        } else {
+                            imageModalHtml = `<li data-no="${i + 1}" style="background-image: url('${fileResultList[i].result}');"></li>`;
+                        }                        
+
+                        document.getElementById('journalModalImageModalControlID').innerHTML += imageModalHtml;
+                    }
+
+                    document.getElementById('modal44CountControlID').innerHTML = `<span>1</span> / <span>${fileResultList.length}</span>`;
+                }
+
+                function journalCancleBtnFunc() {
+                    location.href = "/journalWrite";
+                }
+
+                var journalWriteDataObject = {};
+                function journalSaveBtnFunc() {
+                    if(getUserWriteDataFunc()) {
+                        var sendJsonObject = {};
+                        sendJsonObject.journalObject = JSON.stringify(journalWriteDataObject);
+
+                        $.ajax({
+                            type : "POST",
+                            url:"/protocol/journalObjectInsertMongo",
+                            data: JSON.stringify(sendJsonObject),
+                            processData: false,
+                            contentType: "application/json; charset=UTF-8",
+                            success : function(data){
+                                alert('저널 작성을 완료했습니다.');
+                                location.href = '/journalMain';
+                            },
+                            error : function(error)
+                            {
+                                alert('저널 작성을 실패하였습니다.');
+                            }
+                        });
+
+                    } else {
+                        return false;
+                    }   
+                }
+
+                function checkNullBlankUndefined(checkData, checkScope) {
+                    if(checkScope == 'null') {
+                        if(checkData == null) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    }
+
+                    if(checkScope == 'undefined') {
+                        if(checkData == undefined) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    }
+
+                    if(checkScope == 'nullUndefined') {
+                        if(checkData == null || checkData == undefined) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    }
+
+                    if(checkScope == 'all') {
+                        if(checkData == '' || checkData == null || checkData == undefined) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    }
+                }
+
+                function getUserWriteDataFunc() {
+                    if(checkNullBlankUndefined(document.getElementById('changeTypeTitle').innerText, 'all')) {
+                        journalWriteDataObject.journalCategory = document.getElementById('changeTypeTitle').innerText;
+                    } else {
+                        alert('정상적인 방법으로 다시 시도해주세요.');
+                        return false;
+                    }
+
+                    if(checkNullBlankUndefined(document.getElementById('setJournalDate').innerText), 'all') {
+                        journalWriteDataObject.journalWriteDate = document.getElementById('setJournalDate').innerText;
+                    } else {
+                        alert('정상적인 방법으로 다시 시도해주세요.');
+                        return false;
+                    }
+                    
+                    if(checkNullBlankUndefined(document.getElementById('sendWeatherData').value, 'all')) {
+                        journalWriteDataObject.journalWriteWeather = document.getElementById('sendWeatherData').value;
+                    } else {
+                        alert('정상적인 방법으로 다시 시도해주세요.');
+                        return false;
+                    }
+
+                    if(checkNullBlankUndefined(document.getElementById('getAccessIDValue').value, 'all')) {
+                        journalWriteDataObject.journalAccess = document.getElementById('getAccessIDValue').value;
+                    } else {
+                        alert('정상적인 방법으로 다시 시도해주세요.');
+                        return false;
+                    }
+
+                    if(checkNullBlankUndefined(document.getElementById('inputTotalTime').innerText, 'all')) {
+                        var checkUserTime = document.getElementById('inputTotalTime').innerText;
+                        var tempCheckTime = String(checkUserTime).replace('분', '');
+                        if(tempCheckTime <= 0) {
+                            alert('시간을 확인해주세요.');
+                            return false;
+                        } else {
+                            journalWriteDataObject.journalTotalTime = document.getElementById('inputTotalTime').innerText;
+                        }
+                    } else {
+                        alert('시간을 입력해주세요.');
+                        return false;
+                    }
+                    
+                    if(Object.keys(selectPracticeObject).length > 0) {
+                        journalWriteDataObject.selectPracticeObject = selectPracticeObject;
+                    } else {
+                        alert('연습 타입을 선택해주세요.');
+                        return false;
+                    }
+
+                    if(Object.keys(selectPracticeCategoryObject).length > 0) {
+                        journalWriteDataObject.selectPracticeCategoryObject = selectPracticeCategoryObject;
+                    } else {
+                        alert('연습 카테고리를 선택해주세요.');
+                        return false;
+                    }
+
+                    if(checkNullBlankUndefined(document.getElementById('writeText').value, 'all')) {
+                        journalWriteDataObject.journalMainText = document.getElementById('writeText').value;
+                    } else {
+                        alert('내용을 작성해주세요.');
+                        return false;
+                    }
+
+                    if(journalWriteDataObject.journalCategory == 'GRATITUDE JOURNAL' || journalWriteDataObject.journalCategory == 'THOUGHT SCAN' || journalWriteDataObject.journalCategory == 'ASANA JOURNAL') {
+                        if(uploadFileDataList.length > 0) {
+                            journalWriteDataObject.journalImage = saveListFileToServerV2(uploadFileDataList);
+
+                            if(journalWriteDataObject.journalCategory == 'ASANA JOURNAL') {
+                                if(videoFileUploadData.length > 0) {
+                                    journalWriteDataObject.journalVideo = saveListFileToServerV2(videoFileUploadData);
+                                }
+                            } else {
+                                if(audioFileUploadData.length > 0) {
+                                    journalWriteDataObject.journalAudio = saveListFileToServerV2(audioFileUploadData);
+                                }
+                            }
+                        } else {
+                            customModal(16);
+                            return false;
+                        }
+                    }
+
+                    if(journalWriteDataObject.journalCategory == 'BODY SCAN') {
+                        if(bodyScanResultArray.length > 0) {
+                            journalWriteDataObject.journalBodyScanResult = bodyScanResultArray;
+                        } else {
+                            alert('바디 스캔을 추가 해주세요.');
+                            return false;
+                        }
+                    }
+
+                    if(journalWriteDataObject.journalCategory == 'EMOTION SCAN') {
+                        if(EmotionScanResultArray.length > 0) {
+                            journalWriteDataObject.journalEmotionScanResult = EmotionScanResultArray;
+                        } else {
+                            alert('감정 스캔을 추가 해주세요.');
+                            return false;
+                        }
+                    }
+
+                    if(journalWriteDataObject.journalCategory == 'MOOD ENTRY') {
+                        if(Object.keys(choiceEmoticonObject).length > 0) {
+                            journalWriteDataObject.journalMoodEntryResult = choiceEmoticonObject;
+                        } else {
+                            alert('이모티콘을 1개 이상 선택해주세요.');
+                            return false;
+                        }
+                    }
+
+                    if(journalWriteDataObject.journalCategory == 'KEYWORD ENTRY') {
+                        if(getTextAreaKeyWordArray.length > 0) {
+                            journalWriteDataObject.journalKeyWordEntryResult = getTextAreaKeyWordArray;
+                        } else {
+                            alert('키워드를 1개이상 입력해주세요.');
+                            return false;
+                        }
+                    }
+
+                    if(journalWriteDataObject.journalCategory == 'STAMP ENTRY') {
+                        if(Object.keys(userChoiceStamp).length > 0) {
+                            journalWriteDataObject.journalStampEntryResult = userChoiceStamp;
+                        } else {
+                            alert('스탬프를 선택해주세요.');
+                            return false;
+                        }
+                    }
+
+                    if(journalWriteDataObject.journalCategory == 'MINDFUL CHALLENGE CHECKIST') {
+                        findMindfulChecked();
+                        journalWriteDataObject.journalMindfulResult = userMindfulCheckObject;
+                    }
+
+                    return true;
+                }
+
+                function journalUpdateBtnFunc() {
+                    if(document.getElementById('changeTypeTitle').innerText == 'ASANA JOURNAL' || document.getElementById('changeTypeTitle').innerText == 'GRATITUDE JOURNAL' || document.getElementById('changeTypeTitle').innerText == 'THOUGHT SCAN') {
+                            alert('아직 업데이트 안됩니다.');
+                            return false;
+                        }
+
+                    if(getUserWriteDataFunc()) {
+                        var sendJsonObject = {};
+                        journalWriteDataObject.journalID = document.getElementById('journalUpdateID').value;
+                        sendJsonObject.journalObject = JSON.stringify(journalWriteDataObject);
+
+                        $.ajax({
+                            type : "POST",
+                            url:"/protocol/journalObjectUpdateMongo",
+                            data: JSON.stringify(sendJsonObject),
+                            processData: false,
+                            contentType: "application/json; charset=UTF-8",
+                            success : function(data){
+                                alert('저널 수정을 완료했습니다.');
+                                location.href = '/journalMain';
+                            },
+                            error : function(error)
+                            {
+                                alert('저널 작성을 실패하였습니다.');
+                            }
+                        });
+
+                    } else {
+                        return false;
+                    }   
+                }
+
+                if(Object.keys(journalEditData).length > 0) {
+                    journalEditDefaultSetting(journalEditData);
+                }
+
+                function journalEditDefaultSetting(journalEditData) {
+                    document.getElementById('journalSaveAndUpdateBtn').setAttribute('onclick', 'journalUpdateBtnFunc()');
+                    document.getElementById('journalUpdateID').value = journalEditData._id;
+                    var journalEditObject = journalEditData.classObject;
+                    document.getElementById('setJournalDate').innerText = journalEditObject.journalWriteDate;
+                    document.getElementById('sendWeatherData').value = journalEditObject.journalWriteWeather;
+                    document.getElementById('showChoiceWeather').src = '/web/img/weather/' + journalEditObject.journalWriteWeather + '.png';
+                    document.getElementById('inputTotalTime').innerText = journalEditObject.journalTotalTime;
+
+                    document.getElementById('accessIconControlID').src = '/web/img/ICN_' + journalEditObject.journalAccess + '.png';
+                    document.getElementById('getAccessID').innerText = journalEditObject.journalAccess;
+
+                    var practiceTypeArray = Object.keys(journalEditObject.selectPracticeObject);
+                    for(var i = 0; i < practiceTypeArray.length; i++) {
+                        $('#typeWrapCheckID').find('input[type="checkBox"]').each(function(e) {
+                            if($(this).val() == practiceTypeArray[i]) {
+                                $(this).prop('checked', true);
+                            }
+                        });
+                    }
+                    typeWrapSaveFunc();
+
+                    var practiceCategoryArray = Object.keys(journalEditObject.selectPracticeCategoryObject);
+                    for(var i = 0; i < practiceCategoryArray.length; i++) {
+                        $('#categoryControlID').find('input[type="checkBox"]').each(function(e) {
+                            if($(this).val() == practiceCategoryArray[i]) {
+                                $(this).prop('checked', true);
+                            }
+                        });
+                    }
+                    categorySaveFunc();
+
+                    var goWriterJournalTitle = {
+                        "GRATITUDE JOURNAL": "gratitude",
+                        "BODY SCAN": "bodyScan",
+                        "EMOTION SCAN": "emotionScan",
+                        "MOOD ENTRY": "moodEntry",
+                        "THOUGHT SCAN": "thoughtScan",
+                        "KEYWORD ENTRY": "keyWord",
+                        "STAMP ENTRY": "stampEntry",
+                        "MINDFUL CHALLENGE CHECKIST": "mindful",
+                        "ASANA JOURNAL": "asana",
+                    };
+                    
+                    var editCategory = journalEditObject.journalCategory;
+
+                    goWriteJournal(goWriterJournalTitle[editCategory]);
+
+                    document.getElementById('writeText').value = journalEditObject.journalMainText;
+
+                    if(journalEditObject.journalCategory == 'GRATITUDE JOURNAL') {
+                        
+                    }
+
+                    if(journalEditObject.journalCategory == 'BODY SCAN') {
+                        for(var i = 0; i < journalEditObject.journalBodyScanResult.length; i++) {
+                            bodyScanCheck.area = journalEditObject.journalBodyScanResult[i].area;
+                            bodyScanCheck.part = journalEditObject.journalBodyScanResult[i].part;
+                            bodyScanCheck.sensation = journalEditObject.journalBodyScanResult[i].sensation;
+                            bodyScanCheck.intense = journalEditObject.journalBodyScanResult[i].intense;
+                            bodyScanCheck.pleasant = journalEditObject.journalBodyScanResult[i].pleasant;
+                            
+                            makeScanResult();
+
+                            bodyScanCheck = {};
+                        }
+
+                        document.getElementById('step2ControllID').style.display = 'block';
+                        document.getElementById('step3ControllID').style.display = 'block';
+                        document.getElementById('bodyScanResultID').style.display = 'block';
+                        document.getElementById('makeScanResultBtnID').style.display = 'flex';
+                    }
+
+                    if(journalEditObject.journalCategory == 'EMOTION SCAN') {
+                        for(var i = 0; i < journalEditObject.journalEmotionScanResult.length; i++) {
+                            emotionScanCheck.feeling = journalEditObject.journalEmotionScanResult[i].feeling;
+                            emotionScanCheck.observed = journalEditObject.journalEmotionScanResult[i].observed;
+                            
+                            makeEmotionResult();
+
+                            emotionScanCheck = {};
+                        }
+                    }
+                    
+                    if(journalEditObject.journalCategory == 'MOOD ENTRY') {
+                        var tempMoodEntryResult = Object.keys(journalEditObject.journalMoodEntryResult);
+                        for(var i = 0; i < tempMoodEntryResult.length; i++) {
+                            choiceEmoticon = tempMoodEntryResult[i] + '@' + journalEditObject.journalMoodEntryResult[tempMoodEntryResult[i]];
+
+                            makeChoiceEmoticon();
+
+                            choiceEmoticon = '';
+                        }
+                    }
+
+                    
+                    if(journalEditObject.journalCategory == 'THOUGHT SCAN') {
+
+                    }
+
+                    if(journalEditObject.journalCategory == 'KEYWORD ENTRY') {
+                        for(var i = 0; i < journalEditObject.journalKeyWordEntryResult.length; i++) {
+                            getTextAreaKeyWord = document.getElementById('keyWordTextArea').value = journalEditObject.journalKeyWordEntryResult[i];
+
+                            makeUserInsertKeyWord();
+
+                            document.getElementById('keyWordTextArea').value = '';
+                        }
+                    }
+
+                    
+                    if(journalEditObject.journalCategory == 'STAMP ENTRY') {
+                        var tempStampResult = Object.keys(journalEditObject.journalStampEntryResult);
+                        
+                        userChoiceStamp[tempStampResult[0]] = journalEditObject.journalStampEntryResult[tempStampResult[0]];
+                    }
+
+                    if(journalEditObject.journalCategory == 'MINDFUL CHALLENGE CHECKIST') {
+                        var tempMindfulResult = Object.keys(journalEditObject.journalMindfulResult);
+
+                        for(var i = 0; i < tempMindfulResult.length; i++) {
+                            document.getElementById(tempMindfulResult[i]).checked = true;
+                        }
+                    }
+
+                    var originVideoListCount = 0;
+                    var originImageList = [];
+                    if(journalEditObject.journalCategory == 'ASANA JOURNAL') {
+                        if(journalEditObject.journalVideo != null & journalEditObject.journalVideo != undefined) {
+                            originVideoListCount = journalEditObject.journalVideo.length;
+
+                            document.getElementById('videoCountSpan').innerText = originVideoListCount + '/1';
+
+                            document.getElementById('videoControlDivID').style.display = 'block';
+                            document.getElementById("uploadVideoShowThumbNail").setAttribute('src', journalEditObject.journalVideo[0].filePath);
+                        }
+
+                        var imageList = journalEditObject.journalImage;
+                        originImageList = journalEditObject.journalImage;
+
+                        for(var i = 0; i < imageList.length; i++) {
+                            var result = { "result": imageList[i].filePath };
+                            fileResultList.push(result);
+                            console.log(fileResultList[i].result);
+                        }
+
+                        drawImageLayout();
+                    }
+                    
+                }
+
+                function videoDeleteOnclickFunc() {
+                    videoFileUploadData = [];
+                    document.getElementById('videoCountSpan').innerText = videoFileUploadData.length + '/1';
+                    document.getElementById('uploadVideoShowThumbNail').src = '';
+                    document.getElementById('videoControlDivID').style.display = 'none';
+                };
+
+                function audioDeleteOnclickFunc() {
+                    audioFileUploadData = [];
+                    document.getElementById('audioCountSpan').innerText = audioFileUploadData.length + '/1';
+                    document.getElementById('showAudioFileUploadSrc').src = '';
+                    document.getElementById('audioShowControlID').style.display = 'none';
+                };
+                
+                function imageDeleteFunc() {
+                    // var findIndex = $('#journalModalImageModalControlID').find('.active').data('no');
+                    // $('#journalModalImageModalControlID > li:nth-child(' + findIndex + ')').remove();
+
+                    // if(findIndex <= originImageList.length) {
+                    //     originImageList.splice(findIndex, 1);
+                    // } else if(findIndex > originImageList.length) {
+                    //     uploadFileDataList.splice(findIndex, 1);
+                    // }
+
+                    // drawImageLayout();
+                }
+            </script>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,1470 @@
+<!--  호스트 등록 모달 -->
+<div class="modal modal90">
+    <div id="modal90Parent">
+        <div class="xBtn">
+            <button onclick="customModalClose(90)">
+                <i class="xi-close"></i>
+            </button>
+        </div>
+        <div class="contents" id="becomeHostModal">
+            <div class="contents-type" id = "regHostMain">
+                <h3>
+                    <%=translation.hostStudio.What_type_of_Host_are_you%>
+                </h3>
+                <div class="typeList">
+                    <ul>
+                        <li class="type-brand">
+                            <button class="typeBtn">
+                                <h4>
+                                    <%=translation.hostStudio.Brand%>
+                                </h4>
+                                <span>
+                                    <%=translation.hostStudio.Organization_or_Business_in_Mindfulness_and_Wellness%>
+                                </span>
+                            </button>
+                        </li>
+                        <li class="type-master">
+                            <button class="typeBtn">
+                                <h4>
+                                    <%=translation.hostStudio.Master%>
+                                </h4>
+                                <span>
+                                    <%=translation.hostStudio.Teacher_or_Creator_with_more_than_20years_of_experiences_in_mindfulness_and_wellness%>
+                                </span>
+                            </button>
+                        </li>
+                        <li class="type-teacher">
+                            <button class="typeBtn">
+                                <h4>
+                                    <%=translation.hostStudio.Teacher%>
+                                </h4>
+                                <span>
+                                    <%=translation.hostStudio.Professionals_and_teachers_in_mindfulness_wellness_health_related_industry%>
+                                </span>
+                            </button>
+                        </li>
+                        <li class="type-creator">
+                            <button class="typeBtn">
+                                <h4>
+                                    <%=translation.hostStudio.Creator%>
+                                </h4>
+                                <span>
+                                    <%=translation.hostStudio.Mindful_content_owners_and_professionals_in_arts_and_culture%>
+                                </span>
+                            </button>
+                        </li>
+                        <li class="type-leader">
+                            <button class="typeBtn">
+                                <h4>
+                                    <%=translation.hostStudio.Leader%>
+                                </h4>
+                                <span>
+                                    <%=translation.hostStudio.Business_professionals_and_content_owners_in_HR_CSR_or_mindful_leadership%>
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nextBtn">
+                    <button class="nextBtn-on purpleBtn" onclick="regHostMove('regHostMain', 'regHostIntroduce')">
+                        <%=translation.openClass.Next%>
+                    </button>
+                </div>
+            </div>
+            <div class="content-intro" id = "regHostIntroduce" style="display:none">
+                <div class="inputArea">
+                    <h4>
+                        <%=translation.hostStudio.Introduce_your_self%>
+                    </h4>
+                    <div class="introDesc">
+                        <textarea id="descArea" style="resize: none;" placeholder="<%=translation.hostStudio.Your_host_description%>"></textarea>
+                    </div>
+                    <div class="introExp">
+                        <textarea id="expArea" style="resize: none;" placeholder="<%=translation.hostStudio.Other_history_of_your_experience%>"></textarea>
+                    </div>
+                </div>
+                <div class="btnArea">
+                    <button class="intro-backBtn-on grayBtn"onclick="regHostMove('regHostIntroduce', 'regHostMain')">
+                        <%=translation.openClass.Back%>
+                    </button>
+                    <button class="intro-nextBtn-on purpleBtn " onclick="regHostMove('regHostIntroduce', 'regHostAddress')">
+                        <%=translation.openClass.Next%>
+                    </button>
+                </div>
+            </div>
+            <div class="content-brandOnly" id = "regHostAddress" style="display:none">
+                <div class="addressArea">
+                    <h4>
+                        <%=translation.hostStudio.Insert_your_organization_or_business_address%>
+                    </h4>
+                    <div class="inputs">
+                        <input type="text" placeholder="<%=translation.hostStudio.Title_of_place%>" id="titlePlaceInput">
+                        <div class="input-btn">
+                            <input type="text" placeholder="<%=translation.hostStudio.Address%>" id="addressInput">
+                            <button class="searchBtn-on" onclick="googleMapSearch()"><%=translation.openClass.Search%></button>
+                        </div>
+                    </div>
+                    <div class="mapArea">
+                        <div id="googleMap" style="width:100%; height:100%;"></div>
+                    </div>
+                    <div class="chk">
+                        <div>
+                            <input type="checkBox" id="type1">
+                            <label for="type1">
+                                <span class="box"></span>
+                                <span class="text">
+                                    <%=translation.hostStudio.I_can_provide_my_own_space_for_gathering_events%>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="scheduleArea">
+                    <div class="title-subText">
+                        <h4>
+                            <%=translation.hostStudio.Please_set_a_shareable_schedule%>
+                        </h4>
+                        <span>
+                            *<%=translation.hostStudio.You_can_set_a_schedule_for_two_weeks_from_now_on%> 
+                        </span>
+                    </div>
+                    <div class="dayChk">
+                        <div class="left">
+                            <div id="datepicker" data-language='en'></div>
+                        </div>
+                        <div class="right">
+                            <div class="dateInfo">
+                                <dl>
+                                    <dt><%=translation.openClass.Date%> </dt>
+                                    <dd><%=translation.openClass.Please_select_a_date%></dd>
+                                </dl>
+                            </div>
+                            <div class="timeInfo">
+                                <dl>
+                                    <dt><%=translation.openClass.Time%></dt>
+                                    <dd><i class="xi-caret-up-min"></i></dd>
+                                </dl>
+                                <div class="timeList">
+                                    <div class="am">
+                                        <div class="title">
+                                            <%=translation.hostStudio.AM%>
+                                        </div>
+                                        <div class="times times-am">
+
+                                        </div>
+                                    </div>
+                                    <div class="pm">
+                                        <div class="title">
+                                            <%=translation.hostStudio.PM%>
+                                        </div>
+                                        <div class="times times-pm">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btnArea">
+                    <button class="brandOnly-backBtn-on grayBtn" onclick="regHostMove('regHostAddress', 'regHostIntroduce')">
+                        <%=translation.openClass.Back%>
+                    </button>
+                    <!-- 임시 변경 -->
+                    <!--
+                    <button class="brandOnly-nextBtn-on purpleBtn" onclick="location.href='hostStudio'">
+                        Next
+                    </button>
+                    -->
+                    <!-- Test -->
+                    <button class="brandOnly-nextBtn-on purpleBtn" onclick="regHostMove('regHostAddress', 'hostStudio')">
+                        <%=translation.openClass.Next%>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 브랜드타입 선택시 입력폼 -->
+<div class="modal modal22">
+    <div>
+        <div class="xBtn">
+            <button onclick="customModalClose(22)">
+                <img src="/web/img/ICN_CLOSE.png" alt="">
+            </button>
+        </div>
+        <div class="detailRawInput paymentOnly">
+            <h3 class="subTitle1">
+                Payment and Settlement Information
+            </h3>
+            <div class="paymentInfo">
+                <h4 class="subTitle2">
+                    Payment Information
+                </h4>
+                <div class="inputArea">
+                    <h5 class="detailTitle">
+                        Credit/Debit Card Number
+                    </h5>
+                    <div class="creditInput">
+                        <input type="text" maxlength="4" id="cardNumber1">
+                        <input type="text" maxlength="4" id="cardNumber2">
+                        <input type="text" maxlength="4" id="cardNumber3">
+                        <input type="text" maxlength="4" id="cardNumber4">
+                    </div>
+                </div>
+                <div class="inputArea division">
+                    <div>
+                        <h5 class="detailTitle">
+                            Date
+                        </h5>
+                        <div class="creditInput">
+                            <input type="text" maxlength="4" id="cardDate" placeholder="MM / YY">
+                        </div>
+                    </div>
+                    <div>
+                        <h5 class="detailTitle">
+                            CVC
+                        </h5>
+                        <div class="creditInput">
+                            <input type="text" maxlength="3" id="cardCVC">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="settlementInfo">
+                <h4 class="subTitle2">
+                    Settlement Information
+                </h4>
+                <div class="typeTabBtns">
+                    <button class="individualBtn-on active" data-tab="individualTab" onclick="checkCardType('individual')">
+                        Individual
+                    </button>
+                    <button class="corporationBtn-on" data-tab="corporationTab" onclick="checkCardType('corporation')">
+                        Corporation
+                    </button>
+                </div>
+                <div class="getSettlementForm">
+                    <div class="individualTab">
+                        <div class="inputArea">
+                            <h5 class="detailTitle">
+                                Full Name
+                            </h5>
+                            <div class="creditInput commonWidth">
+                                <input type="text" id="fullNameFirst" placeholder="First Name">
+                                <input type="text" id="fullNameLast" placeholder="Last Name">
+                            </div>
+                        </div>
+                        <div class="inputArea">
+                            <h5 class="detailTitle">
+                                Address
+                            </h5>
+                            <div class="addressInput1 commonWidth">
+                                <input type="text" id="addressCountry" placeholder="Country">
+                                <input type="text" id="addressState" placeholder="State / Province">
+                            </div>
+                            <div class="addressInput2 commonWidth">
+                                <input type="text" id="addressCity" placeholder="City">
+                                <input type="text" id="addressStreet" placeholder="Street Address">
+                            </div>
+                        </div>
+                        <div class="inputArea">
+                            <h5 class="detailTitle">
+                                Phone Number
+                            </h5>
+                            <div class="phoneNumberInput">
+                                <input type="text" id="phoneNumber">
+                            </div>
+                        </div>
+                        <div class="selectArea currencyArea">
+                            <h5 class="detailTitle">
+                                Currency
+                            </h5>
+                            <div class="selectBox1">
+                                <div class="selectView">
+                                    <input id="billingPeriodCategory" type="button" value="Select">
+                                    <img src="/web/img/ICN_DROP.png" alt="">
+                                </div>
+                                <ul class="selectBox-hdnMenu basicInfoGenderBox" id="billingPeriodCategoryControl">
+                                    <li>
+                                        <input type="radio" value="USD" id="USD" name="USD" onclick="checkCalculateCurrencyType('USD')">
+                                        <input type="radio" value="KRW" id="KRW" name="KRW" onclick="checkCalculateCurrencyType('KRW')">
+                                        <label for="USD">
+                                            <span>USD(US$)</span>
+                                        </label>
+                                        <label for="KRW">
+                                            <span>KRW(원)</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="inputArea bankInfoArea division">
+                            <div>
+                                <h5 class="detailTitle">
+                                    Bank
+                                </h5>
+                                <div class="bankInput">
+                                    <input type="text" id="calculateBank">
+                                </div>
+                            </div>
+                            <div>
+                                <h5 class="detailTitle">
+                                    Account Number
+                                </h5>
+                                <div class="AccountNumberInput">
+                                    <input type="text" id="calculateAccountNumber">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inputArea paypalArea">
+                            <h5 class="detailTitle">
+                                PayPal ID(Your PayPal email)
+                            </h5>
+                            <div class="paypalInput">
+                                <input type="text" id="payPal">
+                            </div>
+                        </div>
+                        <div class="uploadArea division">
+                            <div>
+                                <div class="title-btn">
+                                    <h5 class="detailTitle">
+                                        ID Card
+                                    </h5>
+                                    <div>
+                                        <input type="file" id="idCardFileUpload" onchange="fileListOutFunc(this, 'fileList1ID')">
+                                        <label for="idCardFileUpload">
+                                            <strong>File Upload</strong>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="fileList" id="fileList1ID">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btnArea">
+                <button class="brandOnly-backBtn-on grayBtn" onclick="closeModal22('closeModal')">
+                    <%=translation.openClass.Back%>
+                </button>
+                <button class="brandOnly-nextBtn-on purpleBtn" onclick="regHostMove('closeModal22', 'updateData')">
+                    <%=translation.openClass.Next%>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 캘린더 이벤트 -->
+<script src="/web/js/customPicker/customPicker.js"></script>
+<script>
+    var checkValueFlag = false;
+   
+        // 공유 가능한 일정 - 날짜
+        var shareableScheduleDate;
+
+        // 공유 가능한 일정 - 시간
+        var shareableScheduleTime;
+
+        var option = {
+            pastDateNotCheck:true,//과거날짜 선택여부
+            singleDate:true,//싱글데이트 여부
+            nDayCheck:{
+                check:true,
+                days:14
+            },//14일 체크
+        }
+        entwizCalendar.init("datepicker",option);
+        entwizCalendar.on('change',function(data,lastCheckDate)//선택날짜 및 타입 콜백 //0:취소 1: 시작날짜선택 2: 전부선택 
+        {
+            console.log('AllDataDate',data);
+            shareableScheduleDate = data;
+            var text = ''
+            for(var i = 0; i < data.datepicker.length; i++)
+            {
+                var day = new Date(data.datepicker[i].slice(0,4) + '-' + data.datepicker[i].slice(4, 6) + '-' + data.datepicker[i].slice(6,8));
+                var weekDay = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+                var week = weekDay[day.getDay()];
+                var checkDay = data.datepicker[i].slice(0,4) + '.' + data.datepicker[i].slice(4, 6) + '.' + data.datepicker[i].slice(6,8) +'('+week+') ' 
+                
+                if(i===0)
+                {
+                    text += '<span style="cursor:pointer;" data-schedule="'+data.datepicker[i]+'" onclick="checkScheduleDate(this,'+data.datepicker[i]+')">'+checkDay+'</span>'
+                }
+                else
+                {
+                    text += '/ <span style="cursor:pointer;" data-schedule="'+data.datepicker[i]+'" onclick="checkScheduleDate(this,'+data.datepicker[i]+')">'+checkDay+'</span>'
+                }
+            }
+            $('.dateInfo dd').html(text)
+            $('.times input').each(function()
+            {
+                $(this).prop('checked',false)
+            })
+            $('.times').hide();
+
+            console.log('체크1');
+            if(data.datepicker.length<Object.keys(timeWrap).length)
+            {
+                console.log('체크2')
+                for(var i = 0; i < Object.keys(timeWrap).length; i++)
+                {
+                    console.log('체크3')
+                    if(data.datepicker[i]!==Object.keys(timeWrap)[i])
+                    {
+                        console.log('체크4')
+                        delete timeWrap[Object.keys(timeWrap)[i]]
+                        break;
+                    }
+                }
+
+                $('.entwizSoft-calendarContents').find('td').each(function() {
+                    for(var i = 0; i < data.datepicker.length; i++) {
+                        
+                    }
+                });
+            }
+            else
+            {
+                console.log('체크5')
+                $('[data-schedule="'+lastCheckDate+'"]').trigger('click');
+            }
+            
+        });
+        //날짜 체크시 이벤트 실행
+        function checkScheduleDate(e,data)
+        {
+            
+            if($(e).hasClass('view'))
+            {
+                $(e).removeClass('view')
+                $('.times input').each(function()
+                {
+                    $(this).prop('checked',false)
+                })
+                $('.times').hide();
+                return
+            }
+            $('.times').css('display','flex');
+            $('[data-schedule]').each(function()
+            {
+                $(this).removeClass('view')
+            })
+            if(!$('[data-schedule='+data+']').hasClass('view'))
+            {
+                $('[data-schedule='+data+']').addClass('view')
+            }
+            $('#amTime1').prop('checked',false)
+            $('.times input').each(function()
+            {
+                $(this).prop('checked',false)
+            })
+            if(timeWrap[data])
+            {
+                for(var i = 0; i < timeWrap[data].length; i++)
+                {
+                    $('#'+timeWrap[data][i].id).prop('checked',true);
+                }
+            }
+        }
+        var timeWrap = {}
+        function changeTime(e)
+        {
+            
+            if($(e).prop('checked'))
+            {
+                if(!timeWrap[$('[data-schedule].view').data('schedule')])
+                {
+                    timeWrap[$('[data-schedule].view').data('schedule')] = [];
+                }
+                obj={}
+                obj['id'] = $(e)[0].id
+                obj['text'] = $(e).next().text()
+                timeWrap[$('[data-schedule].view').data('schedule')].push(obj)
+            }
+            else
+            {
+                for(var i = 0; i < timeWrap[$('[data-schedule].view').data('schedule')].length; i++)
+                {
+                    if(timeWrap[$('[data-schedule].view').data('schedule')][i].id===$(e)[0].id)
+                    {
+                        timeWrap[$('[data-schedule].view').data('schedule')].splice(i,1)
+                    }
+                }
+            }
+        }
+
+        
+</script>
+<script>
+    //호스트타입 active
+    $('.typeList button').click(function() {
+        $(this).each(function() {
+            $('.typeList button').removeClass('active');
+        })
+        $(this).toggleClass('active');
+    });
+    
+    var timeList = [
+        {
+            title: 'am',
+            id: [
+                'amTime1',
+                'amTime2',
+                'amTime3',
+                'amTime4',
+                'amTime5',
+                'amTime6',
+                'amTime7',
+                'amTime8',
+                'amTime9',
+                'amTime10',
+                'amTime11',
+                'amTime12',
+            ],
+            times: [
+                '12:00 - 01:00',
+                '01:00 - 02:00',
+                '02:00 - 03:00',
+                '03:00 - 04:00',
+                '04:00 - 05:00',
+                '05:00 - 06:00',
+                '06:00 - 07:00',
+                '07:00 - 08:00',
+                '08:00 - 09:00',
+                '09:00 - 10:00',
+                '10:00 - 11:00',
+                '11:00 - 12:00'
+            ]
+        },
+        {
+            title: 'pm',
+            id: [
+                'pmTime1',
+                'pmTime2',
+                'pmTime3',
+                'pmTime4',
+                'pmTime5',
+                'pmTime6',
+                'pmTime7',
+                'pmTime8',
+                'pmTime9',
+                'pmTime10',
+                'pmTime11',
+                'pmTime12',
+            ],
+            times: [
+                '12:00 - 01:00',
+                '01:00 - 02:00',
+                '02:00 - 03:00',
+                '03:00 - 04:00',
+                '04:00 - 05:00',
+                '05:00 - 06:00',
+                '06:00 - 07:00',
+                '07:00 - 08:00',
+                '08:00 - 09:00',
+                '09:00 - 10:00',
+                '10:00 - 11:00',
+                '11:00 - 12:00'
+            ]
+        }
+    ]
+
+    for(var i = 0; i < timeList.length; i++)
+    {
+        for(var z = 0; z < timeList[i].times.length; z++)
+        {
+            var chkTime = '<div class="chkBox">' +
+                            '<input onchange="changeTime(this)" type="checkbox" id="'+timeList[i].id[z]+'">' +
+                            '<label for="'+timeList[i].id[z]+'">' +
+                                timeList[i].times[z] +
+                            '</label>' +
+                        '</div>'
+
+            if(timeList[i].title == 'am')
+            {
+                $('.times-am').append(chkTime);
+            }
+            else
+            {
+                $('.times-pm').append(chkTime);
+            }
+        }
+
+    }
+
+    var brandlocation = {};
+    function regHostMove(before, next){
+        // 호스트 유형 START
+        // $('.typeList > ul > .type-brand > .typeBtn.active > h4').text().trim();
+        // $('.typeList > ul > li > .typeBtn.active').parent().attr('class'); // type-brand
+        var hostType = $('.typeList > ul > li > .typeBtn.active').parent().attr('class').replace('type-', '');
+        // 호스트 유형 END
+
+        // 자기 소개 START
+        // 자기 소개 - 호스트 소개
+        var introduce = $('#descArea').val();
+
+        // 자기 소개 - 기타 이력
+        var etc = $('#expArea').val();
+
+        var introduceJsonObject = {};
+        introduceJsonObject.introduce = introduce;
+        introduceJsonObject.etc = etc;
+        // 자기 소개 END
+
+        // 조직 또는 보유한 장소의 주소 START
+        // 장소 제목
+        var titlePlace = $("#titlePlaceInput").val();
+
+        // 주소
+        var address = $("#addressInput").val();
+
+        
+        brandlocation.titlePlace = titlePlace;
+        brandlocation.address = address;
+        
+
+        // 조직 또는 보유한 장소의 주소 END
+        
+        // 공유 가능한 일정 START
+        // 공유 가능한 일정 - 날짜 shareableScheduleDate
+        // 공유 가능한 일정 - 시간 shareableScheduleTime
+        var shareableSchedule = {};
+        shareableSchedule.shareableScheduleDate = shareableScheduleDate;
+        // shareableSchedule.shareableScheduleTime = shareableScheduleTime;
+
+        if(shareableScheduleDate !== undefined)
+        {
+            shareableScheduleDate = shareableScheduleDate['datepicker'];
+        }
+        // 공유 가능한 일정 END
+
+        if( (hostType == 'brand' && next != 'hostStudio' && next != 'updateData') || (hostType != 'brand' && next != 'regHostAddress' && next != 'updateData'))
+        {
+            if(before=='regHostAddress')
+            {
+                before='regHostAddress';
+                $('#datepicker > *').remove();
+                entwizCalendar.init("datepicker",option);
+                timeWrap = {};
+                $('.dateInfo dd').html('날짜를 선택해주세요.')
+                $('.times input').each(function()
+                {
+                    $(this).prop('checked',false)
+                })
+                $('.times').hide();
+            }
+            document.getElementById(before).style.display='none';
+            mindgroundMap();
+            document.getElementById(next).style.display='';
+        }
+        else if(next == 'updateData')
+        {
+            payInfoSave(hostType, introduceJsonObject, brandlocation, shareableSchedule);
+        } else {
+            customModal(22);
+        }
+
+        /*
+        $('.typeList button').click(function() {
+            $(this).each(function() {
+                $('.typeList button').removeClass('active');
+            })
+            $(this).toggleClass('active');
+        });
+        */
+    }
+
+    var googleMapOptions = '';
+    var googleMap = '';
+    var geocoder = '';
+    var becomeHostLat;
+    var becomeHostLng;
+    
+    // 기존의 Marker를 지우기 위해 마커를 담는 배열
+    var arrayGoogleMapMarker = [];
+
+    // Google Map API 주소의 callback 파라미터와 동일한 이름의 함수
+    function mindgroundMap() 
+    {
+        // default 중심 위치는 서울특별시
+        googleMapOptions= { center : new google.maps.LatLng(37.55430979366699, 126.98747449784453), zoom : 8 };
+
+        googleMap = new google.maps.Map(document.getElementById("googleMap"), googleMapOptions);
+
+        geocoder = new google.maps.Geocoder();
+    }
+
+    function geocodeAddress(geocoder, googleMap)
+    {
+        // 기존의 Marker를 지운다.
+        if(arrayGoogleMapMarker.length > 0)
+        {
+            arrayGoogleMapMarker[0].setMap(null);
+        }
+
+        // set Address
+        var address = document.getElementById('addressInput').value;
+
+        geocoder.geocode({ 'address' : address }, function(result, status)
+        {
+            if(status === 'OK')
+            {
+                var googleMapMarker = new google.maps.Marker({ position: result[0].geometry.location });
+                
+                arrayGoogleMapMarker[0] = googleMapMarker;
+
+                // Marker를 맵에 찍는다.
+                arrayGoogleMapMarker[0].setMap(googleMap);
+                
+                googleMap.setCenter(result[0].geometry.location);
+                googleMap.setZoom(17);
+
+                // marker의 위도 가져오기 : googleMapMarker.position.lat() , marker의 경도 가져오기 : googleMapMarker.position.lng()
+                becomeHostLat = googleMapMarker.position.lat();
+                becomeHostLng = googleMapMarker.position.lng();
+
+                brandlocation.lat = becomeHostLat;
+                brandlocation.lng = becomeHostLng;
+            }
+            else
+            {
+                if(status === 'INVALID_REQUEST')
+                {
+                    alert('주소를 입력해주세요.');
+                }
+                else
+                {
+                    console.log('geocode error ' + status);
+                }
+            }
+        });
+    }
+
+    // googleMapSearch onclick Function
+    function googleMapSearch()
+    {
+        geocodeAddress(geocoder, googleMap)
+    };
+
+    //개인/사업자 입력폼 온.오프 탭버튼
+    $('.typeTabBtns > button').click(function() {
+        var targetTab = $(this).data('tab');
+        $('.typeTabBtns > button').removeClass('active');
+        $(this).addClass('active');
+        if(targetTab == 'individualTab')
+        {
+            $('.getSettlementForm').html(individualForm('test'))
+        }
+        else
+        {
+            $('.getSettlementForm').html(corporationForm('test1','test2'))
+        }
+    });
+    
+    //개인 입력폼
+    function individualForm(fileName) {
+        var individual = "";
+        individual += '<div class="individualTab">';
+        individual += '<div class="inputArea">';
+        individual += '<h5 class="detailTitle">';
+        individual += 'Full Name';
+        individual += '</h5>';
+        individual += '<div class="creditInput commonWidth">';
+        individual += '<input type="text" id="fullNameFirst" placeholder="First Name">';
+        individual += '<input type="text" id="fullNameLast" placeholder="Last Name">';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div class="inputArea">';
+        individual += '<h5 class="detailTitle">';
+        individual += 'Address';
+        individual += '</h5>';
+        individual += '<div class="addressInput1 commonWidth">';
+        individual += '<input type="text" id="addressCountry" placeholder="Country">';
+        individual += '<input type="text" id="addressState" placeholder="State / Province">';
+        individual += '</div>';
+        individual += '<div class="addressInput2 commonWidth">';
+        individual += '<input type="text" id="addressCity" placeholder="City">';
+        individual += '<input type="text" id="addressStreet" placeholder="Street Address">';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div class="inputArea">';
+        individual += '<h5 class="detailTitle">';
+        individual += 'Phone Number';
+        individual += '</h5>';
+        individual += '<div class="phoneNumberInput">';
+        individual += '<input type="text" id="phoneNumber">';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div class="selectArea currencyArea">';
+        individual += '<h5 class="detailTitle">';
+        individual += 'Currency';
+        individual += '</h5>';
+        individual += '<div class="selectBox1">';
+        individual += '<div class="selectView">';
+        individual += '<input id="billingPeriodCategory" type="button" value="Select">';
+        individual += '<img src="/web/img/ICN_DROP.png" alt="">';
+        individual += '</div>';
+        individual += '<ul class="selectBox-hdnMenu basicInfoGenderBox" id="billingPeriodCategoryControl">';
+        individual += '<li>';
+        individual += '<input type="radio" value="USD" id="USD" name="USD" onclick="checkCalculateCurrencyType(\'USD\')">';
+        individual += '<input type="radio" value="KRW" id="KRW" name="KRW" onclick="checkCalculateCurrencyType(\'KRW\')">';
+        individual += '<label for="USD">';
+        individual += '<span>USD(US$)</span>';
+        individual += '</label>';
+        individual += '<label for="KRW">';
+        individual += '<span>KRW(원)</span>';
+        individual += '</label>';
+        individual += '</li>';
+        individual += '</ul>';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div class="inputArea bankInfoArea division">';
+        individual += '<div>';
+        individual += '<h5 class="detailTitle">';
+        individual += 'Bank';
+        individual += '</h5>';
+        individual += '<div class="bankInput">';
+        individual += '<input type="text" id="calculateBank">';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div>';
+        individual += '<h5 class="detailTitle">';
+        individual += 'Account Number';
+        individual += '</h5>';
+        individual += '<div class="AccountNumberInput">';
+        individual += '<input type="text" id="calculateAccountNumber">';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div class="inputArea paypalArea">';
+        individual += '<h5 class="detailTitle">';
+        individual += 'PayPal ID(Your PayPal email)';
+        individual += '</h5>';
+        individual += '<div class="paypalInput">';
+        individual += '<input type="text" id="payPal">';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div class="uploadArea division">';
+        individual += '<div>';
+        individual += '<div class="title-btn">';
+        individual += '<h5 class="detailTitle">';
+        individual += 'ID Card';
+        individual += '</h5>';
+        individual += '<div>';
+        individual += `<input type="file" id="idCardFileUpload" onchange="fileListOutFunc(this, 'fileList1ID')">`;
+        individual += '<label for="idCardFileUpload">';
+        individual += '<strong>File Upload</strong>';
+        individual += '</label>';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div class="fileList" id="fileList1ID">';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '</div>';
+
+        return individual;
+    }
+
+    //사업자입력폼
+    function corporationForm(fileName1, fileName2) {
+        var corporation = "";
+
+        corporation += '<div class="corporationTab active">';
+        corporation += '<div class="inputArea">';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Company Name';
+        corporation += '</h5>';
+        corporation += '<div class="companyNameInput">';
+        corporation += '<input type="text" id="companyName">';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="inputArea">';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Address';
+        corporation += '</h5>';
+        corporation += '<div class="addressInput1 commonWidth">';
+        corporation += '<input type="text" id="addressCountry" placeholder="Country">';
+        corporation += '<input type="text" id="addressState" placeholder="State / Province">';
+        corporation += '</div>';
+        corporation += '<div class="addressInput2 commonWidth">';
+        corporation += '<input type="text" id="addressCity" placeholder="City">';
+        corporation += '<input type="text" id="addressStreet" placeholder="Street Address">';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="inputArea">';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Phone Number';
+        corporation += '</h5>';
+        corporation += '<div class="phoneNumberInput">';
+        corporation += '<input type="text" id="phoneNumber">';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="selectArea currencyArea">';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Currency';
+        corporation += '</h5>';
+        corporation += '<div class="selectBox1">';
+        corporation += '<div class="selectView">';
+        corporation += '<input id="billingPeriodCategory" type="button" value="Select">';
+        corporation += '<img src="/web/img/ICN_DROP.png" alt="">';
+        corporation += '</div>';
+        corporation += '<ul class="selectBox-hdnMenu basicInfoGenderBox" id="billingPeriodCategoryControl">';
+        corporation += '<li>';
+        corporation += '<input type="radio" value="USD" id="USD" name="USD" onclick="checkCalculateCurrencyType(\'USD\')">';
+        corporation += '<input type="radio" value="KRW" id="KRW" name="KRW" onclick="checkCalculateCurrencyType(\'KRW\')">';
+        corporation += '<label for="USD">';
+        corporation += '<span>USD(US$)</span>';
+        corporation += '</label>';
+        corporation += '<label for="KRW">';
+        corporation += '<span>KRW(원)</span>';
+        corporation += '</label>';
+        corporation += '</li>';
+        corporation += '</ul>';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="inputArea bankInfoArea division">';
+        corporation += '<div>';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Bank';
+        corporation += '</h5>';
+        corporation += '<div class="bankInput">';
+        corporation += '<input type="text" id="calculateBank">';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div>';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Account Number';
+        corporation += '</h5>';
+        corporation += '<div class="AccountNumberInput">';
+        corporation += '<input type="text" id="calculateAccountNumber">';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="inputArea paypalArea">';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'PayPal ID(Your PayPal email)';
+        corporation += '</h5>';
+        corporation += '<div class="paypalInput">';
+        corporation += '<input type="text" id="payPal">';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="uploadArea division">';
+        corporation += '<div>';
+        corporation += '<div class="title-btn">';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Certificate of<br/>';
+        corporation += 'Business Registration';
+        corporation += '</h5>';
+        corporation += '<div>';
+        corporation += `<input type="file" id="businessFileUpload" onchange="fileListOutFunc(this, 'fileList2ID')">`;
+        corporation += '<label for="businessFileUpload">';
+        corporation += '<strong>File Upload</strong>';
+        corporation += '</label>';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="fileList" id="fileList2ID">';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div>';
+        corporation += '<div class="title-btn">';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Passbooks Cover';
+        corporation += '</h5>';
+        corporation += '<div>';
+        corporation += `<input type="file" id="passBooksCoverFileUpload" onchange="fileListOutFunc(this, 'fileList3ID')">`;
+        corporation += '<label for="passBooksCoverFileUpload">';
+        corporation += '<strong>File Upload</strong>';
+        corporation += '</label>';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="fileList" id="fileList3ID">';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '</div>';
+
+        return corporation;
+    }
+
+    // ===============================================================
+    // 결제 설정 : testPaySetting Insert script
+    // ===============================================================
+    var payObject = {};
+    payObject.cardType = 'individual';
+    payObject.calculateCurrencyType = 'change';
+    var cardNumberSave = {};
+    cardNumberSave.oneFlag = 0;
+    cardNumberSave.twoFlag = 0;
+    cardNumberSave.threeFlag = 0;
+    cardNumberSave.fourFlag = 0;
+
+    // 카드 정보 암호화 함수
+    function cryptoCard(flag){
+        if(flag === 'cardNumber')
+        {
+            var cardNumberConcat = cardNumberSave.two + '' + cardNumberSave.three + '' + cardNumberSave.four;
+            return  SHA256(cardNumberConcat);
+        }
+        
+        if(flag === 'cardDate')
+        {
+            return SHA256(document.getElementById('cardDate').value.replace(' / ', ''));
+        }
+
+        if(flag === 'cardCVC')
+        {
+            return SHA256(document.getElementById('cardCVC').value);
+        }
+    }
+
+    function checkCardType(type){
+        payObject.cardType = type;
+        payObject.calculateCurrencyType = 'change';
+    }
+
+    // 주소 Object화 함수
+    function makeAddressObject(){
+        var addressObject = {};
+        addressObject.addressCountry = document.getElementById('addressCountry').value;
+        addressObject.addressState = document.getElementById('addressState').value;
+        addressObject.addressCity = document.getElementById('addressCity').value;
+        addressObject.addressStreet = document.getElementById('addressStreet').value;
+
+        return JSON.stringify(addressObject);
+    }
+
+    function checkCalculateCurrencyType(type){
+        payObject.calculateCurrencyType = type;
+        document.getElementById('billingPeriodCategory').value = payObject.calculateCurrencyType;
+        var temp = document.getElementById('billingPeriodCategoryControl').classList.remove('active');
+    }
+
+    function deleteFileListFunc(e, deleteID) {
+        $(e).parent().parent().parent().find('input').val('');
+
+        $('#' + deleteID).html('');
+    }
+    
+    function fileListOutFunc(e, appendID) {
+        var tempFilePath = $(e).val();
+        var findIndex = tempFilePath.lastIndexOf('\\');
+        var filePath = tempFilePath.substring(findIndex + 1, tempFilePath.length);
+
+        var fileNameHtml = `<dl class="file"><dt class="fileName">${filePath}</dt><dd class="fileDelBtn"><button onclick="deleteFileListFunc(this, '${appendID}')">Delete</button></dd></dl>`;
+
+        $('#' + appendID).html(fileNameHtml);
+    }
+    
+    function checkValue(){
+        if(document.getElementById('cardNumber1').value === '')
+        {
+            alert('카드 번호를 확인해주세요.');
+            return false;
+        }
+        if(document.getElementById('cardNumber1').value.length !== 4)
+        {
+            alert('카드 번호를 확인해주세요.');
+            return false;  
+        }
+        if(document.getElementById('cardNumber2').value === '')
+        {
+            alert('카드 번호를 확인해주세요.');
+            return false;
+        }
+        if(document.getElementById('cardNumber2').value.length !== 4)
+        {
+            alert('카드 번호를 확인해주세요.');
+            return false;  
+        }
+        if(document.getElementById('cardNumber3').value === '')
+        {
+            alert('카드 번호를 확인해주세요.');
+            return false;
+        }
+        if(document.getElementById('cardNumber3').value.length !== 4)
+        {
+            alert('카드 번호를 확인해주세요.');
+            return false;  
+        }
+        if(document.getElementById('cardNumber4').value === '')
+        {
+            alert('카드 번호를 확인해주세요.');
+            return false;
+        }
+        if(document.getElementById('cardNumber4').value.length !== 4)
+        {
+            alert('카드 번호를 확인해주세요.');
+            return false;  
+        }
+        if(document.getElementById('cardDate').value === '')
+        {
+            alert('카드의 유효기간을 확인해주세요.');
+            return false;
+        }
+        if(document.getElementById('cardCVC').value === '')
+        {
+            alert('카드의 CVC번호를 확인해주세요.');
+            return false;
+        }
+        if(payObject.cardType === 'individual')
+        {
+            if(document.getElementById('fullNameFirst').value === '')
+            {
+                alert('이름을 확인해주세요.');
+                return false;
+            }
+            if(document.getElementById('fullNameLast').value === '')
+            {
+                alert('이름을 확인해주세요.');
+                return false;
+            }
+        }
+        else
+        {
+            if(document.getElementById('companyName').value === '')
+            {
+                alert('회사명을 확인해주세요.');
+                return false;
+            }
+        }
+        if(document.getElementById('addressCountry').value === '')
+        {
+            alert('주소를 확인해주세요.');
+            return false;
+        }
+        if(document.getElementById('addressState').value === '')
+        {
+            alert('주소를 확인해주세요.');
+            return false;
+        }
+        if(document.getElementById('addressCity').value === '')
+        {
+            alert('주소를 확인해주세요.');
+            return false;
+        }
+        if(document.getElementById('addressStreet').value === '')
+        {
+            alert('주소를 확인해주세요.');
+            return false;
+        }
+        if(document.getElementById('phoneNumber').value === '')
+        {
+            alert('전화번호를 확인해주세요.');
+            return false;
+        }
+        if(payObject.calculateCurrencyType === null || payObject.calculateCurrencyType === undefined || payObject.calculateCurrencyType === '' || payObject.calculateCurrencyType === 'change')
+        {
+            alert('통화를 선택해주세요.');
+            return false;
+        }
+        if(document.getElementById('calculateBank').value === '')
+        {
+            alert('은행을 입력해주세요.');
+            return false;
+        }
+        if(document.getElementById('calculateAccountNumber').value === '')
+        {
+            alert('계좌번호를 입력해주세요.');
+            return false;
+        }
+        if(document.getElementById('payPal').value === '')
+        {
+            alert('PayPal ID를 입력해주세요.');
+            return false;
+        }
+        if(payObject.cardType === 'individual')
+        {
+            if(document.getElementById('idCardFileUpload').files.length <= 0)
+            {
+                alert('신분증을 업로드해주세요.');
+                return false;
+            }
+        }
+        else
+        {
+            if(document.getElementById('businessFileUpload').files.length <= 0)
+            {
+                alert('사업자 등록증을 업로드해주세요.');
+                return false;
+            }
+            if(document.getElementById('passBooksCoverFileUpload').files.length <= 0)
+            {
+                alert('통장사본을 업로드해주세요.');
+                return false;
+            }
+        }
+
+        if(payObject.cardType === 'individual') {
+            if(document.getElementById('idCardFileUpload').files.length > 0) {
+                return true;
+            }
+        } else {
+            if(document.getElementById('businessFileUpload').files.length > 0 && document.getElementById('passBooksCoverFileUpload').files.length > 0) {
+                return true;
+            }
+        }
+    }
+
+    function payInfoSave(hostType, introduceJsonObject, brandlocation, shareableSchedule){
+        if(checkValue()) {
+            var user = <%-user ? JSON.stringify(user) : {}%>;
+            payObject.protocol = 'payInfoSave';
+            payObject.userUID = user.userUID;
+            payObject.cardNumberFirst = cardNumberSave.one;
+            payObject.cardNumberHashing = cryptoCard('cardNumber');
+            payObject.cardDate = cryptoCard('cardDate');
+            payObject.cardCVC = cryptoCard('cardCVC');
+            payObject.address = makeAddressObject();
+            payObject.phoneNumber = document.getElementById('phoneNumber').value;
+            payObject.calculateBank = document.getElementById('calculateBank').value;
+            payObject.calculateAccountNumber = document.getElementById('calculateAccountNumber').value;
+            payObject.payPal = document.getElementById('payPal').value;
+
+            if(payObject.cardType === 'individual')
+            {
+                var nameObject = {};
+                nameObject.fullNameFirst = document.getElementById('fullNameFirst').value;
+                nameObject.fullNameLast = document.getElementById('fullNameLast').value;
+                payObject.fullName = JSON.stringify(nameObject);
+
+                if(document.getElementById('idCardFileUpload').files.length > 0)
+                {
+                    payObject.idCard = saveFileToServer('idCardFileUpload');
+                    console.log('ID Card File Path : ' + payObject.idCard);
+
+                    protocolSendAjaxWithCallBack(payObject, function(result){
+                        if(document.getElementById('type1').checked) {
+                            var brandAgree = 'agree';
+                        } else {
+                            var brandAgree = 'disagree';
+                        }
+
+                        var jsonObject = {};
+                        jsonObject.protocol = 'updateUsers';
+                        jsonObject.hostType = hostType;
+                        jsonObject.introduce = JSON.stringify(introduceJsonObject);
+                        jsonObject.brandlocation = JSON.stringify(brandlocation);
+                        jsonObject.brandplace = brandlocation.address;
+                        jsonObject.brandagree = brandAgree;
+                        jsonObject.brandDatetime = JSON.stringify(timeWrap);
+                        jsonObject.shareableSchedule = shareableScheduleDate;//console.log(timeWrap)실제 넣어야할 데이터
+                        //jsonObject.etc = etc;
+                        
+                        protocolSendAjaxWithCallBack(jsonObject, function(result) {
+                            if(result.resultCode == 0)
+                            {
+                                if(hostType != null)
+                                {
+                                    customModalClose(90);
+
+                                    var params = new URL(location.href);
+                                    var lang = params.searchParams.get("clang");
+
+                                    if(lang !== null)
+                                    {
+                                        urlLang = '?clang=' + lang;
+                                    }
+                                    else
+                                    {
+                                        var urlLang = '';
+                                    }
+                                    window.open('/hostStudio' + urlLang);
+                                    location.href = '/hostMain';
+                                        
+                                }
+                                else
+                                {
+                                    location.href="/";
+                                }
+                            }
+                            else
+                            {
+                                alert(result.message);
+                            }
+                        });
+                    });
+                }
+            }
+            if(payObject.cardType === 'corporation')
+            {
+                var nameObject = {};
+                nameObject.companyName = document.getElementById('companyName').value;
+                payObject.fullName = JSON.stringify(nameObject);
+
+                if(document.getElementById('businessFileUpload').files.length > 0 && document.getElementById('passBooksCoverFileUpload').files.length > 0)
+                {
+                    payObject.businessRegistration = saveFileToServer('businessFileUpload');
+                    console.log('Certificate of Busindess Registration File Path : ' + payObject.businessRegistration);
+
+                    payObject.passBooksCover = saveFileToServer('passBooksCoverFileUpload');
+                    console.log('PassBooksCover File Path : ' + payObject.passBooksCover);
+
+                    protocolSendAjaxWithCallBack(payObject, function(result){
+                        if(document.getElementById('type1').checked) {
+                            var brandAgree = 'agree';
+                        } else {
+                            var brandAgree = 'disagree';
+                        }
+
+                        var jsonObject = {};
+                        jsonObject.protocol = 'updateUsers';
+                        jsonObject.hostType = hostType;
+                        jsonObject.introduce = JSON.stringify(introduceJsonObject);
+                        jsonObject.brandlocation = JSON.stringify(brandlocation);
+                        jsonObject.brandplace = brandlocation.address;
+                        jsonObject.brandagree = brandAgree;
+                        jsonObject.brandDatetime = JSON.stringify(timeWrap);
+                        jsonObject.shareableSchedule = shareableScheduleDate;//console.log(timeWrap)실제 넣어야할 데이터
+                        //jsonObject.etc = etc;
+                        
+                        protocolSendAjaxWithCallBack(jsonObject, function(result) {
+                            if(result.resultCode == 0)
+                            {
+                                if(hostType != null)
+                                {
+                                    customModalClose(90);
+
+                                    var params = new URL(location.href);
+                                    var lang = params.searchParams.get("clang");
+
+                                    if(lang !== null)
+                                    {
+                                        urlLang = '?clang=' + lang;
+                                    }
+                                    else
+                                    {
+                                        var urlLang = '';
+                                    }
+                                    window.open('/hostStudio' + urlLang);
+                                    location.href = '/hostMain';
+                                        
+                                }
+                                else
+                                {
+                                    location.href="/";
+                                }
+                            }
+                            else
+                            {
+                                alert(result.message);
+                            }
+                        });
+                    });
+                }
+            }
+        }
+    }
+    
+    // Modal22 input에 숫자만 입력 가능하게하는 함수
+    $(document).on("input", "[id = cardNumber1], [id = cardNumber2], [id = cardNumber3], [id = cardNumber4], [id = cardDate], [id = cardCVC], [id = calculateAccountNumber], [id = phoneNumber]", function() {
+         this.value = this.value.replaceAll(/\D/g, "");
+         
+         // cardDate Value MM / YY 폼으로 변경
+         if(document.getElementById('cardDate').value.length === 4)
+         {
+            var temp1 = document.getElementById('cardDate').value.substring(0,2);
+            var temp2 = document.getElementById('cardDate').value.substring(2,4);
+            
+            document.getElementById('cardDate').value = temp1 + ' / ' + temp2;
+         }
+
+         // 카드번호 *로 치환
+         if(document.getElementById('cardNumber1').value.length === 4 && cardNumberSave.oneFlag === 0)
+         {
+            cardNumberSave.one = document.getElementById('cardNumber1').value;
+            cardNumberSave.oneFlag = 1;
+         }
+         else if(document.getElementById('cardNumber1').value.length !== 4)
+         {
+            cardNumberSave.oneFlag = 0;
+         }
+         if(document.getElementById('cardNumber2').value.length === 4 && cardNumberSave.twoFlag === 0)
+         {
+            cardNumberSave.two = document.getElementById('cardNumber2').value;
+            cardNumberSave.twoFlag = 1;
+            document.getElementById('cardNumber2').value = '****';
+         }
+         else if(document.getElementById('cardNumber2').value.length !== 4)
+         {
+            cardNumberSave.twoFlag = 0;
+         }
+         if(document.getElementById('cardNumber3').value.length === 4 && cardNumberSave.threeFlag === 0)
+         {
+            cardNumberSave.three = document.getElementById('cardNumber3').value;
+            cardNumberSave.threeFlag = 1;
+            document.getElementById('cardNumber3').value = '****';
+         }
+         else if(document.getElementById('cardNumber3').value.length !== 4)
+         {
+            cardNumberSave.threeFlag = 0;
+         }
+         if(document.getElementById('cardNumber4').value.length === 4 && cardNumberSave.fourFlag === 0)
+         {
+            cardNumberSave.four = document.getElementById('cardNumber4').value;
+            cardNumberSave.fourFlag = 1;
+            document.getElementById('cardNumber4').value = '****';
+         }
+         else if(document.getElementById('cardNumber4').value.length !== 4)
+         {
+            cardNumberSave.fourFlag = 0;
+         }
+    });
+
+    function closeModal90() {
+        $('#regHostMain').css('display', 'flex');
+        $('#regHostIntroduce').css('display', 'none');
+        $('#regHostAddress').css('display', 'none');
+        $('#regHostIntroduce').css('display', 'none');
+        document.getElementById('type1').checked = false;
+        $('#descArea').val('');
+        $('#expArea').val('');
+        $('#titlePlaceInput').val('');
+        $('#addressInput').val('');
+        $('.typeList > ul > li > button').removeClass('active');
+        $('.dateInfo > dl > dd').text('<%=translation.openClass.Please_select_a_date%>');
+        $('.entwizSoft-calendarContents > tr > td').removeClass('entwizSoft-active');
+        $('#datepicker > *').remove();
+        entwizCalendar.init("datepicker",option);
+        timeWrap = {};
+        $('.times input').each(function()
+        {
+            $(this).prop('checked',false)
+        });
+        $('.times').hide();
+    }
+
+    function closeModal22(flag) {
+        if(flag == 'closeModal') {
+            $('.modal22').fadeOut();
+        }
+        $('#cardNumber1').val('');
+        $('#cardNumber2').val('');
+        $('#cardNumber3').val('');
+        $('#cardNumber4').val('');
+        $('#cardDate').val('');
+        $('#cardCVC').val('');
+        $('.typeTabBtns > button').removeClass('active');
+        $('.individualBtn-on').click();
+        $('#companyName').val('');
+        $('#addressCountry').val('');
+        $('#addressState').val('');
+        $('#addressCity').val('');
+        $('#addressStreet').val('');
+        $('#phoneNumber').val('');
+        $('#billingPeriodCategory').val('Select');
+        $('#calculateBank').val('');
+        $('#calculateAccountNumber').val('');
+        $('#payPal').val('');
+        $('#businessFileUpload').val('');
+        $('#passBooksCoverFileUpload').val('');
+        $('#fullNameFirst').val('');
+        $('#fullNameLast').val('');
+        $('#idCardFileUpload').val('');
+    }
+</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATfYV535tXnxiEu1KCbvOlGx6IoqySFlA&callback=mindgroundMap"></script>

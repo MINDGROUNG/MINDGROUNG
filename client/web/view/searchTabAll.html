@@ -1,0 +1,161 @@
+<section>
+    <div class="contents">
+
+        <%
+            if(recommendList.result=='null')
+            {
+        %>
+            <!-- 결과가 없을 때 -->
+            <div class="results-0">
+                <div class="noResultsTextCon">
+                    <h4>
+                        We didn’t find any result.​
+                    </h4>
+                    <span>
+                        Take a look what we recommend​
+                    </span>
+                </div>
+                <ul class="btnCon">
+                    <li>
+                        <button onclick="allTabNoResultMsgBtnFunc('friends')">
+                            <strong>Recommended Friends​</strong>
+                            <i class="xi-angle-right"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="allTabNoResultMsgBtnFunc('classes')">
+                            <strong>Recommended Classes</strong>
+                            <i class="xi-angle-right"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="allTabNoResultMsgBtnFunc('gatherings')">
+                            <strong>Recommended Gatherings​</strong>
+                            <i class="xi-angle-right"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="allTabNoResultMsgBtnFunc('journals')">
+                            <strong>Recommended Journals​</strong>
+                            <i class="xi-angle-right"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        <%
+            } else {
+        %>
+
+        <!-- 결과가 있을 때 -->
+        <div class="results-1">
+            <%
+                if(userList.length > 0)
+                {
+            %>
+                <div class="friendsArea">
+                    <div class="commonTtitle">
+                        <strong>Friends​</strong>
+                        <p><span><%=userList.length%></span> Friends in total</p>
+                    </div>
+                    <div class="mainCon">
+                        <div class="friendList-list" id="allTabHostListDivID">
+                        </div>
+                    </div>
+                    <div class="seeAllBtn">
+                        <button onclick="allTabNoResultMsgBtnFunc('friends')">See All</button>
+                    </div>
+                </div>
+            <%
+            }
+
+            if(classList.length > 0) {
+            %>
+            <div class="classesArea">
+                <div class="commonTtitle">
+                    <strong>Classes</strong>
+                    <p><span><%= classList.length %></span> Classes in total</p>
+                </div>
+                <div class="mainCon">
+                    <div class="classes-content-slideWrap commonslideWrap">
+                        <div class="classesSlide afterLogin-commonSlide" id="allTabClassListDivID">
+                        </div>
+                    </div>
+                </div>
+                <div class="seeAllBtn">
+                    <button onclick="allTabNoResultMsgBtnFunc('classes')">See All</button>
+                </div>
+            </div>
+            <%
+            }
+
+            if(gatheringList.length > 0) {
+            %>
+            <div class="gatheringsArea">
+                <div class="commonTtitle">
+                    <strong>Gatherings</strong>
+                    <p><span><%= gatheringList.length %></span> Gatherings in total</p>
+                </div>
+                <div class="mainCon">
+                    <div class="gatheringsWrap" id="allTabGatheringListDivID">
+                    </div>
+                </div>
+                <div class="seeAllBtn">
+                    <button onclick="allTabNoResultMsgBtnFunc('gatherings')">See All</button>
+                </div>
+            </div>
+            <%
+            }
+
+            if(journalList.length > 0) {
+            %>
+            <div class="journalArea">
+                <div class="commonTtitle">
+                    <strong>Journal</strong>
+                    <p><span><%= journalList.length %></span> Journal in total</p>
+                </div>
+                <div class="mainCon">
+                    <div class="cardWrap">
+                        <div class="contentCards" id="allTabJournalListDivID">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="seeAllBtn journalSeeAll">
+                    <button onclick="allTabNoResultMsgBtnFunc('journals')">See All</button>
+                </div>
+            </div>
+            <%
+            }
+            %>
+        </div>
+    <%
+    }
+    %>
+    </div>
+</section>
+
+<script>
+    function allTabNoResultMsgBtnFunc(showTabName) {
+        switch(showTabName) {
+            case 'friends':
+                document.getElementById('searchNaviFriendTabBtnID').click();
+                break;
+            
+            case 'classes':
+                document.getElementById('searchNaviClassTabBtnID').click();
+                break;
+
+            case 'gatherings':
+                document.getElementById('searchNaviGatheringTabBtnID').click();
+                break;
+            
+            case 'journals':
+                document.getElementById('searchNaviJournalTabBtnID').click();
+                break;
+
+            default:
+                break;
+        }
+
+    }
+</script>

@@ -1,0 +1,329 @@
+<section class="hostStudioCommonLayout">
+    <article>
+        <div class="commonTitleArea">
+            <h2><%=translation.dashBoard.Followers%></h2>
+            <div class="sideContents followersTitleInner">
+                <div class="searchBox">
+                    <input type="text" id="searchFriend" placeholder=" <%=translation.followerManagement.Friend_Search%>" onkeyup="follwersSearchFunc(this.value)">
+                    <button class="serchBtn-On">
+                        <img src="/web/img/ICN_SEARCH.png" alt="">
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="mainContentsArea followers">
+            <div class="tabs">
+                <ul id="followersTabsControlID">
+                    <li>
+                        <button class="tabs-inner hostFollower tabsAll active" data-tabs="allList">
+                            <%=translation.dashBoard.All%>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="tabs-inner hostFollower tabsFriends" data-tabs="friendsList">
+                            <%=translation.followerManagement.My_Friends%>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="tabs-inner hostFollower tabsClass" data-tabs="classList">
+                            <%=translation.followerManagement.Class_Participants%>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="mainContents">
+                <div class="allList commonList hostFollower active" id = "followerAll">
+                    <div class="listWrap" id = "followListAll">
+                        <!-- <%
+                            for(var i = 0; i < 11; i++)
+                            {
+                        %>
+                        <div class="membersInfo">
+                            <div class="ringInfo">
+                                <div class="ring-hover">
+                                    <img src="/web/img/userRing/1.png" alt="">
+                                </div>
+                                <div class="text">
+                                    <h4>
+                                        Hannah Brown
+                                    </h4>
+                                    <p>
+                                        <%=translation.hostStudio.Teacher%>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="gtrfollowBtn">
+                                <button class="followBtn-on active">
+                                    <%=translation.followerManagement.Following%>
+                                </button>
+                            </div>
+                        </div>
+                        <%
+                            }
+                        %> -->
+                    </div>
+                    <div class="noneList" id = "noFollowerView" style="display: none">
+                        <strong>
+                            No followers yet​
+                        </strong>
+                    </div>
+                </div>
+                <div class="friendsList commonList hostFollower">
+                    <div class="listWrap" id="friendsList">
+                        <!-- <%
+                            for(var i = 0; i < 8; i++)
+                            {
+                        %>
+                        <div class="membersInfo">
+                            <div class="ringInfo">
+                                <div class="ring-hover">
+                                    <img src="/web/img/userRing/1.png" alt="">
+                                </div>
+                                <div class="text">
+                                    <h4>
+                                        Hannah Brown
+                                    </h4>
+                                    <p>
+                                        <%=translation.hostStudio.Teacher%>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="gtrfollowBtn">
+                                <button class="followBtn-on active">
+                                    <%=translation.followerManagement.Following%>
+                                </button>
+                            </div>
+                        </div>
+                        <%
+                            }
+                        %> -->
+                    </div>
+                    <div class="noneList" id = "noFriendsView" style="display: none">
+                        <strong>
+                            No friends yet​
+                        </strong>
+                    </div>
+                </div>
+                <div class="classList commonList hostFollower">
+                    <div class="listWrap" id = "classParticipantsList">
+                        <!-- <%
+                            for(var i = 0; i < 5; i++)
+                            {
+                        %>
+                        <div class="membersInfo">
+                            <div class="ringInfo">
+                                <div class="ring-hover">
+                                    <img src="/web/img/userRing/1.png" alt="">
+                                </div>
+                                <div class="text">
+                                    <h4>
+                                        Hannah Brown
+                                    </h4>
+                                    <p>
+                                        <%=translation.hostStudio.Teacher%>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="gtrfollowBtn">
+                                <button class="followBtn-on active">
+                                    <%=translation.followerManagement.Following%>
+                                </button>
+                            </div>
+                        </div>
+                        <%
+                            }
+                        %> -->
+                    </div>
+                    <div class="noneList" id= "noClassParticipantsList" style="display: none">
+                        <strong>
+                            No participant yet​
+                        </strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>
+<script>
+
+    //탭버튼
+    $('.tabs-inner').click(function() {
+        $('.tabs-inner.hostFollower').removeClass('active');
+        $(this).each(function() {
+            $(this).addClass('active')
+        })
+        $('.commonList.hostFollower').removeClass('active');
+        $('.'+$(this).data('tabs')+'').addClass('active');
+
+        document.getElementById('searchFriend').value = '';
+        follwersSearchFunc('', 'reset');
+    });
+
+    //팔로우버튼
+    // window.addEventListener('load', function() {
+    function followButtonActive(){
+        var followBtn = document.getElementsByClassName('followBtn-on');
+        for(var i = 0; i < followBtn.length; i++)
+        {
+            var activeStateChk = followBtn[i].classList.contains('active');
+            activeStateChk ? followBtn[i].innerHTML = "<%=translation.followerManagement.Follow%>" : followBtn[i].innerHTML = "<%=translation.followerManagement.Following%>";
+            followBtn[i].addEventListener('click', function(e){
+                var activeChk = e.currentTarget.classList.contains('active');
+                this.classList.toggle('active');
+                activeChk ? e.currentTarget.innerHTML = "<%=translation.followerManagement.Following%>" : e.currentTarget.innerHTML = "<%=translation.followerManagement.Follow%>";
+            })
+        }
+    }
+    // });
+
+    var followListUid= [];
+
+    function getFollowList(){
+
+        var jsonObject = {};
+        jsonObject.protocol = 'getFollowList'
+
+        protocolSendAjaxWithCallBack(jsonObject, function(result){
+            console.log(JSON.stringify(result.followList[0]));
+            makeFollowList(result.followList)
+        })
+        
+    }
+
+    function makeFollowList(followList){
+        var followListHtml = '';
+        var follow = '';
+        
+        for(var i = 0; i<followList.length; i++){
+            follow=followList[i];
+            followListUid.push(follow.targetUID);
+            followListHtml += `<div class="membersInfo">
+                                <div class="ringInfo">
+                                    <div class="ring-hover">
+                                        <img src="/web/img/userRing/${follow.targetUID}.png" alt="">
+                                    </div>
+                                    <div class="text searchUserNameCheckClass">
+                                        <h4>${follow.targetName}</h4>
+                                        <p>
+                                            ${(follow.targetHostType!=null)?follow.targetHostType:''}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="gtrfollowBtn">
+                                    <button class="followBtn-on" onclick="followUser('${follow.targetUID}', '${follow.targetName}', ' ${(follow.targetHostType!=null)?follow.targetHostType:''}', this)">
+                                        <%=translation.followerManagement.Following%>
+                                    </button>
+                                </div>
+                            </div>`;
+
+        }
+        if(followList.length<1){
+            document.getElementById('noFollowerView').style.display='';
+            document.getElementById('noFriendsView').style.display='';
+        }else{
+            document.getElementById('followListAll').innerHTML=followListHtml;
+            document.getElementById('friendsList').innerHTML=followListHtml;
+
+        }
+        makeParticipateList()
+    }
+
+    function makeParticipateList(){
+       
+        var listClassObject = <%-JSON.stringify(listClassObject)%>;
+        var participantsList= []
+        for(var i = 0; i<listClassObject.length; i++){
+            for(var j=0; j<listClassObject[i].participants.length; j++){
+                console.log('get list')
+                console.log(listClassObject[i].participants[j])
+                participantsList.push(listClassObject[i].participants[j])
+            }
+        }
+        var addedUidList = [];
+        var participantsListHtml ='';
+        participantsList.forEach(function(participant){
+            if(!addedUidList.includes(participant.userUID)){
+                addedUidList.push(participant.userUID);
+                participantsListHtml += makeParticipantInfo(participant);
+            }
+        })
+        if(participantsList.length<1){
+            document.getElementById('noClassParticipantsList').style.display='';
+        }else{
+            document.getElementById('classParticipantsList').innerHTML = participantsListHtml;
+        }
+        followButtonActive()
+    }
+
+    function makeParticipantInfo(participant){
+        console.log(followListUid + '           $##########################get uid');
+        console.log(participant.userUID+  '           uid')
+        var isFollowed = followListUid.includes(participant.userUID)?'':'active';
+        console.log(isFollowed + ' $########################')
+        var participantInfo = ` <div class="membersInfo">
+                            <div class="ringInfo">
+                                <div class="ring-hover">
+                                    <img src="/web/img/userRing/${participant.userUID}.png" alt="">
+                                </div>
+                                <div class="text">
+                                    <h4>${participant.userName}</h4>
+                                    <p>
+                                        ${participant.userHostType!=undefined?participant.userHostType:''}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="gtrfollowBtn">
+                                <button class="followBtn-on ${isFollowed}" onclick="followUser('${participant.userUID}', '${participant.userName}', '${participant.userHostType!=undefined?participant.userHostType:''}', this)">
+                                    <%=translation.followerManagement.Following%>
+                                </button>
+                            </div>
+                        </div>`
+        return participantInfo;
+    }
+
+
+    // function followUser(userUID, userName, userType, e){
+    //     console.log(e.classList.contains('followed'))
+    //     var jsonObject = {};
+    //     if(!e.classList.contains('active')){
+    //         console.log('remove follow')
+    //         jsonObject.protocol = 'removeFollow';
+    //     }else{
+    //         jsonObject.protocol = 'followUser';
+    //     }
+    //     jsonObject.targetUID = userUID;
+    //     jsonObject.targetName = userName;
+    //     jsonObject.targetType = userType;
+    //     protocolSendAjaxWithCallBack(jsonObject, function(result){
+    //         console.log(result);
+    //     })
+    // }
+
+    function follwersSearchFunc(userKeyValue, type) {
+        if(type== 'reset') {
+            $('.membersInfo').css('display', 'flex');
+            return;
+        }
+
+        $('#followersTabsControlID > li').find('button').each(function() {
+            if($(this).hasClass('tabsAll')) {
+                $(this).addClass('active');
+                $('.'+$(this).data('tabs')+'').addClass('active');
+            } else {
+                $(this).removeClass('active');
+                $('.'+$(this).data('tabs')+'').removeClass('active');
+            }
+        });
+
+        $('.searchUserNameCheckClass').find('h4').each(function() {
+            var checkUserName = $(this).text();
+            var searchUserName = userKeyValue;
+
+            if(!checkUserName.includes(searchUserName)) {
+                $(this).closest('.membersInfo').css('display', 'none');
+            } else {
+                $(this).closest('.membersInfo').css('display', 'flex');
+            }
+        });
+    }
+</script>

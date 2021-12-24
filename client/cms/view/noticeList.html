@@ -1,0 +1,177 @@
+<%
+    //----------------공지사항 리스트 페이지----------------
+
+    //**************************************************
+    // 공지사항 전체 데이터
+    // -------------------------------------------------
+    // noticeUID :  기본키
+    // state :      상태값 (0: 노출중, 1: 삭제)
+    // title :      제목
+    // contents :   내용
+    // regDate :    작성일
+    // uptDate :    수정일
+    //**************************************************
+    /*let listNotice = [
+        {
+            'noticeUID': 1,
+            'state': 0,
+            'title': 'test1',
+            'contents': 'test1',
+            'regDate': '2021-07-15 00:00:00',
+            'uptDate': '2021-07-15 00:00:00'
+        },
+        {
+            'noticeUID': 2,
+            'state': 0,
+            'title': 'test2',
+            'contents': 'test2',
+            'regDate': '2021-07-15 00:00:00',
+            'uptDate': '2021-07-15 00:00:00'
+        },
+        {
+            'noticeUID': 3,
+            'state': 0,
+            'title': 'test3',
+            'contents': 'test3',
+            'regDate': '2021-07-15 00:00:00',
+            'uptDate': '2021-07-15 00:00:00'
+        },
+        {
+            'noticeUID': 4,
+            'state': 0,
+            'title': 'test4',
+            'contents': 'test4',
+            'regDate': '2021-07-15 00:00:00',
+            'uptDate': '2021-07-15 00:00:00'
+        },
+        {
+            'noticeUID': 5,
+            'state': 0,
+            'title': 'test5',
+            'contents': 'test5',
+            'regDate': '2021-07-15 00:00:00',
+            'uptDate': '2021-07-15 00:00:00'
+        }
+    ];*/
+
+
+    
+    //**************************************************
+    // 사용 함수
+    //**************************************************
+    // 공지사항 등록페이지 이동 함수
+    // goInsertNotice()
+    
+    // 공지사항 수정페이지 이동 함수
+    // goUpdateNotice(notice.noticeUID)
+
+    // 공지사항 삭제 함수
+    // deleteNotice(notice.noticeUID)
+%>
+
+<!DOCTYPE html>
+<html lang="ko">
+    <%-include common/commonHead.html%>
+    <body>
+        <%-include common/commonHeader.html%>
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+        <!-- START CONTENT -->
+        <div class="content">
+            <!-- Start Page Header -->
+            <div class="page-header">
+                <h1 class="title">Blank Page</h1>
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="#">Extra Pages</a></li>
+                    <li class="active">Blank Page</li>
+                </ol>
+                <!-- End Page Header Right Div -->
+            </div>
+            <!-- End Page Header -->
+            <div class="row presentation">
+                <div class="col-lg-8 col-md-6 titles">
+                    
+                    <span class="icon color10-bg"><i class="fa fa-table"></i></span>
+                    <h1>샘플 레이아웃</h1>
+                    <h4>추가가 필요한 레이아웃은 요청하기</h4>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <ul class="list-unstyled list">
+                        <li><i class="fa fa-check"></i>데이터 테이블 적용</li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+            <!-- START CONTAINER -->
+            <div class="container-default">
+                <div class="row">
+                    <div class="col-12">
+                        <button style="float: right; margin-bottom: 40px;" type="button" onclick="goInsertNotice();" class="btn btn-primary">등록</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-title">
+                                공지사항
+                            </div>
+
+                            <div class="panel-body table-responsive">
+                                <table id="example" class="table display">
+                                    <thead>
+                                        <tr>
+                                            <th style="max-width: 140px;">NO</th>
+                                            <th>제목</th>
+                                            <th>등록일</th>
+                                            <th style="max-width: 100px;">상세</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%
+                                            for(var i = 0; i < listNotice.length; i++)
+                                            {
+                                                let notice = listNotice[i];
+                                        %>
+                                            <tr>
+                                                <td><%=notice.noticeUID%></td>
+                                                <td><%=notice.title%></td>
+                                                <td><%=moment(notice.regDate).format('YYYY-MM-DD')%></td>
+                                                <td>
+                                                    <button type="button" style="margin: 5px;" class="btn btn-outline-success m-b-xs" onclick="goUpdateNotice('<%=notice.noticeUID%>')">수정</button>
+                                                    <button type="button" style="margin: 5px;" class="btn btn-outline-danger m-b-xs" onclick="deleteNotice('<%=notice.noticeUID%>')">삭제</button>
+                                                </td>
+                                            </tr>
+                                        <%
+                                            }
+                                        %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END CONTAINER -->
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+            <%-include common/commonFooter.html%>
+        </div>
+        <!-- End Content -->
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+        <%-include common/commonScript.html%>
+        <script>
+        ///////////데이터 테이블//////////////
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'excel', 'print'
+                ]
+            });
+        });
+        ///////////데이터 테이블//////////////
+        </script>
+    </body>
+</html>

@@ -1,0 +1,407 @@
+<!-- 푸터팝업1 (500*450) -->
+<div class="modal modal23">
+    <div>
+        <div class="modalContents">
+            <div class="getContents">
+                <!-- 팝업내용들어오는곳 -->
+            </div>
+            <div class="closeBtn">
+                <p>
+                    Do not show again today
+                </p>
+                <button onclick="customModalClose(23)">
+                    <img src="/web/img/ICN_CLOSE_20.png" alt="">
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 푸터팝업2 (500*450) -->
+<div class="modal modal24">
+    <div>
+        <div class="modalContents">
+            <div class="getContents">
+                <!-- 팝업내용들어오는곳 -->
+            </div>
+            <div class="closeBtn">
+                <p>
+                    Do not show  for 7days
+                </p>
+                <button onclick="customModalClose(24)">
+                    <img src="/web/img/ICN_CLOSE_20.png" alt="">
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 푸터팝업3 (500*550) -->
+<div class="modal modal26">
+    <div>
+        <div class="modalContents">
+            <div class="getContents">
+                <!-- 팝업내용들어오는곳 -->
+            </div>
+            <div class="closeBtn">
+                <p>
+                    Do not show again today
+                </p>
+                <button onclick="customModalClose(25)">
+                    <img src="/web/img/ICN_CLOSE_20.png" alt="">
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 푸터팝업4 (500*550) -->
+<div class="modal modal26">
+    <div>
+        <div class="modalContents">
+            <div class="getContents">
+                <!-- 팝업내용들어오는곳 -->
+            </div>
+            <div class="closeBtn">
+                <p>
+                    Do not show  for 7days
+                </p>
+                <button onclick="customModalClose(25)">
+                    <img src="/web/img/ICN_CLOSE_20.png" alt="">
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- contactUs 모달 -->
+<%- include ../contactUsModal.html%>
+
+<div class="footerWrap">
+    <footer>
+        <div class="top">
+            <h4>
+                <a href="/">
+                    <img src="/web/img/header/logo.png" alt="">
+                </a>
+            </h4>
+            <div class="siteMap">
+                <ul>
+                    <li class="siteMap-title">
+                        MIND GROUND
+                    </li>
+                    <li class="siteMap-link">
+                        <a href="/aboutUs">
+                            <%=translation.footer.About_us%>
+                        </a>
+                    </li>
+                    <li class="siteMap-link">
+                        <a href="/announcement">
+                            <%=translation.footer.Announcement%>
+                        </a>
+                    </li>
+                    <li class="siteMap-link">
+                        <a href="/footerSupport">
+                            <%=translation.footer.Support%>
+                        </a>
+                    </li>
+                    <li class="siteMap-link">
+                        <a href="/careers">
+                            <%=translation.footer.Career%>
+                            
+                        </a>
+                    </li>
+                    <li class="siteMap-link">
+                        <a onclick="customModal(27)">
+                            <%=translation.footer.Contact_us%>
+                        </a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="siteMap-title">
+                        <%=translation.footer.OUR_GROUND%>
+                    </li>
+                    <li class="siteMap-link">
+                        <a href="/classMain">
+                            <%=translation.footer.Class%>
+                        </a>
+                    </li>
+                    <li class="siteMap-link">
+                        <a href="/hostMain">
+                            <%=translation.footer.Host%>
+                        </a>
+                    </li>
+                    <li class="siteMap-link">
+                        <a href="/gatheringMain">
+                            <%=translation.footer.Gathering%>
+                        </a>
+                    </li>
+                    <li class="siteMap-link">
+                        <a href="/journalMain">
+                            <%=translation.footer.Journal%>
+                        </a>
+                    </li>
+                    <li class="siteMap-link">
+                        <%
+                            if(user.hasOwnProperty('userName')){
+                        %>
+                                <a href="javascript:avoid(0)">
+                        <%
+                            }else{
+                                %>
+                                <a onclick="customModal(100)">
+                        <%
+                             }
+                        %>
+                            <%=translation.footer.Messenger%>
+                        </a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="siteMap-title">
+                        <%=translation.footer.MY_GROUND%>
+                    </li>
+
+
+                <%
+                    if(user.hasOwnProperty('userName')){
+                %>
+
+                    <li class="siteMap-link" onclick="checkisUserMyPageInFooter()">
+                        <a href="javascript:avoid(0)">
+                            <%=translation.footer.My_Page%>
+                        </a>
+                    </li>
+                    <li class="siteMap-link" onclick="moveToSettedMyPage('classTab')">
+                        <a href="javascript:avoid(0)">
+                            <%=translation.footer.My_Classes%>
+                        </a>
+                    </li>
+                    <li class="siteMap-link"  onclick="moveToSettedMyPage('gatheringTab')">
+                        <a href="javascript:avoid(0)">
+                            <%=translation.footer.My_Gatherings%>
+                        </a>
+                    </li>
+                    <li class="siteMap-link" onclick="alert('개인 수련을 위한 어플리케이션 준비중입니다.')">
+                        <a href="javascript:avoid(0)">
+                            <%=translation.footer.My_Practice%>
+                        </a>
+                    </li>
+                    <li class="siteMap-link"  onclick="moveToSettedMyPage('journalTab')">
+                        <a href="javascript:avoid(0)">
+                            <%=translation.footer.My_Journals%>
+                        </a>
+                    </li>
+                    <li class="siteMap-link"  onclick="moveToSettedMyPage('favoritesTab')">
+                        <a href="javascript:avoid(0)">
+                            <%=translation.footer.My_Favorites%>
+                        </a>
+                    </li>
+                    <li class="siteMap-link" onclick="checkisUserHostInheader()">
+                        <a href="javascript:avoid(0)">
+                            <%=translation.footer.Host_Studio%>
+                        </a>
+                    </li>
+                <%
+                    }else{
+                %>
+                    <li class="siteMap-link" onclick="customModal(100)">
+                        <a href="javascript:avoid(0)">
+                            <%=translation.footer.My_Page%>
+                        </a>
+                    </li>
+                    <li class="siteMap-link" onclick="customModal(100)">
+                        <a href="javascript:avoid(0)">
+                            <%=translation.footer.My_Classes%>
+                        </a>
+                    </li>
+                    <li class="siteMap-link"  onclick="customModal(100)">
+                        <a href="javascript:avoid(0)">
+                            <%=translation.footer.My_Gatherings%>
+                        </a>
+                    </li>
+                    <li class="siteMap-link" onclick="customModal(100)">
+                        <a href="javascript:avoid(0)">
+                            <%=translation.footer.My_Practice%>
+                        </a>
+                    </li>
+                    <li class="siteMap-link"  onclick="customModal(100)">
+                        <a href="javascript:avoid(0)">
+                            <%=translation.footer.My_Journals%>
+                        </a>
+                    </li>
+                    <li class="siteMap-link"  onclick="customModal(100)">
+                        <a href="javascript:avoid(0)">
+                            <%=translation.footer.My_Favorites%>
+                        </a>
+                    </li>
+                    <li class="siteMap-link" onclick="customModal(100)">
+                        <a href="javascript:avoid(0)">
+                            <%=translation.footer.Host_Studio%>
+                        </a>
+                    </li>
+                <%
+                    }
+                %>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <div class="bottom">
+        <div class="leftSide">
+            <div class="btns">
+                <button onclick="location.href='/footerTerms'">
+                    <%=translation.footer.Terms_of_Service%>
+                </button>
+                <button onclick="location.href='/footerPrivacyPolicy'">
+                    <%=translation.footer.Privacy_Policy%>
+                </button>
+            </div>
+            <div class="textInfo">
+                <ul class="textInfo-top">
+                    <li>(주)마인드그라운드 주소 :서울특별시 종로구 삼봉로 81, 1125호</li>
+                    <li>대표자 : 김아정</li>
+                    <li>개인정보보호책임 : 김아정</li>
+                </ul>
+                <ul class="textInfo-bottom">
+                    <li>사업자등록번호 : 193-87-01864</li>
+                    <li>통신판매업신고 : 제 2020-서울종로-0968호</li>
+                    <li>대표전화 : 02-2231-2011</li>
+                    <li>대표메일 : platform@mindd.co.kr</li>
+                </ul>
+            </div>
+        </div>
+        <div class="rightSide">
+            <div class="changeSelectBox">
+                <div class="langChange">
+                    <div class="selectBox1">
+                        <div class="selectView">
+                            <input id="langCategory" type="button" value="<%=translation.changeLang%>">
+                            <img src="/web/img/ICN_DROP.png" alt="">
+                        </div>
+                        <ul class="selectBox-hdnMenu langCategoryBox">
+                            <li>
+                                <input type="radio" value="English" id="changeLang" name="changeLang" onclick="changeVal('<%=translation.changeLang==="한국어"?"English":"한국어"%>')">
+                                <label for="changeLang">
+                                    <span id="changeLangText"><%=translation.changeLang==="한국어"?"English":"한국어"%></span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="unitChange">
+                    <div class="selectBox1">
+                        <div class="selectView">
+                            <input id="langCategoryMoney" type="button" value="<%=translation.changeMoney%>">
+                            <img src="/web/img/ICN_DROP.png" alt="">
+                        </div>
+                        <ul class="selectBox-hdnMenu" id="changeMoneyUlID">
+                            <li>
+                                <input type="radio" id="changeMoneyValue" name="changeUnit" onclick="changeMoneyValueFunc('<%=translation.changeMoney === "KRW (원)" ? "USD (US$)" : "KRW (원)"%>')">
+                                <label for="changeMoneyValue">
+                                    <span id="changeMoneyText"><%=translation.changeMoney === "KRW (원)" ? "USD (US$)" : "KRW (원)"%></span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button>
+                    <%=translation.footer.Follow_us%>
+                </button>
+                <div>
+                    <button onclick="window.open('https://www.instagram.com/mindgroundkorea/')">
+                        <img src="/web/img/footer/ing_instagrame_lagrge.png" alt="">
+                    </button>
+                    <button onclick="window.open('https://www.youtube.com/channel/UCA3wrucnOgDN6iVrihbG1FA')">
+                        <img src="/web/img/footer/ing_youtube_large.png" alt="">
+                    </button>
+                    <button onclick="window.open('https://www.facebook.com/mindxground/')">
+                        <img src="/web/img/footer/icn_facebook_large.png" alt="">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    //셀렉박스 온/오프 옵션박스 외부 클릭시 오프
+    // window.addEventListener('click', changeCategoryOnoff);
+    // function changeCategoryOnoff(e) 
+    // {
+    //     var langCategory = document.getElementById('langCategory');
+    //     var langCategoryBox = document.querySelector('.langCategoryBox');
+    //     if(langCategory == e.target)
+    //     {
+    //         langCategoryBox.classList.add('active');
+    //     }
+    //     else
+    //     {
+    //         langCategoryBox.classList.remove('active');
+    //     }
+    // }
+
+    function changeVal(lang) 
+    {
+        var url = '';
+        if(lang === '한국어')
+        {
+            url += '?clang=ko';
+            window.location.href = url
+        }
+        else
+        {
+            url += '?clang=en';
+            window.location.href = url
+        }
+    }
+
+    function moveToSettedMyPage(targetTap){
+        sessionStorage.setItem('targetTap', targetTap);
+        location.href="/myPage"
+    }
+
+    function checkisUserMyPageInFooter(){
+        var user = <%-user ? JSON.stringify(user) :{} %>;
+
+        if(user.userUID)
+        {
+            window.location.href='/mypage';
+        }
+    }
+    
+    if(sessionStorage.getItem('footerMoneySession') != null && sessionStorage.getItem('footerMoneySession') != undefined && sessionStorage.getItem('footerMoneySession') != document.getElementById('langCategoryMoney').value) {
+        document.getElementById('changeMoneyValue').click();
+    }
+
+    function changeMoneyValueFunc(checkMoney) {
+        if(checkMoney == 'KRW (원)') {
+            if(document.getElementById('classPriceArea') != null && document.getElementById('classPriceArea') != undefined && document.getElementById('classPriceArea').innerText != 'Free' && document.getElementById('classPriceArea').innerText != '') {
+                var getPrice = (document.getElementById('classPriceArea').innerText).replace('$', '');
+                document.getElementById('classPriceArea').innerText = (getPrice * 1100).toFixed(0) + '₩';
+            }
+            
+            document.getElementById('langCategoryMoney').value = checkMoney;
+            document.getElementById('changeMoneyValue').setAttribute('onclick', 'changeMoneyValueFunc("USD (US$)")');
+            document.getElementById('changeMoneyText').innerText = 'USD (US$)';
+            
+            var footerMoneySessionData = 'KRW (원)';
+            sessionStorage.setItem('footerMoneySession', footerMoneySessionData);
+        } else {
+            if(document.getElementById('classPriceArea') != null && document.getElementById('classPriceArea') != undefined && document.getElementById('classPriceArea').innerText != 'Free' && document.getElementById('classPriceArea').innerText != '') {
+                var getPrice = (document.getElementById('classPriceArea').innerText).replace('₩', '');
+                document.getElementById('classPriceArea').innerText = (getPrice / 1100).toFixed(2) + '$';
+            }
+
+            document.getElementById('langCategoryMoney').value = checkMoney;
+            document.getElementById('changeMoneyValue').setAttribute('onclick', 'changeMoneyValueFunc("KRW (원)")');
+            document.getElementById('changeMoneyText').innerText = 'KRW (원)';
+
+            var footerMoneySessionData = 'USD (US$)';
+            sessionStorage.setItem('footerMoneySession', footerMoneySessionData);
+        }
+
+        document.getElementById('changeMoneyUlID').classList.remove('active');
+    }
+</script>

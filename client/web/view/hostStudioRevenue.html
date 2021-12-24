@@ -1,0 +1,1000 @@
+<div class="modal modal35">
+    <div>
+        <div class="fixInfo">
+            <div class="icon-text">
+                <strong>
+                    Refund Request​
+                </strong>
+            </div>
+            <div class="xBtn">
+                <button onclick="customModalClose(35)">
+                    <i class="xi-close"></i>
+                </button>
+            </div>
+        </div>
+        <div class="contents">
+            <h5 class="clssTitle">
+                Class Title TXTTXTTXTXTTXTTXTTXTTXT​
+            </h5>
+            <div class="refundDetail">
+                <dl class="refundDetail-type">
+                    <dt>
+                        Specify witch type of refund​
+                    </dt>
+                    <dd>
+                        Specify witch type of refund​
+                    </dd>
+                </dl>
+                <dl class="refundDetail-text">
+                    <dt>
+                        Tell us the detailed refund reason​
+                    </dt>
+                    <dd>
+                        detailed refund reason​​detailed refund reason​​detailed refund reason​
+                        detailed refund reason​​detailed refund reason​​detailed refund reason​
+                        detailed refund reason​​detailed refund reason​​detailed refund reason​
+                        detailed refund reason​​detailed refund reason​​detailed refund reason​
+                        detailed refund reason​​detailed refund reason​​detailed refund reason​
+                    </dd>
+                </dl>
+            </div>
+            <div class="okBtn">
+                <button class="okBtn-on">
+                    OK
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="hostStudioCommonLayout">
+    <article>
+        <div class="commonTitleArea">
+            <div class="revenueTitle">
+                <h2><%=translation.dashBoard.Revenue%></h2>
+                <button class="refundDerail-on">
+                    <strong class="text">
+                        <%=translation.Revenue.Refund%>
+                    </strong>
+                    <span class="stateBall"></span>
+                </button>
+            </div>
+            <div class="sideContents revenueTitleInner">
+                <div class="selectWrap">
+                    <button class="getDateBtn-on">
+                        <div>
+                            <strong class="getText" id="revenueSearchDateID"></strong>
+                        </div>
+                        <span class="icon">
+                            <img src="/web/img/ICN_DROP.png" alt="">
+                        </span>
+                    </button>
+                    <div class="hdnSelectBox">
+                        <div class="moTitleArea">
+                            <div>
+                                <img src="/web/img/down.png" alt="">
+                            </div>
+                            <div>
+                                <button>
+                                    <img src="/web/img/btn_close_small.png" alt="">
+                                </button>
+                                <h5>Time Period</h5>
+                            </div>
+                        </div>
+                        <div class="selectArea">
+                            <div class="select-cate-date">
+                                <span class="cateText">
+                                    <%=translation.dashBoard.All%>
+                                </span>
+                                <strong class="dateNumber">
+                                    <!-- 2020.05.01 ~ 2021.12.01 -->
+                                </strong>
+                            </div>
+                            <div class="chkBoxList" id="revenueCheckBoxParentID">
+                                <div class="chkbox">
+                                    <input type="radio" id="all_Revenue" name="dateChk" checked>
+                                    <label for="all_Revenue">
+                                        <span class="box"></span>
+                                        <span class="text"><%=translation.dashBoard.All%></span>
+                                    </label>
+                                </div>
+                                <div class="chkbox">
+                                    <input type="radio" id="yesterday_Revenue" name="dateChk">
+                                    <label for="yesterday_Revenue">
+                                        <span class="box"></span>
+                                        <span class="text"><%=translation.dashBoard.Yesterday%></span>
+                                    </label>
+                                </div>
+                                <div class="chkbox">
+                                    <input type="radio" id="last7_Revenue" name="dateChk">
+                                    <label for="last7_Revenue">
+                                        <span class="box"></span>
+                                        <span class="text"><%=translation.dashBoard.Last_7_days%></span>
+                                    </label>
+                                </div>
+                                <div class="chkbox">
+                                    <input type="radio" id="last30_Revenue" name="dateChk">
+                                    <label for="last30_Revenue">
+                                        <span class="box"></span>
+                                        <span class="text"><%=translation.dashBoard.Last_30_days%></span>
+                                    </label>
+                                </div>
+                                <div class="chkbox">
+                                    <div>
+                                        <input type="radio" id="selectPeriod_Revenue" name="dateChk">
+                                        <label for="selectPeriod_Revenue">
+                                            <span class="box"></span>
+                                            <span class="text"><%=translation.dashBoard.Select_period%></span>
+                                        </label>
+                                    </div>
+                                    <div class="rawInputBox hostStudioPickDate">
+                                        <div>
+                                            <input type="text" id="revenueUserInputLastDateID" readonly>
+                                            <button class="calBoxBtn-on" id="revenuePickerControlBtn" onclick="revenueDatePickerBoxControlFunc('last')">
+                                                <img src="/web/img/ICN_CALENDAR.png" alt="">
+                                            </button>
+                                            <div id="revenueLastDatePickerBoxID" style="display: none;">
+                                                <!-- 캘린더영역 -->
+                                            </div>
+                                        </div>
+                                        <span>~</span>
+                                        <div>
+                                            <input type="text" id="revenueUserInputRecentDateID" readonly>
+                                            <button class="calBoxBtn-on" id="revenuePickerControlBtn" onclick="revenueDatePickerBoxControlFunc('recent')">
+                                                <img src="/web/img/ICN_CALENDAR.png" alt="">
+                                            </button>
+                                            <div id="revenueRecentDatePickerBoxID" style="display: none;">
+                                                <!-- 캘린더영역 -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="saveArea">
+                            <button class="saveBtn-on" onclick="checkedChoiceSearch('revenue')">
+                                <%=translation.dashBoard.Save%>
+                            </button>
+                        </div>
+                        <div class="onlyFixed"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mainContentsArea revenue">
+            <div class="revenue-main">
+                <div class="top">
+                    <div class="revenueGraph" id="revenueChartParentID">
+                        <div class="innerTitle">
+                            <h5><%=translation.dashBoard.Revenue%></h5>
+                        </div>
+                        <div class="innerDetail">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="revenueNumber">
+                        <div class="revenueNumber-tr">
+                            <h6><%=translation.dashBoard.Total_Revenue%></h6>
+                            <div class="detail">
+                                <strong id="reveTotalRevenueValueID">
+                                    <!-- 사용자 언어에 맞는 기본 금액에 들어와야한다. -->
+                                    0
+                                </strong>
+                                <span id="reveTotalRevenueControlID">
+                                    <%=translation.dashBoard.Money%>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="revenueNumber-ua">
+                            <h6><%=translation.Revenue.Unsettled_amount%></h6>
+                            <div class="detail">
+                                <strong id="reveUnsetValueID">
+                                    <!-- 사용자 언어에 맞는 기본 금액에 들어와야한다. -->
+                                    0
+                                </strong>
+                                <span id="reveUnsetControlID">
+                                    <%=translation.dashBoard.Money%>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="revenueNumber-ni">
+                            <h6><%=translation.Revenue.Net_Income%></h6>
+                            <div class="detail">
+                                <strong id="reveNetValueID">
+                                    <!-- 사용자 언어에 맞는 기본 금액에 들어와야한다. -->
+                                    0
+                                </strong>
+                                <span id="reveNetControlID">
+                                    <%=translation.dashBoard.Money%>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="titleArea">
+                        <h3>
+                            <%=translation.Revenue.Total_Revenue_Table%>
+                        </h3>
+                        <button class="dwnBtn-on">
+                            <%=translation.Revenue.Download_Excel%>
+                        </button>
+                    </div>
+                    <div class="tableInfo" id="payResultClassListDivID">
+                        <div class="scrollWrap">
+                            <div class="tableDetail" id="payResultClassListAppendDivID">
+                            </div>
+                            <div class="paging" id="payResultClassListPaging">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="revenue-refund" id="payResultClassDetailDivID" style="display: none;">
+                        <div class="tableInfo" >
+                            <div class="scrollWrap">
+                                <div class="tableDetail" id="payResultClassDetailAppendDivID">
+                                    <!-- 여기가 표 그리는곳 -->  
+                                </div>
+                            </div>
+                        </div>
+                        <div class="paging" id="payResultClassDetailPaging">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>
+
+<script>
+    try{
+        var kgPayResult = <%- kgPayResult ? JSON.stringify(kgPayResult) : {} %>;
+        var revenueClassObject = <%- listClassObject ? JSON.stringify(listClassObject) : {} %>;
+        var payResultDistinctArray = <%- payResultDistinctArray ? JSON.stringify(payResultDistinctArray) : {} %>;
+        var kgPayResultDistinctCount = payResultDistinctArray.length;
+        
+        if(kgPayResultDistinctCount % 5 != 0) {
+            var classListPagingCount = Math.floor(kgPayResultDistinctCount / 5) + 1;
+        } else {
+            var classListPagingCount = Math.floor(kgPayResultDistinctCount / 5);
+        }
+        
+    }catch(e){
+        console.log(e)
+    }
+        
+        drawClassListFunc(0, 4, kgPayResultDistinctCount);
+        multiPagingFunc(0, 4, classListPagingCount, 'classList', kgPayResultDistinctCount);
+
+    // 사이트의 언어를 확인한다.
+    var dashCheckParams = new URL(location.href);
+    var dashCheckLang = dashCheckParams.searchParams.get("clang");
+    var checkCurrency = '';
+
+    if(dashCheckLang == 'en') {
+        checkCurrency = 'USD';
+    } else {
+        checkCurrency = 'WON';
+    }
+
+    var userClassTotalPrice = 0;
+    for(var i = 0; i < kgPayResult.length; i++) {
+        if(checkCurrency != kgPayResult[i].currency) {
+            if(checkCurrency == 'USD') {
+                userClassTotalPrice = Number(userClassTotalPrice) + Number(kgPayResult[i].totalPrice) / 1100;
+            } else {
+                userClassTotalPrice = Number(userClassTotalPrice) + Number(kgPayResult[i].totalPrice) * 1100;
+            }
+        } else {
+            userClassTotalPrice = Number(userClassTotalPrice) + Number(kgPayResult[i].totalPrice);
+        }
+    }
+
+    document.getElementById('dashBoardTotalClassSellCountID').innerText = kgPayResult.length;
+    document.getElementById('dashTotalRevenueValueID').innerText = userClassTotalPrice;
+    document.getElementById('reveTotalRevenueValueID').innerText = userClassTotalPrice;
+
+    selectDateMake('', '', 'allDay');
+    selectDateMake('', '', 'allDay', 'revenue');
+
+    function checkedChoiceSearch(checkPage) {
+        if(checkPage == 'dashBoard') {
+            $('#dashBoardCheckBoxParentID').find('input[type="radio"]').each(function(e) {
+                if(this.checked == true) {
+                    document.getElementById('chartCanvusParentID').innerHTML = '';
+                    document.getElementById('chartCanvusParentID').innerHTML = '<canvas id="chart"></canvas>';
+                    
+
+                    var tempCheckedID = $(this).attr('id');
+
+                    if(tempCheckedID == 'all_dashboad') {
+                        selectDateMake('', '', 'allDay');
+                    }
+
+                    if(tempCheckedID == 'yesterday_dashboad') {
+                        selectDateMake('', '', 'yesterDay');
+                    }
+
+                    if(tempCheckedID == 'last7_dashboad') {
+                        selectDateMake('', '', 'last7Day');
+                    }
+
+                    if(tempCheckedID == 'last30_dashboad') {
+                        selectDateMake('', '', 'last30Day');
+                    }
+
+                    if(tempCheckedID == 'selectPeriod_dashboad') {
+                        var tempUserLastDate = document.getElementById('userInputLastDateID').value;
+                        var tempUserRecentDate = document.getElementById('userInputRecentDateID').value;
+
+                        var parseTempUserLastDate = tempUserLastDate.split('-');
+                        var parseTempUserRecentDate = tempUserRecentDate.split('-');
+
+                        var checkDate1 = new Date(parseTempUserLastDate[0], parseTempUserLastDate[1] - 1, parseTempUserLastDate[2]);
+                        var checkDate2 = new Date(parseTempUserRecentDate[0], parseTempUserRecentDate[1] - 1, parseTempUserRecentDate[2]);
+
+                        if(checkDate1 > checkDate2) {
+                            alert('날짜를 확인해주세요.');
+                            selectDateMake('', '', 'allDay');
+                            return false;
+                        } else if(checkDate1.getFullYear() == checkDate2.getFullYear() && checkDate1.getMonth() == checkDate2.getMonth() && checkDate1.getDate() == checkDate2.getDate()) {
+                            selectDateMake(checkDate1, checkDate2, 'selectPeriodHours');
+                        } else {
+                            selectDateMake(checkDate1, checkDate2, 'selectPeriod');
+                        }
+                    }
+                }
+            });
+        } else {
+            $('#revenueCheckBoxParentID').find('input[type="radio"]').each(function(e) {
+                if(this.checked == true) {
+                    document.getElementById('revenueChartParentID').innerHTML = '';
+                    document.getElementById('revenueChartParentID').innerHTML = '<canvas id="revenueChart"></canvas>';
+                    
+
+                    var tempCheckedID = $(this).attr('id');
+
+                    if(tempCheckedID == 'all_Revenue') {
+                        selectDateMake('', '', 'allDay', 'revenue');
+                    }
+
+                    if(tempCheckedID == 'yesterday_Revenue') {
+                        selectDateMake('', '', 'yesterDay', 'revenue');
+                    }
+
+                    if(tempCheckedID == 'last7_Revenue') {
+                        selectDateMake('', '', 'last7Day', 'revenue');
+                    }
+
+                    if(tempCheckedID == 'last30_Revenue') {
+                        selectDateMake('', '', 'last30Day', 'revenue');
+                    }
+
+                    if(tempCheckedID == 'selectPeriod_Revenue') {
+                        var tempUserLastDate = document.getElementById('revenueUserInputLastDateID').value;
+                        var tempUserRecentDate = document.getElementById('revenueUserInputRecentDateID').value;
+
+                        var parseTempUserLastDate = tempUserLastDate.split('-');
+                        var parseTempUserRecentDate = tempUserRecentDate.split('-');
+
+                        var checkDate1 = new Date(parseTempUserLastDate[0], parseTempUserLastDate[1] - 1, parseTempUserLastDate[2]);
+                        var checkDate2 = new Date(parseTempUserRecentDate[0], parseTempUserRecentDate[1] - 1, parseTempUserRecentDate[2]);
+
+                        if(checkDate1 > checkDate2) {
+                            alert('날짜를 확인해주세요.');
+                            selectDateMake('', '', 'allDay', 'revenue');
+                            return false;
+                        } else if(checkDate1.getFullYear() == checkDate2.getFullYear() && checkDate1.getMonth() == checkDate2.getMonth() && checkDate1.getDate() == checkDate2.getDate()) {
+                            selectDateMake(checkDate1, checkDate2, 'selectPeriodHours', 'revenue');
+                        } else {
+                            selectDateMake(checkDate1, checkDate2, 'selectPeriod', 'revenue');
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    function selectDateMake(userLastDate, userRecentDate, userSelectType, chartType) {
+        var nowDate = new Date();
+        var allDateObject = {};
+        for(var i = nowDate.getFullYear() - 10; i <= nowDate.getFullYear(); i++) {
+            if((i % 4 == 0 && i % 100 != 0) || i % 400 == 0) {
+                allDateObject[i] = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            } else {
+                allDateObject[i] = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            }
+        }
+
+        // 날짜를 가져온다.
+        var getRecentDate = '';
+        var getLastDate = '';
+        
+        var recentDate = '';
+        var lastDate = '';
+
+        if(userSelectType == 'allDay') {
+            getRecentDate = nowDate;
+            if(kgPayResult == null || kgPayResult == undefined || kgPayResult == '' || Object.keys(kgPayResult).length < 1) {
+                lastDate = new Date(nowDate.getFullYear(), (nowDate.getMonth()), nowDate.getDate() - 15);
+            } else {
+                getLastDate = kgPayResult[kgPayResult.length - 1].createdAt;
+                lastDate = new Date(getLastDate);
+            }
+            recentDate = new Date(getRecentDate);
+        } else if(userSelectType == 'yesterDay'){
+            recentDate = nowDate;
+            
+            if(Number(nowDate.getDate() - 1) == 0) {
+                if(nowDate.getMonth() == 0) {
+                    lastDate = new Date(nowDate.getFullYear() - 1, 11, allDateObject[nowDate.getFullYear() - 1][11])
+                } else {
+                    lastDate = new Date(nowDate.getFullYear(), nowDate.getMonth() - 1, allDateObject[nowDate.getFullYear()][nowDate.getMonth()]);
+                }
+            } else {
+                lastDate = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate() - 1);
+            }
+        } else if(userSelectType == 'last7Day' || userSelectType == 'last30Day') {
+            recentDate = nowDate;
+
+            var tempLastDay = 0;
+            if(userSelectType == 'last7Day') {
+                tempLastDay = 7;
+            } else {
+                tempLastDay = 30;
+            }
+
+            var tempCalcDate = Number(nowDate.getDate() - Number(tempLastDay - 1));
+            if(tempCalcDate <= 0) {
+                var tempCalcGetYear = 0;
+                var tempCalcGetMonth = 0;
+
+                while(tempCalcDate <= 0) {
+                    if(nowDate.getMonth() - 1 < 0) {
+                        tempCalcDate = Number(tempCalcDate) + Number(allDateObject[nowDate.getFullYear() - 1][11]);
+                        tempCalcGetYear = nowDate.getFullYear() - 1;
+                        tempCalcGetMonth = 11;
+                    } else {
+                        tempCalcDate = Number(tempCalcDate) + Number(allDateObject[nowDate.getFullYear()][nowDate.getMonth() - 1]);
+                        tempCalcGetYear = nowDate.getFullYear();
+                        tempCalcGetMonth = nowDate.getMonth() - 1;
+                    }
+                }
+
+                lastDate = new Date(tempCalcGetYear, tempCalcGetMonth, tempCalcDate);
+            } else {
+                lastDate = new Date(nowDate.getFullYear(), nowDate.getMonth(), tempCalcDate);
+            }
+        } else {
+            lastDate = userLastDate;
+            recentDate = userRecentDate;
+        }
+
+        // 1일을 ms 단위로 변환한다.
+        var oneDayMs = 24 * 60 * 60 * 1000;
+
+        var recentDateMs = calcDate(recentDate);
+        var lastDateMs = calcDate(lastDate);
+
+        var totalDate = Math.round((recentDateMs - lastDateMs) / oneDayMs);    
+
+        // All Date 조회
+        // 일수를 나누어 가로축의 평균 값을 구한다.
+        // 해당 년도의 일수를 구한다.
+        
+        for(var i = lastDate.getFullYear(); i <= recentDate.getFullYear(); i++) {
+            if((i % 4 == 0 && i % 100 != 0) || i % 400 == 0) {
+                allDateObject[i] = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            } else {
+                allDateObject[i] = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            }
+        }
+
+        makeObjectDateFunc(allDateObject, totalDate, lastDate, userSelectType, chartType);
+    }
+
+    function makeObjectDateFunc(allDateObject, totalDate, lastDate, userSelectType, chartType) {
+        // 날짜를 만든다.
+        var makeDate = [];
+        if(userSelectType != 'yesterDay' && userSelectType != 'selectPeriodHours') {
+            for(var i = 0; i <= totalDate; i++) {
+                var yearCount = lastDate.getFullYear();
+                var monthCount = lastDate.getMonth();
+                
+                var tempDate = lastDate.getDate() + i;
+
+                if(tempDate > allDateObject[yearCount][monthCount]) {
+                    while(tempDate > allDateObject[yearCount][monthCount]) {
+                        tempDate = tempDate - allDateObject[yearCount][monthCount];
+                        
+                        monthCount++;
+
+                        if(monthCount == 12) {
+                            yearCount++;
+                            monthCount = 0;
+                        }
+                    }
+                }
+
+                makeDate.push(yearCount + '/' + Number(monthCount + 1) + '/' + tempDate);
+            }
+
+            var searchBarLastDate = makeDate[0].replaceAll('/', '.');
+            var searchBarRecentDate = makeDate[makeDate.length - 1].replaceAll('/', '.');
+
+            if(chartType == 'revenue') {
+                document.getElementById('revenueSearchDateID').innerText = searchBarLastDate + ' ~ ' + searchBarRecentDate;
+            } else {
+                document.getElementById('dashBoardSearchDateID').innerText = searchBarLastDate + ' ~ ' + searchBarRecentDate;
+            }
+
+            var tempWidthData = {};
+            for(var i = 0; i < makeDate.length; i++) {
+                var tempArray = [];
+                var tempDateFormat = makeDate[i].replaceAll('/', '');
+
+                for(var j = kgPayResult.length - 1; j >= 0; j--) {
+                    if(kgPayResult[j].applDate == tempDateFormat) {
+                        tempArray.push(kgPayResult[j].totalPrice);
+                    }
+                }
+
+                tempWidthData[makeDate[i]] = tempArray;
+            }
+
+        } else {
+            makeDate = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24];
+            var tempYesterDayDate = new Date();
+
+            if (userSelectType == 'yesterDay') {
+                if(chartType == 'revenue') {
+                    document.getElementById('revenueSearchDateID').innerText = tempYesterDayDate.getFullYear() + '.' + (tempYesterDayDate.getMonth() + 1) + '.' + (tempYesterDayDate.getDate() - 1) + ' ~ ' + tempYesterDayDate.getFullYear() + '.' + (tempYesterDayDate.getMonth() + 1) + '.' + (tempYesterDayDate.getDate() - 1);
+                } else {
+                    document.getElementById('dashBoardSearchDateID').innerText = tempYesterDayDate.getFullYear() + '.' + (tempYesterDayDate.getMonth() + 1) + '.' + (tempYesterDayDate.getDate() - 1) + ' ~ ' + tempYesterDayDate.getFullYear() + '.' + (tempYesterDayDate.getMonth() + 1) + '.' + (tempYesterDayDate.getDate() - 1);
+                }
+
+            } else {
+                tempYesterDayDate = lastDate;
+                if(chartType == 'revenue') {
+                    document.getElementById('revenueSearchDateID').innerText = tempYesterDayDate.getFullYear() + '.' + (tempYesterDayDate.getMonth() + 1) + '.' + (tempYesterDayDate.getDate()) + ' ~ ' + tempYesterDayDate.getFullYear() + '.' + (tempYesterDayDate.getMonth() + 1) + '.' + (tempYesterDayDate.getDate());
+                } else {
+                    document.getElementById('dashBoardSearchDateID').innerText = tempYesterDayDate.getFullYear() + '.' + (tempYesterDayDate.getMonth() + 1) + '.' + (tempYesterDayDate.getDate()) + ' ~ ' + tempYesterDayDate.getFullYear() + '.' + (tempYesterDayDate.getMonth() + 1) + '.' + (tempYesterDayDate.getDate());
+                }
+                
+            }
+
+            var tempWidthData = {};
+            for(var i = 0; i < makeDate.length; i++) {
+                var tempArray = [];
+
+                for(var j = kgPayResult.length - 1; j >= 0; j--) {
+                    var tempKgPayDate = new Date(kgPayResult[j].createdAt);
+                    
+                    if(tempKgPayDate.getFullYear() == lastDate.getFullYear() && tempKgPayDate.getMonth() == lastDate.getMonth() && tempKgPayDate.getDate() == lastDate.getDate()) {
+                        if(makeDate[i] == 0) {
+                            if(makeDate[i] == tempKgPayDate.getHours()) {
+                                tempArray.push(kgPayResult[j].totalPrice);
+                            }
+                        } else if(makeDate[i] == 24) {
+                            if(makeDate[i] == tempKgPayDate.getHours()) {
+                                tempArray.push(kgPayResult[j].totalPrice);
+                            }
+                        } else {
+                            if(makeDate[i - 1] < tempKgPayDate.getHours() && makeDate[i] >= tempKgPayDate.getHours()) {
+                                tempArray.push(kgPayResult[j].totalPrice);
+                            }
+                        }
+                    }
+                }
+
+                tempWidthData[makeDate[i]] = tempArray;
+            }
+        }
+
+        makeChartDataFunc(tempWidthData, userSelectType, chartType);
+    }
+
+    function makeChartDataFunc(tempWidthData, userSelectType, chartType) {
+        var widthData = [];
+        var heightData = [];
+        if(userSelectType != 'yesterDay' && userSelectType != 'selectPeriodHours') {
+            if(Object.keys(tempWidthData).length > 1 && Object.keys(tempWidthData).length < 15) {
+                for(var key in tempWidthData) {
+                    var tempKeySplit = key.split('/');
+                    var tempKey = tempKeySplit[1] + '/' + tempKeySplit[2];
+                    widthData.push(tempKey);
+                    
+                    var sumPrice = 0;
+                    for(var i = 0; i < tempWidthData[key].length; i++) {
+                        if(tempWidthData[key][i] != 0) {
+                            var tempPrice = tempWidthData[key][i];
+
+                            sumPrice = Number(sumPrice) + Number(tempPrice);
+                        }
+                    }
+
+                    heightData.push(sumPrice);
+                }
+            } else {
+                var tempDivision = Object.keys(tempWidthData).length / 15;
+
+                var tempIndex = 0;
+                var sumPrice = 0;
+                for(var key in tempWidthData) {
+                    var checkLength = Object.keys(tempWidthData).length;
+                    var tempKeySplit = key.split('/');
+                    var tempKey = tempKeySplit[1] + '/' + tempKeySplit[2];
+                    for(var i = 0; i < tempWidthData[key].length; i++) {
+                        if(tempWidthData[key][i] != 0) {
+                            var tempPrice = tempWidthData[key][i];
+
+                            sumPrice = Number(sumPrice) + Number(tempPrice);
+                        }
+                    }
+
+                    if(tempIndex == 0 || (checkLength - 1) == tempIndex) {
+                        widthData.push(tempKey);
+                        heightData.push(sumPrice);
+                        tempIndex++;
+                        sumPrice = 0;
+                        continue;
+                    } 
+
+                    if(tempIndex % Math.round(tempDivision) == 0) {
+                        widthData.push(tempKey);
+                        heightData.push(sumPrice);
+                        sumPrice = 0;
+                    } 
+
+                    tempIndex++
+                }
+            }
+
+        } else {
+            var tempIndex = 0;
+            var sumPrice = 0;
+            for(var key in tempWidthData) {
+                var tempKey = ('0' + key).slice(-2) + ':' + '00';
+                widthData.push(tempKey);
+
+                var sumPrice = 0;
+                for(var i = 0; i < tempWidthData[key].length; i++) {
+                    if(tempWidthData[key][i] != 0) {
+                        var tempPrice = tempWidthData[key][i];
+
+                        sumPrice = Number(sumPrice) + Number(tempPrice);
+                    }
+                }
+
+                heightData.push(sumPrice);
+            }
+        }
+
+        makingChartFunc(widthData, heightData, chartType);
+    }
+
+    function makingChartFunc(widthData, heightData, chartType) {
+        var chart = '';
+        if(chartType == 'revenue') {
+            chart = document.getElementById("revenueChart").getContext("2d");
+        } else {
+            chart = document.getElementById("chart").getContext("2d");
+        }
+        var purple_gradient = chart.createLinearGradient(50, 0, 50, 250);
+        purple_gradient.addColorStop(0, '#8053ff');
+        purple_gradient.addColorStop(0.5, '#aba9ff');
+        purple_gradient.addColorStop(1, 'rgba(239, 239, 255, 0.4)');
+
+        const barChar = new Chart(chart, {
+            type: "bar", // pie, line, donut, polarArea ...
+            data: {
+                labels: widthData,
+                datasets: [
+                    {
+                        label: '',
+                        data: heightData,
+                        backgroundColor: purple_gradient,
+                        barPercentage: 0.3
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false, //레이블 표시 유무
+                    },
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false, //x축 라인 유무
+                        },
+                        ticks: {
+                            color: "rgba(255, 255, 255, 1)", //x축 폰트 컬러
+                            
+                        },
+                    },
+                    y: {
+                        grid: {
+                            color: "rgba(174, 172, 255, 0.4)", //y축 라인 컬러
+                        },
+                        ticks: {
+                            color: "rgba(255, 255, 255, 1)", //y축 폰트 컬러
+                            // stepSize: 100, //축 간격
+                        },
+                    }
+                }
+            }
+        });    
+    }
+
+    window.onload = function() {
+        window.myLine = new Chart(chart, options);
+        Chart.defaults.global.defaultFontColor = "#fff";
+        // Chart.defaults.global.defaultFontFamily = "Fira Sans";
+    };
+
+    // 날짜를 ms 단위로 변환하는 함수
+    function calcDate(date) {
+        return date.getFullYear() * 31557600000 + date.getMonth() * 2629800000 + date.getDate() * 86400000;
+    }
+
+    function dashBoardDatePickerBoxControlFunc(pickerName) {
+        document.getElementById('selectPeriod_dashboad').checked = true;
+
+        if(pickerName == 'last') {
+            if(document.getElementById('dashBoardLastDatePickerBoxID').style.display =='none') {
+                document.getElementById('dashBoardLastDatePickerBoxID').style.display = 'block';
+            } else {
+                document.getElementById('dashBoardLastDatePickerBoxID').style.display = 'none';
+            }
+        } else {
+            if(document.getElementById('dashBoardRecentDatePickerBoxID').style.display =='none') {
+                document.getElementById('dashBoardRecentDatePickerBoxID').style.display = 'block';
+            } else {
+                document.getElementById('dashBoardRecentDatePickerBoxID').style.display = 'none';
+            }
+        }
+    }
+
+    function revenueDatePickerBoxControlFunc(pickerName) {
+        document.getElementById('selectPeriod_Revenue').checked = true;
+
+        if(pickerName == 'last') {
+            if(document.getElementById('revenueLastDatePickerBoxID').style.display =='none') {
+                document.getElementById('revenueLastDatePickerBoxID').style.display = 'block';
+            } else {
+                document.getElementById('revenueLastDatePickerBoxID').style.display = 'none';
+            }
+        } else {
+            if(document.getElementById('revenueRecentDatePickerBoxID').style.display =='none') {
+                document.getElementById('revenueRecentDatePickerBoxID').style.display = 'block';
+            } else {
+                document.getElementById('revenueRecentDatePickerBoxID').style.display = 'none';
+            }
+        }
+    }
+
+    function drawClassListFunc(startIndex, endIndex, maxIndex, e) {
+        document.getElementById('payResultClassListAppendDivID').innerHTML = '';
+
+        if(e != 'active') {
+            $('#payResultClassListPaging').find('li').each(function() {
+                $(this).removeClass('active');
+            });
+
+            $(e).parent().addClass('active');
+        }
+
+        if(endIndex >= maxIndex - 1) {
+            endIndex = maxIndex - 1;
+        }
+
+        var classListHtml = `
+            <div class="tableTitle commonLine">
+                <div class="area1 commonArea">
+                    <%=translation.Revenue.Number%>
+                </div>
+                <div class="area2 commonArea">
+                    <%=translation.Revenue.Class_Title%>
+                </div>
+                <div class="area3 commonArea">
+                    <%=translation.Revenue.Total_Participants%>
+                </div>
+                <div class="area3 commonArea">
+                    <%=translation.Revenue.Revenue%>
+                </div>
+                <div class="area3 commonArea">
+                    <%=translation.Revenue.Net_Income%>
+                </div>
+                <div class="area3 commonArea">
+                    <%=translation.Revenue.Refund_Value%>
+                </div>
+                <div class="area3 commonArea">
+                </div>
+            </div>`;
+
+        for(var i = startIndex; i <= endIndex; i++) {
+            var tempData = payResultDistinctArray[i].split('/');
+            var tempClassObject = {};
+
+            for(var j = 0; j < revenueClassObject.length; j++) {
+                if(tempData[0] == revenueClassObject[j]._id) {
+                    tempClassObject = revenueClassObject[j];
+                    break;
+                }
+            }
+
+            classListHtml+= `
+              <div class="tableContents commonLine"">
+                    <div class="area1 commonArea-contents">${i + 1}</div>
+                    <div class="area2 commonArea-contents classThumbArea">
+                        <div class="classThumb">
+                            <div class="classThumb-img" style="background-image: url('${tempClassObject.classObject.thumbNailMain.filePath}');">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="title">
+                                <h5>${tempClassObject.classObject.title}</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="area3 commonArea-contents">${(tempClassObject.participants).length}</div>
+                    <div class="area3 commonArea-contents">${tempData[1]} <%=translation.dashBoard.Money%></div>
+                    <div class="area3 commonArea-contents"><%=translation.dashBoard.Money%></div>
+                    <div class="area3 commonArea-contents"><%=translation.dashBoard.Money%></div>
+                    <div class="area3 commonArea-contents">
+                        <button class="detailsBtn-on" onclick="drawClassDetailFunc('${tempData[0]}')"><%=translation.Revenue.Details%></button>
+                    </div>
+            </div>`;
+        }
+
+        document.getElementById('payResultClassListAppendDivID').innerHTML += classListHtml;
+    }
+
+    function multiPagingFunc(startPaging, endPaging, maxPaging, pagingType, totalCount) {
+        var pagingHtmlID = '';
+        var pagingType = pagingType;
+        if(pagingType == 'classList') {
+            pagingHtmlID = 'payResultClassListPaging';
+            drawFuncName = 'drawClassListFunc';
+        } else {
+            pagingHtmlID = 'payResultClassDetailPaging';
+            drawFuncName = 'classDetailDisplayFunc';
+        }
+
+        document.getElementById(pagingHtmlID).innerHTML = '';
+
+        if(endPaging >= maxPaging - 1) {
+            endPaging = maxPaging - 1;
+        }
+
+        var classListPagingHtml = `<ul>`;
+
+        if(startPaging == 0) {
+            classListPagingHtml += `<li class="arrowBtn left" style="display: none;">`;
+        } else {
+            classListPagingHtml += `<li class="arrowBtn left">`;
+        }
+        
+        classListPagingHtml += `
+            <button onclick="multiPagingFunc(${startPaging - 5}, ${startPaging - 1}, ${maxPaging}, '${pagingType}', ${totalCount})">
+                <i class="xi-angle-left-thin"></i>
+            </button>
+        </li>`;
+
+        for(var i = startPaging; i <= endPaging; i++) {
+            if(i == startPaging) {
+                classListPagingHtml += `<li class="numBtn active"><button onclick="${drawFuncName}(${i * 5}, ${i * 5 + 4}, ${totalCount}, this)">${i + 1}</button></li>`;
+            } else {
+                classListPagingHtml += `<li class="numBtn"><button onclick="${drawFuncName}(${i * 5}, ${i * 5 + 4}, ${totalCount}, this)">${i + 1}</button></li>`;
+            }
+        }
+        
+        if(endPaging == maxPaging - 1) {
+            classListPagingHtml += `<li class="arrowBtn right"style="display: none;">`;
+        } else {
+            classListPagingHtml += `<li class="arrowBtn right">`;
+        }
+
+        classListPagingHtml +=`
+                <button onclick="multiPagingFunc(${startPaging + 5}, ${startPaging + 9}, ${maxPaging}, '${pagingType}', ${totalCount})">
+                    <i class="xi-angle-right-thin"></i>
+                </button>
+            </li>
+        </ul>`;
+
+        document.getElementById(pagingHtmlID).innerHTML = classListPagingHtml;
+    }
+
+    function drawClassDetailFunc(classID) {
+        document.getElementById('payResultClassDetailAppendDivID').innerHTML = '';
+        var classDetailCount = 0;
+        
+        var classDetailHtml = `
+            <div class="tableTitle commonLine">
+                <div class="areaNo commonArea">
+                    <%=translation.Revenue.Number%>
+                </div>
+                <div class="areaDate commonArea">
+                    <%=translation.openClass.Date%>
+                </div>
+                <div class="area4 commonArea">
+                    <%=translation.Revenue.Revenue%>
+                </div>
+                <div class="area4 commonArea">
+                    <%=translation.Revenue.Net_Income%>
+                </div> 
+                <div class="area4 commonArea">
+                    <%=translation.Revenue.Refund_Value%>
+                </div>
+            </div>
+            `;
+
+        for(var i = 0; i < kgPayResult.length; i++) {
+            classDetailCount++;
+            if(kgPayResult[i].goodUID == classID) {
+                if(kgPayResult[i].currency == 'WON') {
+                    var tempCurrency = '<%=translation.dashBoard.KRW%>';                    
+                } else {
+                    var tempCurrency = '<%=translation.dashBoard.$%>';                    
+                }
+                
+                var tempResultDate = new Date(kgPayResult[i].createdAt);
+                
+                if(i < 5) {
+                    classDetailHtml += `<div class="tableTitle commonLine classDetailList" id="classDetail${i}" style="display: flex;">`;
+                } else {
+                    classDetailHtml += `<div class="tableTitle commonLine classDetailList" id="classDetail${i}" style="display: none;">`;
+                }
+                classDetailHtml += `
+                        <div class="areaNo commonArea">
+                            <strong>${i + 1}</strong>
+                        </div>
+                        <div class="areaDate commonArea">
+                            ${tempResultDate.getFullYear() + '.' + Number(tempResultDate.getMonth() + 1) + '.' + tempResultDate.getDate()}
+                        </div>
+                        <div class="area4 commonArea">
+                            ${kgPayResult[i].totalPrice} ${tempCurrency}
+                        </div>
+                        <div class="area4 commonArea">
+                            ${tempCurrency}
+                        </div>
+                        <div class="area4 commonArea">
+                            ${tempCurrency}
+                        </div>
+                    </div>`;
+            }
+        }
+
+        if(classDetailCount % 5 != 0) {
+            var detailPagingCount = classDetailCount / 5 + 1;
+        } else {
+            var detailPagingCount = classDetailCount / 5;
+        }
+        multiPagingFunc(0, 4, detailPagingCount, 'classDetail', classDetailCount);
+
+        document.getElementById('payResultClassDetailAppendDivID').innerHTML = classDetailHtml;
+
+        document.getElementById('payResultClassListDivID').style.display = 'none';
+        document.getElementById('payResultClassDetailDivID').style.display = 'block';
+    }
+
+    function classDetailDisplayFunc(startIndex, endIndex, temp, e) {
+        var classDetailCount = $('#payResultClassDetailAppendDivID .classDetailList').length;
+        $('#payResultClassDetailAppendDivID .classDetailList').css('display', 'none');
+
+        $('#payResultClassDetailPaging').find('li').each(function() {
+            $(this).removeClass('active');
+        });
+
+        $(e).parent().addClass('active');
+
+        if(endIndex >= (classDetailCount - 1)) {
+            endIndex = (classDetailCount - 1);
+        }
+
+        for(var i = startIndex; i <= endIndex; i++) {
+            $('#classDetail' + i).css('display', 'flex');
+        }
+    }
+</script>

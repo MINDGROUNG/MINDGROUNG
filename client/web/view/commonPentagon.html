@@ -1,0 +1,227 @@
+<canvas class="pentagonGraph" width="260" height="250"></canvas>
+
+<%
+    
+    if(listClassObject.length < 1 ) {
+        listClassObject.push(ClassObject)
+    }
+%>
+<script>
+    var listpentagonGraph = document.querySelectorAll(".pentagonGraph");
+    var classObject = <%-JSON.stringify(listClassObject)%>
+
+
+    for(var i = 0 ; i < listpentagonGraph.length ; i++)
+    {
+        var canvas = listpentagonGraph[i];
+        var context =  canvas.getContext("2d");
+        var thisClassObject = classObject[i].classObject
+        //x = x좌표
+        //y = y좌표
+        //n = n변수(오각형)
+        //r = 반지름
+        //style = 스타일정의
+        function drawPath(x, y, n, r, style) {
+            var i,ang;
+            ang = Math.PI*2/n //회전 각도
+            context.save();//저장 상태
+            //set style
+            for( var styleList in style) {
+                context[styleList] = style[styleList];
+            }
+            context.translate(x/2, y/2);//원점을 x,y로 옮기면, 바로그릴것이다. 다각형 중심
+            context.moveTo(0, -r);//중심 r거리에 따라 점을 그리다
+            context.beginPath();
+            for(i = 0;i < n; i ++) {
+                context.rotate(ang)//회전
+                context.lineTo(0, -r);//중심R거리에 따라 연결
+            }
+            context.closePath();
+            context.stroke();
+            context.fill();
+            context.restore();//원래대로 되돌리기 시작 상태
+        }
+
+
+        function getLocation(attribute, minLength, maxLengthDiff) {
+
+            var dotList = [];
+            var a = (minLength+maxLengthDiff*(attribute[0]-1)/4)*Math.cos(Math.PI/10);
+            var b = (minLength+maxLengthDiff*(attribute[0]-1)/4)*Math.sin(Math.PI/10);
+
+            var dot1 = []
+            dot1.push(a)
+            dot1.push(b)
+
+
+            var c = (minLength+maxLengthDiff*(attribute[1]-1)/4)*Math.sin(Math.PI/5);
+            var d = -(minLength+maxLengthDiff*(attribute[1]-1)/4)*Math.cos(Math.PI/5);
+
+            var dot2 = []
+            dot2.push(c)
+            dot2.push(d)
+
+            var e = -(minLength+maxLengthDiff*(attribute[2]-1)/4)*Math.sin(Math.PI/5);
+            var f = -(minLength+maxLengthDiff*(attribute[2]-1)/4)*Math.cos(Math.PI/5);
+
+            var dot3 = []
+            dot3.push(e)
+            dot3.push(f)
+
+            var g = -(minLength+maxLengthDiff*(attribute[3]-1)/4)*Math.cos(Math.PI/10);
+            var h = (minLength+maxLengthDiff*(attribute[3]-1)/4)*Math.sin(Math.PI/10);
+
+            var dot4 = []
+            dot4.push(g)
+            dot4.push(h)
+
+            var dot5=[]
+            dot5.push(0)
+            dot5.push((minLength+maxLengthDiff*(attribute[4]-1)/4))
+
+            dotList.push(dot1)
+            dotList.push(dot2)
+            dotList.push(dot3)
+            dotList.push(dot4)
+            dotList.push(dot5)
+            
+            return dotList;
+        }
+
+        function drawMainLine(startX, startY, lineLength){
+
+            var dotList = [];
+
+            var a = lineLength*Math.cos(Math.PI/10);
+            var b = lineLength*Math.sin(Math.PI/10);
+
+            var dot1 = []
+            dot1.push(a)
+            dot1.push(b)
+            
+            var c = lineLength*Math.sin(Math.PI/5);
+            var d = -lineLength*Math.cos(Math.PI/5);
+            
+            var dot2 = []
+            dot2.push(c)
+            dot2.push(d)
+
+            var e = -lineLength*Math.sin(Math.PI/5);
+            var f = -lineLength*Math.cos(Math.PI/5);
+            
+            var dot3 = []
+            dot3.push(e)
+            dot3.push(f)
+
+            var g = -lineLength*Math.cos(Math.PI/10);
+            var h = lineLength*Math.sin(Math.PI/10);
+            
+            var dot4 = []
+            dot4.push(g)
+            dot4.push(h)
+
+            var i = lineLength
+            
+            var dot5=[];
+            dot5.push(0);
+            dot5.push(lineLength);
+
+            dotList.push(dot1)
+            dotList.push(dot2)
+            dotList.push(dot3)
+            dotList.push(dot4)
+            dotList.push(dot5)
+
+            dotList.forEach(function(thisDot){
+                
+                context.beginPath();
+                context.moveTo(startX, startY);
+                context.lineTo(startX+thisDot[0], startY-thisDot[1])
+                context.lineWidth=2;
+                context.lineWidth =  "1";
+                context.strokeStyle = 'rgba(255, 255, 255, 1)';
+                context.stroke();
+            
+            })
+
+        }
+
+        function drawClassAttribute(dotList){
+
+            context.beginPath();
+            var startDot = dotList[0]
+            context.moveTo(130+startDot[0], 130-startDot[1])
+
+            for(var i=1 ;i<5;i++){
+                var thisDot = dotList[i];
+                context.lineTo(130+thisDot[0], 130-thisDot[1])
+            }
+            context.lineTo(130+startDot[0], 130-startDot[1])
+            context.fillStyle="rgba(174, 172, 255, 0.1)";
+            context.strokeStyle="rgba(174, 167, 255)";
+            context.lineWidth=2;
+            context.stroke();
+            context.fill();
+
+        }
+
+        function drawDot(dotList){
+            dotList.forEach(function(dot){
+
+                context.beginPath();
+                context.arc(130+dot[0], 130-dot[1], 3, 0, 2*Math.PI);
+                context.stroke();
+                context.style="rgba(174, 167, 255)";
+                context.fill();
+            })
+        }
+
+        drawPath(260, 260, 5, 120, {
+            fillStyle: 'transparent',
+            lineWidth: '1',
+            strokeStyle: 'rgba(255, 255, 255, 1)'
+        }) 
+
+        drawPath(260, 260, 5, 100, {
+            fillStyle: 'transparent',
+            lineWidth: '1',
+            strokeStyle: 'rgba(255, 255, 255, 1)'
+        }) 
+
+        drawPath(260, 260, 5, 80, {
+            fillStyle: 'transparent',
+            lineWidth: '1',
+            strokeStyle: 'rgba(255, 255, 255, 1)'
+        }) 
+
+        drawPath(260, 260, 5, 60, {
+            fillStyle: 'transparent',
+            lineWidth: '1',
+            strokeStyle: 'rgba(255, 255, 255, 1)'
+        }) 
+
+        drawPath(260, 260, 5, 40, {
+            fillStyle: 'transparent',
+            lineWidth: '1',
+            strokeStyle: 'rgba(255, 255, 255, 1)'
+        })
+
+        drawMainLine(130, 130, 120)
+
+        var classAttribute =[];
+        try{
+            classAttribute = thisClassObject.classAttribute;
+            dotList = getLocation(classAttribute, 40, 80)
+                
+        
+            drawClassAttribute(dotList);
+            drawDot(dotList)
+        }catch(e){
+
+        }
+
+
+
+    }
+    
+</script>

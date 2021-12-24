@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <%- include ./common/commonHead.html%>
+        <!--공통타이틀로 적용 할 경우 commonHead 안에 넣기-->
+    </head>
+    <body>
+        <div class="wrap participate participateAllWrap">
+            <%- include ./common/commonHeader.html%>
+            <section class="minHeight">
+                <article>
+                    <div class="fixContent leftArea">
+                        <div>
+                            <div class="leftArea-thumb" style="background-image: url('<%-ClassObject.classObject.thumbNailMain.filePath%>');" id = "classParticipateMainThumbNail">
+                                <!-- <img src="/web/img/classDetail/classthumb.png" alt=""> -->
+                            </div>
+                            <div class="leftArea-tab">
+                                <div class="moSlideTab">
+                                    <h4>
+                                        Curriculum
+                                    </h4>
+                                    <img src="/web/img/ICN_EXPAND.png" alt="">
+                                </div>
+                                <div class="moSlide">
+                                    <div class="tab-curriculum tab" id="classParticipateSideTab">
+                                        <h4>
+                                            <button class="mainTabBtn viewChapter active">Curriculum</button>
+                                        </h4>
+                                        <div class="hiddenDetail-chapter">
+                                            <button class="chapterNo">
+                                                <div>
+                                                    <strong>1</strong>
+                                                    <h5>Chapter</h5>
+                                                </div>
+                                                <div class="arrowImg">
+                                                    <img src="/web/img/ICN_EXPAND.png" alt="">
+                                                </div>
+                                            </button>
+                                            <ul class="tabInTab">
+                                                <li class="videoTab">
+                                                    <a href="javascript:avoid(0)">
+                                                        <img src="/web/img/classDetail/chapterIcon/ICN_VIDEO.png" alt="">
+                                                        <span class="completed">Methodology of Meditation</span>
+                                                    </a>
+                                                </li>
+                                                <li class="audioTab">
+                                                    <a href="javascript:avoid(0)">
+                                                        <img src="/web/img/classDetail/chapterIcon/ICN_AUDIO.png" alt="">
+                                                        <span class="completed">Self- reflection</span>
+                                                    </a>
+                                                </li>
+                                                <li class="readingTab">
+                                                    <a href="javascript:avoid(0)">
+                                                        <img src="/web/img/classDetail/chapterIcon/ICN_READING.png" alt="">
+                                                        <span>Academic research on self-reflection</span>
+                                                    </a>
+                                                </li>
+                                                <li class="quizTab">
+                                                    <a href="javascript:avoid(0)">
+                                                        <img src="/web/img/classDetail/chapterIcon/ICN_QUIZ.png" alt="">
+                                                        <span>Ultimate purpose of self-reflection</span>
+                                                    </a>
+                                                </li>
+                                                <li class="surveyTab">
+                                                    <a href="javascript:avoid(0)">
+                                                        <img src="/web/img/classDetail/chapterIcon/ICN_SURVEY.png" alt="">
+                                                        <span>Draw my life graph</span>
+                                                    </a>
+                                                </li>
+                                                <li class="discutionTab">
+                                                    <a href="javascript:avoid(0)">
+                                                        <img src="/web/img/classDetail/chapterIcon/ICN_DISCUSSION.png" alt="">
+                                                        <span>Happiness and human completion</span>
+                                                    </a>
+                                                </li>
+                                                <li class="liveTab">
+                                                    <a href="javascript:avoid(0)">
+                                                        <img src="/web/img/classDetail/chapterIcon/ICN_LIVE.png" alt="">
+                                                        <span>Human recognition</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="hiddenDetail-chapter">
+                                            <button class="chapterNo">
+                                                <div>
+                                                    <strong>2</strong>
+                                                    <h5>Chapter</h5>
+                                                </div>
+                                                <div class="centerText">
+                                                    Necessity of self-reflection
+                                                </div>
+                                                <div class="arrowImg">
+                                                    <img src="/web/img/ICN_EXPAND.png" alt="">
+                                                </div>
+                                            </button>
+                                            <ul class="tabInTab">
+                                                <li class="videoTab">
+                                                    <a href="javascript:avoid(0)">
+                                                        <img src="/web/img/classDetail/chapterIcon/ICN_VIDEO.png" alt="">
+                                                        <span>Methodology of Meditation</span>
+                                                    </a>
+                                                </li>
+                                                <li class="audioTab">
+                                                    <a href="javascript:avoid(0)">
+                                                        <img src="/web/img/classDetail/chapterIcon/ICN_AUDIO.png" alt="">
+                                                        <span>Self- reflection</span>
+                                                    </a>
+                                                </li>
+                                                <li class="readingTab">
+                                                    <a href="javascript:avoid(0)">
+                                                        <img src="/web/img/classDetail/chapterIcon/ICN_READING.png" alt="">
+                                                        <span>Academic research on self-reflection</span>
+                                                    </a>
+                                                </li>
+                                                <li class="quizTab">
+                                                    <a href="javascript:avoid(0)">
+                                                        <img src="/web/img/classDetail/chapterIcon/ICN_QUIZ.png" alt="">
+                                                        <span>Ultimate purpose of self-reflection</span>
+                                                    </a>
+                                                </li>
+                                                <li class="surveyTab">
+                                                    <a href="javascript:avoid(0)">
+                                                        <img src="/web/img/classDetail/chapterIcon/ICN_SURVEY.png" alt="">
+                                                        <span>Draw my life graph</span>
+                                                    </a>
+                                                </li>
+                                                <li class="discutionTab">
+                                                    <a href="javascript:avoid(0)">
+                                                        <img src="/web/img/classDetail/chapterIcon/ICN_DISCUSSION.png" alt="">
+                                                        <span>Happiness and human completion</span>
+                                                    </a>
+                                                </li>
+                                                <li class="liveTab">
+                                                    <a href="javascript:avoid(0)">
+                                                        <img src="/web/img/classDetail/chapterIcon/ICN_LIVE.png" alt="">
+                                                        <span>Human recognition</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="tab-materials tab">
+                                        <h4>
+                                            <button class="mainTabBtn" onclick="moveScroll('materials')">Materials</button>
+                                        </h4>
+                                    </div>
+                                    <div class="tab-information tab">
+                                        <h4>
+                                            <button class="mainTabBtn" onclick="moveScroll('information')">Information</button>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fixContent topArea">
+                        <div class="info1">
+                            <span id="classParticipateMainCategory">
+                                Counseling & Coaching
+                            </span>
+                            <strong>D-95</strong>
+                        </div>
+                        <div class="info2">
+                            <h1 id='classParticipateMainTitle'></h1>
+                        </div>
+                    </div>
+                    <div class="allContents">
+                        <div class="fixContentArea">
+                            <div class="contentsSection curriculum" id="participateContentCurriculum">
+                                <div class="curriculum-step">
+                                    <h3>
+                                        Curriculum
+                                    </h3>
+                                    <div class="numbering">
+                                        <ul id = "topCurriculumNavi">
+                                            <!-- <li>
+                                                <strong class="active">1</strong>
+                                            </li>
+                                            <li>
+                                                <strong>2</strong>
+                                            </li> -->
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                                <div class="curriculum-detailInfo">
+                                    <div class="detailWrap" id="classParticipateChaterInfoWrap">
+
+
+                                        <!-- <div class="chapterInfo participate">
+                                            <div class="number">1</div>
+                                            <div class="textWrap">
+                                                <div>
+                                                    <h6>
+                                                        Necessity of self-reflection
+                                                    </h6>
+                                                    <p>
+                                                        Self- reflection is the methodology of meditation for growth, happiness and human completion:
+                                                        (1) Why do we need self-reflection?,  (2) Academic research on self-reflection, (3) Draw my life graph, and (4) Ultimate purpose of self-reflection
+                                                        (1) Why do we need self-reflection?,  (2) Academic research on self-reflection, (3) Draw my life graph, and (4) Ultimate purpose of self-reflection
+                                                        (1) Why do we need self-reflection?,  (2) Academic research on self-reflection, (3) Draw my life graph, and (4) Ultimate purpose of self-reflection
+                                                    </p>
+                                                    <button>
+                                                        <strong>See More</strong>
+                                                    </button>
+                                                    <div class="tagWrap">
+                                                        <span>
+                                                            1 Video
+                                                        </span>
+                                                        <span>
+                                                            2 Audio
+                                                        </span>
+                                                        <span>
+                                                            3 Reading
+                                                        </span>
+                                                        <span>
+                                                            4 Quiz
+                                                        </span>
+                                                        <span>
+                                                            5 survey
+                                                        </span>
+                                                        <span>
+                                                            6 discussion
+                                                        </span>
+                                                        <span>
+                                                            7 Live
+                                                        </span>
+                                                    </div>
+                                                    <div class="viewDetails">
+                                                        <button>
+                                                            View Details
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="hiddenDetail participateHdn">
+                                                    <ul>
+                                                        <li class="todoList videoTab completed">
+                                                            <a href="javascript:avoid(0)">
+                                                                <img src="/web/img/classDetail/chapterIcon/ICN_VIDEO.png" alt="">
+                                                                <span>1Methodology of Meditation</span>
+                                                            </a>
+                                                            <button class="continueBtn">
+                                                                Continue 
+                                                            </button>
+                                                        </li>
+                                                        <li class="todoList audioTab">
+                                                            <a href="javascript:avoid(0)">
+                                                                <img src="/web/img/classDetail/chapterIcon/ICN_AUDIO.png" alt="">
+                                                                <span>Self- reflection</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="todoList readingTab">
+                                                            <a href="javascript:avoid(0)">
+                                                                <img src="/web/img/classDetail/chapterIcon/ICN_READING.png" alt="">
+                                                                <span>Academic research on self-reflection</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="todoList quizTab">
+                                                            <a href="javascript:avoid(0)">
+                                                                <img src="/web/img/classDetail/chapterIcon/ICN_QUIZ.png" alt="">
+                                                                <span>Ultimate purpose of self-reflection</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="todoList surveyTab">
+                                                            <a href="javascript:avoid(0)">
+                                                                <img src="/web/img/classDetail/chapterIcon/ICN_SURVEY.png" alt="">
+                                                                <span>Draw my life graph</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="todoList discutionTab">
+                                                            <a href="javascript:avoid(0)">
+                                                                <img src="/web/img/classDetail/chapterIcon/ICN_DISCUSSION.png" alt="">
+                                                                <span>Happiness and human completion</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="todoList liveTab">
+                                                            <a href="javascript:avoid(0)">
+                                                                <img src="/web/img/classDetail/chapterIcon/ICN_LIVE.png" alt="">
+                                                                <span>Human recognition</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div> -->
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contentsSection materials" id="participateContentMaterials" style="display:none">
+                                <div class="sectionTitle">
+                                    <h3>Materials</h3>
+                                </div>
+                                <div class="sectionInner">
+                                    <div class="fileBoxWrap" id="classParticipateMaterialsBoxWrap">
+                                        <div class="fileBox">
+                                            <div class="title">
+                                                <div>
+                                                    <span>Chapter</span>
+                                                    <strong>1</strong>
+                                                </div>
+                                                <div>
+                                                    Chapter title Chapter titleDDddfs titleDDddfs.
+                                                </div>
+                                            </div>
+                                            <div class="boxFixHeight">
+                                                <ul>
+                                                    <li>
+                                                        <button>
+                                                            <img src="/web/img/ICN_DOWNLOAD.png" alt="">
+                                                            <span>
+                                                                Upload File Name
+                                                            </span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contentsSection information" id="participateContentInformation" style="display:none">
+                                <div class="sectionTitle">
+                                    <h3>Information</h3>
+                                </div>
+                                <div class="sectionInner">
+                                    <div class="inner-info1">
+                                        <div class="ringInfo">
+                                            <div class="hover-ring ring">
+                                                <img src="/web/img/userRing/<%=writer.userUID%>.png" style="width:60px" alt="">
+                                            </div>
+                                            <div class="text">
+                                                <span>Creator</span>
+                                                <strong>
+                                                    <%= writer.userName%>
+                                                </strong>
+                                            </div>
+                                        </div>
+                                        <div class="textInfo">
+                                            <%var writerIntroduce = JSON.parse(writer.introduce)%>
+                                            <%=writerIntroduce.introduce%>
+                                        </div>
+                                    </div>
+                                    <div class="inner-info2">
+                                        <h5 class="moTitle">
+                                            Class Introduction
+                                        </h5>
+                                        <div>
+                                            <div class="intro">
+                                                <h5>
+                                                    Class Introduction
+                                                </h5>
+                                                <p>
+                                                    <%=ClassObject.classObject.description%>
+                                                </p>
+                                            </div>
+                                            <div class="pentagonInfo">
+                                                <%- include ./commonPentagon.html%>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <%- include ./common/commonScript.html%> <%- include ./common/commonFooter.html%>
+            <script src="/web/js/tabEvent.js"></script>
+            <script>
+
+                //푸터 화면별 show, hide
+                $(window).on('resize load', function() {
+                    if($(this).innerWidth() <= 767)
+                    {
+                        $('.participateAllWrap').css('overflow-x', 'hidden');
+                        $('.footerWrap').show();
+                    }
+                    else
+                    {
+                        $('.participateAllWrap').css('overflow-x', 'unset');
+                        $('.footerWrap').hide();
+                    }
+                })
+
+                $(document).ready(function(){
+                    var classObject = <%-JSON.stringify(ClassObject.classObject)%>;
+                    var writer = <%-JSON.stringify(writer)%>;
+                    var enrollClassInfo= <%-JSON.stringify(enrollClassInfo)%>;
+                    // console.log(JSON.stringify(enrollClassInfo) + '###########################################################')
+                    setParticipateClass(classObject, enrollClassInfo);
+                    setParticipateMaterials(classObject.chapterList);
+                    classParticipateEventListener()
+                })
+                classID = '<%-ClassObject._id%>'
+
+                function switchClassParticipateContent(content){
+                    var contentList=['Curriculum', 'Materials', 'Information'];
+                    var index = contentList.indexOf(content);
+                    contentList.splice(index, 1);
+                    document.getElementById('participateContent'+content).style.display=""
+                    for(var i =0; i<contentList.length; i++){
+                        document.getElementById('participateContent'+contentList[i]).style.display="none";
+                    }
+                }
+
+                function setParticipateClass(classObject, enrollClassInfo){
+                    makeIdHtml('classParticipateMainTitle', classObject.title);
+                    makeIdHtml('classParticipateMainCategory', classObject.mainCategory);
+                    // var mainThumbNail =`<img src="${classObject.thumbNailMain.filePath}" alt="">`;
+                    // var mainThumbNail =`<img src="" alt="">`;
+                    // makeIdHtml('classParticipateMainThumbNail', mainThumbNail);
+                    var chapterContentsList =classObject.chapterList;
+                    setChapterList(chapterContentsList, enrollClassInfo.classProgress);
+                    var topCurriculumNavi='';
+                    var contentsHtml ='';
+                    var thisChapterProgress ={};
+                    for(var i=0; i<chapterContentsList.length;i++){
+                        thisChapterProgress = getThisChapterProgress(i, enrollClassInfo.classProgress);
+                        var isCompleted = chapterCompletedCheck(chapterContentsList[i], thisChapterProgress);
+                        topCurriculumNavi+= addTopCurriculumNavi(i, thisChapterProgress.progress, isCompleted);
+                        contentsHtml += addClassParticipateContents(i, chapterContentsList[i], thisChapterProgress, isCompleted);
+                    }
+                    makeIdHtml('topCurriculumNavi', topCurriculumNavi);
+                    makeIdHtml('classParticipateChaterInfoWrap', contentsHtml);
+                }
+
+                function chapterCompletedCheck(chapterContents, thisProgress){
+
+                    // console.log(chapterContents.chapterContentsList.length + '          111')
+                    var completedNum = 0;
+                    if(thisProgress.progress){
+                        
+                        thisProgress.progress.forEach(function(progress){
+                            // console.log(progress.progress + '    progress');
+                            if(progress.progress=='completed'){
+                                completedNum+=1
+                            }
+                        })
+                    }
+                    var isCompleted = (completedNum==chapterContents.chapterContentsList.length)?'active':''
+                    return isCompleted;
+                }
+
+              
+
+                function setChapterList(chapterList, classProgress){
+                    var sideHtml =` <h4>
+                                        <button class="mainTabBtn viewChapter active">Curriculum</button>
+                                    </h4>`
+                    for(var i =0; i<chapterList.length; i++){
+                        var progressInfo ={};
+                        for(var j=0; j<classProgress.length; j++){
+                            progressInfo = classProgress[j].chapterNum==i+1?classProgress[j]:progressInfo;
+                        }
+                        sideHtml += addSideChapterNavi(chapterList[i], progressInfo)
+                    }
+                    makeIdHtml('classParticipateSideTab', sideHtml);
+                }
+
+                function addSideChapterNavi(chapter, progressInfo){
+
+                    var tabList='';
+                    var thisProgressInfo ={};
+                    for(var i=0; i<chapter.chapterContentsList.length; i++){
+                        if(progressInfo.progress!=undefined){
+                            for(var j=0; j<progressInfo.progress.length; j++){
+                                thisProgressInfo = progressInfo.progress[j].contentNum==i?progressInfo.progress[j]:thisProgressInfo;
+                            }
+                            // console.log(JSON.stringify(thisProgressInfo)+'             side themp')
+                        }
+                        thisProgressInfo.chapter=chapter.chapterNum;
+                        thisProgressInfo.content=i
+                        tabList+=makeChpaterSideListTap(chapter.chapterContentsList[i], thisProgressInfo);
+                        thisProgressInfo={}
+                    }
+
+                    var sideHtml=`<div class="hiddenDetail-chapter">
+                                        <button class="chapterNo">
+                                            <div>
+                                                <strong>${chapter.chapterNum}</strong>
+                                                <h5>Chapter</h5>
+                                            </div>
+                                            <div class="centerText">
+                                                ${chapter.chapterTitle}
+                                            </div>
+                                            <div class="arrowImg">
+                                                <img src="/web/img/ICN_EXPAND.png" alt="">
+                                            </div>
+                                        </button>
+                                        <ul class="tabInTab">
+                                           ${tabList}
+                                        </ul>
+                                    </div>`;
+
+                    return sideHtml;
+                    
+                }
+
+                function makeChpaterSideListTap(chapterContentList, thisProgressInfo){
+                    var progressInfo ='';
+                    // console.log(`${JSON.stringify(thisProgressInfo)}        !@#!@###########`); 
+                    if(thisProgressInfo){
+                        progressInfo = thisProgressInfo.progress;
+                    } 
+                    
+                    // console.log(`${JSON.stringify(thisProgressInfo)}        !@#!@###########@@@@@@@@@@`); 
+                    // <a href="/classParticipateContents/${classID}.${thisProgressInfo.chapter}.${thisProgressInfo.content}">
+                        var isCompleted = progressInfo=='completed'?'completed':'';
+                    return `<li class="videoTab ${isCompleted}">
+                                <a href="javascript:avoid(0)">
+                                    <img src="/web/img/classDetail/chapterIcon/ICN_${chapterContentList.type}.png" alt="">
+                                    <span>${chapterContentList.title}</span>
+                                </a>
+                            </li>`
+                }
+
+                function addTopCurriculumNavi(num, classProgress, isCompleted){
+                    num+=1;
+                    if(classProgress!=undefined){
+                        var makeActive = (classProgress[0].progress=='completed') ? ' active' : '';
+
+                    }
+                    return ` <li>
+                                <strong class="topCurriculumNavi ${isCompleted}">${num}</strong>
+                            </li>`
+                }
+
+                //classObject.chapterList[num].chapterContentsList[num].progress
+                // undefined == 시작전, progress == 진행중, completion == 수료
+                function makeChapterContentsEnrollList(chapterNum, chapterContentList, chapterProgress){
+                    var classEnrollList ='';
+                    for(var i =0; i<chapterContentList.length; i++){
+                        var thisContent = {};
+                        chapterProgress.progress!=undefined? thisContent = getThisProgress(i, chapterProgress.progress):'';
+                        var thisChapter = chapterContentList[i];
+                        var isCompleted ='';
+                        var isProgress ='';
+                        if(thisContent.progress!=undefined){
+
+                            if(thisContent.progress=='completed'){
+                                isCompleted = 'completed';
+                            }else {
+                                isCompleted='firstChp'
+                                if(thisContent.progress='progress'){
+                                    isProgress=`<button class="continueBtn">
+                                                    Continue 
+                                                </button>`
+                                }
+                            }
+                        }
+
+                        // console.log(JSON.stringify(thisChapter) + ' get this chpater info ' + '     i   ' + i )
+                        console.log(isCompleted + '             123123 ' + i)
+                        classEnrollList +=  `<li class="todoList ${thisChapter.type}Tab ${isCompleted}">
+                                                    <a href="/classParticipateContents/${classID}.${chapterNum+1}.${i}">
+                                                        <img src="/web/img/ICN_${thisChapter.type.toUpperCase()}_24.png" alt="">
+                                                        <span>${thisChapter.title}</span>
+                                                    </a>
+                                                    ${isProgress}
+                                            </li>`
+                                        }
+                    return classEnrollList;
+                }
+
+
+
+                function addClassParticipateContents(chapterNum, contents, thisChapterProgress, isCompleted){
+                    return ` <div class="chapterInfo participate">
+                                            <div class="number ${isCompleted}">${contents.chapterNum}</div>
+                                            <div class="textWrap">
+                                                <div>
+                                                    <h6>
+                                                        ${contents.chapterTitle}</h6>
+                                                    </h6>
+                                                    <p>
+                                                        ${contents.chapterDescription}
+                                                    </p>
+                                                    <button>
+                                                        <strong>See More</strong>
+                                                    </button>
+                                                    <div class="tagWrap">
+                                                        ${getChapterContentsNum(contents.chapterContentsList)}
+                                                    </div>
+                                                    <div class="viewDetails">
+                                                        <button>
+                                                            View Details
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="hiddenDetail participateHdn">
+                                                    <ul>
+                                                        ${makeChapterContentsEnrollList(chapterNum, contents.chapterContentsList, thisChapterProgress)}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>`
+                   
+                }
+
+                function getThisChapterProgress(chapterNum, classProgress){
+                    var thisChapter = {};
+                    classProgress.forEach(function(thisProgress){
+                        if(thisProgress.chapterNum==chapterNum+1){
+                            thisChapter= thisProgress;
+                        }
+                    })
+                    return thisChapter;
+                }
+
+                function getThisProgress(contentNum, thisContent){
+                    var contentResult ='';
+                    thisContent.forEach(function(content){
+                        if(content.contentNum==contentNum){
+                            contentResult = content;
+                        }
+                    })
+                    return contentResult;
+                }
+
+
+
+
+                function getChapterContentsNum(chapterContentsList){
+                    var contentsListNum = {};
+
+                    var contentsNumTagWrap =''
+                    for(var i=0; i<chapterContentsList.length; i++){
+                        contentsListNum[chapterContentsList[i].type]=(contentsListNum[chapterContentsList[i].type]||0)+1;
+                    }
+                    var contentsKeyList = Object.keys(contentsListNum);
+                    for(var i=0; i<contentsKeyList.length; i++){
+                        var keyName =contentsKeyList[i]
+                        contentsNumTagWrap +=`<span>
+                                                     ${contentsListNum[keyName]} ${contentsKeyList[i]}
+                                            </span>`
+                    }
+                    return contentsNumTagWrap;
+                }
+
+                
+                function setParticipateMaterials(chapterContents){
+                    
+                    var materialsHtml = '';
+
+                    chapterContents.forEach(function(chapter){
+                        var downloadContentsHtmls='';
+                        chapter.chapterContentsList.forEach(function(contentsList){
+                            if(contentsList.listDownloadFile!=undefined){
+                                downloadContentsHtmls = getDownloadContentsHtml(contentsList.listDownloadFile);
+                            }
+                        })
+                        materialsHtml+=`<div class="fileBox">
+                                            <div class="title">
+                                                <div>
+                                                    <span>Chapter</span>
+                                                    <strong>${chapter.chapterNum}</strong>
+                                                </div>
+                                                <div>
+                                                    ${chapter.chapterTitle}
+                                                </div>
+                                            </div>
+                                            <div class="boxFixHeight">
+                                                <ul>
+                                                   ${downloadContentsHtmls}
+                                                </ul>
+                                            </div>
+                                        </div>`
+                       
+                    })
+                    makeIdHtml('classParticipateMaterialsBoxWrap', materialsHtml);
+                }
+
+                function getDownloadContentsHtml(downloadContentsList){
+                    var downloadContentsHtml= '';
+                    downloadContentsList.forEach(function(downloadContents){
+                        downloadContentsHtml+=` <li>
+                                            <button onclick="classParticipateDownloadContents('${downloadContents.filePath}')">
+                                                <img src="/web/img/ICN_DOWNLOAD.png" alt="">
+                                                <span>
+                                                    ${downloadContents.fileOriginalName}
+                                                </span>
+                                            </button>
+                                        </li>`
+                    })
+                    return downloadContentsHtml;
+                }
+
+
+
+
+
+                function getArrowImg(type){
+                    var arrowContent='';
+                    if(contentName=='video'){
+                        saveVideoContent(thisChapter);
+                    }else if(contentName=='audio'){
+                        saveAudioContent(thisChapter);
+                    }else if(contentName=='reading'){
+                        saveReadingContents(thisChapter);
+                    }else if(contentName=='quiz'){
+                        saveQuizContents(thisChapter);
+                    }else if(contentName=='survey'){
+                        saveSurveyContents(thisChapter);
+                    }else if(contentName=='discussion'){
+                        saveDiscussionContents(thisChapter);
+                    }else if(contentName=='live'){
+                        
+                    }
+                }
+
+                function makeIdHtml(id, html){
+                    document.getElementById(id).innerHTML=html;
+                }
+
+                //classParticipate페이지 다운로드파일 더보기버튼
+                $('.moreViewBtn').click(function() {
+                    $(this).parents().toggleClass('active');
+                });
+                
+                //classParticipate페이지 탭클릭시 페이지 스크롤
+                function moveScroll(className) {
+                    var targetTop = document.querySelector('.'+className+'').offsetTop;
+                    var allContentTop = document.querySelector('.allContents').scrollTop = targetTop;
+                    // var allContent = document.querySelector('.allContents');
+                    // var target = document.querySelector('.'+className+'');    
+                }
+
+
+
+                const response = fetch("http://192.168.0.15:3000/", {
+                    method: 'GET', // *GET, POST, PUT, DELETE, etc.
+                    mode: 'cors', // no-cors, *cors, same-origin
+                    cache: 'no-cache', 
+                    headers: {
+                    'Content-Type': 'application/json'
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    redirect: 'follow', // manual, *follow, error
+                    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                    
+                });
+
+
+
+
+            </script>
+        </div>
+    </body>
+</html>

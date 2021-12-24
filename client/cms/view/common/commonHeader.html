@@ -1,0 +1,228 @@
+<!-- Start Page Loading -->
+<div class="loading"><img src="/cms/img/loading.gif" alt="loading-img" /></div>
+<!-- End Page Loading -->
+<!-- //////////////////////////////////////////////////////////////////////////// -->
+<!-- START TOP -->
+<div id="top" class="clearfix">
+    <a href="#" class="sidebar-open-button"><i class="fa fa-bars"></i></a>
+    <!-- Start App Logo -->
+    <div class="applogo">
+        <a href="/admin/dashBoard" class="logo">
+            <img src="/web/img/admin/logo.png" alt="">
+        </a>
+        <span>Admin</span>
+    </div>
+    <!-- End App Logo -->
+
+    <!-- Start Sidebar Show Hide Button -->
+    <!-- <a href="#" class="sidebar-open-button"><i class="fa fa-bars"></i></a> -->
+    <a href="#" class="sidebar-open-button-mobile"><i class="fa fa-bars"></i></a>
+    <!-- End Sidebar Show Hide Button -->
+
+    <!-- End Top Menu -->
+
+    <!-- Start Top Right -->
+    <ul class="top-right">
+        <li class="dropdown link">
+            <span style="display: inline-block; margin-right: 30px;">
+                KRW(원)​
+            </span>
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle profilebox" style="display: inline-block;">
+                <!-- 회사로고 넣기 -->
+                <!-- <img src="/cms/img/profileimg.png" alt="img" /> -->
+                <!-- 관리자 이름 또는 회사이름 넣기 -->
+                <b>admin_master</b>
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-list dropdown-menu-right">
+                <li role="presentation" class="dropdown-header">설정</li>
+                <!-- <li>
+                    <a href="#"><i class="fa falist fa-wrench"></i>Settings</a>
+                </li> -->
+                <li class="divider"></li>
+                <li>
+                    <a href="#"><i class="fa falist fa-power-off"></i> Logout</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <!-- End Top Right -->
+</div>
+<!-- END TOP -->
+<!-- //////////////////////////////////////////////////////////////////////////// -->
+
+<!-- //////////////////////////////////////////////////////////////////////////// -->
+<!-- START SIDEBAR -->
+<div class="sidebar clearfix">
+    <ul class="sidebar-panel nav">
+        <!-- <li class="sidetitle">MAIN</li> -->
+        <!-- /////////////////////////////기본템플릿////////////////////////////////// -->
+        <!-- <li>
+            <a href="#">
+                <span class="icon color7"><i class="fa fa-flask"></i></span>샘플레이아웃<span class="caret"></span>
+            </a>
+            <ul>
+                <li><a href="/admin/sampleForm">폼 형식 샘플</a></li>
+                <li><a href="/admin/sampleDataTable">데이터 테이블 샘플</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon color12"><i class="fa fa-font"></i></span>단일 페이지 링크 예시
+            </a>
+        </li>
+        <li>
+            <a href="/admin/notice/list">
+                <span class="icon color7"><i class="fa fa-flask"></i></span>공지사항
+            </a>
+        </li> -->
+        <!-- //////////////////////////마인드그라운드메뉴//////////////////////////////// -->
+        <li>
+            <a href="/admin/dashBoard">
+                <span class="icon color7"></span>대시보드
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon color7"></span>서비스관리<span class="caret"></span>
+            </a>
+            <ul>
+                <li><a href="/admin/mainBanner">메인 배너 관리</a></li>
+                <li><a href="/admin/mainText">메인 텍스트 관리</a></li>
+                <li><a href="/admin/worldMap">월드맵 관리</a></li>
+                <li><a href="/admin/adApp">앱 광고 관리</a></li>
+                <li>
+                    <a href="#" class="tabInTab">서포트 관리</a>
+                    <ul>
+                        <li><a href="/admin/supportCategory">카테고리</a></li>
+                        <li><a href="/admin/supportContents">콘텐츠</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="tabInTab">팝업 관리</a>
+                    <ul>
+                        <li><a href="/admin/registerPopup">팝업 1</a></li>
+                        <li><a href="/admin/registerPopup">팝업 2</a></li>
+                        <li><a href="/admin/registerPopup">팝업 3</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon color7"></span>콘텐츠 관리<span class="caret"></span>
+            </a>
+            <ul>
+                <li><a href="/admin/contentsClass">클래스 관리</a></li>
+                <li>
+                    <a href="#" class="tabInTab">게더링 관리</a>
+                    <ul>
+                        <li><a href="/admin/contentsGathering">게더링</a></li>
+                        <li><a href="/admin/contentsEvent">이벤트</a></li>
+                    </ul>
+                </li> 
+                <li>
+                    <a href="#" class="tabInTab">저널 관리</a>
+                    <ul>
+                        <li><a href="/admin/contentsJournal">저널</a></li>
+                        <li><a href="/admin/contentsReportJournal">신고 저널</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="/admin/members">
+                <span class="icon color7"></span> 회원 관리
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon color7"></span>매출/정산 관리<span class="caret"></span>
+            </a>
+            <ul>
+                <li>
+                    <a href="#" class="tabInTab">판매 관리</a>
+                    <ul>
+                        <li><a href="/admin/saleClass">클래스</a></li>
+                        <li><a href="/admin/saleHost">호스트</a></li>
+                    </ul>
+                </li> 
+                <li>
+                    <a href="#" class="tabInTab">정산 관리</a>
+                    <ul>
+                        <li><a href="/admin/calculateDomestic">국내</a></li>
+                        <li><a href="/admin/calculateOverseas">해외</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/admin/exchangeRate">
+                        <span class="icon color7"></span>환율 관리
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon color7"></span>운영 관리<span class="caret"></span>
+            </a>
+            <ul>
+                <li>
+                    <a href="/admin/refund">
+                        <span class="icon color7"></span>환불
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/csInquiry">
+                        <span class="icon color7"></span>고객 문의
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/notice">
+                        <span class="icon color7"></span>공지사항 관리
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/systemAlarm">
+                        <span class="icon color7"></span>시스템 알림
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon color7"></span>커리어 관리<span class="caret"></span>
+            </a>
+            <ul>
+                <li>
+                    <a href="/admin/recruitmentInfo">
+                        <span class="icon color7"></span>채용 정보 관리
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/resume">
+                        <span class="icon color7"></span>이력서 관리
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon color7"></span>설정<span class="caret"></span>
+            </a>
+            <ul>
+                <li>
+                    <a href="/admin/managerSetting">
+                        <span class="icon color7"></span>관리자 설정
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/accessRight">
+                        <span class="icon color7"></span>권한 그룹 설정
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<!-- END SIDEBAR -->
+<!-- //////////////////////////////////////////////////////////////////////////// -->

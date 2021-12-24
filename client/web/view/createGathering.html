@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <%- include ./common/commonHead.html%>
+        <!--공통타이틀로 적용 할 경우 commonHead 안에 넣기-->
+    </head>
+    <body>
+        <div class="wrap commonLayout3">
+            <%- include ./common/commonHeader.html%>
+            <section class="minHeight">
+                <div class="pageTitle gatheringPage">
+                    <img src="/web/img/createGathering/HEADER.png" alt="">
+                    <h2>
+                        CREATE GATHERING
+                    </h2>
+                </div>
+                <div class="writeBtn">
+                    <button>
+                        <img src="/web/img/main/cateList/BTN_WRITE.png" alt="">
+                    </button>
+                </div>
+                <article class="marginAuto_s">
+                    <div class="formWrap">
+                        <div class="form-category">
+                            <div class="gtrCategory">
+                                <h4 class="boxTitle">
+                                    Gathering Category
+                                </h4>
+                                <div class="category-selectBox selectBox1 gtr">
+                                    <div class="selectView gtr">
+                                        <input id="gatheringCategory" type="button" value="<%=translation.loginAndJoin.Select%>" value1="Select">
+                                        <img src="/web/img/ICN_DROP.png" alt="">
+                                    </div>
+                                    <ul class="selectBox-hdnMenu gtr" id="gatheringCategorySelectBox">
+                                        <li>
+                                            <input type="radio" value="Practice_Group" id="Practice_Group" name="gatheringCate">
+                                            <label for="Practice_Group" id="Practice_Group_label">
+                                                <span><%=translation.gathering.Practice_Group%></span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" value="Local_Friends" id="Local_Friends" name="gatheringCate">
+                                            <label for="Local_Friends" id="Local_Friends_label">
+                                                <span><%=translation.gathering.Local_Friends%></span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" value="Class_Friends" id="Class_Friends" name="gatheringCate">
+                                            <label for="Class_Friends" id="Class_Friends_label">
+                                                <span><%=translation.gathering.Class_Friends%></span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" value="Host_Learning" id="Host_Learning" name="gatheringCate">
+                                            <label for="Host_Learning" id="Host_Learning_label">
+                                                <span><%=translation.gathering.Host_Learning%></span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" value="Mindful_Challenge_Group" id="Mindful_Challenge_Group" name="gatheringCate">
+                                            <label for="Mindful_Challenge_Group" id="Mindful_Challenge_Group_label">
+                                                <span><%=translation.gathering.Mindful_Challenge_Group%></span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" value="Others" id="Others" name="gatheringCate">
+                                            <label for="Others" id="Others_label">
+                                                <span><%=translation.gathering.Others%></span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-grName">
+                            <h4 class="boxTitle">
+                                Gathering Name
+                            </h4>
+                            <div class="grName-inputBox">
+                                <input type="text" id="gatheringName">
+                            </div>
+                        </div>
+                        <div class="form-grDesc">
+                            <h4 class="boxTitle">
+                                Gathering Description
+                            </h4>
+                            <div class="grDesc-inputBox">
+                                <textarea name="gatheringDesc" id="gatheringDesc" style="resize: none;"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-selectImg">
+                            <div class="titles">
+                                <h4 class="boxTitle">
+                                    Main Image
+                                </h4>
+                                <span>
+                                    Please upload at least 5 images.
+                                </span>
+                            </div>
+                            <div class="uploadBtn">
+                                <input type="file" name="uploadMainContents" id="uploadMainContents" accept="image/*" multiple onchange="imageUploadsFunc(this)">
+                                <label for="uploadMainContents">
+                                    <img src="/web/img/BTN_ADD_50.png" alt="">
+                                </label>
+                            </div>
+                            <div class="getImgArea gtr commonThumbArea" id="preview">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="keywordsWrap">
+                        <div class="titles">
+                            <h4 class="boxTitle">
+                                Keywords
+                            </h4>
+                            <span>
+                                You can only select 5 keywords
+                            </span>
+                        </div>
+                        <div class="getKeywords">
+                            <div class="keywords-lifeStyle commonKeywords">
+                                <h5>lifestyle</h5>
+                                <div class="chkBoxWrap lifestyle">
+                                    <!-- 체크박스 리스트 들어오는곳 -->
+                                </div>
+                            </div>
+                            <span class="line"></span>
+                            <div class="keywords-work commonKeywords">
+                                <h5>work</h5>
+                                <div class="chkBoxWrap work">
+                                    <!-- 체크박스 리스트 들어오는곳 -->
+                                </div>
+                            </div>
+                            <span class="line"></span>
+                            <div class="keywords-health commonKeywords">
+                                <h5>health</h5>
+                                <div class="chkBoxWrap health">
+                                    <!-- 체크박스 리스트 들어오는곳 -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="completeBtn">
+                        <button onclick="gatheringObjectInsertMongo()">
+                            Create
+                        </button>
+                    </div>
+                </article>
+            </section>
+            <%- include ./common/commonFooter.html%> <%- include ./common/commonScript.html%>
+            <script src="/web/js/keywordsList.js"></script>
+            <script>
+                var gatheringObject = {};
+                var singleFileList = [];
+                var multipleFileList = [];
+                var imgRemoveList = [];
+                var keywordsObject = {};
+
+                // 이미지 preview Main Click Event
+                $(function() {
+                    $(document).on('click', '.pickMainBtn-on', function() {
+                        $('.pickMainBtn-on').removeClass('active');
+                        $('.pickMainBtn-on').removeAttr('id');
+                        
+                        var mainImageIndex = $(this).closest('.previewThumb').index();
+                        singleFileList[0] = multipleFileList[mainImageIndex];
+
+                        $(this).addClass('active');
+                        $(this).attr('id', 'btnActive');
+                    });
+                });
+
+                //저널작성페이지 바디스캔-selectBodyPart 셀렉트박스 옵션값 받아오기
+                $('input[name=gatheringCate]').click(function() {
+                    $('#gatheringCategory').val($('#' + $(this).attr('id') + '_label').children().html());
+                    document.getElementById('gatheringCategory').value1 = $(this).val();
+                    $(this).parents('#gatheringCategorySelectBox').removeClass('active');
+                });
+
+                // MongoDB에 Insert하는 함수
+                function gatheringObjectInsertMongo()
+                {
+                    if(getGatheringData())
+                    {
+                        var sendJsonObject = {};
+                        sendJsonObject.gatheringObject = JSON.stringify(gatheringObject);
+
+                        $.ajax({
+                            type : "POST",
+                            url:"/protocol/gatheringObjectInsertMongo",
+                            data: JSON.stringify(sendJsonObject),
+                            processData: false,
+                            contentType: "application/json; charset=UTF-8",
+                            success : function(data){
+                                alert('게더링 개설을 완료했습니다.');
+                                location.href = '/gatheringMain';
+                            },
+                            error : function(error)
+                            {
+                                alert('게더링 개설을 실패하였습니다.');
+                            }
+                        });
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+                function findMain()
+                {
+                    var mainImageIndex = $('#btnActive').closest('.previewThumb').index();
+
+                    if(mainImageIndex === -1)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        singleFileList[0] = multipleFileList[mainImageIndex];
+                        return true;
+                    }
+                }
+
+                function imageUploadsFunc(e)
+                {
+                    var fileArr = Array.from(e.files)
+                    if(fileArr.length < (16 - multipleFileList.length))
+                    {
+                        fileArr.forEach(function(file)
+                        {
+                            multipleFileList.push(file)
+                            var reader = new FileReader()
+                            var box1 = document.createElement("div")
+                            var box2 = document.createElement("div")
+                            var box3 = document.createElement("div")
+                            box1.classList.add("previewThumb");
+                            box1.setAttribute('id', multipleFileList[multipleFileList.length - 1].name);
+                            box2.classList.add("inner")
+                            box3.classList.add("btns")
+                            box2.innerHTML = 
+                            '<button class="pickMainBtn-on">'+
+                                'Main' +
+                            '</button>';
+
+                            box3.innerHTML = 
+                            '<button>' +
+                                '<img src="/web/img/createEvent/ICN_EDIT.png" alt="">' +
+                            '</button>' +
+                            '<button type="button" data-name="'+file.name+'" onclick="removeFile(this,1)">'+
+                                '<img src="/web/img/ICN_DELETE.png" alt="">'+
+                            '</button>';
+                            reader.onload = function(e)
+                            {
+                                // box1.style.backgroundColor = '#fff';
+                                box1.style.backgroundImage = 'url("'+e.target.result+'")'
+                            }
+                            box2.appendChild(box3)
+                            box1.appendChild(box2)
+                            document.getElementById('preview').appendChild(box1)
+                            reader.readAsDataURL(file)
+                        })
+                        
+                        document.getElementById('uploadMainContents').value = '';
+                    }
+                    else
+                    {
+                        alert('최대 파일수를 넘었습니다.')
+                    }
+                }
+
+                //파일 삭제
+                function removeFile(e,type, editNum)
+                {
+                    if(type===0)
+                    {
+                        singleFileList = [];
+                    }
+                    else
+                    {
+                        var removeIndex = $(e).closest('.previewThumb').index();
+                        
+                        multipleFileList.splice(removeIndex, 1);
+                    }
+                    imgRemoveList.push(editNum);
+                    $(e).closest('.previewThumb').remove();
+                }
+
+                // 선택한 Keyword를 List에 담고 5개의 키워드만 담을 수 있도록 검증한다.
+                function keywordsObjectPushFunc(e)
+                {
+                    // value를 i18n key 값과 일치하게 변경
+                    var verifyVal = (e.value).replace(/\s/g, '_');
+                    verifyVal = verifyVal.replace(/-/g, '_');
+                    
+                    if(e.checked)
+                    {
+                        if(Object.keys(keywordsObject).length < 5)
+                        {
+                            keywordsObject[verifyVal] = verifyVal;
+                        }
+                        else
+                        {
+                            e.checked = false;
+                            alert('최대 5개까지만 선택 가능합니다.');
+                        }
+                    }
+                    else
+                    {
+                        delete keywordsObject[verifyVal];
+                    }
+                }
+
+                // createGathering의 Value를 gatheringObject에 담는다.
+                function getGatheringData()
+                {
+                    if(document.getElementById('gatheringCategory').value1 !== 'Select' && document.getElementById('gatheringCategory').value1 !== '' && document.getElementById('gatheringCategory').value !== null && document.getElementById('gatheringCategory').value1 !== undefined)
+                    {
+                        gatheringObject.gatheringCategory = document.getElementById('gatheringCategory').value1;
+                    }
+                    else
+                    {
+                        alert('게더링 카테고리를 선택해주세요.');
+                        return false;
+                    }
+
+                    if(document.getElementById('gatheringName').value !== '' && document.getElementById('gatheringName').value !== null && document.getElementById('gatheringName').value !== undefined)
+                    {
+                        gatheringObject.gatheringName = document.getElementById('gatheringName').value;
+                    }
+                    else
+                    {
+                        alert('게더링 이름을 입력해주세요.');
+                        return false;
+                    }
+
+                    if(document.getElementById('gatheringDesc').value !== '' && document.getElementById('gatheringDesc').value !== null && document.getElementById('gatheringDesc').value !== undefined)
+                    { 
+                        gatheringObject.gatheringDesc = document.getElementById('gatheringDesc').value;
+                    }
+                    else
+                    {
+                        alert('게더링 설명을 입력해주세요.');
+                        return false;
+                    }
+                    if(Object.keys(keywordsObject).length > 0)
+                    {
+                        gatheringObject.keywords =  keywordsObject;
+                    }
+                    else
+                    {
+                        alert('Keyword를 선택해주세요.');
+                        return false;
+                    }
+                    if(multipleFileList.length > 4 && multipleFileList.length < 16)
+                    {
+                        if(findMain())
+                        {
+                            gatheringObject.anotherImage = saveListFileToServerV2(multipleFileList);
+                            gatheringObject.mainImage = saveListFileToServerV2(singleFileList);
+                        }
+                        else
+                        {
+                            alert('메인 이미지를 선택해주세요.');
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        alert('반드시 이미지를 5장 이상 15장 이하로 업로드 해주세요.');
+                        return false;
+                    }
+
+                    if(gatheringObject.anotherImage != null && gatheringObject.anotherImage != undefined && gatheringObject.mainImage != null && gatheringObject.mainImage != undefined) {
+                        return true;
+                    }
+                }
+            </script>
+        </div>
+    </body>
+</html>

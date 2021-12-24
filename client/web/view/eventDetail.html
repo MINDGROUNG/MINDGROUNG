@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <%- include ./common/commonHead.html%>
+        <!--공통타이틀로 적용 할 경우 commonHead 안에 넣기-->
+    </head>
+    <body>
+        <div class="wrap commonLayout2 eventDetail">
+            <%- include ./common/commonHeader.html%>
+            <section class="marginAuto_s minHeight">
+                <div class="writeBtn">
+                    <button>
+                        <img src="/web/img/main/cateList/BTN_WRITE.png" alt="">
+                    </button>
+                </div>
+                <article>
+                    <div class="topContents">
+                        <div class="basicInfo">
+                            <div class="basicInfo-text">
+                                <div class="state">
+                                    <!-- 온라인일땐 h5태그가 없음 -->
+                                    <h5 class="state-offline" id="checkOnOffline" style="display: none;">
+                                        Offline
+                                    </h5>
+                                </div>
+                                <div class="desc">
+                                    <h3 class="classTitle" id="eventTitle">
+                                    </h3>
+                                    <div class="sideBtn">
+                                        <button>
+                                            <img src="/web/img/classDetail/ICN_SHARE.png" alt="">
+                                        </button>
+                                        <button>
+                                            <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="basicInfo-imgs explanation">
+                                <div>
+                                    <div class="leftThumb" id="mainImgID" style="background-image: url('/web/img/eventDetail/thumb.png');"></div>
+                                    <div class="exp">
+                                        <ul>
+                                            <li class="commonInfo">
+                                                <img src="/web/img/eventDetail/ICN_CALENDAR.png" alt="">
+                                                <span id="eventDate">
+                                                </span>
+                                            </li>
+                                            <!-- 오프라인일 때 -->
+                                            <li class="commonInfo" id="offlineIconID">
+                                                <img src="/web/img/eventDetail/ICN_LOCATION.png" alt="">
+                                                <span id="offlineInfo">
+                                                </span>
+                                            </li>
+                                            <!-- 온라인일 때 -->
+                                            <li class="commonInfo" id="onlineIconID" style="display: none;">
+                                                <img src="/web/img/eventDetail/ICN_ZOOM.png" alt="">
+                                                <span id="onlineInfo">
+                                                </span>
+                                            </li>
+                                            <li class="commonInfo">
+                                                <img src="/web/img/eventDetail/ICN_PERSON.png" alt="">
+                                                <span id="eventParticipants">
+                                                </span>
+                                                <div class="ringWrap" onclick="customModal(40)">
+                                                    <img src="/web/img/dummyIcon_30.png" alt="" id="memberRing1">
+                                                    <img src="/web/img/dummyIcon_30.png" alt="" id="memberRing2">
+                                                    <img src="/web/img/dummyIcon_30.png" alt="" id="memberRing3">
+                                                </div>
+                                                <div class="modal modal40">
+                                                    <div>
+                                                        <div class="fixInfo">
+                                                            <div class="icon-text">
+                                                                <img src="/web/img/ICN_PERSON.png" alt="">
+                                                                <strong>
+                                                                </strong>
+                                                            </div>
+                                                            <div class="xBtn">
+                                                                <button onclick="customModalClose(40)">
+                                                                    <i class="xi-close"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="contents">
+                                                            <!-- 리스트가 있을 때 -->
+                                                            <!-- 참가자 리스트 -->
+                                                            <div class="dwnBtn">
+                                                                <button class="dwnBtn-on">Download Excel</button>
+                                                            </div>
+                                                            <div class="friendList-list-has">
+                                                                <!-- 호스트가 볼땐 '나'가 맨위 -->
+                                                                <div class="friendList-list-content" id="listMeCheck" style="display: none;">
+                                                                    <div class="userInfo">
+                                                                        <div class="friendList-list-content-img">
+                                                                            <img src="/web/img/userRing/1.png" alt="" id="meUserRing">
+                                                                        </div>
+                                                                        <div class="friendList-list-content-text">
+                                                                            <h6 id="meUserName">
+                                                                            </h6>
+                                                                            <p id="meHostType">
+                                                                                <%=translation.hostStudio.Teacher%>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="meText">
+                                                                        <strong>
+                                                                            Me
+                                                                        </strong>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- 리스트가 없을 때! -->
+                                                            <!-- <div class="friendList-list-none">
+                                                                <strong>
+                                                                    No participant yet​
+                                                                </strong>
+                                                            </div> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="detailDesc">
+                                            <div class="ringInfo">
+                                                <div class="ring-hover">
+                                                    <img src="/web/img/userRing/1.png" alt="" id="creatorRingImgId">
+                                                </div>
+                                                <div class="rating-name">
+                                                    <p id="creatorHostType"></p>
+                                                    <strong id="eventCreator">
+                                                    </strong>
+                                                </div>
+                                            </div>
+                                            <p id="eventDesc">
+                                            </p>
+                                            <button class="seeMoreBtn">
+                                                See More
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 오프라인 (가입 후) -->
+                    <div class="bottomContents eventAfterJoin" id="offlineViewDiv" style="display: none;">
+                        <span class="line"></span>
+                        <h3>Offline Place</h3>
+                        <div class="mapArea">
+                            <div id="googleMap" style="width:100%; height:100%;"></div>
+                        </div>
+                        <div class="addresInfo" id="addressInfo">
+                        </div>
+                    </div>
+                    <!-- 온라인 (가입 후) -->
+                    <div class="bottomContents eventDetailInfo" id="onlineViewDiv" style="display: none;">
+                        <span class="line"></span>
+                        <h3>Online Method</h3>
+                        <div class="method" id="onlineMethod">
+                        </div>
+                    </div>
+                    <div class="bottomContents beforeJoin">
+                        <!-- 오프라인 (호스트가 보는 화면) -->
+                        <div class="btns host" id="ApprovedDiv" style="display: none;">
+                            <button class="rej" onclick="setApprove('reject')">
+                                Reject
+                            </button>
+                            <button class="appr" onclick="setApprove('approve')">
+                                Approve
+                            </button>
+                        </div>
+                        <!-- 오프라인 (메이트가 보는 화면) -->
+                        <div class="btns mate" id="JoinEventDiv" style="display: none;">
+                            <button class="par" onclick="joinEventFunc()">
+                                Participation
+                            </button>
+                        </div>
+                        <div class="cancelBtn" id="cancleEventDiv" style="display: none;">
+                            <button onclick="leaveEventFunc()">
+                                Cancel Participation
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <%- include ./common/commonFooter.html%> <%- include ./common/commonScript.html%>
+            <script>
+                var gatheringData = <%- gatheringData ? JSON.stringify(gatheringData) : {} %>;
+                var eventData = <%- eventData ? JSON.stringify(eventData) : {} %>;
+                var user = <%- user ? JSON.stringify(user) : {} %>;
+
+                function parsingMonth(month) {
+                    parseMonth = {
+                        "01": "Jan", 
+                        "02": "Feb",
+                        "03": "Mar",
+                        "04": "Apr",
+                        "05": "May",
+                        "06": "Jun",
+                        "07": "Jul",
+                        "08": "Aug",
+                        "09": "Sept",
+                        "10": "Oct",
+                        "11": "Nov",
+                        "12": "Dec",
+                    };
+                    
+                    return parseMonth[month];
+                }
+                
+                $(function() {
+
+                    //글 더보기
+                    $('.seeMoreBtn').click(function(){
+                        $(this).parents('.exp').addClass('active')
+                        $(this).remove();
+                    })
+
+                    //팔로우버튼 on & off
+                    $('.friendList-list-content-btn > button').on({
+                        'click': function() {
+                            if($(this).attr('data-no') == 0)
+                            {
+                                $(this).addClass('active');
+                                $(this).text('Follow');
+                                $(this).attr('data-no', '1');
+                            }
+                            else
+                            {
+                                $(this).removeClass('active');
+                                $(this).text('Following');
+                                $(this).attr('data-no', '0');
+                            }
+                        }
+                    })
+                })
+
+                setEventDetail();
+                
+                function setEventDetail() {
+                    if(eventData.gatheringEventOnline === 'Offline') {
+                        document.getElementById('offlineViewDiv').style.display = 'block';
+                        document.getElementById('checkOnOffline').style.display = 'block';
+                        document.getElementById('offlineInfo').innerText = eventData.gatheringOfflinePlaceName;
+                        document.getElementById('addressInfo').innerText = `Address: ${eventData.gatheringOfflinePlaceName}`;
+                    } else {
+                        document.getElementById('onlineViewDiv').style.display = 'block';
+                        document.getElementById('offlineIconID').style.display = 'none';
+                        document.getElementById('onlineIconID').style.display = 'block';
+                        document.getElementById('onlineInfo').innerText = `Join Online : ${eventData.gatheringOnlineMethod}`;
+                        document.getElementById('onlineMethod').innerText = eventData.gatheringOnlineMethod;
+                    }
+
+                    document.getElementById('mainImgID').style.backgroundImage = `url('${eventData.gatheringEventMainImage[0].filePath}')`;
+
+                    document.getElementById('eventTitle').innerText = eventData.gatheringEventName;
+
+                    var splitDate = eventData.gatheringEventDate.split('-');
+                    document.getElementById('eventDate').innerText = parsingMonth(splitDate[1]) + ' ' + splitDate[2] + ', ' + splitDate[0] + ' ' + eventData.gatheringEventTime1 + ' ~ ' + eventData.gatheringEventTime2;
+                    
+                    var memberLength = -1;
+                    if((eventData.eventMember !== undefined && eventData.eventMember.length > 0)) {
+                        memberLength = eventData.eventMember.length;
+                    } else {
+                        memberLength = 0;
+                    }
+                    
+                    document.getElementById('eventParticipants').innerText = memberLength + ' / ' + eventData.gatheringEventParticipants;
+
+                    document.getElementById('creatorRingImgId').src = `/web/img/userRing/${eventData.eventCreatorUID}.png`;
+
+                    if(eventData.eventCreatorHostType === '' || eventData.eventCreatorHostType === null) {
+                        document.getElementById('creatorHostType').style.display = 'none';    
+                    } else {
+                        document.getElementById('creatorHostType').innerText = eventData.eventCreatorHostType;
+                    }
+
+                    document.getElementById('eventCreator').innerText = eventData.eventCreatorName;
+
+                    document.getElementById('eventDesc').innerText = eventData.gatheringEventDesc;
+
+                    if(eventData.eventMember !== undefined && eventData.eventMember.length > 0) {
+                        for(var i = 0; i < (eventData.eventMember.length > 3 ? 3 : eventData.eventMember.length); i++) {
+                            document.getElementById('memberRing' + (i + 1)).style.display = 'inline-block';
+                            document.getElementById('memberRing' + (i + 1)).src = `/web/img/userRing/${eventData.eventMember[i]}.png`;
+                        }
+                    } else {
+                        document.getElementById('memberRing1').style.display = 'none';
+                        document.getElementById('memberRing2').style.display = 'none';
+                        document.getElementById('memberRing3').style.display = 'none';
+                    }
+
+                    if(eventData.gatheringApproved === 'approve') {
+
+                        if(Object.keys(user).length > 0) {
+                            if(eventData.eventMember !== undefined && eventData.eventMember.length > 0) {
+                                for(var i = 0; i < eventData.eventMember.length; i++) {
+                                    if(eventData.eventMember[i] === user.userUID || eventData.eventMember[i] === String(user.userUID) ) {
+                                        document.getElementById('cancleEventDiv').style.display = 'block';
+                                        break;
+                                    }
+                                }
+
+                                if(document.getElementById('cancleEventDiv').style.display !== 'block') {
+                                    document.getElementById('JoinEventDiv').style.display = 'block';
+                                }
+                            } else {
+                                document.getElementById('JoinEventDiv').style.display = 'block';
+                            }
+                        } else {
+                            document.getElementById('JoinEventDiv').style.display = 'block';
+                        }
+
+                    } else {
+                        if(Object.keys(user).length > 0) {
+                            if(gatheringData.gatheringMember.length > 0) {
+                                var checkAuth = '';
+                                for(var i = 0; gatheringData.gatheringMember.length; i++) {
+                                    if(gatheringData.gatheringMember[i].userUID === String(user.userUID) || gatheringData.gatheringMember[i].userUID === user.userUID) {
+                                        checkAuth = gatheringData.gatheringMember[i].authority;
+                                        break;
+                                    }
+                                }
+
+                                if(checkAuth === 'administrator' || checkAuth === 'operator') {
+                                    document.getElementById('ApprovedDiv').style.display = 'block';
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if(eventData.gatheringEventOnline === 'Offline') {
+                    var googleMapOptions = '';
+                    var googleMap = '';
+                    var geocoder = '';
+                    var getGatheringEventLatitude;
+                    var getGatheringEventLongitude;
+                    
+                    // 기존의 Marker를 지우기 위해 마커를 담는 배열
+                    var arrayGoogleMapMarker = [];
+
+                    // Google Map API 주소의 callback 파라미터와 동일한 이름의 함수
+                    function mindgroundMap() 
+                    {
+                        // default 중심 위치는 서울특별시
+                        googleMapOptions= { center : new google.maps.LatLng(37.55430979366699, 126.98747449784453), zoom : 8 };
+
+                        googleMap = new google.maps.Map(document.getElementById("googleMap"), googleMapOptions);
+
+                        geocoder = new google.maps.Geocoder();
+                        geocodeAddress(geocoder, googleMap);
+                    }
+
+                    function geocodeAddress(geocoder, googleMap, type)
+                    {
+                        // 기존의 Marker를 지운다.
+                        if(arrayGoogleMapMarker.length > 0)
+                        {
+                            arrayGoogleMapMarker[0].setMap(null);
+                        }
+
+                        // set Address
+                        var address = eventData.gatheringOfflinePlaceName;
+
+                        geocoder.geocode({ 'address' : address }, function(result, status)
+                        {
+                            if(status === 'OK')
+                            {
+                                var googleMapMarker = new google.maps.Marker({ position: result[0].geometry.location });
+                                
+                                arrayGoogleMapMarker[0] = googleMapMarker;
+
+                                // Marker를 맵에 찍는다.
+                                arrayGoogleMapMarker[0].setMap(googleMap);
+                                
+                                googleMap.setCenter(result[0].geometry.location);
+                                googleMap.setZoom(17);
+                                
+                                getGatheringEventLatitude = googleMapMarker.position.lat();
+                                getGatheringEventLongitude = googleMapMarker.position.lng();
+                                console.log('lat = ' + getGatheringEventLatitude + ' long = ' + getGatheringEventLongitude);
+                            }
+                            else
+                            {
+                                if(status === 'INVALID_REQUEST')
+                                {
+                                    alert('주소를 입력해주세요.');
+                                }
+                                else
+                                {
+                                    console.log('geocode error ' + status);
+                                }
+                            }
+                        });
+                    }
+                }
+
+                function setApprove(type) {
+                    var jsonData = {};
+                    jsonData.gatheringID = gatheringData._id;
+                    jsonData.eventID = eventData.eventID;
+                    jsonData.approveType = type;
+                        
+                    $.ajax({
+                        type : "POST",
+                        url : "/eventApprove",
+                        data : JSON.stringify(jsonData),
+                        async : false,
+                        processData : false,
+                        contentType : "application/json; charset=UTF-8",
+                        success : function(success){
+                            alert('승인 및 반려가 완료되었습니다.');
+                            location.reload();
+                        },
+                        error : function(error)
+                        {
+                            alert(error.responseJSON.message);
+                        }
+                    });
+                }
+
+                function joinEventFunc() {
+                    if(Object.keys(user).length < 1) {
+                        customModal(100);
+                        return false;
+                    } else if(eventData.eventMember.length == eventData.gatheringEventParticipants) {
+                        alert('이벤트 참여 가능 인원이 충족되지 않습니다.');
+                        return false;
+                    }else {
+                        var jsonData = {};
+                        jsonData.gatheringID = gatheringData._id;
+                        jsonData.eventID = eventData.eventID;
+                        jsonData.userUID = user.userUID;
+                            
+                        $.ajax({
+                            type : "POST",
+                            url : "/eventJoin",
+                            data : JSON.stringify(jsonData),
+                            async : false,
+                            processData : false,
+                            contentType : "application/json; charset=UTF-8",
+                            success : function(success){
+                                alert('참여가 완료되었습니다.');
+                                location.reload();
+                            },
+                            error : function(error)
+                            {
+                                alert(error.responseJSON.message);
+                            }
+                        });
+                    }
+                }
+
+                function leaveEventFunc() {
+                    var jsonData = {};
+                    jsonData.gatheringID = gatheringData._id;
+                    jsonData.eventID = eventData.eventID;
+                    jsonData.userUID = user.userUID;
+                        
+                    $.ajax({
+                        type : "POST",
+                        url : "/eventLeave",
+                        data : JSON.stringify(jsonData),
+                        async : false,
+                        processData : false,
+                        contentType : "application/json; charset=UTF-8",
+                        success : function(success){
+                            alert('떠나기가 완료되었습니다.');
+                            location.reload();
+                        },
+                        error : function(error)
+                        {
+                            alert(error.responseJSON.message);
+                        }
+                    });
+                }
+                
+                setEventMemberList();
+
+                function setEventMemberList() {
+                    for(var i = 0; i < eventData.eventMember.length; i++) {
+                        if(eventData.eventMember[i] == user.userUID) {
+                            document.getElementById('listMeCheck').style.display = 'block';
+                            document.getElementById('meUserRing').src = `/web/img/userRing/${eventData.eventMember[i]}.png`;
+                            var memberIndex = gatheringData.gatheringMember.findIndex( index => index.userUID == user.userUID);
+                            document.getElementById('meUserName').innerText = gatheringData.gatheringMember[memberIndex].userName;
+
+                            if(gatheringData.gatheringMember[memberIndex].hostType != 'none') {
+                                document.getElementById('meHostType').innerText = gatheringData.gatheringMember[memberIndex].hostType;
+                            }
+
+                        }
+                        
+                        if(eventData.eventMember[i] != user.userUID) {
+                            var memberIndex = gatheringData.gatheringMember.findIndex( index => index.userUID == eventData.eventMember[i] );
+                            var memberInfo = gatheringData.gatheringMember[memberIndex];
+                            var listhostType = '';
+                            
+                            if(memberInfo.hostType != 'none') {
+                                listhostType = getTranslation('hostStudio', memberInfo.hostType);
+                            }
+
+                            memberListHtml = 
+                            `
+                                <div class="friendList-list-content">
+                                    <div class="userInfo">
+                                        <div class="friendList-list-content-img">
+                                            <img src="/web/img/userRing/${memberInfo.userUID}.png" alt="">
+                                        </div>
+                                        <div class="friendList-list-content-text">
+                                            <h6>
+                                                ${memberInfo.userName}
+                                            </h6>
+                                            <p>
+                                                ${listhostType}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="friendList-list-content-btn">
+                                        <button data-no="0">
+                                            Following
+                                        </button>
+                                    </div>
+                                </div>
+                            `;
+                            
+                            document.querySelector('.friendList-list-has').innerHTML += memberListHtml;
+                        }
+                    }
+                }
+            </script>
+            <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATfYV535tXnxiEu1KCbvOlGx6IoqySFlA&callback=mindgroundMap"></script>
+        </div>
+    </body>
+</html>

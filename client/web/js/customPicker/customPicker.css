@@ -1,0 +1,134 @@
+.calendarWrap {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 50px 15px;
+    overflow: hidden;
+    background-color: #2e2e34;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.calendarWrap .entwizSoft-btnWrap {
+    position: relative;
+    display: inline-block;
+    height: 80px;
+}
+.calendarWrap .entwizSoft-btnWrap .entwizSoft-yearMonth {
+    height: 100%;
+    line-height: 80px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+}
+.calendarWrap .entwizSoft-btnWrap button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 100%;
+    font-size: 24px;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+.calendarWrap .entwizSoft-btnWrap button:focus {
+    outline: none;
+}
+.calendarWrap .entwizSoft-btnWrap button.entwizSoft-prev {
+    left: -65px;
+}
+.calendarWrap .entwizSoft-btnWrap button.entwizSoft-next {
+    right: -65px;
+}
+.calendarWrap .entwizSoft-calendarTable {
+    width: 100%;
+    box-sizing: border-box;
+    border-spacing: 0px 3px;
+}
+.calendarWrap .entwizSoft-calendarTable thead tr td {
+    height: 44px;
+    line-height: 1;
+    font-size: 14px;
+    font-weight: 300;
+    color: #fff;
+}
+.calendarWrap .entwizSoft-calendarTable tbody tr td {
+    width: 30px;
+    height: 44px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 300;
+    color: #fff;
+    cursor: pointer;
+}
+.calendarWrap .entwizSoft-calendarTable tbody tr td span {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+}
+
+.calendarWrap .entwizSoft-calendarTable tbody tr td.getToday span::after {
+    content: 'Today';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    line-height: 1;
+    color: #aeacff;
+}
+
+.entwizSoft-active span {
+    background-color: rgba(174, 172, 255, 0.4);
+}
+
+.entwizSoft-leftActive span {
+    background-color: rgba(174, 172, 255, 0.4);
+}
+
+.entwizSoft-rangeActive span {
+    background-color: rgba(174, 172, 255, 0.4);
+}
+
+.entwizSoft-rightActive span {
+    background-color: rgba(174, 172, 255, 0.4);
+}
+
+.entwizSoft-hover span {
+    background-color: rgba(174, 172, 255, 0.4);
+}
+
+.entwizSoft-leftHover span {
+    background-color: rgba(174, 172, 255, 0.4);
+}
+
+.entwizSoft-rightHover span {
+    background-color: rgba(174, 172, 255, 0.4);
+}
+
+.entwizSoft-rangeHover span {
+    background-color: rgba(174, 172, 255, 0.4);
+}
+.entwizSoft-hover.disableDay span {
+    background: none;
+}
+.entwizSoft-rangeHover.disableDay span {
+    background: none;
+}
+.entwizSoft-leftHover.disableDay span {
+    background: none;
+}
+
+.entwizSoft-rightHover.disableDay span {
+    background: none;
+}
+.calendarWrap .entwizSoft-calendarTable tbody tr td.disableDay {
+    color: rgba(255, 255, 255, 0.45);
+    background: none;
+    cursor: text !important;
+}

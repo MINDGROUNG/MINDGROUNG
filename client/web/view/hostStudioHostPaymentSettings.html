@@ -1,0 +1,1430 @@
+<section class="hostStudioCommonLayout">
+    <article>
+        <div class="commonTitleArea">
+            <h2><%=translation.dashBoard.Payment_Settings%></h2>
+        </div>
+        <div class="mainContentsArea hostPaymentSettings">
+            <div class="defaultVal">
+                <h3 class="subTitle1">
+                    Service payment
+                </h3>
+                <!-- 변경 전 시안 -->
+                <!-- <div class="valueBox">
+                    <div class="valueBox-top">
+                        <div class="valueBox-top-left">
+                            <div class="inputBox">
+                                <b class="fixTitle">Service Fee</b>
+                                <input class="height30" type="text" value="$ 55.00 / mo">
+                            </div>
+                            <div class="inputBox">
+                                <b class="fixTitle">Next billing date</b>
+                                <input class="height30" type="text" value="2021. 12. 15">
+                            </div>
+                        </div>
+                        <div class="valueBox-top-right">
+                            <b class="fixTitle">Billing period</b>
+                            <div class="selectBox1">
+                                <div class="selectView">
+                                    <input id="billingPeriodCategory" type="button" value="Monthly">
+                                    <img src="/web/img/ICN_DROP.png" alt="">
+                                </div>
+                                <ul class="selectBox-hdnMenu">
+                                    <li>
+                                        <input type="radio" value="Yearly" id="yearly" name="yearly" onclick="selectValue(this)">
+                                        <label for="yearly">
+                                            <span>Yearly</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="valueBox-bottom">
+                        <div class="valueBox-bottom-left">
+                            <div class="billedNum">
+                                <div>
+                                    <span>
+                                        Billed with
+                                    </span>
+                                    <strong>
+                                        0000bank  **** **** **** 8989
+                                    </strong>
+                                </div>
+                                <button class="editBtn-on">
+                                    <img src="/web/img/ICN_EDIT.png" alt="">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="valueBox-bottom-right">
+                            <button class="deactivateBtn-on">
+                                Deactivate
+                            </button>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- 변경 후 시안 -->
+                <div class="typeWrap">
+                    <ul class="types">
+                        <li>
+                            <h6>Monthly service fee​</h6>
+                            <strong id="payMonthlyValueID">
+                                55000
+                                <span id="payMonthlyControlID"><%=translation.dashBoard.Money%></span>
+                            </strong>
+                            <button class="typeSelectBtn-on">
+                                Select​
+                            </button>
+                        </li> 
+                        <li>
+                            <h6>Yearly service fee​​</h6>
+                            <strong id="payYearlyValueID">
+                                599
+                                <span id="payYearlyControlID"><%=translation.dashBoard.Money%></span>
+                            </strong>
+                            <button class="typeSelectBtn-on">
+                                Select​
+                            </button>
+                        </li> 
+                    </ul>
+                    <p>
+                        The service fee is paid monthly or annually according to the selected method.​<br/>
+                        The program sales commission is 30% of the sales amount when selling Classes.​
+                    </p>
+                </div>
+            </div>
+            <!-- Modal22 HTML -->
+            <div class="detailRawInput paymentOnly">
+                <h3 class="subTitle1">
+                    Payment Detail​
+                </h3>
+                <div class="paymentInfo">
+                    <h4 class="subTitle2">
+                        Payment Information
+                    </h4>
+                    <div class="inputArea">
+                        <h5 class="detailTitle">
+                            Credit/Debit Card Number
+                        </h5>
+                        <div class="creditInput">
+                            <input type="text" maxlength="4" id="cardNumber1" value="">
+                            <input type="text" maxlength="4" id="cardNumber2">
+                            <input type="text" maxlength="4" id="cardNumber3">
+                            <input type="text" maxlength="4" id="cardNumber4">
+                        </div>
+                    </div>
+                    <div class="inputArea division">
+                        <div>
+                            <h5 class="detailTitle">
+                                Date
+                            </h5>
+                            <div class="creditInput">
+                                <input type="text" maxlength="4" id="cardDate" placeholder="MM / YY">
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="detailTitle">
+                                CVC
+                            </h5>
+                            <div class="creditInput">
+                                <input type="text" maxlength="3" id="cardCVC">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="settlementInfo">
+                    <h4 class="subTitle2">
+                        Settlement Information
+                    </h4>
+                    <div class="typeTabBtns">
+                        <button class="individualBtn-on active" id="individualBtn-on" data-tab="individualTab" onclick="checkCardType('individual')">
+                            Individual
+                        </button>
+                        <button class="corporationBtn-on" id="corporationBtn-on" data-tab="corporationTab" onclick="checkCardType('corporation')">
+                            Corporation
+                        </button>
+                    </div>
+                    <div class="getSettlementForm" id="getSettlementForm">
+                        <div class="individualTab">
+                            <div class="inputArea">
+                                <h5 class="detailTitle">
+                                    Full Name
+                                </h5>
+                                <div class="creditInput commonWidth">
+                                    <input type="text" id="fullNameFirst" placeholder="First Name">
+                                    <input type="text" id="fullNameLast" placeholder="Last Name">
+                                </div>
+                            </div>
+                            <div class="inputArea">
+                                <h5 class="detailTitle">
+                                    Address
+                                </h5>
+                                <div class="addressInput1 commonWidth">
+                                    <input type="text" id="addressCountry" placeholder="Country">
+                                    <input type="text" id="addressState" placeholder="State / Province">
+                                </div>
+                                <div class="addressInput2 commonWidth">
+                                    <input type="text" id="addressCity" placeholder="City">
+                                    <input type="text" id="addressStreet" placeholder="Street Address">
+                                </div>
+                            </div>
+                            <div class="inputArea">
+                                <h5 class="detailTitle">
+                                    Phone Number
+                                </h5>
+                                <div class="phoneNumberInput">
+                                    <input type="text" id="phoneNumber">
+                                </div>
+                            </div>
+                            <div class="selectArea currencyArea">
+                                <h5 class="detailTitle">
+                                    Currency
+                                </h5>
+                                <div class="selectBox1">
+                                    <div class="selectView">
+                                        <input id="inforBillingPeriodCategory" type="button" value="Select">
+                                        <img src="/web/img/ICN_DROP.png" alt="">
+                                    </div>
+                                    <ul class="selectBox-hdnMenu basicInfoGenderBox" id="inforBillingPeriodCategoryControl">
+                                        <li>
+                                            <input type="radio" value="USD" id="USD" name="USD" onclick="checkCalculateCurrencyType('USD')">
+                                            <input type="radio" value="KRW" id="KRW" name="KRW" onclick="checkCalculateCurrencyType('KRW')">
+                                            <label for="USD">
+                                                <span>USD(US$)</span>
+                                            </label>
+                                            <label for="KRW">
+                                                <span>KRW(원)</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="inputArea bankInfoArea division">
+                                <div>
+                                    <h5 class="detailTitle">
+                                        Bank
+                                    </h5>
+                                    <div class="bankInput">
+                                        <input type="text" id="calculateBank">
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5 class="detailTitle">
+                                        Account Number
+                                    </h5>
+                                    <div class="AccountNumberInput">
+                                        <input type="text" id="calculateAccountNumber">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="inputArea paypalArea">
+                                <h5 class="detailTitle">
+                                    PayPal ID(Your PayPal email)
+                                </h5>
+                                <div class="paypalInput">
+                                    <input type="text" id="payPal">
+                                </div>
+                            </div>
+                            <div class="uploadArea division">
+                                <div>
+                                    <div class="title-btn">
+                                        <h5 class="detailTitle">
+                                            ID Card
+                                        </h5>
+                                        <div>
+                                            <input type="file" id="idCardFileUpload" onchange="fileListOutFunc(this, 'fileList1ID')">
+                                            <label for="idCardFileUpload">
+                                                <strong>File Upload</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="fileList" id="fileList1ID">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 기존 HTML
+            <div class="detailRawInput paymentOnly">
+                <h3 class="subTitle1">
+                    Payment Detail
+                </h3>
+                <div class="paymentInfo">
+                    <h4 class="subTitle2">
+                        Payment Information
+                    </h4>
+                    <div class="inputArea">
+                        <h5 class="detailTitle">
+                            Credit/Debit Card Number
+                        </h5>
+                        <div class="creditInput">
+                            <input type="text" id="cardNum1">
+                            <input type="text" id="cardNum2">
+                            <input type="text" id="cardNum3">
+                            <input type="text" id="cardNum4">
+                        </div>
+                    </div>
+                    <div class="inputArea division">
+                        <div>
+                            <h5 class="detailTitle">
+                                Date
+                            </h5>
+                            <div class="creditInput">
+                                <input type="text" id="cardDateNum">
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="detailTitle">
+                                CVC
+                            </h5>
+                            <div class="creditInput">
+                                <input type="text" id="cardCvcNum">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="settlementInfo">
+                    <h4 class="subTitle2">
+                        Settlement Information
+                    </h4>
+                    <div class="typeTabBtns">
+                        <button class="individualBtn-on active" data-tab="individualTab">
+                            Individual
+                        </button>
+                        <button class="corporationBtn-on" data-tab="corporationTab">
+                            Corporation
+                        </button>
+                    </div>
+                    <div class="getSettlementForm">
+                        <div class="individualTab">
+                            <div class="inputArea">
+                                <h5 class="detailTitle">
+                                    Full Name
+                                </h5>
+                                <div class="creditInput commonWidth">
+                                    <input type="text" id="fullNameFirst" placeholder="First Name">
+                                    <input type="text" id="fullNameLast" placeholder="Last Name">
+                                </div>
+                            </div>
+                            <div class="inputArea">
+                                <h5 class="detailTitle">
+                                    Address
+                                </h5>
+                                <div class="addressInput1 commonWidth">
+                                    <input type="text" id="addressCountry" placeholder="Country">
+                                    <input type="text" id="addressState" placeholder="State / Province">
+                                </div>
+                                <div class="addressInput2 commonWidth">
+                                    <input type="text" id="addressCity" placeholder="City">
+                                    <input type="text" id="addressStreet" placeholder="Street Address">
+                                </div>
+                            </div>
+                            <div class="inputArea">
+                                <h5 class="detailTitle">
+                                    Phone Number
+                                </h5>
+                                <div class="phoneNumberInput">
+                                    <input type="text" id="phoneNumber">
+                                </div>
+                            </div>
+                            <div class="selectArea currencyArea">
+                                <h5 class="detailTitle">
+                                    Currency
+                                </h5>
+                                <div class="selectBox1">
+                                    <div class="selectView">
+                                        <input id="billingPeriodCategory" type="button" value="Select">
+                                        <img src="/web/img/ICN_DROP.png" alt="">
+                                    </div>
+                                    <ul class="selectBox-hdnMenu basicInfoGenderBox">
+                                        <li>
+                                            <input type="radio" value="Yearly" id="yearly" name="yearly" onclick="selectValue(this)">
+                                            <label for="yearly">
+                                                <span>Yearly</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="inputArea bankInfoArea division">
+                                <div>
+                                    <h5 class="detailTitle">
+                                        Bank
+                                    </h5>
+                                    <div class="bankInput">
+                                        <input type="text" id="bankInfo">
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5 class="detailTitle">
+                                        Account Number
+                                    </h5>
+                                    <div class="AccountNumberInput">
+                                        <input type="text" id="accountNumber">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="inputArea paypalArea">
+                                <h5 class="detailTitle">
+                                    PayPal ID(Your PayPal email)
+                                </h5>
+                                <div class="paypalInput">
+                                    <input type="text" id="paypalId">
+                                </div>
+                            </div>
+                            <div class="uploadArea division">
+                                <div>
+                                    <div class="title-btn">
+                                        <h5 class="detailTitle">
+                                            ID Card
+                                        </h5>
+                                        <div>
+                                            <input type="file" id="idCardFileUpload">
+                                            <label for="idCardFileUpload">
+                                                <strong>File Upload</strong>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="fileList">
+                                        <dl class="file">
+                                            // ================================================================================ 
+                                            // 여기부터 기존코드에서 주석처리되어있던 부분입니다. 중첩 주석이 안되서 남깁니다.
+                                            // ================================================================================ 
+                                            <dt class="fileName">
+                                                파일명 파일명 파일명 파일명 파일명 파일명 파일명 파일명  파일명 파일명파일명파일명파일명파일명
+                                            </dt>
+                                            <dd class="fileDelBtn">
+                                                <button>Delete</button>
+                                            </dd>
+                                            // ================================================================================ 
+                                            // 여기까지 기존코드에서 주석처리되어있던 부분입니다. 중첩 주석이 안되서 남깁니다.
+                                            // ================================================================================ 
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            -->
+            <div class="updateBtn">
+                <button class="updateBtn-on" onclick="payInfoSave()">
+                    <%=translation.hostProfile.Update%>
+                </button>
+            </div>
+        </div>
+    </article>
+</section>
+<script>
+
+    //개인/사업자 입력폼 온.오프 탭버튼
+    $('.typeTabBtns > button').click(function() {
+        var targetTab = $(this).data('tab');
+        $('.typeTabBtns > button').removeClass('active');
+        $(this).addClass('active');
+        if(targetTab == 'individualTab')
+        {
+            $('.getSettlementForm').html(individualForm('test'))
+        }
+        else
+        {
+            $('.getSettlementForm').html(corporationForm('test1','test2'))
+        }
+    });
+
+    // Information Currency inforBillingPeriodCategory Click Event
+    $(document).on('click', '#inforBillingPeriodCategory', function(){
+        $('#inforBillingPeriodCategoryControl').addClass('active');
+    });
+
+    // 신규 추가 개인 입력폼
+    function individualForm(fileName) {
+        var individual = "";
+        individual += '<div class="individualTab">';
+        individual += '<div class="inputArea">';
+        individual += '<h5 class="detailTitle">';
+        individual += 'Full Name';
+        individual += '</h5>';
+        individual += '<div class="creditInput commonWidth">';
+        individual += '<input type="text" id="fullNameFirst" placeholder="First Name">';
+        individual += '<input type="text" id="fullNameLast" placeholder="Last Name">';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div class="inputArea">';
+        individual += '<h5 class="detailTitle">';
+        individual += 'Address';
+        individual += '</h5>';
+        individual += '<div class="addressInput1 commonWidth">';
+        individual += '<input type="text" id="addressCountry" placeholder="Country">';
+        individual += '<input type="text" id="addressState" placeholder="State / Province">';
+        individual += '</div>';
+        individual += '<div class="addressInput2 commonWidth">';
+        individual += '<input type="text" id="addressCity" placeholder="City">';
+        individual += '<input type="text" id="addressStreet" placeholder="Street Address">';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div class="inputArea">';
+        individual += '<h5 class="detailTitle">';
+        individual += 'Phone Number';
+        individual += '</h5>';
+        individual += '<div class="phoneNumberInput">';
+        individual += '<input type="text" id="phoneNumber">';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div class="selectArea currencyArea">';
+        individual += '<h5 class="detailTitle">';
+        individual += 'Currency';
+        individual += '</h5>';
+        individual += '<div class="selectBox1">';
+        individual += '<div class="selectView">';
+        individual += '<input id="inforBillingPeriodCategory" type="button" value="Select">';
+        individual += '<img src="/web/img/ICN_DROP.png" alt="">';
+        individual += '</div>';
+        individual += '<ul class="selectBox-hdnMenu basicInfoGenderBox" id="inforBillingPeriodCategoryControl">';
+        individual += '<li>';
+        individual += '<input type="radio" value="USD" id="USD" name="USD" onclick="checkCalculateCurrencyType(\'USD\')">';
+        individual += '<input type="radio" value="KRW" id="KRW" name="KRW" onclick="checkCalculateCurrencyType(\'KRW\')">';
+        individual += '<label for="USD">';
+        individual += '<span>USD(US$)</span>';
+        individual += '</label>';
+        individual += '<label for="KRW">';
+        individual += '<span>KRW(원)</span>';
+        individual += '</label>';
+        individual += '</li>';
+        individual += '</ul>';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div class="inputArea bankInfoArea division">';
+        individual += '<div>';
+        individual += '<h5 class="detailTitle">';
+        individual += 'Bank';
+        individual += '</h5>';
+        individual += '<div class="bankInput">';
+        individual += '<input type="text" id="calculateBank">';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div>';
+        individual += '<h5 class="detailTitle">';
+        individual += 'Account Number';
+        individual += '</h5>';
+        individual += '<div class="AccountNumberInput">';
+        individual += '<input type="text" id="calculateAccountNumber">';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div class="inputArea paypalArea">';
+        individual += '<h5 class="detailTitle">';
+        individual += 'PayPal ID(Your PayPal email)';
+        individual += '</h5>';
+        individual += '<div class="paypalInput">';
+        individual += '<input type="text" id="payPal">';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div class="uploadArea division">';
+        individual += '<div>';
+        individual += '<div class="title-btn">';
+        individual += '<h5 class="detailTitle">';
+        individual += 'ID Card';
+        individual += '</h5>';
+        individual += '<div>';
+        individual += `<input type="file" id="idCardFileUpload" onchange="fileListOutFunc(this, 'fileList1ID')">`;
+        individual += '<label for="idCardFileUpload">';
+        individual += '<strong>File Upload</strong>';
+        individual += '</label>';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div class="fileList">';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '</div>';
+
+        return individual;
+    }
+
+    // 신규 추가 사업자입력폼
+    function corporationForm(fileName1, fileName2) {
+        var corporation = "";
+
+        corporation += '<div class="corporationTab active">';
+        corporation += '<div class="inputArea">';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Company Name';
+        corporation += '</h5>';
+        corporation += '<div class="companyNameInput">';
+        corporation += '<input type="text" id="companyName">';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="inputArea">';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Address';
+        corporation += '</h5>';
+        corporation += '<div class="addressInput1 commonWidth">';
+        corporation += '<input type="text" id="addressCountry" placeholder="Country">';
+        corporation += '<input type="text" id="addressState" placeholder="State / Province">';
+        corporation += '</div>';
+        corporation += '<div class="addressInput2 commonWidth">';
+        corporation += '<input type="text" id="addressCity" placeholder="City">';
+        corporation += '<input type="text" id="addressStreet" placeholder="Street Address">';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="inputArea">';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Phone Number';
+        corporation += '</h5>';
+        corporation += '<div class="phoneNumberInput">';
+        corporation += '<input type="text" id="phoneNumber">';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="selectArea currencyArea">';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Currency';
+        corporation += '</h5>';
+        corporation += '<div class="selectBox1">';
+        corporation += '<div class="selectView">';
+        corporation += '<input id="inforBillingPeriodCategory" type="button" value="Select">';
+        corporation += '<img src="/web/img/ICN_DROP.png" alt="">';
+        corporation += '</div>';
+        corporation += '<ul class="selectBox-hdnMenu basicInfoGenderBox" id="inforBillingPeriodCategoryControl">';
+        corporation += '<li>';
+        corporation += '<input type="radio" value="USD" id="USD" name="USD" onclick="checkCalculateCurrencyType(\'USD\')">';
+        corporation += '<input type="radio" value="KRW" id="KRW" name="KRW" onclick="checkCalculateCurrencyType(\'KRW\')">';
+        corporation += '<label for="USD">';
+        corporation += '<span>USD(US$)</span>';
+        corporation += '</label>';
+        corporation += '<label for="KRW">';
+        corporation += '<span>KRW(원)</span>';
+        corporation += '</label>';
+        corporation += '</li>';
+        corporation += '</ul>';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="inputArea bankInfoArea division">';
+        corporation += '<div>';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Bank';
+        corporation += '</h5>';
+        corporation += '<div class="bankInput">';
+        corporation += '<input type="text" id="calculateBank">';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div>';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Account Number';
+        corporation += '</h5>';
+        corporation += '<div class="AccountNumberInput">';
+        corporation += '<input type="text" id="calculateAccountNumber">';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="inputArea paypalArea">';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'PayPal ID(Your PayPal email)';
+        corporation += '</h5>';
+        corporation += '<div class="paypalInput">';
+        corporation += '<input type="text" id="payPal">';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="uploadArea division">';
+        corporation += '<div>';
+        corporation += '<div class="title-btn">';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Certificate of<br/>';
+        corporation += 'Business Registration';
+        corporation += '</h5>';
+        corporation += '<div>';
+        corporation += `<input type="file" id="businessFileUpload" onchange="fileListOutFunc(this, 'fileList2ID')">`;
+        corporation += '<label for="businessFileUpload">';
+        corporation += '<strong>File Upload</strong>';
+        corporation += '</label>';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="fileList" id="fileList2ID">';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div>';
+        corporation += '<div class="title-btn">';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Passbooks Cover';
+        corporation += '</h5>';
+        corporation += '<div>';
+        corporation += `<input type="file" id="passBooksCoverFileUpload" onchange="fileListOutFunc(this, 'fileList3ID')">`;
+        corporation += '<label for="passBooksCoverFileUpload">';
+        corporation += '<strong>File Upload</strong>';
+        corporation += '</label>';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="fileList" id="fileList3ID">';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '</div>';
+
+        return corporation;
+    }
+    
+    // 기존 개인 입력폼
+    /*
+    function individualForm(fileName) {
+        var individual = "";
+        individual += '<div class="individualTab">';
+        individual += '<div class="inputArea">';
+        individual += '<h5 class="detailTitle">';
+        individual += 'Full Name';
+        individual += '</h5>';
+        individual += '<div class="creditInput commonWidth">';
+        individual += '<input type="text" id="fullNameFirst" placeholder="First Name">';
+        individual += '<input type="text" id="fullNameLast" placeholder="Last Name">';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div class="inputArea">';
+        individual += '<h5 class="detailTitle">';
+        individual += 'Address';
+        individual += '</h5>';
+        individual += '<div class="addressInput1 commonWidth">';
+        individual += '<input type="text" id="addressCountry" placeholder="Country">';
+        individual += '<input type="text" id="addressState" placeholder="State / Province">';
+        individual += '</div>';
+        individual += '<div class="addressInput2 commonWidth">';
+        individual += '<input type="text" id="addressCity" placeholder="City">';
+        individual += '<input type="text" id="addressStreet" placeholder="Street Address">';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div class="inputArea">';
+        individual += '<h5 class="detailTitle">';
+        individual += 'Phone Number';
+        individual += '</h5>';
+        individual += '<div class="phoneNumberInput">';
+        individual += '<input type="text" id="phoneNumber">';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div class="selectArea currencyArea">';
+        individual += '<h5 class="detailTitle">';
+        individual += 'Currency';
+        individual += '</h5>';
+        individual += '<div class="selectBox1">';
+        individual += '<div class="selectView">';
+        individual += '<input id="billingPeriodCategory" type="button" value="Select">';
+        individual += '<img src="/web/img/ICN_DROP.png" alt="">';
+        individual += '</div>';
+        individual += '<ul class="selectBox-hdnMenu basicInfoGenderBox">';
+        individual += '<li>';
+        individual += '<input type="radio" value="Yearly" id="yearly" name="yearly" onclick="selectValue(this)">';
+        individual += '<label for="yearly">';
+        individual += '<span>Yearly</span>';
+        individual += '</label>';
+        individual += '</li>';
+        individual += '</ul>';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div class="inputArea bankInfoArea division">';
+        individual += '<div>';
+        individual += '<h5 class="detailTitle">';
+        individual += 'Bank';
+        individual += '</h5>';
+        individual += '<div class="bankInput">';
+        individual += '<input type="text" id="bankInfo">';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div>';
+        individual += '<h5 class="detailTitle">';
+        individual += 'Account Number';
+        individual += '</h5>';
+        individual += '<div class="AccountNumberInput">';
+        individual += '<input type="text" id="accountNumber">';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div class="inputArea paypalArea">';
+        individual += '<h5 class="detailTitle">';
+        individual += 'PayPal ID(Your PayPal email)';
+        individual += '</h5>';
+        individual += '<div class="paypalInput">';
+        individual += '<input type="text" id="paypalId">';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div class="uploadArea division">';
+        individual += '<div>';
+        individual += '<div class="title-btn">';
+        individual += '<h5 class="detailTitle">';
+        individual += 'ID Card';
+        individual += '</h5>';
+        individual += '<div>';
+        individual += '<input type="file" id="idCardFileUpload">';
+        individual += '<label for="idCardFileUpload">';
+        individual += '<strong>File Upload</strong>';
+        individual += '</label>';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '<div class="fileList">';
+        individual += '<dl class="file">';
+        // individual += '<dt class="fileName">'+fileName+'</dt>';
+        // individual += '<dd class="fileDelBtn">';
+        // individual += '<button>Delete</button>';
+        individual += '</dd>';
+        individual += '</dl>';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '</div>';
+        individual += '</div>';
+
+        return individual;
+    }
+    */
+
+    // 기존 사업자입력폼
+    /*
+    function corporationForm(fileName1, fileName2) {
+        var corporation = "";
+
+        corporation += '<div class="corporationTab active">';
+        corporation += '<div class="inputArea">';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Company Name';
+        corporation += '</h5>';
+        corporation += '<div class="companyNameInput">';
+        corporation += '<input type="text" id="companyName">';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="inputArea">';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Address';
+        corporation += '</h5>';
+        corporation += '<div class="addressInput1 commonWidth">';
+        corporation += '<input type="text" id="addressCountry" placeholder="Country">';
+        corporation += '<input type="text" id="addressState" placeholder="State / Province">';
+        corporation += '</div>';
+        corporation += '<div class="addressInput2 commonWidth">';
+        corporation += '<input type="text" id="addressCity" placeholder="City">';
+        corporation += '<input type="text" id="addressStreet" placeholder="Street Address">';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="inputArea">';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Phone Number';
+        corporation += '</h5>';
+        corporation += '<div class="phoneNumberInput">';
+        corporation += '<input type="text" id="phoneNumber">';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="selectArea currencyArea">';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Currency';
+        corporation += '</h5>';
+        corporation += '<div class="selectBox1">';
+        corporation += '<div class="selectView">';
+        corporation += '<input id="billingPeriodCategory" type="button" value="Select">';
+        corporation += '<img src="/web/img/ICN_DROP.png" alt="">';
+        corporation += '</div>';
+        corporation += '<ul class="selectBox-hdnMenu basicInfoGenderBox">';
+        corporation += '<li>';
+        corporation += '<input type="radio" value="Yearly" id="yearly" name="yearly" onclick="selectValue(this)">';
+        corporation += '<label for="yearly">';
+        corporation += '<span>Yearly</span>';
+        corporation += '</label>';
+        corporation += '</li>';
+        corporation += '</ul>';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="inputArea bankInfoArea division">';
+        corporation += '<div>';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Bank';
+        corporation += '</h5>';
+        corporation += '<div class="bankInput">';
+        corporation += '<input type="text" id="bankInfo">';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div>';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Account Number';
+        corporation += '</h5>';
+        corporation += '<div class="AccountNumberInput">';
+        corporation += '<input type="text" id="accountNumber">';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="inputArea paypalArea">';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'PayPal ID(Your PayPal email)';
+        corporation += '</h5>';
+        corporation += '<div class="paypalInput">';
+        corporation += '<input type="text" id="paypalId">';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="uploadArea division">';
+        corporation += '<div>';
+        corporation += '<div class="title-btn">';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Certificate of<br/>';
+        corporation += 'Business Registration';
+        corporation += '</h5>';
+        corporation += '<div>';
+        corporation += '<input type="file" id="idCardFileUpload">';
+        corporation += '<label for="idCardFileUpload">';
+        corporation += '<strong>File Upload</strong>';
+        corporation += '</label>';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="fileList">';
+        corporation += '<dl class="file">';
+        // corporation += '<dt class="fileName">'+fileName1+'</dt>';
+        // corporation += '<dd class="fileDelBtn">';
+        // corporation += '<button>Delete</button>';
+        // corporation += '</dd>';
+        corporation += '</dl>';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div>';
+        corporation += '<div class="title-btn">';
+        corporation += '<h5 class="detailTitle">';
+        corporation += 'Passbooks Cover';
+        corporation += '</h5>';
+        corporation += '<div>';
+        corporation += '<input type="file" id="idCardFileUpload">';
+        corporation += '<label for="idCardFileUpload">';
+        corporation += '<strong>File Upload</strong>';
+        corporation += '</label>';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '<div class="fileList">';
+        corporation += '<dl class="file">';
+        // corporation += '<dt class="fileName">'+fileName2+'</dt>';
+        // corporation += '<dd class="fileDelBtn">';
+        // corporation += '<button>Delete</button>';
+        // corporation += '</dd>';
+        corporation += '</dl>';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '</div>';
+        corporation += '</div>';
+
+        return corporation;
+    }
+    */
+
+
+/////////////////////////////////////////
+    /* 기존의 Script
+    //커스텀 셀렉박스 각 옵션 값가져오기
+    function selectValue(e) {
+        var targetVal = e.value;
+        var basicInfoGenderCategoryVal = document.getElementById('basicInfoGenderCategory');
+        var baiscInfoGender = document.querySelector('.baiscInfoGender');
+        var customInput = document.querySelector('.customInput');
+
+        document.getElementById('basicInfoGenderCategory').value = targetVal;
+        if(targetVal == "여성" || targetVal == "남성" || targetVal == "공개 안함")
+        {
+            baiscInfoGender.classList.remove('custom');
+            basicInfoGenderCategoryVal.style.color = "#fff";
+        }
+        else
+        {
+            baiscInfoGender.classList.add('custom');
+            customInput.innerHTML = '<input type="text" id="basicInfoCustomGender">';
+        }
+    }
+    
+    //셀렉박스 온/오프 옵션박스 외부 클릭시 오프
+    window.addEventListener('click', categoryOnoff);
+    function categoryOnoff(e) {
+        var basicInfoGenderCategory = document.getElementById('basicInfoGenderCategory');
+        var basicInfoGenderBox = document.querySelector('.basicInfoGenderBox');
+        if(basicInfoGenderCategory == e.target)
+        {
+            basicInfoGenderBox.classList.add('active');
+        }
+        else
+        {
+            basicInfoGenderBox.classList.remove('active');
+        }
+    }
+
+    //타입리스트 온/오프
+    function openTypeTab(e) {
+        var typeListTab = document.querySelector('.typeListTab');
+        typeListTab.classList.toggle('active');
+        e.classList.toggle('active');
+    }
+
+    //호스트인포 타입변경
+    function typeChange() {
+        var typeInfo = document.getElementsByClassName('typeInfo');
+        var selectTypeInfo = document.getElementById('selectTypeInfo');
+        for(var i = 0; i < typeInfo.length; i++)
+        {
+            typeInfo[i].addEventListener('click', function() {
+                var thisHtml = this.innerHTML.trim();
+                var selectTypeInfoHtml = selectTypeInfo.innerHTML;
+                if(selectTypeInfo != thisHtml)
+                {
+                    selectTypeInfo.innerHTML = thisHtml;
+                    this.innerHTML = selectTypeInfoHtml;
+                }
+            });
+        }
+    }
+    typeChange();
+    */
+
+    // ===============================================================
+    // 결제 설정 : testPaySetting Update script
+    // ===============================================================
+    var payObject = {};
+    var tempPayInfo = <%- JSON.stringify(payInfo) %>;
+    payObject.cardType = tempPayInfo.cardType;
+    payObject.calculateCurrencyType = 'change';
+    var cardNumberSave = {};
+    cardNumberSave.oneFlag = 0;
+    cardNumberSave.twoFlag = 0;
+    cardNumberSave.threeFlag = 0;
+    cardNumberSave.fourFlag = 0;
+
+    var fileList1ID = false;
+    var fileList2ID = false;
+    var fileList3ID = false;
+
+    // payInfo Data
+    if(tempPayInfo.payUID !== null && tempPayInfo.payUID !== undefined && tempPayInfo.payUID !== '')
+    {
+        document.getElementById('cardNumber1').value = tempPayInfo.cardNumberFirst;
+        document.getElementById('cardNumber2').value = '****';
+        document.getElementById('cardNumber3').value = '****';
+        document.getElementById('cardNumber4').value = '****';
+        
+        document.getElementById('cardDate').value = '** / **';
+
+        document.getElementById('cardCVC').value = '***';
+
+        fullNameJson = JSON.parse(tempPayInfo.fullName);
+
+        if(tempPayInfo.cardType === 'individual')
+        {
+            document.getElementById('fullNameFirst').value = fullNameJson.fullNameFirst;
+            document.getElementById('fullNameLast').value = fullNameJson.fullNameLast;
+
+            fileListOutFunc('setting', 'fileList1ID');
+        }
+
+        if(tempPayInfo.cardType === 'corporation')
+        {
+            document.getElementById('getSettlementForm').innerHTML = corporationForm('test1','test2');
+            document.getElementById('individualBtn-on').classList.remove('active');
+            document.getElementById('corporationBtn-on').classList.add('active');
+            
+            document.getElementById('companyName').value = fullNameJson.companyName;
+
+            fileListOutFunc('setting', 'fileList2ID');
+
+            fileListOutFunc('setting', 'fileList3ID');
+        }
+
+        addressJson = JSON.parse(tempPayInfo.address);
+        document.getElementById('addressCountry').value = addressJson.addressCountry;
+        document.getElementById('addressState').value = addressJson.addressState;
+        document.getElementById('addressCity').value = addressJson.addressCity;
+        document.getElementById('addressStreet').value = addressJson.addressStreet;
+
+        document.getElementById('phoneNumber').value = tempPayInfo.phoneNumber;
+
+        var tempCalculateCurrencyType = tempPayInfo.calculateCurrencyType;
+
+        if(tempCalculateCurrencyType === 'USD')
+        {
+            $('#USD').click();
+        }
+    
+        if(tempCalculateCurrencyType === 'KRW')
+        {
+            $('#KRW').click();
+        }
+
+        document.getElementById('calculateBank').value = tempPayInfo.calculateBank;
+        document.getElementById('calculateAccountNumber').value = tempPayInfo.calculateAccountNumber;
+        document.getElementById('payPal').value = tempPayInfo.payPal;
+
+        
+    }
+
+    // 카드 정보 암호화 함수
+    function cryptoCard(flag){
+        if(flag === 'cardNumber')
+        {
+            var cardNumberConcat = cardNumberSave.two + '' + cardNumberSave.three + '' + cardNumberSave.four;
+            return  SHA256(cardNumberConcat);
+        }
+        
+        if(flag === 'cardDate')
+        {
+            return SHA256(document.getElementById('cardDate').value.replace(' / ', ''));
+        }
+
+        if(flag === 'cardCVC')
+        {
+            return SHA256(document.getElementById('cardCVC').value);
+        }
+    }
+
+    function checkCardType(type){
+        payObject.cardType = type;
+        payObject.calculateCurrencyType = 'change';
+    }
+
+    // 주소 Object화 함수
+    function makeAddressObject(){
+        var addressObject = {};
+        addressObject.addressCountry = document.getElementById('addressCountry').value;
+        addressObject.addressState = document.getElementById('addressState').value;
+        addressObject.addressCity = document.getElementById('addressCity').value;
+        addressObject.addressStreet = document.getElementById('addressStreet').value;
+
+        return JSON.stringify(addressObject);
+    }
+
+    function checkCalculateCurrencyType(type){
+        payObject.calculateCurrencyType = type;
+        document.getElementById('inforBillingPeriodCategory').value = payObject.calculateCurrencyType;
+        var temp = document.getElementById('inforBillingPeriodCategoryControl').classList.remove('active');
+    }
+
+    function deleteFileListFunc(e, deleteID) {
+        $(e).parent().parent().parent().find('input').val('');
+
+        if(deleteID == 'fileList1ID') {
+            fileList1ID = true;
+        } else if(deleteID == 'fileList2ID') {
+            fileList2ID = true;
+        } else if(deleteID == 'fileList3ID') {
+            fileList3ID = true;
+        }
+
+        $('#' + deleteID).html('');
+    }
+    
+    function fileListOutFunc(e, appendID) {
+        if(e == 'setting') {
+            var filePath = '';
+
+            if(appendID == 'fileList1ID') {
+                var tempIdCard = JSON.parse(tempPayInfo.idCard);
+                filePath = tempIdCard.fileOriginalName;         
+            }
+
+            if(appendID == 'fileList2ID') {
+                var tempBusinessRegistration = JSON.parse(tempPayInfo.businessRegistration);
+                filePath = tempBusinessRegistration.fileOriginalName;
+            }
+
+            if(appendID == 'fileList3ID') {
+                var tempPassBooksCover = JSON.parse(tempPayInfo.passBooksCover);
+                filePath = tempPassBooksCover.fileOriginalName;
+            }
+
+            var fileNameHtml = `<dl class="file"><dt class="fileName">${filePath}</dt><dd class="fileDelBtn"><button onclick="deleteFileListFunc(this, '${appendID}')">Delete</button></dd></dl>`;
+
+            $('#' + appendID).html(fileNameHtml);
+        } else {
+            var tempFilePath = $(e).val();
+            var findIndex = tempFilePath.lastIndexOf('\\');
+            var filePath = tempFilePath.substring(findIndex + 1, tempFilePath.length);
+
+            var fileNameHtml = `<dl class="file"><dt class="fileName">${filePath}</dt><dd class="fileDelBtn"><button onclick="deleteFileListFunc(this, '${appendID}')">Delete</button></dd></dl>`;
+
+            if(appendID == 'fileList1ID') {
+                fileList1ID = false;
+            } else if(appendID == 'fileList2ID') {
+                fileList2ID = false;
+            } else if(appendID == 'fileList3ID') {
+                fileList3ID = false;
+            }
+
+            $('#' + appendID).html(fileNameHtml);
+        }
+    }
+
+    var uploadNewIDcardCheck = false;
+    var uploadNewCertificateCheck = false;
+    var uploadNewPassBookCheck = false;
+
+    function checkValue(){
+        if(document.getElementById('cardNumber1').value === '')
+        {
+            alert('카드 번호를 확인해주세요.');
+            return false;
+        }
+        if(document.getElementById('cardNumber1').value.length !== 4)
+        {
+            alert('카드 번호를 확인해주세요.');
+            return false;  
+        }
+        if(document.getElementById('cardNumber2').value === '')
+        {
+            alert('카드 번호를 확인해주세요.');
+            return false;
+        }
+        if(document.getElementById('cardNumber2').value.length !== 4)
+        {
+            alert('카드 번호를 확인해주세요.');
+            return false;  
+        }
+        if(document.getElementById('cardNumber3').value === '')
+        {
+            alert('카드 번호를 확인해주세요.');
+            return false;
+        }
+        if(document.getElementById('cardNumber3').value.length !== 4)
+        {
+            alert('카드 번호를 확인해주세요.');
+            return false;  
+        }
+        if(document.getElementById('cardNumber4').value === '')
+        {
+            alert('카드 번호를 확인해주세요.');
+            return false;
+        }
+        if(document.getElementById('cardNumber4').value.length !== 4)
+        {
+            alert('카드 번호를 확인해주세요.');
+            return false;  
+        }
+        if(document.getElementById('cardDate').value === '')
+        {
+            alert('카드의 유효기간을 확인해주세요.');
+            return false;
+        }
+        if(document.getElementById('cardCVC').value === '')
+        {
+            alert('카드의 CVC번호를 확인해주세요.');
+            return false;
+        }
+        if(payObject.cardType === 'individual')
+        {
+            if(document.getElementById('fullNameFirst').value === '')
+            {
+                alert('이름을 확인해주세요.');
+                return false;
+            }
+            if(document.getElementById('fullNameLast').value === '')
+            {
+                alert('이름을 확인해주세요.');
+                return false;
+            }
+        }
+        else
+        {
+            if(document.getElementById('companyName').value === '')
+            {
+                alert('회사명을 확인해주세요.');
+                return false;
+            }
+        }
+        if(document.getElementById('addressCountry').value === '')
+        {
+            alert('주소를 확인해주세요.');
+            return false;
+        }
+        if(document.getElementById('addressState').value === '')
+        {
+            alert('주소를 확인해주세요.');
+            return false;
+        }
+        if(document.getElementById('addressCity').value === '')
+        {
+            alert('주소를 확인해주세요.');
+            return false;
+        }
+        if(document.getElementById('addressStreet').value === '')
+        {
+            alert('주소를 확인해주세요.');
+            return false;
+        }
+        if(document.getElementById('phoneNumber').value === '')
+        {
+            alert('전화번호를 확인해주세요.');
+            return false;
+        }
+        if(payObject.calculateCurrencyType === null || payObject.calculateCurrencyType === undefined || payObject.calculateCurrencyType === '' || payObject.calculateCurrencyType === 'change')
+        {
+            alert('통화를 선택해주세요.');
+            return false;
+        }
+        if(document.getElementById('calculateBank').value === '')
+        {
+            alert('은행을 입력해주세요.');
+            return false;
+        }
+        if(document.getElementById('calculateAccountNumber').value === '')
+        {
+            alert('계좌번호를 입력해주세요.');
+            return false;
+        }
+        if(document.getElementById('payPal').value === '')
+        {
+            alert('PayPal ID를 입력해주세요.');
+            return false;
+        }
+        if(payObject.cardType === 'individual')
+        {
+            if((tempPayInfo.cardType != payObject.cardType && document.getElementById('idCardFileUpload').files.length <= 0) || fileList1ID)
+            {
+                alert('신분증을 업로드해주세요.');
+                return false;
+            }
+
+            if(document.getElementById('idCardFileUpload').files.length <= 0)
+            {
+                uploadNewIDcardCheck = false;
+            } else {
+                uploadNewIDcardCheck = true;
+            }
+            
+            return true;
+        }
+        else
+        {
+            if((tempPayInfo.cardType != payObject.cardType && document.getElementById('businessFileUpload').files.length <= 0) || fileList2ID)
+            {
+                alert('사업자 등록증을 업로드해주세요.');
+                return false;
+            }
+
+            if(document.getElementById('businessFileUpload').files.length <= 0)
+            {
+                uploadNewCertificateCheck = false;
+            } else {
+                uploadNewCertificateCheck = true;
+            }
+
+            if((tempPayInfo.cardType != payObject.cardType && document.getElementById('passBooksCoverFileUpload').files.length <= 0) || fileList3ID)
+            {
+                alert('통장사본을 업로드해주세요.');
+                return false;
+            }
+
+            if(document.getElementById('passBooksCoverFileUpload').files.length <= 0)
+            {
+                uploadNewPassBookCheck = false;
+            } else {
+                uploadNewPassBookCheck = true;
+            }
+
+            return true;
+        }
+    }
+
+    function payInfoSave(){
+        if(checkValue()) {
+            var user = <%-user ? JSON.stringify(user) : {}%>;
+            payObject.protocol = 'payInfoSave';
+            payObject.userUID = user.userUID;
+            payObject.cardNumberFirst = cardNumberSave.one;
+            payObject.cardNumberHashing = cryptoCard('cardNumber');
+            payObject.cardDate = cryptoCard('cardDate');
+            payObject.cardCVC = cryptoCard('cardCVC');
+            payObject.address = makeAddressObject();
+            payObject.phoneNumber = document.getElementById('phoneNumber').value;
+            payObject.calculateBank = document.getElementById('calculateBank').value;
+            payObject.calculateAccountNumber = document.getElementById('calculateAccountNumber').value;
+            payObject.payPal = document.getElementById('payPal').value;
+
+            if(payObject.cardType === 'individual')
+            {
+                var nameObject = {};
+                nameObject.fullNameFirst = document.getElementById('fullNameFirst').value;
+                nameObject.fullNameLast = document.getElementById('fullNameLast').value;
+                payObject.fullName = JSON.stringify(nameObject);
+
+                if(uploadNewIDcardCheck) {
+                    payObject.idCard = saveFileToServer('idCardFileUpload');
+                }
+                console.log('ID Card File Path : ' + payObject.idCard);
+
+                protocolSendAjaxWithCallBack(payObject, function(result){
+                    location.reload();
+                });
+                
+            }
+            if(payObject.cardType === 'corporation')
+            {
+                var nameObject = {};
+                nameObject.companyName = document.getElementById('companyName').value;
+                payObject.fullName = JSON.stringify(nameObject);
+                
+                if(uploadNewCertificateCheck) {
+                    payObject.businessRegistration = saveFileToServer('businessFileUpload');
+                }
+                console.log('Certificate of Busindess Registration File Path : ' + payObject.businessRegistration);
+
+                if(uploadNewPassBookCheck) {
+                    payObject.passBooksCover = saveFileToServer('passBooksCoverFileUpload');
+                }
+                console.log('PassBooksCover File Path : ' + payObject.passBooksCover);
+
+                protocolSendAjaxWithCallBack(payObject, function(result){
+                    location.reload();
+                });
+                
+            }
+        }
+    }
+    
+    // Modal22 input에 숫자만 입력 가능하게하는 함수
+    $(document).on("input", "[id = cardNumber1], [id = cardNumber2], [id = cardNumber3], [id = cardNumber4], [id = cardDate], [id = cardCVC], [id = calculateAccountNumber], [id = phoneNumber]", function() {
+         this.value = this.value.replaceAll(/\D/g, "");
+         
+         // cardDate Value MM / YY 폼으로 변경
+         if(document.getElementById('cardDate').value.length === 4)
+         {
+            var temp1 = document.getElementById('cardDate').value.substring(0,2);
+            var temp2 = document.getElementById('cardDate').value.substring(2,4);
+            
+            document.getElementById('cardDate').value = temp1 + ' / ' + temp2;
+         }
+
+         // 카드번호 *로 치환
+         if(document.getElementById('cardNumber1').value.length === 4 && cardNumberSave.oneFlag === 0)
+         {
+            cardNumberSave.one = document.getElementById('cardNumber1').value;
+            cardNumberSave.oneFlag = 1;
+         }
+         else if(document.getElementById('cardNumber1').value.length !== 4)
+         {
+            cardNumberSave.oneFlag = 0;
+         }
+         if(document.getElementById('cardNumber2').value.length === 4 && cardNumberSave.twoFlag === 0)
+         {
+            cardNumberSave.two = document.getElementById('cardNumber2').value;
+            cardNumberSave.twoFlag = 1;
+            document.getElementById('cardNumber2').value = '****';
+         }
+         else if(document.getElementById('cardNumber2').value.length !== 4)
+         {
+            cardNumberSave.twoFlag = 0;
+         }
+         if(document.getElementById('cardNumber3').value.length === 4 && cardNumberSave.threeFlag === 0)
+         {
+            cardNumberSave.three = document.getElementById('cardNumber3').value;
+            cardNumberSave.threeFlag = 1;
+            document.getElementById('cardNumber3').value = '****';
+         }
+         else if(document.getElementById('cardNumber3').value.length !== 4)
+         {
+            cardNumberSave.threeFlag = 0;
+         }
+         if(document.getElementById('cardNumber4').value.length === 4 && cardNumberSave.fourFlag === 0)
+         {
+            cardNumberSave.four = document.getElementById('cardNumber4').value;
+            cardNumberSave.fourFlag = 1;
+            document.getElementById('cardNumber4').value = '****';
+         }
+         else if(document.getElementById('cardNumber4').value.length !== 4)
+         {
+            cardNumberSave.fourFlag = 0;
+         }
+    });
+    
+</script>

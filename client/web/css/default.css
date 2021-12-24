@@ -1,0 +1,99 @@
+/*공통영역 시작*/
+/*css초기화*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+@import url('all.css');
+@font-face {
+    font-family: 'GmarketSans';
+    src: url('/font/GmarketSansTTFBold.ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GmarketSans';
+    src: url('/font/GmarketSansTTFMedium.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GmarketSans';
+    src: url('/font/GmarketSansTTFLight.ttf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+
+body {background: #fff;font-family: 'Noto Sans KR', sans-serif !important;font-size: 10px;color: #050708;line-height: 100%;font-weight: normal;padding: 0px;margin: 0px;letter-spacing: -0px;}
+html,body {width: 100%;letter-spacing: 0px;font-size: 10px;}
+pre {font-family: 'Noto Sans KR', sans-serif !important;}
+div,p,ul,li,table,th,td,textarea,input,span,form,h1,h2,h3,h4,h5,h6,dt,dl,dd,em,sup {padding: 0px;margin: 0px;}
+ul,ol,dl,dd,dt,li {list-style-type: none;margin: 0;padding: 0px;line-height: 100%;font-size: 13px;color: #050708;letter-spacing: 0px;}
+form,fieldset,p {margin: 0;padding: 0;border: 0;}
+img {border: 0;vertical-align: middle;outline: none;}
+a,a:link,a:visited,a:active {color: #222;letter-spacing: normal;text-decoration: none !important;letter-spacing: 0px;}
+a:hover {color: #222;text-decoration: none !important;}
+input:focus {outline: none;}
+* {-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
+button {cursor: pointer;font-family: 'Noto Sans KR', sans-serif !important;}
+button:focus {outline: auto;}
+input,textarea,button {-webkit-appearance: none;-moz-appearance: none;-ms-appearance: none;appearance: none;}
+input,textarea,button,select {-webkit-border-radius: 0;-moz-border-radius: 0;-o-border-radius: 0;border-radius: 0;}
+/* IE10 이상에서 input box 에 추가된 지우기 버튼 제거 */
+input::-ms-clear {display: none;}
+/* IE 에서 Select box 화살표 제거 */
+select::-ms-expand {display: none;}
+input::-webkit-input-placeholder {color: #ddd;font-size: 14px;}
+input:-ms-input-placeholder {color: #ddd;font-size: 12px;}
+/*커스텀*/
+::placeholder {color: #ddd;font-size: 14px;}
+.clearfix::after {content: '';clear: both;display: block;}
+.floatLeft {float: left;}
+.floatRight {float: right;}
+.imgBox {display: block;}
+.imgBox img {width: 100%;}
+.textBox {display: block;}
+.hidden {display: none;}
+.wrap {position: relative;width: 100%;}
+
+/*폰트전용class*/
+.fs10 {font: 1rem/1.4rem sans-serif;}
+.fs11 {font: 1.1rem/1.5rem sans-serif;}
+.fs12 {font: 1.2rem/1.6rem sans-serif;}
+.fs13 {font: 1.3rem/1.7rem sans-serif;}
+.fs14 {font: 1.4rem/1.8rem sans-serif;}
+.fs15 {font: 1.5rem/1.9rem sans-serif;}
+.fs16 {font: 1.6rem/2rem sans-serif;}
+.fs17 {font: 1.7rem/2.1rem sans-serif;}
+.fs18 {font: 1.8rem/2.2rem sans-serif;}
+.fs19 {font: 1.9rem/2.3rem sans-serif;}
+.fs20 {font: 2rem/2.4rem sans-serif;}
+.fs21 {font: 2.1rem/2.5rem sans-serif;}
+.fs22 {font: 2.2rem/2.6rem sans-serif;}
+.fs33 {font: 2.3rem/2.7rem sans-serif;}
+.fs24 {font: 2.4rem/2.8rem sans-serif;}
+.fs25 {font: 2.5rem/2.9rem sans-serif;}
+.fs26 {font: 2.6rem/3rem sans-serif;}
+.fs27 {font: 2.7rem/3.1rem sans-serif;}
+.fs28 {font: 2.8rem/3.2rem sans-serif;}
+.fs29 {font: 2.9rem/3.3rem sans-serif;}
+.fs30 {font: 3rem/3.4rem sans-serif;}
+
+/*햄버거 버튼 전용 css*/
+.mobMenuBtn {background-color: transparent;border: 0;padding: 0;width: 30px;height: 30px;position: relative;outline: none;}
+.mobMenuBtn span,.mobMenuBtn::before,.mobMenuBtn::after {display: block;width: 32px;height: 2px;background-color: #58595b;position: absolute;margin-left: -16px;left: 50%;top: 38%;opacity: 1;-webkit-transition: all 0.25s ease-in-out;transition: all 0.25s ease-in-out;}
+.mobMenuBtn::before,.mobMenuBtn::after {content: '';}
+.mobMenuBtn::before {margin-top: -6px;background-color: #fff;width: 20px;left: auto;right: 33%;top: 50%;}
+.mobMenuBtn::after {margin-top: 6px;background-color: #fff;width: 20px;left: auto;right: 33%;top: 50%;}
+.mobMenuBtn span {text-indent: -9999px;background-color: #fff;width: 20px;left: auto;right: 33%;top: 50%;}
+.mobMenuBtn.expanded span,.mobMenuBtn.expanded::before,.mobMenuBtn.expanded::after {background-color: #fff;}
+.mobMenuBtn.expanded span {opacity: 0;}
+.mobMenuBtn.expanded::before,.mobMenuBtn.expanded::after {margin-top: 0;margin-left: -16px;}
+.mobMenuBtn.expanded::before {-webkit-transform: rotate(45deg);transform: rotate(45deg);}
+.mobMenuBtn.expanded::after {-webkit-transform: rotate(-45deg);transform: rotate(-45deg);}
+
+/*커스텀모달*/
+.modal{display: none; width:100%; height:100vh;position: fixed;top:0;left:0;z-index: 1000000;background: rgba(0,0,0,0.5);}

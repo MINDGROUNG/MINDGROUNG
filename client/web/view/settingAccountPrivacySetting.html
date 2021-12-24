@@ -1,0 +1,312 @@
+<h3 class="pageTitle">
+    <%=translation.setting.Account_Setting %>
+</h3>
+<div class="contents">
+    <div class="inputProfile">
+        <h5 class="contentTitle">
+            <%=translation.loginAndJoin.My_Profile%>
+        </h5>
+        <div class="inputInfoArea">
+            <div class="flexArea">
+                <div class="onlyInput">
+                    <div class="commonInput onlyInput-name">
+                        <b class="inputTitle">
+                            <%=translation.loginAndJoin.Name%>
+                        </b>
+                        <div class="inputArea">
+                            <input type="text" name="userName" value="<%= user.userName%>">
+                            <p class="exp">* <%=translation.loginAndJoin.This_is_the_name_that_will_be_used_when_receiving_a_certification_after_taking_the_course%> </p>
+                        </div>
+                    </div>
+                    <div class="commonInput onlyInput-birthday">
+                        <class class="inputTitle">
+                            <%=translation.loginAndJoin.Birthday%>
+                        </class>
+                        <div class="inputArea">
+                            <div class="birthDayIuputWrap" >
+                                <input type="text" class="noneLine" name="userBirthday" id="Year" maxlength="4" placeholder="YYYY"> 
+                                <span>/</span>
+                                <input type="text" class="noneLine" name="userBirthday" id="Month" maxlength="2" placeholder="MM">
+                                <span>/</span>
+                                <input type="text" class="noneLine" name="userBirthday" id="Day" maxlength="2" placeholder="DD">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="commonInput onlyInput-gender">
+                        <b class="inputTitle">
+                            <%=translation.loginAndJoin.Gender%>
+                        </b>
+                        <div class="inputArea">
+                            <div class="selectBox1 baiscInfoGender">
+                                <div class="selectView">
+                                    <input class="noneLine" id="privacyGender" type="button" value="<%= user.gender%>" style="color : rgb(255,255,255)">
+                                    <img src="/web/img/ICN_DROP.png" alt="">
+                                </div>
+                                <ul class="selectBox-hdnMenu privacyGenderBox">
+                                    <li>
+                                        <input type="radio" value="<%=translation.loginAndJoin.Female%>" id="female" name="privacyGenderSelect" onclick="selectValue(this)" >
+                                        <label for="female">
+                                            <span><%=translation.loginAndJoin.Female%></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" value="<%=translation.loginAndJoin.Male%>" id="male" name="privacyGenderSelect" onclick="selectValue(this)" >
+                                        <label for="male">
+                                            <span><%=translation.loginAndJoin.Male%></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" value="<%=translation.loginAndJoin.Rather_not_say%>" id="rather not say" name="privacyGenderSelect" onclick="selectValue(this)">
+                                        <label for="rather not say">
+                                            <span><%=translation.loginAndJoin.Rather_not_say%></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" value="<%=translation.loginAndJoin.Custom%>" id="custom" name="privacyGenderSelect" onclick="selectValue(this)">
+                                        <label for="custom">
+                                            <span><%=translation.loginAndJoin.Custom%></span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="customInput genderCustomInput hidden">
+                                <input type="text" id="basicInfoCustomGender" value="<%= user.gender%>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="commonInput onlyInput-bio">
+                        <b class="inputTitle bioOnly" data-text="1000 words">
+                            <%=translation.loginAndJoin.Your_Bio%>
+                        </b>
+                        <div class="inputArea">
+                            <textarea id="userBIO" maxlength="1000"> <%= user.userBio%> </textarea>
+                        </div>
+                    </div>
+                    <div class="commonInput onlyInput-address">
+                        <b class="inputTitle">
+                            <%=translation.loginAndJoin.Region%> / <%=translation.loginAndJoin.Address%>
+                        </b>
+                        <div class="inputArea">
+                            <div class="select-input">
+                                <div class="selectBox1">
+                                    <div class="selectView">
+                                        <input class="noneLine" id="privacyRegionCategory" type="button" value="<%=user.location%>">
+                                        <img src="/web/img/ICN_DROP.png" alt="">
+                                    </div>
+                                    <ul class="selectBox-hdnMenu privacyRegionBox">
+                                    </ul>
+                                </div>
+                                <div class="inputOnly customInput addressCustomInput">
+                                    <input type="text" spellcheck="false" id="userCountry" value="<%= user.country%>" placeholder="Country">
+                                </div>
+                                <div class="inputOnly customInput addressCustomInput">
+                                    <input type="text" spellcheck="false" id="userState" value="<%= user.state%>" placeholder="State / Province">
+                                </div>
+                                <div class="inputOnly customInput addressCustomInput">
+                                    <input type="text" spellcheck="false" id="userCity" value="<%= user.city%>" placeholder="City">
+                                </div>
+                                <div class="inputOnly customInput addressCustomInput">
+                                    <input type="text" spellcheck="false" id="userStreetAddress" value="<%= user.streetAddress%>" placeholder="StreetAddress">
+                                </div>
+                                <p class="exp">
+                                    * <%=translation.loginAndJoin.Enter_the_detailed_address_to_view_contents_such_as_classes_and_gatherings_happening_around_you%>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="uploadImg">
+                    <input type="file" id="uploadProfileImg" onchange="fileThumbUploadV2(this, '#imgControlId')">
+                    <label id="showUploadImg" for="uploadProfileImg">
+                        <img id="imgControlId" src="/web/img/userRing/<%=user.userUID%>.png" alt="">
+                    </label>
+                </div>
+            </div>
+            <div class="saveChangeBtn">
+                <button class="saveChangeBtn1-on" onclick="updateUserSettings()">
+                    <%=translation.setting.Save_changes%>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="inputProfile">
+        <div class="accountArea">
+            <h5 class="contentTitle">
+                <%=translation.setting.Account %>
+            </h5>
+            <div class="inputEmail">
+                <h6 class="cateTitle">
+                    <%=translation.setting.Email %>
+                </h6>
+                <div class="rawInput-btns">
+                    <div class="inputArea-email">
+                        <input type="text" value="<%=user.userEmail %>">
+                        <button>
+                            <img src="/web/img/ICN_EDIT.png" alt="">
+                        </button>
+                    </div>
+                    <p class="exp">
+                        <%=translation.setting.If_you_change_your_account_you_may_be_restricted_from_using_that_account_with_an_incorrect_email_Please_change_your_account_carefully %>
+                    </p>
+                    <div class="btnsArea">
+                        <button class="commonSignInBtn" id="googleSignBtn" onclick="location.href='/login/google'">
+                            <img src="/web/img/setting/sign_google_en.png" alt="">
+                        </button>
+                        <button class="commonSignInBtn" id="facebookSignBtn" onclick="location.href='/login/facebook'">
+                            <img src="/web/img/setting/sign_facebook_en.png" alt="">
+                        </button>
+                        <button class="commonSignInBtn" id="appleSignBtn" onclick="location.href='/login/apple'">
+                            <img src="/web/img/setting/sign_apple_en.png" alt="">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="saveChangeBtn">
+                <button class="saveChangeBtn1-on">
+                    <%=translation.setting.Save_changes%>
+                </button>
+            </div>
+        </div>
+        <div class="passwordArea">
+            <h5 class="contentTitle">
+                <%=translation.loginAndJoin.Password%>
+            </h5>
+            <div class="inputPassword">
+                <div class="flexArea settingCurrentPwd">
+                    <h6 class="cateTitle">
+                        <%=translation.setting.Current_Password%>
+                    </h6>
+                    <input type="password" id="settingCurrentPwd" value="">
+                    <button class="findPwd" onclick="pwdFindModal()">
+                        <%= translation.loginAndJoin.Forgot_Password%>
+                    </button>
+                </div>
+                <div class="flexArea settingNewPwd">
+                    <h6 class="cateTitle">
+                        <%=translation.setting.New_Password%>
+                    </h6>
+                    <input type="text" id="settingNewPwd">
+                </div>
+                <div class="flexArea settingReEnterPwd">
+                    <h6 class="cateTitle">
+                        <%=translation.setting.Re_enter_New_Password%>
+                    </h6>
+                    <input type="text" id="settingReEnterPwd">
+                    <span class="hdnText" id="noMatchPwdSpanID" style="display: none;">
+                        Password do not match.​
+                    </span>
+                </div>
+            </div>
+            <!-- <div class="saveChangeBtn findBtn">
+                <button class="saveChangeBtn1-on" onclick="pwdFindModal()">
+                    <%=translation.loginAndJoin.Forgot_Password%>
+                </button>
+            </div> -->
+            <div class="saveChangeBtn">
+                <button class="saveChangeBtn1-on" onclick="pwdChange()">
+                    <%=translation.setting.Save_changes%>
+                </button>
+            </div>
+        </div>
+        <div class="delAccountArea">
+            <button class="delAccountBtn-on" onclick="customModal(41)">
+                <%=translation.setting.Delete_Account%>
+            </button>
+            <div class="modal modal41">
+                <div>
+                    <div class="xBtn">
+                        <button onclick="customModalClose(41)">
+                            <i class="xi-close"></i>
+                        </button>
+                    </div>
+                    <div class="modalContents">
+                        <h5 class="title">
+                            Delete Account
+                        </h5>
+                        <p class="subText">
+                            Are you sure you want to delete your account?
+                        </p>
+                        <div class="input">
+                            <input type="password" placeholder="Password">
+                            <p>
+                                Password is incorrect. ​
+                            </p>
+                        </div>
+                        <div class="btns">
+                            <button class="noBtn-on" onclick="customModalClose(41)">
+                                No
+                            </button>
+                            <button class="yesBtn-on" onclick="deleteAccount()">
+                                Yes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="exp">
+                <%=translation.setting.Important%>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 계정 설정에서 소셜 아이디를 확인 후 가입하지 않은 소셜만 가입 버튼 노출
+    var jsonUser = <%- user ? JSON.stringify(user) : {} %>;
+    var appendTag = '<span style="color: red">연동되었습니다.</span>';
+    
+    if(jsonUser.googleID !== null && jsonUser.googleID !== undefined && jsonUser.googleID !== '')
+    {
+        document.getElementById('googleSignBtn').disabled = true;
+        document.getElementById('googleSignBtn').innerHTML += appendTag;
+    }
+    if(jsonUser.facebookID !== null && jsonUser.facebookID !== undefined && jsonUser.facebookID !== '')
+    {
+        document.getElementById('facebookSignBtn').disabled = true;
+        document.getElementById('facebookSignBtn').innerHTML += appendTag;
+    }
+    if(jsonUser.appleID !== null && jsonUser.appleID !== undefined && jsonUser.appleID !== '')
+    {
+        document.getElementById('appleSignBtn').disabled = true;
+        document.getElementById('appleSignBtn').innerHTML += appendTag;
+    }
+
+    // background Url이 아닌 src 변경
+    function fileThumbUploadV2(e, selectQuery)
+    {
+        var file = e.files[0];
+
+        if(file === undefined && document.getElementById('uploadProfileImg').value === '')
+        {
+            console.log('check if');
+            document.querySelector(selectQuery).style.display = 'none';
+            document.getElementById('showUploadImg').style.backgroundColor = '#7548f5';
+            return false;
+        }
+
+        if(file.size > 10485760)
+        {
+            alert('10MB 이하의 파일만 업로드 가능합니다.');
+            document.getElementById('uploadProfileImg').value = '';
+            document.querySelector(selectQuery).style.display = 'none';
+            document.getElementById('showUploadImg').style.backgroundColor = '#7548f5';
+            return false;
+        }
+        else
+        {
+            var fileReader = new FileReader();
+            if (file.type.match('image')) 
+            fileReader.onload = function() 
+            {
+                document.querySelector(selectQuery).src = fileReader.result;
+                document.querySelector(selectQuery).style.display = 'block';
+            };
+            fileReader.readAsDataURL(file);
+        }
+    }
+
+    function pwdFindModal() {
+        customModal(100);
+        document.querySelector('.forgotPwd').click();
+    }
+</script>

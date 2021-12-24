@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <%-include common/commonHead.html%>
+    <body>
+        <%-include common/commonHeader.html%>
+        <%- include ./modal.html%>
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+        <!-- START CONTENT -->
+        <div class="content">
+            <!-- Start Page Header -->
+            <div class="page-header">
+                <h1 class="title">
+                    <a style="color: #fff;">서비스관리</a>
+                    <span style="display: inline-block; margin: 0 15px;"><i class="xi-angle-right-min"></i></span>
+                    <a href="/admin/mainText" style="color: #fff;">메인 텍스트 관리</a>
+                </h1>
+                <!-- End Page Header Right Div -->
+            </div>
+            <!-- START CONTAINER -->
+            <div class="container-default">
+                <!-- 테이블 들어가는 것들은 클래스명에 dashboard dataList 꼭 들어가야함 -->
+                <div class="row mainBanner">
+                    <div class="col-md-12">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label fixText">국문 텍스트</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="inputText form-control" placeholder="입력" data-check="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label fixText">영문 텍스트</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="inputText form-control" placeholder="입력" data-check="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            <div class="row" style="margin: 100px 0 70px;">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="btnsWrap" style="text-align: right;">
+                                        <button type="button" class="saveBtn">저장</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <%-include common/commonFooter.html%>
+        </div>
+        <!-- End Content -->
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+        <%-include common/commonScript.html%>
+        <script>
+        ///////////데이터 테이블//////////////
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'excel', 'print'
+                ]
+            });
+        });
+        ///////////데이터 테이블//////////////
+        </script>
+    </body>
+</html>

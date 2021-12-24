@@ -1,0 +1,191 @@
+<section class="hostStudioCommonLayout">
+    <article>
+        <div class="commonTitleArea">
+            <div class="revenueTitle">
+                <h2>Revenue</h2>
+                <button class="refundDerail-on">
+                    <strong class="text">
+                        Refund
+                    </strong>
+                    <span class="stateBall"></span>
+                </button>
+            </div>
+            <div class="sideContents revenueTitleInner">
+                <div class="selectWrap">
+                    <button class="getDateBtn-on">
+                        <div>
+                            <strong class="getText">2021.05.22 ~ 2021.05.30</strong>
+                        </div>
+                        <span class="icon">
+                            <img src="/web/img/ICN_DROP.png" alt="">
+                        </span>
+                    </button>
+                    <div class="hdnSelectBox">
+                        <div class="moTitleArea">
+                            <div>
+                                <img src="/web/img/down.png" alt="">
+                            </div>
+                            <div>
+                                <button>
+                                    <img src="/web/img/btn_close_small.png" alt="">
+                                </button>
+                                <h5>Time Period</h5>
+                            </div>
+                        </div>
+                        <div class="selectArea">
+                            <div class="select-cate-date">
+                                <span class="cateText">
+                                    <%=translation.dashBoard.All%>
+                                </span>
+                                <strong class="dateNumber">
+                                    <!-- 2020.05.01 ~ 2021.12.01 -->
+                                </strong>
+                            </div>
+                            <div class="chkBoxList">
+                                <div class="chkbox">
+                                    <input type="radio" id="all_revenue" name="dateChk">
+                                    <label for="all_revenue">
+                                        <span class="box"></span>
+                                        <span class="text"><%=translation.dashBoard.All%></span>
+                                    </label>
+                                </div>
+                                <div class="chkbox">
+                                    <input type="radio" id="yesterday_revenue" name="dateChk">
+                                    <label for="yesterday_revenue">
+                                        <span class="box"></span>
+                                        <span class="text"><%=translation.dashBoard.Yesterday%></span>
+                                    </label>
+                                </div>
+                                <div class="chkbox">
+                                    <input type="radio" id="last7_revenue" name="dateChk">
+                                    <label for="last7_revenue">
+                                        <span class="box"></span>
+                                        <span class="text"><%=translation.dashBoard.Last_7_days%></span>
+                                    </label>
+                                </div>
+                                <div class="chkbox">
+                                    <input type="radio" id="last30_revenue" name="dateChk">
+                                    <label for="last30_revenue">
+                                        <span class="box"></span>
+                                        <span class="text"><%=translation.dashBoard.Last_30_days%></span>
+                                    </label>
+                                </div>
+                                <div class="chkbox">
+                                    <div>
+                                        <input type="radio" id="selectPeriod_revenue" name="dateChk">
+                                        <label for="selectPeriod_revenue">
+                                            <span class="box"></span>
+                                            <span class="text"><%=translation.dashBoard.Select_period%></span>
+                                        </label>
+                                    </div>
+                                    <div class="rawInputBox">
+                                        <input type="text">
+                                        <span>~</span>
+                                        <input type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="saveArea">
+                            <button class="saveBtn-on">
+                                <%=translation.dashBoard.Save%>
+                            </button>
+                        </div>
+                        <div class="onlyFixed"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mainContentsArea revenue">
+            <div class="revenue-refund">
+                <div class="title">
+                    <h3>List of Refund Request</h3>
+                </div>
+                <div class="tableInfo">
+                    <div class="scrollWrap">
+                        <div class="tableDetail">
+                            <div class="tableTitle commonLine">
+                                <div class="areaNo commonArea">
+                                    NO
+                                </div>
+                                <div class="areaDate commonArea">
+                                    Date
+                                </div>
+                                <div class="area4 commonArea">
+                                    Revenue
+                                </div>
+                                <div class="area4 commonArea">
+                                    Net Income
+                                </div>
+                                <div class="area4 commonArea">
+                                    Refund
+                                </div>
+                            </div>
+                            <%
+                                for(var i = 1; i < 11; i++)
+                                {
+                            %>
+                                <div class="tableTitle commonLine">
+                                    <div class="areaNo commonArea">
+                                        <strong><%=i%></strong>
+                                    </div>
+                                    <div class="areaDate commonArea">
+                                        2020.01.01
+                                    </div>
+                                    <div class="area4 commonArea">
+                                        $ 000,000,000
+                                    </div>
+                                    <div class="area4 commonArea">
+                                        $ 000,000,000
+                                    </div>
+                                    <div class="area4 commonArea">
+                                        $ 000,000,000
+                                    </div>
+                                </div>
+                            <%
+                                }
+                            %>
+                        </div>
+                    </div>
+                </div>
+                <div class="paging">
+                    <ul>
+                        <li class="arrowBtn left">
+                            <button>
+                                <i class="xi-angle-left-thin"></i>
+                            </button>
+                        </li>
+                        <li class="numBtn">
+                            <button>1</button>
+                        </li>
+                        <li class="numBtn">
+                            <button>2</button>
+                        </li>
+                        <li class="numBtn active">
+                            <button>3</button>
+                        </li>
+                        <li class="numBtn">
+                            <button>4</button>
+                        </li>
+                        <li class="numBtn">
+                            <button>5</button>
+                        </li>
+                        <li class="arrowBtn right">
+                            <button>
+                                <i class="xi-angle-right-thin"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cautionText">
+                    <p>
+                        * Please check  within 2 days of receiving the refund request. After 2 days, it will be regarded as an automatic confirmation and the refund process will proceed.
+                    </p>
+                    <button class="viewpolicyBtn-on">
+                        View Refund Policy
+                    </button>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>

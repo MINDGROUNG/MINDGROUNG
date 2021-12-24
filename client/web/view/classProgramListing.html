@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <%- include ./common/commonHead.html%>
+        <!--공통타이틀로 적용 할 경우 commonHead 안에 넣기-->
+    </head>
+    <body>
+        <div class="wrap commonLayout2">
+            <%- include ./common/commonHeader.html%>
+            <section class="marginAuto_s minHeight">
+                <div class="writeBtn">
+                    <button>
+                        <img src="/web/img/main/cateList/BTN_WRITE.png" alt="">
+                    </button>
+                </div>
+                <!-- pricebar 클래스참여결제버튼 -->
+                
+                <article>
+                    <div class="topContents">
+                        <div class="basicInfo">
+                            <div class="basicInfo-text">
+                                <div class="state">
+                                    <!-- <h5 class="state-offline">
+                                        Offline
+                                    </h5> -->
+                                    <h5 style="display: none;">
+                                        On Sale
+                                    </h5>
+                                </div>
+                                <h3 class="classTitle" id="classTitleName">
+                                </h3>
+                                <div class="desc">
+                                    <div class="desc-on-offline">
+                                        <!-- <div class="desc-offline commonDesc">
+                                            <span class="underline">
+                                                365 days  after purchase class
+                                            </span>
+                                            <span>
+                                                <img src="/web/img/classDetail/ICN_PERSON.png" alt="">
+                                                560/Unlimited
+                                            </span>
+                                        </div> -->
+                                        <div class="desc-online commonDesc">
+                                            <div>
+                                                <span id="classOpenDate">
+                                                </span>
+                                                <span id="classOpenTime">
+
+                                                </span>
+                                            </div>
+                                            <span>
+                                                <img src="/web/img/classDetail/ICN_PERSON.png" alt="">
+                                                <span id='classParticipatingNum'>222222</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="sideBtn">
+                                        <button>
+                                            <img src="/web/img/classDetail/ICN_SHARE.png" alt="">
+                                        </button>
+                                        <button>
+                                            <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                        </button>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="basicInfo-imgs">
+                                <div>
+                                    <div class="videoThumb" id = "mainThumbNail">
+                                    </div>
+                                    <div class="imgThumb" id = "subThumbNailList">
+                                        <!-- <a href="javascript:avoid(0)" class="imgBox">
+                                            <img src="/web/img/classDetail/imgDummy.png" alt="">
+                                        </a>
+                                        <a href="javascript:avoid(0)" class="imgBox">
+                                            <img src="/web/img/classDetail/imgDummy.png" alt="">
+                                        </a href="javascript:avoid(0)" class="imgBox">
+                                        <a href="javascript:avoid(0)" class="imgBox">
+                                            <img src="/web/img/classDetail/imgDummy.png" alt="">
+                                        </a href="javascript:avoid(0)" class="imgBox">
+                                        <a href="javascript:avoid(0)" class="imgBox" data-num="+4">
+                                            <img src="/web/img/classDetail/imgDummy.png" alt="">
+                                        </a href="javascript:avoid(0)" class="imgBox"> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="basicInfo-tag">
+                                <div class="top">
+                                    <div class="format">
+                                        <span>Format</span>
+                                        <strong id="classFormat">
+                                            <!-- Certificate Course -->
+                                        </strong>
+                                    </div>
+                                    <div class="category">
+                                        <span>Category</span>
+                                        <strong id="categoryArea">
+                                            <!-- asdasdasd<br/>
+                                            asdasdasdasd -->
+                                        </strong>
+                                    </div>
+                                    <div class="lavel">
+                                        <span>Level</span>
+                                        <strong id="classLevelID">
+                                            <!-- Class Level -->
+                                        </strong>
+                                    </div>
+                                    <div class="language">
+                                        <span>Language</span>
+                                        <strong id = "classLanguageArea">
+                                            <!-- English
+                                            Korean
+                                            Spanish
+                                            French
+                                            German
+                                            Russian
+                                            Japanese
+                                            Italian -->
+                                        </strong>
+                                    </div>
+                                </div>
+                                <div class="bottom" id="categorySubArea">
+                                    <!-- <div class="tag">
+                                        Sleep
+                                    </div>
+                                    <div class="tag">
+                                        Happiness
+                                    </div>
+                                    <div class="tag">
+                                        Leadership
+                                    </div>
+                                    <div class="tag">
+                                        Anxiety
+                                    </div>
+                                    <div class="tag">
+                                        Mental Health
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="classInfo">
+                            <div class="host-classInfo">
+                                <div class="hostDetail">
+                                    <div class="ring hover-ring" id="writerHoverRingArea">
+                                        <!-- <img src="/web/img/dummyIcon_50.png" alt=""> -->
+                                    </div>
+                                    <div class="rating">
+                                        <span>
+                                            Creator
+                                        </span>
+                                        <h5>
+                                            <a href="javascript:avoid(0)" id ="writerNameArea">
+                                                <!-- Hannah Brown -->
+                                            </a>
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div class="classDetail">
+                                    <div>
+                                        <p id = "introduceArea">
+                                            <!-- 게더링 소개 Nowadays, I hear a lot of people around me saying that meditation is good. However,
+                                            I heard a lot of people saying that I don't know where and how to learn, or whether I'm doing it right while reading books or YouTube and doing it alone.
+                                            It balances life through meditation and reinforces the relaxation of mind through active activities. Let's think and exercise together. Nowadays,
+                                            I hear a lot of people around me saying that meditation is good. However, I heard a lot of people saying that I don't know where and how to learn,
+                                            or whether I'm doing it right while reading books or YouTube and doing it alone.
+                                            It balances life through meditation and reinforces the relaxation of mind through active activities. Let's think and exercise together.
+                                            It balances life through meditation and reinforces the relaxation of mind through active activities.
+                                            Let's think and exercise together. -->
+                                        </p>
+                                        <button class="seeMoreBtn-on">
+                                            See More
+                                        </button>
+                                    </div>
+                                    <div class="pentagonInfo">
+                                        <%- include ./commonPentagon.html%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottomContents program_online" id = "offlineMethod" style="display:none;">
+                        <span class="line"></span>
+                        <h3>Offline Place</h3>
+                        <div class="mapArea" id="mapAreaControlID" style="display: none;">
+                            <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313549.9076670893!2d125.63011886114498!3d35.80266851494636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356455ebcb11ba9b%3A0x91249b00ba88db4b!2z64yA7ZWc66-86rWt!5e0!3m2!1sko!2skr!4v1628135424941!5m2!1sko!2skr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
+                            <div id="googleMap" style="width:100%; height:100%;"></div>
+                        </div>
+                        <div class="addresInfo" id = "offlineClassAddressArea">
+                            Address:  6625 Santa Fe Ave, Huntington Park, CA 90255
+                        </div>
+                    </div>
+                    <div class="bottomContents program_online" id="onlineMethod" style="display:none">
+                        <span class="line"></span>
+                        <h3>Online Method</h3>
+                        <div class="textArea" id = "onlineClassMethodArea">
+                            수업진행소개Nowadays, I hear a lot of people around me saying that meditation is good. However,
+                            I heard a lot of people saying that I don't know where and how to learn, or whether I'm doing it right while reading books or YouTube and doing it alone.
+                            It balances life through meditation and reinforces the relaxation of mind through active activities. Let's think and exercise together. Nowadays,
+                            I hear a lot of people around me saying that meditation is good. However, I heard a lot of people saying that I don't know where and how to learn, 
+                            or whether I'm doing it right while reading books or YouTube and doing it alone. 
+                            It balances life through meditation and reinforces the relaxation of mind through active activities. Let's think and exercise together. 
+                            It balances life through meditation and reinforces the relaxation of mind through active activities.
+                            Let's think and exercise together.
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="bottomContents develop_online" id="premiumMethod" style="display:none">
+                        <div class="tabBtnWrap">
+                            <div class="scrollWrap">
+                                <button class="active" id = "classMainNavi" onclick="activeMainNavi('classMainNavi')">Curriculum</button>
+                                <button id = "classJournalNavi" onclick="activeMainNavi('classJournalNavi')">Journal</button>
+                                <button id = "classReviewNavi" onclick="activeMainNavi('classReviewNavi')">Review</button>
+                                <button id="classRefundPolicyNavi" onclick="activeMainNavi('classRefundPolicyNavi')">Refund Policy</button>
+                            </div>
+                        </div>
+                        <div class="curriTab commonTab" id="classMain">
+                            <h3>Curriculum</h3>
+                            <div>
+                                <h4>Chapter</h4>
+                                <div class="chapterWrap" id="chapterListWrap">
+
+
+                                    <!-- <div class="chapterInfo">
+                                        <div class="number">1</div>
+                                        <div class="textWrap">
+                                            <div>
+                                                <h6>
+                                                    Necessity of self-reflection
+                                                </h6>
+                                                <p>
+                                                    Self- reflection is the methodology of meditation for growth, happiness and human completion:
+                                                    (1) Why do we need self-reflection?,  (2) Academic research on self-reflection, (3) Draw my life graph, and (4) Ultimate purpose of self-reflection
+                                                    (1) Why do we need self-reflection?,  (2) Academic research on self-reflection, (3) Draw my life graph, and (4) Ultimate purpose of self-reflection
+                                                    (1) Why do we need self-reflection?,  (2) Academic research on self-reflection, (3) Draw my life graph, and (4) Ultimate purpose of self-reflection
+                                                </p>
+                                                <button>
+                                                    <strong>See More</strong>
+                                                </button>
+                                                <div class="tagWrap">
+                                                    <span>
+                                                        1 Video
+                                                    </span>
+                                                    <span>
+                                                        2 Audio
+                                                    </span>
+                                                    <span>
+                                                        3 Reading
+                                                    </span>
+                                                    <span>
+                                                        4 Quiz
+                                                    </span>
+                                                    <span>
+                                                        5 survey
+                                                    </span>
+                                                    <span>
+                                                        6 discussion
+                                                    </span>
+                                                    <span>
+                                                        7 Live
+                                                    </span>
+                                                </div>
+                                                <div class="viewDetails">
+                                                    <button>
+                                                        View Details
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="hiddenDetail">
+                                                <ul>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Methodology of Meditation</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Self- reflection</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Academic research on self-reflection</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Ultimate purpose of self-reflection</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Draw my life graph</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Happiness and human completion</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Human recognition</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="journalTab commonTab" id = "classJournal" style="display:none">
+                            <!-- <span class="onlyLine"></span> -->
+                            <h3>Journal Entries</h3>
+                            <div class="journals">
+                                <div class="scrollWrap">
+                                    <div class="commonCard classDetail">
+                                        <div class="card-thumb thumb-layout-1" style="background-image: url('/img/main/journal/dummyImg.png');">
+                                            <img class="icon" src="/img/main/journal/ICN_AUDIO.png" alt="">
+                                        </div>
+                                        <div class="card-detail">
+                                            <div class="card-detail-top">
+                                                <div class="ringInfo">
+                                                    <div class="hover-ring" data-host="Host Name">
+                                                        <img src="/web/img/main/slide/IMG_1.png" alt="">
+                                                    </div>
+                                                    <h5>
+                                                        David Janes
+                                                    </h5>
+                                                </div>
+                                                <div class="count">
+                                                    <img src="/web/img/main/journal/ICN_BOOKMARK.png" alt="">
+                                                    <span>100</span>
+                                                </div>
+                                            </div>
+                                            <div class="card-detail-bottom">
+                                                <p>
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXT
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTvTXTTX
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXT
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTvTXTTX
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXT
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXT
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXT
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="commonCard classDetail">
+                                        <div class="card-thumb thumb-layout-1" style="background-image: url('/img/main/journal/dummyImg.png');">
+                                            <img class="icon" src="/img/main/journal/ICN_AUDIO.png" alt="">
+                                        </div>
+                                        <div class="card-detail">
+                                            <div class="card-detail-top">
+                                                <div class="ringInfo">
+                                                    <div class="hover-ring" data-host="Host Name">
+                                                        <img src="/web/img/main/slide/IMG_1.png" alt="">
+                                                    </div>
+                                                    <h5>
+                                                        David Janes
+                                                    </h5>
+                                                </div>
+                                                <div class="count">
+                                                    <img src="/web/img/main/journal/ICN_BOOKMARK.png" alt="">
+                                                    <span>100</span>
+                                                </div>
+                                            </div>
+                                            <div class="card-detail-bottom">
+                                                <p>
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXT
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTvTXTTX
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXT
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTvTXTTX
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXT
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXT
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXT
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="viewMoreJournals">
+                                <button>
+                                    View More Journals
+                                </button>
+                            </div>
+                        </div>
+                        <div class="reviewTab commonTab" id = "classReview" style="display: none">
+                            <!-- <span class="onlyLine"></span> -->
+                            <h3>Reviews (<srtong class="count">500</srtong>)</h3>
+                            <div class="reviews">
+                                <div class="rev">
+                                    <div class="revOrig">
+                                        <div class="topWrap">
+                                            <div class="ring hover-ring">
+                                                <img src="/web/img/dummyIcon_60.png" alt="">
+                                                <div class="info">
+                                                    <h6>
+                                                        David Janes 
+                                                    </h6>
+                                                    <span>
+                                                        2021.01.01  11:30AM
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="count">
+                                                <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                <span>
+                                                    150
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="infoText">
+                                            <div class="text">
+                                                <p>
+                                                    “It’s very good, it also increase my mindful. It’s very good, it also increase my mindful. It’s very good,
+                                                    it also increase my mindful. It’s very good, it also increase my
+                                                    it also increase my mindful. It’s very good, it also increase my
+                                                    it also increase my mindful. It’s very good, it also increase my
+                                                    it also increase my mindful. It’s very good, it also increase my
+                                                </p>
+                                                <button>
+                                                    <strong>See More</strong>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="revComment">
+                                        <div class="ring hover-ring">
+                                            <img src="/web/img/dummyIcon_45.png" alt="">
+                                        </div>
+                                        <div class="infoText">
+                                            <div class="infoTextInner">
+                                                <div>
+                                                    <h6>
+                                                        Daniel Espada
+                                                        <strong>Teacher</strong>
+                                                    </h6>
+                                                    <p>
+                                                        Thank you!Thank you! Thank you!Thank you! Thank you!Thank you! Thank you!Thank you!Thank you!
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <span class="timeInfo">
+                                                2021.01.01  11:30AM
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rev">
+                                    <div class="revOrig">
+                                        <div class="topWrap">
+                                            <div class="ring hover-ring">
+                                                <img src="/web/img/dummyIcon_60.png" alt="">
+                                                <div class="info">
+                                                    <h6>
+                                                        David Janes 
+                                                    </h6>
+                                                    <span>
+                                                        2021.01.01  11:30AM
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="count">
+                                                <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                <span>
+                                                    150
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="infoText">
+                                            <div class="text">
+                                                <p>
+                                                    “It’s very good, it also increase my mindful. It’s very good, it also increase my mindful. It’s very good,
+                                                    it also increase my mindful. It’s very good, it also increase my
+                                                    it also increase my mindful. It’s very good, it also increase my
+                                                    it also increase my mindful. It’s very good, it also increase my
+                                                    it also increase my mindful. It’s very good, it also increase my
+                                                </p>
+                                                <button>
+                                                    <strong>See More</strong>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="viewMoreReviewsBtn">
+                                <button onclick="customModal(10)">
+                                    View More Reviews
+                                </button>
+                            </div>
+                        </div>
+                        <div class="refundTab commonTab" id="classRefundPolicy" style="display: none">
+                            <h4>
+                                Refund Policy
+                            </h4>
+                            <p>
+                                According to the refund policy, you can request a refund up to 3 days before the Class Program Listing class and up to 50% of the Class Development & Listing class use.<br/>
+                                <button onclick="customModal(43)">View full refund policy</button>
+                            </p>
+                        </div>
+                    </div> 
+                </article>
+            </section>
+            <%- include priceBar.html%>
+            <%- include ./common/commonFooter.html%> <%- include ./common/commonScript.html%>
+            <script>
+                var params = new URL(location.href);
+                var lang = params.searchParams.get("clang");
+                user = <%-user ? JSON.stringify(user) : {}%>;
+                classObjectFull = <%-JSON.stringify(ClassObject)%>;
+                enrollListFull = classObjectFull.participants;
+                enrollList = [];
+                enrollListFull.forEach(function(enroll){
+                    enrollList.push(enroll.userUID)
+                })
+
+                console.log(enrollList);
+                $(function() {
+                    //챕터 세부내용 더보기버튼
+                    $('.viewDetails > button').click(function() {
+                        if($(this).html() == 'Summary View')
+                        {
+                            $(this).html('View Details');
+                        }
+                        else 
+                        {
+                            $(this).html('Summary View');
+                        }
+                        $(this).parents('.textWrap').children('.hiddenDetail').slideToggle();
+                    });
+                })
+
+
+                $(window).on('scroll',function(){
+                    docScroll = $(document).scrollTop(); //문서내부 스크롤위치
+                    docHeight = $(document).height(); //문서전체높이
+                    winHeight = $(window).height(); //윈도창높이
+                    footerHeight = $('.footerWrap').height();
+
+                    gap = docHeight - footerHeight - winHeight;
+
+                    if(docScroll < gap)
+                    {
+                        $('.priceBar').removeClass('sticky');
+                    }
+                    else
+                    {
+                        $('.priceBar').addClass('sticky');
+                    }
+
+                });
+                
+                classObject = <%-JSON.stringify(ClassObject.classObject)%>;
+                writer = <%-JSON.stringify(writer)%>;
+
+                $(document).ready(function(){
+
+                    // console.log(JSON.stringify(classObject))
+
+                    setClass(classObject);
+                    setWriter(writer);
+                    // 프로그램 등록
+                    // enrollClass(classObject)
+                })
+
+                function enrollClass(){
+                    var user = <%- JSON.stringify(user)%>
+                    var uid = user.userUID;
+                    var userName = user.userName;
+                    var classID = '<%-ClassObject._id%>';
+                    // console.log(JSON.stringify(classObject))
+                    // console.log(classObject.isFree + '                       123')
+                    var krw = classObject.krw;
+                    var usd = classObject.usd;
+                    var classTitle =classObject.title;
+                    var description = classObject.description;
+                    var mainCategory = classObject.mainCategory;
+                    var premium = classObject.premium;
+                    var online = classObject.online;
+                    var course = classObject.course;
+                    var language = classObject.mainLanguage;
+                    var level = classObject.level;
+                    var thumbNailMain = classObject.thumbNailMain.filePath;
+                    var classOpenDate = classObject.classOpenDate;
+                    var classSellStartDate = classObject.classSellStartDate;
+                    var classSellEndDate = classObject.classSellEndDate;
+                    var classProgress ={};
+                    var classInfo = {};
+
+                    classInfo.classTitle = classTitle;
+                    classInfo.writerUID = writer.userUID;
+                    classInfo.writerName = writer.userName;
+                    classInfo.classDescription = description;
+                    classInfo.mainCategory = mainCategory;
+                    classInfo.premium = premium;
+                    classInfo.krw = krw;
+                    classInfo.usd = usd;
+                    classInfo.online = online;
+                    classInfo.course = course;
+                    classInfo.language = language;
+                    classInfo.level = level;
+                    classInfo.thumbNailMain = thumbNailMain;
+                    classInfo.classOpenDate = classOpenDate;
+                    classInfo.classSellStartDate = classSellStartDate;
+                    classInfo.calssSellEndDate = classSellEndDate;
+
+                    var jsonObject ={}
+                    jsonObject.protocol = 'enrollClass';
+                    jsonObject.userUID = uid;
+                    jsonObject.userName = userName;
+                    jsonObject.userHostType = user.hostType;
+                    jsonObject.classID = classID;
+                    jsonObject.classInfo = classInfo;
+                    jsonObject.classProgress = classProgress;
+
+                    protocolSendAjaxWithCallBack(jsonObject, function(result){
+                        // alert(result.resultCode);
+                        if(result.resultCode==0){
+                            windonw.location.reload();
+                        }
+                    })
+                }
+
+                function purchaseThisClass(classID){
+                    // console.log(JSON.stringify(classObject))
+                    location.href =`/classOrder/${classID}`;
+                }
+
+
+
+
+
+                function setClass(classObject) {
+
+                    // console.log(JSON.stringify(classObject) + '          123')
+
+                    var openDate = classObject.classOpenDate;
+                    var online = classObject.online;
+
+                    document.getElementById('classTitleName').innerHTML=classObject.title;
+                    document.getElementById('classOpenDate').innerHTML=openDate.openDate;
+                    document.getElementById('classOpenTime').innerHTML=openDate.openTime + ' - ' + openDate.endTime;
+
+                    if(classObject.audience === 'Unlimited')
+                    {
+                        classObject.audience = verifyData(classObject.audience);
+                        classObject.audience = getTranslation('openClass', classObject.audience)
+                    }
+                    document.getElementById('classParticipatingNum').innerHTML=classObject.currentAudience + '/' + classObject.audience;
+                    
+                    var thumbNailSub = classObject.thumbNailSub;
+                    var subList = '';
+                    // document.getElementById('mainThumbNail').innerHTML=makeThumbnail(classOibject.thumbNailMain.filePath)
+                    
+                    // =============================
+                    // 여기가 a태그 생성 함수~~
+                    // =============================
+                    var checkFileType = (classObject.thumbNailMain.filePath).substring((classObject.thumbNailMain.filePath).length - 3, (classObject.thumbNailMain.filePath).length);
+                    if(checkFileType == 'mp4' || checkFileType == 'mov' || checkFileType == 'wmv' || checkFileType == 'avi') {
+                        document.getElementById('mainThumbNail').innerHTML=makeThumbnail('video', classObject.thumbNailMain.filePath);
+                    } else {
+                        document.getElementById('mainThumbNail').innerHTML=makeThumbnail('image', classObject.thumbNailMain.filePath);
+                    }
+
+                    // document.getElementById('mainThumbNail').innerHTML=makeThumbnail(thumbNailSub[0].filePath)
+                    // console.log(JSON.stringify(thumbNailSub) + thumbNalSub.length)
+                    var thumbNailSubLength = 0;
+                    if(thumbNailSub == null || thumbNailSub == undefined) {
+                        thumbNailSubLength = 0;
+                    } else if(thumbNailSub.length < 4) {
+                        thumbNailSubLength = thumbNailSub.length;
+                    } else {
+                        thumbNailSubLength = 4;
+                    }
+                    for(var i = 0; i<thumbNailSubLength; i++){
+                        // 잠시 주석
+                        subList+=makeThumbnail('image', thumbNailSub[i].filePath ,i, thumbNailSub.length);
+
+                        if(((i + 1) == thumbNailSubLength) && thumbNailSubLength < thumbNailSub.length) {
+                            for(var j = thumbNailSubLength; j < thumbNailSub.length; j++) {
+                                subList += `<a href="javascript:avoid(0)" style="display: none; background-image: url('${thumbNailSub[j].filePath}')"></a>`;
+                            }
+                        }
+                    }
+                    document.getElementById('subThumbNailList').innerHTML=subList;
+
+                    classObject.course = verifyData(classObject.course);
+                    document.getElementById('classFormat').innerHTML= getTranslation('openClass', classObject.course);
+
+                    if(classObject.mainCategory !== 'Movement & Activity' && classObject.mainCategory !== 'Counseling & Coaching')
+                    {
+                        classObject.subCategory = verifyData(classObject.subCategory);
+                        classObject.subCategory = getTranslation('openClass', classObject.subCategory);
+                    }
+
+                    classObject.mainCategory = verifyData(classObject.mainCategory);
+                    var translationMainCategory = getTranslation('openClass', classObject.mainCategory);
+
+                    var categoryHtml= translationMainCategory + '<br/>' + classObject.subCategory;
+                    makeIdHtml('categoryArea', categoryHtml);
+
+                    var classLevelHtml = classObject.level;
+                    makeIdHtml('classLevelID', classLevelHtml);
+
+                    var languageList = classObject.mainLanguage;
+                    for(var i =0; i<classObject.otherLanguage.length; i++){
+                        languageList+=' '+classObject.otherLanguage[i];
+                    }
+                    makeIdHtml('classLanguageArea', languageList);
+                    var categoryList= makeCategoryList(classObject.keywords);
+                    makeIdHtml('categorySubArea', categoryList);
+                    makeIdHtml('introduceArea', classObject.description);
+
+                    // user participate 확인
+                    var checkEnrollUser = false;
+                    if(enrollList.includes(user.userUID)) {
+                        checkEnrollUser = true;
+                    }
+
+                    // online, offline 설정
+                    if(classObject.premium=='premium'){
+                        setPremiumClass(classObject)
+                    }else if(online=='online'){
+                        if(!checkEnrollUser) {
+                            document.getElementById('onlineMethod').style.display='';
+                            document.getElementById('onlineClassMethodArea').innerText = 'This information of online method is only exposed to those who have purchased the class.';
+                        } else {
+                            setOnlineClass(classObject);
+                        }
+                    }else{
+                        if(!checkEnrollUser) {
+                            document.getElementById('offlineMethod').style.display='';
+                            document.getElementById('offlineClassAddressArea').innerHTML = 'This information of offline place is only exposed to those who have purchased the class.';
+                        } else {
+                            setOfflineClass(classObject);
+                        }
+                    }
+
+                    if(classObject.audience=='Unlimited'||classObject.audience=='무제한'){
+                        setPrice()
+                    }else{
+                        if(classObject.currentAudience<classObject.audience){
+                            setPrice()
+                        }else{
+                            document.querySelector('.soldOut').style.display='';
+                        }
+                    }
+
+                    
+                    function setPrice(){    
+                        console.log(classObject.premium + '         123 ' + enrollList.includes(user.userUID))
+                        if(classObject.isFree=='free'){
+                            document.querySelector('#classParticipateButton').style.display='';
+                           if(!enrollList.includes(user.userUID)){
+
+                               makeIdHtml('classPriceArea', 'Free')
+                           }
+                        }else if(classObject.premium=='premium'&&enrollList.includes(user.userUID)){
+                            document.querySelector('#classParticipateButton').style.display='';
+                        }else{
+                            document.querySelector('#classPurchaseButton').style.display='';
+                            // document.querySelector('#paypal-button-container-participate').style.display='';
+                            if(lang == 'ko')
+                            {
+                                //KRW 가격 생성
+                                makeIdHtml('classPriceArea', classObject.krw+'₩')
+                                makePaypalBtn( Number(classObject.usd).toFixed(2) );
+                            } else if(lang == 'en')
+                            {
+                                //USD 가격 생성
+                                makeIdHtml('classPriceArea', Number(classObject.usd).toFixed(2)+'$')
+                                makePaypalBtn( Number(classObject.usd).toFixed(2) );
+                            } else if(document.getElementById('langCategory').value == '한국어') {
+                                //KRW 가격 생성
+                                makeIdHtml('classPriceArea', classObject.krw+'₩')
+                                makePaypalBtn( Number(classObject.usd).toFixed(2) );
+                            } else {
+                                //USD 가격 생성
+                                makeIdHtml('classPriceArea', Number(classObject.usd).toFixed(2)+'$')
+                                makePaypalBtn( Number(classObject.usd).toFixed(2) );
+                            }
+    
+                        }
+                    }
+                }
+
+                function makeThumbnail(flag, filePath, num, length){
+                    
+                    if(flag == 'image') {
+                        if(num==3){
+                            return `<a href="javascript:avoid(0)" onclick="customModal(33, 'class')" class="imgBox" data-num="+${length - 4}" style="background-image: url('${filePath}');">
+                                    
+                                </a>`
+                        }else{
+                            return `<a href="javascript:avoid(0)" onclick="customModal(33, 'class')" class="imgBox" style="background-image: url('${filePath}')">
+                                        
+                                    </a>`
+                        }
+                    } else if(flag == 'video') {
+                        return `<video id="classDetailMainVideoID" src="${filePath}" controls></video>`;
+                    }
+                }
+
+                function makeCategoryList(categoryList){
+                    var category ='';
+                    for(var i = 0; i< categoryList.length; i++){
+                        category +=`<div class="tag">
+                                        ${getTranslation('openClass', categoryList[i])}
+                                    </div>`
+                    }
+                    return category;
+                }
+
+                function setPremiumClass(classObject){
+                    document.getElementById('premiumMethod').style.display='';
+                    var chapterList = classObject.chapterList;
+                    var chapterListHtml = '';
+                    for(var i =1; i<chapterList.length+1; i++){
+                        for(var j =0; j<chapterList.length; j++){
+                            if(i==chapterList[j].chapterNum){
+                                
+                                chapterListHtml+=makeChapterHtml(chapterList[j]);
+                            }
+                        }
+                        
+                    }
+                    makeIdHtml('chapterListWrap', chapterListHtml);
+                    activeViewDetails();
+                }
+
+
+                function setOnlineClass(classObject){
+                    document.getElementById('onlineMethod').style.display='';
+                    makeIdHtml('onlineClassMethodArea', classObject.classOpenDate.classMethod)
+                }
+
+                function setOfflineClass(classObject){
+                    document.getElementById('offlineMethod').style.display='';
+                    document.getElementById('mapAreaControlID').style.display='';
+                    makeIdHtml('offlineClassAddressArea', 'Address : '+classObject.classOpenDate.classLocation)
+                }
+
+                function setWriter(writer){
+                    makeIdHtml('writerHoverRingArea', `<img src="/web/img/userRing/${writer.userUID}.png" alt="">`)
+                    makeIdHtml('writerNameArea', writer.userName);
+                }
+
+
+                function makeIdHtml(id, html){
+                    document.getElementById(id).innerHTML=html;
+                }
+
+                function participateClass(){
+                    // location.href=`/classParticipate/<%-ClassObject._id%>`
+
+                }
+
+                function makeChapterHtml(chapter){
+                    var chapterHtml = `<div class="chapterInfo">
+                                        <div class="number">${chapter.chapterNum}</div>
+                                        <div class="textWrap">
+                                            <div>
+                                                <h6>
+                                                    ${chapter.chapterTitle}
+                                                </h6>
+                                                <p>
+                                                   ${chapter.chapterDescription}
+                                                </p>
+                                                <button>
+                                                    <strong>See More</strong>
+                                                </button>
+                                                <div class="tagWrap">
+                                                    ${makeTagList(chapter.chapterContentsList)}
+                                                </div>
+                                                <div class="viewDetails">
+                                                    <button>
+                                                        View Details
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="hiddenDetail">
+                                                <ul>
+                                                    ${makeTagTitleList(chapter.chapterContentsList)}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>`
+
+                    return chapterHtml;
+                }
+               
+                function makeTagList(tagList){
+                    var contentsListHtml='';
+                    for(var i=1; i<tagList.length+1; i++){
+                        contentsListHtml+= `<span>
+                                                ${i} ${tagList[i-1].type} 
+                                            </span>`
+                    }
+                    return contentsListHtml;
+                }
+
+                function makeTagTitleList(tagList){
+                    var tagTitleList ='';
+                    for(var i=0; i<tagList.length; i++){
+                        tagTitleList+= `<li>
+                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                        <span>${tagList[i].title}</span>
+                                    </li>`
+                    }
+                    return tagTitleList;
+                    
+                }
+
+                function participateThisClass(){
+                    if(classObject.premium=="premium"){
+                        if(!enrollList.includes(user.userUID)){
+                            enrollClass(classObject);
+                        }
+                        window.location.href ='/classParticipate/'+classObjectFull._id;
+                    }else{
+                        if(!enrollList.includes(user.userUID)){
+                            enrollClass(classObject);
+                        }else{
+                            customModal(42, classObjectFull);
+                        }
+                    }
+                }
+
+                function activeMainNavi(targetNavi){
+                    var naviList=['classMainNavi', 'classJournalNavi', 'classReviewNavi', 'classRefundPolicyNavi']
+                    var index = naviList.indexOf(targetNavi);
+                    naviList.splice(index, 1);
+                    document.getElementById(targetNavi).classList.add('active');
+                    document.getElementById(targetNavi.replace('Navi', '')).style.display = '';
+                    for(var i=0; i<naviList.length; i++){
+                        document.getElementById(naviList[i]).classList.remove('active');
+                        document.getElementById(naviList[i].replace('Navi', '')).style.display = 'none';
+                    }
+                }
+                
+
+                function activeViewDetails(){
+                    $('.viewDetails > button').click(function() {
+                        if($(this).html() == 'Summary View')
+                        {
+                            $(this).html('View Details');
+                        }
+                        else 
+                        {
+                            $(this).html('Summary View');
+                        }
+                        $(this).parents('.textWrap').children('.hiddenDetail').slideToggle();
+                    });
+
+        }
+
+
+            </script>
+
+            <!-- paypal -->
+            <script src="https://www.paypal.com/sdk/js?client-id=AVKxdCq3ZwlpYqVLjjE8KTmFnA7z3tYEQsFApU8ojIs4RBC0NFe6vmO7vEZEUWBrlmhk2guJHKSy0yTF&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+            <script>
+
+                $(function() {
+                    $('.seeMoreBtn-on').click(function() {
+                        $(this).prev('#introduceArea').toggleClass('active');
+                    })
+                });
+
+                function makePaypalBtn(usdValue)
+                {
+                    paypal.Buttons(
+                    {
+                        style: {
+                            size:'large',
+                            layout: 'horizontal',
+                            color:   'gold',
+                            shape:   'pill',
+                            label:   'paypal',
+                            tagline: 'false',
+                            size: 'responsive'
+                        },
+                        createOrder: function(data, actions) {
+                        // This function sets up the details of the transaction, including the amount and line item details.
+                        return actions.order.create({
+                            intent: "CAPTURE",
+                            purchase_units: [{
+                            amount: {
+                                currency_code: "USD",
+                                value: usdValue
+                            }
+                            }]
+                        });
+                        },
+                        onApprove: function(data, actions) {
+                            
+                            var jsonObject = {};
+
+                            jsonObject.protocol = 'serverPayTest';
+                            jsonObject.data = data;  
+                            jsonObject.pgType = 'paypal';
+                            jsonObject.type = 'consume';
+                            jsonObject.purchaseInterval = 1;
+                            jsonObject.itemName = 'itemName';
+                            
+                            protocolSendAjaxWithCallBack(jsonObject, function(result){
+
+                                if(result.resultCode==0){
+                                    //결제 완료 로직 처리
+                                    //여기서 비즈니스 로직을 처리한다.
+
+                                    // 결제 완료 (로그)
+                                    alert('Transaction approved by ' + JSON.stringify(result));
+                                }
+                                else
+                                {
+                                    // alert('이미 사용중인 이메일입니다.')
+                                    alert("결제 실패 서버에러 : " + result.message);
+                                }
+                            })
+                        }
+                    }).render('#paypal-button-container-participate');
+                }
+
+                var googleMapOptions = '';
+                var googleMap = '';
+                var geocoder = '';
+                
+                // 기존의 Marker를 지우기 위해 마커를 담는 배열
+                var arrayGoogleMapMarker = [];
+
+                // 오프라인일 경우에만 함수 호출 및 실행
+                if(classObject.online === 'offline')
+                {
+                    // Google Map API 주소의 callback 파라미터와 동일한 이름의 함수
+                    function mindgroundMap(type)
+                    {
+                        // default 중심 위치는 서울특별시
+                        googleMapOptions= { center : new google.maps.LatLng(37.55430979366699, 126.98747449784453), zoom : 8 };
+
+                        if(type == 'modal') {
+                            googleMap = new google.maps.Map(document.getElementById("modalGoogleMap"), googleMapOptions);
+                        } else {
+                            googleMap = new google.maps.Map(document.getElementById("googleMap"), googleMapOptions);
+                        }
+
+                        geocoder = new google.maps.Geocoder();
+
+                        geocodeAddress(geocoder, googleMap);
+                    }
+                }
+
+                function geocodeAddress(geocoder, googleMap)
+                {
+                    // 기존의 Marker를 지운다.
+                    if(arrayGoogleMapMarker.length > 0)
+                    {
+                        arrayGoogleMapMarker[0].setMap(null);
+                    }
+
+                    // set Address
+                    var address = classObject.classOpenDate.classLocation;
+
+                    geocoder.geocode({ 'address' : address }, function(result, status)
+                    {
+                        if(status === 'OK')
+                        {
+                            var googleMapMarker = new google.maps.Marker({ position: result[0].geometry.location });
+                            
+                            arrayGoogleMapMarker[0] = googleMapMarker;
+
+                            // Marker를 맵에 찍는다.
+                            arrayGoogleMapMarker[0].setMap(googleMap);
+                            
+                            googleMap.setCenter(result[0].geometry.location);
+                            googleMap.setZoom(17);
+                        }
+                        else
+                        {
+                            alert('geocode error ' + status);
+                        }
+                    });
+                }
+            </script>
+            <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATfYV535tXnxiEu1KCbvOlGx6IoqySFlA&callback=mindgroundMap"></script>
+        </div>
+    </body>
+</html>

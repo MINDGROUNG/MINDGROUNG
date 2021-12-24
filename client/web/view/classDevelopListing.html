@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <%- include ./common/commonHead.html%>
+        <!--공통타이틀로 적용 할 경우 commonHead 안에 넣기-->
+    </head>
+    <body>
+        <div class="wrap commonLayout2">
+            <%- include ./common/commonHeader.html%>
+            <%- include viewMoreReviewsModal.html%>
+            <section class="marginAuto_s minHeight">
+                <div class="writeBtn" >
+                    <button>
+                        <img src="/web/img/main/cateList/BTN_WRITE.png" alt="">
+                    </button>
+                </div>
+                <%- include priceBar.html%>
+                <article>
+                    <div class="topContents">
+                        <div class="basicInfo">
+                            <div class="basicInfo-text">
+                                <div class="state">
+                                    <h5>
+                                        Sold out
+                                    </h5>
+                                </div>
+                                <h3 class="classTitle">
+                                    Class NameClass Name
+                                </h3>
+                                <div class="desc">
+                                    <div class="desc-on-offline">
+                                        <div class="desc-online commonDesc">
+                                            <span class="underline">
+                                                365 days  after purchase class
+                                            </span>
+                                            <span>
+                                                <img src="/web/img/classDetail/ICN_PERSON.png" alt="">
+                                                560/Unlimited
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="sideBtn">
+                                        <button>
+                                            <img src="/web/img/classDetail/ICN_SHARE.png" alt="">
+                                        </button>
+                                        <button>
+                                            <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                        </button>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="basicInfo-imgs">
+                                <div>
+                                    <div class="videoThumb" style="background-image: url('/web/img/classDetail/videoDummy.png');">
+                                    </div>
+                                    <div class="imgThumb">
+                                        <a href="javascript:avoid(0)" class="imgBox">
+                                            <img src="/web/img/classDetail/imgDummy.png" alt="">
+                                        </a href="javascript:avoid(0)" class="imgBox">
+                                        <a href="javascript:avoid(0)" class="imgBox">
+                                            <img src="/web/img/classDetail/imgDummy.png" alt="">
+                                        </a href="javascript:avoid(0)" class="imgBox">
+                                        <a href="javascript:avoid(0)" class="imgBox">
+                                            <img src="/web/img/classDetail/imgDummy.png" alt="">
+                                        </a href="javascript:avoid(0)" class="imgBox">
+                                        <a href="javascript:avoid(0)" class="imgBox" data-num="+4">
+                                            <img src="/web/img/classDetail/imgDummy.png" alt="">
+                                        </a href="javascript:avoid(0)" class="imgBox">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="basicInfo-tag">
+                                <div class="top">
+                                    <div class="format">
+                                        <span>Format</span>
+                                        <strong>
+                                            Certificate Course
+                                        </strong>
+                                    </div>
+                                    <div class="category">
+                                        <span>Category</span>
+                                        <strong>
+                                            Mindfulness<br/>
+                                            Mindfulness-Based Childbirth and Parenting (MBCP)
+                                        </strong>
+                                    </div>
+                                    <div class="language">
+                                        <span>Language</span>
+                                        <strong>
+                                            English
+                                            Korean
+                                            Spanish
+                                            French
+                                            German
+                                            Russian
+                                            Japanese
+                                            Italian
+                                        </strong>
+                                    </div>
+                                </div>
+                                <div class="bottom">
+                                    <div class="tag">
+                                        Sleep
+                                    </div>
+                                    <div class="tag">
+                                        Happiness
+                                    </div>
+                                    <div class="tag">
+                                        Leadership
+                                    </div>
+                                    <div class="tag">
+                                        Anxiety
+                                    </div>
+                                    <div class="tag">
+                                        Mental Health
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="classInfo">
+                            <div class="host-classInfo">
+                                <div class="hostDetail">
+                                    <div class="ring hover-ring">
+                                        <img src="/web/img/dummyIcon_50.png" alt="">
+                                    </div>
+                                    <div class="rating">
+                                        <span>
+                                            Creator
+                                        </span>
+                                        <h5>
+                                            <a href="javascript:avoid(0)">Hannah Brown</a>
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div class="classDetail">
+                                    <p>
+                                        게더링 소개 Nowadays, I hear a lot of people around me saying that meditation is good. However,
+                                        I heard a lot of people saying that I don't know where and how to learn, or whether I'm doing it right while reading books or YouTube and doing it alone.
+                                        It balances life through meditation and reinforces the relaxation of mind through active activities. Let's think and exercise together. Nowadays,
+                                        I hear a lot of people around me saying that meditation is good. However, I heard a lot of people saying that I don't know where and how to learn, 
+                                        or whether I'm doing it right while reading books or YouTube and doing it alone. 
+                                        It balances life through meditation and reinforces the relaxation of mind through active activities. Let's think and exercise together. 
+                                        It balances life through meditation and reinforces the relaxation of mind through active activities.
+                                        Let's think and exercise together.
+                                        <button>
+                                            See More
+                                        </button>
+                                    </p>
+                                    <div class="pentagonInfo">
+                                        <%- include ./commonPentagon.html%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottomContents develop_online">
+                        <div class="tabBtnWrap">
+                            <button class="active">Curriculum</button>
+                            <button>Journal</button>
+                            <button>Review</button>
+                        </div>
+                        <div class="curriTab commonTab">
+                            <h3>Curriculum</h3>
+                            <div>
+                                <h4>Chapter</h4>
+                                <div class="chapterWrap">
+                                    <div class="chapterInfo">
+                                        <div class="number">1</div>
+                                        <div class="textWrap">
+                                            <div>
+                                                <h6>
+                                                    Necessity of self-reflection
+                                                </h6>
+                                                <p>
+                                                    Self- reflection is the methodology of meditation for growth, happiness and human completion:
+                                                    (1) Why do we need self-reflection?,  (2) Academic research on self-reflection, (3) Draw my life graph, and (4) Ultimate purpose of self-reflection
+                                                    (1) Why do we need self-reflection?,  (2) Academic research on self-reflection, (3) Draw my life graph, and (4) Ultimate purpose of self-reflection
+                                                    (1) Why do we need self-reflection?,  (2) Academic research on self-reflection, (3) Draw my life graph, and (4) Ultimate purpose of self-reflection
+                                                </p>
+                                                <button>
+                                                    <strong>See More</strong>
+                                                </button>
+                                                <div class="tagWrap">
+                                                    <span>
+                                                        1 Video
+                                                    </span>
+                                                    <span>
+                                                        2 Audio
+                                                    </span>
+                                                    <span>
+                                                        3 Reading
+                                                    </span>
+                                                    <span>
+                                                        4 Quiz
+                                                    </span>
+                                                    <span>
+                                                        5 survey
+                                                    </span>
+                                                    <span>
+                                                        6 discussion
+                                                    </span>
+                                                    <span>
+                                                        7 Live
+                                                    </span>
+                                                </div>
+                                                <div class="viewDetails">
+                                                    <button>
+                                                        View Details
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="hiddenDetail">
+                                                <ul>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Methodology of Meditation</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Self- reflection</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Academic research on self-reflection</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Ultimate purpose of self-reflection</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Draw my life graph</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Happiness and human completion</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Human recognition</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="chapterInfo">
+                                        <div class="number">2</div>
+                                        <div class="textWrap">
+                                            <div>
+                                                <h6>
+                                                    Necessity of self-reflection
+                                                </h6>
+                                                <p>
+                                                    Self- reflection is the methodology of meditation for growth, happiness and human completion:
+                                                    (1) Why do we need self-reflection?,  (2) Academic research on self-reflection, (3) Draw my life graph, and (4) Ultimate purpose of self-reflection
+                                                    (1) Why do we need self-reflection?,  (2) Academic research on self-reflection, (3) Draw my life graph, and (4) Ultimate purpose of self-reflection
+                                                    (1) Why do we need self-reflection?,  (2) Academic research on self-reflection, (3) Draw my life graph, and (4) Ultimate purpose of self-reflection
+                                                </p>
+                                                <button>
+                                                    <strong>See More</strong>
+                                                </button>
+                                                <div class="tagWrap">
+                                                    <span>
+                                                        1 Video
+                                                    </span>
+                                                    <span>
+                                                        2 Audio
+                                                    </span>
+                                                    <span>
+                                                        3 Reading
+                                                    </span>
+                                                    <span>
+                                                        4 Quiz
+                                                    </span>
+                                                    <span>
+                                                        5 survey
+                                                    </span>
+                                                    <span>
+                                                        6 discussion
+                                                    </span>
+                                                    <span>
+                                                        7 Live
+                                                    </span>
+                                                </div>
+                                                <div class="viewDetails">
+                                                    <button>
+                                                        View Details
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="hiddenDetail">
+                                                <ul>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Methodology of Meditation</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Self- reflection</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Academic research on self-reflection</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Ultimate purpose of self-reflection</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Draw my life graph</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Happiness and human completion</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Human recognition</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="chapterInfo">
+                                        <div class="number">3</div>
+                                        <div class="textWrap">
+                                            <div>
+                                                <h6>
+                                                    Necessity of self-reflection
+                                                </h6>
+                                                <p>
+                                                    Self- reflection is the methodology of meditation for growth, happiness and human completion:
+                                                    (1) Why do we need self-reflection?,  (2) Academic research on self-reflection, (3) Draw my life graph, and (4) Ultimate purpose of self-reflection
+                                                    (1) Why do we need self-reflection?,  (2) Academic research on self-reflection, (3) Draw my life graph, and (4) Ultimate purpose of self-reflection
+                                                    (1) Why do we need self-reflection?,  (2) Academic research on self-reflection, (3) Draw my life graph, and (4) Ultimate purpose of self-reflection
+                                                </p>
+                                                <button>
+                                                    <strong>See More</strong>
+                                                </button>
+                                                <div class="tagWrap">
+                                                    <span>
+                                                        1 Video
+                                                    </span>
+                                                    <span>
+                                                        2 Audio
+                                                    </span>
+                                                    <span>
+                                                        3 Reading
+                                                    </span>
+                                                    <span>
+                                                        4 Quiz
+                                                    </span>
+                                                    <span>
+                                                        5 survey
+                                                    </span>
+                                                    <span>
+                                                        6 discussion
+                                                    </span>
+                                                    <span>
+                                                        7 Live
+                                                    </span>
+                                                </div>
+                                                <div class="viewDetails">
+                                                    <button>
+                                                        View Details
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="hiddenDetail">
+                                                <ul>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Methodology of Meditation</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Self- reflection</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Academic research on self-reflection</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Ultimate purpose of self-reflection</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Draw my life graph</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Happiness and human completion</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                        <span>Human recognition</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="onlyLine"></span>
+                        <div class="journalTab commonTab">
+                            <h3>Journal Entries</h3>
+                            <div class="journals">
+                                <div class="scrollWrap">
+                                    <div class="commonCard classDetail">
+                                        <div class="card-thumb thumb-layout-1" style="background-image: url('/web/img/main/journal/dummyImg.png');">
+                                            <img class="icon" src="/web/img/main/journal/ICN_AUDIO.png" alt="">
+                                        </div>
+                                        <div class="card-detail">
+                                            <div class="card-detail-top">
+                                                <div class="ringInfo">
+                                                    <div class="hover-ring" data-host="Host Name">
+                                                        <img src="/web/img/main/slide/IMG_1.png" alt="">
+                                                    </div>
+                                                    <h5>
+                                                        David Janes
+                                                    </h5>
+                                                </div>
+                                                <div class="count">
+                                                    <img src="/web/img/main/journal/ICN_BOOKMARK.png" alt="">
+                                                    <span>100</span>
+                                                </div>
+                                            </div>
+                                            <div class="card-detail-bottom">
+                                                <p>
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXT
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTvTXTTX
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXT
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTvTXTTX
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXT
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXT
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXT
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="commonCard classDetail">
+                                        <div class="card-thumb thumb-layout-1" style="background-image: url('/web/img/main/journal/dummyImg.png');">
+                                            <img class="icon" src="/web/img/main/journal/ICN_AUDIO.png" alt="">
+                                        </div>
+                                        <div class="card-detail">
+                                            <div class="card-detail-top">
+                                                <div class="ringInfo">
+                                                    <div class="hover-ring" data-host="Host Name">
+                                                        <img src="/web/img/main/slide/IMG_1.png" alt="">
+                                                    </div>
+                                                    <h5>
+                                                        David Janes
+                                                    </h5>
+                                                </div>
+                                                <div class="count">
+                                                    <img src="/web/img/main/journal/ICN_BOOKMARK.png" alt="">
+                                                    <span>100</span>
+                                                </div>
+                                            </div>
+                                            <div class="card-detail-bottom">
+                                                <p>
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXT
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTvTXTTX
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXT
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTvTXTTX
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXT
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXT
+                                                    TXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXTTXT
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="viewMoreJournals">
+                                <button>
+                                    <%=translation.loginAndJoin.View_More_Journals%>
+                                </button>
+                            </div>
+                        </div>
+                        <span class="onlyLine"></span>
+                        <div class="reviewTab commonTab">
+                            <h3>Reviews (<srtong class="count">500</srtong>)</h3>
+                            <div class="reviews">
+                                <div class="rev">
+                                    <div class="revOrig">
+                                        <div class="topWrap">
+                                            <div class="ring hover-ring">
+                                                <img src="/web/img/dummyIcon_60.png" alt="">
+                                                <div class="info">
+                                                    <h6>
+                                                        David Janes 
+                                                    </h6>
+                                                    <span>
+                                                        2021.01.01  11:30AM
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="count">
+                                                <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                <span>
+                                                    150
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="infoText">
+                                            <div class="text">
+                                                <p>
+                                                    “It’s very good, it also increase my mindful. It’s very good, it also increase my mindful. It’s very good,
+                                                    it also increase my mindful. It’s very good, it also increase my
+                                                    it also increase my mindful. It’s very good, it also increase my
+                                                    it also increase my mindful. It’s very good, it also increase my
+                                                    it also increase my mindful. It’s very good, it also increase my
+                                                </p>
+                                                <button>
+                                                    <strong>See More</strong>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="revComment">
+                                        <div class="ring hover-ring">
+                                            <img src="/web/img/dummyIcon_45.png" alt="">
+                                        </div>
+                                        <div class="infoText">
+                                            <div class="infoTextInner">
+                                                <div>
+                                                    <h6>
+                                                        Daniel Espada
+                                                        <strong>Teacher</strong>
+                                                    </h6>
+                                                    <p>
+                                                        Thank you!Thank you! Thank you!Thank you! Thank you!Thank you! Thank you!Thank you!Thank you!
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <span class="timeInfo">
+                                                2021.01.01  11:30AM
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rev">
+                                    <div class="revOrig">
+                                        <div class="topWrap">
+                                            <div class="ring hover-ring">
+                                                <img src="/web/img/dummyIcon_60.png" alt="">
+                                                <div class="info">
+                                                    <h6>
+                                                        David Janes 
+                                                    </h6>
+                                                    <span>
+                                                        2021.01.01  11:30AM
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="count">
+                                                <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                                <span>
+                                                    150
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="infoText">
+                                            <div class="text">
+                                                <p>
+                                                    “It’s very good, it also increase my mindful. It’s very good, it also increase my mindful. It’s very good,
+                                                    it also increase my mindful. It’s very good, it also increase my
+                                                    it also increase my mindful. It’s very good, it also increase my
+                                                    it also increase my mindful. It’s very good, it also increase my
+                                                    it also increase my mindful. It’s very good, it also increase my
+                                                </p>
+                                                <button>
+                                                    <strong>See More</strong>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="viewMoreReviewsBtn">
+                                <button onclick="customModal(10)">
+                                    <%=translation.loginAndJoin.View_More_Reviews%>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <%- include ./common/commonFooter.html%> <%- include ./common/commonScript.html%>
+            <%- include viewMoreJournalsScript.html%>
+            <script src="/web/js/tabEvent.js"></script>
+            <script>
+
+            </script>
+        </div>
+    </body>
+</html>

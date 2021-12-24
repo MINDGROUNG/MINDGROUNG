@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <%-include common/commonHead.html%>
+    <body>
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+        <!-- START CONTENT -->
+        <div class="wrap">
+            <div class="logo">
+                <h1>
+                    <img src="/web/img/admin/logo2.png" alt="">
+                </h1>
+                <p>
+                    Admin
+                </p>
+            </div>
+            <div class="inputArea">
+                <div class="inputId">
+                    <img src="/web/img/admin/icn_username.png" alt="">
+                    <input type="text" placeholder="ID">
+                </div>
+                <div class="inputPwd">
+                    <img src="/web/img/admin/icn_password.png" alt="">
+                    <input type="text" placeholder="Password">
+                </div>
+                <button class="signInBtn">
+                    Sign in
+                </button>
+            </div>
+        </div>
+        <!-- End Content -->
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+        <%-include common/commonScript.html%>
+        <script>
+        ///////////데이터 테이블//////////////
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'excel', 'print'
+                ]
+            });
+        });
+        </script>
+    </body>
+</html>

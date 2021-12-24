@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <%- include ./common/commonHead.html%>
+        <!--공통타이틀로 적용 할 경우 commonHead 안에 넣기-->
+    </head>
+    <body>
+        <div class="wrap commonLayout3">
+            <%- include ./common/commonHeader.html%>
+            <section class="minHeight">
+                <div class="pageTitle eventPage">
+                    <img src="/web/img/createEvent/HEADER.png" alt="">
+                    <h2 id="UniqueEventID" value="">
+                        CREATE EVENT
+                    </h2>
+                </div>
+                <div class="writeBtn">
+                    <button>
+                        <img src="/web/img/main/cateList/BTN_WRITE.png" alt="">
+                    </button>
+                </div>
+                <article class="marginAuto_s">
+                    <div class="formWrap">
+                        <div class="form-category">
+                            <div>
+                                <h4 class="boxTitle">
+                                    Event Category
+                                </h4>
+                                <div class="common-category-selectBox">
+                                    <div class="getValBox">
+                                        <input type="text" value="Select" id="getValOnline1" readonly>
+                                        <i class="xi-caret-down"></i>
+                                    </div>
+                                    <ul class="selectBox" id="checkOnlineOffline">
+                                        <li>
+                                            <input type="radio" value="Offline" id="offline" name="onOff">
+                                            <label for="offline">
+                                                <span>Offline</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" value="Online" id="online" name="onOff">
+                                            <label for="online">
+                                                <span>Online</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="coHostDivControl" style="display: none;">
+                                <h4 class="boxTitle">
+                                    Co-host
+                                    <input type="checkbox" id="hostChk" value="NoClick" onclick="coHostChk()">
+                                    <label for="hostChk"></label>
+                                </h4>
+                                <div class="category-InputBox">
+                                    <div class="coHost-searchWrap">
+                                        <input type="text" id="hostSearch" placeholder="Search" onkeyup="coHostSearchFunc()" value="" value1="noSearch" readonly>
+                                        <ul class="hdnList" style="display: none;" id="hostListId">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-evName">
+                            <h4 class="boxTitle">
+                                Event Name
+                            </h4>
+                            <div class="evName-inputBox">
+                                <input type="text" id="eventName">
+                            </div>
+                        </div>
+                        <div class="form-evDesc">
+                            <h4 class="boxTitle">
+                                Event Description
+                            </h4>
+                            <div class="evDesc-inputBox">
+                                <textarea name="eventDesc" id="eventDesc" style="resize: none;"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-onlineMethod" id="onlineParentDiv" style="display: none;">
+                            <h4 class="boxTitle">
+                                Online Method
+                            </h4>
+                            <div class="onlineMethod-inputBox">
+                                <textarea name="eventDesc" id="onlineMethod" style="resize: none;"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-place" id="offlineParentDiv" style="display: none;">
+                            <h4 class="boxTitle">
+                                Offline Place
+                            </h4>
+                            <!-- 장소를 셀렉할껀지, 직접 입력할건지 -->
+                            <div class="common-category-selectBox place">
+                                <div class="venueOffline">
+                                    <div class="getValBox">
+                                        <input type="text" value="Select" id="getValOffline1" readonly>
+                                        <i class="xi-caret-down"></i>
+                                    </div>
+                                    <ul class="selectBox">
+                                        <li>
+                                            <input type="radio" value="Venue Booking" id="venueBooking" name="inputPlace">
+                                            <label for="venueBooking">
+                                                <span>Venue Booking</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" value="Input" id="input" name="inputPlace">
+                                            <label for="input">
+                                                <span>Input</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Venue Booking을 골랐을 때 뜨는 셀렉트박스 -->
+                            <div class="common-category-selectBox place getPlaceSelectBox">
+                                <!-- <div class="venue">
+                                    <div class="getValBox">
+                                        <input type="text" value="Select" id="getValOffline2" readonly>
+                                        <i class="xi-caret-down"></i>
+                                    </div>
+                                    <ul class="selectBox">
+                                        <li>
+                                            <input type="radio" value="Select1" id="selectPlace1" name="selectPlace">
+                                            <label for="selectPlace1">
+                                                <span>Select1</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" value="Select2" id="selectPlace2" name="selectPlace">
+                                            <label for="selectPlace2">
+                                                <span>Select2</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div> -->
+                            </div>
+                            <!-- 장소를 직접입력을 선택했을 때 뜨는 인풋박스 -->
+                            <div class="place-inputBox">
+                                <!-- <input type="text" id="rawInputPlace" style="width: 100%;"> -->
+                            </div>
+                            <div class="getMapArea">
+                                <div class="place-map">
+                                    <div id="googleMap" style="width:100%; height:100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-dateInfo">
+                            <div>
+                                <h4 class="boxTitle">
+                                    Date & Time
+                                </h4>
+                                <div>
+                                    <strong>
+                                        All-day
+                                    </strong>
+                                    <input type="checkbox" id="allDayChk" onclick="allDayChk()">
+                                    <label for="allDayChk"></label>
+                                </div>
+                            </div>
+                            <div class="dateChkWrap">
+                                <div class="left">
+                                    <div class="dateInfo-calendar">
+                                        <!-- readonly가 필요한데 readOnly를 넣으면 CSS가 적용이 안됩니다. -->
+                                        <div class="input-btn">
+                                            <input type="text" id="eventDate" placeholder="Date" value="" readonly>
+                                            <button class="calBoxBtn-on" id="pickerControlBtn" onclick="pickerBoxControl()">
+                                                <img src="/web/img/ICN_CALENDAR.png" alt="">
+                                            </button>
+                                        </div>
+                                        <div id="pickerBox1">
+                                            <!-- 캘린더영역 -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    <div class="common-category-selectBox time">
+                                        <div class="getValBox" id="valBoxControlId1">
+                                            <input type="text" value="00:00" id="getTimeVal1" readonly>
+                                            <i class="xi-caret-down"></i>
+                                        </div>
+                                        <ul class="selectBox" id="getTimeVal1Box">
+                                        </ul>
+                                    </div>
+                                    <div class="characters">
+                                        <span>~</span>
+                                    </div>
+                                    <div class="common-category-selectBox time">
+                                        <div class="getValBox" id="valBoxControlId2" value1="">
+                                            <input type="text" value="00:00" id="getTimeVal2" readonly>
+                                            <i class="xi-caret-down"></i>
+                                        </div>
+                                        <ul class="selectBox" id="getTimeVal2Box">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-participants">
+                            <h4 class="boxTitle">
+                                Number of Participants
+                            </h4>
+                            <div>
+                                <div class="common-category-selectBox">
+                                    <div class="getValBox">
+                                        <input type="text" value="Select" id="getValOnline2" readonly>
+                                        <i class="xi-caret-down"></i>
+                                    </div>
+                                    <ul class="selectBox">
+                                        <li>
+                                            <input type="radio" value="Unlimited" id="unlimited" name="participants">
+                                            <label for="unlimited">
+                                                <span>Unlimited</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" value="Input" id="participantsInput" name="participants">
+                                            <label for="participantsInput">
+                                                <span>Input</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="participants-inputBox">
+                                    <!-- input을 고르면 들어오는 인풋박스 -->
+                                    <!-- <input type="text" id="getPar"> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-selectImg">
+                            <h4 class="boxTitle">
+                                Main Image
+                            </h4>
+                            <input type="file" id="uploadMainContent" accept="image/* , video/*" onchange="imageUploadFunc(this)">
+                            <label for="uploadMainContent">
+                                <img src="/web/img/createEvent/BTN_ADD.png" alt="">
+                            </label>
+                            <div class="getImgArea">
+                                <div class="previewThumb" id="previewThumbID1" style="background-image: url('');">
+                                    <!-- <div class="inner">
+                                        <img src="/web/img/createEvent/LB_MAIN.png" alt="">
+                                        <div class="btns">
+                                            <button>
+                                                <img src="/web/img/createEvent/ICN_EDIT.png" alt="">
+                                            </button>
+                                            <button>
+                                                <img src="/web/img/createEvent/ICN_DELETE.png" alt="">
+                                            </button>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="completeBtn">
+                        <button onclick="gatheringEventObjectInsertMongo()">
+                            Create
+                        </button>
+                    </div>
+                </article>
+            </section>
+            <%- include ./common/commonFooter.html%> <%- include ./common/commonScript.html%>
+            <!-- 캘린더 이벤트 -->
+            <script src="/web/js/customPicker/customPicker.js"></script>
+            <script>
+                var gatheringData = <%- gatheringObject ? JSON.stringify(gatheringObject) : {} %>;
+                var user = <%- user ? JSON.stringify(user) : {} %>;
+                var gatheringEventObject = {};
+                gatheringEventObject.eventMember = [];
+                gatheringEventObject.eventMember.push(user.userUID);
+                gatheringEventObject.gatheringId = gatheringData._id;
+                gatheringEventObject.eventCreatorName = user.userName;
+                gatheringEventObject.eventCreatorUID = user.userUID;
+                if(user.hostType !== '' || user.hostType !== null) {
+                    gatheringEventObject.eventCreatorHostType = user.hostType;
+                } else {
+                    gatheringEventObject.eventCreatorHostType = '';
+                }
+                
+                var gatheringMember = gatheringData.gatheringMember;
+                var gatheringMemberObject = {};
+                var coHostFlag = false;
+
+                var gatheringMember = gatheringData.gatheringMember;
+
+                var userIndex = gatheringMember.findIndex( index => index.userUID === user.userUID);
+
+                if(gatheringMember[userIndex].authority === 'administrator' || gatheringMember[userIndex].authority === 'operator')
+                {
+                    document.getElementById('coHostDivControl').style.display = 'block';
+                    gatheringEventObject.gatheringApproved = 'approve';
+                }
+                else
+                {
+                    gatheringEventObject.gatheringApproved = 'waiting';
+                }
+
+                function randomPassword(length) 
+                {
+                    let text = '';
+                    let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                    for (let i = 0; i < length; i++) text += possible.charAt(Math.floor(Math.random() * possible.length));
+                    return text;
+                };
+
+                var eventID = randomPassword(10);
+
+                document.getElementById('UniqueEventID').value = eventID;
+
+                gatheringEventObject.eventID = eventID;
+                gatheringEventObject.createDate = new Date();
+
+                for(var i = 0; i < gatheringMember.length; i++) {
+                    var tempGatheringMemberData = {};
+                    tempGatheringMemberData.userUID = gatheringMember[i].userUID;
+                    tempGatheringMemberData.userName = gatheringMember[i].userName;
+
+                    gatheringMemberObject[gatheringMember[i].userName] = tempGatheringMemberData;
+                }
+
+                $(function() {
+                    $(document).on('click', '.getValBox', function() {
+                        if(!$(this).hasClass('noEventFlag'))
+                        {
+                            $(this).next('.selectBox').slideToggle();
+                        }
+                         //온오프라인값 선택
+                        $('input[name="onOff"]').click(function() {
+                            var value = $(this).val();
+                            $('#getValOnline1').val(value);
+                            $(this).parents('.common-category-selectBox').children('.selectBox').slideUp();
+                        })
+
+                        //시간값 받아오기
+                        $('input[name="timeVal1"]').click(function() {
+                            var value = $(this).val();
+                            $('#getTimeVal1').val(value);
+                            $(this).parents('.common-category-selectBox').children('.selectBox').slideUp();
+                        });
+                        $('input[name="timeVal2"]').click(function() {
+                            var value = $(this).val();
+                            $('#getTimeVal2').val(value);
+                            $(this).parents('.common-category-selectBox').children('.selectBox').slideUp();
+                        });
+                        
+                        //참가자 인원값
+                        $('input[name="participants"]').click(function() {
+                            var value = $(this).val();
+                            $('#getValOnline2').val(value);
+                            $(this).parents('.common-category-selectBox').children('.selectBox').slideUp();
+                            if($('#getValOnline2').val() == 'Input')
+                            {
+                                var inputBox = `<input type="text" id="getPar">`;
+                                $('.participants-inputBox').html(inputBox);
+                            }
+                            else
+                            {
+                                $('#getPar').remove()
+                            }
+                        })
+                    });
+                    
+                     //장소입력을 셀렉박스를 열지? 인풋박슬 열지?
+                    $(document).on('click', 'input[name="inputPlace"]', function() {
+                            var value = $(this).val();
+                            $('#getValOffline1').val(value);
+                            $(this).parents('.venueOffline').children('.selectBox').slideUp();
+                            if($('#getValOffline1').val() == 'Venue Booking')
+                            {
+                                var selectVenue = '<div class="venue">' +
+                                                    '<div class="getValBox">' +
+                                                        '<input type="text" value="Select" id="getValOffline2" readonly>' +
+                                                        '<i class="xi-caret-down"></i>' +
+                                                    '</div>' +
+                                                    '<ul class="selectBox">' +
+                                                        '<li>' +
+                                                            '<input type="radio" value="6625 Santa Fe Ave, Huntington Park, CA 90255" id="selectPlace1" name="selectPlace">' +
+                                                            '<label for="selectPlace1">' +
+                                                                '<span>Address: 6625 Santa Fe Ave, Huntington Park, CA 90255</span>' +
+                                                            '</label>' +
+                                                        '</li>' +
+                                                        '<li>' +
+                                                            '<input type="radio" value="6625 Santa Fe Ave, Huntington Park, CA 90255" id="selectPlace2" name="selectPlace">' +
+                                                            '<label for="selectPlace2">' +
+                                                                '<span>Address: 6625 Santa Fe Ave, Huntington Park, CA 90255</span>' +
+                                                            '</label>' +
+                                                        '</li>' +
+                                                    '</ul>' +
+                                                '</div>'
+                                                
+                                                $('#googleMapAddress').remove();
+                                                $('.getPlaceSelectBox').html(selectVenue);
+                            }
+                            else
+                            {
+                                $('.venue').remove();
+                                var rawInputPalceBox = '<div class="place-inputBox-typeOffline"><input type="text" id="googleMapAddress" placeholder="Address" style="width: 100%;" onkeypress="googleMapSearchKeyPressFun()"><button class="place-inputBox-searchBtn" onclick="googleMapSearch(\'normal\');">search</button></div>';
+                                $('.place-inputBox').html(rawInputPalceBox);
+                            }
+
+                            $('input[name="selectPlace"]').click(function() {
+                                var value = $(this).val();
+                                $('#getValOffline2').val(value);
+                                googleMapSearch();
+                                $(this).parents('.venue').children('.selectBox').slideUp();
+                            })
+                            
+                    });
+                })
+
+                var calendarCheck = true;
+                
+                var option = {
+                    pastDateNotCheck:true,//과거날짜 선택여부
+                    singleDate:true,//싱글데이트 여부
+                }
+
+                setInterval(function()
+                {
+                    if(calendarCheck)
+                    {
+                        entwizCalendar.init("pickerBox1",option);
+                        
+                        calendarCheck = false;
+                    }
+                },1000);
+                entwizCalendar.on('change',function(data)
+                {
+                    if(data.pickerBox1[0])
+                    {
+                        var day = new Date(data.pickerBox1[0].slice(0,4) + '-' + data.pickerBox1[0].slice(4, 6) + '-' + data.pickerBox1[0].slice(6,8))
+                        var weekDay = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+                        var week = weekDay[day.getDay()];
+                        day = data.pickerBox1[0].slice(0,4) + '-' + data.pickerBox1[0].slice(4, 6) + '-' + data.pickerBox1[0].slice(6,8);
+                        saveFirstDate = data.pickerBox1[0].slice(0,4) + '-' + data.pickerBox1[0].slice(4, 6) + '-' + data.pickerBox1[0].slice(6,8)
+                        $('#eventDate').val(day)
+                        document.getElementById('pickerBox1').style.display = 'none';
+                    }
+
+                    console.log(data)
+                });
+
+                function setCreateEventDateList(inputID) {
+                    var dateInnerHtml = '';
+                    var setDateHour = 0;
+                    var setDateMinute = 0;
+
+                    var tempHour = 0;
+                    var tempMinute = 0;
+
+                    for(var i = 1; i <= 48; i++)
+                    {
+                        if(setDateHour < 10)
+                        {
+                            tempHour = '0' + setDateHour;
+                        }
+                        else
+                        {
+                            tempHour = setDateHour;
+                        }
+                        
+                        if(setDateMinute < 30)
+                        {
+                            tempMinute = '0' + setDateMinute;
+                        }
+                        else
+                        {
+                            tempMinute = setDateMinute;
+                        }
+                        dateInnerHtml = 
+                        `
+                            <li>
+                                <input type="radio" value="${tempHour}:${tempMinute}" id="${inputID}_${i}" name="${inputID}">
+                                <label for=${inputID}_${i}>
+                                    <span>${tempHour}:${tempMinute}</span>
+                                </label>
+                            </li>
+                        `;
+
+                        if(inputID === 'timeVal1')
+                        {
+                            document.getElementById('getTimeVal1Box').innerHTML += dateInnerHtml;
+                        }
+                        else
+                        {
+                            document.getElementById('getTimeVal2Box').innerHTML += dateInnerHtml;
+                        }
+
+                        setDateMinute += 30;
+
+                        if(setDateMinute === 60)
+                        {
+                            setDateMinute = 0;
+                            setDateHour++;
+                        }
+                    }
+                }
+
+                setCreateEventDateList('timeVal1');
+                setCreateEventDateList('timeVal2');
+
+                var googleMapOptions = '';
+                var googleMap = '';
+                var geocoder = '';
+                var getGatheringEventLatitude;
+                var getGatheringEventLongitude;
+                
+                // 기존의 Marker를 지우기 위해 마커를 담는 배열
+                var arrayGoogleMapMarker = [];
+
+                // Google Map API 주소의 callback 파라미터와 동일한 이름의 함수
+                function mindgroundMap() 
+                {
+                    // default 중심 위치는 서울특별시
+                    googleMapOptions= { center : new google.maps.LatLng(37.55430979366699, 126.98747449784453), zoom : 8 };
+
+                    googleMap = new google.maps.Map(document.getElementById("googleMap"), googleMapOptions);
+
+                    geocoder = new google.maps.Geocoder();
+                }
+
+                function geocodeAddress(geocoder, googleMap, type)
+                {
+                    // 기존의 Marker를 지운다.
+                    if(arrayGoogleMapMarker.length > 0)
+                    {
+                        arrayGoogleMapMarker[0].setMap(null);
+                    }
+
+                    if(type === 'val2')
+                    {
+                        var address = document.getElementById('getValOffline2').value;
+                    }
+                    else
+                    {
+                        // set Address
+                        var address = document.getElementById('googleMapAddress').value;
+                    }
+
+                    geocoder.geocode({ 'address' : address }, function(result, status)
+                    {
+                        if(status === 'OK')
+                        {
+                            var googleMapMarker = new google.maps.Marker({ position: result[0].geometry.location });
+                            
+                            arrayGoogleMapMarker[0] = googleMapMarker;
+
+                            // Marker를 맵에 찍는다.
+                            arrayGoogleMapMarker[0].setMap(googleMap);
+                            
+                            googleMap.setCenter(result[0].geometry.location);
+                            googleMap.setZoom(17);
+                            
+                            getGatheringEventLatitude = googleMapMarker.position.lat();
+                            getGatheringEventLongitude = googleMapMarker.position.lng();
+                            console.log('lat = ' + getGatheringEventLatitude + ' long = ' + getGatheringEventLongitude);
+                        }
+                        else
+                        {
+                            if(status === 'INVALID_REQUEST')
+                            {
+                                alert('주소를 입력해주세요.');
+                            }
+                            else
+                            {
+                                console.log('geocode error ' + status);
+                            }
+                        }
+                    });
+                }
+
+                // googleMapSearch onclick Function
+                function googleMapSearch(type)
+                {
+                    if(type === 'normal')
+                    {
+                        geocodeAddress(geocoder, googleMap);
+                    }
+                    else
+                    {
+                        geocodeAddress(geocoder, googleMap, 'val2');
+                    }
+                };
+
+                function googleMapSearchKeyPressFun() {
+                    if(event.keyCode == 13)
+                    {
+                        googleMapSearch('normal');
+                    }
+                }
+
+                var singleFileList = [];
+
+                // classesCreate.html의 imageUploadFunc를 가져왔습니다.
+                // 기존의 마크업으로 넣었을 때 이미지 크기로 적용이되어서 백그라운드로 넣는 방식으로 해야할거 같아 마크업을 변경했습니다.
+                // 읽은 파일은 class="previewThumb" 에 append 됩니다.
+                function imageUploadFunc(e)
+                {
+                    console.log('is cometo imageuiploaslkjfdjksdjsfdkkjsdkskljsadfsdkalfj')
+                    var file = e.files[0];
+                    singleFileList = [];
+                    singleFileList.push(file)
+                    var fileReader = new FileReader();
+                    var box1 = document.createElement("div");
+                    box1.classList.add('mainContentThumb');
+                    box1.classList.add('commonThumb');
+                    document.getElementById('previewThumbID1').style.backgroundImage = 'url("")';
+                    $('.previewThumb > *').remove();
+                    fileReader.onload = function() 
+                    {
+                        box1.style.backgroundColor = '#fff';
+                        document.getElementById('previewThumbID1').style.backgroundImage = 'url("'+fileReader.result+'")';
+                        box1.innerHTML = 
+                        '<div class="innerBtns">'+
+                            '<button class="thumbEditBtn" onclick="customModal(17,this)">'+
+                                // '<img src="/web/img/ICN_EDIT.png" alt="">'+
+                            '</button>'+
+                        '</div>'
+                    };
+                    // document.querySelector('.previewThumb').appendChild(box1);
+                    fileReader.readAsDataURL(file);
+
+                    document.getElementById('uploadMainContent').value = '';
+                }
+
+                // 배열을 이용한 파일 업로드
+                // classObject.thumbNailMain = saveFileToServerV2(singleFileList);
+
+                $(document).on('click', '#checkOnlineOffline > li', function() {
+                    if($('#getValOnline1').val() === 'Offline')
+                    {
+                        $('#onlineParentDiv').css('display', 'none');
+                        $('#offlineParentDiv').css('display', 'block');
+                    }
+                    else
+                    {
+                        $('#offlineParentDiv').css('display', 'none');
+                        $('#onlineParentDiv').css('display', 'block');
+                    }
+                });
+
+                function coHostChk() {
+                    if(document.getElementById('hostChk').checked === true)
+                    {
+                        document.getElementById('hostSearch').readOnly = false;
+                        document.getElementById('hostChk').value = 'Click';
+                        coHostFlag = true;
+                        
+                    }
+                    else
+                    {
+                        document.getElementById('hostSearch').readOnly = true;
+                        document.getElementById('hostListId').style.display = 'none';
+                        document.getElementById('hostListId').innerHTML = '';
+                        document.getElementById('hostSearch').value = '';
+                        document.getElementById('hostSearch').value1 = 'noSearch';
+                        document.getElementById('hostChk').value = 'NoClick';
+                        coHostFlag = false;
+                    }
+                }
+
+                function allDayChk() {
+                    if(document.getElementById('allDayChk').checked === true)
+                    {
+                        document.getElementById('eventDate').readOnly = true;
+                        document.getElementById('pickerBox1').style.display = 'none';
+                        
+                        var allDayInputDate = new Date().toISOString().substr(0, 19);
+
+                        document.getElementById('eventDate').value = allDayInputDate.slice(0,10);
+                        
+                        document.getElementById('valBoxControlId1').classList.add('noEventFlag');
+                        document.getElementById('getTimeVal1').value = '00:00';
+                        
+                        document.getElementById('valBoxControlId2').classList.add('noEventFlag');
+                        document.getElementById('getTimeVal2').value = '24:00';
+
+                        document.getElementById('getTimeVal1Box').style.display = 'none';
+                        document.getElementById('getTimeVal2Box').style.display = 'none';
+                    }
+                    
+                    if(document.getElementById('allDayChk').checked === false)
+                    {
+
+                        document.getElementById('eventDate').readOnly = true;
+                        document.getElementById('valBoxControlId1').classList.remove('noEventFlag');
+                        document.getElementById('valBoxControlId2').classList.remove('noEventFlag');
+                        
+                        document.getElementById('eventDate').value = '';
+                        document.getElementById('getTimeVal1').value = '00:00';
+                        document.getElementById('getTimeVal2').value = '00:00';
+
+                    }
+                }
+
+                function pickerBoxControl() {
+                    if(document.getElementById('pickerBox1').style.display ==='none')
+                    {
+                        document.getElementById('pickerBox1').style.display = 'block';
+                    }
+                    else
+                    {
+                        document.getElementById('pickerBox1').style.display = 'none';
+                    }
+                }
+
+                // co-Host 검색 결과 출력 함수
+                function coHostSearchFunc() {
+                    var inputUserName = document.getElementById('hostSearch').value;
+                    var gatheringMemberKeyArray = [];
+                    gatheringMemberKeyArray = Object.keys(gatheringMemberObject);
+                    
+                    if(inputUserName !== '')
+                    {
+                        for(var i = 0; i < gatheringMemberKeyArray.length; i++)
+                        {
+                            if(gatheringMemberKeyArray[i].indexOf(inputUserName) !== -1)
+                            {
+                                if(document.getElementById('ringID-' + gatheringMemberObject[gatheringMemberKeyArray[i]].userUID) === null)
+                                {
+                                    if(gatheringMemberObject[gatheringMemberKeyArray[i]].userUID !== user.userUID)
+                                    {
+                                        var innerHostHtml = 
+                                        `
+                                            <li id="ringID-${gatheringMemberObject[gatheringMemberKeyArray[i]].userUID}">
+                                                <div class="ring" value="${gatheringMemberObject[gatheringMemberKeyArray[i]].userUID}">
+                                                    <img src="/web/img/userRing/${gatheringMemberObject[gatheringMemberKeyArray[i]].userUID}.png" alt="">
+                                                </div>
+                                                <div class="text">
+                                                    <span id="searchName-${gatheringMemberObject[gatheringMemberKeyArray[i]].userName}">${gatheringMemberObject[gatheringMemberKeyArray[i]].userName}</span>
+                                                </div>
+                                            </li>
+                                        `;
+                                        document.getElementById('hostListId').innerHTML += innerHostHtml;
+                                        document.getElementById('hostListId').style.display = 'block';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        document.getElementById('hostListId').innerHTML = '';
+                        document.getElementById('hostListId').style.display = 'none';
+                        document.getElementById('hostSearch').value = '';
+                        document.getElementById('hostSearch').value1 = '';
+                    }
+                }
+
+                $(document).on('click', '#hostListId > li', function() {
+                    document.getElementById('hostSearch').value = $(this).children('.text').children('span').attr('id').replace('searchName-', '');
+                    document.getElementById('hostSearch').value1 = $(this).attr('id').replace('ringID-', '');
+                    document.getElementById('hostListId').innerHTML = '';
+                    document.getElementById('hostListId').style.display = 'none';
+                });
+
+                $(document).on('keyup', '#getPar', function() {
+                    $('#getPar').val( $('#getPar').val().replace(/[^0-9]/gi, '') );
+                });
+
+                // 최종 생성 버튼
+                function gatheringEventObjectInsertMongo() {
+                    
+                    if(getGatheringEventData())
+                    {
+                        var sendJsonObject = {};
+                        sendJsonObject.gatheringEventObject = JSON.stringify(gatheringEventObject);
+
+                        $.ajax({
+                            type : "POST",
+                            url:"/protocol/gatheringEventObjectInsertMongo",
+                            data: JSON.stringify(sendJsonObject),
+                            processData: false,
+                            contentType: "application/json; charset=UTF-8",
+                            success : function(data){
+                                alert('게더링 이벤트 개설을 완료했습니다.');
+                                location.href = '/gatheringDetail/' + gatheringData._id;
+                            },
+                            error : function(error)
+                            {
+                                alert('게더링 이벤트 개설을 실패하였습니다.');
+                            }
+                        });
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+                function getGatheringEventData() {
+                    if(document.getElementById('getValOnline1').value !== '' && document.getElementById('getValOnline1').value !== 'Select')
+                    {
+                        gatheringEventObject.gatheringEventOnline = document.getElementById('getValOnline1').value;
+                    }
+                    else
+                    {
+                        alert('이벤트 카테고리를 선택해주세요.');
+                        return false;
+                    }
+
+                    if(coHostFlag)
+                    {
+                        if(document.getElementById('hostSearch').value !== '')
+                        {
+                            var coHostObject = {};
+                            coHostObject.coHostUID = Number(document.getElementById('hostSearch').value1);
+                            coHostObject.coHostName = document.getElementById('hostSearch').value;
+                            gatheringEventObject.getheringEventCohost = coHostObject;
+                            gatheringEventObject.eventMember.push(Number(document.getElementById('hostSearch').value1));
+                        }
+                        else
+                        {
+                            alert('Co-host를 호스트를 선택해주세요.');
+                            return false;
+                        }
+                    }
+                    
+                    if(document.getElementById('eventName').value !== '' && document.getElementById('eventName').value !== undefined && document.getElementById('eventName').value !== null)
+                    {
+                         gatheringEventObject.gatheringEventName = document.getElementById('eventName').value;
+                    }
+                    else
+                    {
+                        alert('이벤트 이름을 입력해주세요.');
+                        return false;
+                    }
+
+                    if(document.getElementById('eventDesc').value !== '' && document.getElementById('eventDesc').value !== undefined && document.getElementById('eventDesc').value !== null)
+                    {
+                        gatheringEventObject.gatheringEventDesc = document.getElementById('eventDesc').value;
+                    }
+                    else
+                    {
+                        alert('이벤트 설명을 입력해주세요.');
+                        return false;
+                    }
+
+                    if(gatheringEventObject.gatheringEventOnline === 'Online')
+                    {
+                        if(document.getElementById('onlineMethod').value !== '' && document.getElementById('onlineMethod').value !== undefined && document.getElementById('onlineMethod').value !== null )
+                        {
+                            gatheringEventObject.gatheringOnlineMethod = document.getElementById('onlineMethod').value;
+                        }
+                        else
+                        {
+                            alert('온라인 정보를 입력해주세요.');
+                            return false;
+                        }
+                    }
+                    
+                    if(gatheringEventObject.gatheringEventOnline === 'Offline')
+                    {
+                        if(document.getElementById('getValOffline1').value === 'Select')
+                        {
+                            alert('오프라인 장소를 입력해주세요.');
+                            return false;
+                        }
+                        
+                        if(document.getElementById('getValOffline1').value === 'Input')
+                        {
+                            if(document.getElementById('googleMapAddress').value !== '' && document.getElementById('googleMapAddress').value !== undefined && document.getElementById('googleMapAddress').value !== null)
+                            {
+                                gatheringEventObject.gatheringOfflinePlaceName = document.getElementById('googleMapAddress').value;
+                                gatheringEventObject.gatheringOfflinePlaceLatitude = getGatheringEventLatitude;
+                                gatheringEventObject.gatheringOfflinePlaceLongitude = getGatheringEventLongitude;
+                            }
+                            else
+                            {
+                                alert('오프라인 장소를 입력해주세요.');
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            if(document.getElementById('getValOffline2').value !== 'Select' && document.getElementById('getValOffline2').value !== '' && document.getElementById('getValOffline2').value !== undefined && document.getElementById('getValOffline2').value !== null)
+                            {
+                                gatheringEventObject.gatheringOfflinePlaceName = document.getElementById('getValOffline2').value;
+                                gatheringEventObject.gatheringOfflinePlaceLatitude = getGatheringEventLatitude;
+                                gatheringEventObject.gatheringOfflinePlaceLongitude = getGatheringEventLongitude;
+                            }
+                            else
+                            {
+                                alert('오프라인 장소를 입력해주세요.');
+                                return false;
+                            }
+                        }
+                    }
+
+                    if(document.getElementById('allDayChk').checked === true)
+                    {
+                        gatheringEventObject.gatheringEventDate = document.getElementById('eventDate').value;
+                        gatheringEventObject.gatheringEventTime1 = document.getElementById('getTimeVal1').value;
+                        gatheringEventObject.gatheringEventTime2 = document.getElementById('getTimeVal2').value;
+                    }
+                    else
+                    {
+                        if(document.getElementById('eventDate').value !== '' && document.getElementById('eventDate').value !== undefined && document.getElementById('eventDate').value !== null)
+                        {
+                            gatheringEventObject.gatheringEventDate = document.getElementById('eventDate').value;
+                        }
+                        else
+                        {
+                            alert('이벤트 날짜를 선택해주세요.');
+                            return false;
+                        }
+
+                        if(document.getElementById('getTimeVal1').value === '00:00' && document.getElementById('getTimeVal2').value === '00:00')
+                        {
+                            alert('이벤트 시간을 선택해주세요.');
+                            return false;
+                        }
+                        else
+                        {
+                            gatheringEventObject.gatheringEventTime1 = document.getElementById('getTimeVal1').value;
+                            gatheringEventObject.gatheringEventTime2 = document.getElementById('getTimeVal2').value;
+                        }
+                    }
+
+                    if(document.getElementById('getValOnline2').value !== 'Select')
+                    {
+                        if(document.getElementById('getValOnline2').value === 'Unlimited')
+                        {
+                            gatheringEventObject.gatheringEventParticipants = document.getElementById('getValOnline2').value;
+                        }
+
+                        if(document.getElementById('getValOnline2').value === 'Input')
+                        {
+                            if(document.getElementById('getPar').value !== '' && document.getElementById('getPar').value !== undefined && document.getElementById('getPar').value !== null)
+                            {
+                                gatheringEventObject.gatheringEventParticipants = document.getElementById('getPar').value;
+                            }
+                            else
+                            {
+                                alert('이벤트 인원 제한을 입력해주세요.');
+                                return false;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        alert('이벤트 인원 제한을 선택해주세요.');
+                        return false;
+                    }
+
+                    if(singleFileList.length > 0)
+                    {
+                        gatheringEventObject.gatheringEventMainImage = saveListFileToServerV2(singleFileList);
+                        return true;
+                    }
+                    else
+                    {
+                        alert('메인 이미지를 업로드해주세요.');
+                        return false;
+                    }
+                }
+            </script>
+            <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATfYV535tXnxiEu1KCbvOlGx6IoqySFlA&callback=mindgroundMap"></script>
+        </div>
+    </body>
+</html>

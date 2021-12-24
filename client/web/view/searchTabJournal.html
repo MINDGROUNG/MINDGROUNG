@@ -1,0 +1,969 @@
+<section>
+    <div class="contents">
+        <%
+            if(recommendList.recommendJournalList.length > 0) {
+        %>
+        <!-- 결과가 없을 때 -->
+        <div class="results-0">
+            <h3>
+                Journal​
+            </h3>
+            <div class="noResultsTextCon">
+                <h4>
+                    We didn’t find any result.​
+                </h4>
+                <span>
+                    Take a look what we recommend​
+                </span>
+            </div>
+            <div class="recommended">
+                <h3>
+                    Recommended Journals​
+                </h3>
+                <div class="recCon">
+                    <div class="cardWrap">
+                        <div class="contentCards" id="recommendJournalDivID">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%
+            } else {
+        %>
+        <!-- 결과가 있을 때 -->
+        <div class="results-1">
+            <div class="filtersArea">
+                <!-- 저널필터랑 동일 -->
+                <div class="filters">
+                    <div class="moFiltersBtn">
+                        <button>
+                            <img src="/web/img/icn_filter.png" alt="">
+                        </button>
+                    </div>
+                    <ul class="btns">
+                        <li class="moTitle">
+                            <div class="top">
+                                <img src="/web/img/down.png" alt="">
+                            </div>
+                            <div class="bottom">
+                                <button class="moCloseBtn">
+                                    <img src="/web/img/ICN_CLOSE.png" alt="">
+                                </button>
+                                <h4>
+                                    <%=translation.hostMain.Filters%>
+                                </h4>
+                            </div>
+                        </li>
+                        <li class="allFilter journalMainPage">
+                            <div>
+                                <input type="button" value="<%=translation.mypage.Practice_Category%>" class="filtersBtn">
+                                </input>
+                                <ul class="category-inner minWidth-230" id="searchJournalCategoryPracticeCategoryWrap">
+                                    <li class="moSubTitle">
+                                        <h6><%=translation.mypage.Practice_Category%></h6>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchJournalMindfulness" data-ischeck="0" data-text="Mindfulness">
+                                        <label for="searchJournalMindfulness">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Mindfulness%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchJournalMeditation" data-ischeck="0" data-text="Meditation">
+                                        <label for="searchJournalMeditation">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Meditation%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchJournalYoga" data-ischeck="0" data-text="Yoga">
+                                        <label for="searchJournalYoga">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Yoga%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchJournalSomatic" data-ischeck="0" data-text="Somatic">
+                                        <label for="searchJournalSomatic">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Somatic%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchJournalMovement_Activity" data-ischeck="0" data-text="Movement_Activity">
+                                        <label for="searchJournalMovement_Activity">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Movement_Activity%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchJournalCounseling_Coaching" data-ischeck="0" data-text="Counseling_Coaching">
+                                        <label for="searchJournalCounseling_Coaching">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Counseling_Coaching%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchJournalOthers" data-ischeck="0" data-text="Others">
+                                        <label for="searchJournalOthers">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Other%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li class="webBtn">
+                                        <button class="resetBtn" onclick="searchJournalResetCategory('practiceCategry')"><%=translation.hostMain.Reset%></button>
+                                        <button class="saveBtn" onclick="searchJournalSaveCategory('practiceCategory')"><%=translation.hostMain.Save%></button>
+                                    </li>
+                                </ul>
+                                <div class="onlyFixed"></div>
+                            </div>
+                            <div>
+                                <input type="button" value="<%=translation.mypage.Journal_Category%>" class="filtersBtn">
+                                </input>
+                                <ul class="category-inner journalOnly minWidth-200" id="searchJournalCategoryJournalWrap">
+                                    <li class="moSubTitle">
+                                        <h6><%=translation.mypage.Journal_Category%></h6>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchJournalGRATITUDE JOURNAL" data-ischeck="0" data-text="GRATITUDE JOURNAL">
+                                        <label for="searchJournalGRATITUDE JOURNAL">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.mypage.Gratitude_Journal%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchJournalBODY SCAN" data-ischeck="0" data-text="BODY SCAN">
+                                        <label for="searchJournalBODY SCAN">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.mypage.Body_Scan%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchJournalEMOTION SCAN" data-ischeck="0" data-text="EMOTION SCAN">
+                                        <label for="searchJournalEMOTION SCAN">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.mypage.Emotion_Scan%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchJournalMOOD ENTRY" data-ischeck="0" data-text="MOOD ENTRY">
+                                        <label for="searchJournalMOOD ENTRY">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.mypage.Mood_Entry%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchJournalTHOUGHT SCAN" data-ischeck="0" data-text="THOUGHT SCAN">
+                                        <label for="searchJournalTHOUGHT SCAN">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.mypage.Thought_Scan%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchJournalKEYWORD ENTRY" data-ischeck="0" data-text="KEYWORD ENTRY">
+                                        <label for="searchJournalKEYWORD ENTRY">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.mypage.Keyword_Entry%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchJournalSTAMP ENTRY" data-ischeck="0" data-text="STAMP ENTRY">
+                                        <label for="searchJournalSTAMP ENTRY">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.mypage.Stamp_Entry%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchJournalMINDFUL CHALLENGE CHECKIST" data-ischeck="0" data-text="MINDFUL CHALLENGE CHECKIST">
+                                        <label for="searchJournalMINDFUL CHALLENGE CHECKIST">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.mypage.Mindfulness_Challenge_Checklist%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchJournalASANA JOURNAL" data-ischeck="0" data-text="ASANA JOURNAL">
+                                        <label for="searchJournalASANA JOURNAL">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.mypage.Asana_journal%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li class="webBtn">
+                                        <button class="resetBtn" onclick="searchJournalResetCategory('journal')"><%=translation.hostMain.Reset%>></button>
+                                        <button class="saveBtn" onclick="searchJournalSaveCategory('journal')"><%=translation.hostMain.Save%></button>
+                                    </li>
+                                </ul>
+                                <div class="onlyFixed"></div>
+                            </div>
+                            <div>
+                                <input type="button" value="<%=translation.mypage.Type%>" class="filtersBtn">
+                                </input>
+                                <ul class="category-inner minWidth-285" id="searchJournalCategoryPracticeTypeWrap">
+                                    <li class="moSubTitle">
+                                        <h6><%=translation.mypage.Type%></h6>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchJournalSelf Practice" data-ischeck="0" data-text="Self Practice">
+                                        <label for="searchJournalSelf Practice">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.mypage.Self_Practice%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchJournalClass Practice" data-ischeck="0" data-text="Class Practice">
+                                        <label for="searchJournalClass Practice">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.mypage.Class_Practice%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchJournalOther" data-ischeck="0" data-text="Other">
+                                        <label for="searchJournalOther">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Other%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li class="webBtn">
+                                        <button class="resetBtn" onclick="searchJournalResetCategory('practiceType')"><%=translation.hostMain.Reset%></button>
+                                        <button class="saveBtn" onclick="searchJournalSaveCategory('practiceType')"><%=translation.hostMain.Save%></button>
+                                    </li>
+                                </ul>
+                                <div class="onlyFixed"></div>
+                            </div>
+                        </li>
+                        <li class="moSaveBtn">
+                            <div>
+                                <button class="resetBtn"><%=translation.hostMain.Reset%></button>
+                                <button class="saveBtn"><%=translation.hostMain.Save%></button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="cardWrap">
+                <div class="contentCards" id="searchResultDivID">
+
+                </div>
+            </div>
+            <div class="commonViewMoreBtn" id="journalMoreBtnID">
+                <button class="journalsViewMoreBtn-on" onclick="appendCategoryJournal()">
+                    <strong><%=translation.journal.View_More_Journals%></strong>
+                </button>
+            </div>
+            <%
+                }
+            %>
+        </div>
+    </div>
+</section>
+
+<script>
+    var checkUser = <%- user ? JSON.stringify(user) : {} %>;
+    var relatedClassObject = <%-classObject ? JSON.stringify(classObject) : {} %>;
+    var checkRecommendJournal = <%- recommendList ? JSON.stringify(recommendList) : {} %>;
+    if(checkRecommendJournal != undefined && checkRecommendJournal != null && checkRecommendJournal.recommendJournalList.length > 0) {
+        var listRawJournalObject = <%-JSON.stringify(recommendList.recommendJournalList)%>;
+    } else {
+        var listRawJournalObject = <%-JSON.stringify(journalList)%>;
+    }
+
+    var listJournalObject = [];
+
+    for(var i = 0 ; i < listRawJournalObject.length ; i++)
+    {
+        if(listRawJournalObject[i].objectType == 'journal') {
+            listRawJournalObject[i].classObject.journalID = listRawJournalObject[i]._id;
+            listRawJournalObject[i].classObject.userUID = listRawJournalObject[i].userUID;
+            listRawJournalObject[i].classObject.userName = listRawJournalObject[i].userName;
+            listRawJournalObject[i].classObject.hostType = listRawJournalObject[i].hostType;
+            listRawJournalObject[i].classObject.dormancy = listRawJournalObject[i].dormancy;
+            listJournalObject.push(listRawJournalObject[i].classObject);
+        }
+    }
+
+    //실제 사용 될 데이터
+    var listCategorySelectedJournal = listJournalObject;
+
+    //카테고리 검색 초기화
+    var searchJournalMapListCategory = {};
+
+    searchJournalMapListCategory.category = [];
+    searchJournalMapListCategory.keyword = [];
+
+    var searchJournalCategoryIndex = 1; //인덱스 (자동화)
+    var searchJournalCategoryJournalView = 8; //몇개씩 보여질 건지
+
+    //카테고리 리셋
+    function searchJournalResetCategory(category)
+    {
+        var wrapId = '';
+
+        switch(category)
+        {
+            case 'practiceCategory': wrapId = 'searchJournalCategoryPracticeCategoryWrap'; break;
+            case 'journal': wrapId = 'searchJournalCategoryJournalWrap'; break;
+            case 'practiceType': wrapId = 'searchJournalCategoryPracticeTypeWrap'; break;
+        }
+
+        var listInput = $("#"+wrapId).find("input");
+
+        for(var i = 0 ; i < listInput.length ; i++)
+        {
+            $(listInput[i]).attr("checked", false);
+        }
+    }
+
+    //카테고리 검색 버튼
+    function searchJournalSaveCategory(category)
+    {
+        //필터링 여부 상태
+        
+        //검색 카테고리 초기화
+        searchJournalMapListCategory[category] = [];
+        
+        //wrap id 찾기
+        var wrapId = '';
+        switch(category)
+        {
+            case 'practiceCategory': wrapId = 'searchJournalCategoryPracticeCategoryWrap'; break;
+            case 'journal': wrapId = 'searchJournalCategoryJournalWrap'; break;
+            case 'practiceType': wrapId = 'searchJournalCategoryPracticeTypeWrap'; break;
+        }
+
+        //입력되는 input 확인
+        var listInput = $("#"+wrapId).find("input");
+        
+        //일반적인 카테고리 검색
+        if(category != 'filters')
+        {
+            for(var i = 0 ; i < listInput.length ; i++)
+            {
+                if($(listInput[i]).is(":checked") == true)
+                {
+                    $(listInput[i]).attr("data-ischeck", "1");
+                    $(listInput[i]).data("ischeck", "1");
+
+                    searchJournalMapListCategory[category].push($(listInput[i]).data("text"));
+                }
+                else
+                {
+                    $(listInput[i]).attr("data-ischeck", "0");
+                    $(listInput[i]).data("ischeck", "0");
+                }
+            }
+        }
+
+        //데이터 필터링
+        var listFilterData = listJournalObject;
+
+        var isSelectedCategory = false;
+        //필터링 하는건지 확인
+        for (var key in searchJournalMapListCategory)
+        {
+            if(searchJournalMapListCategory[key].length > 0)
+            {
+                isSelectedCategory = true;
+                
+                if(key == 'practiceCategory')
+                {
+                    listFilterData = listFilterData.filter( (journalObject) => {
+                        return searchJournalMapListCategory[key].some( (category) => {
+                            for(var checkCategory in journalObject.selectPracticeCategoryObject) {
+                                if(category == checkCategory) {
+                                    return true;
+                                }
+                            }
+                            return false;
+                        });
+                        
+                    });
+                }
+                else if(key == 'journal')
+                {
+                    listFilterData = listFilterData.filter((journalObject) =>{
+                        return searchJournalMapListCategory[key].includes(journalObject.journalCategory);
+                    });
+                }
+                else if(key == 'practiceType')
+                {
+                    listFilterData = listFilterData.filter( (journalObject) => {
+                        return searchJournalMapListCategory[key].some( (type) => {
+                            for(var checkCateory in journalObject.selectPracticeObject) {
+                                if(type == 'Self Practice') {
+                                    if(type == journalObject.selectPracticeObject[checkCateory]) {
+                                        return true;
+                                    }
+                                } else if(type == 'Other') {
+                                    if(type == journalObject.selectPracticeObject[checkCateory]) {
+                                        return true;
+                                    }
+                                } else if(type == 'Class Practice') {
+                                    if(journalObject.selectPracticeObject[checkCateory] != 'Self Practice' && journalObject.selectPracticeObject[checkCateory] != 'Other') {
+                                        return true;
+                                    }
+                                }
+                            }
+                            return false;
+                        });
+                    });
+                }
+            }
+        }
+
+        //필터링된 데이터 선택
+        listCategorySelectedJournal = listFilterData;
+
+        //데이터 클리어
+        searchJournalResetCategoryJournal();
+
+        //데이터 추가
+        searchJournalAppendCategoryJournal();
+    }
+
+     //카테고리 클래스 리셋
+     function searchJournalResetCategoryJournal() {
+        searchJournalCategoryIndex = 1;
+        $("#recommendJournalDivID").html("");
+        $("#searchResultDivID").html("");
+
+        //더보기 버튼 갱신
+        searchJournalRefreshAddJournalBtn();
+    }
+
+    //데이터 추가
+    function searchJournalAppendCategoryJournal(type)
+    {
+        var listAddJournalHtml = '';
+
+        //데이터 시작 인덱스
+        var dataIndex = (searchJournalCategoryIndex - 1) * searchJournalCategoryJournalView;
+
+        //추가할 데이터 검색
+        for(var i = dataIndex; i < (dataIndex + searchJournalCategoryJournalView); i++)
+        {
+            if(i >= listCategorySelectedJournal.length)
+            {
+                break;
+            }
+
+            if(listCategorySelectedJournal[i].dormancy == 'live' && listCategorySelectedJournal[i].journalAccess == 'Public') {
+                listAddJournalHtml += searchJournalAddCategoryJournal(listCategorySelectedJournal[i]);
+            }
+
+            if(listCategorySelectedJournal[i].dormancy == 'live' && listCategorySelectedJournal[i].journalAccess == 'Private') {
+                if(Object.keys(checkUser).length > 0) {
+                    if(checkUser.userUID == listCategorySelectedJournal[i].userUID) {
+                        listAddJournalHtml += searchJournalAddCategoryJournal(listCategorySelectedJournal[i]);
+                    }
+                }
+            }
+
+            // Friend만 보이는
+            // 추후 친구확인 조건 추가해서 추가하기
+            // if(Object.keys(checkUser).length > 0) {
+            //     if(listCategorySelectedJournal[i].journalAccess == 'Friend') {
+
+            //     }   
+            // }
+                
+        }
+
+        if(type != 'allTab') {
+            //더보기 버튼 갱신
+            searchJournalRefreshAddJournalBtn();
+    
+            //데이터 추가
+            $("#recommendJournalDivID").append(listAddJournalHtml);
+            $("#searchResultDivID").append(listAddJournalHtml);
+            
+            //인덱스 증가
+            searchJournalCategoryIndex += 1;
+        } else {
+            $("#allTabJournalListDivID").append(listAddJournalHtml);
+        }
+    }
+
+    function searchJournalRefreshAddJournalBtn() {
+        //하단 더보기 버튼 자동화
+        if(listCategorySelectedJournal.length < searchJournalCategoryIndex * searchJournalCategoryJournalView)
+        {
+            $("#journalMoreBtnID").css("display", "none");
+        }
+        else
+        {
+            $("#journalMoreBtnID").css("display", "");
+        }
+    }
+
+    function searchJournalAddCategoryJournal(listJournal)
+    {
+        var sendJournalData = JSON.stringify(listJournal);
+        var relatedClassObject = <%- classObject ? JSON.stringify(classObject) : {} %>;
+        var likeCount = 0;
+        if(listJournal.bookmarks != undefined && listJournal.bookmarks != null) {
+            likeCount = listJournal.bookmarks.length;
+        }
+
+        var checkLoginUser = <%- user ? JSON.stringify(user) : {} %>;
+        if(Object.keys(checkLoginUser).length < 1) {
+            checkLoginUser = 'noUser';
+        }
+
+        if(listJournal.journalCategory == 'GRATITUDE JOURNAL' || listJournal.journalCategory == 'THOUGHT SCAN') {
+            var journalHtml = `
+            <div class="commonCard mainJournal">
+                <a href="javascript:void(0)" onclick='customModal(15, ${sendJournalData}, ${JSON.stringify(checkLoginUser)}, "all", relatedClassObject)'>
+                        <div class="card-thumb thumb-layout-1" style="background-image: url('${listJournal.journalImage[0].filePath}');">
+                            <img src="${listJournal.journalImage[0].filePath}" alt="" onerror="checkImg(this)" style="display: none;">
+                    `;
+
+            if(listJournal.journalAudio != undefined && listJournal.journalAudio != null) {
+                journalHtml += `<img class="icon" src="/web/img/main/journal/ICN_AUDIO.png" alt="">`;
+            }
+
+            journalHtml += `
+                    </div>
+                    <div class="card-detail">
+                        <div class="card-detail-top">
+                            <div class="ringInfo">
+                                <div class="hover-ring" data-host="${listJournal.userName}">
+                                    <img src="/web/img/userRing/${listJournal.userUID}.png" alt="">
+                                </div>
+                                <h5>
+                                    ${listJournal.userName}
+                                </h5>
+                            </div>
+                            <div class="count">
+                                <img src="/web/img/main/journal/ICN_BOOKMARK.png" alt="">
+                                <span>${likeCount}</span>
+                            </div>
+                        </div>
+                        <div class="card-detail-bottom">
+                            <p>${listJournal.journalMainText}</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            `;
+        }
+
+        if(listJournal.journalCategory == 'STAMP ENTRY') {
+            var journalHtml = `
+            <div class="commonCard mainJournal">
+                <a href="javascript:void(0)" onclick='customModal(15, ${sendJournalData}, ${JSON.stringify(checkLoginUser)}, "all", relatedClassObject)'>
+                    <div class="card-thumb thumb-layout-2">
+                        <div class="stampWrap">
+            `;
+            
+            for(var stampKey in listJournal.journalStampEntryResult) {
+                journalHtml += `<img src="${listJournal.journalStampEntryResult[stampKey]}" alt="">`;
+            }
+            
+            journalHtml += `
+                        </div>
+                    </div>
+                    <div class="card-detail">
+                        <div class="card-detail-top">
+                            <div class="ringInfo">
+                                <div class="hover-ring" data-host="${listJournal.userName}">
+                                    <img src="/web/img/userRing/${listJournal.userUID}.png" alt="">
+                                </div>
+                                <h5>
+                                    ${listJournal.userName}
+                                </h5>
+                            </div>
+                            <div class="count">
+                                <img src="/web/img/main/journal/ICN_BOOKMARK.png" alt="">
+                                <span>${likeCount}</span>
+                            </div>
+                        </div>
+                        <div class="card-detail-bottom">
+                            <p>${listJournal.journalMainText}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            `;
+        }
+        
+        if(listJournal.journalCategory == 'MOOD ENTRY') {
+            var journalHtml = `
+            <div class="commonCard mainJournal">
+                <a href="javascript:void(0)" onclick='customModal(15, ${sendJournalData}, ${JSON.stringify(checkLoginUser)}, "all", relatedClassObject)'>
+                    <div class="card-thumb thumb-layout-2">
+                        <div class="emojiWrap">
+                `;
+
+                var emoticonCount = 0;
+                for(var emoticon in listJournal.journalMoodEntryResult) {
+                    if(emoticonCount == 5) {
+                        break;
+                    }
+                    journalHtml += `<img id="${emoticon}" src="${listJournal.journalMoodEntryResult[emoticon]}" alt="">`;
+                    emoticonCount++;
+                }
+
+                journalHtml += `
+                        </div>
+                    </div>
+                    <div class="card-detail">
+                        <div class="card-detail-top">
+                            <div class="ringInfo">
+                                <div class="hover-ring" data-host="${listJournal.userName}">
+                                    <img src="/web/img/userRing/${listJournal.userUID}.png" alt="">
+                                </div>
+                                <h5>
+                                    ${listJournal.userName}
+                                </h5>
+                            </div>
+                            <div class="count">
+                                <img src="/web/img/main/journal/ICN_BOOKMARK.png" alt="">
+                                <span>${likeCount}</span>
+                            </div>
+                        </div>
+                        <div class="card-detail-bottom">
+                            <p>${listJournal.journalMainText}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            `;
+        }
+
+        if(listJournal.journalCategory == 'MINDFUL CHALLENGE CHECKIST') {
+            var journalHtml = `
+            <div class="commonCard mainJournal">
+                <a href="javascript:void(0)" onclick='customModal(15, ${sendJournalData}, ${JSON.stringify(checkLoginUser)}, "all", relatedClassObject)'>
+                    <div class="card-thumb thumb-layout-3">
+                        <ul>
+                            <li>
+                `;
+            if(listJournal.journalMindfulResult.chk1 != null && listJournal.journalMindfulResult.chk1 != undefined) {
+                journalHtml += `<input type="checkBox" id="chk1" checked disabled>`;
+            } else {
+                journalHtml += `<input type="checkBox" id="chk1" disabled>`;
+            }
+                
+                journalHtml += `
+                            <label for="type1">
+                                <span class="box"></span>
+                                <span class="text">
+                                    Show respect toward nature, animals, and other living beings.
+                                </span>
+                            </label>
+                        </li>
+                        <li>
+                `;
+                if(listJournal.journalMindfulResult.chk2 != null && listJournal.journalMindfulResult.chk2 != undefined) {
+                    journalHtml += `<input type="checkBox" id="chk2" checked disabled>`;
+                } else {
+                    journalHtml += `<input type="checkBox" id="chk2" disabled>`;
+                }
+                 
+                journalHtml += `
+                            <label for="type2">
+                                <span class="box"></span>
+                                <span class="text">
+                                    Love and thank others more/express loving and grateful mind more often.
+                                </span>
+                            </label>
+                        </li>
+                        <li>
+                    `;
+                if(listJournal.journalMindfulResult.chk3 != null && listJournal.journalMindfulResult.chk3 != undefined) {
+                    journalHtml += `<input type="checkBox" id="chk3" checked disabled>`;
+                } else {
+                    journalHtml += `<input type="checkBox" id="chk3" disabled>`;
+                }
+
+                    journalHtml += `
+                            <label for="type3">
+                                <span class="box"></span>
+                                <span class="text">
+                                    Do not blame or hate others.
+                                </span>
+                            </label>
+                        </li>
+                        <li>
+                        `;
+                if(listJournal.journalMindfulResult.chk4 != null && listJournal.journalMindfulResult.chk4 != undefined) {
+                    journalHtml += `<input type="checkBox" id="chk4" checked disabled>`;
+                } else {
+                    journalHtml += `<input type="checkBox" id="chk4" disabled>`;
+                }
+                        journalHtml += `
+                            <label for="type4">
+                                <span class="box"></span>
+                                <span class="text">
+                                    Speak kindly and calmly.
+                                </span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-detail">
+                    <div class="card-detail-top">
+                        <div class="ringInfo">
+                            <div class="hover-ring" data-host="${listJournal.userName}">
+                                <img src="/web/img/userRing/${listJournal.userUID}.png" alt="">
+                            </div>
+                            <h5>
+                                ${listJournal.userName}
+                            </h5>
+                        </div>
+                        <div class="count">
+                            <img src="/web/img/main/journal/ICN_BOOKMARK.png" alt="">
+                            <span>${likeCount}</span>
+                        </div>
+                    </div>
+                    <div class="card-detail-bottom">
+                        <p>${listJournal.journalMainText}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+            `;
+        }
+        
+        if(listJournal.journalCategory == 'EMOTION SCAN') {
+            var journalHtml = `
+            <div class="commonCard mainJournal">
+                <a href="javascript:void(0)" onclick='customModal(15, ${sendJournalData}, ${JSON.stringify(checkLoginUser)}, "all", relatedClassObject)'>
+                    <div class="card-thumb thumb-layout-4">
+                        <div class="figureWrap">
+                    `;
+                    var resultLength = 5;
+                    if(listJournal.journalEmotionScanResult.length <= 5) {
+                        resultLength = listJournal.journalEmotionScanResult.length;
+                    }
+                    for(var i = 0; i < resultLength; i++) {
+                        journalHtml += `
+                            <div class="figure" data-number="${listJournal.journalEmotionScanResult[i].feeling}">
+                                <span class="text">${listJournal.journalEmotionScanResult[i].observed}</span>
+                            </div>
+                        `;
+                    }
+
+                journalHtml += `
+                    </div>
+                </div>
+                <div class="card-detail">
+                    <div class="card-detail-top">
+                        <div class="ringInfo">
+                            <div class="hover-ring" data-host="${listJournal.userName}">
+                                <img src="/web/img/userRing/${listJournal.userUID}.png" alt="">
+                            </div>
+                            <h5>
+                                ${listJournal.userName}
+                            </h5>
+                        </div>
+                        <div class="count">
+                            <img src="/web/img/main/journal/ICN_BOOKMARK.png" alt="">
+                            <span>${likeCount}</span>
+                        </div>
+                    </div>
+                    <div class="card-detail-bottom">
+                        <p>${listJournal.journalMainText}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        `;
+        }
+
+        if(listJournal.journalCategory == 'BODY SCAN') {
+            journalHtml = `
+        <div class="commonCard mainJournal">
+            <a href="javascript:void(0)" onclick='customModal(15, ${sendJournalData}, ${JSON.stringify(checkLoginUser)}, "all", relatedClassObject)'>
+                <div class="card-thumb thumb-layout-5">
+                    <div class="figureBox">
+                        <div class="figureBox-top">
+                            <h6>${listJournal.journalBodyScanResult[0].part}</h6>
+                            <span class="dots"></span>
+                            <h6>Stinging</h6>
+                        </div>
+                        <div class="figureBox-bottom">
+                            <div class="figure" data-number="${listJournal.journalBodyScanResult[0].intense}">
+                                <span class="text">Intense</span>
+                            </div>
+                            <div class="figure" data-number="${listJournal.journalBodyScanResult[0].pleasant}">
+                                <span class="text">Pleasant</span>
+                            </div>
+                        </div>
+                    </div>
+            `;
+            if(listJournal.journalBodyScanResult.length > 1) {
+                journalHtml += `
+                    <div class="figureBox">
+                        <div class="figureBox-top">
+                            <h6>${listJournal.journalBodyScanResult[1].part}</h6>
+                            <span class="dots"></span>
+                            <h6>Stinging</h6>
+                        </div>
+                        <div class="figureBox-bottom">
+                            <div class="figure" data-number="${listJournal.journalBodyScanResult[1].intense}">
+                                <span class="text">Intense</span>
+                            </div>
+                            <div class="figure" data-number="${listJournal.journalBodyScanResult[1].pleasant}">
+                                <span class="text">Pleasant</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+            } else {
+                journalHtml += `</div>`;
+            }
+            
+            journalHtml += `
+                <div class="card-detail">
+                    <div class="card-detail-top">
+                        <div class="ringInfo">
+                            <div class="hover-ring" data-host="${listJournal.userName}">
+                                <img src="/web/img/userRing/${listJournal.userUID}.png" alt="">
+                            </div>
+                            <h5>
+                                ${listJournal.userName}
+                            </h5>
+                        </div>
+                        <div class="count">
+                            <img src="/web/img/main/journal/ICN_BOOKMARK.png" alt="">
+                            <span>${likeCount}</span>
+                        </div>
+                    </div>
+                    <div class="card-detail-bottom">
+                        <p>${listJournal.journalMainText}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+            `;
+        }
+        
+        if(listJournal.journalCategory == 'KEYWORD ENTRY') {
+            var journalHtml = `
+            <div class="commonCard mainJournal">
+                <a href="javascript:void(0)" onclick='customModal(15, ${sendJournalData}, ${JSON.stringify(checkLoginUser)}, "all", relatedClassObject)'>
+                    <div class="card-thumb thumb-layout-6">
+                        <div class="keywordWrap">
+                        `;
+            var resultLength = 5;
+            if(listJournal.journalKeyWordEntryResult.length <= 5) {
+                resultLength = listJournal.journalKeyWordEntryResult.length;
+            }
+
+            for(var i = 0; i < resultLength; i++) {
+                journalHtml += `<div class="keyword">${listJournal.journalKeyWordEntryResult[i]}</div>`;
+            }
+            
+            journalHtml += `
+                        </div>
+                    </div>
+                    <div class="card-detail">
+                        <div class="card-detail-top">
+                            <div class="ringInfo">
+                                <div class="hover-ring" data-host="${listJournal.userName}">
+                                    <img src="/web/img/userRing/${listJournal.userUID}.png" alt="">
+                                </div>
+                                <h5>
+                                    ${listJournal.userName}
+                                </h5>
+                            </div>
+                            <div class="count">
+                                <img src="/web/img/main/journal/ICN_BOOKMARK.png" alt="">
+                                <span>${likeCount}</span>
+                            </div>
+                        </div>
+                        <div class="card-detail-bottom">
+                            <p>${listJournal.journalMainText}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            `;
+        }
+        
+        if(listJournal.journalCategory == 'ASANA JOURNAL') {
+            var journalHtml = `
+            <div class="commonCard mainJournal">
+                <a href="javascript:void(0)" onclick='customModal(15, ${sendJournalData}, ${JSON.stringify(checkLoginUser)}, "all", relatedClassObject)'>
+                    <div class="card-thumb thumb-layout-1" style="background-image: url('${listJournal.journalImage[0].filePath}');">
+                        <img src="${listJournal.journalImage[0].filePath}" alt="" onerror="checkImg(this)" style="display: none;">
+                    `;
+
+            if(listJournal.journalVideo != undefined && listJournal.journalVideo != null) {
+                journalHtml += `<img class="icon" src="/web/img//icn_video.png" alt="">`;
+            }
+
+            journalHtml += `
+                </div>
+                <div class="card-detail">
+                    <div class="card-detail-top">
+                        <div class="ringInfo">
+                            <div class="hover-ring" data-host="${listJournal.userName}">
+                                <img src="/web/img/userRing/${listJournal.userUID}.png" alt="">
+                            </div>
+                            <h5>
+                                ${listJournal.userName}
+                            </h5>
+                        </div>
+                        <div class="count">
+                            <img src="/web/img/main/journal/ICN_BOOKMARK.png" alt="">
+                            <span>${likeCount}</span>
+                        </div>
+                    </div>
+                    <div class="card-detail-bottom">
+                        <p>${listJournal.journalMainText}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        `;
+        }
+
+        return journalHtml;
+    }
+
+    searchJournalAppendCategoryJournal('allTab');
+    searchJournalAppendCategoryJournal();
+</script>

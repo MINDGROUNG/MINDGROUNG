@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <%- include ./common/commonHead.html%>
+        <!--공통타이틀로 적용 할 경우 commonHead 안에 넣기-->
+    </head>
+    <body>
+        <div class="wrap commonLayout2 overViwe">
+            <%- include ./common/commonHeader.html%>
+            <section class="marginAuto_s minHeight">
+                <div class="writeBtn">
+                    <button>
+                        <img src="/web/img/main/cateList/BTN_WRITE.png" alt="">
+                    </button>
+                </div>
+                <article id="gatheringId">
+                    <div class="topContents">
+                        <div class="basicInfo">
+                            <div class="basicInfo-text onlyGathering">
+                                <h3 class="classTitle" id="gatheringName">
+                                </h3>
+                                <div class="desc">
+                                    <div class="desc-category">
+                                        <div class="commonDesc onlyGathering">
+                                            <span class="title">
+                                                Category
+                                            </span>
+                                            <span id="gatheringCategory">
+                                            </span>
+                                            <span id="gatheringMemberTag">
+                                                <img src="/web/img/classDetail/ICN_PERSON.png" alt="">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="sideBtn">
+                                        <button>
+                                            <img src="/web/img/classDetail/ICN_SHARE.png" alt="">
+                                        </button>
+                                        <button>
+                                            <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="tabBtns">
+                                    <button data-tabs="overview" class="active">
+                                        Overview
+                                    </button>
+                                    <button data-tabs="events">
+                                        Events
+                                    </button>
+                                    <button data-tabs="members">
+                                        Members
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="overviewTab overview tabs show">
+                        <div class="basicInfo-imgs">
+                            <div>
+                                <div class="videoThumb" id="mainImageId">
+                                    <!-- gatheringMain 이미지 자리 -->
+                                </div>
+                                <div class="imgThumb" id="subImageId">
+                                    <!-- gathering Sub 이미지 자리 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="basicInfo-gathering-tag" id="gatheringKeywordTagId">
+                        </div>
+                        <div class="classInfo onlyGathering">
+                            <div class="host-classInfo">
+                                <div class="hostDetail">
+                                    <div class="ring hover-ring" id="userRingId">
+                                    </div>
+                                    <div class="rating">
+                                        <span id="ratingId">
+                                        </span>
+                                        <h5>
+                                            <a href="javascript:avoid(0)" id="hostATagId">Hannah Brown</a>
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div class="classDetail">
+                                    <p id="gatheringDescriptionTagId"></p>
+                                    <div class="seeMoreBtn">
+                                        <button class="seeMoreBtn-on">
+                                            See More
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="leaveBtn" onclick="gatheringLeave()">
+                            <button>
+                                Leave the Gathering
+                            </button>
+                        </div>
+                    </div>
+                    <div class="eventsTab events tabs">
+                        <div class="bottomContents onlyGathering">
+                            <!-- 이벤트가 있을 때 -->
+                            <div class="gatherings-content">
+                                <!-- Upcoming Events -->
+                                <div class="gatherings-content-slideWrap commonslideWrap onlyOverview">
+                                    <div class="classTitle">
+                                        <h3>Upcoming Events</h3>
+                                        <button onclick="createEventGo()">
+                                            Create an event
+                                        </button>
+                                    </div>
+                                    <!-- 이벤트가 없을 때 -->
+                                    <div class="noEvents" id="noEventDivID" style="display: none;">
+                                        <h4>
+                                            An event is comming soon
+                                        </h4>
+                                    </div>
+                                    <div class="hasEvents" id="hasEnventDivID">
+                                        <div class="btnArea2 commonBtnArea">
+                                        </div>
+                                        <div class="upComingSlide afterLogin-commonSlide">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Past Events -->
+                                <div class="pastEvWrap gatheringEventSlideWrap commonslideWrap onlyOverview">
+                                    <div class="classTitle">
+                                        <h3>Past Events</h3>
+                                    </div>
+                                    <div class="gatherings-content-slideWrap commonslideWrap">
+                                        <div class="hasEvents">
+                                            <div class="btnArea3 commonBtnArea">
+                                            </div>
+                                            <div class="pastSlide afterLogin-commonSlide">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Requested Events -->
+                                <div class="requestedEvWrap gatheringEventSlideWrap commonslideWrap onlyOverview">
+                                    <div class="classTitle">
+                                        <h3>Requested Events</h3>
+                                    </div>
+                                    <div class="gatherings-content-slideWrap commonslideWrap">
+                                        <div class="hasEvents">
+                                            <div class="btnArea4 commonBtnArea">
+                                            </div>
+                                            <div class="requestedSlide afterLogin-commonSlide">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="membersTab members tabs">
+                        <div class="list1 commonList">
+                            <div class="btnWrap">
+                                <button id="selectOperator" onclick="selectOperatorFunc()" style="display: none;">
+                                    Select Operators
+                                </button>
+                                <button id="downloadExcel" onclick="downloadExcelFunc()" style="display: none;">
+                                    Download Excel
+                                </button>
+                            </div>
+                            <div class="listWrap membersOnly" id="list1Wrap">
+                                <div class="membersInfo">
+                                    <div class="ringInfo">
+                                        <div class="ring-hover">
+                                            <img id="meUserRing" src="" alt="">
+                                        </div>
+                                        <div class="text">
+                                            <h6 id="meUserAuth" style="display: none;">
+
+                                            </h6>
+                                            <h4 id="meUserName">
+                                                
+                                            </h4>
+                                            <p id="meUserHost">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="me">
+                                        <strong>Me</strong>
+                                    </div>
+                                </div>
+                        </div>
+                        <!-- 가입후 멤버 리스트 -->
+                        <div class="list2 commonList">
+                            <!-- 오퍼레이터 체크박스 영역 -->
+                            <div class="listWrap" id="list2Wrap" style="display: none;">
+                                <div class="membersInfo">
+                                    <div class="ringInfo">
+                                        <div class="ring-hover">
+                                            <img id="meUserRing2" src="" alt="">
+                                        </div>
+                                        <div class="text">
+                                            <h6 id="meUserAuth2" style="display: none;">
+
+                                            </h6>
+                                            <h4 id="meUserName2">
+                                                
+                                            </h4>
+                                            <p id="meUserHost2">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="me">
+                                        <strong>Me</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="operatorSaveBtn" onclick="operatorBtnFunc()" style="display: none;">
+                                <button><%=translation.dashBoard.Save%></button>
+                            </div>
+                        </div>
+                        <!-- 오퍼레이터 체크박스 영역 -->
+                    </div>
+                </article>
+            </section>
+            <%- include ./common/commonFooter.html%> <%- include ./common/commonScript.html%>
+            <script>
+                var params = new URL(location.href);
+                var lang = params.searchParams.get("clang");
+                
+                var user = <%- user ? JSON.stringify(user) : {} %>;
+                var gatheringData = <%- gatheringObject ? JSON.stringify(gatheringObject) : {} %>;
+                var gatheringWriter = <%- gatheringWriter ? JSON.stringify(gatheringWriter) : {} %>;
+
+                var originOperator = [];
+                var operatorCheck = [];
+                var operatorCount = 0;
+                
+                // 테스트용 : 로컬에 이미지가 없을시 더미 이미지로 src 변경
+                function checkImg(target) 
+                {
+                    $(target).attr("src",'/web/img/classesThumb.png');
+                }
+
+                // 테스트용 : 로컬에 이미지가 없을시 더미 이미지로 src 변경
+                function checkImg2(target) 
+                {
+                    $(target).parent().css({"background-image" : "url(./web/img/classesThumb.png)"});
+                }
+        
+                $(document).ready(function(){
+                    setGathering(gatheringData);
+                    setMembers(gatheringData);
+                });
+
+                function setGathering(gatheringData){
+                    var gatheringObject = gatheringData.classObject;
+
+                    // 게더링 ID
+                    document.getElementById('gatheringId').value = gatheringData._id;
+
+                    // 게더링 Name
+                    document.getElementById('gatheringName').innerHTML = gatheringObject.gatheringName;
+
+                    // 게더랑 Category
+                    document.getElementById('gatheringCategory').innerHTML = getTranslation('gathering', gatheringObject.gatheringCategory);
+
+                    // 게더링 멤버 수
+                    if(gatheringData.gatheringMember === undefined)
+                    {
+                        document.getElementById('gatheringMemberTag').innerHTML += `0/<%=translation.openClass.Unlimited%>`;
+                    }
+                    else
+                    {
+                        document.getElementById('gatheringMemberTag').innerHTML += `${Object.keys(gatheringData.gatheringMember).length}/<%=translation.openClass.Unlimited%>`;
+                    }
+                    
+                    // Main 이미지
+                    document.getElementById('mainImageId').innerHTML = makeThumbnail(gatheringObject.mainImage[0].filePath);
+                    
+                    // Sub 이미지
+                    var thumbNailSubLength = 0;
+                    if(gatheringObject.anotherImage.length < 4) {
+                        thumbNailSubLength = gatheringObject.anotherImage.length;
+                    } else {
+                        thumbNailSubLength = 4;
+                    }
+                    var subList = '';
+                    for(var i = 0; i < thumbNailSubLength; i++) 
+                    {
+                        subList += makeThumbnail(gatheringObject.anotherImage[i].filePath, i, gatheringObject.anotherImage.length);
+
+                        if(((i + 1) == thumbNailSubLength) && thumbNailSubLength < gatheringObject.anotherImage.length) {
+                            for(var j = thumbNailSubLength; j < gatheringObject.anotherImage.length; j++) {
+                                subList += `<img src="${gatheringObject.anotherImage[j].filePath}" style="display: none;">`;
+                            }
+                        }
+                    }
+                    document.getElementById('subImageId').innerHTML = subList;
+
+                    var keyList = '';
+                    // 게더링 keyword
+                    for(var keyword in gatheringObject.keywords)
+                    {
+                        keyList += `<span class="innerTags">
+                                        ${getTranslation('openClass', keyword)}
+                                    </span>
+                            `;
+                    }
+                    document.getElementById('gatheringKeywordTagId').innerHTML += keyList;
+
+                    document.getElementById('userRingId').innerHTML = `<img src="/web/img/userRing/${gatheringWriter.userUID}.png" alt="">`;
+                    
+                    if(gatheringWriter.hostType == '' || gatheringWriter.hostType == undefined || gatheringWriter.hostType == null) {
+                        document.getElementById('ratingId').style.display = 'none';
+                    } else {
+                        document.getElementById('ratingId').innerHTML = getTranslation('hostMain', gatheringWriter.hostType);
+                    }
+
+                    document.getElementById('hostATagId').innerHTML = gatheringData.userName;
+
+                    document.getElementById('gatheringDescriptionTagId').innerHTML = gatheringObject.gatheringDesc;
+                }
+
+                function makeThumbnail(filePath, num, length){
+                    if(num==3){
+                        return `<a href="javascript:avoid(0)" class="imgBox" onclick="customModal(33, 'gathering')" data-num="+${length}">
+                                    <img src="${filePath}" onerror="checkImg(this)" alt="">
+                                </a>`
+                    }else{
+                        return `<a href="javascript:avoid(0)" onclick="customModal(33, 'gathering')" class="imgBox">
+                                    <img src="${filePath}" onerror="checkImg(this)" alt="">
+                                </a>`
+                    }
+                }
+
+                
+
+                function setMembers(gatheringData) 
+                {
+                    var gatheringMember = gatheringData.gatheringMember;
+                    var userIndex = gatheringMember.findIndex( index => index.userUID === Number(user.userUID));
+                    var adminSort = [];
+                    var finalSort = [];
+
+                    // Me 출력
+                    document.getElementById('meUserRing').src = '/web/img/userRing/' + user.userUID + '.png';
+                    document.getElementById('meUserRing2').src = '/web/img/userRing/' + user.userUID + '.png';
+                    document.getElementById('meUserName').innerHTML = user.userName;
+                    document.getElementById('meUserName2').innerHTML = user.userName;
+
+                    if(user.hostType !== '')
+                    {
+                        document.getElementById('meUserHost').innerHTML = user.hostType;
+                        document.getElementById('meUserHost2').innerHTML = user.hostType;
+                    }
+
+                    if(gatheringMember[userIndex].authority !== 'normal')
+                    {
+                        document.getElementById('meUserAuth').innerHTML = gatheringMember[userIndex].authority;
+                        document.getElementById('meUserAuth').style.display = 'block';
+                        document.getElementById('meUserAuth2').innerHTML = gatheringMember[userIndex].authority;
+                        document.getElementById('meUserAuth2').style.display = 'block';
+                    }
+
+                    if(gatheringMember[userIndex].authority === 'administrator')
+                    {
+                        document.getElementById('selectOperator').style.display = 'block';
+                        document.getElementById('downloadExcel').style.display = 'block';
+                    }
+                    
+                    if(gatheringMember[userIndex].authority === 'operator')
+                    {
+                        document.getElementById('downloadExcel').style.display = 'block';
+                    }
+
+                    adminSort.push(gatheringMember[0]);
+                    gatheringMember.splice(0, 1);
+
+                    for(var i = 0; i < gatheringMember.length; i++)
+                    {
+                        if(gatheringMember[i].authority === 'operator')
+                        {
+                            if(operatorCount === 2) { break } ;
+
+                            adminSort.push(gatheringMember[i]);
+                            originOperator.push(gatheringMember[i].userUID);
+                            operatorCheck.push(gatheringMember[i].userUID);
+                            gatheringMember.splice(i, 1);
+                            i--;
+                            operatorCount++;
+                        }
+                    }
+
+                    finalSort = adminSort.concat(gatheringMember);
+
+                    // Member 출력
+                    for(var i in finalSort)
+                    {
+                        if(finalSort[i].userUID !== Number(user.userUID))
+                        {
+                            drawMembers(finalSort[i], 'gtrfollowBtn', 'list1Wrap');
+                            drawMembers(finalSort[i], 'chk', 'list2Wrap');
+                        }
+                    }
+                    
+                }
+
+                function drawMembers(userData, type, listNum) 
+                {
+                    var drawMembers = 
+                    `
+                        <div class="membersInfo">
+                            <div class="ringInfo">
+                                <div class="ring-hover">
+                                    <img id="memberRing" src="/web/img/userRing/${userData.userUID}.png" alt="">
+                                </div>
+                                <div class="text">
+                    `;
+                    if(userData.authority !== 'normal')
+                    {
+                        drawMembers +=
+                        `
+                                        <h6 id="memberAuth">
+                                            ${userData.authority}
+                                        </h6>
+                        `;
+                    }
+                    
+                    drawMembers += 
+                    `
+                                    <h4 id="memberName">
+                                        ${userData.userName}
+                                    </h4>
+                                    <p id="memberHost">
+                    `;
+                    if(userData.hostType !== 'none')
+                    {
+                        drawMembers += userData.hostType;
+                    }
+                    
+                    drawMembers +=
+                    `
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="${type}">
+                    `;
+
+                    if(type === 'gtrfollowBtn')
+                    {
+                        drawMembers +=
+                        `
+                                    <button class="gtrFollowBtn-on" id="memberFollowing">
+                                        Following
+                                    </butoon>
+                                </div>
+                            </div>
+                        `;
+                    }
+                    else
+                    {
+                        if(userData.authority === 'operator')
+                        {
+                            drawMembers += `<input type="checkbox" id="${userData.userUID}" onclick="authPushFunc(this)" checked>`;
+                        }
+                        else
+                        {
+                            drawMembers += `<input type="checkbox" id="${userData.userUID}" onclick="authPushFunc(this)">`;
+                        }
+
+                        drawMembers +=
+                        `
+                                <label for="${userData.userUID}"></label>
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    document.getElementById(listNum).innerHTML += drawMembers;
+                }
+
+                function selectOperatorFunc() {
+                    $('#selectOperator').toggleClass('active');
+                    
+                    if($('#selectOperator').hasClass('active'))
+                    {
+                        document.getElementById('list1Wrap').style.display = 'none';
+                        document.getElementById('list2Wrap').style.display = 'flex';
+                        document.getElementById('operatorSaveBtn').style.display = 'block';
+                        
+                    }
+                    else
+                    {
+                        document.getElementById('list1Wrap').style.display = 'flex';
+                        document.getElementById('list2Wrap').style.display = 'none';
+                        document.getElementById('operatorSaveBtn').style.display = 'none';
+                    }
+                }
+
+                function authPushFunc(e) {
+                    if(e.checked)
+                    {
+                        if(operatorCheck.length < 2)
+                        {
+                            operatorCheck.push(Number(e.id));
+                        }
+                        else
+                        {
+                            e.checked = false;
+                            alert('운영진은 2명까지 선택가능합니다.');
+                        }
+                    }
+                    else
+                    {
+                        for(var i = 0; i < operatorCheck.length; i++) {
+                            if(operatorCheck[i] === Number(e.id))
+                            {
+                                operatorCheck.splice(i, 1);
+                            }
+                        }
+                    }
+                }
+
+                function operatorBtnFunc() {
+                    if(JSON.stringify(originOperator) === JSON.stringify(operatorCheck))
+                    {
+                        alert('운영진 설정이 완료되었습니다.');
+                        location.reload();
+                    }
+                    else
+                    {
+                        var jsonData = {};
+                        jsonData.gatheringID = document.getElementById('gatheringId').value;
+                        jsonData.originOperator = originOperator;
+                        jsonData.operatorCheck = operatorCheck;
+                        
+                        $.ajax({
+                            type : "POST",
+                            url : "/gatheringOperatorSetting",
+                            data : JSON.stringify(jsonData),
+                            async : false,
+                            processData : false,
+                            contentType : "application/json; charset=UTF-8",
+                            success : function(success){
+                                alert('운영진 설정이 완료되었습니다.');
+                                location.reload();
+                            },
+                            error : function(error)
+                            {
+                                alert(error.responseJSON.message);
+                            }
+                        });
+                    }
+                
+                }
+
+                var slickCheck = false;
+                function slickEvent() {
+                    //슬릭체크비활성
+                    if(!slickCheck)
+                    {
+                        slickCheck = true;
+                        $('.upComingSlide').slick({
+                            slidesToShow: 4,
+                            slidesToScroll: 1,
+                            arrows: true,
+                            prevArrow : "<button type='button' class='prev slickBtn'><i class='xi-angle-left-thin'></i></button>",
+                            nextArrow : "<button type='button' class='next slickBtn'><i class='xi-angle-right-thin'></i></button>",
+                            appendArrows: '.btnArea2',
+                            dots: false,
+                            autoplay: false,
+                            infinite: true,
+                            speed: 500,
+                        })
+                        $('.pastSlide').slick({
+                            slidesToShow: 4,
+                            slidesToScroll: 1,
+                            arrows: true,
+                            prevArrow : "<button type='button' class='prev slickBtn'><i class='xi-angle-left-thin'></i></button>",
+                            nextArrow : "<button type='button' class='next slickBtn'><i class='xi-angle-right-thin'></i></button>",
+                            appendArrows: '.btnArea3',
+                            dots: false,
+                            autoplay: false,
+                            infinite: true,
+                            speed: 500,
+                        })
+                        $('.requestedSlide').slick({
+                            slidesToShow: 4,
+                            slidesToScroll: 1,
+                            arrows: true,
+                            prevArrow : "<button type='button' class='prev slickBtn'><i class='xi-angle-left-thin'></i></button>",
+                            nextArrow : "<button type='button' class='next slickBtn'><i class='xi-angle-right-thin'></i></button>",
+                            appendArrows: '.btnArea4',
+                            dots: false,
+                            autoplay: false,
+                            infinite: true,
+                            speed: 500,
+                        })
+                    }
+                }
+                
+                
+                $(window).on('resize', function() {
+                    slideCheck()
+                })
+                
+                //탭 온오프
+                $('.tabBtns > button').on('click', function() {
+                    $('.tabBtns > button').removeClass('active');
+                    $(this).addClass('active');
+                    $('.tabs').each(function() {
+                        $(this).removeClass('show');
+                    })
+                    $('.'+$(this).data('tabs')+'').addClass('show');
+                    
+                    slideCheck()
+
+                    $('.upComingSlide').get(0).slick.setPosition();
+                    $('.pastSlide').get(0).slick.setPosition();
+                    $('.requestedSlide').get(0).slick.setPosition();
+                })
+
+                //언슬릭 반응형 체크
+                function slideCheck()
+                {
+                    if($(window).innerWidth() <= 1279)
+                    {
+                        $('.upComingSlide').filter('.slick-initialized').slick('unslick')
+                        $('.pastSlide').filter('.slick-initialized').slick('unslick')
+                        $('.requestedSlide').filter('.slick-initialized').slick('unslick')
+                        slickCheck = false;
+                    }
+                    else
+                    {
+                        slickEvent();
+                    }
+                }
+
+                window.addEventListener('load', function() {
+                    var followBtn = document.getElementsByClassName('gtrFollowBtn-on');
+                    for(var i = 0; i < followBtn.length; i++)
+                    {
+                        var activeStateChk = followBtn[i].classList.contains('active');
+                        activeStateChk ? followBtn[i].innerHTML = "Follow" : followBtn[i].innerHTML = "Following";
+                        followBtn[i].addEventListener('click', function(e){
+                            var activeChk = e.currentTarget.classList.contains('active');
+                            this.classList.toggle('active');
+                            activeChk ? e.currentTarget.innerHTML = "Following" : e.currentTarget.innerHTML = "Follow";
+                            console.log(this)
+                        })
+                    }
+                });
+
+                // 게더링 떠나기 함수
+                function gatheringLeave() {
+                    if(window.confirm('"' + gatheringData.classObject.gatheringName + '"' + ' 게더링을 떠나시겠습니까?')) 
+                    {
+                        var jsonData = {};
+                        jsonData.gatheringID = document.getElementById('gatheringId').value;
+                        jsonData.userUID = user.userUID;
+
+                        $.ajax({
+                            type : "POST",
+                            url : "/gatheringLeave",
+                            data : JSON.stringify(jsonData),
+                            async : false,
+                            processData : false,
+                            contentType : "application/json; charset=UTF-8",
+                            success : function(success){
+                                alert('게더링을 떠났습니다.');
+                                location.href = '/gatheringDetail/' + jsonData.gatheringID;
+                            },
+                            error : function(error)
+                            {
+                                alert(error.responseJSON.message);
+                            }
+                        });
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+                function createEventGo() {
+                    location.href = '/createEvent/' + gatheringData._id;
+                }
+
+                // =========================================
+                // 게더링 이벤트 출력 관련 변수 선언 및 함수
+                // =========================================
+                var gatheringEventArray = gatheringData.gatheringEvent;
+                var upComingCount = 0;
+                var pastCount = 0;
+
+                function getDateToday() {
+                    var todayeNowDate = new Date();
+                    var todayeNowYear = todayeNowDate.getFullYear();
+                    var todayeNowMonth = ('0' + (1 + todayeNowDate.getMonth())).slice(-2);
+                    var todayeNowDate = ('0' + todayeNowDate.getDate()).slice(-2);
+
+                    return todayeNowYear + '-' + todayeNowMonth + '-' + todayeNowDate;
+                }
+
+                if(gatheringEventArray.length < 1 || gatheringEventArray === undefined) {
+                    document.getElementById('noEventDivID').style.display = 'flex';
+                    $('.pastEvWrap').css('display', 'none');
+                    $('.requestedEvWrap').css('display', 'none');
+                }else {
+                    $('.pastEvWrap').css('display', 'block');
+                    $('.requestedEvWrap').css('display', 'block');
+                    gatheringEventReady();
+                }
+                
+                function gatheringEventReady() {
+                    for(var i = 0; i < gatheringData.gatheringEvent.length; i++) {
+                        gatheringEventWriteFunc(gatheringData.gatheringEvent[i]);
+                    }
+                }
+                
+                function gatheringEventWriteFunc(gatheringEventData) {
+                    var eventFilePath = '/web/img/classesThumb.png';
+                    if(gatheringEventData.gatheringEventMainImage != null && gatheringEventData.gatheringEventMainImage != undefined && gatheringEventData.gatheringEventMainImage != '') {
+                        if(gatheringEventData.gatheringEventMainImage[0] != '' && gatheringEventData.gatheringEventMainImage[0] != null && gatheringEventData.gatheringEventMainImage[0] != undefined) {
+                            if(gatheringEventData.gatheringEventMainImage[0].filePath != '' && gatheringEventData.gatheringEventMainImage[0].filePath != null && gatheringEventData.gatheringEventMainImage[0].filePath != undefined) {
+                                eventFilePath = gatheringEventData.gatheringEventMainImage[0].filePath;
+                            } 
+                        } 
+                    } 
+
+                    createEventHtml = 
+                    `
+                    <div class="upComingSlideThumbWrap">
+                        <a href="/gathering/eventDetail/${gatheringData._id}/${gatheringEventData.eventID}" class="thumbBox afterLogin-commonSlide-thumb" style="background-image: url('${eventFilePath}')">
+                        <div class="slide-inner-content onlyGathering">
+                            <div class="condition">
+                                <div class="leftSide">
+                    `;
+                    
+                    // 현재 시간
+                    var nowInternetDate = new Date();
+                    var getNowDateHour = nowInternetDate.getHours();
+                    var getNowDateMinutes = nowInternetDate.getMinutes();
+                    var getNowDateTotal = (getNowDateHour * 60) + getNowDateMinutes;
+
+                    // 이벤트 시작 시간
+                    var eventStartTime = gatheringEventData.gatheringEventTime1.split(":");
+                    var eventTimeTotal = (Number(eventStartTime[0]) * 60) + Number(eventStartTime[1]);
+
+                    // 현재 날짜
+                    var todayDate = getDateToday();
+                    
+                    if(todayDate >= gatheringEventData.gatheringEventDate) {
+                    }
+
+                    if(todayDate == gatheringEventData.gatheringEventDate && (getNowDateTotal - eventTimeTotal) <= 180) {
+                        createEventHtml += 
+                        `
+                                    <strong class="live"></strong>
+                                </div>
+                                <div class="rightSide">
+                                </div>
+                            </div>
+                        `
+                        ;
+                    } else if(todayDate == gatheringEventData.gatheringEventDate && gatheringEventData.gatheringEventTime1 == '00:00' && gatheringEventData.gatheringEventTime2 == '24:00') {
+                        createEventHtml += 
+                        `
+                                    <strong class="live"></strong>
+                                </div>
+                                <div class="rightSide">
+                                </div>
+                            </div>
+                        `
+                        ;
+                    }else {
+                        createEventHtml += 
+                        `
+                                    <strong class="off">Offline</strong>
+                                </div>
+                                <div class="rightSide">
+                                    <strong class="date">
+                                        ${gatheringEventData.gatheringEventDate.replace(/-/g, '. ')} ${gatheringEventData.gatheringEventTime1}
+                                    </strong>
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    var eventMemberLength = -1;
+                    if(gatheringEventData.eventMember == undefined) {
+                        eventMemberLength = 0;
+                    } else {
+                        eventMemberLength = gatheringEventData.eventMember.length;
+                    }
+
+                    createEventHtml +=
+                    `
+                            <div class="content">
+                                <div class="ring-text">
+                                    <div class="ring hover-ring">
+                                        <img src="/web/img/userRing/${gatheringEventData.eventCreatorUID}.png" alt="">
+                                    </div>
+                                    <div class="text">
+                                        <h5>
+                                            ${gatheringEventData.gatheringEventName}
+                                        </h5>
+                                        <p>
+                                            ${gatheringEventData.eventCreatorName}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="viewCount">
+                                    <div class="vc-wrap">
+                                        <div class="rings">
+                                            <img class="smallRing" src="/web/img/main/afterLogin/viewRing.png" alt="">
+                                            <img class="smallRing" src="/web/img/main/afterLogin/viewRing.png" alt="">
+                                            <img class="smallRing" src="/web/img/main/afterLogin/viewRing.png" alt="">
+                                        </div>
+                                        <span>${eventMemberLength} / ${gatheringEventData.gatheringEventParticipants}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hoverContent">
+                                    <h6>
+                                        ${gatheringEventData.gatheringEventName}
+                                    </h6>
+                                    <p>
+                                        ${gatheringEventData.gatheringEventDesc}
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    `;
+
+                    if(gatheringEventData.gatheringApproved === 'approve') {
+                        if(todayDate > gatheringEventData.gatheringEventDate) {
+                            if(todayDate == gatheringEventData.gatheringEventDate && (getNowDateTotal - eventTimeTotal) >= 180) {
+                                if(pastCount < 20) {
+                                    document.querySelector('.pastSlide').innerHTML += createEventHtml;
+                                    pastCount++;
+                                }
+                            }
+
+                            if(pastCount < 20) {
+                                document.querySelector('.pastSlide').innerHTML += createEventHtml;
+                                pastCount++;
+                            }
+                        } else {
+                            if(upComingCount < 20) {
+                                document.querySelector('.upComingSlide').innerHTML += createEventHtml;
+                                upComingCount++;
+                            }
+                        }
+                    } else {
+                        document.querySelector('.requestedSlide').innerHTML += createEventHtml;
+                    }
+                }
+            </script>
+        </div>
+    </body>
+</html>

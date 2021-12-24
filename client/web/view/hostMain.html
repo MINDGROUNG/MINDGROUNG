@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <%- include ./common/commonHead.html%>
+        <!--공통타이틀로 적용 할 경우 commonHead 안에 넣기-->
+    </head>
+    <body>
+        <div class="wrap classMain commonLayout1 hostMain">
+            <%- include ./common/commonHeader.html%>
+            <%- include ./becomeHostModal.html%>
+            <section class="marginAuto minHeight">
+                <div class="writeBtn">
+                    <button>
+                        <img src="/web/img/main/cateList/BTN_WRITE.png" alt="">
+                    </button>
+                </div>
+                <article>
+                    <div class="mainTitle">
+                        <div>
+                            <h1>    
+                                <%=translation.hostMain.HOST%>
+                            </h1>
+                            <p>
+                                <%=translation.hostMain.Find_mindful_content_creators_and_teachers_from_around_the_world%>
+                            </p>
+                        <% 
+                                if(!listUser.hostType) 
+                                { 
+                        %>
+                                <div class="btnWrap" id="becomeHostbtn" >
+                                    <button onclick="checkisUserHost() ">
+                                        <%=translation.hostMain.Become_a_host%>
+                                    </button>
+                                </div>
+                        <% 
+                                } 
+                                else 
+                                {
+                        %>
+                                <div class="btnWrap hidden" id="becomeHostbtn" >
+                                    <button onclick="checkisUserHost() ">
+                                        <%=translation.hostMain.Become_a_host%>
+                                    </button>
+                                </div>
+                        <%      
+                                } 
+                        %>
+                        </div>
+                    </div>
+                    <div class="slideList">
+                        <div class="newHostArea commonArea hostList">
+                            <div class="commonTitle">
+                                <h3><%=translation.hostMain.New_Hosts%></h3>
+                            </div>
+                            <div class="slideWrap">
+                                <div class="btnArea1 commonBtnArea">
+
+                                </div>
+                                <div class="commonSlide hostPage newHostSlide">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="popularHostArea commonArea hostList">
+                            <div class="commonTitle">
+                                <h3><%=translation.hostMain.POPULAR_HOSTS%></h3>
+                            </div>
+                            <div class="slideWrap">
+                                <div class="btnArea2 commonBtnArea">
+
+                                </div>
+                                <div class="commonSlide hostPage popularHostSlide">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nearByHostArea commonArea hostList">
+                            <div class="commonTitle">
+                                <h3><%=translation.hostMain.NEARBY_HOSTS%></h3>
+                            </div>
+                            <div class="slideWrap nearByHostWrap">
+                                <div class="btnArea3 commonBtnArea">
+
+                                </div>
+                                <div class="commonSlide hostPage nearByHostSlide">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="commonList">
+                        <div class="title">
+                            <h2><%=translation.hostMain.ALL_HOSTS%></h2>
+                        </div>
+                        <div class="categorys">
+                            <div class="cate1 sort">
+                                <button class="active"><%=translation.hostMain.Newest%></button>
+                                <button><%=translation.hostMain.Popular%></button>
+                            </div>
+                            <div class="cate2 filters">
+                                <div class="moFiltersBtn">
+                                    <button>
+                                        <img src="/web/img/icn_filter.png" alt="">
+                                    </button>
+                                </div>
+                                <ul class="btns">
+                                    <li class="moTitle">
+                                        <div class="top">
+                                            <img src="/web/img/down.png" alt="">
+                                        </div>
+                                        <div class="bottom">
+                                            <button class="moCloseBtn">
+                                                <img src="/web/img/ICN_CLOSE.png" alt="">
+                                            </button>
+                                            <h4>
+                                                <%=translation.hostMain.Filters%>
+                                            </h4>
+                                        </div>
+                                    </li>
+                                    <li class="allFilter hostMainPage">
+                                        <div>
+                                            <input type="button" value="<%=translation.hostMain.Type%>" class="filters-type filtersBtn">
+                                            </input>
+                                            <ul class="category-inner minWidth-200" id="typeHostWrap">
+                                                <li class="moSubTitle">
+                                                    <h6><%=translation.hostMain.Type%></h6>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="brand" name="hostInput" data-ischeck="0" data-text="brand">
+                                                    <label for="brand">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.hostMain.brand%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="master" name="hostInput" data-ischeck="0" data-text="master">
+                                                    <label for="master">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.hostMain.master%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="teacher" name="hostInput" data-ischeck="0" data-text="teacher">
+                                                    <label for="teacher">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.hostMain.Teacher%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="creator" name="hostInput" data-ischeck="0" data-text="creator">
+                                                    <label for="creator">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.hostMain.creator%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="leader" name="hostInput" data-ischeck="0" data-text="leader">
+                                                    <label for="leader">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.hostMain.leader%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li class="webBtn">
+                                                    <button class="resetBtn" onclick="resetCategory('type')"><%=translation.hostMain.Reset%></button>
+                                                    <button class="saveBtn" onclick="saveCategory('type')"><%=translation.hostMain.Save%></button>
+                                                </li>
+                                            </ul>
+                                            <div class="onlyFixed"></div>
+                                        </div>
+                                        <div>
+                                            <input type="button" value="<%=translation.hostMain.Class_Category%>" class="filters-classCate filtersBtn">
+                                            </input>
+                                            <ul class="category-inner minWidth-260">
+                                                <li class="moSubTitle">
+                                                    <h6><%=translation.hostMain.Class_Category%></h6>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="mindfulness" data-ischeck="0" data-text="Mindfulness">
+                                                    <label for="mindfulness">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.openClass.Mindfulness%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="meditation" data-ischeck="0" data-text="Meditation">
+                                                    <label for="meditation">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.openClass.Meditation%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="yoga" data-ischeck="0" data-text="Yoga">
+                                                    <label for="yoga">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.openClass.Yoga%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="somatic" data-ischeck="0" data-text="Somatic">
+                                                    <label for="somatic">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.openClass.Somatic%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="ma" data-ischeck="0" data-text="Movement & Activity">
+                                                    <label for="ma">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.openClass.Movement_Activity%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="cc" data-ischeck="0" data-text="Counseling & Coaching">
+                                                    <label for="cc">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.openClass.Counseling_Coaching%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="other" data-ischeck="0" data-text="Other">
+                                                    <label for="other">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.openClass.Others%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li class="webBtn">
+                                                    <button class="resetBtn" onclick="resetCategoryClass('category')"><%=translation.hostMain.Reset%></button>
+                                                    <button class="saveBtn" onclick="saveCategory('category')"><%=translation.hostMain.Save%></button>
+                                                </li>
+                                            </ul>
+                                            <div class="onlyFixed"></div>
+                                        </div>
+                                        <div>
+                                            <input type="button" value="<%=translation.hostMain.Filters%>" class="filters-filters filtersBtn">
+                                            </input>
+                                            <ul class="category-inner-filter minWidth-540">
+                                                <li class="titleArea">
+                                                    <h5>
+                                                        <%=translation.hostMain.Filters%>
+                                                    </h5>
+                                                    <button>
+                                                        <img src="/web/img/ICN_CLOSE.png" alt="">
+                                                    </button>
+                                                </li>
+                                                <li class="inputArea">
+                                                    <h6>
+                                                        <%=translation.hostMain.Number_of_Reviews%>
+                                                    </h6>
+                                                    <div>
+                                                        <div class="chkWrap">
+                                                            <input type="radio" id="high1" name="chk1">
+                                                            <label for="high1">
+                                                                <span class="box"></span>
+                                                                <span class="text">
+                                                                    <%=translation.hostMain.High_to_Low%>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="chkWrap bottomLine">
+                                                            <input type="radio" id="low1" name="chk1">
+                                                            <label for="low1">
+                                                                <span class="box"></span>
+                                                                <span class="text">
+                                                                    <%=translation.hostMain.Low_to_High%>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="inputArea">
+                                                    <h6>
+                                                        <%=translation.hostMain.Number_of_Classes%>
+                                                    </h6>
+                                                    <div>
+                                                        <div class="chkWrap">
+                                                            <input type="radio" id="high2" name="chk2">
+                                                            <label for="high2">
+                                                                <span class="box"></span>
+                                                                <span class="text">
+                                                                    <%=translation.hostMain.High_to_Low%>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="chkWrap">
+                                                            <input type="radio" id="low2" name="chk2">
+                                                            <label for="low2">
+                                                                <span class="box"></span>
+                                                                <span class="text">
+                                                                    <%=translation.hostMain.Low_to_High%>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="inputArea">
+                                                    <h6>
+                                                        <%=translation.hostMain.Number_of_Followers%>
+                                                    </h6>
+                                                    <div>
+                                                        <div class="chkWrap">
+                                                            <input type="radio" id="high3" name="chk3">
+                                                            <label for="high3">
+                                                                <span class="box"></span>
+                                                                <span class="text">
+                                                                    <%=translation.hostMain.High_to_Low%>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="chkWrap">
+                                                            <input type="radio" id="low3" name="chk3">
+                                                            <label for="low3">
+                                                                <span class="box"></span>
+                                                                <span class="text">
+                                                                    <%=translation.hostMain.Low_to_High%>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="webBtn">
+                                                    <button class="resetBtn"><%=translation.hostMain.Reset%></button>
+                                                    <button class="saveBtn"><%=translation.hostMain.Save%></button>
+                                                </li>
+                                            </ul>
+                                            <div class="onlyFixed"></div>
+                                        </div>
+                                    </li>
+                                    <li class="moSaveBtn">
+                                        <div>
+                                            <button class="resetBtn"><%=translation.hostMain.Reset%></button>
+                                            <button class="saveBtn"><%=translation.hostMain.Save%></button>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="commonThumbList hostList" id="hostWrap">
+                        </div>
+                    <div class="commonViewMoreBtn">
+                        <button class="hostsViewMoreBtn-on" onclick="appendCategoryClass()">
+                            <strong><%=translation.hostMain.View_More_Hosts%></strong>
+                        </button>
+                    </div>
+                </article>
+            </section>
+            <%- include ./common/commonFooter.html%> <%- include ./common/commonScript.html%>
+            <script src="/web/js/tabEvent.js"></script>
+            <script>
+                var datePickerSessionData = 'datePicker';
+                sessionStorage.setItem('datePickerSession', datePickerSessionData);
+
+                var listUser = <%-JSON.stringify(listUser)%>;
+                var arrayListNearUser = <%-JSON.stringify(arrayListNearUser)%>;
+
+                //실제 사용 될 데이터
+                var listCategorySelectedClass = listUser;
+                //카테고리 검색 초기화
+                var mapListCategory = {};
+
+                mapListCategory.category = [];
+                mapListCategory.format = [];
+                mapListCategory.type = [];
+                mapListCategory.keyword = [];
+
+                var categoryIndex = 1; //인덱스 (자동화)
+                var categoryClassView = 24; //몇개씩 보여질 건지
+                var params = new URL(location.href);
+                var lang = params.searchParams.get("clang");
+
+
+
+                $(document).ready(function(){
+                    var params = new URL(location.href);
+                    var become = params.searchParams.get("become");
+                    if(become!=null){
+                        checkisUserHost()
+                    }
+                })
+                $(window).on('load resize', function() {
+                    if($(this).innerWidth() <= 1279)
+                    {
+                        $('.newHostSlide').filter('.slick-initialized').slick('unslick')
+                        $('.popularHostSlide').filter('.slick-initialized').slick('unslick')
+                        $('.nearByHostSlide').filter('.slick-initialized').slick('unslick')
+                    }
+                    else
+                    {
+                        //상단 슬라이드1
+                        $('.newHostSlide').not('.slick-initialized').slick({
+                            slidesToShow: 6,
+                            slidesToScroll: 1,
+                            arrows: true,
+                            prevArrow : "<button type='button' class='prev slickBtn'><i class='xi-angle-left-thin'></i></button>",
+                            nextArrow : "<button type='button' class='next slickBtn'><i class='xi-angle-right-thin'></i></button>",
+                            appendArrows: '.btnArea1',
+                            dots: false,
+                            autoplay: false,
+                            infinite: true,
+                            speed: 500,
+                        })
+                        //상단 슬라이드2
+                        $('.popularHostSlide').not('.slick-initialized').slick({
+                            slidesToShow: 6,
+                            slidesToScroll: 1,
+                            arrows: true,
+                            prevArrow : "<button type='button' class='prev slickBtn'><i class='xi-angle-left-thin'></i></button>",
+                            nextArrow : "<button type='button' class='next slickBtn'><i class='xi-angle-right-thin'></i></button>",
+                            appendArrows: '.btnArea2',
+                            dots: false,
+                            autoplay: false,
+                            infinite: true,
+                            speed: 500,
+                        })
+                        //상단 슬라이드3
+                        $('.nearByHostSlide').not('.slick-initialized').slick({
+                            slidesToShow: 6,
+                            slidesToScroll: 1,
+                            arrows: true,
+                            prevArrow : "<button type='button' class='prev slickBtn'><i class='xi-angle-left-thin'></i></button>",
+                            nextArrow : "<button type='button' class='next slickBtn'><i class='xi-angle-right-thin'></i></button>",
+                            appendArrows: '.btnArea3',
+                            dots: false,
+                            autoplay: false,
+                            infinite: true,
+                            speed: 500,
+                        })
+                    }
+                });
+
+                // ========================================================================
+                // hostMain.html 접속 시 자동으로 Become a hos 함수 실행 테스트용
+                // ========================================================================
+                // window.onload = function()
+                //  {
+
+                //     //회원 타입에 맞춰서 팝업 오픈
+                //     var user = <%-user ? JSON.stringify(user) : {}%>;
+                //    console.log("user = " + JSON.stringify(user.userUID)); 
+                //    console.log("user = " + JSON.stringify(user.hostType))
+                //    console.log("user = " + JSON.stringify(user.userName))
+                // };
+
+                //회원 타입에 맞춰 팝업 오픈
+                function checkisUserHost()
+                {
+                    var user = <%-user ? JSON.stringify(user) :{} %>;
+                    console.log("user = " + JSON.stringify(user.hostType)); 
+
+                    if(user.hostType)
+                    {
+                        window.open('/hostStudio');
+                    }
+                    else
+                    {
+                        customModal(90);
+                    }
+                }
+
+                // 테스트용 : 로컬에 이미지가 없을시 더미 이미지로 src 변경
+                function changeImg(target)
+                {
+                    target.src = './web/img/classMain/dummyImg.png';
+                }
+
+                function getHostHtml(host, type)
+                {
+                    var hostHtml = `<a href="/mypage/${host.userUID}" class="hostThumb slideThumb imgBox" id="${host.userUID}">`;
+                    
+                    if(type === 'near')
+                    {
+                        hostHtml += `
+                            <strong class="state">
+                                ${host.state}    
+                            </strong>`
+                        ;
+                    }
+                        hostHtml += `
+                        <div class="thumbInner">
+                            <div class="hostRing">
+                                <span>`
+                        ;
+                    hostHtml +=  `<img src="./web/img/userRing/${host.userUID}.png" onerror="changeImg(this)" alt="">`
+
+                    hostHtml += `
+                                </span>
+                            </div>
+                            <div class="hostType">
+                                <span>
+                        `;
+
+                    if(host.hostType == 'brand') {
+                        hostHtml += `<%=translation.hostStudio.brand%>`;
+                    }
+                    if(host.hostType == 'master') {
+                        hostHtml += `<%=translation.hostStudio.master%>`;
+                    }
+                    if(host.hostType == 'teacher') {
+                        hostHtml += `<%=translation.hostStudio.teacher%>`;
+                    }
+                    if(host.hostType == 'creator') {
+                        hostHtml += `<%=translation.hostStudio.creator%>`;
+                    }
+                    if(host.hostType == 'leader') {
+                        hostHtml += `<%=translation.hostStudio.leader%>`;
+                    }
+                        
+                    hostHtml += `
+                                </span>
+                            </div>
+                            <div class="hostName">
+                                <strong>
+                                    ${host.userName}
+                                </strong>
+                            </div>
+                        </div>
+                    </a>`
+                    ;
+
+                    return hostHtml;
+                }
+
+
+                //새 호스트 추가
+                function addNewHost()
+                {
+                    var newHostCount = 10;
+
+                    var lastindex = newHostCount > listUser.length ? listUser.length : newHostCount;
+                    //10명 컷
+                    var listNewHost = listUser.slice(0, lastindex);
+
+                    var hostHtmlText = '';
+
+                    for(var i = 0 ; i < lastindex ; i++)
+                    {
+                        hostHtmlText += getHostHtml(listNewHost[i]);
+                    }
+
+                    $(".newHostSlide").append(hostHtmlText);
+                }
+
+                //인기 호스트
+                function addPopularHost()
+                {
+                    var popularHostCount = 10;
+
+                    var lastindex = popularHostCount > listUser.length ? listUser.length : popularHostCount;
+                    //10명 컷
+                    var listNewHost = listUser.slice(0, lastindex);
+
+                    var hostHtmlText = '';
+
+                    for(var i = 0 ; i < lastindex; i++)
+                    {
+                        hostHtmlText += getHostHtml(listNewHost[i]);
+                    }
+
+                    $(".popularHostSlide").append(hostHtmlText);
+                }
+
+                //인근 호스트
+                function addNearHost()
+                {
+                    var nearHostCount = 10;
+
+                    var lastindex = nearHostCount > arrayListNearUser.length ? arrayListNearUser.length : nearHostCount;
+                    //10명 컷
+                    var listNewHost = arrayListNearUser.slice(0, lastindex);
+
+                    var hostHtmlText = '';
+
+                    for(var i = 0 ; i < lastindex; i++)
+                    {
+                        hostHtmlText += getHostHtml(listNewHost[i], 'near');
+                    }
+
+                    $(".nearByHostSlide").append(hostHtmlText);
+                }
+
+                //카테고리 리셋
+                function resetCategory(category)
+                {
+                    var wrapId = '';
+
+                    switch(category)
+                    {
+                        case 'category': wrapId = 'categoryCategoryWrap'; break;
+                        case 'format': wrapId = 'categoryFormatWrap'; break;
+                        case 'type': wrapId = 'typeHostWrap'; break;
+                        case 'keyword': wrapId = 'categoryKeywordWrap'; break;
+                        case 'filters': wrapId = 'categoryFiltersWrap'; break;
+                    }
+
+                    var listInput = $("#"+wrapId).find("input");
+
+                    for(var i = 0 ; i < listInput.length ; i++)
+                    {
+                        $(listInput[i]).attr("checked", false);
+                    }
+
+                    //추가 예외사항
+                    if(category == 'filters')
+                    {
+                        $( "#mySlider" ).slider({
+                            range: true,
+                            min: 0,
+                            max: 999999,
+                            values: [ 0, 999999 ],
+                            slide: function( event, ui ) {
+                            $( "#minPrice" ).val(ui.values[ 0 ]);
+                            $( "#maxPrice" ).val(ui.values[ 1 ]+"+");
+                            }
+                        });
+
+                        $( "#minPrice" ).val($( "#mySlider" ).slider( "values", 0 ));
+                        $( "#maxPrice" ).val($( "#mySlider" ).slider( "values", 1 ) + "+");
+                    }
+                }
+
+                // =======================================================================
+                // 클래스 카테고리 : 보류
+                // 필터 : 리뷰 수, 클래스 수, 팔로워 수는 추후 데이터 추가되면 진행
+                // =======================================================================
+
+                //카테고리 검색 버튼
+                function saveCategory(category)
+                {
+                    //필터링 여부 상태
+                    var isLevelInput = false;
+                    var isHostInput = false;
+                    var isFormatInput = false;
+
+                    var listLevelFilter = [];
+                    var listHostFilter = [];
+                    var listFormatFilter = [];
+                    
+                    //검색 카테고리 초기화
+                    mapListCategory[category] = [];
+                    
+                    //wrap id 찾기
+                    var wrapId = '';
+                    switch(category)
+                    {
+                        case 'category': wrapId = 'categoryCategoryWrap'; break;
+                        case 'format': wrapId = 'categoryFormatWrap'; break;
+                        case 'type': wrapId = 'typeHostWrap'; break;
+                        case 'keyword': wrapId = 'categoryKeywordWrap'; break;
+                        case 'filters': wrapId = 'categoryFiltersWrap'; break;
+                    }
+
+                    //입력되는 input 확인
+                    var listInput = $("#"+wrapId).find("input");
+                    
+                    //일반적인 카테고리 검색
+                    if(category !== 'filters')
+                    {
+                        for(var i = 0 ; i < listInput.length ; i++)
+                        {
+                            if($(listInput[i]).is(":checked") == true)
+                            {
+                                $(listInput[i]).attr("data-ischeck", "1");
+                                $(listInput[i]).data("ischeck", "1");
+
+                                mapListCategory[category].push($(listInput[i]).data("text"));
+                            }
+                            else
+                            {
+                                $(listInput[i]).attr("data-ischeck", "0");
+                                $(listInput[i]).data("ischeck", "0");
+                            }
+                        }
+                    }
+                    //필터 일 경우
+                    else
+                    {
+                        //---------------------------
+                        //호스트 필터 확인
+                        var listHostInput = $("#"+wrapId).find("input[name='hostInput']");
+
+                        for(var i = 0 ; i < listHostInput.length ; i++)
+                        {
+                            if($(listHostInput[i]).is(":checked") == true)
+                            {
+                                isHostInput = true;
+
+                                $(listHostInput[i]).attr("data-ischeck", "1");
+                                $(listHostInput[i]).data("ischeck", "1");
+
+                                listHostFilter.push($(listHostInput[i]).data("text"));
+                            }
+                            else
+                            {
+                                $(listHostInput[i]).attr("data-ischeck", "0");
+                                $(listHostInput[i]).data("ischeck", "0");
+                            }
+                        }
+                         //---------------------------
+
+
+
+                        //---------------------------
+                        //호스트 필터 확인
+                        var listFormatInput = $("#"+wrapId).find("input[name='formatInput']");
+
+                        for(var i = 0 ; i < listFormatInput.length ; i++)
+                        {
+                            if($(listFormatInput[i]).is(":checked") == true)
+                            {
+                                isFormatInput = true;
+
+                                $(listFormatInput[i]).attr("data-ischeck", "1");
+                                $(listFormatInput[i]).data("ischeck", "1");
+
+                                listFormatFilter.push($(listFormatInput[i]).data("text"));
+                            }
+                            else
+                            {
+                                $(listFormatInput[i]).attr("data-ischeck", "0");
+                                $(listFormatInput[i]).data("ischeck", "0");
+                            }
+                        }
+                         //---------------------------
+                    }
+
+                    //데이터 필터링
+                    var listFilterData = listUser;
+
+                    var isSelectedCategory = false;
+                    //필터링 하는건지 확인
+                    for (var key in mapListCategory)
+                    {
+                        if(mapListCategory[key].length > 0)
+                        {
+                            isSelectedCategory = true;
+
+                            if(key == 'category')
+                            {
+                                listFilterData = listFilterData.filter((classObject) =>{
+                                    return mapListCategory[key].includes(classObject.mainCategory);
+                                });
+                            }
+                            else if(key == 'format')
+                            {
+                                listFilterData = listFilterData.filter((classObject) =>{
+                                    return mapListCategory[key].includes(classObject.course);
+                                });
+                            }
+                            else if(key == 'type')
+                            {
+                                listFilterData = listFilterData.filter((userObject) => {
+                                    console.log('map : ' + mapListCategory[key]);
+                                    if(mapListCategory[key].includes(userObject.hostType))
+                                    {
+                                        console.log('testsetsetes' + JSON.stringify(userObject.hostType));
+                                    }
+                                    return mapListCategory[key].includes(userObject.hostType);
+                                });
+                            }
+                            else if(key == 'keyword')
+                            {
+                                listFilterData = listFilterData.filter((classObject) =>{
+                                    if(classObject.keywords.length == 0)
+                                    {
+                                        return false;
+                                    }
+
+                                    return mapListCategory[key].some(keyword => { 
+                                        var isContainKeyword = false;
+                                        console.log("keyword=============" + keyword)
+                                        for(var i = 0 ; i < classObject.keywords.length; i++)
+                                        {
+                                            
+                                            console.log("classObject.keywords[i]=============" + classObject.keywords[i])
+                                            console.log("keyword == classObject.keywords[i]" + keyword == classObject.keywords[i])
+                                            if(keyword == classObject.keywords[i])
+                                            {
+                                                console.log("suces=============")
+                                                return true;
+                                            }
+                                        }
+                                        console.log("false=============")
+                                        return false;
+                                    
+                                    });
+                                });
+                            }
+                        }
+                    }
+
+                    if(isHostInput)
+                    {
+                        listFilterData = listFilterData.filter((userObject) =>{
+                            
+                            if(userObject.hostType)
+                            {
+                                return listHostFilter.includes(userObject.hostType);
+                            }
+                            else
+                            {
+                                return false;
+                            }
+                            
+                        });
+                    }
+
+                    //필터링된 데이터 선택
+                    listCategorySelectedClass = listFilterData;
+
+                    //데이터 클리어
+                    resetCategoryClass();
+
+                    //데이터 추가
+                    appendCategoryClass();
+                }
+                
+                //카테고리 클래스 리셋
+                function resetCategoryClass()
+                {
+                    categoryIndex = 1;
+                    $("#hostWrap").html("");
+
+                    //더보기 버튼 갱신
+                    refreshAddClassBtn();
+                }
+
+                //데이터 추가
+                function appendCategoryClass()
+                {
+                    var listAddClassHtml = '';
+
+                    //데이터 시작 인덱스
+                    var dataIndex = (categoryIndex - 1) * categoryClassView;
+
+                    //추가할 데이터 검색
+                    for(var i = dataIndex ; i < (dataIndex + categoryClassView)  ; i++)
+                    {
+                        if(i >= listCategorySelectedClass.length)
+                        {
+                            break;
+                        }
+
+                        listAddClassHtml += getHostHtml(listCategorySelectedClass[i]);
+                    }
+
+                    //더보기 버튼 갱신
+                    refreshAddClassBtn();
+
+                    //데이터 추가
+                    $("#hostWrap").append(listAddClassHtml);
+
+                    //인덱스 증가
+                    categoryIndex += 1;
+                }
+
+                function refreshAddClassBtn()
+                {
+                    //하단 더보기 버튼 자동화
+                    if(listCategorySelectedClass.length < categoryIndex * categoryClassView)
+                    {
+                        $(".commonViewMoreBtn").css("display", "none");
+                    }
+                    else
+                    {
+                        $(".commonViewMoreBtn").css("display", "");
+                    }
+                }
+
+                addNewHost();
+
+                addPopularHost();
+
+                addNearHost();
+
+                appendCategoryClass();
+                //   var usersJson = <%-JSON.stringify(listUser) %>;
+                //   console.log(usersJson);
+            </script>
+        </div>
+    </body>
+</html>

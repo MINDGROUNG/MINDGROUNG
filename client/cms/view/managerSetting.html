@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <%-include common/commonHead.html%>
+    <body>
+        <%-include common/commonHeader.html%>
+        <%- include ./modal.html%>
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+        <!-- START CONTENT -->
+        <div class="content dashboard">
+            <!-- Start Page Header -->
+            <div class="page-header">
+                <h1 class="title">
+                    <a style="color: #fff;">설정</a>
+                    <span style="display: inline-block; margin: 0 15px;"><i class="xi-angle-right-min"></i></span>
+                    <a href="/admin/managerSetting" style="color: #fff;">관리자 설정</a>
+                </h1>
+                <!-- End Page Header Right Div -->
+            </div>
+            <!-- START CONTAINER -->
+            <div class="container-default">
+                <!-- 테이블 들어가는 것들은 클래스명에 dashboard dataList 꼭 들어가야함 -->
+                <div class="row dashboard dataList">
+                    <div class="col-md-12">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                            <h3 class="color4 title-m-bd" style="margin: 0;">
+                                관리자 계정 리스트
+                            </h3>
+                            <button class="btn btn-primary" style="background: #7548f5;" onclick="location.href='/admin/managerSettingDetail'">
+                                신규 관리자 추가
+                            </button>
+                        </div>
+                        <div class="panel-body table-responsive">
+                            <table id="example" class="table display">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>배너 타이틀​</th>
+                                        <th>신규 가입</th>
+                                        <th>링크</th>
+                                        <th>게시</th>
+                                        <th>생성 시간</th>
+                                        <th>삭제/편집</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>509​</td>
+                                        <td>배너 타이틀​</td>
+                                        <td>www.mindground.co​</td>
+                                        <td>Age</td>
+                                        <td>
+                                            <div class="activeSwitches">
+                                                <input type="checkbox" id="chk1">
+                                                <label for="chk1">
+                                                    <span></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>2021.01.01 09:00:00​</td>
+                                        <td>
+                                            <button class="btn btn-default btn-icon" onclick="openModal('해당 관리자 계정을 삭제 하시겠습니까?​')" type="button" style="background: #eb5757;">
+                                                <i class="xi-trash"></i>
+                                            </button>
+                                            <button class="btn btn-default btn-icon" type="button" style="background: #7548f5;">
+                                                <i class="xi-pen"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>509​</td>
+                                        <td>배너 타이틀​</td>
+                                        <td>www.mindground.co​</td>
+                                        <td>Age</td>
+                                        <td>
+                                            <div class="activeSwitches">
+                                                <input type="checkbox" id="chk2" checked>
+                                                <label for="chk2">
+                                                    <span></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>2021.01.01 09:00:00​</td>
+                                        <td>
+                                            <button class="btn btn-default btn-icon" onclick="openModal('해당 관리자 계정을 삭제 하시겠습니까?​')" type="button" style="background: #eb5757;">
+                                                <i class="xi-trash"></i>
+                                            </button>
+                                            <button class="btn btn-default btn-icon" type="button" style="background: #7548f5;">
+                                                <i class="xi-pen"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- <div class="panel panel-default">
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <%-include common/commonFooter.html%>
+        </div>
+        <!-- End Content -->
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+        <%-include common/commonScript.html%>
+        <script>
+        ///////////데이터 테이블//////////////
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'excel', 'print'
+                ]
+            });
+        });
+        ///////////데이터 테이블//////////////
+        </script>
+    </body>
+</html>

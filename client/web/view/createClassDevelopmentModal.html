@@ -1,0 +1,829 @@
+<div class="modal modal18">
+    <div>
+        <div class="xBtn">
+            <button onclick="customModalClose(18)">
+                <i class="xi-close"></i>
+            </button>
+        </div>
+        <div id="allContentsWrap">
+            <!-- 스크립트로 콘텐츠 들어옴 -->
+    </div>
+</div>
+<!-- <script src="/web/js/createClassDevelopmentModal.js"></script> -->
+<script>
+//타입선택 첫 화면
+var typeListWrap = "";
+typeListWrap += '<div class="typeListWrap">';
+typeListWrap += '<div class="title">';
+typeListWrap += '<h3>';
+typeListWrap += '<%=translation.openClass.Type_of_Class_Contents%>';
+typeListWrap += '</h3>';
+typeListWrap += '<span>';
+typeListWrap += '<%=translation.openClass.Please_choose_the_content_type_that_is_appropriate_for_your_class%>';
+typeListWrap += '</span>';
+typeListWrap += '</div>';
+typeListWrap += '<div class="contents">';
+typeListWrap += '<div class="contentsTypeBtn type-video">';
+typeListWrap += '<div class="top">';
+typeListWrap += '<div class="icon"></div>';
+typeListWrap += '<h4><%=translation.openClass.Video_Contents%></h4>';
+typeListWrap += '</div>';
+typeListWrap += '<div class="bottom">';
+typeListWrap += '<input type="file" id="videoContents" accept="video/*">';
+typeListWrap += '<label for="videoContents">';
+typeListWrap += '<img src="/web/img/ICN_UPLOAD.png" alt="">';
+typeListWrap += '<strong><%=translation.openClass.File_Upload%></strong>';
+typeListWrap += '</label>';
+typeListWrap += '</div>';
+typeListWrap += '</div>';
+typeListWrap += '<div class="contentsTypeBtn type-audio">';
+typeListWrap += '<div class="top">';
+typeListWrap += '<div class="icon"></div>';
+typeListWrap += '<h4><%=translation.openClass.Audio_Contents%></h4>';
+typeListWrap += '</div>';
+typeListWrap += '<div class="bottom">';
+typeListWrap += '<input type="file" id="audioContents">';
+typeListWrap += '<label for="audioContents">';
+typeListWrap += '<img src="/web/img/ICN_UPLOAD.png" alt="">';
+typeListWrap += '<strong><%=translation.openClass.File_Upload%></strong>';
+typeListWrap += '</label>';
+typeListWrap += '</div>';
+typeListWrap += '</div>';
+typeListWrap += '<div class="contentsTypeBtn type-reading">';
+typeListWrap += '<div class="top">';
+typeListWrap += '<div class="icon"></div>';
+typeListWrap += '<h4><%=translation.openClass.Reading_Contents%></h4>';
+typeListWrap += '</div>';
+typeListWrap += '<div class="bottom">';
+typeListWrap += '<button class="selectContetnts" data-num="0"><%=translation.loginAndJoin.Select%></button>';
+typeListWrap += '</div>';
+typeListWrap += '</div>';
+typeListWrap += '<div class="contentsTypeBtn type-quiz">';
+typeListWrap += '<div class="top">';
+typeListWrap += '<div class="icon"></div>';
+typeListWrap += '<h4><%=translation.openClass.Quiz%></h4>';
+typeListWrap += '</div>';
+typeListWrap += '<div class="bottom">';
+typeListWrap += '<button class="selectContetnts" data-num="1" onclick ="showContents(\'quiz\')"><%=translation.loginAndJoin.Select%></button>';
+typeListWrap += '</div>';
+typeListWrap += '</div>';
+typeListWrap += '<div class="contentsTypeBtn type-survey">';
+typeListWrap += '<div class="top">';
+typeListWrap += '<div class="icon"></div>';
+typeListWrap += '<h4><%=translation.openClass.Survey%></h4>';
+typeListWrap += '</div>';
+typeListWrap += '<div class="bottom">';
+typeListWrap += '<button class="selectContetnts" data-num="2" onclick ="showContents(\'survey\')"><%=translation.loginAndJoin.Select%></button>';
+typeListWrap += '</div>';
+typeListWrap += '</div>';
+typeListWrap += '<div class="contentsTypeBtn type-discussion">';
+typeListWrap += '<div class="top">';
+typeListWrap += '<div class="icon"></div>';
+typeListWrap += '<h4><%=translation.openClass.Discussion_Board%></h4>';
+typeListWrap += '</div>';
+typeListWrap += '<div class="bottom">';
+typeListWrap += '<button class="selectContetnts" data-num="3"><%=translation.loginAndJoin.Select%></button>';
+typeListWrap += '</div>';
+typeListWrap += '</div>';
+typeListWrap += '<div class="contentsTypeBtn type-live">';
+typeListWrap += '<div class="top">';
+typeListWrap += '<div class="icon"></div>';
+typeListWrap += '<h4><%=translation.openClass.LIVE%></h4>';
+typeListWrap += '</div>';
+typeListWrap += '<div class="bottom">';
+typeListWrap += '<button class="selectContetnts" data-num="4"><%=translation.loginAndJoin.Select%></button>';
+typeListWrap += '</div>';
+typeListWrap += '</div>';
+typeListWrap += '</div>';
+typeListWrap += '</div>';
+
+
+function showContents(contents){
+    var contentHtml = '';
+    if(contents=='quiz'){
+        contentHtml= getQuizContentsHtml();
+        
+    }else if (contents = 'survey'){
+        contentHtml = getSurveyContentsHtml();
+    }
+    document.getElementById('allContentsWrap').innerHTML=contentHtml;
+}
+
+
+//비디오콘텐츠
+function videoContentHTML(file) {
+    var videoContent = "";
+    videoContent += '<div class="videoTypeWrap commonTypeWrap">';
+    videoContent += '<div class="title">';
+    videoContent += '<img src="/web/img/contentsIcon/1.png" alt="">';
+    videoContent += '<h3>';
+    videoContent += '<%=translation.openClass.Video_Contents%>';
+    videoContent += '</h3>';
+    videoContent += '</div>';
+    videoContent += '<div class="contents">';
+    videoContent += '<div class="basic">';
+    videoContent += '<h5>Basic info.</h5>';
+    videoContent += '<span class="getFileName">'+file+'</span>';
+    videoContent += '</div>';
+    videoContent += '<div class="contentTitle">';
+    videoContent += '<input type="text" id="videoContentTitle" placeholder="<%=translation.openClass.Video_Title%>" maxlength="100" onkeyup="limitText(\'videoContentTitle\', \'videoContentTitleCount\', 100)">';
+    videoContent += '<p>';
+    videoContent += '<span class="videoContentTitleCount">0</span>/100';
+    videoContent += '</p>';
+    videoContent += '</div>';
+    videoContent += '<div class="contentDesc">';
+    videoContent += '<textarea maxlength="500" id="videoContentDescText" placeholder="<%=translation.openClass.Video_Description%>" onkeyup="limitText(\'videoContentDescText\', \'videoContentDescCount\', 500)"></textarea>';
+    videoContent += '<p>';
+    videoContent += '<span class="videoContentDescCount">0</span>/500';
+    videoContent += '</p>';
+    videoContent += '</div>';
+    videoContent += '<div class="contentFileUpload">';
+    videoContent += '<div class="contentFileUpload-thumb">';
+    videoContent += '<div class="subTitle">';
+    videoContent += '<h5><%=translation.openClass.Thumbnail%></h5>';
+    videoContent += '<div>';
+    videoContent += '<input type="file" id="uploadThumb" onchange="fileThumbUpload(this, \'.contentFileUpload-thumb .getFile\')">';
+    videoContent += '<label for="uploadThumb">';
+    videoContent += '<%=translation.openClass.File_Upload%>';
+    videoContent += '</label>';
+    videoContent += '</div>';
+    videoContent += '</div>';
+    videoContent += '<div class="getFile" style="background-image: url();">';
+    videoContent += '</div>';
+    videoContent += '</div>';
+    videoContent += '<div class="contentFileUpload-scriptFile">'; //일단 주석 추후 오픈 style="display: none;"
+    videoContent += '<div class="subTitle">';
+    videoContent += '<h5><%=translation.openClass.Script_Files%></h5>';
+    videoContent += '</div>';
+    videoContent += '<ul class="fileList">';
+    videoContent += '<li>';
+    videoContent += '<span><%=translation.footer.Korean%></span>';
+    videoContent += '<div class="uploadBtn">';
+    videoContent += '<span class="getScriptFileName"></span>'
+    videoContent += '<input type="file" id="uploadBtn1" class="scriptUploadBtn">';
+    videoContent += '<label for="uploadBtn1">';
+    videoContent += '<%=translation.openClass.File_Upload%>';
+    videoContent += '</label>';
+    videoContent += '</div>';
+    videoContent += '</li>';
+    videoContent += '<li>';
+    videoContent += '<span><%=translation.footer.English%></span>';
+    videoContent += '<div class="uploadBtn">';
+    videoContent += '<span class="getScriptFileName"></span>'
+    videoContent += '<input type="file" id="uploadBtn2" class="scriptUploadBtn">';
+    videoContent += '<label for="uploadBtn2">';
+    videoContent += '<%=translation.openClass.File_Upload%>';
+    videoContent += '</label>';
+    videoContent += '</div>';
+    videoContent += '</li>';
+    videoContent += '<li>';
+    videoContent += '<span><%=translation.openClass.Japanese%></span>';
+    videoContent += '<div class="uploadBtn">';
+    videoContent += '<span class="getScriptFileName"></span>'
+    videoContent += '<input type="file" id="uploadBtn3" class="scriptUploadBtn">';
+    videoContent += '<label for="uploadBtn3">';
+    videoContent += '<%=translation.openClass.File_Upload%>';
+    videoContent += '</label>';
+    videoContent += '</div>';
+    videoContent += '</li>';
+    videoContent += '<li>';
+    videoContent += '<span>언어1</span>';
+    videoContent += '<div class="uploadBtn">';
+    videoContent += '<span class="getScriptFileName"></span>'
+    videoContent += '<input type="file" id="uploadBtn4" class="scriptUploadBtn">';
+    videoContent += '<label for="uploadBtn4">';
+    videoContent += '<%=translation.openClass.File_Upload%>';
+    videoContent += '</label>';
+    videoContent += '</div>';
+    videoContent += '</li>';
+    videoContent += '<li>';
+    videoContent += '<span>언어2</span>';
+    videoContent += '<div class="uploadBtn">';
+    videoContent += '<span class="getScriptFileName"></span>'
+    videoContent += '<input type="file" id="uploadBtn5" class="scriptUploadBtn">';
+    videoContent += '<label for="uploadBtn5">';
+    videoContent += '<%=translation.openClass.File_Upload%>';
+    videoContent += '</label>';
+    videoContent += '</div>';
+    videoContent += '</li>';
+    videoContent += '</ul>';
+    videoContent += '</div>';
+    videoContent += '</div>';
+    videoContent += '<div class="materialsFileUpload">';
+    videoContent += '<div class="subTitle">';
+    videoContent += '<h5><%=translation.openClass.Downloadable_Materials%></h5>';
+    videoContent += '<p>';
+    videoContent += '<%=translation.openClass.Please_upload_downloadable_file_for_class_participants_if_needed%>';
+    videoContent += '</p>';
+    videoContent += '</div>';
+    videoContent += '<div class="uploadBtn">';
+    videoContent += '<input type="file" id="uploadBtn6" multiple onchange="fileListUpload(this)">';
+    videoContent += '<label for="uploadBtn6">';
+    videoContent += '<%=translation.openClass.File_Upload%>';
+    videoContent += '</label>';
+    videoContent += '</div>';
+    videoContent += '<ul class="filesListWrap"></ul>'
+    videoContent += '</div>';
+    videoContent += '</div>';
+    videoContent += '</div>';
+    videoContent += '<div class="completeBtns">';
+    videoContent += '<button class="cancelBtn-on" onclick="customModalClose(18)">';
+    videoContent += '<%=translation.openClass.Cancel%>';
+    videoContent += '</button>';
+    videoContent += '<button class="saveBtn-on" onclick="makeContentList(\'video\')">';
+    videoContent += '<%=translation.dashBoard.Save%>';
+    videoContent += '</button>';
+    videoContent += '</div>';
+
+    return videoContent;
+}
+
+function videoAppendFiles(filesName) {
+    var videoContentFileList =  ""
+    videoContentFileList += '<li class="materialsFile-getFileName">';
+    videoContentFileList += '<div class="left">';
+    videoContentFileList += '<span class="materialsFile-fileName">'+filesName+'</span>';
+    videoContentFileList += '</div>';
+    videoContentFileList += '<div class="right">';
+    videoContentFileList += '<button class="delBtn-on"><%=translation.openClass.Cancel%></button>';
+    videoContentFileList += '</div>';
+    videoContentFileList += '</li>';
+    return videoContentFileList;
+}
+
+//오디오 콘텐츠
+function audioContentHTML(file) {
+    var audioContent = "";
+    audioContent += '<div class="audioTypeWrap commonTypeWrap">';
+    audioContent += '<div class="title">';
+    audioContent += '<img src="/web/img/contentsIcon/2.png" alt="">';
+    audioContent += '<h3>';
+    audioContent += '<%=translation.openClass.Audio_Contents%>';
+    audioContent += '</h3>';
+    audioContent += '</div>';
+    audioContent += '<div class="contents">';
+    audioContent += '<div class="basic">';
+    audioContent += '<h5>Basic info.</h5>';
+    audioContent += '<span class="getFileName">'+file+'</span>';
+    audioContent += '</div>';
+    audioContent += '<div class="contentTitle">';
+    audioContent += '<input type="text" id="audioContentTitle" placeholder="<%=translation.openClass.Audio_Title%>" maxlength="100" onkeyup="limitText(\'audioContentTitle\', \'audioContentTitleCount\', 100)">';
+    audioContent += '<p>';
+    audioContent += '<span class="audioContentTitleCount">0</span>/100';
+    audioContent += '</p>';
+    audioContent += '</div>';
+    audioContent += '<div class="contentDesc">';
+    audioContent += '<textarea maxlength="500" id="audioContentDesc" placeholder="<%=translation.openClass.Audio_Description%>" onkeyup="limitText(\'audioContentDesc\', \'audioContentDescCount\', 500)"></textarea>';
+    audioContent += '<p>';
+    audioContent += '<span class="audioContentDescCount">0</span>/500';
+    audioContent += '</p>';
+    audioContent += '</div>';
+    audioContent += '<div class="materialsFileUpload">';
+    audioContent += '<div class="subTitle">';
+    audioContent += '<h5><%=translation.openClass.Downloadable_Materials%></h5>';
+    audioContent += '<p>';
+    audioContent += '<%=translation.openClass.Please_upload_downloadable_file_for_class_participants_if_needed%>';
+    audioContent += '</p>';
+    audioContent += '</div>';
+    audioContent += '<div class="uploadBtn">';
+    audioContent += '<input type="file" id="uploadBtn1" multiple onchange="fileListUpload(this)" >';
+    audioContent += '<label for="uploadBtn1">';
+    audioContent += '<%=translation.openClass.File_Upload%>';
+    audioContent += '</label>';
+    audioContent += '</div>';
+    audioContent += '<ul class="filesListWrap">';
+    audioContent += '</ul>';
+    audioContent += '</div>';
+    audioContent += '</div>';
+    audioContent += '<div class="completeBtns">';
+    audioContent += '<button class="cancelBtn-on" onclick="customModalClose(18)">';
+    audioContent += '<%=translation.openClass.Cancel%>';
+    audioContent += '</button>';
+    audioContent += '<button class="saveBtn-on" onclick="makeContentList(\'audio\')">';
+    audioContent += '<%=translation.dashBoard.Save%>';
+    audioContent += '</button>';
+    audioContent += '</div>';
+    audioContent += '</div>';
+    // audioContent += '<div class="completeBtns">';
+    // audioContent += '<button class="cancelBtn-on" onclick="customModalClose(18)">';
+    // audioContent += '<%=translation.openClass.Cancel%>';
+    // audioContent += '</button>';
+    // audioContent += '<button class="saveBtn-on" onclick="makeContentList(\'audio\')">';
+    // audioContent += '<%=translation.dashBoard.Save%>';
+    // audioContent += '</button>';
+    // audioContent += '</div>';
+
+    
+    return audioContent;
+}
+
+function audioAppendFiles(filesName) {
+    var audioContentFileList =  ""
+    audioContentFileList += '<li class="materialsFile-getFileName">';
+    audioContentFileList += '<div class="left">';
+    audioContentFileList += '<span class="materialsFile-fileName">'+filesName+'</span>';
+    audioContentFileList += '</div>';
+    audioContentFileList += '<div class="right">';
+    audioContentFileList += '<button class="delBtn-on"><%=translation.openClass.Cancel%></button>';
+    audioContentFileList += '</div>';
+    audioContentFileList += '</li>';
+
+    return audioContentFileList;
+}
+
+//리딩콘텐츠
+var readingContent = "";
+readingContent += '<div class="readingTypeWrap commonTypeWrap">';
+readingContent += '<div class="title">';
+readingContent += '<img src="/web/img/contentsIcon/3.png" alt="">';
+readingContent += '<h3>';
+readingContent += '<%=translation.openClass.Reading_Contents%>';
+readingContent += '</h3>';
+readingContent += '</div>';
+readingContent += '<div class="contents">';
+readingContent += '<div class="basic">';
+readingContent += '<h5>Basic info.</h5>';
+readingContent += '<span class="getFileName"></span>';
+readingContent += '</div>';
+readingContent += '<div class="contentTitle">';
+readingContent += '<input type="text" placeholder="<%=translation.openClass.Reading_Title%>" id="readingContentTitle" maxlength="100" onkeyup="limitText(\'readingContentTitle\', \'readingContentTitleCount\', 100)">';
+readingContent += '<p>';
+readingContent += '<span class="readingContentTitleCount">0</span>/100';
+readingContent += '</p>';
+readingContent += '</div>';
+readingContent += '<div class="contentDesc">';
+readingContent += '<textarea maxlength="10000" placeholder="<%=translation.openClass.Reading_Content_direct_input_or_Upload_a_PDF_file%>" id="readingContentDesc" onkeyup="limitText(\'readingContentDesc\', \'readingContentDescCount\', 10000)"></textarea>';
+readingContent += '<p>';
+readingContent += '<span class="readingContentDescCount">0</span>/10000';
+readingContent += '</p>';
+readingContent += '</div>';
+readingContent += '<div class="pdfFileUpload">';
+readingContent += '<div class="uploadBtn">';
+readingContent += '<input type="file" id="readingUploadBtn1" accept=".pdf" onchange="readFileUploadCheckFunc(this)">';
+readingContent += '<label for="readingUploadBtn1">';
+readingContent += '<%=translation.openClass.File_Upload%>';
+readingContent += '</label>';
+readingContent += '</div>';
+readingContent += '<span id="pdfFileName">';
+readingContent += '<%=translation.openClass.PDF_only_PDF%>';
+readingContent += '</span>';
+readingContent += '</div>';
+readingContent += '<dl class="file" id="pdfFileUploadShowControlID" style="display: none;">';
+readingContent += '</dl>';
+readingContent += '<div class="materialsFileUpload">';
+readingContent += '<div class="subTitle">';
+readingContent += '<h5><%=translation.openClass.Downloadable_Materials%></h5>';
+readingContent += '<p>';
+readingContent += '<%=translation.openClass.Please_upload_downloadable_file_for_class_participants_if_needed%>';
+readingContent += '</p>';
+readingContent += '</div>';
+readingContent += '<div class="uploadBtn">';
+readingContent += '<input type="file" id="readingUploadBtn2" multiple onchange="fileListUpload(this)">';
+readingContent += '<label for="readingUploadBtn2">';
+readingContent += '<%=translation.openClass.File_Upload%>';
+readingContent += '</label>';
+readingContent += '</div>';
+readingContent += '<ul class="filesListWrap">';
+readingContent += '</ul>';
+readingContent += '</div>';
+readingContent += '</div>';
+readingContent += '<div class="completeBtns">';
+readingContent += '<button class="cancelBtn-on" onclick="customModalClose(18)">';
+readingContent += '<%=translation.openClass.Cancel%>';
+readingContent += '</button>';
+readingContent += '<button class="saveBtn-on" onclick="makeContentList(\'reading\')">';
+readingContent += '<%=translation.dashBoard.Save%>';
+readingContent += '</button>';
+readingContent += '</div>';
+readingContent += '</div>';
+// readingContent += '<div class="completeBtns">';
+// readingContent += '<button class="cancelBtn-on" onclick="customModalClose(18)">';
+// readingContent += '<%=translation.openClass.Cancel%>';
+// readingContent += '</button>';
+// readingContent += '<button class="saveBtn-on" onclick="makeContentList(\'reading\')">';
+// readingContent += '<%=translation.dashBoard.Save%>';
+// readingContent += '</button>';
+// readingContent += '</div>';
+
+function readingAppendFiles(filesName) {
+
+    var readingContentFileList = "";
+    readingContentFileList += '<li class="materialsFile-getFileName">';
+    readingContentFileList += '<div class="left">';
+    readingContentFileList += '<span class="materialsFile-fileName">'+filesName+'</span>';
+    readingContentFileList += '</div>';
+    readingContentFileList += '<div class="right">';
+    readingContentFileList += '<button class="delBtn-on"><%=translation.openClass.Cancel%></button>';
+    readingContentFileList += '</div>';
+    readingContentFileList += '</li>';
+
+    return readingContentFileList;
+}
+
+//퀴즈 컨텐츠
+// classObject.chapterList[chapterloc].chapterContent.quiz[quizLoc]
+//{"chapterList":[{"chapterNum":1, "chapterContent":[{"q":}]}, {"chapterNum":2, ...}]}
+function getQuizContentsHtml(){
+
+    var thisChapter =document.getElementsByClassName('chapterButton active')[0];
+    var chapterLoc = getChapterContentLoc(thisChapter);
+    //최초 생성일 경우 none, 아닐경우 quiz 리스트를 나열 하기 위해 반복
+    var quizList =''
+    if(chapterLoc!='none'){
+        quizList =makeQuizs();
+    }else{
+        quizList =makeQuizs();
+    }
+
+    var quizContent ='<div class="quizTypeWrap commonTypeWrap">'
+                    + '<div class="title">'
+                    + '<img src="/web/img/contentsIcon/4.png" alt="">'
+                    + '<h3>'
+                    + '<%=translation.openClass.Quiz%>'
+                    + '</h3>'
+                    + '</div>'
+                    + '<div class="contents">'
+                    + '<div class="basic">'
+                    + '<h5>Basic info.</h5>'
+                    + '</div>'
+                    + '<div class="contentTitle">'
+                    + '<input type="text" placeholder="<%=translation.openClass.Quiz_Title%>" id = "quizTitle" maxlength="100">'
+                    + '<p>'
+                    + '<span class="contentTitleCount">0</span>/100'
+                    + '</p>'
+                    + '</div>'
+                    + '<span class="onlyLine"></span>'
+                    + '<div class="quizContentWrap" id ="quizContentWrap">'
+                    +   quizList
+                    + '</div>'
+                    + '</div>'
+                    + '<div class="paddingScore">'
+                    + '<h4><%=translation.openClass.Passing_Score%></h4>'
+                    + '<input type="text" id="passingScore" onKeyup="this.value=this.value.replace(/[^-0-9]/g,\'\');" onblur="checkText(this,0)" onfocus="removeText(this,0)" maxlength="3">'
+                    + '</div>'
+                    + '</div>'
+                    + '</div>'
+                    + '<div class="completeBtns">'
+                    + '<button class="cancelBtn-on" onclick="customModalClose(18)">'
+                    + '<%=translation.openClass.Cancel%>'
+                    + '</button>'
+                    + '<button class="saveBtn-on" onclick="makeContentList(\'quiz\')">'
+                    + '<%=translation.dashBoard.Save%>'
+                    + '</button>'
+                    + '</div>';
+    return quizContent;
+
+}
+
+
+//classObject.chapterList=[ chapters ]
+//get chapter from classObject.chapterList if not saved yet make temp data on this
+//else if already have data, get that data
+function makeQuizs(){
+
+
+    var quizLists = document.getElementsByClassName('contentsQuizList')
+    var quizNum = quizLists.length+1;
+
+    console.log(`get quiz num ${quizNum}`);
+    var quizList = '';
+    for(var i =0; i<2; i++){
+       quizList += makeQuizList(quizNum, i+1, 'makeList');
+   }
+
+    var quizHtml = '<div class="quiz contentsQuizList" id="quizListNum'+quizNum+'">'
+                + '<div class="contentNum">'
+                + '<h6 class = "contentNumText"><%=translation.openClass.Quiz%> '+quizNum+'.</h6>'
+                + '<div>'
+                + '<span class="dot"></span>'
+                + '<span class="text"><%=translation.openClass.Correct_Answer%></span>'
+                + '</div>'
+                + '</div>'
+                + '<div class="quizTitle-point">'
+                + '<input type="text" id="quizTitle" name = "quizTitle'+quizNum+'" placeholder="<%=translation.openClass.Write_your_question_here%>">'
+                + '<input type="text" id="quizPoint" maxlength="3" placeholder="<%=translation.openClass.point%>"onKeyup="this.value=this.value.replace(/[^-0-9]/g,\'\');" onblur="checkText(this,1)" onfocus="removeText(this,1)">'
+                + '</div>'
+                + '<div class="answerList">'
+                + '<h4>'
+                + 'Answer'
+                + '</h4>'
+                + '<ul class="addOptionList" id ="quizOptionList'+quizNum+'">'
+                + quizList
+                + '</ul>'
+                + '</div>'
+                + '<div class="addOptionBtn">'
+                + '<div>'
+                + '<span><%=translation.openClass.Add_an_Option%></span>'
+                + '<div>'
+                + '<button class="delOptionBtn-on" onclick="deleteQuizList('+quizNum+')">'
+                + '-'
+                + '</button>'
+                + '<button class="addOptionBtn-on" onclick ="makeQuizList('+quizNum+', 0,\'addList\')" >'
+                + '+'
+                + '</button>'
+                + '</div>'
+                + '</div>'
+                + '</div>'
+                + '<div class="expText">'
+                + '<h4>'
+                + '<%=translation.openClass.Explanation_of_Quiz%>'
+                + '</h4>'
+                + '<textarea placeholder="<%=translation.openClass.Explanation_of_Quiz%>" id="quizExplanation'+quizNum+'"></textarea>'
+                + '</div>'
+                + '<div class="add-del-btns">'
+                + '<button class="delBtn-on" onclick="deleteContentQuiz(this)">'
+                + '-'
+                + '</button>'
+                + '<button class="addBtn-on" onclick="addContentQuiz(this)">'
+                + '+'
+                + '</button>'
+                + '</div>'
+
+
+    return quizHtml;
+
+ }
+
+//설문컨텐츠
+
+function getSurveyContentsHtml(){
+
+    var thisChapter =document.getElementsByClassName('chapterButton active')[0];
+    var chapterLoc = getChapterContentLoc(thisChapter);
+
+    var surveyList = makeSurvey('essaySurvey', 'none')
+    // var surveyList = makeSurvey('multipleSurvey', 'none');
+
+    var surveyContent = '<div class="surveyTypeWrap commonTypeWrap">'
+                    +'<div class="title">'
+                    +'<img src="/web/img/contentsIcon/5.png" alt="">'
+                    +'<h3>'
+                    +'<%=translation.openClass.Survey%>'
+                    +'</h3>'
+                    +'</div>'
+                    +'<div class="contents">'
+                    +'<div class="basic">'
+                    +'<h5>Basic info.</h5>'
+                    +'</div>'
+                    +'<div class="contentTitle">'
+                    +'<input type="text" id="surveyTitle" placeholder="<%=translation.openClass.Survey_Title%>" maxlength="100">'
+                    +'<p>'
+                    +'<span class="contentTitleCount">0</span>/100'
+                    +'</p>'
+                    +'</div>'
+                    +'<span class="onlyLine"></span>'
+                    +'<div class="surveyContentWrap" id ="surveyContentWrap">'
+                    + surveyList
+                    +'</div>'
+                    +'</div>'
+                    +'</div>'
+                    +'</div>'
+                    +'<div class="completeBtns">'
+                    +'<button class="cancelBtn-on" onclick="customModalClose(18)">'
+                    +'<%=translation.openClass.Cancel%>'
+                    +'</button>'
+                    +'<button class="saveBtn-on" onclick="makeContentList(\'survey\')">'
+                    +'<%=translation.dashBoard.Save%>'
+                    +'</button>'
+                    +'</div>';
+
+    return surveyContent;
+}
+
+
+function makeSurvey(type, chapterLoc){
+
+    var surveyList = document.getElementsByClassName('survey')
+    var surveyListNum = surveyList.length+1;
+    var surveyHtml = '';
+    var answerList='';
+    for(var i =0; i<2; i++){
+       answerList += makeAnswerList(surveyListNum, i+1, 'makeList');
+   }
+
+        surveyHtml  +='<div class="survey" id="surveyListNum'+surveyListNum+'">'
+                    +'<div class="contentNum">'
+                    +'<h6 class="contentNumText"><%=translation.openClass.Survey%> '+surveyListNum+'.</h6>'
+                    +'</div>'
+                    +'<div class="question">'
+                    +'<input type="text" class="questionInput" id="surveyTitle" name = "surveyTitle'+surveyListNum+'" placeholder="<%=translation.openClass.Write_your_question_here%>" name ="surveyTitle"'+surveyListNum+'">'
+                    +'</div>'
+
+    if(type=='multiple'){
+        surveyHtml +='<div class="answerList">'
+                    +'<h4>'
+                    +'<%=translation.openClass.Answer%>'
+                    +'</h4>'
+                    +'<ul class="addOptionList" id = "quizOptionList'+surveyListNum+'">'
+                    + answerList
+                    +'</ul>'
+                    +'</div>'
+                    +'<div class="addOptionBtn">'
+                    +'<div>'
+                    +'<span><%=translation.openClass.Add_an_Option%></span>'
+                    +'<div>'
+                    +'<button class="delAnswerBtn" onclick="deleteAnswerList('+surveyListNum+')">'
+                    +'-'
+                    +'</button>'
+                    +'<button class="addOptionBtn-on" onclick="makeAnswerList('+surveyListNum+', 0, \'addList\')">'
+                    +'+'
+                    +'</button>'
+                    +'</div>'
+                    +'</div>'
+                    +'</div>'
+    }else{
+        surveyHtml  +='<div class="answerList short" id ="answerShort"'+surveyListNum+'>'
+                    +'<h4>'
+                    +'<%=translation.openClass.Answer%>'
+                    +'</h4>'
+                    +'<ul class="addOptionList">'
+                    +'<li class="shortAnswer">'
+                    +'<%=translation.openClass.Answers_are_written_by_the_survey_participants_themselves%>'
+                    +'</li>'
+                    +'</ul>'
+    }
+    if(true){
+        surveyHtml +='<div class="add-del-btns">'
+                        +'<button class="delBtn-on" onclick="deleteContentSurvey(this)">'
+                        +'-'
+                        +'</button>'
+                        +'<button class="addBtn-on" onclick="addSurveyShow(this)">'
+                        +'+'
+                        +'</button>'
+                        +'<ul class="pickSurveyType" style="display:none" >'
+                        +'<li>'
+                        +'<button class="multipleBtn-on" onclick="addContentSurvey(\'multiple\', this)">'
+                        +'<%=translation.openClass.Multiple_Choice%>'
+                        +'</button>'
+                        +'</li>'
+                        +'<li>'
+                        +'<button class="shortBtn-on" onclick="addContentSurvey(\'essay\', this)", this>'
+                        +'<%=translation.openClass.Short_Answer%>'
+                        +'</button>'
+                        +'</li>'
+                        +'</ul>'
+                        +'</div>'
+        }
+        surveyHtml  +='</div>'
+    return surveyHtml;
+}
+
+
+
+function addSurveyShow(e){
+    e.parentElement.parentElement.querySelector('.pickSurveyType').style.display = '';
+    // document.getElementById('surveyAddButton').style.display = '';
+}
+function addSurveyHide(){
+    var surveyPickList = document.getElementsByClassName('pickSurveyType');
+    for(var i=0; i<surveyPickList.length;i++){
+        surveyPickList[i].style.display = 'none'
+    }
+}
+
+
+//토론컨텐츠
+var discussionContent = "";
+discussionContent += '<div class="discussionTypeWrap commonTypeWrap">';
+discussionContent += '<div class="title">';
+discussionContent += '<img src="/web/img/contentsIcon/6.png" alt="">';
+discussionContent += '<h3>';
+discussionContent += '<%=translation.openClass.Discussion_Board%>';
+discussionContent += '</h3>';
+discussionContent += '</div>';
+discussionContent += '<div class="contents">';
+discussionContent += '<div class="basic">';
+discussionContent += '<h5>Basic info.</h5>';
+discussionContent += '</div>';
+discussionContent += '<div class="contentTitle">';
+discussionContent += '<input type="text" placeholder="<%=translation.openClass.Discussion_Title%>" id="discussionTitle" maxlength="100" onkeyup="limitText(\'discussionTitle\', \'disContentTitleCount\', 100)">';
+discussionContent += '<p>';
+discussionContent += '<span class="disContentTitleCount">0</span>/100';
+discussionContent += '</p>';
+discussionContent += '</div>';
+discussionContent += '<div class="contentDesc">';
+discussionContent += '<textarea maxlength="3000" id="disGuidelines" placeholder="<%=translation.openClass.Please_describe_discussion_topics_rules_and_guidelines%>" onkeyup="limitText(\'disGuidelines\', \'disContentGuideCount\', 3000)"></textarea>';
+discussionContent += '<p>';
+discussionContent += '<span class="disContentGuideCount">0</span>/3000';
+discussionContent += '</p>';
+discussionContent += '</div>';
+discussionContent += '<div class="materialsFileUpload">';
+discussionContent += '<div class="subTitle">';
+discussionContent += '<h5><%=translation.openClass.Downloadable_Materials%></h5>';
+discussionContent += '<p>';
+discussionContent += '<%=translation.openClass.Please_upload_downloadable_file_for_class_participants_if_needed%>';
+discussionContent += '</p>';
+discussionContent += '</div>';
+discussionContent += '<div class="uploadBtn">';
+discussionContent += '<input type="file" id="disUploadBtn2"  multiple onchange="fileListUpload(this)">';
+discussionContent += '<label for="disUploadBtn2">';
+discussionContent += '<%=translation.openClass.File_Upload%>';
+discussionContent += '</label>';
+discussionContent += '</div>';
+discussionContent += '<ul class="filesListWrap">';
+discussionContent += '</ul>';
+discussionContent += '</div>';
+discussionContent += '</div>';
+discussionContent += '</div>';
+discussionContent += '<div class="completeBtns">';
+discussionContent += '<button class="cancelBtn-on" onclick="customModalClose(18)">';
+discussionContent += '<%=translation.openClass.Cancel%>';
+discussionContent += '</button>';
+discussionContent += '<button class="saveBtn-on" onclick="makeContentList(\'discussion\')">';
+discussionContent += '<%=translation.dashBoard.Save%>';
+discussionContent += '</button>';
+discussionContent += '</div>';
+
+function discussionAppendFiles(filesName) {
+
+    var disContentFileList = "";
+    disContentFileList += '<li class="materialsFile-getFileName">';
+    disContentFileList += '<div class="left">';
+    disContentFileList += '<span class="materialsFile-fileName">'+filesName+'</span>';
+    disContentFileList += '</div>';
+    disContentFileList += '<div class="right">';
+    disContentFileList += '<button class="delBtn-on"><%=translation.openClass.Delete%></button>';
+    disContentFileList += '</div>';
+    disContentFileList += '</li>';
+
+    return disContentFileList;
+}
+var optionNum = 3;
+
+$(document).on('click', '.selectContetnts', function() {
+    var chkNum = $(this).data('num');
+    if(chkNum == 0)
+    {
+        $(this).parents('#allContentsWrap').html(readingContent);
+        var readingUploadBtn1 = document.getElementById('readingUploadBtn1');
+        var readingUploadBtn2 = document.getElementById('readingUploadBtn2');
+        var pdfFileName = document.getElementById('pdfFileName');
+        // readingUploadBtn1.addEventListener('change', function(e) {
+        //     var fileName = e.currentTarget.files[0].name;
+        //     var fileType = e.currentTarget.files[0].type;
+        //     if(fileType != 'application/pdf') {
+        //         alert('PDF 파일만 업로드할 수 있습니다.')
+        //     }
+        //     else
+        //     {
+        //         pdfFileName.innerHTML = fileName;
+        //     }
+        // })
+        //파일리스트 업로드
+        // commonFilesUpload(readingUploadBtn2, readingAppendFiles);
+        
+    }
+    else if(chkNum == 1)
+    {
+        // $(this).parents('#allContentsWrap').html(quizContent);
+    }
+    else if(chkNum == 2)
+    {
+        // $(this).parents('#allContentsWrap').html(surveyContent);
+    }
+    else if(chkNum == 3)
+    {
+        $(this).parents('#allContentsWrap').html(discussionContent);
+        //파일리스트 업로드
+        // commonFilesUpload(disUploadBtn2, discussionAppendFiles);
+    }
+
+});
+
+function readFileUploadCheckFunc(e) {
+    document.getElementById('readingContentDesc').value = '';
+    document.getElementById('readingContentDesc').disabled = true;
+
+    var tempFilePath = $(e).val();
+    var findIndex = tempFilePath.lastIndexOf('\\');
+    var filePath = tempFilePath.substring(findIndex + 1, tempFilePath.length);
+
+    pdfShowHtml = `<dt class="fileName">${filePath}</dt><dd class="fileDelBtn"><button onclick="pdfDeleteFileListFunc('pdfFileUploadShowControlID')">Delete</button></dd>`;
+
+    document.getElementById('pdfFileUploadShowControlID').innerHTML = pdfShowHtml;
+    
+    document.getElementById('pdfFileUploadShowControlID').style.display = 'flex';
+}
+
+function pdfDeleteFileListFunc(target) {
+    document.getElementById('pdfFileUploadShowControlID').innerHTML = '';
+    document.getElementById('pdfFileUploadShowControlID').style.display = 'none';
+
+    document.getElementById('readingUploadBtn1').value = '';
+    document.getElementById('readingContentDesc').disabled = false;
+}
+
+// $(document).on('click', '.selectContetnts', function() {
+//     // input file에 change 이벤트 부여
+//     const inputFile = document.getElementById("videoContents");
+//     const video = document.getElementById("video");
+
+//     inputFile.addEventListener("change", function()
+//     {
+//         const file = inputFile.files[0];
+//         const videourl = URL.createObjectURL(file);
+//         video.setAttribute("src", videourl);
+//         video.play();
+//     })
+// });
+</script>

@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <%- include ./common/commonHead.html%>
+        <!--공통타이틀로 적용 할 경우 commonHead 안에 넣기-->
+    </head>
+    <body>
+        <div class="wrap gatheringMain commonLayout1">
+            <%- include ./common/commonHeader.html%>
+            <section class="marginAuto minHeight">
+                <article>
+                    <div class="mainTitle">
+                        <div>
+                            <h1>
+                                <%=translation.gathering.GATHERING%>
+                            </h1>
+                            <p>
+                                <%=translation.gathering.Meet_and_make_connections_to_grow_together%>
+                            </p>
+                            <div class="btnWrap">
+                                <button onclick="gatheringCheckLogin()">
+                                    <%=translation.gathering.Create_Gathering%>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideList">
+                        <div class="upcomingArea commonArea gatheringList">
+                            <div class="commonTitle">
+                                <h3><%=translation.loginAndJoin.Upcoming_Events%></h3>
+                            </div>
+                            <div class="slideWrap">
+                                <div class="btnArea1 commonBtnArea">
+
+                                </div>
+                                <div class="commonSlide upcomingSlide">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recommendArea commonArea gatheringList">
+                            <div class="commonTitle">
+                                <h3><%=translation.gathering.NEW_GATHERINGS%></h3>
+                            </div>
+                            <div class="slideWrap">
+                                <div class="btnArea2 commonBtnArea">
+
+                                </div>
+                                <div class="commonSlide recommendSlide">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="popularArea commonArea gatheringList">
+                            <div class="commonTitle">
+                                <h3><%=translation.gathering.POPULAR_GATHERINGS%></h3>
+                            </div>
+                            <div class="slideWrap">
+                                <div class="btnArea3 commonBtnArea">
+
+                                </div>
+                                <div class="commonSlide popularSlide">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nearbyArea commonArea gatheringList">
+                            <div class="commonTitle" id="nearH3">
+                                <h3><%=translation.gathering.NEARBY_GATHERINGS%></h3>
+                            </div>
+                            <div class="slideWrap">
+                                <div class="btnArea4 commonBtnArea">
+
+                                </div>
+                                <div class="commonSlide nearbySlide">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="commonList">
+                        <div class="title">
+                            <h2><%=translation.gathering.ALL_GATHERINGS%></h2>
+                        </div>
+                        <div class="categorys">
+                            <div class="cate1 sort">
+                                <button class="active"><%=translation.classManagement.Newest%></button>
+                                <button><%=translation.classManagement.Popular%></button>
+                            </div>
+                            <div class="cate2 filters">
+                                <div class="moFiltersBtn">
+                                    <button>
+                                        <img src="/web/img/icn_filter.png" alt="">
+                                    </button>
+                                </div>
+                                <ul class="btns">
+                                    <li class="moTitle">
+                                        <div class="top">
+                                            <img src="/web/img/down.png" alt="">
+                                        </div>
+                                        <div class="bottom">
+                                            <button class="moCloseBtn">
+                                                <img src="/web/img/ICN_CLOSE.png" alt="">
+                                            </button>
+                                            <h4>
+                                                Filters
+                                            </h4>
+                                        </div>
+                                    </li>
+                                    <li class="allFilter hostMainPage">
+                                        <div>
+                                            <input type="button" value="<%=translation.openClass.Category%>" class="filters-category filtersBtn">
+                                            </input>
+                                            <ul class="category-inner minWidth-230" id="categoryCategoryWrap">
+                                                <li class="moSubTitle">
+                                                    <h6><%=translation.openClass.Category%></h6>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="Practice_Group" data-ischeck="0" data-text="Practice_Group">
+                                                    <label for="Practice_Group">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.gathering.Practice_Group%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="Local_Friends" data-ischeck="0" data-text="Local_Friends">
+                                                    <label for="Local_Friends">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.gathering.Local_Friends%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="Class_Friends" data-ischeck="0" data-text="Class_Friends">
+                                                    <label for="Class_Friends">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.gathering.Class_Friends%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="Host_Learning" data-ischeck="0" data-text="Host_Learning">
+                                                    <label for="Host_Learning">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.gathering.Host_Learning%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="Mindful_Challenge_Group" data-ischeck="0" data-text="Mindful_Challenge_Group">
+                                                    <label for="Mindful_Challenge_Group">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.gathering.Mindful_Challenge_Group%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="Others" data-ischeck="0" data-text="Others">
+                                                    <label for="Others">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.gathering.Others%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li class="webBtn">
+                                                    <button class="resetBtn" onclick="resetCategory('category')"><%=translation.hostMain.Reset%></button>
+                                                    <button class="saveBtn" onclick="saveCategory('category')"><%=translation.hostMain.Save%></button>
+                                                </li>
+                                            </ul>
+                                            <div class="onlyFixed"></div>
+                                        </div>
+                                        <div>
+                                            <input type="button" value="<%=translation.classManagement.Keyword%>" class="filters-keyword filtersBtn">
+                                            </input>
+                                            <ul class="category-inner minWidth-200" id="categoryKeywordWrap">
+                                                <li class="moSubTitle">
+                                                    <h6><%=translation.classManagement.Keyword%></h6>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="Sleep" value="Sleep" data-ischeck="0" data-text="Sleep">
+                                                    <label for="Sleep">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.gathering.Sleep%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="Focus" value="Focus" data-ischeck="0" data-text="Focus">
+                                                    <label for="Focus">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.gathering.Focus%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="Study" value="Study" data-ischeck="0" data-text="Study">
+                                                    <label for="Study">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.gathering.Study%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="Relaxation" value="Relaxation" data-ischeck="0" data-text="Relaxation">
+                                                    <label for="Relaxation">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.gathering.Relaxation%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="Family" value="Family" data-ischeck="0" data-text="Family">
+                                                    <label for="Family">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.gathering.Family%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="Love" value="Love" data-ischeck="0" data-text="Love">
+                                                    <label for="Love">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.gathering.Love%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="Relationship" value="Relationship" data-ischeck="0" data-text="Relationship">
+                                                    <label for="Relationship">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.gathering.Relationship%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="Stress" value="Stress" data-ischeck="0" data-text="Stress">
+                                                    <label for="Stress">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.gathering.Stress%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="Balance" value="Balance" data-ischeck="0" data-text="Balance">
+                                                    <label for="Balance">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.gathering.Balance%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="Leadership" value="Leadership" data-ischeck="0" data-text="Leadership">
+                                                    <label for="Leadership">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.gathering.Leadership%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="Mental_health" value="Mental_health" data-ischeck="0" data-text="Mental_health">
+                                                    <label for="Mental_health">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.gathering.Mental_Health%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="Health" value="Health" data-ischeck="0" data-text="Health">
+                                                    <label for="Health">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.gathering.Health%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="Happiness" value="Happiness" data-ischeck="0" data-text="Happiness">
+                                                    <label for="Happiness">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.gathering.Happiness%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkBox" id="Self_Care" value="Self_Care" data-ischeck="0" data-text="Self_Care">
+                                                    <label for="Self_Care">
+                                                        <span class="box"></span>
+                                                        <span class="text">
+                                                            <%=translation.gathering.Self_Care%>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                                <li class="webBtn">
+                                                    <button class="resetBtn" onclick="resetCategory('keyword')"><%=translation.hostMain.Reset%></button>
+                                                    <button class="saveBtn" onclick="saveCategory('keyword')"><%=translation.hostMain.Save%></button>
+                                                </li>
+                                            </ul>
+                                            <div class="onlyFixed"></div>
+                                        </div>
+                                        <div>
+                                            <input type="button" value="<%=translation.classManagement.Fillters%>" class="filters-filters filtersBtn">
+                                            </input>
+                                            <ul class="category-inner-filter minWidth-540" id="categoryFiltersWrap">
+                                                <li class="titleArea">
+                                                    <h5>
+                                                        <%=translation.classManagement.Filters%>
+                                                    </h5>
+                                                    <button>
+                                                        <img src="/web/img/ICN_CLOSE.png" alt="">
+                                                    </button>
+                                                </li>
+                                                <li class="inputArea">
+                                                    <h6>
+                                                        <%=translation.gathering.Distance%>
+                                                    </h6>
+                                                    <div class="inputDistance">
+                                                        <div>
+                                                            <span>
+                                                                <%=translation.gathering.Show_result_within%>
+                                                            </span>
+                                                            <input type="text" placeholder="999">
+                                                            <span class="km">
+                                                                Km
+                                                            </span>
+                                                        </div>
+                                                        <div>
+                                                            <span class="of">
+                                                                <%=translation.gathering.of_Enter_the_Zip_code%>
+                                                            </span>
+                                                            <input type="text" placeholder="Enter the Zip code">
+                                                            <img src="/web/img/ICN_MYLOCATION.png" alt="">
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="inputArea">
+                                                    <h6>
+                                                        <%=translation.gathering.Number_of_members%>
+                                                    </h6>
+                                                    <div>
+                                                        <div class="chkWrap">
+                                                            <input type="radio" id="high1" name="chk1">
+                                                            <label for="high1">
+                                                                <span class="box"></span>
+                                                                <span class="text">
+                                                                    <%=translation.gathering.High_to_Low%>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="chkWrap">
+                                                            <input type="radio" id="low1" name="chk1">
+                                                            <label for="low1">
+                                                                <span class="box"></span>
+                                                                <span class="text">
+                                                                    <%=translation.gathering.Low_to_High%>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="inputArea">
+                                                    <h6>
+                                                        <%=translation.gathering.Number_of_events%>
+                                                    </h6>
+                                                    <div>
+                                                        <div class="chkWrap">
+                                                            <input type="radio" id="high2" name="chk2">
+                                                            <label for="high2">
+                                                                <span class="box"></span>
+                                                                <span class="text">
+                                                                    <%=translation.gathering.High_to_Low%>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="chkWrap">
+                                                            <input type="radio" id="low2" name="chk2">
+                                                            <label for="low2">
+                                                                <span class="box"></span>
+                                                                <span class="text">
+                                                                    <%=translation.gathering.Low_to_High%>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="webBtn">
+                                                    <button class="resetBtn" onclick="resetCategory('fiters')"><%=translation.hostMain.Reset%></button>
+                                                    <button class="saveBtn" onclick="saveCategory('filters')"><%=translation.hostMain.Save%></button>
+                                                </li>
+                                            </ul>
+                                            <div class="onlyFixed"></div>
+                                        </div>
+                                    </li>
+                                    <li class="moSaveBtn">
+                                        <div>
+                                            <button class="resetBtn"><%=translation.hostMain.Reset%></button>
+                                            <button class="saveBtn"><%=translation.hostMain.Save%></button>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="commonThumbList gatheringList" id="categoryGatheringList">
+                        </div>
+                        <div class="commonViewMoreBtn">
+                            <button class="gatheringsViewMoreBtn-on" onclick="appendCategoryGathering()">
+                                <strong><%=translation.gathering.View_More_Gatherings%></strong>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <%- include ./common/commonFooter.html%> <%- include ./common/commonScript.html%>
+            <script src="/web/js/tabEvent.js"></script>
+            <script>
+                var checkUser = <%- user ? JSON.stringify(user) : {} %>;
+                var listRawGatheringObject = <%-JSON.stringify(listGatheringObject)%>;
+                var listGatheringObject = [];
+
+                for(var i = 0 ; i < listRawGatheringObject.length ; i++)
+                {
+                    if(listRawGatheringObject[i].objectType == 'gathering') {
+                        listRawGatheringObject[i].classObject.gatheringId = listRawGatheringObject[i]._id;
+                        listRawGatheringObject[i].classObject.userUID = listRawGatheringObject[i].userUID;
+                        listRawGatheringObject[i].classObject.userName = listRawGatheringObject[i].userName;
+                        listRawGatheringObject[i].classObject.gatheringMember = listRawGatheringObject[i].gatheringMember;
+                        listRawGatheringObject[i].classObject.gatheringEvent = listRawGatheringObject[i].gatheringEvent;
+                        listGatheringObject.push(listRawGatheringObject[i].classObject);
+                    }
+                }
+
+                //실제 사용 될 데이터
+                var listCategorySelectedGathering = listGatheringObject;
+                //카테고리 검색 초기화
+                var mapListCategory = {};
+
+                mapListCategory.category = [];
+                mapListCategory.keyword = [];
+
+                var categoryIndex = 1; //인덱스 (자동화)
+                var categoryGatheringView = 8; //몇개씩 보여질 건지
+
+                $(window).on('load resize', function() {
+                    if($(this).innerWidth() <= 1279)
+                    {
+                        $('.upcomingSlide').filter('.slick-initialized').slick('unslick')
+                        $('.recommendSlide').filter('.slick-initialized').slick('unslick')
+                        $('.popularSlide').filter('.slick-initialized').slick('unslick')
+                        $('.nearbySlide').filter('.slick-initialized').slick('unslick')
+                    }
+                    else
+                    {
+                        //상단 슬라이드1
+                        $('.upcomingSlide').not('.slick-initialized').slick({
+                            slidesToShow: 3,
+                            slidesToScroll: 1,
+                            arrows: true,
+                            prevArrow : "<button type='button' class='prev slickBtn'><i class='xi-angle-left-thin'></i></button>",
+                            nextArrow : "<button type='button' class='next slickBtn'><i class='xi-angle-right-thin'></i></button>",
+                            appendArrows: '.btnArea1',
+                            dots: false,
+                            autoplay: false,
+                            infinite: true,
+                            speed: 500,
+                        })
+                        //상단 슬라이드2
+                        $('.recommendSlide').not('.slick-initialized').slick({
+                            slidesToShow: 4,
+                            slidesToScroll: 1,
+                            arrows: true,
+                            prevArrow : "<button type='button' class='prev slickBtn'><i class='xi-angle-left-thin'></i></button>",
+                            nextArrow : "<button type='button' class='next slickBtn'><i class='xi-angle-right-thin'></i></button>",
+                            appendArrows: '.btnArea2',
+                            dots: false,
+                            autoplay: false,
+                            infinite: true,
+                            speed: 500,
+                        })
+                        //상단 슬라이드3
+                        $('.popularSlide').not('.slick-initialized').slick({
+                            slidesToShow: 4,
+                            slidesToScroll: 1,
+                            arrows: true,
+                            prevArrow : "<button type='button' class='prev slickBtn'><i class='xi-angle-left-thin'></i></button>",
+                            nextArrow : "<button type='button' class='next slickBtn'><i class='xi-angle-right-thin'></i></button>",
+                            appendArrows: '.btnArea3',
+                            dots: false,
+                            autoplay: false,
+                            infinite: true,
+                            speed: 500,
+                        })
+                        
+                        nearSlickInit();
+                    }
+                });
+
+                //상단 슬라이드4
+                function nearSlickInit()
+                {
+                    $('.nearbySlide').not('.slick-initialized').slick({
+                        slidesToShow: 4,
+                        slidesToScroll: 1,
+                        arrows: true,
+                        prevArrow : "<button type='button' class='prev slickBtn'><i class='xi-angle-left-thin'></i></button>",
+                        nextArrow : "<button type='button' class='next slickBtn'><i class='xi-angle-right-thin'></i></button>",
+                        appendArrows: '.btnArea4',
+                        dots: false,
+                        autoplay: false,
+                        infinite: true,
+                        speed: 500,
+                    })
+                }
+
+                //슬라이드 썸네일wrap 모바일에서 가로크기 변경
+                function widthResize(thumb, thumbCount, thumbWrap) {
+                    var thumbWidth = $('.'+thumb+'').width();
+                    var thumbWidthCount = $(''+thumbCount+''); 
+                    $(''+thumbWrap+'').width(((thumbWidth + 15) * thumbWidthCount.length) + 15);
+                }
+                
+                $(function() {
+                    $(window).on('load resize', function() {
+                        if($(this).innerWidth() <= 1279) {
+                            widthResize('thumb', '.upcomingSlide > .thumb', '.upcomingSlide');
+                            widthResize('thumb', '.recommendSlide > .thumb', '.recommendSlide');
+                            widthResize('thumb', '.popularSlide > .thumb', '.popularSlide');
+                            widthResize('thumb', '.nearbySlide > .thumb', '.nearbySlide');
+                        }
+                        else
+                        {
+                            $('.upcomingSlide').width('auto');
+                            $('.recommendSlide').width('auto');
+                            $('.popularSlide').width('auto');
+                            $('.nearbySlide').width('auto');
+                        }
+                    })
+                })
+
+                //카테고리 리셋
+                function resetCategory(category)
+                {
+                    var wrapId = '';
+
+                    switch(category)
+                    {
+                        case 'category': wrapId = 'categoryCategoryWrap'; break;
+                        case 'keyword': wrapId = 'categoryKeywordWrap'; break;
+                        case 'filters': wrapId = 'categoryFiltersWrap'; break;
+                    }
+
+                    var listInput = $("#"+wrapId).find("input");
+
+                    for(var i = 0 ; i < listInput.length ; i++)
+                    {
+                        $(listInput[i]).attr("checked", false);
+                    }
+                }
+
+                //카테고리 검색 버튼
+                function saveCategory(category)
+                {
+                    //필터링 여부 상태
+                    var isMemberInput = false;
+                    var isEventsInput = false;
+
+                    var listMemberFilter = [];
+                    var listEventsFilter = [];
+                    
+                    //검색 카테고리 초기화
+                    mapListCategory[category] = [];
+                    
+                    //wrap id 찾기
+                    var wrapId = '';
+                    switch(category)
+                    {
+                        case 'category': wrapId = 'categoryCategoryWrap'; break;
+                        case 'keyword': wrapId = 'categoryKeywordWrap'; break;
+                        case 'filters': wrapId = 'categoryFiltersWrap'; break;
+                    }
+
+                    //입력되는 input 확인
+                    var listInput = $("#"+wrapId).find("input");
+                    
+                    //일반적인 카테고리 검색
+                    if(category != 'filters')
+                    {
+                        for(var i = 0 ; i < listInput.length ; i++)
+                        {
+                            if($(listInput[i]).is(":checked") == true)
+                            {
+                                $(listInput[i]).attr("data-ischeck", "1");
+                                $(listInput[i]).data("ischeck", "1");
+
+                                mapListCategory[category].push($(listInput[i]).data("text"));
+                            }
+                            else
+                            {
+                                $(listInput[i]).attr("data-ischeck", "0");
+                                $(listInput[i]).data("ischeck", "0");
+                            }
+                        }
+                    }
+                    //필터 일 경우
+                    else
+                    {
+                        //---------------------------
+                        //레벨 필터 확인
+                        var listlevelInput = $("#"+wrapId).find("input[name='levelInput']");
+
+                        for(var i = 0 ; i < listlevelInput.length ; i++)
+                        {
+                            if($(listlevelInput[i]).is(":checked") == true)
+                            {
+                                $(listlevelInput[i]).attr("data-ischeck", "1");
+                                $(listlevelInput[i]).data("ischeck", "1");
+
+                                //예외처리
+                                if($(listlevelInput[i]).data("text") != 'All')
+                                {
+                                    isLevelInput = true;
+                                    listLevelFilter.push($(listlevelInput[i]).data("text"));
+                                }
+                            }
+                            else
+                            {
+                                $(listlevelInput[i]).attr("data-ischeck", "0");
+                                $(listlevelInput[i]).data("ischeck", "0");
+                            }
+                        }
+                        //---------------------------
+                        
+
+
+                        //---------------------------
+                        //호스트 필터 확인
+                        var listHostInput = $("#"+wrapId).find("input[name='hostInput']");
+
+                        for(var i = 0 ; i < listHostInput.length ; i++)
+                        {
+                            if($(listHostInput[i]).is(":checked") == true)
+                            {
+                                isHostInput = true;
+
+                                $(listHostInput[i]).attr("data-ischeck", "1");
+                                $(listHostInput[i]).data("ischeck", "1");
+
+                                listHostFilter.push($(listHostInput[i]).data("text"));
+                            }
+                            else
+                            {
+                                $(listHostInput[i]).attr("data-ischeck", "0");
+                                $(listHostInput[i]).data("ischeck", "0");
+                            }
+                        }
+                         //---------------------------
+
+
+
+                        //---------------------------
+                        //호스트 필터 확인
+                        var listFormatInput = $("#"+wrapId).find("input[name='formatInput']");
+
+                        for(var i = 0 ; i < listFormatInput.length ; i++)
+                        {
+                            if($(listFormatInput[i]).is(":checked") == true)
+                            {
+                                isFormatInput = true;
+
+                                $(listFormatInput[i]).attr("data-ischeck", "1");
+                                $(listFormatInput[i]).data("ischeck", "1");
+
+                                listFormatFilter.push($(listFormatInput[i]).data("text"));
+                            }
+                            else
+                            {
+                                $(listFormatInput[i]).attr("data-ischeck", "0");
+                                $(listFormatInput[i]).data("ischeck", "0");
+                            }
+                        }
+                         //---------------------------
+                    }
+
+                    //데이터 필터링
+                    var listFilterData = listGatheringObject;
+
+                    var isSelectedCategory = false;
+                    //필터링 하는건지 확인
+                    for (var key in mapListCategory)
+                    {
+                        if(mapListCategory[key].length > 0)
+                        {
+                            isSelectedCategory = true;
+
+                            if(key == 'category')
+                            {
+                                listFilterData = listFilterData.filter((gatheringObject) =>{
+                                    return mapListCategory[key].includes(gatheringObject.gatheringCategory);
+                                });
+                            }
+                            else if(key == 'keyword')
+                            {
+                                listFilterData = listFilterData.filter((gatheringObject) =>{
+                                    if(Object.keys(gatheringObject.keywords).length == 0)
+                                    {
+                                        return false;
+                                    }
+
+                                    return mapListCategory[key].some((keyword) => { 
+                                        var isContainKeyword = false;
+                                        for(var key in gatheringObject.keywords)
+                                        {
+                                            if(keyword == gatheringObject.keywords[key])
+                                            {
+                                                return true;
+                                            }
+                                        }
+                                        return false;
+                                    
+                                    });
+                                });
+                            }
+                        }
+                    }
+
+                    //필터링된 데이터 선택
+                    listCategorySelectedGathering = listFilterData;
+
+                    //데이터 클리어
+                    resetCategoryGathering();
+
+                    //데이터 추가
+                    appendCategoryGathering();
+                }
+                
+                 //카테고리 클래스 리셋
+                 function resetCategoryGathering()
+                {
+                    categoryIndex = 1;
+                    $("#categoryGatheringList").html("");
+
+                    //더보기 버튼 갱신
+                    refreshAddGatheringBtn();
+                }
+
+                //데이터 추가
+                function appendCategoryGathering()
+                {
+                    var listAddGatheringHtml = '';
+
+                    //데이터 시작 인덱스
+                    var dataIndex = (categoryIndex - 1) * categoryGatheringView;
+
+                    //추가할 데이터 검색
+                    for(var i = dataIndex; i < (dataIndex + categoryGatheringView); i++)
+                    {
+                        if(i >= listCategorySelectedGathering.length)
+                        {
+                            break;
+                        }
+
+                        listAddGatheringHtml += addCategoryGathering(listCategorySelectedGathering[i]);
+                    }
+
+                    //더보기 버튼 갱신
+                    refreshAddGatheringBtn();
+
+                    //데이터 추가
+                    $("#categoryGatheringList").append(listAddGatheringHtml);
+
+                    //인덱스 증가
+                    categoryIndex += 1;
+                }
+
+                function refreshAddGatheringBtn()
+                {
+                    //하단 더보기 버튼 자동화
+                    if(listCategorySelectedGathering.length < categoryIndex * categoryGatheringView)
+                    {
+                        $(".commonViewMoreBtn").css("display", "none");
+                    }
+                    else
+                    {
+                        $(".commonViewMoreBtn").css("display", "");
+                    }
+                }
+
+                //새 클래스 추가(신규 클래스)
+                function addRecommendedGathering()
+                {
+                    var RecommendedGatheringCount = 10;
+
+                    var lastindex = RecommendedGatheringCount > listGatheringObject.length ? listGatheringObject.length : RecommendedGatheringCount;
+                    //10명 컷
+                    var listRecommendedGathering = listGatheringObject.slice(0, lastindex);
+
+                    var gatheringHtmlText = '';
+
+                    for(var i = 0 ; i < lastindex ; i++)
+                    {
+                        gatheringHtmlText += addCategoryGathering(listRecommendedGathering[i]);
+                    }
+
+                    $(".recommendSlide").append(gatheringHtmlText);
+                }
+
+                // 테스트용 : 로컬에 이미지가 없을시 더미 이미지로 src 변경
+                function checkImg(target) 
+                {
+                    $(target).parent().css({"background-image" : "url(./web/img/gatheringMain/thumbDummy.png)"});
+                }
+                function addCategoryGathering(listGathering, type)
+                {
+                    var gatheringHtml = `
+                        <div class="thumb">
+                            <a href="gatheringDetail/${listGathering.gatheringId}" style="background-image: url('${listGathering.mainImage[0].filePath}');">
+                                <img src=".${listGathering.mainImage[0].filePath}" onerror="checkImg(this)" style="display: none;">
+                                <div class="classInfo">
+                                    <div class="hover-ring" data-host="${listGathering.userName}">
+                                        <img src="/web/img/userRing/${listGathering.userUID}.png" alt="">
+                                    </div>
+                                    <div class="infoText">
+                                        <h6 class="title">
+                                            ${listGathering.gatheringName}
+                                        </h6>
+                                        <p class="detail">
+                                            ${listGathering.userName}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="viewCount">
+                                    <div>
+                                        <div class="rings">
+                                            <img class="smallRing" src="/web/img/main/slide/IMG_1.png" alt="">
+                                            <img class="smallRing" src="/web/img/main/slide/IMG_1.png" alt="">
+                                            <img class="smallRing" src="/web/img/main/slide/IMG_1.png" alt="">
+                                        </div>
+                                        <span>999</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    `;
+                    
+                    return gatheringHtml;
+                }
+
+                function addCategoryGathering2(listGathering, distance) {
+                    if(distance >= 1) {
+                        distance = Math.floor(distance);
+                    } else {
+                        distance = distance.toFixed(2)
+                    }
+
+                    var gatheringHtml = `
+                        <div class="thumb">
+                            <a href="gatheringDetail/${listGathering.gatheringId}" style="background-image: url('${listGathering.gatheringEventMainImage[0].filePath}');">
+                                <img src=".${listGathering.gatheringEventMainImage[0].filePath}" onerror="checkImg(this)" style="display: none;">
+                                <strong class="distanceInfo">
+                                            ${distance}km
+                                        </strong>
+                                <div class="classInfo">
+                                    <div class="hover-ring" data-host="${listGathering.eventCreatorName}">
+                                        <img src="/web/img/userRing/${listGathering.eventCreatorUID}.png" alt="">
+                                    </div>
+                                    <div class="infoText">
+                                        <h6 class="title">
+                                            ${listGathering.gatheringEventName}
+                                        </h6>
+                                        <p class="detail">
+                                            ${listGathering.gatheringEventName}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="viewCount">
+                                    <div>
+                                        <div class="rings">
+                                            <img class="smallRing" src="/web/img/main/slide/IMG_1.png" alt="">
+                                            <img class="smallRing" src="/web/img/main/slide/IMG_1.png" alt="">
+                                            <img class="smallRing" src="/web/img/main/slide/IMG_1.png" alt="">
+                                        </div>
+                                        <span>999</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    `;
+                    
+                    return gatheringHtml;
+                }
+                
+                //새 클래스 추가
+                function addNewGathering()
+                {
+                    var newGatheringCount = 10;
+
+                    var lastindex = newGatheringCount > listGatheringObject.length ? listGatheringObject.length : newGatheringCount;
+                    //10명 컷
+                    var listNewGathering = listGatheringObject.slice(0, lastindex);
+
+                    var gatheringHtmlText = '';
+
+                    for(var i = 0 ; i < lastindex ; i++)
+                    {
+                        gatheringHtmlText += addCategoryGathering(listNewGathering[i]);
+                    }
+
+                    $(".newClassSlide").append(gatheringHtmlText);
+                }
+
+                //인기 클래스
+                function addPopularGathering()
+                {
+                    var popularGatheringCount = 10;
+
+                    var lastindex = popularGatheringCount > listGatheringObject.length ? listGatheringObject.length : popularGatheringCount;
+                    //10명 컷
+                    var listNewGathering = listGatheringObject.slice(0, lastindex);
+
+                    var gatheringHtmlText = '';
+
+                    for(var i = 0 ; i < lastindex ; i++)
+                    {
+                        gatheringHtmlText += addCategoryGathering(listNewGathering[i]);
+                    }
+
+                    $(".popularSlide").append(gatheringHtmlText);
+                }
+
+                Math.radians = function(degrees) {
+                    return degrees * Math.PI / 180;
+                };
+
+                //인근 클래스
+                function addNearGathering(userLatitude, userLongitude)
+                {
+                    $('.nearbySlide').filter('.slick-initialized').slick('unslick');
+
+                    var tempListGatheringObject = [];
+                    var distanceListGatheringObject = [];
+                    for(var i = 0; i < listRawGatheringObject.length; i++)
+                    {
+                        for(var j = 0; j < listRawGatheringObject[i].gatheringEvent.length; j++) {
+                            if(listRawGatheringObject[i].gatheringEvent[j].gatheringEventOnline === 'Offline' && listRawGatheringObject[i].gatheringEvent[j].gatheringApproved == 'approve')
+                            {
+                                tempListGatheringObject.push(listRawGatheringObject[i].gatheringEvent[j]);
+                            }
+                        }
+                    }
+                    
+                    var distanceArray = [];
+                    // 반경 5km 클래스 체크
+                    for(var i = 0; i < tempListGatheringObject.length; i++)
+                    {
+                        var distance = (6371 * Math.acos( Math.cos( Math.radians(userLatitude) )
+                            * Math.cos( Math.radians(tempListGatheringObject[i].gatheringOfflinePlaceLatitude) )
+                            * Math.cos( Math.radians(tempListGatheringObject[i].gatheringOfflinePlaceLongitude) - Math.radians(userLongitude) )
+                            + Math.sin( Math.radians(userLatitude) )
+                            * Math.sin( Math.radians(tempListGatheringObject[i].gatheringOfflinePlaceLatitude) ) ) );
+                        
+                        if(distance < 5)
+                        {
+                            distanceListGatheringObject.push(tempListGatheringObject[i]);
+                            distanceArray.push(distance);
+                        }
+                    }
+
+                    var nearGatheringCount = 10;
+
+                    var lastindex = nearGatheringCount > distanceListGatheringObject.length ? distanceListGatheringObject.length : nearGatheringCount;
+                    // 10명 컷
+                    var listNewGathering = distanceListGatheringObject.slice(0, lastindex);
+
+                    var gatheringHtmlText = '';
+
+                    for(var i = 0 ; i < lastindex ; i++)
+                    {
+                        gatheringHtmlText += addCategoryGathering2(listNewGathering[i], distanceArray[i]);
+                    }
+
+                    $(".nearbySlide").append(gatheringHtmlText);
+                    nearbySlideLength = $('.nearbySlide > .thumb').length;
+                    
+                    nearSlickInit();
+                    document.getElementById('nearH3').style.display = 'block';
+                }
+                
+                function getDateToday() {
+                    var todayeNowDate = new Date();
+                    var todayeNowYear = todayeNowDate.getFullYear();
+                    var todayeNowMonth = ('0' + (1 + todayeNowDate.getMonth())).slice(-2);
+                    var todayeNowDate = ('0' + todayeNowDate.getDate()).slice(-2);
+
+                    return todayeNowYear + '-' + todayeNowMonth + '-' + todayeNowDate;
+                }
+                var upComingCount = 0;
+                function addUpcomingEvent() {
+                    for(var i = 0; i < listRawGatheringObject.length; i++) {
+                        if(listRawGatheringObject[i].gatheringEvent != undefined && listRawGatheringObject[i].gatheringEvent.length > 0) {
+                            for(var j = 0; j < listRawGatheringObject[i].gatheringEvent.length; j++) {
+                                var eventImagePath = '';
+                                if(listRawGatheringObject[i].gatheringEvent[j].gatheringEventMainImage != null && listRawGatheringObject[i].gatheringEvent[j].gatheringEventMainImage != undefined && listRawGatheringObject[i].gatheringEvent[j].gatheringEventMainImage != '') {
+                                    if(listRawGatheringObject[i].gatheringEvent[j].gatheringEventMainImage[0].filePath == null || listRawGatheringObject[i].gatheringEvent[j].gatheringEventMainImage[0].filePath == undefined || listRawGatheringObject[i].gatheringEvent[j].gatheringEventMainImage[0].filePath == '') {
+                                        eventImagePath = '/web/img/classesThumb.png';
+                                    } else {
+                                        eventImagePath = listRawGatheringObject[i].gatheringEvent[j].gatheringEventMainImage[0].filePath;
+                                    }
+                                } else {
+                                    eventImagePath = '/web/img/classesThumb.png';
+                                }
+
+
+                                addEventHtml = 
+                                `
+                                    <div class="thumb hoverEft gatheingUpcoming" style="cursor: pointer;">
+                                        <a href="/gatheringDetail/${listRawGatheringObject[i]._id}" style="background-image: url('${eventImagePath}');"></a>
+                                            <div class="condition">
+                                                `;
+
+                                // 현재 시간
+                                var nowInternetDate = new Date();
+                                var getNowDateHour = nowInternetDate.getHours();
+                                var getNowDateMinutes = nowInternetDate.getMinutes();
+                                var getNowDateTotal = (getNowDateHour * 60) + getNowDateMinutes;
+
+                                // 이벤트 시작 시간
+                                var eventStartTime = listRawGatheringObject[i].gatheringEvent[j].gatheringEventTime1.split(":");
+                                var eventTimeTotal = (Number(eventStartTime[0]) * 60) + Number(eventStartTime[1]);
+
+                                // 현재 날짜
+                                var todayDate = getDateToday();
+                                if(todayDate == listRawGatheringObject[i].gatheringEvent[j].gatheringEventDate && getNowDateTotal - eventTimeTotal <= 180) {
+                                    addEventHtml += `
+                                                    <div class="leftSide">
+                                                                <strong class="live"></strong>
+                                                            </div>
+                                                            <div class="rightSide">
+                                                            </div>
+                                                        </div>
+                                                    `;
+                                                    
+                                } else if(todayDate == listRawGatheringObject[i].gatheringEvent[j].gatheringEventDate && listRawGatheringObject[i].gatheringEvent[j].gatheringEventTime1 == '00:00' &&  listRawGatheringObject[i].gatheringEvent[j].gatheringEventTime2 == '24:00') {
+                                    addEventHtml += `
+                                                    <div class="leftSide">
+                                                                <strong class="live"></strong>
+                                                            </div>
+                                                            <div class="rightSide">
+                                                            </div>
+                                                        </div>
+                                                    `;
+                                }else {
+                                    var offlineDate = listRawGatheringObject[i].gatheringEvent[j].gatheringEventDate.replace(/-/g, '. ');
+                                    addEventHtml += `
+                                                    <div class="leftSide">
+                                                        <strong class="off">Offline</strong>
+                                                    </div>
+                                                    <div class="rightSide">
+                                                        <strong class="date">
+                                                            ${offlineDate} ${listRawGatheringObject[i].gatheringEvent[j].gatheringEventTime1}
+                                                        </strong>
+                                                    </div>
+                                                </div>
+                                                `;
+                                    
+                                }
+
+                                addEventHtml += `
+                                            <div class="classInfo">
+                                                <div class="hover-ring" data-host="${listRawGatheringObject[i].gatheringEvent[j].eventCreatorName}">
+                                                    <img src="/web/img/userRing/${listRawGatheringObject[i].gatheringEvent[j].eventCreatorUID}.png" alt="">
+                                                </div>
+                                                <div class="infoText">
+                                                    <h6 class="title">
+                                                        ${listRawGatheringObject[i].gatheringEvent[j].gatheringEventName}
+                                                    </h6>
+                                                    <p class="detail">
+                                                        ${listRawGatheringObject[i].gatheringEvent[j].eventCreatorName}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="personCount">
+                                                <div>
+                                                    <div class="rings">
+                                                        <img class="smallRing" src="/web/img/main/slide/IMG_1.png" alt="">
+                                                        <img class="smallRing" src="/web/img/main/slide/IMG_1.png" alt="">
+                                                        <img class="smallRing" src="/web/img/main/slide/IMG_1.png" alt="">
+                                                    </div>
+                                                    <span>${listRawGatheringObject[i].gatheringEvent[j].eventMember.length} / ${listRawGatheringObject[i].gatheringEvent[j].gatheringEventParticipants}</span>
+                                                </div>
+                                            </div>
+                                            <div class="aboutInfo">
+                                                <h6>
+                                                    ${listRawGatheringObject[i].gatheringEvent[j].gatheringEventName}
+                                                </h6>
+                                                <a class="gahteringUpcomingChildA" href="/gatheringDetail/${listRawGatheringObject[i]._id}">
+                                                    ${listRawGatheringObject[i].gatheringEvent[j].gatheringEventDesc}
+                                                </a>
+                                                <button>
+                                                    See More
+                                                </button>
+                                            </div>
+                                    </div>
+                                `;
+                                if(listRawGatheringObject[i].gatheringEvent[j].gatheringApproved === 'approve') {
+                                    if(todayDate <= listRawGatheringObject[i].gatheringEvent[j].gatheringEventDate) {
+                                        if(upComingCount < 20) {
+                                            document.querySelector('.upcomingSlide').innerHTML += addEventHtml;
+                                            upComingCount++;
+                                        } else if((getNowDateTotal - eventTimeTotal) >= 180) {
+                                            if(upComingCount < 20) {
+                                            document.querySelector('.upcomingSlide').innerHTML += addEventHtml;
+                                            upComingCount++;
+                                            }
+                                        } else if(todayDate == listRawGatheringObject[i].gatheringEvent[j].gatheringEventDate && listRawGatheringObject[i].gatheringEvent[j].gatheringEventTime1 == '00:00' &&  listRawGatheringObject[i].gatheringEvent[j].gatheringEventTime1 == '24:00') {
+                                            if(upComingCount < 20) {
+                                            document.querySelector('.upcomingSlide').innerHTML += addEventHtml;
+                                            upComingCount++;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                //전체 데이터로 데이터 추가
+                appendCategoryGathering();
+                
+                // 추천, 인기 클래스는 추가적인 수정 필요합니다.
+                addRecommendedGathering();
+                addNewGathering();
+                addPopularGathering();
+                addUpcomingEvent();
+
+                // google Map API를 이용한 User 현재 위치 받기
+                var getUserLatitude;
+                var getUserLongitude;
+
+                function getLocation()
+                {
+                    if(navigator.geolocation)
+                    {
+                        navigator.geolocation.getCurrentPosition(locationSuccess, locationError, geo_options);
+                    }
+                    else
+                    {
+                        console.log("geo location null")
+                    }
+                };
+                
+                // getLocation
+                function locationSuccess(p)
+                {
+                    getUserLatitude = p.coords.latitude,
+                    getUserLongitude = p.coords.longitude;
+
+                    addNearGathering(getUserLatitude, getUserLongitude);
+                }
+
+                // locationSuccess
+                function locationError(error)
+                {
+                    var errorTypes = 
+                    {
+                        0 : "Unknown Error",
+                        1 : "Not allowed",
+                        2 : "Location not found",
+                        3 : "response timeout"
+                    };
+
+                    var errorMsg = errorTypes[error.code];
+
+                    console.log('google location error : ' + errorMsg);
+                }
+
+                var geo_options = {
+                    enableHighAccuracy: true,
+                    maximumAge        : 30000,
+                    timeout           : 27000
+                };
+
+                getLocation();
+
+                function gatheringCheckLogin()
+                {
+                    if(Object.keys(checkUser).length === 0 && checkUser.constructor === Object)
+                    {
+                        customModal(100);
+                    }
+                    else
+                    {
+                        location.href='/createGathering';
+                    }
+                }
+
+                $(document).on('click', '.gatheingUpcoming', function(target) {
+                    var upcomingEventUrl = $(this).children('.aboutInfo').children('.gahteringUpcomingChildA').attr('href');
+
+                    location.href = upcomingEventUrl;
+                });
+            </script>
+            <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATfYV535tXnxiEu1KCbvOlGx6IoqySFlA&callback=mindgroundMap"></script>
+        </div>
+    </body>
+</html>

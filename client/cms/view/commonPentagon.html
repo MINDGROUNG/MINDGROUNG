@@ -1,0 +1,68 @@
+<canvas class="pentagonGraph" width="360" height="350"></canvas>
+
+<script>
+    var listpentagonGraph = document.querySelectorAll(".pentagonGraph");
+
+    for(var i = 0 ; i < listpentagonGraph.length ; i++)
+    {
+        var canvas = listpentagonGraph[i];
+        var context =  canvas.getContext("2d");
+
+        //x = x좌표
+        //y = y좌표
+        //n = n변수(오각형)
+        //r = 반지름
+        //style = 스타일정의
+        function drawPath(x, y, n, r, style) {
+            var i,ang;
+            ang = Math.PI*2/n //회전 각도
+            context.save();//저장 상태
+            //set style
+            for( var styleList in style) {
+                context[styleList] = style[styleList];
+            }
+            context.translate(x/2, y/2);//원점을 x,y로 옮기면, 바로그릴것이다. 다각형 중심
+            context.moveTo(0, -r);//중심 r거리에 따라 점을 그리다
+            context.beginPath();
+            for(i = 0;i < n; i ++) {
+                context.rotate(ang)//회전
+                context.lineTo(0, -r);//중심R거리에 따라 연결
+            }
+            context.closePath();
+            context.stroke();
+            context.fill();
+            context.restore();//원래대로 되돌리기 시작 상태
+        }
+
+        drawPath(360, 360, 5, 120, {
+            fillStyle: 'transparent',
+            lineWidth: '1',
+            strokeStyle: 'rgba(255, 255, 255, 1)'
+        }) 
+
+        drawPath(360, 360, 5, 100, {
+            fillStyle: 'transparent',
+            lineWidth: '1',
+            strokeStyle: 'rgba(255, 255, 255, 1)'
+        }) 
+
+        drawPath(360, 360, 5, 80, {
+            fillStyle: 'transparent',
+            lineWidth: '1',
+            strokeStyle: 'rgba(255, 255, 255, 1)'
+        }) 
+
+        drawPath(360, 360, 5, 60, {
+            fillStyle: 'transparent',
+            lineWidth: '1',
+            strokeStyle: 'rgba(255, 255, 255, 1)'
+        }) 
+
+        drawPath(360, 360, 5, 40, {
+            fillStyle: 'transparent',
+            lineWidth: '1',
+            strokeStyle: 'rgba(255, 255, 255, 1)'
+        })
+    }
+    
+</script>

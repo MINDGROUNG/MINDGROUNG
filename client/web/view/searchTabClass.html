@@ -1,0 +1,1246 @@
+<section>
+    <div class="contents">
+
+        <%
+            if(recommendList.recommendClassList.length > 0 )
+            {
+        %>
+
+        <div class="results-0">
+            <h3>
+                Class​
+            </h3>
+            <div class="noResultsTextCon">
+                <h4>
+                    We didn’t find any result.​
+                </h4>
+                <span>
+                    Take a look what we recommend​
+                </span>
+            </div>
+            <div class="recommended">
+                <h3>
+                    Recommended Classes​
+                </h3>
+                <div class="recCon">
+                    <div class="classes-content">
+                        <div class="classes-content-slideWrap commonslideWrap">
+                            <div class="classesSlide afterLogin-commonSlide">
+                                <%
+                                    if((recommendList.recommendClassList).length > 0) {
+                                        var recommendClassList = recommendList.recommendClassList;
+                                        var endIndex = recommendClassList.length;
+
+                                        if(recommendClassList.length >= 8) {
+                                            endIndex = 8;
+                                        }
+                                        for(var i = 0; i < endIndex; i++)
+                                        {
+                                            var verify = recommendClassList[i].classObject.mainCategory;
+                                            verify = verify.replace(/ \& /, '_');
+                                            verify = verify.replace(/[.,-]/g, '_');
+
+                                            if(recommendClassList[i].classObject.thumbNailMain == null ||  recommendClassList[i].classObject.thumbNailMain == undefined || recommendClassList[i].classObject.thumbNailMain == '') {
+                                                var tempRecommandClassFilePath = '/web/img/classesThumb.png';
+                                            } else {
+                                                var tempRecommandClassFilePath = recommendClassList[i].classObject.thumbNailMain.filePath;
+                                            }
+                                %>
+                                <div class="openClassThumbWrap">
+                                    <a href="/classProgramListing/<%=recommendClassList[i]._id%>" class="thumbBox afterLogin-commonSlide-thumb" style="background-image: url('<%= tempRecommandClassFilePath %>')">
+                                        <div class="slide-inner-content">
+                                            <div class="content-top">
+                                                <div class="category">
+                                                    <div class="category-wrap">
+                                                        <img src="/web/img/main/cateList/ICN_<%= verify %>.png" alt="">
+                                                        <span><%= translation.openClass[verify] %></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="content-bottom">
+                                                <div class="ring-text">
+                                                    <div class="ring hover-ring">
+                                                        <!-- host의 icon 이미지 경로 넣기 -->
+                                                        <img src="/web/img/userRing/<%= recommendClassList[i].userUID %>.png" alt="">
+                                                    </div>
+                                                    <div class="text">
+                                                        <h5>
+                                                            <%= recommendClassList[i].classObject.title %>
+                                                        </h5>
+                                                        <p>
+                                                            <%= recommendClassList[i].userName %>
+                                                        </p>
+                                                    </div>
+
+                                                </div>
+                                                <div class="comment">
+                                                    <div class="comment-wrap">
+                                                        <img src="/web/img/ICN_REVEIEW.png" alt="">
+                                                        <span><%= recommendList.recommendClassCommentList[i]%></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bottomBar">
+                                        </div>
+                                    </a>
+                                </div>
+                                <%
+                                        }
+                                    }
+                                %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%
+            } else {
+        %>
+        <div class="results-1">
+            <div class="filtersArea">
+                <!-- 클래스메인필터랑 동일 -->
+                <div class="cate2 filters">
+                    <div class="moFiltersBtn">
+                        <button>
+                            <img src="/web/img/icn_filter.png" alt="">
+                        </button>
+                    </div>
+                    <ul class="btns">
+                        <li class="moTitle">
+                            <div class="top">
+                                <img src="/web/img/down.png" alt="">
+                            </div>
+                            <div class="bottom">
+                                <button class="moCloseBtn">
+                                    <img src="/web/img/ICN_CLOSE.png" alt="">
+                                </button>
+                                <h4>
+                                    Filters
+                                </h4>
+                            </div>
+                        </li>
+                        <li class="allFilter classMainPage">
+                            <div>
+                                <input type="button" value="<%=translation.openClass.Category%>" class="filters-category filtersBtn">
+                                </input>
+                                <ul class="category-inner minWidth-260" id="searchClassCategoryCategoryWrap">
+                                    <li class="moSubTitle">
+                                        <h6><%=translation.openClass.Category%></h6>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassMindfulness" data-ischeck="0" data-text="Mindfulness">
+                                        <label for="searchClassMindfulness">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Mindfulness%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassMeditation" data-ischeck="0" data-text="Meditation">
+                                        <label for="searchClassMeditation">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Meditation%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassYoga" data-ischeck="0" data-text="Yoga">
+                                        <label for="searchClassYoga">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Yoga%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassSomatic" data-ischeck="0" data-text="Somatic">
+                                        <label for="searchClassSomatic">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Somatic%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassMa" data-ischeck="0" data-text="Movement & Activity">
+                                        <label for="searchClassMa">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Movement_Activity%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassCc" data-ischeck="0" data-text="Counseling & Coaching">
+                                        <label for="searchClassCc">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Counseling_Coaching%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassOther" data-ischeck="0" data-text="Other">
+                                        <label for="searchClassOther">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Other%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li class="webBtn">
+                                        <button class="resetBtn" onclick="searchClassResetCategory('category')"><%=translation.hostMain.Reset%></button>
+                                        <button class="saveBtn" onclick="searchClassSaveCategory('category')"><%=translation.hostMain.Save%></button>
+                                    </li>
+                                </ul>
+                                <div class="onlyFixed"></div>
+                            </div>
+                            <div>
+                                <input type="button" value="<%=translation.openClass.Format%>" class="filters-format filtersBtn">
+                                </input>
+                                <ul class="category-inner minWidth-200"  id="searchClassCategoryFormatWrap">
+                                    <li class="moSubTitle">
+                                        <h6><%=translation.openClass.Format%></h6>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassRetreat" data-ischeck="0" data-text="Retreat">
+                                        <label for="searchClassRetreat">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Retreat%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassMeeting" data-ischeck="0" data-text="Meeting">
+                                        <label for="searchClassMeeting">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Meeting%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassWorkshop" data-ischeck="0" data-text="Workshop">
+                                        <label for="searchClassWorkshop">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Workshop%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassFestival" data-ischeck="0" data-text="Festival">
+                                        <label for="searchClassFestival">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Festival%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassCourse" data-ischeck="0" data-text="Certificate Course">
+                                        <label for="searchClassCourse">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Certificate_Course%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassClass" data-ischeck="0" data-text="Class">
+                                        <label for="searchClassClass">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Class%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassOne" data-ischeck="0" data-text="1:1">
+                                        <label for="searchClassOne">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.one_one%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassOther" data-ischeck="0" data-text="Other">
+                                        <label for="searchClassOther">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Other%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li class="webBtn">
+                                        <button class="resetBtn" onclick="searchClassResetCategory('format')"><%=translation.hostMain.Reset%></button>
+                                        <button class="saveBtn" onclick="searchClassSaveCategory('format')"><%=translation.hostMain.Save%></button>
+                                    </li>
+                                </ul>
+                                <div class="onlyFixed"></div>
+                            </div>
+                            <div>
+                                <input type="button" value="<%=translation.classManagement.Attributes%>" class="filters-attributes filtersBtn">
+                                </input>
+                                <ul class="category-inner minWidth-350" id="searchClassCategoryAttributesWrap">
+                                    <li class="moSubTitle">
+                                        <h6>Attributes</h6>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassMindset"  data-ischeck="0" data-text="Affirmative Mindset">
+                                        <label for="searchClassMindset">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.classManagement.Affirmative_Mindset%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassConnection"  data-ischeck="0" data-text="Sense of Belonging and Social Connection">
+                                        <label for="searchClassConnection">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.classManagement.Sense_of_Belonging_and_Social_Connection%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassLife"  data-ischeck="0" data-text="Sense of Purpose in Life">
+                                        <label for="searchClassLife">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.classManagement.Sense_of_Purpose_in_Life%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassReflection"  data-ischeck="0" data-text="Self-reflection">
+                                        <label for="searchClassReflection">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.classManagement.Self_reflection%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li class="webBtn">
+                                        <button class="resetBtn" onclick="searchClassResetCategory('attributes')"><%=translation.hostMain.Reset%></button>
+                                        <button class="saveBtn" onclick="searchClassSaveCategory('attributes')"><%=translation.hostMain.Save%></button>
+                                    </li>
+                                </ul>
+                                <div class="onlyFixed"></div>
+                            </div>
+                            <div>
+                                <input type="button" value="<%=translation.classManagement.Keyword%>" class="filters-keyword filtersBtn">
+                                </input>
+                                <ul class="category-inner minWidth-200" id="searchClassCategoryKeywordWrap">
+                                    <li class="moSubTitle">
+                                        <h6><%=translation.classManagement.Keyword%></h6>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassSleep" data-ischeck="0" data-text="Sleep">
+                                        <label for="searchClassSleep">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.classManagement.Sleep%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassFocus" data-ischeck="0" data-text="Focus">
+                                        <label for="searchClassFocus">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.classManagement.Focus%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassStudy" data-ischeck="0" data-text="Study">
+                                        <label for="searchClassStudy">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.classManagement.Study%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassRelaxation" data-ischeck="0" data-text="Relaxation">
+                                        <label for="searchClassRelaxation">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.classManagement.Relaxation%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassFamily" data-ischeck="0" data-text="Family">
+                                        <label for="searchClassFamily">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.classManagement.Family%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassLove" data-ischeck="0" data-text="Love">
+                                        <label for="searchClassLove">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.classManagement.Love%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassRelationship" data-ischeck="0" data-text="Relationship">
+                                        <label for="searchClassRelationship">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.classManagement.Relationship%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassStress" data-ischeck="0" data-text="Stress">
+                                        <label for="searchClassStress">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.classManagement.Stress%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassBalance" data-ischeck="0" data-text="Balance">
+                                        <label for="searchClassBalance">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.classManagement.Balance%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassLeadership" data-ischeck="0" data-text="Leadership">
+                                        <label for="searchClassLeadership">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.classManagement.Leadership%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassMentalhealth" data-ischeck="0" data-text="Mental Health">
+                                        <label for="searchClassMentalhealth">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.classManagement.Mental_Health%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassHealth" data-ischeck="0" data-text="Health">
+                                        <label for="searchClassHealth">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.classManagement.Health%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassHappiness" data-ischeck="0" data-text="Happiness">
+                                        <label for="searchClassHappiness">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.classManagement.Happiness%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchClassSelfcare" data-ischeck="0" data-text="Self-care">
+                                        <label for="searchClassSelfcare">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.classManagement.Self_care%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li class="webBtn">
+                                        <button class="resetBtn" onclick="searchClassResetCategory('keyword')"><%=translation.hostMain.Reset%></button>
+                                        <button class="saveBtn" onclick="searchClassSaveCategory('keyword')"><%=translation.hostMain.Save%></button>
+                                    </li>
+                                </ul>
+                                <div class="onlyFixed"></div>
+                            </div>
+                            <div>
+                                <input type="button" value="<%=translation.classManagement.Fillters%>" class="filters-filters filtersBtn">
+                                </input>
+                                <ul class="category-inner-filter minWidth-540" id="searchClassCategoryFiltersWrap">
+                                    <li class="titleArea">
+                                        <h5>
+                                            <%=translation.classManagement.Fillters%>
+                                        </h5>
+                                        <!-- <button>
+                                            <img src="/web/img/ICN_CLOSE.png" alt="">
+                                        </button> -->
+                                    </li>
+                                    <li class="inputArea classFilter" id="searchClassCategoryLevelFiltersWrap">
+                                        <h6>
+                                            <%=translation.classManagement.level%>
+                                        </h6>
+                                        <div class="level">
+                                            <div class="chkWrap">
+                                                <input type="checkbox" id="searchClassAll" name="levelInput" data-ischeck="0" data-text="All">
+                                                <label for="searchClassAll">
+                                                    <span class="box"></span>
+                                                    <span class="text">
+                                                         <%=translation.openClass.All%>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="chkWrap">
+                                                <input type="checkbox" id="searchClassBeginner" name="levelInput" data-ischeck="0" data-text="Beginner">
+                                                <label for="searchClassBeginner">
+                                                    <span class="box"></span>
+                                                    <span class="text">
+                                                        <%=translation.openClass.Beginner%>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="chkWrap">
+                                                <input type="checkbox" id="searchClassIntermediate" name="levelInput" data-ischeck="0" data-text="Intermediate">
+                                                <label for="searchClassIntermediate">
+                                                    <span class="box"></span>
+                                                    <span class="text">
+                                                        <%=translation.openClass.Intermediate%>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="chkWrap">
+                                                <input type="checkbox" id="searchClassAdvanced" name="levelInput" data-ischeck="0" data-text="Advanced">
+                                                <label for="searchClassAdvanced">
+                                                    <span class="box"></span>
+                                                    <span class="text">
+                                                        <%=translation.openClass.Advanced%>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="inputArea classFilter">
+                                        <h6>
+                                            <%=translation.openClass.Price%>
+                                        </h6>
+                                        <div class="range">
+                                            <ul class="bar" id="searchClassRangeBarWrap">
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                            </ul>
+                                            <div id="searchClassMySlider">
+                                            </div>
+                                            <p>
+                                                <label for="price" style="font-family:Verdana;">Price Range:</label>
+                                                <div class="minPriceArea">
+                                                    <span>From $</span><input type="text" id="searchClassMinPrice">
+                                                </div>
+                                                <div class="maxPriceArea">
+                                                    <span>To $</span><input type="text" id="searchClassMaxPrice">
+                                                </div>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="inputArea classFilter"  id="searchClassCategoryBrandFiltersWrap">
+                                        <h6>
+                                            Host
+                                        </h6>
+                                        <div class="host">
+                                            <div class="chkWrap">
+                                                <input type="checkbox" id="searchClassBrand" name="hostInput" data-ischeck="0" data-text="brand">
+                                                <label for="searchClassBrand">
+                                                    <span class="box"></span>
+                                                    <span class="text">
+                                                        <%=translation.hostStudio.brand%>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="chkWrap">
+                                                <input type="checkbox" id="searchClassMaster" name="hostInput" data-ischeck="0" data-text="master">
+                                                <label for="searchClassMaster">
+                                                    <span class="box"></span>
+                                                    <span class="text">
+                                                        <%=translation.hostStudio.master%>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="chkWrap">
+                                                <input type="checkbox" id="searchClassLeader" name="hostInput" data-ischeck="0" data-text="leader">
+                                                <label for="searchClassLeader">
+                                                    <span class="box"></span>
+                                                    <span class="text">
+                                                        <%=translation.hostStudio.leader%>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="chkWrap">
+                                                <input type="checkbox" id="searchClassTeacher" name="hostInput" data-ischeck="0" data-text="teacher">
+                                                <label for="searchClassTeacher">
+                                                    <span class="box"></span>
+                                                    <span class="text">
+                                                        <%=translation.hostStudio.teacher%>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="chkWrap">
+                                                <input type="checkbox" id="searchClassCreator" name="hostInput" data-ischeck="0" data-text="creator">
+                                                <label for="searchClassCreator">
+                                                    <span class="box"></span>
+                                                    <span class="text">
+                                                        <%=translation.hostStudio.creator%>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="inputArea classFilter" id="searchClassCategoryFormatFiltersWrap">
+                                        <h6>
+                                            <%=translation.openClass.Format%>
+                                        </h6>
+                                        <div class="format">
+                                            <div class="chkWrap">
+                                                <input type="radio" id="searchClassOnline" name="formatInput"  data-ischeck="0" data-text="online">
+                                                <label for="searchClassOnline">
+                                                    <span class="box"></span>
+                                                    <span class="text">
+                                                        <%=translation.classManagement.Online%>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="chkWrap">
+                                                <input type="radio" id="searchClassOffline" name="formatInput" data-ischeck="0" data-text="offline">
+                                                <label for="searchClassOffline">
+                                                    <span class="box"></span>
+                                                    <span class="text">
+                                                        <%=translation.classManagement.Offline%>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="webBtn">
+                                        <button class="resetBtn" onclick="searchClassResetCategory('filters')"><%=translation.hostMain.Reset%></button>
+                                        <button class="saveBtn" onclick="searchClassSaveCategory('filters')"><%=translation.hostMain.Save%></button>
+                                    </li>
+                                </ul>
+                                <div class="onlyFixed"></div>
+                            </div>
+                        </li>
+                        <li class="moSaveBtn">
+                            <div>
+                                <button class="resetBtn"><%=translation.hostMain.Reset%></button>
+                                <button class="saveBtn"><%=translation.hostMain.Save%></button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="classes-content">
+                <div class="classes-content-slideWrap commonslideWrap">
+                    <div class="classesSlide afterLogin-commonSlide" id="searchTabClassAppendDivID">
+                    </div>
+                </div>
+            </div>
+            <div class="commonViewMoreBtn" id="classMoreBtnID">
+                <button class="classViewMoreBtn-on" onclick="searchClassAppendCategoryClass()">
+                    <strong><%=translation.classManagement.View_More_Classes%></strong>
+                </button>
+            </div>
+        </div>
+        <%
+            }
+        %>
+    </div>
+</section>
+<script>
+    var listRawClassObject = <%- classList ? JSON.stringify(classList)  : {} %>;
+    var listClassObject = [];
+
+    for(var i = 0 ; i < listRawClassObject.length ; i++)
+    {
+        if(listRawClassObject[i].objectType == 'class') {
+            listRawClassObject[i].classObject.classId = listRawClassObject[i]._id;
+            listRawClassObject[i].classObject.userUID = listRawClassObject[i].userUID;
+            listRawClassObject[i].classObject.userName = listRawClassObject[i].userName;
+            listRawClassObject[i].classObject.hostType = listRawClassObject[i].hostType;
+            listRawClassObject[i].classObject.reviewCount = listRawClassObject[i].reviewCount;
+
+            if(listRawClassObject[i].dormancy != 'dormancy') {
+                listClassObject.push(listRawClassObject[i].classObject);
+            }
+        }
+    }
+
+    //실제 사용 될 데이터
+    var searchClassListCategorySelectedClass = listClassObject;
+    //카테고리 검색 초기화
+    var searchClassMapListCategory = {};
+
+    searchClassMapListCategory.category = [];
+    searchClassMapListCategory.format = [];
+    searchClassMapListCategory.attributes = [];
+    searchClassMapListCategory.keyword = [];
+
+    var searchClassCategoryIndex = 1; //인덱스 (자동화)
+    var searchClassCategoryClassView = 8; //몇개씩 보여질 건지
+    var searchClassParams = new URL(location.href);
+    var searchClassLang = searchClassParams.searchParams.get("clang");
+
+    //가격 설정 (영어 : 한글)
+    var searchClassMaxPriceNumber = (searchClassLang == 'en' ? 99999 : 1000000);
+
+    //프라이스레인지 플러그인
+    $(document).ready(function() {
+        $( "#searchClassMySlider" ).slider({
+        range: true,
+        min: 0,
+        max: searchClassMaxPriceNumber,
+        values: [ 0, searchClassMaxPriceNumber ],
+        slide: function( event, ui ) {
+        $( "#searchClassMinPrice" ).val(ui.values[ 0 ]);
+        $( "#searchClassMaxPrice" ).val(ui.values[ 1 ]+"+");
+        }
+    });
+        
+    $( "#searchClassMinPrice" ).val($( "#searchClassMySlider" ).slider( "values", 0 ));
+    $( "#searchClassMaxPrice" ).val($( "#searchClassMySlider" ).slider( "values", 1 ) + "+");
+
+    $("#searchClassMinPrice").on('keyup', function() {
+        $(".ui-state-default:even").css('left', $(this).val() / searchClassMaxPriceNumber+ '%');
+    })
+    $("#searchClassMaxPrice").on('keyup', function() {
+        $(".ui-state-default:odd").css('left', $(this).val() / searchClassMaxPriceNumber+ '%');
+    })
+    
+    });
+
+    //카테고리 리셋
+    function searchClassResetCategory(category)
+    {
+        var wrapId = '';
+
+        switch(category)
+        {
+            case 'category': wrapId = 'searchClassCategoryCategoryWrap'; break;
+            case 'format': wrapId = 'searchClassCategoryFormatWrap'; break;
+            case 'attributes': wrapId = 'searchClassCategoryAttributesWrap'; break;
+            case 'keyword': wrapId = 'searchClassCategoryKeywordWrap'; break;
+            case 'filters': wrapId = 'searchClassCategoryFiltersWrap'; break;
+        }
+
+        var listInput = $("#"+wrapId).find("input");
+
+        for(var i = 0 ; i < listInput.length ; i++)
+        {
+            $(listInput[i]).attr("checked", false);
+        }
+
+        //추가 예외사항
+        if(category == 'filters')
+        {
+            $( "#searchClassMySlider" ).slider({
+                range: true,
+                min: 0,
+                max: 999999,
+                values: [ 0, 999999 ],
+                slide: function( event, ui ) {
+                $( "#searchClassMinPrice" ).val(ui.values[ 0 ]);
+                $( "#searchClassMaxPrice" ).val(ui.values[ 1 ]+"+");
+                }
+            });
+
+            $( "#searchClassMinPrice" ).val($( "#searchClassMySlider" ).slider( "values", 0 ));
+            $( "#searchClassMaxPrice" ).val($( "#searchClassMySlider" ).slider( "values", 1 ) + "+");
+        }
+    }
+
+    //카테고리 검색 버튼
+    function searchClassSaveCategory(category)
+    {
+        //필터링 여부 상태
+        var isLevelInput = false;
+        var isHostInput = false;
+        var isFormatInput = false;
+
+        var listLevelFilter = [];
+        var listHostFilter = [];
+        var listFormatFilter = [];
+        
+        //검색 카테고리 초기화
+        searchClassMapListCategory[category] = [];
+        
+        //wrap id 찾기
+        var wrapId = '';
+        switch(category)
+        {
+            case 'category': wrapId = 'searchClassCategoryCategoryWrap'; break;
+            case 'format': wrapId = 'searchClassCategoryFormatWrap'; break;
+            case 'attributes': wrapId = 'searchClassCategoryAttributesWrap'; break;
+            case 'keyword': wrapId = 'searchClassCategoryKeywordWrap'; break;
+            case 'filters': wrapId = 'searchClassCategoryFiltersWrap'; break;
+        }
+
+        //입력되는 input 확인
+        var listInput = $("#"+wrapId).find("input");
+        
+        //일반적인 카테고리 검색
+        if(category != 'filters')
+        {
+            for(var i = 0 ; i < listInput.length ; i++)
+            {
+                if($(listInput[i]).is(":checked") == true)
+                {
+                    $(listInput[i]).attr("data-ischeck", "1");
+                    $(listInput[i]).data("ischeck", "1");
+
+                    searchClassMapListCategory[category].push($(listInput[i]).data("text"));
+                }
+                else
+                {
+                    $(listInput[i]).attr("data-ischeck", "0");
+                    $(listInput[i]).data("ischeck", "0");
+                }
+            }
+        }
+        //필터 일 경우
+        else
+        {
+            //---------------------------
+            //레벨 필터 확인
+            var listlevelInput = $("#"+wrapId).find("input[name='levelInput']");
+
+            for(var i = 0 ; i < listlevelInput.length ; i++)
+            {
+                if($(listlevelInput[i]).is(":checked") == true)
+                {
+                    $(listlevelInput[i]).attr("data-ischeck", "1");
+                    $(listlevelInput[i]).data("ischeck", "1");
+
+                    //예외처리
+                    if($(listlevelInput[i]).data("text") != 'All')
+                    {
+                        isLevelInput = true;
+                        listLevelFilter.push($(listlevelInput[i]).data("text"));
+                    }
+                }
+                else
+                {
+                    $(listlevelInput[i]).attr("data-ischeck", "0");
+                    $(listlevelInput[i]).data("ischeck", "0");
+                }
+            }
+            //---------------------------
+            
+
+
+            //---------------------------
+            //호스트 필터 확인
+            var listHostInput = $("#"+wrapId).find("input[name='hostInput']");
+
+            for(var i = 0 ; i < listHostInput.length ; i++)
+            {
+                if($(listHostInput[i]).is(":checked") == true)
+                {
+                    isHostInput = true;
+
+                    $(listHostInput[i]).attr("data-ischeck", "1");
+                    $(listHostInput[i]).data("ischeck", "1");
+
+                    listHostFilter.push($(listHostInput[i]).data("text"));
+                }
+                else
+                {
+                    $(listHostInput[i]).attr("data-ischeck", "0");
+                    $(listHostInput[i]).data("ischeck", "0");
+                }
+            }
+                //---------------------------
+
+
+
+            //---------------------------
+            //호스트 필터 확인
+            var listFormatInput = $("#"+wrapId).find("input[name='formatInput']");
+
+            for(var i = 0 ; i < listFormatInput.length ; i++)
+            {
+                if($(listFormatInput[i]).is(":checked") == true)
+                {
+                    isFormatInput = true;
+
+                    $(listFormatInput[i]).attr("data-ischeck", "1");
+                    $(listFormatInput[i]).data("ischeck", "1");
+
+                    listFormatFilter.push($(listFormatInput[i]).data("text"));
+                }
+                else
+                {
+                    $(listFormatInput[i]).attr("data-ischeck", "0");
+                    $(listFormatInput[i]).data("ischeck", "0");
+                }
+            }
+                //---------------------------
+        }
+
+        //데이터 필터링
+        var listFilterData = listClassObject;
+
+        var isSelectedCategory = false;
+        //필터링 하는건지 확인
+        for (var key in searchClassMapListCategory)
+        {
+            if(searchClassMapListCategory[key].length > 0)
+            {
+                isSelectedCategory = true;
+
+                if(key == 'category')
+                {
+                    listFilterData = listFilterData.filter((classObject) =>{
+                        return searchClassMapListCategory[key].includes(classObject.mainCategory);
+                    });
+                }
+                else if(key == 'format')
+                {
+                    listFilterData = listFilterData.filter((classObject) =>{
+                        return searchClassMapListCategory[key].includes(classObject.course);
+                    });
+                }
+                // 추후 데이터가 추가되면 attributes 필터링 완료하기, classObject.attribute
+                else if(key == 'attributes')
+                {
+                    listFilterData = listFilterData.filter((classObject) =>{
+                        return searchClassMapListCategory[key].includes(classObject.course);
+                    });
+                }
+                else if(key == 'keyword')
+                {
+                    listFilterData = listFilterData.filter((classObject) =>{
+                        if(classObject.keywords.length == 0)
+                        {
+                            return false;
+                        }
+
+                        return searchClassMapListCategory[key].some(keyword => { 
+                            var isContainKeyword = false;
+                            for(var i = 0 ; i < classObject.keywords.length; i++)
+                            {
+                                
+                                if(keyword == classObject.keywords[i])
+                                {
+                                    return true;
+                                }
+                            }
+                            return false;
+                        
+                        });
+                    });
+                }
+            }
+        }
+
+
+        // //필터 필터링
+        if(isLevelInput)
+        {
+            listFilterData = listFilterData.filter((classObject) =>{
+                return listLevelFilter.includes(classObject.level);
+            });
+        }
+
+        if(isHostInput)
+        {
+            listFilterData = listFilterData.filter((classObject) =>{
+                if(classObject.hostType)
+                {
+                    return listHostFilter.includes(classObject.hostType);
+                }
+                else
+                {
+                    return false;
+                }
+                
+            });
+        }
+
+        if(isFormatInput)
+        {
+            listFilterData = listFilterData.filter((classObject) =>{
+                return listFormatFilter.includes(classObject.online);
+            });
+        }
+
+        var searchClassMinPriceValue = Number($( "#searchClassMinPrice" ).val());
+        var searchClassMaxPriceValue = Number($( "#searchClassMaxPrice" ).val().replace("+", ''));
+
+        console.log("searchClassMinPriceValue = " + searchClassMinPriceValue)
+        console.log("searchClassMaxPriceValue = " + searchClassMaxPriceValue)
+        
+        //가격 필터링
+        if(searchClassLang == 'en')
+        {
+            listFilterData = listFilterData.filter((classObject) =>{
+                return classObject.usd >= searchClassMinPriceValue && classObject.usd <=searchClassMaxPriceValue;
+            });
+        }
+        else
+        {
+            listFilterData = listFilterData.filter((classObject) =>{
+                return classObject.krw >= searchClassMinPriceValue && classObject.krw <= searchClassMaxPriceValue;
+            });
+        }
+
+        //필터링된 데이터 선택
+        searchClassListCategorySelectedClass = listFilterData;
+
+        //데이터 클리어
+        searchClassResetCategoryClass();
+
+        //데이터 추가
+        searchClassAppendCategoryClass();
+    }
+
+    //카테고리 필터 -> 가격 필터 그래프 그리기
+    function drawPriceFilter()
+    {
+        $("#searchClassRangeBarWrap").html("");
+
+        var listClassObjectSize = listClassObject.length;
+        var barCount = Math.floor($("#searchClassMySlider").width() / 9);
+        var oneLinePrice = searchClassMaxPriceNumber / barCount;
+        var listBarCount = [];
+
+        for(var i = 0 ; i < barCount ; i++)
+        {
+            listBarCount.push(0);
+        }
+
+        for(var i = 0 ; i < listClassObjectSize ; i++)
+        {
+            var comparePrice = 0;
+            var classObject = listClassObject[i];
+            if(searchClassLang == 'en')
+            {
+                comparePrice = classObject.usd ? classObject.usd : 0;
+            }
+            else
+            {
+                comparePrice = classObject.krw ? classObject.krw : 0;
+            }
+
+            var barIndex = Math.floor(comparePrice / Math.floor(oneLinePrice));
+
+            console.log("barIndex = " + barIndex)
+            listBarCount[barIndex] += 1;
+        }
+
+        for(var i = 0 ; i < barCount ; i++)
+        {
+            var barHeight = ((listBarCount[i] / listClassObjectSize) * 100)
+            console.log("barHeight = " + barHeight)
+            $("#searchClassRangeBarWrap").append("<li style='height:"+barHeight+"px'></li>")
+        }
+
+        $("#totalClass").html(listClassObjectSize + " <%=translation.classManagement.classes_in_total%>")
+    }
+
+    //카테고리 클래스 리셋
+    function searchClassResetCategoryClass()
+    {
+        searchClassCategoryIndex = 1;
+        $("#searchTabClassAppendDivID").html("");
+
+        //더보기 버튼 갱신
+        searchClassRefreshAddClassBtn();
+    }
+
+    //데이터 추가
+    function searchClassAppendCategoryClass(type)
+    {
+        var listAddClassHtml = '';
+
+        //데이터 시작 인덱스
+        var dataIndex = (searchClassCategoryIndex - 1) * searchClassCategoryClassView;
+
+        //추가할 데이터 검색
+        for(var i = dataIndex; i < (dataIndex + searchClassCategoryClassView); i++)
+        {
+            if(i >= searchClassListCategorySelectedClass.length)
+            {
+                break;
+            }
+
+            listAddClassHtml += searchClassAddCategoryClass(searchClassListCategorySelectedClass[i]);
+        }
+
+        if(type != 'allTab') {
+            //더보기 버튼 갱신
+            searchClassRefreshAddClassBtn();
+
+            //데이터 추가
+            $("#searchTabClassAppendDivID").append(listAddClassHtml);
+
+            //인덱스 증가
+            searchClassCategoryIndex += 1;
+        } else {
+            $("#allTabClassListDivID").append(listAddClassHtml);
+        }
+    }
+
+    function searchClassRefreshAddClassBtn()
+    {
+        //하단 더보기 버튼 자동화
+        if(searchClassListCategorySelectedClass.length < searchClassCategoryIndex * searchClassCategoryClassView)
+        {
+            $("#classMoreBtnID").css("display", "none");
+        }
+        else
+        {
+            $("#classMoreBtnID").css("display", "");
+        }
+    }
+
+    // Translation 접근 및 property 반환
+    function getTranslation(requestProperty, requestValue)
+    {
+        try
+        {
+            var useTranslation = <%- translation ? JSON.stringify(translation) : {} %>;
+        }
+        catch
+        {
+            console.log('Translation undefined');
+        }
+
+        // Example
+        // translation.openClass -> var ex = useTranslation[openClass];
+        // translation.openClass.Topic -> return ex[Topic];
+
+        var translationProperty = useTranslation[requestProperty];
+        
+        return translationProperty[requestValue];
+    }
+
+    // classObject Data 값을 i18n의 json 파일 변수명 규약에 맞게 치환한다.
+    function verifyData(requestData)
+    {
+        var verify = requestData;
+        verify = verify.replaceAll(' & ', '_');
+        verify = verify.replace(/[.,-]/g, '_');
+        verify = verify.replace(/\(/g, '');
+        verify = verify.replace(/\)/g, '');
+        verify = verify.replace('1:1', 'one_one');
+        verify = verify.replace('KRW (원)', 'KRW');
+        verify = verify.replace('USD (US$)', 'USD');
+        verify = verify.replace('00000@0000', '00000_0000');
+        verify = verify.replace(/\s/g, '_');
+        
+        return verify;
+    }
+
+    function searchClassAddCategoryClass(listClass, type)
+    {
+        var mainCategory = listClass.mainCategory;
+        var mainCategoryName = verifyData(mainCategory);
+        mainCategory = getTranslation('openClass', mainCategoryName);
+
+        var classHtml = `
+            <div class="openClassThumbWrap">
+                <a href="/classProgramListing/${listClass.classId}" class="thumbBox afterLogin-commonSlide-thumb" style="background-image: url('${listClass.thumbNailMain.filePath}')">
+                    <div class="slide-inner-content">
+                        <div class="content-top">
+                            <div class="category">
+                                <div class="category-wrap">
+                                    <img src="/web/img/main/cateList/ICN_${mainCategoryName}.png" alt="">
+                                    <span>${mainCategory}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-bottom">
+                            <div class="ring-text">
+                                <div class="ring hover-ring">
+                                    <!-- host의 icon 이미지 경로 넣기 -->
+                                    <img src="/web/img/userRing/${listClass.userUID}.png" alt="">
+                                </div>
+                                <div class="text">
+                                    <h5>
+                                        ${listClass.title}
+                                    </h5>
+                                    <p>
+                                        ${listClass.userName}
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div class="comment">
+                                <div class="comment-wrap">
+                                    <img src="/web/img/ICN_REVEIEW.png" alt="">
+                                    <span>${listClass.reviewCount}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottomBar">
+                    </div>
+                </a>
+            </div>
+        </div>
+        `;
+
+        return classHtml;
+    }
+
+    //필터그리기
+    drawPriceFilter();
+
+    //전체 데이터로 데이터 추가
+    searchClassAppendCategoryClass('allTab');
+    searchClassAppendCategoryClass();
+</script>

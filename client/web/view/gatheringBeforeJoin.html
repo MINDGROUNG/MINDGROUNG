@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <%- include ./common/commonHead.html%>
+        <!--공통타이틀로 적용 할 경우 commonHead 안에 넣기-->
+    </head>
+    <body>
+        <div class="wrap commonLayout2">
+            <%- include ./common/commonHeader.html%>
+            <section class="marginAuto_s minHeight">
+                <div class="writeBtn">
+                    <button>
+                        <img src="/web/img/main/cateList/BTN_WRITE.png" alt="">
+                    </button>
+                </div>
+                <article id="gatheringId">
+                    <div class="topContents">
+                        <div class="basicInfo">
+                            <div class="basicInfo-text onlyGathering">
+                                <h3 class="classTitle" id="gatheringName">
+                                </h3>
+                                <div class="desc">
+                                    <div class="desc-category">
+                                        <div class="commonDesc onlyGathering">
+                                            <span class="title">
+                                                Category
+                                            </span>
+                                            <span id="gatheringCategory">
+                                            </span>
+                                            <span id="gatheringMemberTag">
+                                                <img src="/web/img/classDetail/ICN_PERSON.png" alt="">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="sideBtn">
+                                        <button>
+                                            <img src="/web/img/classDetail/ICN_SHARE.png" alt="">
+                                        </button>
+                                        <button>
+                                            <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="basicInfo-imgs onlyGathering">
+                                <div>
+                                    <div class="videoThumb" id="mainImageId">
+                                        <!-- gatheringMain 이미지 자리 -->
+                                    </div>
+                                    <div class="imgThumb" id="subImageId">
+                                        <!-- gathering Sub 이미지 자리 -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="basicInfo-gathering-tag" id="gatheringKeywordTagId">
+                            </div>
+                        </div>
+                        <div class="classInfo onlyGathering">
+                            <div class="host-classInfo">
+                                <div class="hostDetail">
+                                    <div class="ring hover-ring" id="userRingId">
+                                    </div>
+                                    <div class="rating">
+                                        <span id="ratingId">
+                                        </span>
+                                        <h5>
+                                            <a href="javascript:avoid(0)" id="hostATagId"></a>
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div class="classDetail">
+                                    <p id="gatheringDescriptionTagId"></p>
+                                    <div class="seeMoreBtn">
+                                        <button class="seeMoreBtn-on">
+                                            See More
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottomContents onlyGathering">
+                        <h3 class="classTitle">
+                            Gathering events
+                        </h3>
+                        <!-- 이벤트가 없을 때 -->
+                        <!-- <div class="noEvent">
+                            <strong>An event is comming soon</strong>
+                        </div> -->
+                        <!-- 이벤트가 있을 때 -->
+                        <div class="gatherings-content">
+                            <div class="gatherings-content-slideWrap commonslideWrap">
+                                <div class="btnArea2 commonBtnArea">
+                                </div>
+                                <div class="gatheringsSlide afterLogin-commonSlide">
+                                    <div class="beforeJoinThumb">
+                                        <a href="javascript:avoid(0)" class="thumbBox afterLogin-commonSlide-thumb" style="background-image: url('/web/img/main/afterLogin/slide/dummyImg.png')">
+                                            <div class="slide-inner-content onlyGathering">
+                                                <div class="condition">
+                                                    <div class="leftSide">
+                                                        <strong class="off">Offline</strong>
+                                                    </div>
+                                                    <div class="rightSide">
+                                                        <strong class="date">
+                                                            2021. 12. 15  17:00
+                                                        </strong>
+                                                    </div>
+                                                </div>
+                                                <div class="content">
+                                                    <div class="ring-text">
+                                                        <div class="ring hover-ring">
+                                                            <img src="/web/img/main/dummyIcon.png" alt="">
+                                                        </div>
+                                                        <div class="text">
+                                                            <h5>
+                                                                gathering Title
+                                                            </h5>
+                                                            <p>
+                                                                Host Name
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="viewCount">
+                                                        <div class="vc-wrap">
+                                                            <div class="rings">
+                                                                <img class="smallRing" src="/web/img/main/afterLogin/viewRing.png" alt="">
+                                                                <img class="smallRing" src="/web/img/main/afterLogin/viewRing.png" alt="">
+                                                                <img class="smallRing" src="/web/img/main/afterLogin/viewRing.png" alt="">
+                                                            </div>
+                                                            <span>56 / 200</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="beforeJoinThumb">
+                                        <a href="javascript:avoid(0)" class="thumbBox afterLogin-commonSlide-thumb" style="background-image: url('/web/img/main/afterLogin/slide/dummyImg.png');">
+                                            <div class="slide-inner-content onlyGathering">
+                                                <div class="condition">
+                                                    <div class="leftSide">
+                                                        <strong class="live"></strong>
+                                                    </div>
+                                                    <div class="rightSide">
+                                                    </div>
+                                                </div>
+                                                <div class="content">
+                                                    <div class="ring-text">
+                                                        <div class="ring hover-ring">
+                                                            <img src="/web/img/main/dummyIcon.png" alt="">
+                                                        </div>
+                                                        <div class="text">
+                                                            <h5>
+                                                                gathering Title
+                                                            </h5>
+                                                            <p>
+                                                                Host Name
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="viewCount">
+                                                        <div class="vc-wrap">
+                                                            <div class="rings">
+                                                                <img class="smallRing" src="/web/img/main/afterLogin/viewRing.png" alt="">
+                                                                <img class="smallRing" src="/web/img/main/afterLogin/viewRing.png" alt="">
+                                                                <img class="smallRing" src="/web/img/main/afterLogin/viewRing.png" alt="">
+                                                            </div>
+                                                            <span>56 / 200</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="beforeJoinThumb">
+                                        <a href="javascript:avoid(0)" class="thumbBox afterLogin-commonSlide-thumb" style="background-image: url('/web/img/main/afterLogin/slide/dummyImg.png');">
+                                            <div class="slide-inner-content onlyGathering">
+                                                <div class="condition">
+                                                    <div class="leftSide">
+                                                        <strong class="off">Offline</strong>
+                                                    </div>
+                                                    <div class="rightSide">
+                                                        <strong class="date">
+                                                            2021. 12. 15  17:00
+                                                        </strong>
+                                                    </div>
+                                                </div>
+                                                <div class="content">
+                                                    <div class="ring-text">
+                                                        <div class="ring hover-ring">
+                                                            <img src="/web/img/main/dummyIcon.png" alt="">
+                                                        </div>
+                                                        <div class="text">
+                                                            <h5>
+                                                                gathering Title
+                                                            </h5>
+                                                            <p>
+                                                                Host Name
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="viewCount">
+                                                        <div class="vc-wrap">
+                                                            <div class="rings">
+                                                                <img class="smallRing" src="/web/img/main/afterLogin/viewRing.png" alt="">
+                                                                <img class="smallRing" src="/web/img/main/afterLogin/viewRing.png" alt="">
+                                                                <img class="smallRing" src="/web/img/main/afterLogin/viewRing.png" alt="">
+                                                            </div>
+                                                            <span>56 / 200</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="beforeJoinThumb">
+                                        <a href="javascript:avoid(0)" class="thumbBox afterLogin-commonSlide-thumb" style="background-image: url('/web/img/main/afterLogin/slide/dummyImg.png');">
+                                            <div class="slide-inner-content onlyGathering">
+                                                <div class="condition">
+                                                    <div class="leftSide">
+                                                        <strong class="off">Offline</strong>
+                                                    </div>
+                                                    <div class="rightSide">
+                                                        <strong class="date">
+                                                            2021. 12. 15  17:00
+                                                        </strong>
+                                                    </div>
+                                                </div>
+                                                <div class="content">
+                                                    <div class="ring-text">
+                                                        <div class="ring hover-ring">
+                                                            <img src="/web/img/main/dummyIcon.png" alt="">
+                                                        </div>
+                                                        <div class="text">
+                                                            <h5>
+                                                                gathering Title
+                                                            </h5>
+                                                            <p>
+                                                                Host Name
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="viewCount">
+                                                        <div class="vc-wrap">
+                                                            <div class="rings">
+                                                                <img class="smallRing" src="/web/img/main/afterLogin/viewRing.png" alt="">
+                                                                <img class="smallRing" src="/web/img/main/afterLogin/viewRing.png" alt="">
+                                                                <img class="smallRing" src="/web/img/main/afterLogin/viewRing.png" alt="">
+                                                            </div>
+                                                            <span>56 / 200</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="beforeJoinThumb">
+                                        <a href="javascript:avoid(0)" class="thumbBox afterLogin-commonSlide-thumb" style="background-image: url('/web/img/main/afterLogin/slide/dummyImg.png');">
+                                            <div class="slide-inner-content onlyGathering">
+                                                <div class="condition">
+                                                    <div class="leftSide">
+                                                        <strong class="off">Offline</strong>
+                                                    </div>
+                                                    <div class="rightSide">
+                                                        <strong class="date">
+                                                            2021. 12. 15  17:00
+                                                        </strong>
+                                                    </div>
+                                                </div>
+                                                <div class="content">
+                                                    <div class="ring-text">
+                                                        <div class="ring hover-ring">
+                                                            <img src="/web/img/main/dummyIcon.png" alt="">
+                                                        </div>
+                                                        <div class="text">
+                                                            <h5>
+                                                                gathering Title
+                                                            </h5>
+                                                            <p>
+                                                                Host Name
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="viewCount">
+                                                        <div class="vc-wrap">
+                                                            <div class="rings">
+                                                                <img class="smallRing" src="/web/img/main/afterLogin/viewRing.png" alt="">
+                                                                <img class="smallRing" src="/web/img/main/afterLogin/viewRing.png" alt="">
+                                                                <img class="smallRing" src="/web/img/main/afterLogin/viewRing.png" alt="">
+                                                            </div>
+                                                            <span>56 / 200</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="joinBtn">
+                            <button onclick="checkLoginUser()">Join</button>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <%- include ./common/commonFooter.html%> <%- include ./common/commonScript.html%>
+            <script>
+                var params = new URL(location.href);
+                var lang = params.searchParams.get("clang");
+                
+                var user = <%- user ? JSON.stringify(user) : {} %>;
+                var gatheringData = <%- gatheringObject ? JSON.stringify(gatheringObject) : {} %>;
+                var gatheringWriter = <%- gatheringWriter ? JSON.stringify(gatheringWriter) : {} %>;
+
+                // 테스트용 : 로컬에 이미지가 없을시 더미 이미지로 src 변경
+                function checkImg(target) 
+                {
+                    $(target).attr("src",'/web/img/classesThumb.png');
+                }
+
+                $(document).ready(function(){
+                    setGathering(gatheringData);
+                });
+
+                function setGathering(gatheringData){
+                    var gatheringObject = gatheringData.classObject;
+
+                    // 게더링 ID
+                    document.getElementById('gatheringId').value = gatheringData._id;
+
+                    // 게더링 Name
+                    document.getElementById('gatheringName').innerHTML = gatheringObject.gatheringName;
+
+                    // 게더랑 Category
+                    document.getElementById('gatheringCategory').innerHTML = getTranslation('gathering', gatheringObject.gatheringCategory);
+
+                    // 게더링 멤버 수
+                    if(gatheringData.gatheringMember === undefined)
+                    {
+                        document.getElementById('gatheringMemberTag').innerHTML += `0/<%=translation.openClass.Unlimited%>`;
+                    }
+                    else
+                    {
+                        document.getElementById('gatheringMemberTag').innerHTML += `${Object.keys(gatheringData.gatheringMember).length}/<%=translation.openClass.Unlimited%>`;
+                    }
+                    
+                    // Main 이미지
+                    document.getElementById('mainImageId').innerHTML = makeThumbnail(gatheringObject.mainImage[0].filePath);
+                    
+                    // Sub 이미지
+                    var thumbNailSubLength = 0;
+                    if(gatheringObject.anotherImage.length < 4) {
+                        thumbNailSubLength = gatheringObject.anotherImage.length;
+                    } else {
+                        thumbNailSubLength = 4;
+                    }
+                    var subList = '';
+                    for(var i = 0; i < thumbNailSubLength; i++) 
+                    {
+                        subList += makeThumbnail(gatheringObject.anotherImage[i].filePath, i, gatheringObject.anotherImage.length);
+
+                        if(((i + 1) == thumbNailSubLength) && thumbNailSubLength < gatheringObject.anotherImage.length) {
+                            for(var j = thumbNailSubLength; j < gatheringObject.anotherImage.length; j++) {
+                                subList += `<img src="${gatheringObject.anotherImage[j].filePath}" style="display: none;">`;
+                            }
+                        }
+                    }
+                    document.getElementById('subImageId').innerHTML = subList;
+
+                    var keyList = '';
+                    // 게더링 keyword
+                    for(var keyword in gatheringObject.keywords)
+                    {
+                        keyList += `<span class="innerTags">
+                                        ${getTranslation('openClass', keyword)}
+                                    </span>
+                            `;
+                    }
+                    document.getElementById('gatheringKeywordTagId').innerHTML += keyList;
+
+                    document.getElementById('userRingId').innerHTML = `<img src="/web/img/userRing/${gatheringWriter.userUID}.png" alt="">`;
+
+                    if(gatheringWriter.hostType == '' || gatheringWriter.hostType == undefined || gatheringWriter.hostType == null) {
+                        document.getElementById('ratingId').style.display = 'none';
+                    } else {
+                        document.getElementById('ratingId').innerHTML = getTranslation('hostMain', gatheringWriter.hostType);
+                    }
+
+                    document.getElementById('hostATagId').innerHTML = gatheringData.userName;
+
+                    document.getElementById('gatheringDescriptionTagId').innerHTML = gatheringObject.gatheringDesc;
+                }
+
+                function makeThumbnail(filePath, num, length){
+                    if(num==3){
+                        return `<a href="javascript:avoid(0)" class="imgBox" onclick="customModal(33, 'gathering')" data-num="+${length}">
+                                <img src="${filePath}" onerror="checkImg(this)" alt="">
+                            </a>`
+                    }else{
+                        return `<a href="javascript:avoid(0)" onclick="customModal(33, 'gathering')" class="imgBox">
+                                    <img src="${filePath}" onerror="checkImg(this)" alt="">
+                                </a>`
+                    }
+                }
+
+                $(function() {
+                    //챕터 세부내용 더보기버튼
+                    $('.viewDetails > button').click(function() {
+                        if($(this).html() == 'Summary View')
+                        {
+                            $(this).html('View Details');
+                        }
+                        else 
+                        {
+                            $(this).html('Summary View');
+                        }
+                        $(this).parents('.textWrap').children('.hiddenDetail').slideToggle();
+                    });
+
+
+                    //설명글 더보기 버튼
+                    $('.seeMoreBtn-on').click(function() {
+                        $(this).parents('.classDetail').children('#gatheringDescriptionTagId').toggleClass('active');
+                    });
+
+                })
+
+                $(window).on('load resize', function() {
+                    if($(this).innerWidth() <= 1279)
+                    {
+                        $('.gatheringsSlide').filter('.slick-initialized').slick('unslick')
+                    }
+                    else
+                    {
+                        $('.gatheringsSlide').not('.slick-initialized').slick({
+                            slidesToShow: 4,
+                            slidesToScroll: 1,
+                            arrows: true,
+                            prevArrow : "<button type='button' class='prev slickBtn'><i class='xi-angle-left-thin'></i></button>",
+                            nextArrow : "<button type='button' class='next slickBtn'><i class='xi-angle-right-thin'></i></button>",
+                            appendArrows: '.btnArea2',
+                            dots: false,
+                            autoplay: false,
+                            infinite: true,
+                            speed: 500,
+                        })
+                    }
+                })
+
+                // 게더링 참여 버튼 클릭시 로그인 여부를 체크
+                function checkLoginUser() {
+                    if(Object.keys(user).length !== 0 && user.constructor === Object)
+                    {
+                        gatheringJoin();
+                    }
+                    else
+                    {
+                        customModal(100);
+                    }
+                }
+
+                // 게더링 참여 함수
+                function gatheringJoin() {
+                    if(window.confirm('"' + gatheringData.classObject.gatheringName + '"' + ' 게더링에 가입하시겠습니까?')) 
+                    {
+                        var jsonData = {};
+                        jsonData.gatheringID = document.getElementById('gatheringId').value;
+                        jsonData.userUID = user.userUID;
+                        jsonData.userName = user.userName;
+                        
+                        if(user.hostType !== undefined && user.hostType !== null && user.hostType !== '')
+                        {
+                            jsonData.hostType = user.hostType;
+                        }
+                        else
+                        {
+                            jsonData.hostType = 'none';
+                        }
+
+                        $.ajax({
+                            type : "POST",
+                            url : "/gatheringJoin",
+                            data : JSON.stringify(jsonData),
+                            async : false,
+                            processData : false,
+                            contentType : "application/json; charset=UTF-8",
+                            success : function(success){
+                                alert('게더링 가입이 완료되었습니다.');
+                                location.href = '/gatheringDetail/' + jsonData.gatheringID;
+                            },
+                            error : function(error)
+                            {
+                                if(error.responseJSON.status === 'already')
+                                {
+                                    alert(error.responseJSON.message);
+                                    location.href = '/gatheringDetail/' + jsonData.gatheringID;
+                                }
+                                else
+                                {
+                                    alert(error.responseJSON.message);
+                                }
+                            }
+                        });
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            </script>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <%-include common/commonHead.html%>
+    <body>
+        <%-include common/commonHeader.html%>
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+        <!-- START CONTENT -->
+        <div class="content">
+            <!-- Start Page Header -->
+            <div class="page-header">
+                <h1 class="title">Blank Page</h1>
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="#">Extra Pages</a></li>
+                    <li class="active">Blank Page</li>
+                </ol>
+
+                <!-- End Page Header Right Div -->
+            </div>
+            <!-- End Page Header -->
+            <div class="row presentation">
+
+                <div class="col-lg-8 col-md-6 titles">
+                    <span class="icon color8-bg"><i class="fa fa-pencil"></i></span>
+                    <h1>샘플 레이아웃</h1>
+                    <h4>추가가 필요한 레이아웃은 요청하기</h4>
+                </div>
+            
+                <div class="col-lg-4 col-md-6">
+                    <ul class="list-unstyled list">
+                        <li><i class="fa fa-check"></i>컴포넌트 주석별 나눔</li>
+                        <li><i class="fa fa-check"></i>플러그인 사용예시 추가</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+            <!-- START CONTAINER -->
+            <div class="container-default">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-title">
+                                폼 형식
+                                <ul class="panel-tools">
+                                    <li>
+                                        <a class="icon minimise-tool"><i class="fa fa-minus"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="icon expand-tool"><i class="fa fa-expand"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="panel-body">
+                                <form class="form-horizontal">
+                                    <!--
+                                    컴포넌트 시작 
+                                    -->
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label">인풋 - TEXT</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="inputText form-control" data-check="0"/>
+                                            <span class="errorWrap" style="color: red;">다시 입력해주세요.</span>
+                                        </div>
+                                    </div>
+                                    <!--
+                                    컴포넌트 끝
+                                    -->
+
+                                    <!--
+                                    컴포넌트 시작 
+                                    -->
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label">인풋 - TEXT( 동적생성 )</label>
+                                        <div class="col-sm-10">
+                                            <button type="button" class="btn btn-default" style="height: 32px; border: 0; border-radius: 0; margin-top: 3px; margin-bottom: 10px;" onclick="addComponent(this,'text', true)">추가</button>
+                                            <div class="addElementWrap">
+                                                <!--
+                                                <div class="input-group" style="margin-top: 10px">
+                                                    <input type="text" class="addInputText form-control listTextColumn" placeholder="Amount" data-check="0"/>
+                                                    <div class="input-group-addon" style="padding: 0">
+                                                        <button type="button" class="btn btn-danger" style="height: 32px; border: 0; border-radius: 0" onclick="removeComponent(this,\'text\')">삭제</button>
+                                                    </div>
+                                                </div>
+                                                <span class="errorWrap" style="color: red;">다시 입력해주세요.</span>
+                                                -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--
+                                    컴포넌트 끝
+                                    -->
+
+                                    <!--
+                                    컴포넌트 시작 
+                                    -->
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label">텍스트에이리어</label>
+                                        <div class="col-sm-10">
+                                            <textarea class="inputTextarea form-control" rows="3" placeholder="Type your message..." data-check="0"></textarea>
+                                            <span class="errorWrap" style="color: red;">다시 입력해주세요.</span>
+                                        </div>
+                                    </div>
+                                    <!--
+                                    컴포넌트 끝
+                                    -->
+
+                                    <!--
+                                    컴포넌트 시작 
+                                    -->
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label">텍스트에이리어( 동적생성 )</label>
+                                        <div class="col-sm-10">
+                                            <button type="button" class="btn btn-default" style="height: 32px; border: 0; border-radius: 0; margin-top: 3px; margin-bottom: 10px;" onclick="addComponent(this,'textarea', true)">추가</button>
+                                            <div class="addElementWrap">
+                                                <!-- <div class="input-group" style="display: flex; margin-top: 10px">
+                                                    <textarea class="form-control" rows="3" placeholder="Type your message..."></textarea>
+                                                    <button type="button" class="btn btn-danger" style="width: 100px" onclick="removeComponent(this,'textarea')">삭제</button>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--
+                                    컴포넌트 끝
+                                    -->
+
+                                    <!--
+                                    컴포넌트 시작 
+                                    -->
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label">셀렉트박스</label>
+                                        <div class="col-sm-10">
+                                            <select class="inputSelect form-control">
+                                                <option value="">DEFAULT</option>
+                                                <option value="2">옵션2</option>
+                                                <option value="3">옵션3</option>
+                                            </select>
+                                            <span class="errorWrap" style="color: red;">다시 입력해주세요.</span>
+                                        </div>
+                                    </div>
+                                    <!--
+                                    컴포넌트 끝
+                                    -->
+
+                                    <!--
+                                    컴포넌트 시작 
+                                    -->
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label">체크박스</label>
+                                        <div class="col-sm-10" data-check="checkbox1">
+                                            <div class="checkbox checkbox-info">
+                                                <input name="checkbox1" id="checkbox11" class="checkColumn" type="checkbox" value="1" />
+                                                <label for="checkbox11"> 체크1 </label>
+                                            </div>
+                                            <div class="checkbox checkbox-info">
+                                                <input name="checkbox1" id="checkbox12" class="checkColumn" type="checkbox" value="2" />
+                                                <label for="checkbox12"> 체크2 </label>
+                                            </div>
+                                            <div class="checkbox checkbox-info">
+                                                <input name="checkbox1" id="checkbox13" class="checkColumn" type="checkbox" value="3" />
+                                                <label for="checkbox13"> 체크3 </label>
+                                            </div>
+                                            <span class="errorWrap" style="color: red;">다시 입력해주세요.</span>
+                                        </div>
+                                    </div>
+                                    <!--
+                                    컴포넌트 끝
+                                    -->
+
+                                    <!--
+                                    컴포넌트 시작 
+                                    -->
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label">체크박스(인라인)</label>
+                                        <div class="col-sm-10" data-check="checkbox2">
+                                            <div>
+                                                <div class="checkbox checkbox-info checkbox-inline">
+                                                    <input name="checkbox2" type="checkbox" id="checkbox21" class="checkInlineColumn" value="1" />
+                                                    <label for="checkbox21"> 체크1 </label>
+                                                </div>
+                                                <div class="checkbox checkbox-info checkbox-inline">
+                                                    <input name="checkbox2" type="checkbox" id="checkbox22" class="checkInlineColumn" value="2" />
+                                                    <label for="checkbox22"> 체크2 </label>
+                                                </div>
+                                                <div class="checkbox checkbox-info checkbox-inline">
+                                                    <input name="checkbox2" type="checkbox" id="checkbox23" class="checkInlineColumn" value="3" />
+                                                    <label for="checkbox23"> 체크3 </label>
+                                                </div>
+                                            </div>
+                                            <span class="errorWrap" style="color: red;">다시 입력해주세요.</span>
+                                        </div>
+                                    </div>
+
+                                    <!--
+                                    컴포넌트 끝
+                                    -->
+
+                                    <!--
+                                    컴포넌트 시작 
+                                    -->
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label">라디오박스</label>
+                                        <div class="col-sm-10" data-check="radioWrap">
+                                            <div class="radio radio-info">
+                                                <input type="radio" id="radiobox11" value="" name="radioColumn"/>
+                                                <label for="radiobox11"> DEFAULT </label>
+                                            </div>
+                                            <div class="radio radio-info">
+                                                <input type="radio" id="radiobox12" value="1" name="radioColumn"/>
+                                                <label for="radiobox12"> 라디오2 </label>
+                                            </div>
+                                            <div class="radio radio-info">
+                                                <input type="radio" id="radiobox13" value="2" name="radioColumn"/>
+                                                <label for="radiobox13"> 라디오3 </label>
+                                            </div>
+                                            <span class="errorWrap" style="color: red;">다시 입력해주세요.</span>
+                                        </div>
+                                    </div>
+                                    <!--
+                                    컴포넌트 끝
+                                    -->
+
+                                    <!--
+                                    컴포넌트 시작 
+                                    -->
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label">라디오박스(인라인)</label>
+                                        <div class="col-sm-10" data-check="radioWrap">
+                                            <div>
+                                                <div class="radio radio-info radio-inline">
+                                                    <input type="radio" id="radiobox21" value="" name="radioInlineColumn"/>
+                                                    <label for="radiobox21"> DEFAULT </label>
+                                                </div>
+                                                <div class="radio radio-info radio-inline">
+                                                    <input type="radio" id="radiobox22" value="1" name="radioInlineColumn"/>
+                                                    <label for="radiobox22"> 라디오2 </label>
+                                                </div>
+                                                <div class="radio radio-info radio-inline">
+                                                    <input type="radio" id="radiobox23" value="2" name="radioInlineColumn"/>
+                                                    <label for="radiobox23"> 라디오3 </label>
+                                                </div>
+                                            </div>
+                                            <span class="errorWrap" style="color: red;">다시 입력해주세요.</span>
+                                        </div>
+                                    </div>
+                                    <!--
+                                    컴포넌트 끝
+                                    -->
+
+                                    <!--
+                                    컴포넌트 시작 
+                                    -->
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label">파일셀렉트</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group" style="margin-bottom: 10px">
+                                                <div class="form-control">파일을 선택해주세요.</div>
+                                                <input type="file" id="fileColumn" style="display: none" data-check="0"/>
+                                                <div class="input-group-addon" style="padding: 0">
+                                                    <button type="button" class="btn btn-light" style="height: 32px; border: 0; border-radius: 0" onclick="fileTrigger(this)">파일추가</button>
+                                                </div>
+                                            </div>
+                                            <span class="errorWrap" style="color: red;">다시 입력해주세요.</span>
+                                        </div>
+                                    </div>
+                                    <!--
+                                    컴포넌트 끝
+                                    -->
+
+                                    <!--
+                                    컴포넌트 시작 
+                                    -->
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label">파일셀렉트(동적생성)</label>
+                                        <div class="col-sm-10 ">
+                                            <button type="button" class="btn btn-default" style="height: 32px; border: 0; border-radius: 0; margin-top: 3px; margin-bottom: 10px;" onclick="addComponent(this,'file')">항목추가</button>
+                                            <div class="addElementWrap">
+                                                <!-- <div class="input-group" style="margin-bottom: 10px">
+                                                    <div class="input-group-addon fileOnlyPosition" style="width: 38px; border-right: 0;">↕</div>
+                                                    <div class="form-control" style="border-right: 0;">파일을 선택해주세요.</div>
+                                                    <input type="file" style="display: none" />
+                                                    <div class="input-group-addon" style="padding: 0">
+                                                        <button type="button" class="btn btn-light" style="height: 32px; border: 0; border-radius: 0" onclick="fileTrigger(this)">파일추가</button>
+                                                    </div>
+                                                    <div class="input-group-addon" style="padding: 0">
+                                                        <button type="button" class="btn btn-danger" style="height: 32px; border: 0; border-radius: 0" onclick="removeComponent(this,'file')">항목삭제</button>
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--
+                                    컴포넌트 끝
+                                    -->
+                                    <!--
+                                    컴포넌트 시작 
+                                    -->
+                                    
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label">파일셀렉트 - 미리보기</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group" style="display: flex; margin-bottom: 10px">
+                                                <div style="display: flex; width: 100%; border: 1px solid #bdc4c9">
+                                                    <div class="singleFileView fileViewWrap">미리보기</div>
+                                                    <div class="singleFileTitle fileTitleWrap">파일을 선택해주세요.</div>
+                                                </div>
+                                                <input type="file" id="fileViewColumn" style="display: none" data-check="0"/>
+                                                <button type="button" class="btn btn-light" style="width: 100px; border-radius: 0;border-left: 0;" onclick="fileTrigger(this)">파일추가</button>
+                                            </div>
+                                            <span class="errorWrap" style="color: red;">다시 입력해주세요.</span>
+                                        </div>
+                                    </div>
+                                    <!--
+                                    컴포넌트 끝
+                                    -->
+
+                                    <!--
+                                    컴포넌트 시작 
+                                    -->
+                                    
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label">파일셀렉트 - 미리보기(동적생성)</label>
+                                        <div class="col-sm-10">
+                                            <button type="button" class="btn btn-default" style="width: 100px; height: 40px; border: 1px solid #bdc4c9; border-radius: 0; margin-top: 3px; margin-bottom: 10px;" onclick="addComponent(this,'fileView')">항목추가</button>
+                                            <div class="addElementWrap">
+                                                <!--                                                 
+                                                <div class="input-group" style="display: flex; margin-bottom: 10px">
+                                                    <div style="display: flex; width: 100%; border: 1px solid #bdc4c9">
+                                                        <div class="filePosition fileOnlyPosition">↕</div>
+                                                        <div class="fileView fileViewWrap">미리보기</div>
+                                                        <div class="fileTitle fileTitleWrap">파일을 선택해주세요.</div>
+                                                    </div>
+                                                    <input type="file" style="display: none" />
+                                                    <button type="button" class="btn btn-light" style="width: 100px; border-radius: 0;border-left: 0;border-right: 0;" onclick="fileTrigger(this)">파일추가</button>
+                                                    <button type="button" class="btn btn-danger" style="width: 100px; border: 1px solid #bdc4c9; border-radius: 0" onclick="removeComponent(this,'fileView')">항목삭제</button>
+                                                </div>
+                                                -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--
+                                    컴포넌트 끝
+                                    -->
+                                    <button type="button" class="btn btn-default saveForm">저장</button>
+                                    <button type="button" class="btn btn-danger">취소</button>
+                                    <button type="button" class="btn btn-primary">돌아가기</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-title">
+                                플러그인
+                                <ul class="panel-tools">
+                                    <li>
+                                        <a class="icon minimise-tool"><i class="fa fa-minus"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="icon expand-tool"><i class="fa fa-expand"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="panel-body">
+                                <form class="form-horizontal">
+                                    <!--
+                                    컴포넌트 시작 
+                                    -->
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label">DATE PICKER</label>
+                                        <div class="col-sm-10">
+                                            <input id="dateColumn" class="form-control" type="text" name="dateColumn" autocomplete="off" value="">
+                                        </div>
+                                    </div>
+                                    <!--
+                                    컴포넌트 끝
+                                    -->
+
+                                    <!--
+                                    컴포넌트 시작 
+                                    -->
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label">DATE RANGE PICKER</label>
+                                        <div class="col-sm-10">
+                                            <input id="dateRange" class="form-control" type="text" name="dateRange" autocomplete="off" value="">
+                                        </div>
+                                    </div>
+                                    <!--
+                                    컴포넌트 끝
+                                    -->
+
+                                    <!--
+                                    컴포넌트 시작 
+                                    -->
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label">CKEDITOR</label>
+                                        <div class="col-sm-10">
+                                            <textarea name="editorColumn1"></textarea>
+                                            <textarea name="editorColumn2"></textarea>
+                                        </div>
+                                    </div>
+                                    <!--
+                                    컴포넌트 끝
+                                    -->
+
+                                    <!--
+                                    컴포넌트 시작 
+                                    -->
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label form-label">태그 생성</label>
+                                        <div class="col-md-10">
+                                            <input type="text" id="tagsColumn" value="#VR, #AR, #XR">
+                                        </div>
+                                    </div>
+                                    <!--
+                                    컴포넌트 끝
+                                    -->
+
+                                    <button type="button" class="btn btn-default pluginSaveForm">저장</button>
+                                    <button type="button" class="btn btn-danger">취소</button>
+                                    <button type="button" class="btn btn-primary">돌아가기</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END CONTAINER -->
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+            <%-include common/commonFooter.html%>
+        </div>
+        <!-- End Content -->
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+        <%-include common/commonScript.html%>
+        <script>
+            //=====================================
+            // 저장
+            //-------------------------------------
+            $('.saveForm').click(function()
+            {
+                $('.inputText').each(function()
+                {
+                    if($(this).val()=='')
+                    {
+                        $(this).next().text('성공')
+                    }
+                    else
+                    {
+                        $(this).next().text('')
+                    }
+                })
+
+                $('.addInputText').each(function()
+                {
+                    if($(this).val()=='')
+                    {
+                        $(this).parent().next().text('성공')
+                    }
+                    else
+                    {
+                        $(this).parent().next().text('')
+                    }
+                })
+
+                $('.inputTextarea').each(function()
+                {
+                    if($(this).val()=='')
+                    {
+                        $(this).next().text('성공')
+                    }
+                    else
+                    {
+                        $(this).next().text('')
+                    }
+                })
+
+                $('.addInputTextarea').each(function()
+                {
+                    if($(this).val()=='')
+                    {
+                        $(this).parent().next().text('성공')
+                    }
+                    else
+                    {
+                        $(this).parent().next().text('')
+                    }
+                })
+
+                $('.inputSelect').each(function()
+                {
+                    if($(this).val()=='')
+                    {
+                        $(this).next().text('성공')
+                    }
+                    else
+                    {
+                        $(this).next().text('')
+                    }
+                })
+                
+            })
+
+            function saveFunc() 
+            {
+                var data = {};
+
+                //텍스트
+                var textColumn = $('#textColumn').val();
+                data.textColumn = textColumn;
+
+                //텍스트 동적생성
+                var listText = $('.listTextColumn');
+                if(!listText) listText = [];
+                var listTextColumn = [];
+                for(var i=0; i<listText.length; i++)
+                {
+                    var text = listText[i];
+                    listTextColumn.push($(text).val());
+                }
+                data.listTextColumn = listTextColumn;
+
+                //텍스트에어리어
+                var textAreaColumn = $('#textAreaColumn').val();
+                data.textAreaColumn = textAreaColumn;
+                
+                //텍스트에어리어 동적생성
+                var listTextArea = $('.listTextAreaColumn');
+                if(!listTextArea) listTextArea = [];
+                var listTextAreaColumn = [];
+                for(var i=0; i<listTextArea.length; i++)
+                {
+                    var textArea = listTextArea[i];
+                    listTextAreaColumn.push($(textArea).val());
+                }
+                data.listTextAreaColumn = listTextAreaColumn;
+
+                //셀렉트 박스
+                var selectColumn = $('#selectColumn').val();
+                data.selectColumn = selectColumn;
+
+                //체크 박스
+                var listCheckBox = $('.checkColumn');
+                if(!listCheckBox) listCheckBox = [];
+                var checkColumn = [];
+                for(var i=0; i<listCheckBox.length; i++)
+                {
+                    var checkBox = listCheckBox[i];
+                    if(checkBox.checked == true)
+                    {
+                        checkColumn.push(checkBox.value);
+                    }
+                }
+                data.checkColumn = checkColumn;
+
+                //체크 박스 인라인
+                var listInlineCheckBox = $('.checkInlineColumn');
+                if(!listInlineCheckBox) listInlineCheckBox = [];
+                var checkInlineColumn = [];
+                for(var i=0; i<listInlineCheckBox.length; i++)
+                {
+                    var checkBox = listInlineCheckBox[i];
+                    if(checkBox.checked == true)
+                    {
+                        checkInlineColumn.push(checkBox.value);
+                    }
+                }
+                data.checkInlineColumn = checkInlineColumn;
+
+                //라디오 박스
+                var radioColumn = $(':radio[name="radioColumn"]:checked').val();
+                data.radioColumn = radioColumn;
+
+                //파일 셀렉트
+                var file = document.getElementById('fileColumn');
+                var fileColumn;
+                if(file.files.length > 0)
+                {
+                    fileUpload(file, function(listFileInfo)
+                    {
+                        fileColumn = listFileInfo[0];
+                    })
+                }
+                data.fileColumn = fileColumn;
+
+                //파일 셀렉트 동적생성
+                var listFile = document.getElementsByClassName('listFileColumn');
+                if(!listFile) listFile = [];
+                var listFileColumn = [];
+                for(var i=0; i<listFile.length; i++)
+                {
+                    var file = listFile[i];
+                    if(0 < file.files.length)
+                    {
+                        fileUpload(file, function(listFileInfo)
+                        {
+                            listFileColumn.push(listFileInfo[0]);
+                        })
+                    }
+                }
+                data.listFileColumn = listFileColumn;
+
+                //파일 셀렉트 미리보기
+                var fileView = document.getElementById('fileViewColumn');
+                var fileViewColumn;
+                if(fileView.files.length > 0)
+                {
+                    fileUpload(fileView, function(listFileInfo)
+                    {
+                        fileViewColumn = listFileInfo[0];
+                    })
+                }
+                data.fileViewColumn = fileViewColumn;
+
+                //파일 셀렉트 미리보기 동적생성
+                var listFileView = document.getElementsByClassName('listFileViewColumn');
+                if(!listFileView) listFileView = [];
+                var listFileViewColumn = [];
+                for(var i=0; i<listFileView.length; i++)
+                {
+                    var fileView = listFileView[i];
+                    if(0 < fileView.files.length)
+                    {
+                        fileUpload(fileView, function(listFileInfo)
+                        {
+                            listFileViewColumn.push(listFileInfo[0]);
+                        })
+                    }
+                }
+                data.listFileViewColumn = listFileViewColumn;
+
+                data.protocol = 'sampleAjax';
+                var successCallBack = function(result){
+                    if(result.resultCode == 0)
+                    {
+                        alert('저장되었습니다.');
+                    }
+                    else
+                    {
+                        alert(result.message);
+                    }
+                };
+
+                protocolSendAjaxWithCallBack(data, successCallBack);
+            }
+            
+            //=====================================
+            // 플러그인 입력값 저장
+            //-------------------------------------
+            $('.pluginSaveForm').click(function()
+            {
+                if(true)
+                // if(isValidationInput())
+                {
+                    pluginSaveFunc();
+                }
+            })
+
+            function pluginSaveFunc() 
+            {
+                var data = {};
+
+                //데이트피커
+                var dateColumn = $('#dateColumn').val();
+                data.dateColumn = dateColumn;
+
+                //데이트 래인지피커
+                var dateRange = $('#dateRange').val();
+                data.startDateColumn = dateRange.substring(0, 10);
+                data.endDateColumn = dateRange.substring(13, 23);
+                
+                //CK 에디터
+                var editorColumn1 = CKEDITOR.instances['editorColumn1'].getData();
+                var editorColumn2 = CKEDITOR.instances['editorColumn2'].getData();
+                data.editorColumn1 = editorColumn1;
+                data.editorColumn2 = editorColumn2;
+
+                //해시태그
+                var tagsColumn = $('#tagsColumn').val().split(',');
+                data.tagsColumn = tagsColumn;
+                
+                data.protocol = 'sampleAjax';
+                var successCallBack = function(result){
+                    if(result.resultCode == 0)
+                    {
+                        alert('저장되었습니다.');
+                    }
+                    else
+                    {
+                        alert(result.message);
+                    }
+                };
+
+                protocolSendAjaxWithCallBack(data, successCallBack);
+            }
+        </script>
+    </body>
+</html>

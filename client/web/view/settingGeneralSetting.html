@@ -1,0 +1,133 @@
+<h3 class="pageTitle">
+    <%=translation.setting.General_Settings%>
+</h3>
+<div class="contents">
+    <div class="generalSettingSection">
+        <div class="language">
+            <h2><%=translation.openClass.Language%></h2>
+            <div class="languageSelect">
+                <h3>Mind Ground Language</h3>
+                <div class="selectHere">
+                    <div class="selectBox1 settingLanguage">
+                        <div class="selectView">
+                            <input class="noneLine" id="settingLanguage" type="button" value="Select" style="color : rgb(255,255,255)">
+                            <img src="/web/img/ICN_DROP.png" alt="">
+                        </div>
+                        <ul class="selectBox-hdnMenu langBox">
+                            <li>
+                                <input type="radio" value="한국어" id="langKo" name="settingLang" onclick="selectValue(this)" >
+                                <label for="langKo">
+                                    <span><%=translation.footer.useKorean%></span>
+                                </label>
+                            </li>
+                            <li>
+                                <input type="radio" value="English" id="langEn" name="settingLang" onclick="selectValue(this)" >
+                                <label for="langEn">
+                                    <span><%=translation.footer.useEnglish%></span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="saveBtn">
+                <button><%=translation.setting.Save_changes%></button>
+            </div>
+        </div>
+        <div class="notification">
+            <h2><%=translation.setting.Notification%></h2>
+            <div class="notificationSet">
+                <div class="notificationContent">
+                    <h3><%=translation.afterlogin.Comment%>, <%=translation.afterlogin.Reply%></h3>
+                    <div class="notifiChkWrap">
+                        <label class="switcth">
+                            <input type="checkbox">
+                            <strong class="ballWrap">
+                                <span class="ball"></span>
+                            </strong>
+                        </label>
+                    </div>
+                </div>
+                <div class="notificationContent">
+                    <h3><%=translation.followerManagement.Following%>, <%=translation.mypage.Followers%></h3>
+                    <div class="notifiChkWrap">
+                        <label class="switcth">
+                            <input type="checkbox">
+                            <strong class="ballWrap">
+                                <span class="ball"></span>
+                            </strong>
+                        </label>
+                    </div>
+                </div>
+                <div class="notificationContent">
+                    <h3><%=translation.footer.Gathering%></h3>
+                    <div class="notifiChkWrap">
+                        <label class="switcth">
+                            <input type="checkbox">
+                            <strong class="ballWrap">
+                                <span class="ball"></span>
+                            </strong>
+                        </label>
+                    </div>
+                </div>
+                <div class="notificationContent">
+                    <h3><%=translation.setting.Messages%></h3>
+                    <div class="notifiChkWrap">
+                        <label class="switcth">
+                            <input type="checkbox">
+                            <strong class="ballWrap">
+                                <span class="ball"></span>
+                            </strong>
+                        </label>
+                    </div>
+                </div>
+                <div class="notificationContent">
+                    <h3><%=translation.mypage.Classes%></h3>
+                    <div class="notifiChkWrap">
+                        <label class="switcth">
+                            <input type="checkbox">
+                            <strong class="ballWrap">
+                                <span class="ball"></span>
+                            </strong>
+                        </label>
+                    </div>
+                </div>
+                <div class="notificationContent">
+                    <h3><%=translation.setting.Journal%></h3>
+                    <div class="notifiChkWrap">
+                        <label class="switcth">
+                            <input type="checkbox">
+                            <strong class="ballWrap">
+                                <span class="ball"></span>
+                            </strong>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="saveBtn">
+                <button><%=translation.setting.Save_changes%></button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    
+    var comment = "";
+    var follow = "";
+    var gathering = "";
+    var message = "";
+    var classes = "";
+    var journal = "";
+
+    //언어 셀렉박스
+    function selectBoxValChange() {
+        document.querySelector('.langBox').addEventListener('click', function(e) {
+            document.getElementById('settingLanguage').value = e.target.value;
+            e.target.closest('ul').classList.remove('active');
+        });
+    }
+    selectBoxValChange();
+
+
+
+</script>

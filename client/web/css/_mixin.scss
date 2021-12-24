@@ -1,0 +1,50 @@
+//믹스인
+@mixin fs($size, $lineHeight, $weight: normal) {
+    //font-size,line-height,font-weight
+    font-size: $size;
+    line-height: $lineHeight;
+    font-weight: $weight;
+}
+@mixin wh($width: auto, $height: auto) {
+    //width,height
+    width: $width;
+    height: $height;
+}
+@mixin border($px, $sharp, $color) {
+    //border
+    border: $px $sharp $color;
+}
+@mixin resetBtn {
+    padding: 0;
+    border: 0;
+    background: none;
+    outline: none;
+}
+@mixin bgImg {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+@mixin flexbox() {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin flex($values) {
+    -webkit-box-flex: $values;
+    -moz-box-flex: $values;
+    -webkit-flex: $values;
+    -ms-flex: $values;
+    flex: $values;
+}
+
+@mixin order($val) {
+    -webkit-box-ordinal-group: $val;
+    -moz-box-ordinal-group: $val;
+    -ms-flex-order: $val;
+    -webkit-order: $val;
+    order: $val;
+}

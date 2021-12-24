@@ -1,0 +1,746 @@
+<section>
+    <div class="contents">
+
+        <%
+            if(recommendList.recommendUserList.length > 0 )
+            {
+                
+        %>
+        <!-- 결과가 없을 때 -->
+        <div class="results-0">
+            <h3>
+                ​Friends
+            </h3>
+            <div class="noResultsTextCon">
+                <h4>
+                    We didn’t find any result.​
+                </h4>
+                <span>
+                    Take a look what we recommend​
+                </span>
+            </div>
+            <div class="recommended">
+                <h3>
+                    Recommended Friends​
+                </h3>
+                <div class="recCon">
+                    <div class="friendList-list">
+                        <%
+                        try {
+                            var endIndex = recommendList.recommendUserList.length;
+
+                            if((recommendList.recommendUserList).length >= 10) {
+                                endIndex = 10;
+                            }
+
+                            for(var i = 0; i < endIndex; i++)
+                            {
+                                var thisUser =recommendList.recommendUserList[i];
+                                var dataNo = 0;
+                                var following ='Following';
+                                var isActive = '';
+                            %>
+                                        <div class="friendList-list-content">
+                                            <div>
+                                                <div class="friendList-list-content-img">
+                                                    <img src="/web/img/userRing/<%=thisUser.userUID%>.png" alt="">
+                                                </div>
+                                                <div class="friendList-list-content-text">
+                                                    <h6>
+                                                        <%=thisUser.userName%>
+                                                    </h6>
+                                                    <p>
+                                                        <%=thisUser.hostType%>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="friendList-list-content-btn">
+                                                <button data-no="<%=dataNo%>" onclick="followUser('<%=thisUser.userUID%>', ' <%=thisUser.userName%>', '<%=thisUser.hostType%>', this)" <%=isActive%>>
+                                                    <%=following%>
+                                                </button>
+                                            </div>
+                                        </div>
+                            <%
+                                }
+                            } catch(error) {
+                                console.log(error);
+                            }
+                            %>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <%
+            } else {
+        %>
+        <!-- 결과가 있을 때 -->
+        <div class="results-1">
+            <div class="filtersArea">
+                <!-- 호스트필터랑 동일 -->
+                <div class="filters">
+                    <div class="moFiltersBtn">
+                        <button>
+                            <img src="/web/img/icn_filter.png" alt="">
+                        </button>
+                    </div>
+                    <ul class="btns">
+                        <li class="moTitle">
+                            <div class="top">
+                                <img src="/web/img/down.png" alt="">
+                            </div>
+                            <div class="bottom">
+                                <button class="moCloseBtn">
+                                    <img src="/web/img/ICN_CLOSE.png" alt="">
+                                </button>
+                                <h4>
+                                    <%=translation.hostMain.Filters%>
+                                </h4>
+                            </div>
+                        </li>
+                        <li class="allFilter hostMainPage" id="searchHostAllFilterID">
+                            <div>
+                                <input type="button" id="searchHostTypeValueVal" value="Only Host" class="filters-type filtersBtn">
+                                </input>
+                                <ul class="category-inner minWidth-200" id="searchHostTypeValueWrap">
+                                    <li>
+                                        <input type="checkBox" id="searchHostTypeValue" name="typeValue" checked>
+                                        <label for="searchHostTypeValue">
+                                            <span class="text">
+                                                Only Host
+                                            </span>
+                                            <span class="ball">
+                                                <span></span>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li class="webBtn">
+                                        <!-- <button class="resetBtn" onclick="resetCategory('type')"><%=translation.hostMain.Reset%></button> -->
+                                        <button class="saveBtn" id="searchHostTypeValueSaveBtn"><%=translation.hostMain.Save%></button>
+                                    </li>
+                                </ul>
+                                <div class="onlyFixed"></div>
+                            </div>
+                            <div>
+                                <input type="button" value="<%=translation.hostMain.Type%>" class="filters-type filtersBtn">
+                                </input>
+                                <ul class="category-inner minWidth-200" id="searchHostTypeHostWrap">
+                                    <li class="moSubTitle">
+                                        <h6><%=translation.hostMain.Type%></h6>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchHostBrand" name="hostInput" data-scheck="0" data-text="brand">
+                                        <label for="searchHostBrand">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.hostMain.brand%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchHostMaster" name="hostInput" data-ischeck="0" data-text="master">
+                                        <label for="searchHostMaster">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.hostMain.master%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchHostTeacher" name="hostInput" data-ischeck="0" data-text="teacher">
+                                        <label for="searchHostTeacher">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.hostMain.Teacher%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchHostCreator" name="hostInput" data-ischeck="0" data-text="creator">
+                                        <label for="searchHostCreator">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.hostMain.creator%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchHostLeader" name="hostInput" data-ischeck="0" data-text="leader">
+                                        <label for="searchHostLeader">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.hostMain.leader%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li class="webBtn">
+                                        <button class="resetBtn" onclick="searchHostResetCategory('type')"><%=translation.hostMain.Reset%></button>
+                                        <button class="saveBtn" onclick="searchHostSaveCategory('type')"><%=translation.hostMain.Save%></button>
+                                    </li>
+                                </ul>
+                                <div class="onlyFixed"></div>
+                            </div>
+                            <div>
+                                <input type="button" value="<%=translation.hostMain.Class_Category%>" class="filters-classCate filtersBtn">
+                                </input>
+                                <ul class="category-inner minWidth-260">
+                                    <li class="moSubTitle">
+                                        <h6><%=translation.hostMain.Class_Category%></h6>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchHostMindfulness" data-ischeck="0" data-text="Mindfulness">
+                                        <label for="searchHostMindfulness">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Mindfulness%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchHostMeditation" data-ischeck="0" data-text="Meditation">
+                                        <label for="searchHostMeditation">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Meditation%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchHostYoga" data-ischeck="0" data-text="Yoga">
+                                        <label for="searchHostYoga">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Yoga%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchHostSomatic" data-ischeck="0" data-text="Somatic">
+                                        <label for="searchHostSomatic">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Somatic%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchHostMa" data-ischeck="0" data-text="Movement & Activity">
+                                        <label for="searchHostMa">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Movement_Activity%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchHostCc" data-ischeck="0" data-text="Counseling & Coaching">
+                                        <label for="searchHostCc">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Counseling_Coaching%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchHostOther" data-ischeck="0" data-text="Other">
+                                        <label for="searchHostOther">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.openClass.Others%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li class="webBtn">
+                                        <button class="resetBtn" onclick="searchHostResetCategoryClass('category')"><%=translation.hostMain.Reset%></button>
+                                        <button class="saveBtn" onclick="searchHostSaveCategory('category')"><%=translation.hostMain.Save%></button>
+                                    </li>
+                                </ul>
+                                <div class="onlyFixed"></div>
+                            </div>
+                            <div>
+                                <input type="button" value="<%=translation.hostMain.Filters%>" class="filters-filters filtersBtn">
+                                </input>
+                                <ul class="category-inner-filter minWidth-540" id="searchHostFiltersWrap">
+                                    <li class="titleArea">
+                                        <h5>
+                                            <%=translation.hostMain.Filters%>
+                                        </h5>
+                                        <button>
+                                            <img src="/web/img/ICN_CLOSE.png" alt="">
+                                        </button>
+                                    </li>
+                                    <li class="inputArea">
+                                        <h6>
+                                            <%=translation.hostMain.Number_of_Reviews%>
+                                        </h6>
+                                        <div>
+                                            <div class="chkWrap">
+                                                <input type="radio" id="searchHostHigh1" name="chk1">
+                                                <label for="searchHostHigh1">
+                                                    <span class="box"></span>
+                                                    <span class="text">
+                                                        <%=translation.hostMain.High_to_Low%>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="chkWrap bottomLine">
+                                                <input type="radio" id="searchHostLow1" name="chk1">
+                                                <label for="searchHostLow1">
+                                                    <span class="box"></span>
+                                                    <span class="text">
+                                                        <%=translation.hostMain.Low_to_High%>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="inputArea">
+                                        <h6>
+                                            <%=translation.hostMain.Number_of_Classes%>
+                                        </h6>
+                                        <div>
+                                            <div class="chkWrap">
+                                                <input type="radio" id="searchHostHigh2" name="chk2">
+                                                <label for="searchHostHigh2">
+                                                    <span class="box"></span>
+                                                    <span class="text">
+                                                        <%=translation.hostMain.High_to_Low%>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="chkWrap">
+                                                <input type="radio" id="searchHostLow2" name="chk2">
+                                                <label for="searchHostLow2">
+                                                    <span class="box"></span>
+                                                    <span class="text">
+                                                        <%=translation.hostMain.Low_to_High%>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="inputArea">
+                                        <h6>
+                                            <%=translation.hostMain.Number_of_Followers%>
+                                        </h6>
+                                        <div>
+                                            <div class="chkWrap">
+                                                <input type="radio" id="searchHostHigh3" name="chk3">
+                                                <label for="searchHostHigh3">
+                                                    <span class="box"></span>
+                                                    <span class="text">
+                                                        <%=translation.hostMain.High_to_Low%>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="chkWrap">
+                                                <input type="radio" id="searchHostLow3" name="chk3">
+                                                <label for="searchHostLow3">
+                                                    <span class="box"></span>
+                                                    <span class="text">
+                                                        <%=translation.hostMain.Low_to_High%>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="webBtn">
+                                        <button class="resetBtn"><%=translation.hostMain.Reset%></button>
+                                        <button class="saveBtn"><%=translation.hostMain.Save%></button>
+                                    </li>
+                                </ul>
+                                <div class="onlyFixed"></div>
+                            </div>
+                        </li>
+                        <li class="moSaveBtn">
+                            <div>
+                                <button class="resetBtn"><%=translation.hostMain.Reset%></button>
+                                <button class="saveBtn"><%=translation.hostMain.Save%></button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="friendList-list" id="friendListAppendDivID">
+            </div>
+            <div class="commonViewMoreBtn" id="friendListMoreBtnID">
+                <button class="hostsViewMoreBtn-on" onclick="searchHostAppendCategoryClass()">
+                    <strong><%=translation.hostMain.View_More_Hosts%></strong>
+                </button>
+            </div>
+        </div>
+        <%
+            }
+        %>
+    </div>
+</section>
+<script>
+    //팔로우버튼 on & off
+    $('.friendList-list-content-btn > button').on({
+        'click': function() {
+            if($(this).attr('data-no') == 0)
+            {
+                $(this).addClass('active');
+                $(this).text('Follow');
+                $(this).attr('data-no', '1');
+            }
+            else
+            {
+                $(this).removeClass('active');
+                $(this).text('Following');
+                $(this).attr('data-no', '0');
+            }
+        }
+    })
+    $(document).ready(function() {
+        $('#searchHostTypeValueVal').val('All Friend');
+        $('#searchHostAllFilterID > div:nth-of-type(n+2):nth-of-type(-n+4)').hide();
+
+        $(this).parents('.category-inner').removeClass('active');
+    })
+
+    var searchHostListUser = <%-JSON.stringify(userList)%>;
+
+    //실제 사용 될 데이터
+    var searchHostListCategorySelectedClass = searchHostListUser;
+    //카테고리 검색 초기화
+    var searchHostMapListCategory = {};
+
+    searchHostMapListCategory.category = [];
+    searchHostMapListCategory.format = [];
+    searchHostMapListCategory.type = [];
+    searchHostMapListCategory.keyword = [];
+
+    var searchHostCategoryIndex = 1; //인덱스 (자동화)
+    var searchHostCategoryClassView = 10; //몇개씩 보여질 건지
+    var searchHostParams = new URL(location.href);
+    var searchHostLang = searchHostParams.searchParams.get("clang");
+
+    function hostFilteringFunc(type) {
+        //데이터 클리어
+        searchHostResetCategoryClass();
+
+        //데이터 추가
+        if(type == 'host') {
+            searchHostAppendCategoryClass('host');
+        } else {
+            searchHostAppendCategoryClass();
+        }
+    }
+
+    function searchHostGetHostHtml(host, type)
+    {
+        var searchHostThisUser = host;
+        var searchHostDataNo = 0;
+        var searchHostFollowing = 'Following';
+        var searchHostIsActive = '';
+
+        if(type == 'host' && searchHostThisUser.hostType == null) {
+            return false;
+        }
+
+        var hostHtml = `
+            <div class="friendList-list-content">
+                <div>
+                    <div class="friendList-list-content-img">
+                        <img src="/web/img/userRing/${searchHostThisUser.userUID}.png" alt="">
+                    </div>
+                    <div class="friendList-list-content-text">
+                        <h6>
+                            ${searchHostThisUser.userName}
+                        </h6>
+                        <p>
+                    `;
+            if(searchHostThisUser.hostType != null) {
+                hostHtml += `${searchHostThisUser.hostType}`;
+            }
+                            
+            hostHtml += `
+                        </p>
+                    </div>
+                </div>
+                <div class="friendList-list-content-btn">
+                    <button data-no="${searchHostDataNo}" onclick="followUser('${searchHostThisUser.userUID}', ' ${searchHostThisUser.userName}', '${searchHostThisUser.hostType}', this)" ${searchHostIsActive}>
+                        ${searchHostFollowing}
+                    </button>
+                </div>
+            </div>`;
+
+        return hostHtml;
+    }
+
+    //카테고리 리셋
+    function searchHostResetCategory(category)
+    {
+        var wrapId = '';
+
+        switch(category)
+        {
+            case 'type': wrapId = 'searchHostTypeHostWrap'; break;
+            case 'filters': wrapId = 'searchHostFiltersWrap'; break;
+        }
+
+        var listInput = $("#"+wrapId).find("input");
+
+        for(var i = 0 ; i < listInput.length ; i++)
+        {
+            $(listInput[i]).attr("checked", false);
+        }
+    }
+
+    // =======================================================================
+    // 클래스 카테고리 : 보류
+    // 필터 : 리뷰 수, 클래스 수, 팔로워 수는 추후 데이터 추가되면 진행
+    // =======================================================================
+
+    //카테고리 검색 버튼
+    function searchHostSaveCategory(category)
+    {
+        //필터링 여부 상태
+        var isLevelInput = false;
+        var isHostInput = false;
+        var isFormatInput = false;
+
+        var listLevelFilter = [];
+        var listHostFilter = [];
+        var listFormatFilter = [];
+        
+        //검색 카테고리 초기화
+        searchHostMapListCategory[category] = [];
+        
+        //wrap id 찾기
+        var wrapId = '';
+        switch(category)
+        {
+            case 'type': wrapId = 'searchHostTypeHostWrap'; break;
+            case 'filters': wrapId = 'searchHostFiltersWrap'; break;
+        }
+
+        //입력되는 input 확인
+        var listInput = $("#"+wrapId).find("input");
+        
+        //일반적인 카테고리 검색
+        if(category !== 'filters')
+        {
+            for(var i = 0 ; i < listInput.length ; i++)
+            {
+                if($(listInput[i]).is(":checked") == true)
+                {
+                    $(listInput[i]).attr("data-ischeck", "1");
+                    $(listInput[i]).data("ischeck", "1");
+
+                    searchHostMapListCategory[category].push($(listInput[i]).data("text"));
+                }
+                else
+                {
+                    $(listInput[i]).attr("data-ischeck", "0");
+                    $(listInput[i]).data("ischeck", "0");
+                }
+            }
+        }
+        //필터 일 경우
+        else
+        {
+            //---------------------------
+            //호스트 필터 확인
+            var listHostInput = $("#"+wrapId).find("input[name='hostInput']");
+
+            for(var i = 0 ; i < listHostInput.length ; i++)
+            {
+                if($(listHostInput[i]).is(":checked") == true)
+                {
+                    isHostInput = true;
+
+                    $(listHostInput[i]).attr("data-ischeck", "1");
+                    $(listHostInput[i]).data("ischeck", "1");
+
+                    listHostFilter.push($(listHostInput[i]).data("text"));
+                }
+                else
+                {
+                    $(listHostInput[i]).attr("data-ischeck", "0");
+                    $(listHostInput[i]).data("ischeck", "0");
+                }
+            }
+                //---------------------------
+
+
+
+            //---------------------------
+            //호스트 필터 확인
+            var listFormatInput = $("#"+wrapId).find("input[name='formatInput']");
+
+            for(var i = 0 ; i < listFormatInput.length ; i++)
+            {
+                if($(listFormatInput[i]).is(":checked") == true)
+                {
+                    isFormatInput = true;
+
+                    $(listFormatInput[i]).attr("data-ischeck", "1");
+                    $(listFormatInput[i]).data("ischeck", "1");
+
+                    listFormatFilter.push($(listFormatInput[i]).data("text"));
+                }
+                else
+                {
+                    $(listFormatInput[i]).attr("data-ischeck", "0");
+                    $(listFormatInput[i]).data("ischeck", "0");
+                }
+            }
+                //---------------------------
+        }
+
+        //데이터 필터링
+        var listFilterData = searchHostListUser;
+
+        var isSelectedCategory = false;
+        //필터링 하는건지 확인
+        for (var key in searchHostMapListCategory)
+        {
+            if(searchHostMapListCategory[key].length > 0)
+            {
+                isSelectedCategory = true;
+
+                if(key == 'category')
+                {
+                    listFilterData = listFilterData.filter((classObject) =>{
+                        return searchHostMapListCategory[key].includes(classObject.mainCategory);
+                    });
+                }
+                else if(key == 'format')
+                {
+                    listFilterData = listFilterData.filter((classObject) =>{
+                        return searchHostMapListCategory[key].includes(classObject.course);
+                    });
+                }
+                else if(key == 'type')
+                {
+                    listFilterData = listFilterData.filter((userObject) => {
+                        console.log('map : ' + searchHostMapListCategory[key]);
+                        if(searchHostMapListCategory[key].includes(userObject.hostType))
+                        {
+                            console.log('testsetsetes' + JSON.stringify(userObject.hostType));
+                        }
+                        return searchHostMapListCategory[key].includes(userObject.hostType);
+                    });
+                }
+                else if(key == 'keyword')
+                {
+                    listFilterData = listFilterData.filter((classObject) =>{
+                        if(classObject.keywords.length == 0)
+                        {
+                            return false;
+                        }
+
+                        return searchHostMapListCategory[key].some(keyword => { 
+                            var isContainKeyword = false;
+                            console.log("keyword=============" + keyword)
+                            for(var i = 0 ; i < classObject.keywords.length; i++)
+                            {
+                                
+                                console.log("classObject.keywords[i]=============" + classObject.keywords[i])
+                                console.log("keyword == classObject.keywords[i]" + keyword == classObject.keywords[i])
+                                if(keyword == classObject.keywords[i])
+                                {
+                                    console.log("suces=============")
+                                    return true;
+                                }
+                            }
+                            console.log("false=============")
+                            return false;
+                        
+                        });
+                    });
+                }
+            }
+        }
+
+        if(isHostInput)
+        {
+            listFilterData = listFilterData.filter((userObject) =>{
+                
+                if(userObject.hostType)
+                {
+                    return listHostFilter.includes(userObject.hostType);
+                }
+                else
+                {
+                    return false;
+                }
+                
+            });
+        }
+
+        //필터링된 데이터 선택
+        searchHostListCategorySelectedClass = listFilterData;
+
+        //데이터 클리어
+        searchHostResetCategoryClass();
+
+        //데이터 추가
+        searchHostAppendCategoryClass('host');
+    }
+    
+    //카테고리 클래스 리셋
+    function searchHostResetCategoryClass()
+    {
+        searchHostCategoryIndex = 1;
+        $("#friendListAppendDivID").html("");
+
+        //더보기 버튼 갱신
+        searchHostRefreshAddClassBtn();
+    }
+
+    //데이터 추가
+    function searchHostAppendCategoryClass(type)
+    {
+        var searchHostListAddClassHtml = '';
+
+        //데이터 시작 인덱스
+        var dataIndex = (searchHostCategoryIndex - 1) * searchHostCategoryClassView;
+
+        //추가할 데이터 검색
+        for(var i = dataIndex ; i < (dataIndex + searchHostCategoryClassView)  ; i++)
+        {
+            if(i >= searchHostListCategorySelectedClass.length)
+            {
+                break;
+            }
+
+            if(type == 'host') {
+                searchHostListAddClassHtml += searchHostGetHostHtml(searchHostListCategorySelectedClass[i], type);
+            } else {
+                searchHostListAddClassHtml += searchHostGetHostHtml(searchHostListCategorySelectedClass[i]);
+            }
+        }
+
+        if(type != 'allTab') {
+            //더보기 버튼 갱신
+            searchHostRefreshAddClassBtn();
+
+            //데이터 추가
+            $("#friendListAppendDivID").append(searchHostListAddClassHtml);
+
+            //인덱스 증가
+            searchHostCategoryIndex += 1;
+        } else {
+            $("#allTabHostListDivID").append(searchHostListAddClassHtml);
+        }
+    }
+
+    function searchHostRefreshAddClassBtn()
+    {
+        //하단 더보기 버튼 자동화
+        if(searchHostListCategorySelectedClass.length < searchHostCategoryIndex * searchHostCategoryClassView)
+        {
+            $("#friendListMoreBtnID").css("display", "none");
+        }
+        else
+        {
+            $("#friendListMoreBtnID").css("display", "");
+        }
+    }
+
+    searchHostAppendCategoryClass('allTab');
+    searchHostAppendCategoryClass();
+</script>

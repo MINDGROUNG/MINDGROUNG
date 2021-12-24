@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <%- include ./common/commonHead.html%>
+        
+        <!--공통타이틀로 적용 할 경우 commonHead 안에 넣기-->
+    </head>
+    <body>
+        <div class="wrap search">
+            <%- include ./common/commonHeader.html%>
+            <%- include ./journalContentModal.html%>
+            <section class="marginAuto_s minHeight">
+                <article>
+                    <div class="mainTabScrollWarp">
+                        <ul class="mainTab">
+                            <li>
+                                <button class="active" id="searchNaviAllTabBtnID" data-tab="tabAll">All</button>
+                            </li>
+                            <li>
+                                <button id="searchNaviFriendTabBtnID" data-tab="tabFriend">Friend</button>
+                            </li>
+                            <li>
+                                <button id="searchNaviClassTabBtnID" data-tab="tabClass">Class​</button>
+                            </li>
+                            <li>
+                                <button id="searchNaviGatheringTabBtnID" data-tab="tabGathering">Gathering​</button>
+                            </li>
+                            <li>
+                                <button id="searchNaviJournalTabBtnID" data-tab="tabJournal">Journal​</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pagesArea">
+                        <div class="commonPage tabAll active">
+                            <%- include ./searchTabAll.html%>
+                        </div>
+                        <div class="commonPage tabFriend">
+                            <%- include ./searchTabFriend.html%>
+                        </div>
+                        <div class="commonPage tabClass">
+                            <%- include ./searchTabClass.html%>
+                        </div>
+                        <div class="commonPage tabGathering">
+                            <%- include ./searchTabGathering.html%>
+                        </div>
+                        <div class="commonPage tabJournal">
+                            <%- include ./searchTabJournal.html%>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <%- include ./common/commonFooter.html%> <%- include ./common/commonScript.html%>
+            <script src="/web/js/tabEvent.js"></script>
+            <script>
+                // var checkUserLogin = <%- user ? JSON.stringify(user) : {} %>;
+                
+                // if(Object.keys(checkUserLogin).length < 1) {
+                //     customModal(100);
+                //     document.getElementById('modal100CloseBtnControlID').style.display = 'none';
+                // }
+
+                //전체 탭
+                $('.mainTab button').click(function() {
+                    $('.mainTab button').removeClass('active');
+                    $(this).addClass('active');
+                    $('.commonPage').each(function() {
+                        $(this).removeClass('active');
+                    });
+                    $('.'+$(this).data('tab')+'').addClass('active');
+                });
+
+                $(window).on('load resize', function() {
+                    if($(this).innerWidth() <= 1279)
+                    {
+                        console.log('1279이하')
+                        $('#searchHostTypeValue').click(function() {
+                            var targeyChk = $(this).is(":checked");
+                            if(!targeyChk)
+                            {
+                                console.log('onlyHost')
+                                $('.allFilter > div:nth-of-type(n+2):nth-of-type(-n+4)').show();
+                            }
+                            else
+                            {
+                                console.log('allFriend')
+                                $('.allFilter > div:nth-of-type(n+2):nth-of-type(-n+4)').hide();
+                            }
+                            
+                        })
+                    }
+                    else
+                    {
+                        console.log('1279이상')
+                        //only Host or all Friend 선택
+                        $('#searchHostTypeValueSaveBtn').on('click', function() {
+                            var checked = $('input[name="typeValue"]').is(":checked");
+                            if(!checked)
+                            {
+                                $('#searchHostTypeValueVal').val('Only Host');
+                                $('#searchHostAllFilterID > div:nth-of-type(n+2):nth-of-type(-n+4)').show();
+                                hostFilteringFunc('host');
+                            }
+                            else
+                            {
+                                $('#searchHostTypeValueVal').val('All Friend');
+                                $('#searchHostAllFilterID > div:nth-of-type(n+2):nth-of-type(-n+4)').hide();
+                                searchHostResetCategory('type');
+                                searchHostResetCategory('filters');
+
+                                searchHostSaveCategory('type');
+                                searchHostSaveCategory('filters');
+
+                                hostFilteringFunc();
+                            }
+                            $(this).parents('.category-inner').removeClass('active');
+                        })
+                    }
+                });
+            </script>
+            <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    </body>
+</html>

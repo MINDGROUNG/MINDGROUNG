@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <%-include common/commonHead.html%>
+    <body>
+        <%-include common/commonHeader.html%>
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+        <!-- START CONTENT -->
+        <div class="content">
+            <!-- Start Page Header -->
+            <div class="page-header">
+                <h1 class="title">
+                    <a style="color: #fff;">서비스관리</a>
+                    <span style="display: inline-block; margin: 0 15px;"><i class="xi-angle-right-min"></i></span>
+                    <a href="/admin/mainBanner" style="color: #fff;">월드 맵 관리</a>
+                </h1>
+                <!-- End Page Header Right Div -->
+            </div>
+            <!-- START CONTAINER -->
+            <div class="container-default">
+                <div class="row worldMap">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <%
+                                    var country = ['북아메리카', '남아메리카', '오세아니아', '유럽', '아시아', '아프리카'];
+                                    for(var i = 0; i < 6; i++)
+                                    {
+                                %>
+                                <div class="panel col-md-12" style="display: flex; justify-content: space-between; align-items: flex-start; background: #2e2e34; border-radius: 5px; border: none;">
+                                    <div class="areaTitle">
+                                        <h6 style="margin: 0; font-size: 14px; color: #fff; font-weight: bold;"><%=country[i]%></h6>
+                                    </div>
+                                    <ul class="countBox">
+                                        <li>
+                                            <span>Users</span>
+                                            <input type="text" class="inputNum" value="999,999" onkeyup="inputNumberFormat(this)">
+                                        </li>
+                                        <li>
+                                            <span>Users</span>
+                                            <input type="text" class="inputNum" value="999,999" onkeyup="inputNumberFormat(this)">
+                                        </li>
+                                    </ul>
+                                    <div class="commonChkBox" data-check="checkbox1">
+                                        <input type="checkbox" id="chk">
+                                        <label for="chk">
+                                            <span class="box"></span>
+                                            <span class="text">자동</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <%
+                                    }
+                                %>
+                                <div class="panel col-md-12" style="display: flex; justify-content: space-between; align-items: flex-start; background: #2e2e34; border-radius: 5px; border: none;">
+                                    <div class="areaTitle">
+                                        <h6 style="margin: 0; font-size: 14px; color: #fff; font-weight: bold;">글로벌</h6>
+                                    </div>
+                                    <div>
+                                        <ul class="countBox global">
+                                            <li>
+                                                <span>Total Users​</span>
+                                                <input type="text" class="inputNum" value="999,999" onkeyup="inputNumberFormat(this)">
+                                            </li>
+                                            <li>
+                                                <span>Today</span>
+                                                <input type="text" class="inputNum" value="999,999" onkeyup="inputNumberFormat(this)">
+                                            </li>
+                                        </ul>
+                                        <ul class="countBox">
+                                            <li>
+                                                <span>Now​</span>
+                                                <input type="text" class="inputNum" value="999,999" onkeyup="inputNumberFormat(this)">
+                                            </li>
+                                            <li>
+                                                <span>Classes​</span>
+                                                <input type="text" class="inputNum" value="999,999" onkeyup="inputNumberFormat(this)">
+                                            </li>
+                                        </ul>
+                                        <ul class="countBox">
+                                            <li>
+                                                <span>Gatherings​</span>
+                                                <input type="text" class="inputNum" value="999,999" onkeyup="inputNumberFormat(this)">
+                                            </li>
+                                            <li>
+                                                <span>Journals</span>
+                                                <input type="text" class="inputNum" value="999,999" onkeyup="inputNumberFormat(this)">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="commonChkBox" data-check="checkbox1">
+                                        <input type="checkbox" id="chk">
+                                        <label for="chk">
+                                            <span class="box"></span>
+                                            <span class="text">자동</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                <div class="row" style="margin: 100px 0 70px;">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="btnsWrap" style="text-align: right;">
+                            <button type="button" class="saveBtn">저장</button>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                </div>
+            </div>
+
+            <%-include common/commonFooter.html%>
+        </div>
+        <!-- End Content -->
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+        <%-include common/commonScript.html%>
+        <script>
+        ///////////데이터 테이블//////////////
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'excel', 'print'
+                ]
+            });
+        });
+
+        // 세자리수 콤마
+        function comma(str) {
+            str = String(str);
+            return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+        }
+        function uncomma(str) {
+            str = String(str);
+            return str.replace(/[^\d]+/g, '');
+        } 
+        function inputNumberFormat(obj) {
+            obj.value = comma(uncomma(obj.value));
+        }
+
+        </script>
+    </body>
+</html>

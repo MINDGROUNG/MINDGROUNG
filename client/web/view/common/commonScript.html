@@ -1,0 +1,266 @@
+<script src="/web/js/sideMenu.js"></script>
+
+<script>
+    $('a').click(function (e) {
+        if ($(this).attr('href') != '') {
+            return;
+        }
+        e.preventDefault();
+        alert('It will be updated!');
+    });
+    $('button').click(function (e) {
+        if ($(this).attr('href') == 'javascript:void(0)' || $(this).attr('onclick')!='') {
+            return;
+        }
+        e.preventDefault();
+        if ($(this).hasClass('mobMenuBtn')) {
+            return;
+        }
+        alert('It will be updated!');
+    });
+
+    $('audio').mediaelementplayer({
+        //'재생버튼','플레이바','남은재생시간','트랙(없어도 현재 문제없음)','풀스크린(없어도 현재 문제없음)'
+        features: ['playpause','progress','current','tracks','fullscreen']
+    });
+
+
+    //===========================================
+    // 파일 업로드 공통 함수
+    //===========================================
+
+    //멀티
+    function saveListFileToServer(inputId)
+    {
+        let listUploadFiles = [];
+
+        if(document.getElementById(inputId).files.length > 0)
+        {
+            var uploadMainContentsLength = document.getElementById(inputId).files.length;
+
+            for(var i = 0 ; i < uploadMainContentsLength ; i++)
+            {
+                var formData = new FormData();
+                formData.append('uploadFile', document.getElementById(inputId).files[i], document.getElementById(inputId).files[i].name);
+                
+                $.ajax({
+                    type : "POST",
+                    url:"/protocol/protocolFileUpload",
+                    data : formData,
+                    processData : false,
+                    contentType : false,
+                    async: false,
+                    success : function(data){
+                        listUploadFiles.push(data.listFileInfo[0]);
+                    }
+                })
+            }
+        }
+
+        return listUploadFiles;
+    }
+
+    // 멀티 파일 업로드 version2 : file 데이터가 담긴 배열을 매개변수로 받아서 저장한다.
+    function saveListFileToServerV2(fileList)
+    {
+        let listUploadFiles = [];
+
+        if(fileList.length > 0)
+        {
+            var uploadMainContentsLength = fileList.length;
+
+            for(var i = 0 ; i < uploadMainContentsLength ; i++)
+            {
+                var formData = new FormData();
+                formData.append('uploadFile', fileList[i], fileList[i].name);
+                
+                $.ajax({
+                    type : "POST",
+                    url:"/protocol/protocolFileUpload",
+                    data : formData,
+                    processData : false,
+                    contentType : false,
+                    async: false,
+                    success : function(data){
+                        listUploadFiles.push(data.listFileInfo[0]);
+                    }
+                })
+            }
+        }
+
+        return listUploadFiles;
+    }
+
+    //단일
+    function saveFileToServer(inputId)
+    {
+        let uploadFile = {};
+
+        if(document.getElementById(inputId).files.length > 0)
+        {
+            var uploadMainContentsLength = document.getElementById(inputId).files.length;
+
+            var formData = new FormData();
+            formData.append('uploadFile', document.getElementById(inputId).files[0], document.getElementById(inputId).files[0].name);
+            
+            $.ajax({
+                type : "POST",
+                url:"/protocol/protocolFileUpload",
+                data : formData,
+                processData : false,
+                contentType : false,
+                async: false,
+                success : function(data){
+                    uploadFile = data.listFileInfo[0];
+                }
+            })
+        }
+
+        return uploadFile;
+    }
+
+    //단일 파일 업로드 version2 : file 데이터가 담긴 배열을 매개변수로 받아 저장한다.
+    function saveFileToServerV2(fileList)
+    {
+        console.log('comecheck')
+        let uploadFile = {};
+
+        if(fileList.length > 0)
+        {
+            console.log('comecheck33')
+                var uploadMainContentsLength = fileList.length;
+    
+                var formData = new FormData();
+                formData.append('uploadFile', fileList[0], fileList[0].name);
+                
+                $.ajax({
+                    type : "POST",
+                    url:"/protocol/protocolFileUpload",
+                    data : formData,
+                    processData : false,
+                    contentType : false,
+                    async: false,
+                    success : function(data){
+                        uploadFile = data.listFileInfo[0];
+                    }
+                })
+
+        }
+
+        return uploadFile;
+    }
+
+    //단일
+    function saveBase64FileToServer(base64String, uploadName)
+    {
+        var uploadFile = {};
+
+        var file = dataURItoBlob(base64String)
+
+        var formData = new FormData();
+        formData.append('uploadFile', file, uploadName);
+        
+        $.ajax({
+            type : "POST",
+            url:"/protocol/protocolFileUpload",
+            data : formData,
+            processData : false,
+            contentType : false,
+            async: false,
+            success : function(data){
+                uploadFile = data.listFileInfo[0];
+            }
+        })
+
+        return uploadFile;
+    }
+
+    function dataURItoBlob(dataURI) {
+        // convert base64/URLEncoded data component to raw binary data held in a string
+        var byteString;
+        if (dataURI.split(',')[0].indexOf('base64') >= 0)
+            byteString = atob(dataURI.split(',')[1]);
+        else
+            byteString = unescape(dataURI.split(',')[1]);
+
+        // separate out the mime component
+        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+        // write the bytes of the string to a typed array
+        var ia = new Uint8Array(byteString.length);
+        for (var i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+        }
+
+        return new Blob([ia], {type:mimeString});
+    }
+
+
+    function fileThumbUpload(e, selectQuery)
+    {
+        var file = e.files[0];
+
+        if(file === undefined && document.getElementById('uploadImg').value === '')
+        {
+            document.querySelector(selectQuery).style.backgroundImage = '';
+            return false;
+        }
+
+        if(file.size > 10485760)
+        {
+            alert('10MB 이하의 파일만 업로드 가능합니다.');
+            document.getElementById('uploadImg').value = '';
+            return false;
+        }
+        else
+        {
+            var fileReader = new FileReader();
+            if (file.type.match('image')) 
+            fileReader.onload = function() 
+            {
+                document.querySelector(selectQuery).style.backgroundImage = 'url("'+fileReader.result+'")';
+            };
+            fileReader.readAsDataURL(file);
+        }
+
+        
+    }
+
+    // Translation 접근 및 property 반환
+    function getTranslation(requestProperty, requestValue)
+    {
+        try
+        {
+            var useTranslation = <%- translation ? JSON.stringify(translation) : {} %>;
+        }
+        catch
+        {
+            console.log('Translation undefined');
+        }
+
+        // Example
+        // translation.openClass -> var ex = useTranslation[openClass];
+        // translation.openClass.Topic -> return ex[Topic];
+
+        var translationProperty = useTranslation[requestProperty];
+        
+        return translationProperty[requestValue];
+    }
+
+    // classObject Data 값을 i18n의 json 파일 변수명 규약에 맞게 치환한다.
+    function verifyData(requestData)
+    {
+        var verify = requestData;
+        verify = verify.replaceAll(' & ', '_');
+        verify = verify.replace(/[.,-]/g, '_');
+        verify = verify.replace(/\(/g, '');
+        verify = verify.replace(/\)/g, '');
+        verify = verify.replace('1:1', 'one_one');
+        verify = verify.replace('KRW (원)', 'KRW');
+        verify = verify.replace('USD (US$)', 'USD');
+        verify = verify.replace('00000@0000', '00000_0000');
+        verify = verify.replace(/\s/g, '_');
+        
+        return verify;
+    }
+</script>

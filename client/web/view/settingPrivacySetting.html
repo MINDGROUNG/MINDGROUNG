@@ -1,0 +1,411 @@
+<h3 class="pageTitle">
+    <%=translation.setting.Privacy_Setting%>
+</h3>
+<div class="contents">
+    <div class="privacyOptions">
+        <h5 class="contentTitle">
+            <%=translation.setting.Privacy_Options%>
+        </h5>
+        <div class="optionsList">
+            <div class="mainOptionBox flexArea">
+                <div class="optionBox-left">
+                    <h6>
+                        <%=translation.footer.My_Page%>
+                    </h6>
+                    <span>
+                        We can see your personal page?
+                    </span>
+                </div>
+                <div class="optionBox-right">
+                    <div class="stateBtn" id="settingPrivacyMyPageAccessParentID">
+                        <input type="hidden" id="settingPrivacyMyPageAccessValueID" value="<%=user.myPageAccess%>">
+                        <button>
+                            <span class="icon">
+                                <img src="/web/img/ICN_PUBLIC_L.png" alt="">
+                            </span>
+                            <strong class="getText">
+                                <%=translation.setting.Public%>
+                            </strong>
+                            <span>
+                                <img src="/web/img/ICN_DROP.png" alt="">
+                            </span>
+                        </button>
+                        <div class="hdnBtns">
+                            <button>
+                                <img src="/web/img/ICN_FRIENDS.png" alt="">
+                                <span class="sendText"><%=translation.setting.Friends%></span>
+                            </button>
+                            <button>
+                                <img src="/web/img/ICN_PRIVATE.png" alt="">
+                                <span><%=translation.setting.Private%></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="subOptionbox">
+                <div class="commonOptions flexArea">
+                    <div class="options-left">
+                        <b><%=translation.footer.Host%></b>
+                    </div>
+                    <div class="options-right">
+                        <span>If you are a host, you cannot make your host page private.</span>
+                    </div>
+                </div>
+                <div class="commonOptions flexArea">
+                    <div class="options-left">
+                        <b><%=translation.afterlogin.Community_Feed%></b>
+                    </div>
+                    <div class="options-right">
+                        <div class="stateBtn" id="settingPrivacyMyPageCommunityAccessParentID">
+                            <input type="hidden" id="settingPrivacyMyPageCommunityAccessValueID" value="<%=user.myPageCommunityAccess%>">
+                            <button>
+                                <span class="icon">
+                                    <img src="/web/img/ICN_PUBLIC_L.png" alt="">
+                                </span>
+                                <strong class="getText">
+                                    <%=translation.setting.Public%>
+                                </strong>
+                                <span>
+                                    <img src="/web/img/ICN_DROP.png" alt="">
+                                </span>
+                            </button>
+                            <div class="hdnBtns">
+                                <button>
+                                    <img src="/web/img/ICN_FRIENDS.png" alt="">
+                                    <span class="sendText"><%=translation.setting.Friends%></span>
+                                </button>
+                                <button>
+                                    <img src="/web/img/ICN_PRIVATE.png" alt="">
+                                    <span><%=translation.setting.Private%></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="commonOptions flexArea">
+                    <div class="options-left">
+                        <b><%=translation.mypage.Classes%></b>
+                    </div>
+                    <div class="options-right">
+                        <div class="stateBtn" id="settingPrivacyMyPageClassAccessParentID">
+                            <input type="hidden" id="settingPrivacyMyPageClassAccessValueID" value="<%=user.myPageClassAccess%>">
+                            <button>
+                                <span class="icon">
+                                    <img src="/web/img/ICN_PUBLIC_L.png" alt="">
+                                </span>
+                                <strong class="getText">
+                                    <%=translation.setting.Public%>
+                                </strong>
+                                <span>
+                                    <img src="/web/img/ICN_DROP.png" alt="">
+                                </span>
+                            </button>
+                            <div class="hdnBtns">
+                                <button>
+                                    <img src="/web/img/ICN_FRIENDS.png" alt="">
+                                    <span class="sendText"><%=translation.setting.Friends%></span>
+                                </button>
+                                <button>
+                                    <img src="/web/img/ICN_PRIVATE.png" alt="">
+                                    <span><%=translation.setting.Private%></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="commonOptions flexArea">
+                    <div class="options-left">
+                        <b><%=translation.mypage.Gatherings%></b>
+                    </div>
+                    <div class="options-right">
+                        <div class="stateBtn" id="settingPrivacyMyPageGatheringAccessParentID">
+                            <input type="hidden" id="settingPrivacyMyPageGatheringAccessValueID" value="<%=user.myPageGatheringAccess%>">
+                            <button>
+                                <span class="icon">
+                                    <img src="/web/img/ICN_PUBLIC_L.png" alt="">
+                                </span>
+                                <strong class="getText">
+                                    <%=translation.setting.Public%>
+                                </strong>
+                                <span>
+                                    <img src="/web/img/ICN_DROP.png" alt="">
+                                </span>
+                            </button>
+                            <div class="hdnBtns">
+                                <button>
+                                    <img src="/web/img/ICN_FRIENDS.png" alt="">
+                                    <span class="sendText"><%=translation.setting.Friends%></span>
+                                </button>
+                                <button>
+                                    <img src="/web/img/ICN_PRIVATE.png" alt="">
+                                    <span><%=translation.setting.Private%></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="commonOptions flexArea">
+                    <div class="options-left">
+                        <b><%=translation.mypage.Journals%></b>
+                    </div>
+                    <div class="options-right">
+                        <div class="stateBtn" id="settingPrivacyMyPageJournalAccessParentID">
+                            <input type="hidden" id="settingPrivacyMyPageJournalAccessValueID" value="<%=user.myPageJournalAccess%>">
+                            <button>
+                                <span class="icon">
+                                    <img src="/web/img/ICN_PUBLIC_L.png" alt="">
+                                </span>
+                                <strong class="getText">
+                                    <%=translation.setting.Public%>
+                                </strong>
+                                <span>
+                                    <img src="/web/img/ICN_DROP.png" alt="">
+                                </span>
+                            </button>
+                            <div class="hdnBtns">
+                                <button>
+                                    <img src="/web/img/ICN_FRIENDS.png" alt="">
+                                    <span class="sendText"><%=translation.setting.Friends%></span>
+                                </button>
+                                <button>
+                                    <img src="/web/img/ICN_PRIVATE.png" alt="">
+                                    <span><%=translation.setting.Private%></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="saveChangeBtn">
+                <button class="saveChangeBtn2-on" onclick="userPrivacyUpdateFunc()">
+                    <%=translation.setting.Save_changes%>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 사용자 생년월일
+    var Str = "<%= user.birth%>";
+    var Arr = Str.split("/");
+
+    var year = Arr[0];
+    var month = Arr[1];
+    var day = Arr[2];
+
+    document.getElementById("Year").value = year;
+    document.getElementById("Month").value = month;
+    document.getElementById("Day").value = day;
+
+
+    //사용자 성별
+    var Gender = "<%= user.gender%>"
+    console.log(Gender);
+
+    if (Gender == "male" || Gender == "남성") 
+    {
+        $(".male").addClass('checked');
+    }
+    else if (Gender == "female" || Gender == "여성")
+    {
+        $(".female").addClass('checked');
+    }
+    else if (Gender == "rather not say" || Gender == "공개 안함")
+    {
+        $(".rather not say").addClass('checked');
+    }
+    else (Gender == "custom" || Gender == "사용자 지정")
+    {
+        $(".custom").addClass('checked');
+    }
+
+    //상태값 받아오기
+    $('.hdnBtns > button').click(function() {
+        var clickPositionID = $(this).parents('.stateBtn').attr('id');
+
+        var targetSrc = $(this).children('img').attr('src');
+        var changeSrc = $(this).parents('.stateBtn').children('button').children('.icon').children('img').attr('src');
+        var targetText = $(this).children('span').text();
+        var changeText = $(this).parents('.stateBtn').children('button').children('.getText').text().trim();
+
+        //이미지변경
+        $(this).parents('.stateBtn').children('button').children('.icon').children('img').attr('src', targetSrc);
+        $(this).children('img').attr('src', changeSrc);
+        //텍스트변경
+        $(this).children('span').text(changeText);
+        $(this).parents('.stateBtn').children('button').children('.getText').text(targetText);
+        //active된 셀렉창 닫기
+        $(this).parent('.hdnBtns').removeClass('active');
+
+        
+        if(clickPositionID == 'settingPrivacyMyPageAccessParentID') {
+            if(targetText == 'Public' || targetText == '전체 공개') {
+                document.getElementById('settingPrivacyMyPageAccessValueID').value = 'Public';
+            }
+
+            if(targetText == 'Friends' || targetText == '친구 공개') {
+                document.getElementById('settingPrivacyMyPageAccessValueID').value = 'Friends';
+            }
+
+            if(targetText == 'Private' || targetText == '비공개') {
+                document.getElementById('settingPrivacyMyPageAccessValueID').value = 'Private';
+            }
+        }
+
+        if(clickPositionID == 'settingPrivacyMyPageCommunityAccessParentID') {
+            if(targetText == 'Public' || targetText == '전체 공개') {
+                document.getElementById('settingPrivacyMyPageCommunityAccessValueID').value = 'Public';
+            }
+
+            if(targetText == 'Friends' || targetText == '친구 공개') {
+                document.getElementById('settingPrivacyMyPageCommunityAccessValueID').value = 'Friends';
+            }
+
+            if(targetText == 'Private' || targetText == '비공개') {
+                document.getElementById('settingPrivacyMyPageCommunityAccessValueID').value = 'Private';
+            }
+        }
+
+        if(clickPositionID == 'settingPrivacyMyPageClassAccessParentID') {
+            if(targetText == 'Public' || targetText == '전체 공개') {
+                document.getElementById('settingPrivacyMyPageClassAccessValueID').value = 'Public';
+            }
+
+            if(targetText == 'Friends' || targetText == '친구 공개') {
+                document.getElementById('settingPrivacyMyPageClassAccessValueID').value = 'Friends';
+            }
+
+            if(targetText == 'Private' || targetText == '비공개') {
+                document.getElementById('settingPrivacyMyPageClassAccessValueID').value = 'Private';
+            }
+        }
+
+        if(clickPositionID == 'settingPrivacyMyPageGatheringAccessParentID') {
+            if(targetText == 'Public' || targetText == '전체 공개') {
+                document.getElementById('settingPrivacyMyPageGatheringAccessValueID').value = 'Public';
+            }
+
+            if(targetText == 'Friends' || targetText == '친구 공개') {
+                document.getElementById('settingPrivacyMyPageGatheringAccessValueID').value = 'Friends';
+            }
+
+            if(targetText == 'Private' || targetText == '비공개') {
+                document.getElementById('settingPrivacyMyPageGatheringAccessValueID').value = 'Private';
+            }
+        }
+
+        if(clickPositionID == 'settingPrivacyMyPageJournalAccessParentID') {
+            if(targetText == 'Public' || targetText == '전체 공개') {
+                document.getElementById('settingPrivacyMyPageJournalAccessValueID').value = 'Public';
+            }
+
+            if(targetText == 'Friends' || targetText == '친구 공개') {
+                document.getElementById('settingPrivacyMyPageJournalAccessValueID').value = 'Friends';
+            }
+
+            if(targetText == 'Private' || targetText == '비공개') {
+                document.getElementById('settingPrivacyMyPageJournalAccessValueID').value = 'Private';
+            }
+        }
+
+    });
+
+    // 개인 정보 설정 script
+    var userData = <%- userData ? JSON.stringify(userData) : {} %>;
+
+    console.log(userData);
+
+    function userPrivacySettingFunc() {
+        var myPageAccess = userData.myPageAccess;
+        var myPageCommunityAccess = userData.myPageCommunityAccess;
+        var myPageClassAccess = userData.myPageClassAccess;
+        var myPageGatheringAccess = userData.myPageGatheringAccess;
+        var myPageJournalAccess = userData.myPageJournalAccess;
+
+        var findText = {
+            'Public': ['Public', '전체 공개'],
+            'Friends': ['Friends', '친구 공개'],
+            'Private': ['Private', '비공개']
+        };    
+    
+        $('#settingPrivacyMyPageAccessParentID').find('.hdnBtns').each(function() {
+            $(this).find('span').each(function() {
+                console.log(findText[myPageAccess][1]);
+                if(findText[myPageAccess][0] == $(this).text() || findText[myPageAccess][1] == $(this).text()) {
+                    $(this).parent('button').click();
+                    return false;
+                }
+            });
+        });
+
+        $('#settingPrivacyMyPageCommunityAccessParentID').find('.hdnBtns').each(function() {
+            $(this).find('span').each(function() {
+                console.log(findText[myPageCommunityAccess][1]);
+                if(findText[myPageCommunityAccess][0] == $(this).text() || findText[myPageCommunityAccess][1] == $(this).text()) {
+                    $(this).parent('button').click();
+                    return false;
+                }
+            });
+        });
+
+        $('#settingPrivacyMyPageClassAccessParentID').find('.hdnBtns').each(function() {
+            $(this).find('span').each(function() {
+                console.log(findText[myPageClassAccess][1]);
+                if(findText[myPageClassAccess][0] == $(this).text() || findText[myPageClassAccess][1] == $(this).text()) {
+                    $(this).parent('button').click();
+                    return false;
+                }
+            });
+        });
+
+        $('#settingPrivacyMyPageGatheringAccessParentID').find('.hdnBtns').each(function() {
+            $(this).find('span').each(function() {
+                console.log(findText[myPageGatheringAccess][1]);
+                if(findText[myPageGatheringAccess][0] == $(this).text() || findText[myPageGatheringAccess][1] == $(this).text()) {
+                    $(this).parent('button').click();
+                    return false;
+                }
+            });
+        });
+
+        $('#settingPrivacyMyPageJournalAccessParentID').find('.hdnBtns').each(function() {
+            $(this).find('span').each(function() {
+                console.log(findText[myPageJournalAccess][1]);
+                if(findText[myPageJournalAccess][0] == $(this).text() || findText[myPageJournalAccess][1] == $(this).text()) {
+                    $(this).parent('button').click();
+                    return false;
+                }
+            });
+        });
+        
+    }
+
+    userPrivacySettingFunc();
+
+    function userPrivacyUpdateFunc() {
+        var privacySendJsonObject = {};
+        privacySendJsonObject['myPageAccess'] = document.getElementById('settingPrivacyMyPageAccessValueID').value;
+        privacySendJsonObject['myPageCommunityAccess'] = document.getElementById('settingPrivacyMyPageCommunityAccessValueID').value;
+        privacySendJsonObject['myPageClassAccess'] = document.getElementById('settingPrivacyMyPageClassAccessValueID').value;
+        privacySendJsonObject['myPageGatheringAccess'] = document.getElementById('settingPrivacyMyPageGatheringAccessValueID').value;
+        privacySendJsonObject['myPageJournalAccess'] = document.getElementById('settingPrivacyMyPageJournalAccessValueID').value;
+        
+        $.ajax({
+            type : "POST",
+            url:"/privacyUpdate",
+            data: JSON.stringify(privacySendJsonObject),
+            processData: false,
+            contentType: "application/json; charset=UTF-8",
+            success : function(data){
+                alert('설정이 변경되었습니다.');
+                location.href = '/setting';
+            },
+            error : function(error)
+            {
+                alert('설정 변경을 실패하였습니다.');
+            }
+        });
+    }
+</script>

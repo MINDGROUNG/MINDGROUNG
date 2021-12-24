@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <%-include common/commonHead.html%>
+    <body>
+        <%-include common/commonHeader.html%>
+        <%- include ./modal.html%>
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+        <!-- START CONTENT -->
+        <div class="content">
+            <!-- Start Page Header -->
+            <div class="page-header">
+                <h1 class="title">
+                    <a style="color: #fff;">운영 관리</a>
+                    <span style="display: inline-block; margin: 0 15px;"><i class="xi-angle-right-min"></i></span>
+                    <a href="/admin/csInquiry" style="color: #fff;">고객 관리</a>
+                    <span style="display: inline-block; margin: 0 15px;"><i class="xi-angle-right-min"></i></span>
+                    <a href="/admin/csInquiryDetail" style="color: #fff;">상세 보기</a>
+                </h1>
+                <!-- End Page Header Right Div -->
+            </div>
+            <!-- START CONTAINER -->
+            <div class="container-default">
+                <!-- 테이블 들어가는 것들은 클래스명에 dashboard dataList 꼭 들어가야함 -->
+                <div class="row mainBanner">
+                    <div class="col-md-12">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                            <h3 class="color4 title-m-bd" style="margin: 0;">
+                                고객 문의 내용
+                            </h3>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label fixText">이름</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="inputText form-control" value="기OO" readonly data-check="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label fixText">Email</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="inputText form-control" value="000@000.com​" readonly data-check="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label fixText">연락처</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="inputText form-control" value="00000000000​" readonly data-check="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label fixText">문의 카테고리</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="inputText form-control" value="고객 서비스" readonly data-check="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label fixText">문의 내용</label>
+                                        <div class="col-sm-10">
+                                            <textarea readonly class="inputTextarea form-control" style="height: 125px;" data-check="0">고객 서비스 관련 문의 내용</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label fixText">첨부파일</label>
+                                        <div class="col-sm-10">
+                                            <div class="dwnFile">
+                                                <span>파일 명 파일명 파일명 파일명 파일명.확장자</span>
+                                                <button>
+                                                    <img src="/web/img/ICN_DOWNLOAD.png" alt="">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            <div class="row" style="margin: 100px 0 70px;">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-9 answerArea" style="text-align: right; position: relative;">
+                                    <button class="openAnswer">
+                                        답변 하기
+                                    </button>
+                                    <div class="answerBox">
+                                        <strong>
+                                            고객 문의 답변 하기
+                                        </strong>
+                                        <div class="textareaBox">
+                                            <textarea id="answerTextarea" class="inputTextarea form-control" placeholder="고객 문의 내용에 대한 답변을 작성해 주세요​" data-check="0"></textarea>
+                                        </div>
+                                        <button class="sendBtn">
+                                            전송
+                                        </button>
+                                        <p class="complete">
+                                            <i class="xi-check-circle"></i>
+                                            <span>전송 완료 2021.01.01 12:00:00​</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <%-include common/commonFooter.html%>
+        </div>
+        <!-- End Content -->
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+        <%-include common/commonScript.html%>
+        <script>
+        ///////////데이터 테이블//////////////
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'excel', 'print'
+                ]
+            });
+
+            // 답변입력창 열기
+            $('.openAnswer').click(function() {
+                $(this).parent('.answerArea').addClass('active');
+            })
+            // 전송버튼 누를때 입력값체크
+            $('.sendBtn').click(function() {
+                if($('#answerTextarea').val() == "")
+                {
+                    alert('답변을 작성해 주세요')
+                }
+                else
+                {
+                    $(this).parent('.answerBox').addClass('active');
+                    $(this).text('전송 완료');
+                }
+            });
+        });
+        ///////////데이터 테이블//////////////
+        </script>
+    </body>
+</html>

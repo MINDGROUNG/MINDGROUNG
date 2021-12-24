@@ -1,0 +1,929 @@
+<section>
+    <div class="contents">
+        <%
+            if((recommendList.recommendGatheringList).length > 0) {
+        %>
+        <!-- 결과가 없을 때 -->
+        <div class="results-0">
+            <h3>
+                Gathering​
+            </h3>
+            <div class="noResultsTextCon">
+                <h4>
+                    We didn’t find any result.​
+                </h4>
+                <span>
+                    Take a look what we recommend​
+                </span>
+            </div>
+            <div class="recommended">
+                <h3>
+                    Recommended Gatherings​
+                </h3>
+                <div class="recCon">
+                    <div class="gatheringsWrap">
+                        <%
+                                var recommendGatheringList = recommendList.recommendGatheringList;
+                                var endIndex = recommendGatheringList.length;
+                    
+                                if(recommendGatheringList.length >= 4) {
+                                    endIndex = 4;
+                                }
+                                for(var i = 0; i < endIndex; i++)
+                                {
+                                    var checkHtml = 'event';
+                                    if((recommendGatheringList[i].gatheringEvent).length < 1) {
+                                        checkHtml = 'noEvent';
+                                    }
+                                    switch(checkHtml) {
+                                        case 'event':
+                    
+                                        var tempEventForSortingObject = {};
+                                        var tempEventForSortingArray = [];
+                                        for(var j = 0; j < (recommendGatheringList[i].gatheringEvent).length; j++) {
+                                            tempEventForSortingObject[j] = new Date(recommendGatheringList[i].gatheringEvent[j].gatheringEventDate);
+                                            tempEventForSortingArray.push(j);
+                                        }
+                    
+                                        tempEventForSortingArray.sort( (o1, o2) => {
+                                            return tempEventForSortingObject[o2] - tempEventForSortingObject[o1];
+                                        });
+                        %>
+                        <div class="gatheringCard">
+                            <a class="cardTitle" href="/gatheringDetail/<%= recommendGatheringList[i]._id %>">
+                                <%= recommendGatheringList[i].classObject.gatheringName %>
+                            </a>
+                            <div class="rings-num">
+                                <div class="rings">
+                            <%
+                                if((recommendGatheringList[i].gatheringMember).length >= 3) {
+                            %>
+                                    <img src="/web/img/userRing/<%= recommendGatheringList[i].gatheringMember[0].userUID %>.png" alt="">
+                                    <img src="/web/img/userRing/<%= recommendGatheringList[i].gatheringMember[1].userUID %>.png" alt="">
+                                    <img src="/web/img/userRing/<%= recommendGatheringList[i].gatheringMember[2].userUID %>.png" alt="">
+                            <%
+                                } else {
+                                    for(var j = 0; j < (recommendGatheringList[i].gatheringMember).length; j++) {
+                            %>
+                                    <img src="/web/img/userRing/<%= recommendGatheringList[i].gatheringMember[j].userUID %>.png" alt="">
+                            <%
+                                    }
+                                }
+
+                                if(recommendGatheringList[i].gatheringEvent[tempEventForSortingArray[0]].gatheringEventMainImage == null || recommendGatheringList[i].gatheringEvent[tempEventForSortingArray[0]].gatheringEventMainImage == undefined || recommendGatheringList[i].gatheringEvent[tempEventForSortingArray[0]].gatheringEventMainImage == '') {
+                                    var gatheringEventFilePath = '/web/img/classesThumb.png';
+                                } else {
+                                    var gatheringEventFilePath = recommendGatheringList[i].gatheringEvent[tempEventForSortingArray[0]].gatheringEventMainImage[0].filePath;
+                                }
+                            %>
+                                </div>
+                                <span class="num">
+                                    <%= (recommendGatheringList[i].gatheringMember).length %>
+                                </span>
+                            </div>
+                            <div class="contentsInner hasCon">
+                                <div class="thumb" style="background-image: url('<%= gatheringEventFilePath %>');"></div>
+                                <div class="info">
+                                    <h4 class="title">
+                                        <%= recommendGatheringList[i].gatheringEvent[tempEventForSortingArray[0]].gatheringEventName %>
+                                    </h4>
+                                    <div class="type-date">
+                                        <strong>
+                                            <%= recommendGatheringList[i].gatheringEvent[tempEventForSortingArray[0]].gatheringEventOnline %>
+                                        </strong>
+                                        <span>
+                                            <%
+                                                var tempDate = (recommendGatheringList[i].gatheringEvent[tempEventForSortingArray[0]].gatheringEventDate).replace(/-/g, '. ')
+                                            %>
+                                            <%= tempDate %> <%= recommendGatheringList[i].gatheringEvent[tempEventForSortingArray[0]].gatheringEventTime1 %>
+                                        </span>
+                                    </div>
+                                    <div class="rings-num">
+                                        <div class="rings">
+                                            <%
+                                                if((recommendGatheringList[i].gatheringEvent[tempEventForSortingArray[0]].eventMember).length >= 3) {
+                                            %>
+                                                <img src="/web/img/userRing/<%= recommendGatheringList[i].gatheringEvent[tempEventForSortingArray[0]].eventMember[0] %>.png" alt="">
+                                                <img src="/web/img/userRing/<%= recommendGatheringList[i].gatheringEvent[tempEventForSortingArray[0]].eventMember[1] %>.png" alt="">
+                                                <img src="/web/img/userRing/<%= recommendGatheringList[i].gatheringEvent[tempEventForSortingArray[0]].eventMember[2] %>.png" alt="">
+                                            <%
+                                                } else {
+                                                    for(var j = 0; j < (recommendGatheringList[i].gatheringEvent[tempEventForSortingArray[0]].eventMember).length; j++) {
+                                            %>
+                                                <img src="/web/img/userRing/<%= recommendGatheringList[i].gatheringEvent[tempEventForSortingArray[0]].eventMember[j] %>.png" alt="">
+                                            <%
+                                                    }
+                                                }
+                                            %>
+                                        </div>
+                                        <span class="num">
+                                            <%= (recommendGatheringList[i].gatheringEvent[tempEventForSortingArray[0]].eventMember).length %>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <%
+                                    break;
+                    
+                                case 'noEvent':
+                        %>
+                        <div class="gatheringCard">
+                            <a class="cardTitle" href="/gatheringDetail/<%= recommendGatheringList[i]._id %>">
+                                <%= recommendGatheringList[i].classObject.gatheringName %>
+                            </a>
+                            <div class="rings-num">
+                                <div class="rings">
+                                    <%
+                                        if((recommendGatheringList[i].gatheringMember).length >= 3) {
+                                    %>
+                                            <img src="/web/img/userRing/<%= recommendGatheringList[i].gatheringMember[0].userUID %>.png" alt="">
+                                            <img src="/web/img/userRing/<%= recommendGatheringList[i].gatheringMember[1].userUID %>.png" alt="">
+                                            <img src="/web/img/userRing/<%= recommendGatheringList[i].gatheringMember[2].userUID %>.png" alt="">
+                                    <%
+                                        } else {
+                                            for(var j = 0; j < (recommendGatheringList[i].gatheringMember).length; j++) {
+                                    %>
+                                            <img src="/web/img/userRing/<%= recommendGatheringList[i].gatheringMember[j].userUID %>.png" alt="">
+                                    <%
+                                            }
+                                        }
+                                    %>
+                                </div>
+                                <span class="num">
+                                    <%= (recommendGatheringList[i].gatheringMember).length %>
+                                </span>
+                            </div>
+                            <div class="contentsInner noneCon">
+                                <strong>
+                                    An event is comming soon
+                                </strong>
+                            </div>
+                        </div>
+                        <% 
+                                    break;
+                                    }
+                                }
+                        %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%
+            } else {
+        %>
+        <!-- 결과가 있을 때 -->
+        <div class="results-1">
+            <div class="filtersArea">
+                <!-- 게더링필터 동일 -->
+                <div class="filters">
+                    <div class="moFiltersBtn">
+                        <button>
+                            <img src="/web/img/icn_filter.png" alt="">
+                        </button>
+                    </div>
+                    <ul class="btns">
+                        <li class="moTitle">
+                            <div class="top">
+                                <img src="/web/img/down.png" alt="">
+                            </div>
+                            <div class="bottom">
+                                <button class="moCloseBtn">
+                                    <img src="/web/img/ICN_CLOSE.png" alt="">
+                                </button>
+                                <h4>
+                                    Filters
+                                </h4>
+                            </div>
+                        </li>
+                        <li class="allFilter hostMainPage">
+                            <div>
+                                <input type="button" value="<%=translation.openClass.Category%>" class="filters-category filtersBtn">
+                                </input>
+                                <ul class="category-inner minWidth-230" id="searchGatheringCategoryCategoryWrap">
+                                    <li class="moSubTitle">
+                                        <h6><%=translation.openClass.Category%></h6>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchGatheringPractice_Group" data-ischeck="0" data-text="Practice_Group">
+                                        <label for="searchGatheringPractice_Group">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.gathering.Practice_Group%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchGatheringLocal_Friends" data-ischeck="0" data-text="Local_Friends">
+                                        <label for="searchGatheringLocal_Friends">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.gathering.Local_Friends%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchGatheringClass_Friends" data-ischeck="0" data-text="Class_Friends">
+                                        <label for="searchGatheringClass_Friends">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.gathering.Class_Friends%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchGatheringHost_Learning" data-ischeck="0" data-text="Host_Learning">
+                                        <label for="searchGatheringHost_Learning">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.gathering.Host_Learning%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchGatheringMindful_Challenge_Group" data-ischeck="0" data-text="Mindful_Challenge_Group">
+                                        <label for="searchGatheringMindful_Challenge_Group">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.gathering.Mindful_Challenge_Group%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchGatheringOthers" data-ischeck="0" data-text="Others">
+                                        <label for="searchGatheringOthers">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.gathering.Others%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li class="webBtn">
+                                        <button class="resetBtn" onclick="searchGatheringResetCategory('category')"><%=translation.hostMain.Reset%></button>
+                                        <button class="saveBtn" onclick="searchGatheringSaveCategory('category')"><%=translation.hostMain.Save%></button>
+                                    </li>
+                                </ul>
+                                <div class="onlyFixed"></div>
+                            </div>
+                            <div>
+                                <input type="button" value="<%=translation.classManagement.Keyword%>" class="filters-keyword filtersBtn">
+                                </input>
+                                <ul class="category-inner minWidth-200" id="searchGatheringCategoryKeywordWrap">
+                                    <li class="moSubTitle">
+                                        <h6><%=translation.classManagement.Keyword%></h6>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchGatheringSleep" value="Sleep" data-ischeck="0" data-text="Sleep">
+                                        <label for="searchGatheringSleep">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.gathering.Sleep%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchGatheringFocus" value="Focus" data-ischeck="0" data-text="Focus">
+                                        <label for="searchGatheringFocus">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.gathering.Focus%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchGatheringStudy" value="Study" data-ischeck="0" data-text="Study">
+                                        <label for="searchGatheringStudy">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.gathering.Study%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchGatheringRelaxation" value="Relaxation" data-ischeck="0" data-text="Relaxation">
+                                        <label for="searchGatheringRelaxation">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.gathering.Relaxation%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchGatheringFamily" value="Family" data-ischeck="0" data-text="Family">
+                                        <label for="searchGatheringFamily">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.gathering.Family%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchGatheringLove" value="Love" data-ischeck="0" data-text="Love">
+                                        <label for="searchGatheringLove">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.gathering.Love%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchGatheringRelationship" value="Relationship" data-ischeck="0" data-text="Relationship">
+                                        <label for="searchGatheringRelationship">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.gathering.Relationship%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchGatheringStress" value="Stress" data-ischeck="0" data-text="Stress">
+                                        <label for="searchGatheringStress">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.gathering.Stress%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchGatheringBalance" value="Balance" data-ischeck="0" data-text="Balance">
+                                        <label for="searchGatheringBalance">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.gathering.Balance%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchGatheringLeadership" value="Leadership" data-ischeck="0" data-text="Leadership">
+                                        <label for="searchGatheringLeadership">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.gathering.Leadership%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchGatheringMental_health" value="Mental_health" data-ischeck="0" data-text="Mental_health">
+                                        <label for="searchGatheringMental_health">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.gathering.Mental_Health%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchGatheringHealth" value="Health" data-ischeck="0" data-text="Health">
+                                        <label for="searchGatheringHealth">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.gathering.Health%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchGatheringHappiness" value="Happiness" data-ischeck="0" data-text="Happiness">
+                                        <label for="searchGatheringHappiness">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.gathering.Happiness%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkBox" id="searchGatheringSelf_Care" value="Self_Care" data-ischeck="0" data-text="Self_Care">
+                                        <label for="searchGatheringSelf_Care">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                <%=translation.gathering.Self_Care%>
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li class="webBtn">
+                                        <button class="resetBtn" onclick="searchGatheringResetCategory('keyword')"><%=translation.hostMain.Reset%></button>
+                                        <button class="saveBtn" onclick="searchGatheringSaveCategory('keyword')"><%=translation.hostMain.Save%></button>
+                                    </li>
+                                </ul>
+                                <div class="onlyFixed"></div>
+                            </div>
+                            <div>
+                                <input type="button" value="<%=translation.classManagement.Fillters%>" class="filters-filters filtersBtn">
+                                </input>
+                                <ul class="category-inner-filter minWidth-540" id="searchGatheringCategoryFiltersWrap">
+                                    <li class="titleArea">
+                                        <h5>
+                                            <%=translation.classManagement.Filters%>
+                                        </h5>
+                                        <button>
+                                            <img src="/web/img/ICN_CLOSE.png" alt="">
+                                        </button>
+                                    </li>
+                                    <li class="inputArea">
+                                        <h6>
+                                            <%=translation.gathering.Distance%>
+                                        </h6>
+                                        <div class="inputDistance">
+                                            <div>
+                                                <span>
+                                                    <%=translation.gathering.Show_result_within%>
+                                                </span>
+                                                <input type="text" placeholder="999">
+                                                <span class="km">
+                                                    Km
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <span class="of">
+                                                    <%=translation.gathering.of_Enter_the_Zip_code%>
+                                                </span>
+                                                <input type="text" placeholder="Enter the Zip code">
+                                                <img src="/web/img/ICN_MYLOCATION.png" alt="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="inputArea">
+                                        <h6>
+                                            <%=translation.gathering.Number_of_members%>
+                                        </h6>
+                                        <div>
+                                            <div class="chkWrap">
+                                                <input type="radio" id="searchGatheringHigh1" name="chk1">
+                                                <label for="searchGatheringHigh1">
+                                                    <span class="box"></span>
+                                                    <span class="text">
+                                                        <%=translation.gathering.High_to_Low%>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="chkWrap">
+                                                <input type="radio" id="searchGatheringLow1" name="chk1">
+                                                <label for="searchGatheringLow1">
+                                                    <span class="box"></span>
+                                                    <span class="text">
+                                                        <%=translation.gathering.Low_to_High%>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="inputArea">
+                                        <h6>
+                                            <%=translation.gathering.Number_of_events%>
+                                        </h6>
+                                        <div>
+                                            <div class="chkWrap">
+                                                <input type="radio" id="searchGatheringHigh2" name="chk2">
+                                                <label for="searchGatheringHigh2">
+                                                    <span class="box"></span>
+                                                    <span class="text">
+                                                        <%=translation.gathering.High_to_Low%>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="chkWrap">
+                                                <input type="radio" id="searchGatheringLow2" name="chk2">
+                                                <label for="searchGatheringLow2">
+                                                    <span class="box"></span>
+                                                    <span class="text">
+                                                        <%=translation.gathering.Low_to_High%>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="webBtn">
+                                        <button class="resetBtn" onclick="searchGatheringResetCategory('fiters')"><%=translation.hostMain.Reset%></button>
+                                        <button class="saveBtn" onclick="searchGatheringSaveCategory('filters')"><%=translation.hostMain.Save%></button>
+                                    </li>
+                                </ul>
+                                <div class="onlyFixed"></div>
+                            </div>
+                        </li>
+                        <li class="moSaveBtn">
+                            <div>
+                                <button class="resetBtn"><%=translation.hostMain.Reset%></button>
+                                <button class="saveBtn"><%=translation.hostMain.Save%></button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="gatheringsWrap" id="gatheringAppendDivID">
+            </div>
+            <div class="commonViewMoreBtn" id="gatheringMoreBtnID">
+                <button class="gatheringsViewMoreBtn-on" onclick="searchGatheringAppendCategoryGathering()">
+                    <strong><%=translation.gathering.View_More_Gatherings%></strong>
+                </button>
+            </div>
+            <%
+            }
+            %>
+    </div>
+</section>
+<script>
+    var listRawGatheringObject = <%- gatheringList ? JSON.stringify(gatheringList) : {} %>;
+    var listGatheringObject = [];
+
+    for(var i = 0 ; i < listRawGatheringObject.length ; i++)
+    {
+        if(listRawGatheringObject[i].objectType == 'gathering') {
+            listRawGatheringObject[i].classObject.gatheringId = listRawGatheringObject[i]._id;
+            listRawGatheringObject[i].classObject.userUID = listRawGatheringObject[i].userUID;
+            listRawGatheringObject[i].classObject.userName = listRawGatheringObject[i].userName;
+            listRawGatheringObject[i].classObject.gatheringMember = listRawGatheringObject[i].gatheringMember;
+            listRawGatheringObject[i].classObject.gatheringEvent = listRawGatheringObject[i].gatheringEvent;
+            listGatheringObject.push(listRawGatheringObject[i].classObject);
+        }
+    }
+
+    //실제 사용 될 데이터
+    var searchGatheringListCategorySelectedGathering = listGatheringObject;
+    //카테고리 검색 초기화
+    var searchGatheringMapListCategory = {};
+
+    searchGatheringMapListCategory.category = [];
+    searchGatheringMapListCategory.keyword = [];
+
+    var searchGatheringCategoryIndex = 1; //인덱스 (자동화)
+    var searchGatheringCategoryGatheringView = 4; //몇개씩 보여질 건지
+
+    //카테고리 리셋
+    function searchGatheringResetCategory(category)
+    {
+        var wrapId = '';
+
+        switch(category)
+        {
+            case 'category': wrapId = 'searchGatheringCategoryCategoryWrap'; break;
+            case 'keyword': wrapId = 'searchGatheringCategoryKeywordWrap'; break;
+            case 'filters': wrapId = 'searchGatheringCategoryFiltersWrap'; break;
+        }
+
+        var listInput = $("#"+wrapId).find("input");
+
+        for(var i = 0 ; i < listInput.length ; i++)
+        {
+            $(listInput[i]).attr("checked", false);
+        }
+    }
+
+    //카테고리 검색 버튼
+    function searchGatheringSaveCategory(category)
+    {
+        //필터링 여부 상태
+        var isMemberInput = false;
+        var isEventsInput = false;
+
+        var listMemberFilter = [];
+        var listEventsFilter = [];
+        
+        //검색 카테고리 초기화
+        searchGatheringMapListCategory[category] = [];
+        
+        //wrap id 찾기
+        var wrapId = '';
+        switch(category)
+        {
+            case 'category': wrapId = 'searchGatheringCategoryCategoryWrap'; break;
+            case 'keyword': wrapId = 'searchGatheringCategoryKeywordWrap'; break;
+            case 'filters': wrapId = 'searchGatheringCategoryFiltersWrap'; break;
+        }
+
+        //입력되는 input 확인
+        var listInput = $("#"+wrapId).find("input");
+        
+        //일반적인 카테고리 검색
+        if(category != 'filters')
+        {
+            for(var i = 0 ; i < listInput.length ; i++)
+            {
+                if($(listInput[i]).is(":checked") == true)
+                {
+                    $(listInput[i]).attr("data-ischeck", "1");
+                    $(listInput[i]).data("ischeck", "1");
+
+                    searchGatheringMapListCategory[category].push($(listInput[i]).data("text"));
+                }
+                else
+                {
+                    $(listInput[i]).attr("data-ischeck", "0");
+                    $(listInput[i]).data("ischeck", "0");
+                }
+            }
+        }
+        //필터 일 경우
+        else
+        {
+            //---------------------------
+            //레벨 필터 확인
+            var listlevelInput = $("#"+wrapId).find("input[name='levelInput']");
+
+            for(var i = 0 ; i < listlevelInput.length ; i++)
+            {
+                if($(listlevelInput[i]).is(":checked") == true)
+                {
+                    $(listlevelInput[i]).attr("data-ischeck", "1");
+                    $(listlevelInput[i]).data("ischeck", "1");
+
+                    //예외처리
+                    if($(listlevelInput[i]).data("text") != 'All')
+                    {
+                        isLevelInput = true;
+                        listLevelFilter.push($(listlevelInput[i]).data("text"));
+                    }
+                }
+                else
+                {
+                    $(listlevelInput[i]).attr("data-ischeck", "0");
+                    $(listlevelInput[i]).data("ischeck", "0");
+                }
+            }
+            //---------------------------
+            
+
+
+            //---------------------------
+            //호스트 필터 확인
+            var listHostInput = $("#"+wrapId).find("input[name='hostInput']");
+
+            for(var i = 0 ; i < listHostInput.length ; i++)
+            {
+                if($(listHostInput[i]).is(":checked") == true)
+                {
+                    isHostInput = true;
+
+                    $(listHostInput[i]).attr("data-ischeck", "1");
+                    $(listHostInput[i]).data("ischeck", "1");
+
+                    listHostFilter.push($(listHostInput[i]).data("text"));
+                }
+                else
+                {
+                    $(listHostInput[i]).attr("data-ischeck", "0");
+                    $(listHostInput[i]).data("ischeck", "0");
+                }
+            }
+             //---------------------------
+
+
+
+            //---------------------------
+            //호스트 필터 확인
+            var listFormatInput = $("#"+wrapId).find("input[name='formatInput']");
+
+            for(var i = 0 ; i < listFormatInput.length ; i++)
+            {
+                if($(listFormatInput[i]).is(":checked") == true)
+                {
+                    isFormatInput = true;
+
+                    $(listFormatInput[i]).attr("data-ischeck", "1");
+                    $(listFormatInput[i]).data("ischeck", "1");
+
+                    listFormatFilter.push($(listFormatInput[i]).data("text"));
+                }
+                else
+                {
+                    $(listFormatInput[i]).attr("data-ischeck", "0");
+                    $(listFormatInput[i]).data("ischeck", "0");
+                }
+            }
+             //---------------------------
+        }
+
+        //데이터 필터링
+        var listFilterData = listGatheringObject;
+
+        var isSelectedCategory = false;
+        //필터링 하는건지 확인
+        for (var key in searchGatheringMapListCategory)
+        {
+            if(searchGatheringMapListCategory[key].length > 0)
+            {
+                isSelectedCategory = true;
+
+                if(key == 'category')
+                {
+                    listFilterData = listFilterData.filter((gatheringObject) =>{
+                        return searchGatheringMapListCategory[key].includes(gatheringObject.gatheringCategory);
+                    });
+                }
+                else if(key == 'keyword')
+                {
+                    listFilterData = listFilterData.filter((gatheringObject) =>{
+                        if(Object.keys(gatheringObject.keywords).length == 0)
+                        {
+                            return false;
+                        }
+
+                        return searchGatheringMapListCategory[key].some((keyword) => { 
+                            var isContainKeyword = false;
+                            for(var key in gatheringObject.keywords)
+                            {
+                                if(keyword == gatheringObject.keywords[key])
+                                {
+                                    return true;
+                                }
+                            }
+                            return false;
+                        
+                        });
+                    });
+                }
+            }
+        }
+
+        //필터링된 데이터 선택
+        searchGatheringListCategorySelectedGathering = listFilterData;
+
+        //데이터 클리어
+        searchGatheringResetCategoryGathering();
+
+        //데이터 추가
+        searchGatheringAppendCategoryGathering();
+    }
+    
+     //카테고리 클래스 리셋
+     function searchGatheringResetCategoryGathering()
+    {
+        searchGatheringCategoryIndex = 1;
+        $("#gatheringAppendDivID").html("");
+
+        //더보기 버튼 갱신
+        searchGatheringRefreshAddGatheringBtn();
+    }
+
+    //데이터 추가
+    function searchGatheringAppendCategoryGathering(type)
+    {
+        var listAddGatheringHtml = '';
+
+        //데이터 시작 인덱스
+        var dataIndex = (searchGatheringCategoryIndex - 1) * searchGatheringCategoryGatheringView;
+
+        //추가할 데이터 검색
+        for(var i = dataIndex; i < (dataIndex + searchGatheringCategoryGatheringView); i++)
+        {
+            if(i >= searchGatheringListCategorySelectedGathering.length)
+            {
+                break;
+            }
+
+            listAddGatheringHtml += searchGatheringAddCategoryGathering(searchGatheringListCategorySelectedGathering[i]);
+        }
+
+        if(type != 'allTab') {
+            //더보기 버튼 갱신
+            searchGatheringRefreshAddGatheringBtn();
+    
+            //데이터 추가
+            $("#gatheringAppendDivID").append(listAddGatheringHtml);
+            
+            //인덱스 증가
+            searchGatheringCategoryIndex += 1;
+        } else {
+            $("#allTabGatheringListDivID").append(listAddGatheringHtml);
+        }
+    }
+
+    function searchGatheringRefreshAddGatheringBtn()
+    {
+        //하단 더보기 버튼 자동화
+        if(searchGatheringListCategorySelectedGathering.length < searchGatheringCategoryIndex * searchGatheringCategoryGatheringView)
+        {
+            $("#gatheringMoreBtnID").css("display", "none");
+        }
+        else
+        {
+            $("#gatheringMoreBtnID").css("display", "");
+        }
+    }
+
+    function searchGatheringAddCategoryGathering(listGathering, type)
+    {
+        if((listGathering.gatheringEvent).length > 0) {
+            var tempEventForSortingObject = {};
+            var tempEventForSortingArray = [];
+            for(var j = 0; j < (listGathering.gatheringEvent).length; j++) {
+                tempEventForSortingObject[j] = new Date(listGathering.gatheringEvent[j].gatheringEventDate);
+                tempEventForSortingArray.push(j);
+            }
+
+            tempEventForSortingArray.sort( (o1, o2) => {
+                return tempEventForSortingObject[o2] - tempEventForSortingObject[o1];
+            });
+
+            var tempDate = (listGathering.gatheringEvent[tempEventForSortingArray[0]].gatheringEventDate).replace(/-/g, '. ');
+
+            var gatheringHtml = `
+                <div class="gatheringCard">
+                    <a class="cardTitle" href="/gatheringDetail/${listGathering.gatheringId}">
+                        ${listGathering.gatheringName}
+                    </a>
+                    <div class="rings-num">
+                        <div class="rings">
+                `;
+                
+                if(listGathering.gatheringMember.length >= 3) {
+                    gatheringHtml += `
+                                <img src="/web/img/userRing/${listGathering.gatheringMember[0].userUID}.png" alt="">
+                                <img src="/web/img/userRing/${listGathering.gatheringMember[1].userUID}.png" alt="">
+                                <img src="/web/img/userRing/${listGathering.gatheringMember[2].userUID}.png" alt="">
+                        `;
+                } else {
+                    for(let i = 0; i < listGathering.gatheringMember.length; i++) {
+                        gatheringHtml += `<img src="/web/img/userRing/${listGathering.gatheringMember[i].userUID}.png" alt="">`;
+                    }
+                }
+
+                gatheringHtml += `
+                        </div>
+                        <span class="num">
+                            ${listGathering.gatheringMember.length}
+                        </span>
+                    </div>
+                    <div class="contentsInner hasCon">
+                        <div class="thumb" style="background-image: url('${listGathering.gatheringEvent[tempEventForSortingArray[0]].gatheringEventMainImage[0].filePath}');"></div>
+                        <div class="info">
+                            <h4 class="title">
+                                ${listGathering.gatheringEvent[tempEventForSortingArray[0]].gatheringEventName}
+                            </h4>
+                            <div class="type-date">
+                                <strong>
+                                    ${listGathering.gatheringEvent[tempEventForSortingArray[0]].gatheringEventOnline}
+                                </strong>
+                                <span>
+                                    ${tempDate} ${listGathering.gatheringEvent[tempEventForSortingArray[0]].gatheringEventTime1}
+                                </span>
+                            </div>
+                            <div class="rings-num">
+                                <div class="rings">
+                            `;
+
+                    if(listGathering.gatheringEvent[tempEventForSortingArray[0]].eventMember.length >= 3) {
+                        gatheringHtml += `
+                                        <img src="/web/img/userRing/${listGathering.gatheringEvent[tempEventForSortingArray[0]].eventMember[0]}.png" alt="">
+                                        <img src="/web/img/userRing/${listGathering.gatheringEvent[tempEventForSortingArray[0]].eventMember[1]}.png" alt="">
+                                        <img src="/web/img/userRing/${listGathering.gatheringEvent[tempEventForSortingArray[0]].eventMember[2]}.png" alt="">
+                            `;
+                    } else {
+                        for(let i = 0; i < listGathering.gatheringEvent[tempEventForSortingArray[0]].eventMember.length; i++) {
+                            gatheringHtml += ` 
+                                <img src="/web/img/userRing/${listGathering.gatheringEvent[tempEventForSortingArray[0]].eventMember[i]}.png" alt="">
+                            `;
+                        }
+                    }
+
+                    gatheringHtml += `
+                                </div>
+                                <span class="num">
+                                    ${listGathering.gatheringEvent[tempEventForSortingArray[0]].eventMember.length}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+        } else {
+            var gatheringHtml = `
+                <div class="gatheringCard">
+                    <a class="cardTitle" href="/gatheringDetail/${listGathering.gatheringId}">
+                        ${listGathering.gatheringName}
+                    </a>
+                    <div class="rings-num">
+                        <div class="rings">
+                    `;
+
+                    if(listGathering.gatheringMember.length >= 3) {
+                        gatheringHtml += `
+                                <img src="/web/img/userRing/${listGathering.gatheringMember[0].userUID}.png" alt="">
+                                <img src="/web/img/userRing/${listGathering.gatheringMember[1].userUID}.png" alt="">
+                                <img src="/web/img/userRing/${listGathering.gatheringMember[2].userUID}.png" alt="">
+                                `;
+                    } else {
+                        for(let i = 0; i < listGathering.gatheringMember.length; i++) {
+                            gatheringHtml += `<img src="/web/img/userRing/${listGathering.gatheringMember[i].userUID}.png" alt="">`;
+                        }
+                    }
+
+                    gatheringHtml += `
+                        </div>
+                        <span class="num">
+                            ${listGathering.gatheringMember.length}
+                        </span>
+                    </div>
+                    <div class="contentsInner noneCon">
+                        <strong>
+                            An event is comming soon
+                        </strong>
+                    </div>
+                </div>
+                `;
+        }
+        
+        return gatheringHtml;
+    }
+
+    searchGatheringAppendCategoryGathering('allTab');
+    searchGatheringAppendCategoryGathering();
+</script>

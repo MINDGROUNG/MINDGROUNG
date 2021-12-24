@@ -1,0 +1,2163 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <%- include ./common/commonHead.html%>
+        <!--공통타이틀로 적용 할 경우 commonHead 안에 넣기-->
+        <meta name="google-site-verification" content="LZEHK4aR2IMEraDS5rEPsMpyeNpM7MQcp418JX1pN_o" />
+    </head>
+    <body>
+        <div class="wrap main">
+            <%- include ./common/commonHeader.html%>
+            <%- include ./journalContentModal.html%>
+            <section class="topContents">
+                <div class="writeBtn">
+                    <button onclick="customModal(100)">
+                        <img src="/web/img/main/cateList/BTN_WRITE.png" alt="">
+                    </button>
+                </div>
+                <article class="marginAuto">
+                    <div class="mainSlideWrap">
+                        <div class="slideWrap">
+                            <div class="main-btnArea">
+
+                            </div>
+                            <div class="mainSlide">
+                                <div class="mainBanner">
+                                    <ul class="mainRings">
+                                        <li class="mainBubbleHostRings maingHostRing" id="bubbleRing0" onmouseover="test(0)" onmouseleave="makeInterval(0)">
+                                            <!-- <img src="/web/img/userRing/231.png"> -->
+                                        </li>
+                                        <li class="mainBubbleHostRings maingHostRing" id="bubbleRing1" onmouseover="test(1)" onmouseleave="makeInterval(1)">
+                                            <!-- <img src="/web/img/userRing/231.png"> -->
+                                        </li>
+                                        <li class="mainBubbleHostRings maingHostRing" id="bubbleRing2" onmouseover="test(2)" onmouseleave="makeInterval(2)">
+                                            <!-- <img src="/web/img/userRing/231.png"> -->
+                                        </li>
+                                        <li class="mainBubbleHostRings maingHostRing" id="bubbleRing3" onmouseover="test(3)" onmouseleave="makeInterval(3)">
+                                            <!-- <img src="/web/img/userRing/231.png"> -->
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- <div class="subBanner sb1">
+                                </div> -->
+                                <!-- <div class="subBanner sb2">
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="classCategoryWrap">
+                        <div class="items">
+                            <h3>
+                                <%=translation.loginAndJoin.Your_Mindful_Playground%>                            
+                            </h3>
+                            <ul class="cateList">
+                                <li>
+                                    <button onclick="location.href='/classMain?filter=mindfulness'">
+                                        <img src="/web/img/main/cateList/ICN_Mindfulness.png" alt="">
+                                        <span><%=translation.openClass.Mindfulness%></span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button onclick="location.href='/classMain?filter=meditation'">
+                                        <img src="/web/img/main/cateList/ICN_Meditation.png" alt="">
+                                        <span><%=translation.openClass.Meditation%></span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button onclick="location.href='/classMain?filter=yoga'">
+                                        <img src="/web/img/main/cateList/ICN_Yoga.png" alt="">
+                                        <span><%=translation.openClass.Yoga%></span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button onclick="location.href='/classMain?filter=somatic'">
+                                        <img src="/web/img/main/cateList/ICN_Somatic.png" alt="">
+                                        <span><%=translation.openClass.Somatic%></span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button onclick="location.href='/classMain?filter=ma'">
+                                        <img src="/web/img/main/cateList/ICN_Movement_Activity.png" alt="">
+                                        <span><%=translation.openClass.Movement_Activity%></span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button onclick="location.href='/classMain?filter=cc'">
+                                        <img src="/web/img/main/cateList/ICN_Counseling_Coaching.png" alt="">
+                                        <span><%=translation.openClass.Counseling_Coaching%></span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button onclick="location.href='/classMain?filter=other'">
+                                        <img src="/web/img/main/cateList/ICN_Others.png" alt="">
+                                        <span><%=translation.openClass.Others%></span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <section class="middleContents">
+                <article class="marginAuto">
+                    <div class="classesSlideWrap commonWrap">
+                        <div class="commonTitleArea">
+                            <h3>
+                                <%=translation.dashBoard.Classes%>
+                            </h3>
+                            <div class="btns">
+                                <div class="sort">
+                                    <button class="active"><%=translation.hostMain.Newest%></button>
+                                    <button><%=translation.hostMain.Popular%></button>
+                                </div>
+                                <div class="all">
+                                    <button onclick="location.href='/classMain'">
+                                        <%=translation.loginAndJoin.See_All%>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slideWrap">
+                            <div class="btnArea">
+
+                            </div>
+                            <div class="classesSlide commonLayoutSlide" id="classesDiv">
+                                <!--
+                                <div class="video">
+                                    <a href="javascript:avoid(0)">
+                                        <img src="/web/img/main/slide/dummyImg2.jpg" alt="">
+                                    </a>
+                                    <div class="category">
+                                        <img src="/web/img/main/cateList/ICN_COUNSELING.png" alt="">
+                                        <span>
+                                            <%=translation.openClass.Counseling_Coaching%>
+                                        </span>
+                                    </div>
+                                    <div class="classInfo">
+                                        <div class="hover-ring" data-host="<%=translation.hostMain.Host_Name%>">
+                                            <img src="/web/img/main/slide/IMG_1.png" alt="">
+                                        </div>
+                                        <div class="infoText">
+                                            <h6 class="title">
+                                                <%=translation.Revenue.Class_Title%>
+                                            </h6>
+                                            <p class="detail">
+                                                info Textinfo Textinfo Textinfo Textinfo Textinfo Text
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="count">
+                                        <button>
+                                            <img src="/web/img/main/slide/ICN_REVEIEW.png" alt="">
+                                            <span>123</span>
+                                        </button>
+                                    </div>
+                                    <div class="bar">
+                                    </div>
+                                </div>
+                                -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gatheringsSlideWrap commonWrap">
+                        <div class="commonTitleArea">
+                            <h3>
+                                <%=translation.footer.Gathering%>
+                            </h3>
+                            <div class="btns">
+                                <div class="sort">
+                                    <button class="active"><%=translation.hostMain.Newest%></button>
+                                    <button><%=translation.hostMain.Popular%></button>
+                                </div>
+                                <div class="all">
+                                    <button onclick="location.href='/gatheringMain'">
+                                        <%=translation.loginAndJoin.See_All%>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slideWrap">
+                            <div class="btnArea2">
+                            </div>
+                            <div class="gatheringSlide commonLayoutSlide commonSlide">
+                                <!-- <div class="thumb">
+                                    <a href="javascript:avoid(0)" style="background-image: url('/web/img/main/slide/dummyImg2.jpg');">
+                                    </a>
+                                    <div class="classInfo">
+                                        <div class="hover-ring" data-host="<%=translation.hostMain.Host_Name%>">
+                                            <img src="/web/img/main/slide/IMG_1.png" alt="">
+                                        </div>
+                                        <div class="infoText">
+                                            <h6 class="title">
+                                                <%=translation.Revenue.Class_Title%>
+                                            </h6>
+                                            <p class="detail">
+                                                info Text
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="viewCount">
+                                        <div>
+                                            <div class="rings">
+                                                <img class="smallRing" src="/web/img/main/slide/IMG_1.png" alt="">
+                                                <img class="smallRing" src="/web/img/main/slide/IMG_1.png" alt="">
+                                                <img class="smallRing" src="/web/img/main/slide/IMG_1.png" alt="">
+                                            </div>
+                                            <span>999</span>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="upcomingEventsSlideWrap commonWrap">
+                        <div class="commonTitleArea oneBtn">
+                            <h3>
+                                <%=translation.loginAndJoin.Upcoming_Events%>
+                            </h3>
+                            <div class="all">
+                                <button onclick="location.href='/gatheringMain'">
+                                    <%=translation.loginAndJoin.See_All%>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="slideWrap">
+                            <div class="btnArea3">
+                            </div>
+                            <div class="upcomingSlide commonLayoutSlide commonSlide">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="journalEntriesWrap commonWrap">
+                        <div class="commonTitleArea">
+                            <h3>
+                                <%=translation.loginAndJoin.Journal_Entries%>
+                            </h3>
+                            <div class="btns">
+                                <div class="sort">
+                                    <button class="active"><%=translation.hostMain.Newest%></button>
+                                    <button><%=translation.hostMain.Popular%></button>
+                                </div>
+                                <div class="all">
+                                    <button onclick="location.href='/journalMain'">
+                                        <%=translation.loginAndJoin.See_All%>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contentWrap">
+                            <div class="contentCards" id="journalContents"></div>
+                        </div>
+                    </div>
+                    <div class="bestReviewsWrap commonWrap">
+                        <div class="commonTitleArea">
+                            <h3>
+                                <%=translation.loginAndJoin.Best_Reviews%>
+                            </h3>
+                            <div class="catebtns">
+                                <button class="reviewCategory active" onclick="makeReviewList('all', 'not', this)"><%=translation.dashBoard.All%></button>
+                                <button class="reviewCategory"  onclick="makeReviewList( 'Mindfulness', 'not', this)"><%=translation.openClass.Mindfulness%></button>
+                                <button class="reviewCategory" onclick="makeReviewList( 'Mediation', 'not', this)"><%=translation.openClass.Meditation%></button>
+                                <button class="reviewCategory" onclick="makeReviewList( 'Yoga', 'not', this)"><%=translation.openClass.Yoga%></button>
+                                <button class="reviewCategory" onclick="makeReviewList( 'Activity', 'not', this)"><%=translation.openClass.Movement_Activity%></button>
+                                <button class="reviewCategory" onclick="makeReviewList( 'CounselingCoaching', 'not', this)""><%=translation.openClass.Counseling_Coaching%></button>
+                                <button class="reviewCategory" onclick="makeReviewList( 'Others', 'not', this)"><%=translation.openClass.Others%></button>
+                            </div>
+                        </div>
+                        <div class="contentWrap">
+                            <div class="smallBox" id = "mainReviewList">
+
+
+
+
+                                <!-- <div class="sBox onTop commonBox">
+                                    <div class="innerWrap">
+                                        <div class="top">
+                                            <div class="ring-info">
+                                                <div class="ringImg hover-ring" data-host="<%=translation.hostMain.Host_Name%>">
+                                                    <img src="/web/img/main/slide/IMG_1.png" alt="">
+                                                </div>
+                                                <ul class="name-date">
+                                                    <li class="name">
+                                                        <h6>
+                                                            David Janes
+                                                        </h6>
+                                                    </li>
+                                                    <li class="date">
+                                                        <span>
+                                                            2021.01.01  11:30AM
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="likeCount">
+                                                <img src="/web/img/main/reviews/ICN_BOOKMARK.png" alt="">
+                                                <span>
+                                                    100
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <p class="text">
+                                                “It’s very good, it also increase my mindful. It’s very good, it also increase my mindful. It’s very good, it also increase my mindful. It’s very good, it also increase my 
+                                            </p>
+                                            <ul class="moreInfo">
+                                                <li class="lbox-title">
+                                                    <p>
+                                                        <a href="javascript:avoid(0)"><%=translation.loginAndJoin.Related_Class%></a>
+                                                    </p>
+                                                    <h6>
+                                                        <%=translation.Revenue.Class_Title%>
+                                                    </h6>
+                                                </li>
+                                                <li class="lbox-thumb" style="background-image: url('/web/img/main/slide/dummyImg2.jpg');">
+                                                </li>
+                                                <li class="lbox-btn">
+                                                    <button>
+                                                        <%=translation.loginAndJoin.Close%>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="rvBtnWrap">
+                                            <button class="reviewBtn">
+                                                <span>...</span><strong><%=translation.loginAndJoin.See_More%></strong>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="sBox onTop commonBox">
+                                    <div class="innerWrap">
+                                        <div class="top">
+                                            <div class="ring-info">
+                                                <div class="ringImg hover-ring" data-host="<%=translation.hostMain.Host_Name%>">
+                                                    <img src="/web/img/main/slide/IMG_1.png" alt="">
+                                                </div>
+                                                <ul class="name-date">
+                                                    <li class="name">
+                                                        <h6>
+                                                            David Janes
+                                                        </h6>
+                                                    </li>
+                                                    <li class="date">
+                                                        <span>
+                                                            2021.01.01  11:30AM
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="likeCount">
+                                                <img src="/web/img/main/reviews/ICN_BOOKMARK.png" alt="">
+                                                <span>
+                                                    100
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <p class="text">
+                                                “It’s very good, it also increase my mindful. It’s very good, it also increase my mindful. It’s very good, it also increase my mindful. It’s very good, it also increase my 
+                                            </p>
+                                            <ul class="moreInfo">
+                                                <li class="lbox-title">
+                                                    <p>
+                                                        <a href="javascript:avoid(0)"><%=translation.loginAndJoin.Related_Class%></a>
+                                                    </p>
+                                                    <h6>
+                                                        <%=translation.Revenue.Class_Title%>
+                                                    </h6>
+                                                </li>
+                                                <li class="lbox-thumb" style="background-image: url('/web/img/main/slide/dummyImg2.jpg');">
+                                                </li>
+                                                <li class="lbox-btn">
+                                                    <button>
+                                                        <%=translation.loginAndJoin.Close%>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="rvBtnWrap">
+                                            <button class="reviewBtn">
+                                                <span>...</span><strong><%=translation.loginAndJoin.See_More%></strong>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sBox onTop commonBox">
+                                    <div class="innerWrap">
+                                        <div class="top">
+                                            <div class="ring-info">
+                                                <div class="ringImg hover-ring" data-host="<%=translation.hostMain.Host_Name%>">
+                                                    <img src="/web/img/main/slide/IMG_1.png" alt="">
+                                                </div>
+                                                <ul class="name-date">
+                                                    <li class="name">
+                                                        <h6>
+                                                            David Janes
+                                                        </h6>
+                                                    </li>
+                                                    <li class="date">
+                                                        <span>
+                                                            2021.01.01  11:30AM
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="likeCount">
+                                                <img src="/web/img/main/reviews/ICN_BOOKMARK.png" alt="">
+                                                <span>
+                                                    100
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <p class="text">
+                                                “It’s very good, it also increase my mindful. It’s very good, it also increase my mindful. It’s very good, it also increase my mindful. It’s very good, it also increase my 
+                                            </p>
+                                            <ul class="moreInfo">
+                                                <li class="lbox-title">
+                                                    <p>
+                                                        <a href="javascript:avoid(0)"><%=translation.loginAndJoin.Related_Class%></a>
+                                                    </p>
+                                                    <h6>
+                                                        <%=translation.Revenue.Class_Title%>
+                                                    </h6>
+                                                </li>
+                                                <li class="lbox-thumb" style="background-image: url('/web/img/main/slide/dummyImg2.jpg');">
+                                                </li>
+                                                <li class="lbox-btn">
+                                                    <button>
+                                                        <%=translation.loginAndJoin.Close%>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="rvBtnWrap">
+                                            <button class="reviewBtn">
+                                                <span>...</span><strong><%=translation.loginAndJoin.See_More%></strong>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sBox onTop commonBox">
+                                    <div class="innerWrap">
+                                        <div class="top">
+                                            <div class="ring-info">
+                                                <div class="ringImg hover-ring" data-host="<%=translation.hostMain.Host_Name%>">
+                                                    <img src="/web/img/main/slide/IMG_1.png" alt="">
+                                                </div>
+                                                <ul class="name-date">
+                                                    <li class="name">
+                                                        <h6>
+                                                            David Janes
+                                                        </h6>
+                                                    </li>
+                                                    <li class="date">
+                                                        <span>
+                                                            2021.01.01  11:30AM
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="likeCount">
+                                                <img src="/web/img/main/reviews/ICN_BOOKMARK.png" alt="">
+                                                <span>
+                                                    100
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <p class="text">
+                                                “It’s very good, it also increase my mindful. It’s very good, it also increase my mindful. It’s very good, it also increase my mindful. It’s very good, it also increase my 
+                                            </p>
+                                            <ul class="moreInfo">
+                                                <li class="lbox-title">
+                                                    <p>
+                                                        <a href="javascript:avoid(0)"><%=translation.loginAndJoin.Related_Class%></a>
+                                                    </p>
+                                                    <h6>
+                                                        <%=translation.Revenue.Class_Title%>
+                                                    </h6>
+                                                </li>
+                                                <li class="lbox-thumb" style="background-image: url('/web/img/main/slide/dummyImg2.jpg');">
+                                                </li>
+                                                <li class="lbox-btn">
+                                                    <button>
+                                                        <%=translation.loginAndJoin.Close%>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="rvBtnWrap">
+                                            <button class="reviewBtn">
+                                                <span>...</span><strong><%=translation.loginAndJoin.See_More%></strong>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sBox onBottom commonBox">
+                                    <div class="innerWrap">
+                                        <div class="top">
+                                            <div class="ring-info">
+                                                <div class="ringImg hover-ring" data-host="<%=translation.hostMain.Host_Name%>">
+                                                    <img src="/web/img/main/slide/IMG_1.png" alt="">
+                                                </div>
+                                                <ul class="name-date">
+                                                    <li class="name">
+                                                        <h6>
+                                                            David Janes
+                                                        </h6>
+                                                    </li>
+                                                    <li class="date">
+                                                        <span>
+                                                            2021.01.01  11:30AM
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="likeCount">
+                                                <img src="/web/img/main/reviews/ICN_BOOKMARK.png" alt="">
+                                                <span>
+                                                    100
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <p class="text">
+                                                “Ibottomery good, it also increase my mindful. It’s very good, it also increase my mindful. It’s very good, it also increase my mindful. It’s very good, it also increase my 
+                                            </p>
+                                            <ul class="moreInfo">
+                                                <li class="lbox-title">
+                                                    <p>
+                                                        <a href="javascript:avoid(0)"><%=translation.loginAndJoin.Related_Class%></a>
+                                                    </p>
+                                                    <h6>
+                                                        <%=translation.Revenue.Class_Title%>
+                                                    </h6>
+                                                </li>
+                                                <li class="lbox-thumb" style="background-image: url('/web/img/main/slide/dummyImg2.jpg');">
+                                                </li>
+                                                <li class="lbox-btn">
+                                                    <button>
+                                                        <%=translation.loginAndJoin.Close%>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="rvBtnWrap">
+                                            <button class="reviewBtn">
+                                                <span>...</span><strong><%=translation.loginAndJoin.See_More%></strong>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sBox onBottom commonBox">
+                                    <div class="innerWrap">
+                                        <div class="top">
+                                            <div class="ring-info">
+                                                <div class="ringImg hover-ring" data-host="<%=translation.hostMain.Host_Name%>">
+                                                    <img src="/web/img/main/slide/IMG_1.png" alt="">
+                                                </div>
+                                                <ul class="name-date">
+                                                    <li class="name">
+                                                        <h6>
+                                                            David Janes
+                                                        </h6>
+                                                    </li>
+                                                    <li class="date">
+                                                        <span>
+                                                            2021.01.01  11:30AM
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="likeCount">
+                                                <img src="/web/img/main/reviews/ICN_BOOKMARK.png" alt="">
+                                                <span>
+                                                    100
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <p class="text">
+                                                “Ibottomery good, it also increase my mindful. It’s very good, it also increase my mindful. It’s very good, it also increase my mindful. It’s very good, it also increase my 
+                                            </p>
+                                            <ul class="moreInfo">
+                                                <li class="lbox-title">
+                                                    <p>
+                                                        <a href="javascript:avoid(0)"><%=translation.loginAndJoin.Related_Class%></a>
+                                                    </p>
+                                                    <h6>
+                                                        <%=translation.Revenue.Class_Title%>
+                                                    </h6>
+                                                </li>
+                                                <li class="lbox-thumb" style="background-image: url('/web/img/main/slide/dummyImg2.jpg');">
+                                                </li>
+                                                <li class="lbox-btn">
+                                                    <button>
+                                                        <%=translation.loginAndJoin.Close%>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="rvBtnWrap">
+                                            <button class="reviewBtn">
+                                                <span>...</span><strong><%=translation.loginAndJoin.See_More%></strong>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="sBox onBottom commonBox">
+                                    <div class="innerWrap">
+                                        <div class="top">
+                                            <div class="ring-info">
+                                                <div class="ringImg hover-ring" data-host="<%=translation.hostMain.Host_Name%>">
+                                                    <img src="/web/img/main/slide/IMG_1.png" alt="">
+                                                </div>
+                                                <ul class="name-date">
+                                                    <li class="name">
+                                                        <h6>
+                                                            David Janes
+                                                        </h6>
+                                                    </li>
+                                                    <li class="date">
+                                                        <span>
+                                                            2021.01.01  11:30AM
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="likeCount">
+                                                <img src="/web/img/main/reviews/ICN_BOOKMARK.png" alt="">
+                                                <span>
+                                                    100
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <p class="text">
+                                                “Ibottomery good, it also increase my mindful. It’s very good, it also increase my mindful. It’s very good, it also increase my mindful. It’s very good, it also increase my 
+                                            </p>
+                                            <ul class="moreInfo">
+                                                <li class="lbox-title">
+                                                    <p>
+                                                        <a href="javascript:avoid(0)"><%=translation.loginAndJoin.Related_Class%></a>
+                                                    </p>
+                                                    <h6>
+                                                        <%=translation.Revenue.Class_Title%>
+                                                    </h6>
+                                                </li>
+                                                <li class="lbox-thumb" style="background-image: url('/web/img/main/slide/dummyImg2.jpg');">
+                                                </li>
+                                                <li class="lbox-btn">
+                                                    <button>
+                                                        <%=translation.loginAndJoin.Close%>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="rvBtnWrap">
+                                            <button class="reviewBtn">
+                                                <span>...</span><strong><%=translation.loginAndJoin.See_More%></strong>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sBox onBottom commonBox">
+                                    <div class="innerWrap">
+                                        <div class="top">
+                                            <div class="ring-info">
+                                                <div class="ringImg hover-ring" data-host="<%=translation.hostMain.Host_Name%>">
+                                                    <img src="/web/img/main/slide/IMG_1.png" alt="">
+                                                </div>
+                                                <ul class="name-date">
+                                                    <li class="name">
+                                                        <h6>
+                                                            David Janes
+                                                        </h6>
+                                                    </li>
+                                                    <li class="date">
+                                                        <span>
+                                                            2021.01.01  11:30AM
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="likeCount">
+                                                <img src="/web/img/main/reviews/ICN_BOOKMARK.png" alt="">
+                                                <span>
+                                                    100
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <p class="text">
+                                                “Ibottomery good, it also increase my mindful. It’s very good, it also increase my mindful. It’s very good, it also increase my mindful. It’s very good, it also increase my 
+                                            </p>
+                                            <ul class="moreInfo">
+                                                <li class="lbox-title">
+                                                    <p>
+                                                        <a href="javascript:avoid(0)"><%=translation.loginAndJoin.Related_Class%></a>
+                                                    </p>
+                                                    <h6>
+                                                        <%=translation.Revenue.Class_Title%>
+                                                    </h6>
+                                                </li>
+                                                <li class="lbox-thumb" style="background-image: url('/web/img/main/slide/dummyImg2.jpg');">
+                                                </li>
+                                                <li class="lbox-btn">
+                                                    <button>
+                                                        <%=translation.loginAndJoin.Close%>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="rvBtnWrap">
+                                            <button class="reviewBtn">
+                                                <span>...</span><strong><%=translation.loginAndJoin.See_More%></strong>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="viewMoreBtn">
+                            <button id = 'viewMoreButton' style="display: none">
+                                <img src="/web/img/main/reviews/BTN_Viewmore.png" alt="">
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <section class="bottomContents">
+                <article class="marginAuto">
+                    <div class="commuWorldWrap">
+                        <div class="commonTitleArea">
+                            <h3>
+                                <%=translation.loginAndJoin.COMMUNITIES_AROUND_WORLD%>
+                            </h3>
+                        </div>
+                        <div class="mapArea">
+                            <img src="/web/img/main/main_map.png" alt="">
+                            <div class="pointer pointer1">
+                                <ul class="innerInfo">
+                                    <li class="title">
+                                        북아메리카
+                                    </li>
+                                    <li class="info">
+                                        <span>Users</span>
+                                        <strong>15</strong>
+                                    </li>
+                                    <li class="info">
+                                        <span>Today</span>
+                                        <strong>3</strong>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="pointer pointer2">
+                                <ul class="innerInfo">
+                                    <li class="title">
+                                        아프리카
+                                    </li>
+                                    <li class="info">
+                                        <span>Users</span>
+                                        <strong>3</strong>
+                                    </li>
+                                    <li class="info">
+                                        <span>Today</span>
+                                        <strong>0</strong>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="pointer pointer3">
+                                <ul class="innerInfo">
+                                    <li class="title">
+                                        아시아
+                                    </li>
+                                    <li class="info">
+                                        <span>Users</span>
+                                        <strong>8</strong>
+                                    </li>
+                                    <li class="info">
+                                        <span>Today</span>
+                                        <strong>4</strong>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="pointer pointer4">
+                                <ul class="innerInfo">
+                                    <li class="title">
+                                        동북아
+                                    </li>
+                                    <li class="info">
+                                        <span>Users</span>
+                                        <strong>20</strong>
+                                    </li>
+                                    <li class="info">
+                                        <span>Today</span>
+                                        <strong>13</strong>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="commuWorldWrap-count">
+                            <div class="topCount commonCount">
+                                <div class="count-wrap">
+                                    <p><%=translation.loginAndJoin.Total_Users%></p>
+                                    <h4><%=statistics.userSum%></h4>
+                                </div>
+                                <div class="count-wrap">
+                                    <p><%=translation.openClass.Today%></p>
+                                    <h4><%=statistics.visitorNum%></h4>
+                                </div>
+                                <div class="count-wrap">
+                                    <p><%=translation.loginAndJoin.Now%></p>
+                                    <h4>560</h4>
+                                </div>
+                            </div>
+                            <div class="bottomCount commonCount">
+                                <div class="count-wrap">
+                                    <p><%=translation.dashBoard.Classes%></p>
+                                    <h4><%=statistics.classSum%></h4>
+                                </div>
+                                <div class="count-wrap">
+                                    <p><%=translation.loginAndJoin.Gatherings%></p>
+                                    <h4><%=statistics.gatheringSum%></h4>
+                                </div>
+                                <div class="count-wrap">
+                                    <p><%=translation.loginAndJoin.Journal_Entries%></p>
+                                    <h4><%=statistics.journalSum%></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="bottomInfoWrap">
+                        <div class="downloadInfo">
+                            <h4>
+                                Enjoy Mind Ground in you Hands !
+                            </h4>
+                            <div class="itemsWrap">
+                                <div>
+                                    <div class="downloadInfo-img1">
+                                        <img src="/web/img/main/phone.png" alt="">
+                                    </div>
+                                    <div class="downloadInfo-text">
+                                        <h5>text text text text text</h5>
+                                        <p>
+                                            text text text text text text text text text text text text text text texttext text text text text text text text text text text text text text texttext text text text text text text text text text text text text text text text texttext text text text text text text text text text text text text text texttext text
+                                        </p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="downloadInfo-app">
+                                        <div class="android">
+                                            <div class="icon icon-mint">
+                                            </div>
+                                            <div class="title">
+                                                <p>Download on the</p>
+                                                <h6>
+                                                    App Name
+                                                </h6>
+                                            </div>
+                                        </div>
+                                        <div class="ios">
+                                            <div class="icon icon-white">
+                                            </div>
+                                            <div class="title">
+                                                <p>Download on the</p>
+                                                <h6>
+                                                    App Name
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="downloadInfo-qrCode">
+                                        <img src="/web/img/main/qrCode.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </article>
+            </section>
+            <%- include ./common/commonFooter.html%> <%- include ./common/commonScript.html%>
+            <!-- <script src -->
+            <script>
+
+                //상단 메인배너 슬라이드
+                $('.mainSlide').slick({
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: true,
+                    prevArrow : "<button type='button' class='main-prev main-slickBtn'><i class='xi-angle-left-thin'></i></button>",
+                    nextArrow : "<button type='button' class='main-next main-slickBtn'><i class='xi-angle-right-thin'></i></button>",
+                    appendArrows: '.main-btnArea',
+                    dots: false,
+                    autoplay: false,
+                    infinite: true,
+                    speed: 500,
+                })
+
+                //윈도우 사이즈별 스트립트전환
+                $(window).on('load resize', function() {
+                    //슬릭or언슬릭
+                    if($(this).innerWidth() <= 1279)
+                    {
+                        $('.classesSlide').filter('.slick-initialized').slick('unslick')
+                        $('.gatheringSlide').filter('.slick-initialized').slick('unslick')
+                        $('.upcomingSlide').filter('.slick-initialized').slick('unslick')
+                    }
+                    else 
+                    {
+                        //두번째 슬라이드
+                        $('.classesSlide').not('.slick-initialized').slick({
+                            slidesToShow: 3,
+                            slidesToScroll: 1,
+                            arrows: true,
+                            prevArrow : "<button type='button' class='prev slickBtn'><i class='xi-angle-left-thin'></i></button>",
+                            nextArrow : "<button type='button' class='next slickBtn'><i class='xi-angle-right-thin'></i></button>",
+                            appendArrows: '.btnArea',
+                            dots: false,
+                            autoplay: false,
+                            infinite: true,
+                            speed: 500,
+                            centerMode: true,
+                        })
+                        
+                        //세번째 슬라이드
+                        $('.gatheringSlide').not('.slick-initialized').slick({
+                            slidesToShow: 4,
+                            slidesToScroll: 1,
+                            arrows: true,
+                            prevArrow : "<button type='button' class='prev slickBtn'><i class='xi-angle-left-thin'></i></button>",
+                            nextArrow : "<button type='button' class='next slickBtn'><i class='xi-angle-right-thin'></i></button>",
+                            appendArrows: '.btnArea2',
+                            dots: false,
+                            autoplay: false,
+                            infinite: true,
+                            speed: 500,
+                        })
+                        
+                        //네번째 슬라이드
+                        $('.upcomingSlide').not('.slick-initialized').slick({
+                            slidesToShow: 4,
+                            slidesToScroll: 1,
+                            arrows: true,
+                            prevArrow : "<button type='button' class='prev slickBtn'><i class='xi-angle-left-thin'></i></button>",
+                            nextArrow : "<button type='button' class='next slickBtn'><i class='xi-angle-right-thin'></i></button>",
+                            appendArrows: '.btnArea3',
+                            dots: false,
+                            autoplay: false,
+                            infinite: true,
+                            speed: 500,
+                        })
+                    }
+
+                    //리뷰 더보기; 화면크기 모바일 이상일 때
+                    if($(this).innerWidth() > 1279)
+                    {
+                        $('.reviewBtn').click(function() {
+                            if($(this).parents('.sBox').hasClass('onTop'))
+                            {
+                                $(this).parents('.sBox').addClass('active').removeClass('moActive');
+                                $(this).parents('.innerWrap').find('.lbox-btn button').click(function() {
+                                    $(this).parents('.sBox').removeClass('active')
+                                })
+                            }
+                            else
+                            {
+                                $(this).parents('.sBox').addClass('active').removeClass('moActive');
+                                $(this).parents('.innerWrap').find('.lbox-btn button').click(function() {
+                                    $(this).parents('.sBox').removeClass('active')
+                                })
+                            }
+                        });
+                    }
+                    //화면크기 모바일 이하일 때
+                    else
+                    {
+                        $('.reviewBtn').click(function() {
+                                $(this).parents('.sBox').addClass('moActive').removeClass('active');
+                                $(this).parents('.innerWrap').find('.lbox-btn button').click(function() {
+                                $(this).parents('.sBox').removeClass('moActive')
+                            })
+                        })
+                    }
+
+                });
+
+                //슬라이드 썸네일wrap 모바일에서 가로크기 변경
+                function widthResize(thumb, thumbCount, thumbWrap) {
+                    var thumbWidth = $('.'+thumb+'').width();
+                    var thumbWidthCount = $(''+thumbCount+''); 
+                    $(''+thumbWrap+'').width(((thumbWidth + 15) * thumbWidthCount.length) + 15);
+                }
+                
+                $(function() {
+                    $(window).on('load resize', function() {
+                        if($(this).innerWidth() <= 1279) {
+                            widthResize('video', '#classesDiv > .video', '#classesDiv');
+                            widthResize('thumb', '.gatheringSlide > .thumb', '.gatheringSlide');
+                            widthResize('thumb', '.upcomingSlide  > .thumb', '.upcomingSlide');
+                        }
+                        else
+                        {
+                            $('#classesDiv').width('auto');
+                            $('.gatheringSlide').width('auto');
+                            $('.upcomingSlide').width('auto');
+                        }
+                    })
+                })
+
+                
+                //메인배너 첫번째슬라이드 비누방울 이펙트
+                function bubble() {
+                    var section = document.querySelector('.mainBanner');
+                    var createBubble = document.createElement('span');
+                    var size = Math.random() * 128;
+
+                    createBubble.style.width = size + 'px';
+                    createBubble.style.height = size + 'px';
+                    createBubble.style.left = Math.random() * innerWidth + 'px';
+
+                    section.appendChild(createBubble);
+
+                    setTimeout(function() {
+                        createBubble.remove()
+                    }, 15000);
+
+                }
+                setInterval(bubble, 1000);
+
+                var mainRings = document.querySelector('.mainRings');
+                var mainHostRings = document.getElementsByClassName('maingHostRing');
+                var ringBounce = function(ring) {
+                    ring.animate([
+                    { transform: "scale(1)" },
+                    { transform: "scale(0.3)" },
+                    { transform: "scale(1)" }
+                    ],6000)
+                }
+
+                function randomSetNum(min, max) {
+                    return Math.floor(Math.random() * (max - min + 1)) + min;
+                }
+                // setInterval(function() {
+                //     ringBounce(mainHostRings[0])
+                // },randomSetNum(5000, 8000));
+                // setInterval(function() {
+                //     ringBounce(mainHostRings[1])
+                // },randomSetNum(5000, 8000));
+                // setInterval(function() {
+                //     ringBounce(mainHostRings[2])
+                // },randomSetNum(5000, 8000));
+                // setInterval(function() {
+                //     ringBounce(mainHostRings[3])
+                // },randomSetNum(5000, 8000));
+
+                //interval 생성
+                for(var i =0; i<4; i++) {
+                    makeInterval(i)
+                }
+
+                // clearinterval : interval 정지시키는 함수
+                // 각interval에 이름을 줘서 clearInterval 이 해당 interval을 stop 할 수 있도록 지칭
+                function makeInterval(ringNum){
+                    console.log('comecheck')
+                    eval("ringAnimation"+ringNum+"="+setInterval(function() {
+                        ringBounce(mainHostRings[ringNum])
+                        <%
+                            var array= [];
+                            for(var i = 0 ; i<resultUserUID.length; i++){
+                                array.push(resultUserUID[i].userUID)
+                            }
+                        %>
+                        var userUIDArray= JSON.parse('<%-JSON.stringify(array)%>')
+                        var num = Math.floor(Math.random()*userUIDArray.length)
+                        var userUIDForImg=userUIDArray[num]
+                        document.getElementById('bubbleRing'+ringNum).innerHTML=`<a href="/mypage/${userUIDForImg}"><img src="/web/img/userRing/${userUIDForImg}.png"></a>`;
+
+
+                    },randomSetNum(7000, 10000)))
+                }
+                //mouseover시 해당 링의 번호 가져와서 해당 interval 정지
+                // mouse out 시 다시 해당 링 애니매이션 작동 할 수 있도록 하는 함수 필요
+                //makeInterval 함수 활용 필요
+                function test(ringNum) {
+                    clearInterval(eval('ringAnimation'+ringNum));
+                }
+            </script>
+
+
+
+        <!---------------------------------------------->
+        <!-- 페이팔 테스트 (일반결제)                   -->
+        <!---------------------------------------------->
+        <!-- <script src="https://www.paypal.com/sdk/js?client-id=test"></script> -->
+        <!-- <script src="https://www.paypal.com/sdk/js?client-id=AelGQYXoQdxk-PZ8UjYNbSpXttDenlbfQ1Nv-6Ss15FPBMGSf4HTiq4_0ZW3rYisGvaOmFyU2gzNAAlF"></script>
+        <script>
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                // This function sets up the details of the transaction, including the amount and line item details.
+                return actions.order.create({
+                    intent: "CAPTURE",
+                    purchase_units: [{
+                    amount: {
+                        currency_code: "USD",
+                        value: '0.01'
+                    }
+                    }]
+                });
+                },
+                onApprove: function(data, actions) {
+                    
+                    var jsonObject = {};
+
+                    jsonObject.protocol = 'serverPayTest';
+                    jsonObject.data = data;  
+                    jsonObject.pgType = 'paypal';
+                    jsonObject.type = 'consume';
+                    jsonObject.purchaseInterval = 0;
+                    jsonObject.itemName = 'itemName';
+
+                    console.log("data = " + JSON.stringify(data))
+                    
+                    protocolSendAjaxWithCallBack(jsonObject, function(result){
+
+                        if(result.resultCode==0){
+                            // 결제 완료
+                            alert('Transaction approved by ' + JSON.stringify(result));
+                        }
+                        else
+                        {
+                            // alert('이미 사용중인 이메일입니다.')
+                            alert("결제 실패 서버에러 : " + result.message);
+                        }
+                    })
+                }
+            }).render('.bottomInfoWrap');
+
+
+        </script> -->
+
+
+        <!---------------------------------------------->
+        <!-- 페이팔 테스트 (구독결제)                   -->
+        <!---------------------------------------------->
+        <!-- <div id="paypal-button-container-P-2YR37657WV115273TMFIYRGQ"></div>
+        <script src="https://www.paypal.com/sdk/js?client-id=AU9yWRQxsmeHZAs4TA0nsCkVyGR_MGqL6_2nkT5wrIz64ZXxpucb7iKVmz3d5ukzyh5KVpF2GgcwEOhB&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+        <script>
+        paypal.Buttons({
+            style: {
+                shape: 'rect',
+                color: 'gold',
+                layout: 'vertical',
+                label: 'subscribe'
+            },
+            createSubscription: function(data, actions) {
+                return actions.subscription.create({
+                /* Creates the subscription */
+                plan_id: 'P-2YR37657WV115273TMFIYRGQ'
+                });
+            },
+            onApprove: function(data, actions) {
+                
+                alert(data.subscriptionID); // You can add optional success message for the subscriber here
+            }
+        }).render('#paypal-button-container-P-2YR37657WV115273TMFIYRGQ'); // Renders the PayPal button
+        </script>  -->
+            
+            <!-- social 로그인시 회원정보가 없으면 회원가입 진행 -->
+            <%
+                if(profile !== null && profile !== undefined)
+                {
+                    if(profile.socialSignUpFlag !== null && profile.socialSignUpFlag !== undefined && profile.socialSignUpFlag !== '')
+                    {
+                        var social = profile.socialSignUpFlag;
+                        var socialId = profile.socialId;
+
+                        if(profile.socialSignUpFlag === 'googleSignUp')
+                        {
+                            var socialEmail = profile.socialEmail;
+                        }
+            %>
+                        <input id="social" type="hidden" value="<%=social%>"/>
+                        <input id="socialId" type="hidden" value="<%=socialId%>"/>
+                        <input id="socialEmail" type="hidden" value="<%=socialEmail%>"/>
+            <%
+                        if(profile.socialSignUpFlag === 'googleSignUp')
+                        {
+            %>
+                        <script>
+                            customModal(100);
+                            var social = document.getElementById('social').value;
+                            var socialEmail = document.getElementById('socialEmail').value;
+                            socialSignUpFunction(social, socialEmail);
+                        </script>
+            <%
+                        }
+        
+                        if(profile.socialSignUpFlag === 'facebookSignUp' || profile.socialSignUpFlag === 'appleSignUp')
+                        {
+            %>
+                            <script>
+                                function randomPassword(length) 
+                                {
+                                    let text = '';
+                                    let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                                    for (let i = 0; i < length; i++) text += possible.charAt(Math.floor(Math.random() * possible.length));
+                                    return text;
+                                };
+
+                                customModal(100);
+                                var social = document.getElementById('social').value;
+                                var socialEmail = randomPassword(12) + '@gmail.com';
+                                socialSignUpFunction(social, socialEmail);
+                            </script>
+            <%
+                        }
+                    }
+                }
+            %>
+
+            <!-- 클래스 최신순 출력 함수 (인기순은 보류) -->
+            <script>
+                console.log(<%-JSON.stringify(statistics)%>)
+                var relatedClassObject = <%- sendClassObject ? JSON.stringify(sendClassObject) : {} %>;
+                // 테스트용 : 로컬에 이미지가 없을시 더미 이미지로 src 변경
+                function changeImg(target)
+                {
+                    $(target).parent().css({"background-image" : "url(./web/img/main/slide/dummyImg2.jpg)"});
+                }
+
+                var resultUserUID = <%- resultUserUID ? JSON.stringify(resultUserUID) : {} %>;
+                var resultClassObject = <%- resultClassObject ? JSON.stringify(resultClassObject) : {} %>;
+                var useResultClassObject = [];
+                var resultGatheringObject = [];
+
+                for(var i = 0; i < resultClassObject.length; i++) {
+                    if(resultClassObject[i].objectType == 'class') {
+                        useResultClassObject.push(resultClassObject[i]);
+                    }
+                }
+
+                for(var i = 0; i < resultClassObject.length; i++) {
+                    if(resultClassObject[i].objectType == 'gathering') {
+                        resultGatheringObject.push(resultClassObject[i]);
+                    }
+                }   
+
+                // html 출력 함수
+                function getClassHtml(classList, type)
+                {
+                    var tempClassObject = classList.classObject;
+                    var tempMainCategory = verifyData(tempClassObject.mainCategory);
+                    var mainCategory = getTranslation('openClass', tempMainCategory);
+
+                    var classImagePath = '';
+                    if(tempClassObject.thumbNailMain != null && tempClassObject.thumbNailMain != undefined && tempClassObject.thumbNailMain != '') {
+                        if(tempClassObject.thumbNailMain.filePath == null || tempClassObject.thumbNailMain.filePath == undefined || tempClassObject.thumbNailMain.filePath == '') {
+                            classImagePath = '/web/img/classesThumb.png';
+                        } else {
+                            classImagePath = tempClassObject.thumbNailMain.filePath;
+                        }
+                    } else {
+                        classImagePath = '/web/img/classesThumb.png';
+                    }
+
+                    var classesHtmlText = `
+                        <div class="video">
+                            <a href="classProgramListing/${classList._id}" style="background-image: url('${classImagePath}')">
+                    `;
+
+                    classesHtmlText += `
+                            </a>
+                            <div class="category">
+                                <img src="/web/img/main/cateList/ICN_${tempMainCategory}.png" alt="">
+                                <span>
+                                    ${mainCategory}
+                                </span>
+                            </div>
+                            <div class="classInfo">
+                                <div class="hover-ring" data-host="${classList.userName}" id="${classList.userUID}/${classList.userName}">
+                                    <img src="/web/img/userRing/${classList.userUID}.png" alt="">
+                                </div>
+                                <div class="infoText">
+                                    <h6 class="title">
+                                        ${classList.classObject.title}
+                                    </h6>
+                                    <p class="detail">
+                                        ${classList.userName}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="count">
+                                <button>
+                                    <img src="/web/img/main/slide/ICN_REVEIEW.png" alt="">
+                                    <span><!-- 나중에 count 들어갈 자리 --></span>
+                                </button>
+                            </div>
+                            <div class="bar">
+                            </div>
+                        </div>
+                    `;
+
+                    return classesHtmlText;
+                }
+                
+                // 클래스 관리(최신순) 함수
+                function addNewClasses()
+                {
+                    var newClassesCount = 15;
+
+                    var lastIndex = newClassesCount > useResultClassObject.length ? useResultClassObject.length : newClassesCount;
+                    //10명 컷
+                    var listNewClasses = useResultClassObject.slice(0, lastIndex);
+
+                    var classesHtmlText = '';
+
+                    for(var i = 0 ; i < lastIndex ; i++)
+                    {
+                        if(listNewClasses[i].dormancy != 'dormancy') {
+                            classesHtmlText += getClassHtml(listNewClasses[i]);
+                        }
+                    }
+
+                    $("#classesDiv").append(classesHtmlText);
+                }
+                
+                // 게더링 출력(최신순), 업커밍 이벤트 출력 함수
+                function addNewGathering() {
+                    var newClassesCount = 15;
+
+                    var lastIndex = newClassesCount > resultGatheringObject.length ? resultGatheringObject.length : newClassesCount;
+                    //10명 컷
+                    var listNewGathering = resultGatheringObject.slice(0, lastIndex);
+
+                    for(var i = 0 ; i < lastIndex ; i++)
+                    {
+                        gatheringWriteFunc(listNewGathering[i]);
+                        upComingEventWriteFunc(listNewGathering[i]);
+                    }
+                }
+                
+                function gatheringWriteFunc(gatheringData) {
+                    createGatheringHtml = `
+                        <div class="thumb">
+                            <a href="/gatheringDetail/${gatheringData._id}" style="background-image: url('${gatheringData.classObject.mainImage[0].filePath}');">
+                                <img src="${gatheringData.classObject.mainImage[0].filePath}" onerror="changeImg(this)" alt="" style="display: none;">
+                            </a>
+                            <div class="classInfo">
+                                <div class="hover-ring" data-host="${gatheringData.userName}">
+                                    <img src="/web/img/userRing/${gatheringData.userUID}.png" alt="">
+                                </div>
+                                <div class="infoText">
+                                    <h6 class="title">
+                                        ${gatheringData.classObject.gatheringName}
+                                    </h6>
+                                    <p class="detail">
+                                        ${gatheringData.userName}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="viewCount">
+                                <div>
+                                    <div class="rings">
+                                        <img class="smallRing" src="/web/img/main/slide/IMG_1.png" alt="">
+                                        <img class="smallRing" src="/web/img/main/slide/IMG_1.png" alt="">
+                                        <img class="smallRing" src="/web/img/main/slide/IMG_1.png" alt="">
+                                    </div>
+                                    <span>999</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                    document.querySelector('.gatheringSlide').innerHTML += createGatheringHtml;
+                }
+
+                function getDateToday() {
+                    var todayeNowDate = new Date();
+                    var todayeNowYear = todayeNowDate.getFullYear();
+                    var todayeNowMonth = ('0' + (1 + todayeNowDate.getMonth())).slice(-2);
+                    var todayeNowDate = ('0' + todayeNowDate.getDate()).slice(-2);
+
+                    return todayeNowYear + '-' + todayeNowMonth + '-' + todayeNowDate;
+                }
+
+                var upComingCount = 0;
+                function upComingEventWriteFunc(gatheringData) {
+                    if(gatheringData.gatheringEvent != undefined && gatheringData.gatheringEvent.length > 0) {
+                        var eventDataArray = gatheringData.gatheringEvent;
+                    } else {
+                        return false;
+                    }
+                    
+                    for(var i = 0; i < eventDataArray.length; i++) {
+                        var eventData = eventDataArray[i];
+
+                        var eventImagePath = '';
+                        if(eventData.gatheringEventMainImage != null && eventData.gatheringEventMainImage != undefined && eventData.gatheringEventMainImage != '') {
+                            if(eventData.gatheringEventMainImage[0].filePath == null || eventData.gatheringEventMainImage[0].filePath == undefined || eventData.gatheringEventMainImage[0].filePath == '') {
+                                eventImagePath = '/web/img/classesThumb.png';
+                            } else {
+                                eventImagePath = eventData.gatheringEventMainImage[0].filePath;
+                            }
+                        } else {
+                            eventImagePath = '/web/img/classesThumb.png';
+                        }
+
+                        createEventHtml = `
+                        <div class="thumb hoverEft gatheingUpcoming">
+                            <a href="/gatheringDetail/${gatheringData._id}" style="background-image: url('${eventImagePath}');">
+                            </a>
+                            <div class="condition">
+                                `;
+
+                        // 현재 시간
+                        var nowInternetDate = new Date();
+                        var getNowDateHour = nowInternetDate.getHours();
+                        var getNowDateMinutes = nowInternetDate.getMinutes();
+                        var getNowDateTotal = (getNowDateHour * 60) + getNowDateMinutes;
+
+                        // 이벤트 시작 시간
+                        var eventStartTime = eventData.gatheringEventTime1.split(":");
+                        var eventTimeTotal = (Number(eventStartTime[0]) * 60) + Number(eventStartTime[1]);
+
+                        // 현재 날짜
+                        var todayDate = getDateToday();
+
+                        if(todayDate == eventData.gatheringEventDate && getNowDateTotal - eventTimeTotal <= 180) {
+                            createEventHtml += `
+                                    <div class="leftSide">
+                                        <strong class="live"></strong>
+                                    </div>
+                                    <div class="rightSide">
+                                    </div>
+                                </div>
+                                `;
+                        } else if(todayDate == eventData.gatheringEventDate && eventData.gatheringEventTime1 == '00:00' &&  eventData.gatheringEventTime2 == '24:00') {
+                            createEventHtml += `
+                                    <div class="leftSide">
+                                        <strong class="live"></strong>
+                                    </div>
+                                    <div class="rightSide">
+                                    </div>
+                                </div>
+                                `;
+                        } else {
+                            var offlineDate = eventData.gatheringEventDate.replace(/-/g, '. ');
+                            createEventHtml += `
+                                <div class="leftSide">
+                                    <strong class="off"><%=translation.classManagement.Offline%></strong>
+                                </div>
+                                <div class="rightSide">
+                                    <strong class="date">
+                                        ${offlineDate} ${eventData.gatheringEventTime1}
+                                    </strong>
+                                </div>
+                            </div>
+                            `;
+                        }
+
+                        createEventHtml += `
+                            <div class="classInfo">
+                                <div class="hover-ring" data-host="${eventData.eventCreatorName}">
+                                    <img src="/web/img/userRing/${eventData.eventCreatorUID}.png" alt="">
+                                </div>
+                                <div class="infoText">
+                                    <h6 class="title">
+                                        ${eventData.gatheringEventName}
+                                    </h6>
+                                    <p class="detail">
+                                        ${eventData.gatheringEventDesc}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="personCount">
+                                <div>
+                                    <div class="rings">
+                                        <img class="smallRing" src="/web/img/main/slide/IMG_1.png" alt="">
+                                        <img class="smallRing" src="/web/img/main/slide/IMG_1.png" alt="">
+                                        <img class="smallRing" src="/web/img/main/slide/IMG_1.png" alt="">
+                                    </div>
+                                    <span>${eventData.eventMember.length} / ${eventData.gatheringEventParticipants}</span>
+                                </div>
+                            </div>
+                            <div class="aboutInfo">
+                                <h6>
+                                    ${eventData.gatheringEventName}
+                                </h6>
+                                <a class="gahteringUpcomingChildA" href="/gatheringDetail/${gatheringData._id}">
+                                    ${eventData.gatheringEventDesc}
+                                </a>
+                            </div>
+                        </div>
+                        `;
+
+                        if(eventData.gatheringApproved === 'approve') {
+                            if(todayDate <= eventData.gatheringEventDate) {
+                                if(upComingCount < 20) {
+                                    document.querySelector('.upcomingSlide').innerHTML += createEventHtml;
+                                    upComingCount++;
+                                } else if((getNowDateTotal - eventTimeTotal) >= 180) {
+                                    if(upComingCount < 20) {
+                                        document.querySelector('.upcomingSlide').innerHTML += createEventHtml;
+                                        upComingCount++;
+                                    }
+                                } else if(todayDate == eventData.gatheringEventDate && eventData.gatheringEventTime1 == '00:00' &&  eventData.gatheringEventTime1 == '24:00') {
+                                    if(upComingCount < 20) {
+                                        document.querySelector('.upcomingSlide').innerHTML += createEventHtml;
+                                        upComingCount++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+                console.log()
+                var addReviewNum = 1;                
+                function makeReviewList(reviewType, adder, e){
+                    
+                    if(e!=undefined){
+                    var reviewCategoryList = document.getElementsByClassName('reviewCategory')
+
+                    for(var i=0; i<reviewCategoryList.length; i++){
+                        reviewCategoryList[i].classList.remove('active')
+
+                    }
+                        e.classList.add('active')
+
+                    }
+
+                    dataObject = <%-JSON.stringify(additionalInfoObject)%>;
+                    console.log(dataObject)
+                    if(adder!='not'){
+                        addReviewNum += 1;
+                    }else{
+                        addReviewNum = 1;
+                    }
+                    var htmls = '';
+                    // var dataLength = var dataLength = (dataObject.length<addReviewNum*8)?dataObject.length:addReviewNum*8(dataObject.length<addReviewNum*8)?document.getElementById('viewMoreButton').style.display='':'';
+                    var dataLength = (dataObject.length<addReviewNum*8)?dataObject.length:addReviewNum*8
+                    var reviewCount = 0;
+                    for(var i = 0; i<dataLength; i++){
+                        var thisData = dataObject[i];
+                        if(!thisData.hasOwnProperty('category')){
+                            // thisData.category=reviewType
+                        }
+                        if(reviewType=='all'||reviewType==thisData.category){
+                        console.log(JSON.stringify(thisData))
+                        var html='';
+                        if(reviewCount < 4) {
+                            html=`<div class="sBox onTop commonBox">`;
+                        } else {
+                            html=`<div class="sBox onBottom commonBox">`;
+                        }
+                        html += `<div class="innerWrap">
+                                        <div class="top">
+                                            <div class="ring-info">
+                                                <div class="ringImg hover-ring" data-host="<%=translation.hostMain.Host_Name%>">
+                                                    <img src="/web/img/userRing/${thisData.reviewerUID}.png" alt="">
+                                                </div>
+                                                <ul class="name-date">
+                                                    <li class="name">
+                                                        <h6>
+                                                            ${thisData.reviewerName}
+                                                        </h6>
+                                                    </li>
+                                                    <li class="date">
+                                                        <span>
+                                                            2021.01.01  11:30AM
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="likeCount">
+                                                <img src="/web/img/main/reviews/ICN_BOOKMARK.png" alt="">
+                                                <span>
+                                                    0
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <p class="text">
+                                                ${thisData.review.review}
+                                            </p>
+                                            <ul class="moreInfo">
+                                                <li class="lbox-title">
+                                                    <p>
+                                                        <a href="javascript:avoid(0)"><%=translation.loginAndJoin.Related_Class%></a>
+                                                    </p>
+                                                    <h6>
+                                                        <%=translation.Revenue.Class_Title%> ${thisData.classTitle}
+                                                    </h6>
+                                                </li>
+                                                <li class="lbox-thumb" style="background-image: url('${thisData.classThumbNail}');">
+                                                </li>
+                                                <li class="lbox-btn">
+                                                    <button>
+                                                        <%=translation.loginAndJoin.Close%>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="rvBtnWrap">
+                                            <button class="reviewBtn">
+                                                <span>...</span><strong><%=translation.loginAndJoin.See_More%></strong>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>`
+
+                                htmls+=html
+                       
+                            }
+                            reviewCount++;
+                        }
+                    document.getElementById('mainReviewList').innerHTML = htmls;
+
+
+                }
+
+
+                //호스트링 마우스오버                
+                $(function() {
+                    $('.hover-ring').mouseover(function() {
+                        var tempTargetData = $(this).attr('id');
+                        var targetData = tempTargetData.split('/');
+                        var targetTopVal = $(this).offset().top;
+                        var targetLeftVal = $(this).offset().left;
+                        var ringInfo = `<div class="ring-hover-info" data-host="${targetData[1]}">
+                                            <div class="hostIcon">
+                                                <img src="/web/img/userRing/${targetData[0]}.png" alt="">
+                                            </div> 
+                                            <div class="hostName">
+                                                ${targetData[1]}
+                                            </div>
+                                        </div>`;
+
+                        $('.main').append(ringInfo);
+                        $('.ring-hover-info').css({
+                            'top': targetTopVal + 'px',
+                            'left': targetLeftVal + 'px',
+                        })
+                    });
+
+                    $('.hover-ring').mouseout(function() {
+                        window.setTimeout(function(){
+                            $('.ring-hover-info').remove();
+                        }, 700);
+                    })
+                });
+
+                // 페이지 로딩시 HTML 출력 함수 호출
+                addNewClasses();
+                addNewGathering();
+                makeReviewList('all', 'not')
+                
+
+                // 저널 데이터
+                var listRawJournalObject = [];
+
+                for(var i = 0; i < resultClassObject.length; i++) {
+                    if(resultClassObject[i].objectType == 'journal') {
+                        listRawJournalObject.push(resultClassObject[i]);
+                    }
+                }
+
+                var listJournalObject = [];
+
+                for(var i = 0 ; i < listRawJournalObject.length ; i++)
+                {
+                    listRawJournalObject[i].classObject.journalID = listRawJournalObject[i]._id;
+                    listRawJournalObject[i].classObject.userUID = listRawJournalObject[i].userUID;
+                    listRawJournalObject[i].classObject.userName = listRawJournalObject[i].userName;
+                    listRawJournalObject[i].classObject.hostType = listRawJournalObject[i].hostType;
+                    listRawJournalObject[i].classObject.journalState = listRawJournalObject[i].dormancy;
+                    listJournalObject.push(listRawJournalObject[i].classObject);
+                }
+
+                //실제 사용 될 데이터
+                var listCategorySelectedJournal = listJournalObject;
+
+                var categoryIndex = 1; //인덱스 (자동화)
+                var categoryJournalView = 13; //몇개씩 보여질 건지
+
+                //데이터 추가
+                function appendCategoryJournal()
+                {
+                    var listAddJournalHtml = '';
+
+                    //데이터 시작 인덱스
+                    var dataIndex = (categoryIndex - 1) * categoryJournalView;
+
+                    //추가할 데이터 검색
+                    for(var i = dataIndex; i < (dataIndex + categoryJournalView); i++)
+                    {
+                        if(i >= listCategorySelectedJournal.length)
+                        {
+                            break;
+                        }
+
+                        if(listCategorySelectedJournal[i].journalState == 'live' && listCategorySelectedJournal[i].journalAccess == 'Public') {
+                            listAddJournalHtml += addCategoryJournal(listCategorySelectedJournal[i]);
+                        }
+                    }
+
+                    //데이터 추가
+                    $("#journalContents").append(listAddJournalHtml);
+
+                    //인덱스 증가
+                    categoryIndex += 1;
+                }
+
+                // 테스트용 : 로컬에 이미지가 없을시 더미 이미지로 src 변경
+                function checkImg(target) 
+                {
+                    $(target).parent().css({"background-image" : "url(./web/img/gatheringMain/thumbDummy.png)"});
+                }
+                function addCategoryJournal(listJournal)
+                {
+                    var sendJournalData = JSON.stringify(listJournal);
+                    var relatedClassObject = <%- sendClassObject ? JSON.stringify(sendClassObject) : {} %>;
+                    var likeCount = 0;
+                    if(listJournal.journalLike != undefined && listJournal.journalLike != null) {
+                        likeCount = listJournal.journalLike.length;
+                    }
+
+                    if(listJournal.journalCategory == 'GRATITUDE JOURNAL' || listJournal.journalCategory == 'THOUGHT SCAN') {
+                        var journalHtml = `
+                            <div class="commonCard mainJournal">
+                                <a href="javascript:void(0)" onclick='customModal(15, ${sendJournalData}, "noUser", "all", relatedClassObject)'>
+                                    <div class="card-thumb thumb-layout-1" style="background-image: url('${listJournal.journalImage[0].filePath}');">
+                                        <img src="${listJournal.journalImage[0].filePath}" alt="" onerror="checkImg(this)" style="display: none;">
+                                `;
+
+                        if(listJournal.journalAudio != undefined && listJournal.journalAudio != null) {
+                            journalHtml += `<img class="icon" src="/web/img/main/journal/ICN_AUDIO.png" alt="">`;
+                        }
+
+                        journalHtml += `
+                                </div>
+                                <div class="card-detail">
+                                    <div class="card-detail-top">
+                                        <div class="ringInfo">
+                                            <div class="hover-ring" data-host="${listJournal.userName}">
+                                                <img src="/web/img/userRing/${listJournal.userUID}.png" alt="">
+                                            </div>
+                                            <h5>
+                                                ${listJournal.userName}
+                                            </h5>
+                                        </div>
+                                        <div class="count">
+                                            <img src="/web/img/main/journal/ICN_BOOKMARK.png" alt="">
+                                            <span>${likeCount}</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-detail-bottom">
+                                        <p>${listJournal.journalMainText}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        `;
+                    }
+
+                    if(listJournal.journalCategory == 'STAMP ENTRY') {
+                        var journalHtml = `
+                            <div class="commonCard mainJournal">
+                                <a href="javascript:void(0)" onclick='customModal(15, ${sendJournalData}, "noUser", "all", relatedClassObject)'>
+                                    <div class="card-thumb thumb-layout-2">
+                                        <div class="stampWrap">
+                        `;
+                        
+                        for(var stampKey in listJournal.journalStampEntryResult) {
+                            journalHtml += `<img src="${listJournal.journalStampEntryResult[stampKey]}" alt="">`;
+                        }
+                        
+                        journalHtml += `
+                                        </div>
+                                    </div>
+                                    <div class="card-detail">
+                                        <div class="card-detail-top">
+                                            <div class="ringInfo">
+                                                <div class="hover-ring" data-host="${listJournal.userName}">
+                                                    <img src="/web/img/userRing/${listJournal.userUID}.png" alt="">
+                                                </div>
+                                                <h5>
+                                                    ${listJournal.userName}
+                                                </h5>
+                                            </div>
+                                            <div class="count">
+                                                <img src="/web/img/main/journal/ICN_BOOKMARK.png" alt="">
+                                                <span>${likeCount}</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-detail-bottom">
+                                            <p>${listJournal.journalMainText}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        `;
+                    }
+                    
+                    if(listJournal.journalCategory == 'MOOD ENTRY') {
+                        var journalHtml = `
+                            <div class="commonCard mainJournal">
+                                <a href="javascript:void(0)" onclick='customModal(15, ${sendJournalData}, "noUser", "all", relatedClassObject)'>
+                                    <div class="card-thumb thumb-layout-2">
+                                        <div class="emojiWrap">
+                            `;
+
+                            var emoticonCount = 0;
+                            for(var emoticon in listJournal.journalMoodEntryResult) {
+                                if(emoticonCount == 5) {
+                                    break;
+                                }
+                                journalHtml += `<img id="${emoticon}" src="${listJournal.journalMoodEntryResult[emoticon]}" alt="">`;
+                                emoticonCount++;
+                            }
+
+                            journalHtml += `
+                                        </div>
+                                    </div>
+                                    <div class="card-detail">
+                                        <div class="card-detail-top">
+                                            <div class="ringInfo">
+                                                <div class="hover-ring" data-host="${listJournal.userName}">
+                                                    <img src="/web/img/userRing/${listJournal.userUID}.png" alt="">
+                                                </div>
+                                                <h5>
+                                                    ${listJournal.userName}
+                                                </h5>
+                                            </div>
+                                            <div class="count">
+                                                <img src="/web/img/main/journal/ICN_BOOKMARK.png" alt="">
+                                                <span>${likeCount}</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-detail-bottom">
+                                            <p>${listJournal.journalMainText}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        `;
+                    }
+
+                    if(listJournal.journalCategory == 'MINDFUL CHALLENGE CHECKIST') {
+                        var journalHtml = `
+                            <div class="commonCard mainJournal">
+                                <a href="javascript:void(0)" onclick='customModal(15, ${sendJournalData}, "noUser", "all", relatedClassObject)'>
+                                    <div class="card-thumb thumb-layout-3">
+                                        <ul>
+                                            <li>
+                            `;
+                        if(listJournal.journalMindfulResult.chk1 != null && listJournal.journalMindfulResult.chk1 != undefined) {
+                            journalHtml += `<input type="checkBox" id="chk1" checked disabled>`;
+                        } else {
+                            journalHtml += `<input type="checkBox" id="chk1" disabled>`;
+                        }
+                            
+                            journalHtml += `
+                                        <label for="type1">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                Show respect toward nature, animals, and other living beings.
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                            `;
+                            if(listJournal.journalMindfulResult.chk2 != null && listJournal.journalMindfulResult.chk2 != undefined) {
+                                journalHtml += `<input type="checkBox" id="chk2" checked disabled>`;
+                            } else {
+                                journalHtml += `<input type="checkBox" id="chk2" disabled>`;
+                            }
+                             
+                            journalHtml += `
+                                        <label for="type2">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                Love and thank others more/express loving and grateful mind more often.
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                `;
+                            if(listJournal.journalMindfulResult.chk3 != null && listJournal.journalMindfulResult.chk3 != undefined) {
+                                journalHtml += `<input type="checkBox" id="chk3" checked disabled>`;
+                            } else {
+                                journalHtml += `<input type="checkBox" id="chk3" disabled>`;
+                            }
+
+                                journalHtml += `
+                                        <label for="type3">
+                                            <span class="box"></span>
+                                            <span class="text">
+                                                Do not blame or hate others.
+                                            </span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                    `;
+                            if(listJournal.journalMindfulResult.chk4 != null && listJournal.journalMindfulResult.chk4 != undefined) {
+                                journalHtml += `<input type="checkBox" id="chk4" checked disabled>`;
+                            } else {
+                                journalHtml += `<input type="checkBox" id="chk4" disabled>`;
+                            }
+                                    journalHtml += `
+                                            <label for="type4">
+                                                <span class="box"></span>
+                                                <span class="text">
+                                                    Speak kindly and calmly.
+                                                </span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="card-detail">
+                                    <div class="card-detail-top">
+                                        <div class="ringInfo">
+                                            <div class="hover-ring" data-host="${listJournal.userName}">
+                                                <img src="/web/img/userRing/${listJournal.userUID}.png" alt="">
+                                            </div>
+                                            <h5>
+                                                ${listJournal.userName}
+                                            </h5>
+                                        </div>
+                                        <div class="count">
+                                            <img src="/web/img/main/journal/ICN_BOOKMARK.png" alt="">
+                                            <span>${likeCount}</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-detail-bottom">
+                                        <p>${listJournal.journalMainText}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        `;
+                    }
+                    
+                    if(listJournal.journalCategory == 'EMOTION SCAN') {
+                        var journalHtml = `
+                        <div class="commonCard mainJournal">
+                            <a href="javascript:void(0)" onclick='customModal(15, ${sendJournalData}, "noUser", "all", relatedClassObject)'>
+                                <div class="card-thumb thumb-layout-4">
+                                    <div class="figureWrap">
+                                `;
+                                var resultLength = 5;
+                                if(listJournal.journalEmotionScanResult.length <= 5) {
+                                    resultLength = listJournal.journalEmotionScanResult.length;
+                                }
+                                for(var i = 0; i < resultLength; i++) {
+                                    journalHtml += `
+                                        <div class="figure" data-number="${listJournal.journalEmotionScanResult[i].feeling}">
+                                            <span class="text">${listJournal.journalEmotionScanResult[i].observed}</span>
+                                        </div>
+                                    `;
+                                }
+
+                            journalHtml += `
+                                    </div>
+                                </div>
+                                <div class="card-detail">
+                                    <div class="card-detail-top">
+                                        <div class="ringInfo">
+                                            <div class="hover-ring" data-host="${listJournal.userName}">
+                                                <img src="/web/img/userRing/${listJournal.userUID}.png" alt="">
+                                            </div>
+                                            <h5>
+                                                ${listJournal.userName}
+                                            </h5>
+                                        </div>
+                                        <div class="count">
+                                            <img src="/web/img/main/journal/ICN_BOOKMARK.png" alt="">
+                                            <span>${likeCount}</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-detail-bottom">
+                                        <p>${listJournal.journalMainText}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        `;
+                    }
+
+                    if(listJournal.journalCategory == 'BODY SCAN') {
+                        journalHtml = `
+                        <div class="commonCard mainJournal">
+                            <a href="javascript:void(0)" onclick='customModal(15, ${sendJournalData}, "noUser", "all", relatedClassObject)'>
+                            <div class="card-thumb thumb-layout-5">
+                                <div class="figureBox">
+                                    <div class="figureBox-top">
+                                        <h6>${listJournal.journalBodyScanResult[0].part}</h6>
+                                        <span class="dots"></span>
+                                        <h6>Stinging</h6>
+                                    </div>
+                                    <div class="figureBox-bottom">
+                                        <div class="figure" data-number="${listJournal.journalBodyScanResult[0].intense}">
+                                            <span class="text">Intense</span>
+                                        </div>
+                                        <div class="figure" data-number="${listJournal.journalBodyScanResult[0].pleasant}">
+                                            <span class="text">Pleasant</span>
+                                        </div>
+                                    </div>
+                                </div>
+                        `;
+                        if(listJournal.journalBodyScanResult.length > 1) {
+                            journalHtml += `
+                                <div class="figureBox">
+                                    <div class="figureBox-top">
+                                        <h6>${listJournal.journalBodyScanResult[1].part}</h6>
+                                        <span class="dots"></span>
+                                        <h6>Stinging</h6>
+                                    </div>
+                                    <div class="figureBox-bottom">
+                                        <div class="figure" data-number="${listJournal.journalBodyScanResult[1].intense}">
+                                            <span class="text">Intense</span>
+                                        </div>
+                                        <div class="figure" data-number="${listJournal.journalBodyScanResult[1].pleasant}">
+                                            <span class="text">Pleasant</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            `;
+                        } else {
+                            journalHtml += `</div>`;
+                        }
+                        
+                        journalHtml += `
+                            <div class="card-detail">
+                                <div class="card-detail-top">
+                                    <div class="ringInfo">
+                                        <div class="hover-ring" data-host="${listJournal.userName}">
+                                            <img src="/web/img/userRing/${listJournal.userUID}.png" alt="">
+                                        </div>
+                                        <h5>
+                                            ${listJournal.userName}
+                                        </h5>
+                                    </div>
+                                    <div class="count">
+                                        <img src="/web/img/main/journal/ICN_BOOKMARK.png" alt="">
+                                        <span>${likeCount}</span>
+                                    </div>
+                                </div>
+                                <div class="card-detail-bottom">
+                                    <p>${listJournal.journalMainText}</p>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        `;
+                    }
+                    
+                    if(listJournal.journalCategory == 'KEYWORD ENTRY') {
+                        var journalHtml = `
+                            <div class="commonCard mainJournal">
+                                <a href="javascript:void(0)" onclick='customModal(15, ${sendJournalData}, "noUser", "all", relatedClassObject)'>
+                                <div class="card-thumb thumb-layout-6">
+                                    <div class="keywordWrap">
+                                    `;
+                        var resultLength = 5;
+                        if(listJournal.journalKeyWordEntryResult.length <= 5) {
+                            resultLength = listJournal.journalKeyWordEntryResult.length;
+                        }
+
+                        for(var i = 0; i < resultLength; i++) {
+                            journalHtml += `<div class="keyword">keyword</div>`;
+                        }
+                        
+                        journalHtml += `
+                                    </div>
+                                </div>
+                                <div class="card-detail">
+                                    <div class="card-detail-top">
+                                        <div class="ringInfo">
+                                            <div class="hover-ring" data-host="${listJournal.userName}">
+                                                <img src="/web/img/userRing/${listJournal.userUID}.png" alt="">
+                                            </div>
+                                            <h5>
+                                                ${listJournal.userName}
+                                            </h5>
+                                        </div>
+                                        <div class="count">
+                                            <img src="/web/img/main/journal/ICN_BOOKMARK.png" alt="">
+                                            <span>${likeCount}</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-detail-bottom">
+                                        <p>${listJournal.journalMainText}</p>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                        `;
+                    }
+                    
+                    if(listJournal.journalCategory == 'ASANA JOURNAL') {
+                        var journalHtml = `
+                            <div class="commonCard mainJournal">
+                                <a href="javascript:void(0)" onclick='customModal(15, ${sendJournalData}, "noUser", "all", relatedClassObject)'>
+                                <div class="card-thumb thumb-layout-1" style="background-image: url('${listJournal.journalImage[0].filePath}');">
+                                    <img src="${listJournal.journalImage[0].filePath}" alt="" onerror="checkImg(this)" style="display: none;">
+                                `;
+
+                        if(listJournal.journalVideo != undefined && listJournal.journalVideo != null) {
+                            journalHtml += `<img class="icon" src="/web/img//icn_video.png" alt="">`;
+                        }
+
+                        journalHtml += `
+                            </div>
+                            <div class="card-detail">
+                                <div class="card-detail-top">
+                                    <div class="ringInfo">
+                                        <div class="hover-ring" data-host="${listJournal.userName}">
+                                            <img src="/web/img/userRing/${listJournal.userUID}.png" alt="">
+                                        </div>
+                                        <h5>
+                                            ${listJournal.userName}
+                                        </h5>
+                                    </div>
+                                    <div class="count">
+                                        <img src="/web/img/main/journal/ICN_BOOKMARK.png" alt="">
+                                        <span>${likeCount}</span>
+                                    </div>
+                                </div>
+                                <div class="card-detail-bottom">
+                                    <p>${listJournal.journalMainText}</p>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        `;
+                    }
+
+                    return journalHtml;
+                }
+
+                appendCategoryJournal();
+
+                $(document).on('click', '.gatheingUpcoming', function(target) {
+                    var upcomingEventUrl = $(this).children('.aboutInfo').children('.gahteringUpcomingChildA').attr('href');
+
+                    location.href = upcomingEventUrl;
+                });
+            </script>
+        </div>
+    </body>
+</html>

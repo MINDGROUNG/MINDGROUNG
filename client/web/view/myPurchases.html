@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <%- include ./common/commonHead.html%>
+        <!--공통타이틀로 적용 할 경우 commonHead 안에 넣기-->
+    </head>
+    <body>
+        <div class="wrap myPurchases">
+            <%- include ./common/commonHeader.html%>
+            <section class="marginAuto_m minHeight">
+                <article class="contents">
+                    <div class="pageTitle">
+                        <h2>My Purchases</h2>
+                    </div>
+                    <div class="listArea" id="listArea">
+                        <div class="list">
+                            <div class="list-titleHead">
+                                <div class="list-title flexLine">
+                                    <b class="txtCenter no">PO No.​</b>
+                                    <b class="txtCenter classTitle">Class Title</b>
+                                    <b class="txtCenter price">Price​</b>
+                                    <b class="txtCenter date-time">Purchased Date & Time​</b>
+                                    <b class="txtCenter activeBtn">Action​</b>
+                                </div>
+                            </div>
+                            <div class="list-Body" id = "purchasedList">
+                                <%
+                                    for(var i = 0; i < 6; i++)
+                                    {
+                                %>
+                                <div class="list-commonLine">
+                                    <div class="list-inner-title flexLine">
+                                        <div class="txtCenter no">
+                                            <p class="">000000</p>
+                                        </div>
+                                        <div class="txtCenter classTitle flexStart">
+                                            <span>Class Program listing</span>
+                                            <p>list Title list Title list Title list TitleTitle list TitleTitle list TitleTitleTitleTitleTitle</p>
+                                        </div>
+                                        <div class="txtCenter price">
+                                            <p>$500​</p>
+                                        </div>
+                                        <div class="txtCenter date-time">
+                                            <p>Aug 15.2021  12:15​</p>
+                                        </div>
+                                        <div class="txtCenter activeBtn">
+                                            <button class="activeBtn-on">
+                                                View
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%
+                                    }
+                                %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="moRangeBar">
+                        <input type="range" id="scrollRange" value="0" min="0" max="1000">
+                    </div>
+                    <div class="pagingWrap" id= "purchasedPagingWrap">
+                        <button class="page-prev commonPagingBtns">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="pageNum">
+                            <button class="page-number commonPageNumBtns active">1</button>
+                            <button class="page-number commonPageNumBtns">2</button>
+                            <button class="page-number commonPageNumBtns">3</button>
+                            <button class="page-number commonPageNumBtns">4</button>
+                            <button class="page-number commonPageNumBtns">5</button>
+                        </div>
+                        <button class="page-next commonPagingBtns">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </article>
+            </section>
+            <%- include ./common/commonFooter.html%> <%- include ./common/commonScript.html%>
+            <script>
+                //레인지바 = 스크롤바 값 일치시키기
+
+                var payResult = <%-JSON.stringify(payResult)%>
+                console.log(JSON.stringify(payResult))
+                console.log(payResult.length)
+                makePurchasedList(1, 6, payResult.length, 5);
+                function makePurchasedList(index, size, dataSize, pagingSize){
+                    var endNum = index * size
+                    var startNum = endNum-size;
+                    var purchasedList = '';
+                    var purchasedInfo = '';
+                    for(var i = startNum; i < endNum; i++){
+                        console.log(i + 'get i')
+                        purchasedInfo = payResult[i];
+                        var makedDateForm = makePurchaseDateForm(purchasedInfo.createdAt)
+                        console.log(makedDateForm)
+                        purchasedList += `
+                                    <div class="list-commonLine">
+                                        <div class="list-inner-title flexLine">
+                                            <div class="txtCenter no">
+                                                <p class="">${dataSize-i}</p>
+                                            </div>
+                                            <div class="txtCenter classTitle flexStart">
+                                                <span>Class Program listing</span>
+                                                <p>${purchasedInfo.goodName}</p>
+                                            </div>
+                                            <div class="txtCenter price">
+                                                <p>${purchasedInfo.totalPrice}​ ${purchasedInfo.currency}</p>
+                                            </div>
+                                            <div class="txtCenter date-time">
+                                                <p>${makedDateForm}</p>
+                                            </div>
+                                            <div class="txtCenter activeBtn">
+                                                <button class="activeBtn-on" onclick="location.href ='/refundClass/${purchasedInfo.payResultUID}.${purchasedInfo.goodUID}'">
+                                                    View
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>`
+                        i =(i==dataSize-1)?endNum:i;
+
+                    }
+                    var boardNavi = makeBoardNavi(index, size, dataSize, pagingSize)
+                    document.querySelector('#purchasedList').innerHTML = purchasedList;
+                    document.querySelector('#purchasedPagingWrap').innerHTML = boardNavi;
+                }
+
+                function makeBoardNavi(index, size, dataSize, pagingSize) {
+                    var pagingEditNum = pagingSize-1
+                    var maxIndex = dataSize%size!=0?Math.floor(dataSize/size)+1:Math.floor(dataSize/size);
+                    var startIndex = (index%pagingSize!=0)?Math.floor(index/pagingSize)*pagingSize+1:index-pagingEditNum;
+                    var endIndex = maxIndex>startIndex+pagingEditNum?startIndex+pagingEditNum:maxIndex;
+                    var hasPre = startIndex==1?'false':'true';
+                    var hasNext = endIndex<maxIndex?'true':'false';
+                    console.log(maxIndex+ '   ' + endIndex)
+                    console.log(hasNext)
+                    var preArrow = '';
+                    var nextArrow = '';
+
+                    if(hasPre=='true'){
+                        preArrow= `<button class="page-prev commonPagingBtns" onclick="makePurchasedList(${startIndex-1}, ${size}, ${payResult.length}, 5)">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>`
+                    }
+                    if(hasNext=='true'){
+                        nextArrow =`<button class="page-next commonPagingBtns" onclick="makePurchasedList(${endIndex+1}, ${size}, ${payResult.length}, 5)">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>`
+                    }
+
+                    var pagingNavi = '';
+                    var isThisIndex= '';
+                    for(var i =startIndex ; i<endIndex+1; i++){
+                        isThisIndex = (i==index)?'active':'';
+                        pagingNavi += `<button class="page-number commonPageNumBtns ${isThisIndex}" onclick = "makePurchasedList(${i}, ${size}, ${payResult.length}, 5)">${i}</button>`
+                    }
+
+                    var paging = `
+                        <div class="pageNum">
+                            ${pagingNavi}
+                        </div>`
+                    paging = preArrow+paging+nextArrow;
+                    return paging;
+
+                }
+                var listArea = document.getElementById('listArea');
+                var rangeVal = document.getElementById('scrollRange');
+                rangeVal.addEventListener('input', function() {
+                    listArea.scrollLeft = rangeVal.value;
+                });
+
+                function makePurchaseDateForm(thisDate){
+             
+                    var createdDate = new Date(thisDate);
+                    var createdYear = createdDate.getFullYear();
+                    // var createdMonth = ('0' + (1 + createdDate.getMonth())).slice(-2);
+                    var createdMonth = Intl.DateTimeFormat('ko', { month: 'short' }).format(createdDate)
+                    var createdDay = ('0' + createdDate.getDate()).slice(-2);
+                    var createdHour = createdDate.getHours();
+                    var createdMin = createdDate.getMinutes();
+                    return `${createdMonth} ${createdDay}.${createdYear} ${createdHour}:${createdMin}`
+                }
+
+
+            </script>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <%-include common/commonHead.html%>
+    <body>
+        <%-include common/commonHeader.html%>
+        <%- include ./modal.html%>
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+        <!-- START CONTENT -->
+        <div class="content dashboard">
+            <!-- Start Page Header -->
+            <div class="page-header">
+                <h1 class="title">
+                    <a style="color: #fff;">매출 / 정산 관리</a>
+                    <span style="display: inline-block; margin: 0 15px;"><i class="xi-angle-right-min"></i></span>
+                    <a style="color: #fff;">정산 관리</a>
+                    <span style="display: inline-block; margin: 0 15px;"><i class="xi-angle-right-min"></i></span>
+                    <a href="/admin/calculateOverseas" style="color: #fff;">해외</a>
+                </h1>
+                <!-- End Page Header Right Div -->
+            </div>
+            <!-- START CONTAINER -->
+            <div class="container-default">
+                <!-- 테이블 들어가는 것들은 클래스명에 dashboard dataList 꼭 들어가야함 -->
+                <div class="row dashboard dataList">
+                    <div class="col-md-12">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                            <h3 class="color4 title-m-bd" style="margin: 0;">
+                                정산 리스트
+                                <span style="font-size: 14px; font-weight: normal; margin-left: 15px;">
+                                    2021.01.01 – 2021.05.05​
+                                </span>
+                            </h3>
+                            <button style="background: transparent; border: none; color: #fff; font-weight: bold; text-decoration: underline;">
+                                엑셀다운로드
+                            </button>
+                        </div>
+                        <div class="panel-body table-responsive calList">
+                            <table id="example" class="table display">
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2">NO.</th>
+                                        <th rowspan="2">사업자<br/>유형</th>
+                                        <th rowspan="2">회원<br/>이메일</th>
+                                        <th rowspan="2">호스트<br/>이름</th>
+                                        <th rowspan="2">판매<br/>금액</th>
+                                        <th>마인드<br/>그라운드<br/>수수료</th>
+                                        <th>금융<br/>수수료</th>
+                                        <th>부가가치세</th>
+                                        <th>캐시백+</th>
+                                        <th>기타<br/>수수료1<br/>+</th>
+                                        <th>기타<br/>수수료2<br/>+</th>
+                                        <th>기타금액<br/>1(+/-)</th>
+                                        <th>기타금액<br/>2(+/-)</th>
+                                        <th rowspan="2">정산<br/>금액</th>
+                                        <th rowspan="2">개인/법인<br/>정보</th>
+                                        <th rowspan="2">결제 정보<br/>보기</th>
+                                        <th rowspan="2">정산 완료<br/>여부</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="lightGray">30%</th>
+                                        <th class="lightGray">5%</th>
+                                        <th class="lightGray">10%</th>
+                                        <th class="lightGray">10%</th>
+                                        <th class="lightGray">10%</th>
+                                        <th class="lightGray">10%</th>
+                                        <th class="lightGray">+5000원</th>
+                                        <th class="lightGray">-1000원</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>509</td>
+                                        <td>개인</td>
+                                        <td>000@000.com</td>
+                                        <td>호스트 이름</td>
+                                        <td>999,999,999원</td>
+                                        <td>30%</td>
+                                        <td>5%</td>
+                                        <td>10%</td>
+                                        <td>10%</td>
+                                        <td>10%</td>
+                                        <td>10%</td>
+                                        <td>+5000원</td>
+                                        <td>-1000원</td>
+                                        <td>768,888,888원</td>
+                                        <td>개인이름</td>
+                                        <td>PayPal 000@000.com</td>
+                                        <td>미완료</td>
+                                    </tr>
+                                    <tr>
+                                        <td>509</td>
+                                        <td>개인</td>
+                                        <td>000@000.com</td>
+                                        <td>호스트 이름</td>
+                                        <td>999,999,999원</td>
+                                        <td>30%</td>
+                                        <td>5%</td>
+                                        <td>10%</td>
+                                        <td>10%</td>
+                                        <td>10%</td>
+                                        <td>10%</td>
+                                        <td>+5000원</td>
+                                        <td>-1000원</td>
+                                        <td>768,888,888원</td>
+                                        <td>개인이름</td>
+                                        <td>PayPal 000@000.com</td>
+                                        <td>완료</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- <div class="panel panel-default">
+                        </div> -->
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3"></div>
+                        <!-- complete를 달면 전송완료 css생성 -->
+                        <div class="col-md-3 submit">
+                            <button>
+                                페이팔 이동
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <%-include common/commonFooter.html%>
+        </div>
+        <!-- End Content -->
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+        <%-include common/commonScript.html%>
+        <script>
+        ///////////데이터 테이블//////////////
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'excel', 'print'
+                ]
+            });
+        });
+        ///////////데이터 테이블//////////////
+        </script>
+    </body>
+</html>

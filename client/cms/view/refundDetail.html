@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <%-include common/commonHead.html%>
+    <body>
+        <%-include common/commonHeader.html%>
+        <%- include ./modal.html%>
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+        <!-- START CONTENT -->
+        <div class="content">
+            <!-- Start Page Header -->
+            <div class="page-header">
+                <h1 class="title">
+                    <a style="color: #fff;">운영 관리</a>
+                    <span style="display: inline-block; margin: 0 15px;"><i class="xi-angle-right-min"></i></span>
+                    <a href="/admin/mainText" style="color: #fff;">환불</a>
+                    <span style="display: inline-block; margin: 0 15px;"><i class="xi-angle-right-min"></i></span>
+                    <a href="/admin/mainText" style="color: #fff;">상세 보기</a>
+                </h1>
+                <!-- End Page Header Right Div -->
+            </div>
+            <!-- START CONTAINER -->
+            <div class="container-default">
+                <!-- 테이블 들어가는 것들은 클래스명에 dashboard dataList 꼭 들어가야함 -->
+                <div class="row mainBanner">
+                    <div class="col-md-12">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                            <h3 class="color4 title-m-bd" style="margin: 0;">
+                                환불 신청 내용
+                            </h3>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label fixText">환불 신청</label>
+                                        <div class="col-sm-10">
+                                            <span class="refundDate">
+                                                2021.01.01 12:00:00
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label fixText">환불 클래스</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="inputText form-control" value="클래스 타이틀" readonly data-check="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label fixText">환불 이유</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="inputText form-control" value="신청자 이름" readonly data-check="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label fixText">환불 신청자</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="inputText form-control" value="이 클래스를 구매하려는 것이 아니었습니다." readonly data-check="0"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label fixText"></label>
+                                        <div class="col-sm-10" style="margin-top: 15px;">
+                                            <textarea readonly class="inputTextarea form-control" style="height: 125px;" data-check="0">내용</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label fixText">환불 금액</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="inputText form-control" value="50,000 원" readonly data-check="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label fixText">호스트 확인</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="inputText form-control" value="미확인" readonly data-check="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            <div class="row" style="margin: 100px 0 70px;">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-9">
+                                    <!-- 1.호스트 미확인일 경우 클래스 추가 없음 -->
+                                    <!-- 2.호스트 확인일 경우 '환불 승인'에 active 클래스 추가 -->
+                                    <!-- 3.승인완료 경우 '환불 불가'에 active 클래스 추가 -->
+                                    <div class="refundBtnsWrap" style="text-align: right;">
+                                        <button type="button">환불 불가</button>
+                                        <button type="button">환불 승인</button>
+                                    </div>
+                                    <!-- 환불이 완료되면 뜨는 텍스트 -->
+                                    <div class="refundCompleteText" style="display: none;">
+                                        <i class="xi-check-circle"></i>
+                                        <span>승인 완료 2021.01.01 12:00:00​</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <%-include common/commonFooter.html%>
+        </div>
+        <!-- End Content -->
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+        <%-include common/commonScript.html%>
+        <script>
+        ///////////데이터 테이블//////////////
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'excel', 'print'
+                ]
+            });
+        });
+        ///////////데이터 테이블//////////////
+        </script>
+    </body>
+</html>

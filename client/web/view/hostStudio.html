@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <%- include ./common/commonHead.html%>
+        <!--공통타이틀로 적용 할 경우 commonHead 안에 넣기-->
+    </head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">              
+<script language="javascript" type="text/javascript" src="https://stdpay.inicis.com/stdjs/INIStdPay.js" charset="UTF-8"></script>      
+    <body>
+        <div class="wrap hostStudio">
+            <%- include ./loadingPopup.html%>
+            <!-- imageEditor -->
+            <div class="modal modal36">
+                <div>
+                    <div class="xBtn">
+                        <button onclick="customModalClose(36)">
+                            <i class="xi-close"></i>
+                        </button>
+                    </div>
+                    <div class="contents">
+                        <h3 class="title">
+                            Image Editor​
+                        </h3>
+                        <div class="img-btnWrap">
+                            <ul class="imgList">
+                                <li data-no="1" class="active" style="background-image: url('/web/img/thumb.png');"></li>
+                                <li data-no="2" style="background-image: url('/web/img/classesThumb.png');"></li>
+                                <li data-no="3" style="background-image: url('/web/img/cer_guide.png');"></li>
+                            </ul>
+                            <div class="arrowBtns">
+                                <button class="prevBtn-on">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="nextBtn-on">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="saveBtn">
+                            <button class="saveBtn-on">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 호스트스튜디오 기본 사이드네비 -->
+            <div class="hostNavWrap">
+                <div class="title-moBtn">
+                    <button class="moNavBtn-on">
+                        <div>
+                            <!-- <img src="/web/img/icn_menu.png" alt=""> -->
+                        </div>
+                    </button>
+                    <h4 class="navTitle"><%=translation.dashBoard.Host_Studio%></h4>
+                </div>
+                <div class="info-menu-wrap">
+                    <div class="top">
+                        <div class="nav">
+                            <div class="hostInfo">
+                                <div class="hostInfo-img">
+                                    <div class="ring">
+                                        <img src='/web/img/userRing/<%=user.userUID%>.png' alt="">
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="hostInfo-type" id="hostDisplayId" style="display: none;">
+                                        <strong><%= user.hostType%></strong>
+                                    </div>
+                                    <div class="hostInfo-name">
+                                        <span><%= user.userName %></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="nav-Btns">
+                                <li>
+                                    <button class="active" id = "dashBoard" onclick="selectContents('dashBoard')">
+                                        <div class="icon1"></div>
+                                        <h5><%=translation.dashBoard.Dashboard%></h5>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button  id = "followers" onclick="selectContents('followers')">
+                                        <div class="icon2"></div>
+                                        <h5><%=translation.dashBoard.Followers%></h5>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button id = "classes" onclick="selectContents('classes')">
+                                        <div class="icon3"></div>
+                                        <h5><%=translation.dashBoard.Classes_Management%></h5>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button id="reviews" onclick="selectContents('reviews')">
+                                        <div class="icon4"></div>
+                                        <h5><%=translation.dashBoard.Reviews%></h5>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button id="revenue" onclick="selectContents('revenue')">
+                                        <div class="icon5"></div>
+                                        <h5><%=translation.dashBoard.Revenue%></h5>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button id="hostProfile" onclick="selectContents('hostProfile')">
+                                        <div class="icon6"></div>
+                                        <h5><%=translation.dashBoard.Host_Profile%></h5>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button id="hostPaymentSettings" onclick="selectContents('hostPaymentSettings')">
+                                        <div class="icon7"></div>
+                                        <h5><%=translation.dashBoard.Payment_Settings%></h5>
+                                        
+                                    </button>
+                                </li>
+                                <li>
+                                    <button onclick="window.open('https://www.mindground.co/footerSupport')">
+                                        <div class="icon8"></div>
+                                        <h5><%=translation.dashBoard.Help_Center%></h5>
+                                    </button>
+                                </li>
+                                <li class="logOutBtn">
+                                    <button onclick="location.href='/logout'">
+                                        <div class="icon9"></div>
+                                        <h5><%=translation.dashBoard.Logout%></h5>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="addInfo">
+                            <div>
+                                <div class="addInfo-lang" id="addInfoLang">
+                                    <!-- <input type="button" id="hostLangChange" value="English">
+                                    <button class="chkLang-on" data-lang="한국어">
+                                        한국어
+                                    </button> -->
+                                    <!-- <input type="button" id="hostLangChange" value="한국어">
+                                    <button class="chkLang-on" data-lang="en" onclick="changeVal('en')">
+                                        English
+                                    </button> -->
+                                </div>
+                                <div class="addInfo-unit" id="addInfoUnit">
+                                    <input type="button" id="hostUnitChange" value="">
+                                    <button class="chkUnit-on" id="chkUnit-on" onclick="changeUnit();">
+                                        <%=translation.dashBoard.USD%>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="addInfo-stateBtn">
+                                <button class="stateToggleBtn-on">
+                                    <strong class="text"><%=translation.dashBoard.Active%></strong>
+                                    <span class="ball"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- 호스트 스튜디오 컨텐츠 -->
+            <div id = 'dashBoardInclude' >
+                
+                <%- include ./hostStudioDashboard.html%>
+            </div>
+
+            <div id = 'followersInclude' style="display:none">
+                <%- include ./hostStudioFollowers.html%>
+            </div>
+
+            <div id = 'classesInclude' style="display:none">
+                <%- include ./hostStudioClasses.html%>
+            </div>
+
+            <div id = 'classesCreateInclude' style="display:none">
+                <%- include ./hostStudioClassesCreate.html%>
+            </div>
+
+            <div id = 'reviewsInclude' style="display:none">
+                <%- include ./hostStudioReviews.html%>
+            </div>
+
+            <div id = 'revenueInclude' style="display:none">
+                <!-- 수익관리 기본화면,디테일,버튼클릭시입장 3페이지가있음 -->
+                <%- include ./hostStudioRevenue.html%>
+                
+            </div>
+
+            <div id = 'hostProfileInclude' style="display:none">
+                <%- include ./hostStudioHostProfile.html%>
+            </div>
+
+            <div id = 'hostPaymentSettingsInclude' style="display:none">
+                <%- include ./hostStudioHostPaymentSettings.html%>
+                
+            </div>
+            
+
+            <%- include ./common/commonScript.html%>
+        </div>
+        <script>
+        contents = 'dashBoard';
+        classTemp = document.getElementById('classesCreateInclude').innerHTML; 
+            function selectContents(con, checker){
+                if(con == 'revenue') {
+                    if($('#' + con).hasClass('active')) {
+                            document.getElementById('payResultClassListDivID').style.display = 'block';
+                            document.getElementById('payResultClassDetailDivID').style.display = 'none';
+                            return false;
+                        }
+                    }
+
+                    console.log(con)
+                    var exContentButton = document.getElementById(contents);
+                    exContentButton.classList.remove('active');
+                    document.getElementById(contents+'Include').style.display = 'none';
+                    var nowContentButton = document.getElementById(con);
+                    nowContentButton.classList.add('active');
+                    document.getElementById(con+'Include').style.display = '';
+                    contents = con;
+                    if(con=='classesCreate'){
+                        document.getElementById('classesCreateInclude').innerHTML=classTemp
+                        calendarCheck = true;
+                        if(checker!='classEdit'){
+                            console.log('comecheck');
+                            objectReset();
+                        }else{
+                            editClassSetting();
+                        }
+                        imgReset();
+                    }
+                    
+                    if(con == 'followers'){
+                        getFollowList()
+                    }
+                    console.log(JSON.stringify(classObject))
+
+                
+            }
+
+            
+            
+            $(function() {
+                //클래스 하이드,쇼 버튼
+                $('.stateToggleBtn-on').click(function() {
+                    var changeText = $(this).children('.text').html() == '<%=translation.dashBoard.Not_Active%>' ? '<%=translation.dashBoard.Active%>' : '<%=translation.dashBoard.Not_Active%>';
+                    $(this).toggleClass('active');
+                    $(this).children('.text').html(changeText);
+
+                    // user의 활동 상태를 확인한 후 session에 등록한다.
+                    var userStateJsonObject = {};
+                    userStateJsonObject.userState = 'none';
+                    if($(this).hasClass('active')) {
+                        userStateJsonObject.userState = 'userRest';
+                    } else {
+                        userStateJsonObject.userState = 'userActive';
+                    }
+                    
+                    $.ajax({
+                        type : "POST",
+                        url : "/userStateChange",
+                        data : JSON.stringify(userStateJsonObject),
+                        async : false,
+                        processData : false,
+                        contentType : "application/json; charset=UTF-8",
+                        success : function(success) {
+                        },
+                        error : function(error) {
+                        }
+                    });
+                });
+
+                // userState session 체크 후 활동 상태 변경
+                var userStateCheck = <%- user ? JSON.stringify(user) : {} %>;
+                $(document).ready(function() {
+                    if(Object.keys(userStateCheck).length > 0) {
+                        if(userStateCheck.userState == 'userRest') {
+                            $('.stateToggleBtn-on').click();
+                        }
+                    }
+                });
+
+                //모바일 햄버거메뉴
+                $('.moNavBtn-on').click(function() {
+                    $(this).parents('.hostNavWrap').toggleClass('active');
+                    $(this).parents('.hostNavWrap').find('.nav-Btns button').click(function() {
+                        $(this).parents('.hostNavWrap').removeClass('active');
+                    })
+                });
+
+                //태블릿 이상부터 햄버거메뉴 닫기
+                $(window).resize(function() {
+                    if($(this).innerWidth() > 1279)
+                    {
+                        $('.hostNavWrap').removeClass('active');
+                        $('.hdnSelectBox').removeClass('active');
+                    }
+                });
+
+                //클래스, 대시보드 셀렉박스 열고닫기
+                $('.getDateBtn-on').click(function() {
+                    $(this).next('.hdnSelectBox').addClass('active');
+                    $(this).next('.hdnSelectBox').find('.onlyFixed').click(function() {
+                        $(this).parents('.hdnSelectBox').removeClass('active');
+                    });
+                    $(this).next('.hdnSelectBox').find('.saveBtn-on').click(function() {
+                        $(this).parents('.hdnSelectBox').removeClass('active');
+                    });
+                });
+
+                $('.moSelectClose').click(function() {
+                    $(this).parents('.hdnSelectBox').removeClass('active');
+                });
+
+                //이미지 에디터
+                $('.arrowBtns > button').click(function() {
+                    if($(this).hasClass('nextBtn-on'))
+                    {
+                        var no = $('.imgList > [data-no].active').data('no') + 1;
+                        $('[data-no]').each(function() {
+                            $(this).removeClass('active');
+                        });
+                        if(no >= $('.imgList > li').length + 1)
+                        {
+                            $('[data-no="1"]').addClass('active');
+                        }
+                        else
+                        {
+                            $('[data-no='+no+']').each(function()
+                            {
+                                $(this).addClass('active');
+                            });
+                        }
+                    }
+                    else if($(this).hasClass('prevBtn-on'))
+                    {
+                        var no = $('.imgList > [data-no].active').data('no') - 1;
+                        $('[data-no]').each(function() {
+                            $(this).removeClass('active');
+                        });
+                        if(no <= 0)
+                        {
+                            $('[data-no='+$('.imgList > li').length+']').addClass('active');
+                        }
+                        else
+                        {
+                            $('[data-no='+no+']').each(function()
+                            {
+                                $(this).addClass('active');
+                            });
+                        }
+                    }
+                })
+
+            })
+        
+        
+
+        // $(document).on('click', '.addInfo-lang', function() {
+        //     $(this).addClass('active');
+        //     $(this).children('button').click(function() {
+        //         if($(this).data('lang') == '한국어')
+        //         {
+        //             $(this).prev('input[type="button"]').val('한국어')
+        //             $(this).html('English')
+        //             $(this).attr('data-lang', 'English');
+        //         }
+        //         else
+        //         {
+        //             $(this).prev('input[type="button"]').val('English')
+        //             $(this).html('한국어')
+        //             $(this).attr('data-lang', '한국어');
+        //         }
+        //     })
+        // })
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log(location)
+             var params = new URL(location.href);
+             var lang = params.searchParams.get("clang");
+             var html = '';
+             console.log('get lang : ' + lang);
+             if(lang!='en'){
+                 console.log('comecheck')
+                html =  '<input type="button" id="hostLangChange" value="한국어">'
+                       +' <button class="chkLang-on" data-lang="en" onclick="changeVal(\'en\')">English</button>'
+             }else{
+                html =  '<input type="button" id="hostLangChange" value="English">'
+                       +' <button class="chkLang-on" data-lang="ko" onclick="changeVal(\'ko\')">한국어</button>'
+             }
+           
+            
+
+
+             document.getElementById("addInfoLang").innerHTML=html;
+
+            console.log(params);
+        });
+
+        window.addEventListener('click', hostChangeLang);
+        function hostChangeLang(e) 
+        {
+            var langCategory = document.getElementById('addInfoLang');
+            var langCategoryTarget = document.getElementById('hostLangChange');
+            if(langCategoryTarget == e.target)
+            {
+                langCategory.classList.add('active');
+            }
+            else
+            {
+                langCategory.classList.remove('active');
+            }
+        }
+
+        window.addEventListener('click', hostUnitChange);
+        function hostUnitChange(e) 
+        {
+            var langCategory = document.getElementById('addInfoUnit');
+            var langCategoryTarget = document.getElementById('hostUnitChange');
+            if(langCategoryTarget == e.target)
+            {
+                langCategory.classList.add('active');
+            }
+            else
+            {
+                langCategory.classList.remove('active');
+            }
+        }
+
+        
+        
+        
+        function changeVal(lang) 
+        {
+            var url = '';
+            if(lang === 'ko')
+            {
+                url += '?clang=ko';
+                window.location.href = url
+            }
+            else
+            {
+                url += '?clang=en';
+                window.location.href = url
+            }
+        }
+
+        $(document).ready(function() {
+            if(sessionStorage.getItem('footerMoneySession') != null && sessionStorage.getItem('footerMoneySession') != undefined && sessionStorage.getItem('footerMoneySession') != document.getElementById('hostUnitChange').value) {
+                document.getElementById('chkUnit-on').click();
+            }
+        });
+
+        // KRW <=> USD로 전환하는 Script
+        var usdUnit = false;
+        function changeUnit() 
+        {
+            if(!usdUnit)
+            {
+                usdUnit = true;
+
+                document.getElementById('hostUnitChange').value = '<%=translation.footer.USD%>';
+                document.getElementById('chkUnit-on').innerText = '<%=translation.footer.KRW%>';
+
+                document.getElementById('dashTotalRevenueValueID').innerText = (document.getElementById('dashTotalRevenueValueID').innerText / 1100).toFixed(2);
+                document.getElementById('dashTotalRevenueControlID').innerText = `<%=translation.dashBoard.$%>`;
+                
+                document.getElementById('reveTotalRevenueValueID').innerText = (document.getElementById('reveTotalRevenueValueID').innerText / 1100).toFixed(2);
+                document.getElementById('reveTotalRevenueControlID').innerText = `<%=translation.dashBoard.$%>`;
+                
+                document.getElementById('reveUnsetValueID').innerText = (document.getElementById('reveUnsetValueID').innerText / 1100).toFixed(2);
+                document.getElementById('reveUnsetControlID').innerText = `<%=translation.dashBoard.$%>`;
+                
+                document.getElementById('reveNetValueID').innerText = (document.getElementById('reveNetValueID').innerText / 1100).toFixed(2);
+                document.getElementById('reveNetControlID').innerText = `<%=translation.dashBoard.$%>`;
+
+                var footerMoneySessionData = 'USD (US$)';
+                sessionStorage.setItem('footerMoneySession', footerMoneySessionData);
+            }
+            else
+            {
+                usdUnit = false;
+
+                document.getElementById('hostUnitChange').value = '<%=translation.footer.KRW%>';
+                document.getElementById('chkUnit-on').innerText = '<%=translation.footer.USD%>';
+                
+                document.getElementById('dashTotalRevenueValueID').innerText = (document.getElementById('dashTotalRevenueValueID').innerText * 1100).toFixed(0);
+                document.getElementById('dashTotalRevenueControlID').innerText = `<%=translation.footer.KRW%>`;
+                
+                document.getElementById('reveTotalRevenueValueID').innerText = (document.getElementById('reveTotalRevenueValueID').innerText * 1100).toFixed(0);
+                document.getElementById('reveTotalRevenueControlID').innerText = `<%=translation.footer.KRW%>`;
+                
+                document.getElementById('reveUnsetValueID').innerText = (document.getElementById('reveUnsetValueID').innerText * 1100).toFixed(0);
+                document.getElementById('reveUnsetControlID').innerText = `<%=translation.footer.KRW%>`;
+                
+                document.getElementById('reveNetValueID').innerText = (document.getElementById('reveNetValueID').innerText * 1100).toFixed(0);
+                document.getElementById('reveNetControlID').innerText = `<%=translation.footer.KRW%>`;
+
+                var footerMoneySessionData = 'KRW (원)';
+                sessionStorage.setItem('footerMoneySession', footerMoneySessionData);
+            }
+        }
+
+        if(lang !== 'en') {
+            usdUnit = false;
+            document.getElementById('hostUnitChange').value = '<%=translation.footer.KRW%>';
+            document.getElementById('chkUnit-on').innerText = '<%=translation.footer.USD%>';
+        } else {
+            usdUnit = true;
+            document.getElementById('hostUnitChange').value = '<%=translation.footer.USD%>';
+            document.getElementById('chkUnit-on').innerText = '<%=translation.footer.KRW%>';
+        }
+
+        var Str = "<%= user.birth%>";
+        var Arr = Str.split("/");
+
+        document.writeln(Arr.length);
+        document.writeln(Arr[0]);
+        document.writeln(Arr[1]);
+        document.writeln(Arr[2]);
+
+        var year = Arr[0];
+        var month = Arr[1];
+        var day = Arr[2];
+
+        document.getElementById("Year").value = year;
+        document.getElementById("Month").value = month;
+        document.getElementById("Day").value = day;
+        </script>
+
+
+
+        <!---------------------------------------------->
+        <!-- 페이팔 결제 (정기결제)                     -->
+        <!---------------------------------------------->
+        <!-- 페이팔 버튼 생성 -->
+       
+
+        <!-- 페이팔 버튼 생성 -->
+        <script src="https://www.paypal.com/sdk/js?client-id=AVKxdCq3ZwlpYqVLjjE8KTmFnA7z3tYEQsFApU8ojIs4RBC0NFe6vmO7vEZEUWBrlmhk2guJHKSy0yTF&vault=true&intent=subscription" data-sdk-integration-source="button-factory" crossorigin="anonymous"></script>
+        <script>
+            var hostCheckUsers = <%- user ? JSON.stringify(user) : {} %>;
+
+            if(hostCheckUsers.hostType != null) {
+                document.getElementById('hostDisplayId').style.display = 'block';
+            }
+        </script>
+
+    </body>
+</html>

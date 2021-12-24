@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <%- include ./common/commonHead.html%>
+        <!--공통타이틀로 적용 할 경우 commonHead 안에 넣기-->
+    </head>
+    <body>
+        <div class="wrap classOrderCommonLayout classOrder">
+            <%- include ./common/commonHeader.html%>
+            <section class="marginAuto_s minHeight">
+                <article class="contents">
+                    <!-- 결제화면, 결제완료화면 다를 때 타이틀 달라짐 -->
+                    <h2 class="pageTitle">
+                        Thank you for you order​
+                    </h2>
+                    <div class="orderFormWrap">
+                        <div class="subTitle">
+                            <%
+                                console.log(JSON.stringify(payInfoObject) + '123123123123123')
+                                
+                            %>
+                            <!-- 결제화면, 결제완료화면 다를 때 타이틀 달라짐 -->
+                            <h3>Order Confirmation​</h3>
+                        </div>
+                        <div class="flexArea">
+                            <div class="leftSide">
+                                <div class="leftSide-top">
+                                    <!-- 결제화면, 결제완료화면 다를 때 타이틀 달라짐 -->
+                                    <h4>
+                                        Order No. <%= payInfoObject.orderNum %>
+                                    </h4>
+                                    <div class="classInfo">
+                                        <div class="classInfo-thumb" style="background-image: url('<%= classObject.classObject.thumbNailMain.filePath %>');">
+                                            <div class="bar"></div>
+                                        </div>
+                                        <div class="classInfo-text">
+                                            <div class="classInfo-text-top">
+                                                <h6 class="classInfo-text-title">
+                                                    <%= classObject.classObject.title %>
+                                                </h6>
+                                                <ul class="ringInfo">
+                                                    <li class="ring">
+                                                        <img class="userImg" src="/web/img/userRing/<%= classObject.userUID %>.png" alt="">
+                                                    </li>
+                                                    <li class="name">
+                                                        <%= classObject.userName %>
+                                                    </li>
+                                                    <li class="type">
+                                                        <strong><%= classObject.hostType %></strong>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="classInfo-text-bottom">
+                                                <p class="detailText">
+                                                    <%= classObject.classObject.mainCategory %>
+                                                    <%= classObject.classObject.subCategory %>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rightSide">
+                                <!-- 결제완료 -->
+                                <div class="paymentCompleted">
+                                    <div class="orderSummary">
+                                        <div class="title-dateInfo">
+                                            <h4>
+                                                Order Summary
+                                            </h4>
+                                            <span>
+                                                Order Date <%= payInfoObject.payDate %>
+                                            </span>
+                                        </div>
+                                        <div class="info">
+                                            <ul class="info-class">
+                                                <li class="light"><%= payInfoObject.goodType %></li>
+                                                <li class="bold"><%= payInfoObject.currency %> <%= payInfoObject.price %></li>
+                                            </ul>
+                                            <ul class="info-payTotle">
+                                                <li class="light">Payment method</li>
+                                                <li class="bold"><%= payInfoObject.payMethod %></li>
+                                            </ul>
+                                        </div>
+                                        <div class="oderTotal">
+                                            <span>Order Total</span>
+                                            <strong><%= payInfoObject.currency %> <%= payInfoObject.price %></strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 결제완료시 뜨는 버튼 -->
+                        <div class="moveToMyClassBtn">
+                            <button class="moveToMyClassBtn-on">
+                                Move to my class
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <%- include ./common/commonFooter.html%> <%- include ./common/commonScript.html%>
+            <script>
+            
+            
+            function enrollClass(){
+                    var ClassObject = <%- JSON.stringify(classObject)%>;
+                    var classObject = ClassObject.classObject;
+                    var user = <%- JSON.stringify(user)%>;
+                    var uid = user.userUID;
+                    var userName = user.userName;
+                    var classID = '<%-classObject._id%>';
+                    // console.log(JSON.stringify(classObject))
+                    // console.log(classObject.isFree + '                       123')
+                    var krw = classObject.krw;
+                    var usd = classObject.usd;
+                    var classTitle =classObject.title;
+                    var description = classObject.description;
+                    var mainCategory = classObject.mainCategory;
+                    var premium = classObject.premium;
+                    var online = classObject.online;
+                    var course = classObject.course;
+                    var language = classObject.mainLanguage;
+                    var level = classObject.level;
+                    var thumbNailMain = classObject.thumbNailMain.filePath;
+                    var classOpenDate = classObject.classOpenDate;
+                    var classSellStartDate = classObject.classSellStartDate;
+                    var classSellEndDate = classObject.classSellEndDate;
+                    var classProgress ={};
+                    var classInfo = {};
+
+                    classInfo.classTitle = classTitle;
+                    classInfo.writerUID = ClassObject.userUID;
+                    classInfo.writerName = ClassObject.userName;
+                    classInfo.wirterType = ClassObject.hostType;
+                    classInfo.classDescription = description;
+                    classInfo.mainCategory = mainCategory;
+                    classInfo.premium = premium;
+                    classInfo.krw = krw;
+                    classInfo.usd = usd;
+                    classInfo.online = online;
+                    classInfo.course = course;
+                    classInfo.language = language;
+                    classInfo.level = level;
+                    classInfo.thumbNailMain = thumbNailMain;
+                    classInfo.classOpenDate = classOpenDate;
+                    classInfo.classSellStartDate = classSellStartDate;
+                    classInfo.calssSellEndDate = classSellEndDate;
+
+                    var jsonObject ={}
+                    jsonObject.protocol = 'enrollClass';
+                    jsonObject.userUID = uid;
+                    jsonObject.userName = userName;
+                    jsonObject.userHostType = user.hostType;
+                    jsonObject.classID = classID;
+                    jsonObject.classInfo = classInfo;
+                    jsonObject.classProgress = classProgress;
+
+                    protocolSendAjaxWithCallBack(jsonObject, function(result){
+                        console.log(result.resultCode);
+                        if(result.resultCode==0){
+                            windonw.location.reload();
+                        }
+                    })
+                }
+                enrollClass()
+            </script>
+        </div>
+    </body>
+</html>

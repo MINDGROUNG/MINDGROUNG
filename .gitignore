@@ -1,0 +1,7 @@
+# dependencies
+/node_modules
+/uploads/*
+/log/*
+/config/*
+yarn.lock
+bundle.js

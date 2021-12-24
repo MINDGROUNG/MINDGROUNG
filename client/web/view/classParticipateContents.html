@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <%- include ./common/commonHead.html%>
+    <!--공통타이틀로 적용 할 경우 commonHead 안에 넣기-->
+</head>
+
+<body>
+    <div class="wrap participateContents">
+        <%- include ./common/commonHeader.html%>
+        <%- include ./classParticipateContentsModal.html%>
+        <!-- 퀴즈완료팝업창 -->
+        <section class="minHeight">
+            <article>
+                <div class="fixContent topArea">
+                    <div class="titleText">
+                        <a class="classTitle" id = "participateContentsTitle" href="javascript:avoid(0)">
+                            TitleTitleTitleTitleTitledfdfkdjfksjdkjfdfs
+                        </a>
+                        <span class="arrowImg">
+                            <img src="/web/img/ICN_navigate_next.png" alt="">
+                        </span>
+                        <h6 id="participatingChapter">
+                            Chapter 1
+                        </h6>
+                        <span class="arrowImg">
+                            <img src="/web/img/ICN_navigate_next.png" alt="">
+                        </span>
+                        <h6 id="participatingChapterTitle" onclick="customModal(13)">
+                            Methodology of Meditation
+                        </h6>
+                    </div>
+                </div>
+                <div class="fixContent leftArea">
+                    <div>
+                        <div class="leftArea-tab">
+                            <div class="moTitleTab">
+                                <div>
+                                    <!-- <strong>1</strong> -->
+                                    <h5>Chapter</h5>
+                                </div>
+                                <img src="/web/img/ICN_EXPAND.png" alt="">
+                            </div>
+                            <div class="tab-chapter tab" id="participateContentsSideNavi">
+                                <div class="hiddenDetail-chapter contentsTab">
+                                    <button class="chapterNo">
+                                        <div>
+                                            <strong>1</strong>
+                                            <h5>Chapter</h5>
+                                        </div>
+                                    </button>
+                                    <ul class="tabInTab">
+                                        <li class="videoTab">
+                                            <a href="javascript:avoid(0)">
+                                                <img src="/web/img/classDetail/chapterIcon/ICN_VIDEO.png" alt="">
+                                                <span>Methodology of Meditation</span>
+                                            </a>
+                                        </li>
+                                        <li class="audioTab">
+                                            <a href="javascript:avoid(0)">
+                                                <img src="/web/img/classDetail/chapterIcon/ICN_AUDIO.png" alt="">
+                                                <span>Self- reflection</span>
+                                            </a>
+                                        </li>
+                                        <li class="readingTab">
+                                            <a href="javascript:avoid(0)">
+                                                <img src="/web/img/classDetail/chapterIcon/ICN_READING.png" alt="">
+                                                <span>Academic research on self-reflection</span>
+                                            </a>
+                                        </li>
+                                        <li class="quizTab">
+                                            <a href="javascript:avoid(0)">
+                                                <img src="/web/img/classDetail/chapterIcon/ICN_QUIZ.png" alt="">
+                                                <span>Ultimate purpose of self-reflection</span>
+                                            </a>
+                                        </li>
+                                        <li class="surveyTab">
+                                            <a href="javascript:avoid(0)">
+                                                <img src="/web/img/classDetail/chapterIcon/ICN_SURVEY.png" alt="">
+                                                <span>Draw my life graph</span>
+                                            </a>
+                                        </li>
+                                        <li class="discutionTab">
+                                            <a href="javascript:avoid(0)">
+                                                <img src="/web/img/classDetail/chapterIcon/ICN_DISCUSSION.png" alt="">
+                                                <span>Happiness and human completion</span>
+                                            </a>
+                                        </li>
+                                        <li class="liveTab">
+                                            <a href="javascript:avoid(0)">
+                                                <img src="/web/img/classDetail/chapterIcon/ICN_LIVE.png" alt="">
+                                                <span>Human recognition</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="hiddenDetail-chapter contentsTab">
+                                    <button class="chapterNo">
+                                        <div>
+                                            <strong>1</strong>
+                                            <h5>Chapter</h5>
+                                        </div>
+                                    </button>
+                                    <ul class="tabInTab">
+                                        <li class="videoTab">
+                                            <a href="javascript:avoid(0)">
+                                                <img src="/web/img/classDetail/chapterIcon/ICN_VIDEO.png" alt="">
+                                                <span>Methodology of Meditation</span>
+                                            </a>
+                                        </li>
+                                        <li class="audioTab">
+                                            <a href="javascript:avoid(0)">
+                                                <img src="/web/img/classDetail/chapterIcon/ICN_AUDIO.png" alt="">
+                                                <span>Self- reflection</span>
+                                            </a>
+                                        </li>
+                                        <li class="readingTab">
+                                            <a href="javascript:avoid(0)">
+                                                <img src="/web/img/classDetail/chapterIcon/ICN_READING.png" alt="">
+                                                <span>Academic research on self-reflection</span>
+                                            </a>
+                                        </li>
+                                        <li class="quizTab">
+                                            <a href="javascript:avoid(0)">
+                                                <img src="/web/img/classDetail/chapterIcon/ICN_QUIZ.png" alt="">
+                                                <span>Ultimate purpose of self-reflection</span>
+                                            </a>
+                                        </li>
+                                        <li class="surveyTab">
+                                            <a href="javascript:avoid(0)">
+                                                <img src="/web/img/classDetail/chapterIcon/ICN_SURVEY.png" alt="">
+                                                <span>Draw my life graph</span>
+                                            </a>
+                                        </li>
+                                        <li class="discutionTab">
+                                            <a href="javascript:avoid(0)">
+                                                <img src="/web/img/classDetail/chapterIcon/ICN_DISCUSSION.png" alt="">
+                                                <span>Happiness and human completion</span>
+                                            </a>
+                                        </li>
+                                        <li class="liveTab">
+                                            <a href="javascript:avoid(0)">
+                                                <img src="/web/img/classDetail/chapterIcon/ICN_LIVE.png" alt="">
+                                                <span>Human recognition</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="allContents">
+
+                    <!-- video -->
+                    <div class="allContents-video allContents-common" id="videoContent" style="display:none">
+                        <h3 class="commonTitle" id="videoTitle">
+                            Methodology of Meditation
+                        </h3>
+                        <div class="videoContentArea commonArea" id='videoplayerContent'>
+
+                        </div>
+                        <div class="detailContetns commonArea">
+                            <!-- 임시 주석 -->
+                            <div class="selectBox videoCon">
+                                <div class="selectBox1 videoSelectBox1">
+                                    <div class="selectView">
+                                        <input id="classMat" name="classMat" type="button" value="Class Materials">
+                                        <img src="/web/img/ICN_DROP.png" alt="">
+                                    </div>
+                                    <ul class="selectBox1-hdnMenu1 classMatBox" id="videoContentDownload">
+                                        <li>
+                                            <input type="radio" value="None Materials" id="none" name="classMatSelect1">
+                                            <label for="none">
+                                                <span>None Materials</span>
+                                            </label>
+                                        </li>
+                                        <!-- <li>
+                                            <input type="radio" value="None Materials" id="test1" name="classMatSelect1">
+                                            <label for="test1">
+                                                <span><a href="/file/1633339481137UGthh.jpg" download>download</a></span>
+                                            </label>
+                                        </li> -->
+                                    </ul>
+                                </div>
+                                <div class="selectBox1 videoSelectBox2" >
+                                    <div class="selectView">
+                                        <input id="classMat" name="classMat" type="button" value="Class Materials">
+                                        <img src="/web/img/ICN_DROP.png" alt="">
+                                    </div>
+                                    <ul class="selectBox1-hdnMenu1 classMatBox" id="scriptSelectBox">
+                                        <li>
+                                            <input type="radio" value="None Materials" id="none" name="classMatSelect1">
+                                            <label for="none">
+                                                <span>None Materials</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" value="None Materials" id="test1" name="classMatSelect1">
+                                            <label for="test1">
+                                                <span><a href="/file/1633339481137UGthh.jpg" download>download</a></span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="descBox" id = "videoContentDescription">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nulla amet
+                                cupiditate aliquid exercitationem minima voluptatibus eligendi fugiat autem sequi,
+                                quidem animi voluptate quae vel non dolorum libero quas inventore.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- audio -->
+                    <div class="allContents-audio allContents-common" id="audioContent" style="display:none">
+                        <h3 class="commonTitle" id="audioTitle">
+                        </h3>
+                        <div class="audioContentArea commonArea">
+                            <div class="audioWrap">
+                                <div class="content" id="audioContentPlayer">
+                                    <!-- <h5>Audio Journal</h5> -->
+                                    <audio class="audio" controls src="/file/1633339445188MOjnI.mp3">
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detailContetns commonArea">
+                            <div class="descBox" id="audioContentDescription">
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- reading -->
+                    <div class="allContents-redading allContents-common" id="readingContent" style="display:none">
+                        <h3 class="commonTitle" id="readingTitle">
+                        </h3>
+                        <div class="readingContentArea commonArea">
+                            
+                            <div class="text" id="readingContentText">
+
+                                
+
+                            </div>
+                            <div class="selectBox">
+                                <div class="selectBox1 formatBox1">
+                                    <div class="selectView">
+                                        <input id="classMat" name="classMat" type="button" value="Class Materials">
+                                        <img src="/web/img/ICN_DROP.png" alt="">
+                                    </div>
+                                    <ul class="selectBox1-hdnMenu1 classMatBox" id="readingContentDownload">
+                                        <li>
+                                            <label for="none">
+                                                <span>None Materials</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" value="None Materials" id="test1" name="classMatSelect1">
+                                            <label for="test1">
+                                                <span><a href="/file/1633339481137UGthh.jpg" download>download</a></span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- quiz -->
+                    <div class="allContents-quiz allContents-common" id="quizContent" style="display:none">
+                        <h3 class="commonTitle" id="quizTitle">
+                        </h3>
+                        <div class="quizContentArea commonArea">
+                            <div class="getQuiz" id="quizQuizWrap">
+                                <div class="quizWrap">
+                                    <div class="number">
+                                        <strong>
+                                            Quiz 1.
+                                        </strong>
+                                        <span class="type1">
+                                            ( 1point )
+                                        </span>
+                                    </div>
+                                    <div class="detail">
+                                        <h5>
+                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis,
+                                            nesciunt?
+                                        </h5>
+                                        <div class="answerWrap">
+                                            <div class="radioAnswer">
+                                                <input type="radio" id="ans1" name="quiz1">
+                                                <label for="ans1">
+                                                    <span></span>
+                                                    <strong>Answer 1</strong>
+                                                </label>
+                                            </div>
+                                            <div class="radioAnswer">
+                                                <input type="radio" id="ans2" name="quiz1">
+                                                <label for="ans2">
+                                                    <span></span>
+                                                    <strong>Answer 1</strong>
+                                                </label>
+                                            </div>
+                                            <div class="radioAnswer">
+                                                <input type="radio" id="ans3" name="quiz1">
+                                                <label for="ans3">
+                                                    <span></span>
+                                                    <strong>Answer 1</strong>
+                                                </label>
+                                            </div>
+                                            <div class="radioAnswer">
+                                                <input type="radio" id="ans4" name="quiz1">
+                                                <label for="ans4">
+                                                    <span></span>
+                                                    <strong>Answer 1</strong>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="answerEx">
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae cum a
+                                                culpa optio ad facere reprehenderit quasi magni odio esse quis
+                                                recusandae aperiam fugiat ut totam blanditiis aliquid, sunt molestias.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="quizWrap wrong">
+                                    <div class="number">
+                                        <strong>
+                                            Quiz 2.
+                                        </strong>
+                                        <span class="type2">
+                                            ( 1point )
+                                        </span>
+                                    </div>
+                                    <div class="detail">
+                                        <h5>
+                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis,
+                                            nesciunt?
+                                        </h5>
+                                        <div class="answerWrap">
+                                            <div class="radioAnswer worngAns">
+                                                <input type="radio" id="ans2-1" name="quiz2">
+                                                <label for="ans2-1">
+                                                    <span></span>
+                                                    <strong>Answer 1</strong>
+                                                </label>
+                                            </div>
+                                            <div class="radioAnswer rightAns">
+                                                <input type="radio" id="ans2-2" name="quiz2" checked>
+                                                <label for="ans2-2">
+                                                    <span></span>
+                                                    <strong>Answer 1</strong>
+                                                </label>
+                                            </div>
+                                            <div class="radioAnswer">
+                                                <input type="radio" id="2-3" name="quiz2">
+                                                <label for="2-3">
+                                                    <span></span>
+                                                    <strong>Answer 1</strong>
+                                                </label>
+                                            </div>
+                                            <div class="radioAnswer">
+                                                <input type="radio" id="ans2-4" name="quiz2">
+                                                <label for="ans2-4">
+                                                    <span></span>
+                                                    <strong>Answer 1</strong>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="answerEx">
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae cum a
+                                                culpa optio ad facere reprehenderit quasi magni odio esse quis
+                                                recusandae aperiam fugiat ut totam blanditiis aliquid, sunt molestias.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="submitBtn" id="quizSubmitButtonArea">
+                                <ul class="scoreInfo">
+                                    <li>
+                                        <strong>
+                                            Your Score:  80%
+                                        </strong>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            Passing Score: 60%
+                                        </span>
+                                    </li>
+                                </ul>
+                                <button>
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- survey -->
+                    <div class="allContents-survey allContents-common" id="surveyContent" style="display:none">
+                        <h3 class="commonTitle" id="surveyTitle">
+                        </h3>
+                        <div class="surveyContentArea commonArea">
+                            <div class="getQuiz" id="surveyQuizWrap">
+                                <div class="quizWrap" >
+                                    <div class="number">
+                                        <strong>
+                                            Survey 1.
+                                        </strong>
+                                        <span>
+                                            ( 1point )
+                                        </span>
+                                    </div>
+                                    <div class="detail">
+                                        <h5>
+                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis,
+                                            nesciunt?
+                                        </h5>
+                                        <div class="answerWrap">
+                                            <div class="radioAnswer">
+                                                <input type="radio" id="sur1-1" name="sur1">
+                                                <label for="sur1-1">
+                                                    <span></span>
+                                                    <strong>Answer 1</strong>
+                                                </label>
+                                            </div>
+                                            <div class="radioAnswer">
+                                                <input type="radio" id="sur1-2" name="sur1">
+                                                <label for="sur1-2">
+                                                    <span></span>
+                                                    <strong>Answer 1</strong>
+                                                </label>
+                                            </div>
+                                            <div class="radioAnswer">
+                                                <input type="radio" id="sur1-3" name="sur1">
+                                                <label for="sur1-3">
+                                                    <span></span>
+                                                    <strong>Answer 1</strong>
+                                                </label>
+                                            </div>
+                                            <div class="radioAnswer">
+                                                <input type="radio" id="sur1-4" name="sur1">
+                                                <label for="sur1-4">
+                                                    <span></span>
+                                                    <strong>Answer 1</strong>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="quizWrap">
+                                    <div class="number">
+                                        <strong>
+                                            Survey 2.
+                                        </strong>
+                                        <span>
+                                            ( 1point )
+                                        </span>
+                                    </div>
+                                    <div class="detail">
+                                        <h5>
+                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis,
+                                            nesciunt?
+                                        </h5>
+                                        <div class="answerWrap">
+                                            <div class="radioAnswer">
+                                                <input type="radio" id="sur2-1" name="sur2">
+                                                <label for="sur2-1">
+                                                    <span></span>
+                                                    <strong>Answer 1</strong>
+                                                </label>
+                                            </div>
+                                            <div class="radioAnswer">
+                                                <input type="radio" id="sur2-2" name="sur2">
+                                                <label for="sur2-2">
+                                                    <span></span>
+                                                    <strong>Answer 1</strong>
+                                                </label>
+                                            </div>
+                                            <div class="radioAnswer">
+                                                <input type="radio" id="sur2-3" name="sur2">
+                                                <label for="sur2-3">
+                                                    <span></span>
+                                                    <strong>Answer 1</strong>
+                                                </label>
+                                            </div>
+                                            <div class="radioAnswer">
+                                                <input type="radio" id="sur2-4" name="sur2">
+                                                <label for="sur2-4">
+                                                    <span></span>
+                                                    <strong>Answer 1</strong>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="quizWrap">
+                                    <div class="number">
+                                        <strong>
+                                            Survey 2.
+                                        </strong>
+                                        <span>
+                                            ( 1point )
+                                        </span>
+                                    </div>
+                                    <div class="detail">
+                                        <h5>
+                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis,
+                                            nesciunt?
+                                        </h5>
+                                        <div class="surveyTextAnswer">
+                                            <textarea placeholder="Write what you think " style="resize: none;"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="submitBtn" id='surveySubmitButtonArea'>
+                                <button>
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- classParticipating -->
+                    <div class="allContents-classParticipating allContents-common" id="discussionContent" style="display:none">
+                        <h3 class="commonTitle" id="discussionTitle">
+                            Happiness and human
+                        </h3>
+                        <div class="subTitle">
+                            <h4 id = "discussionContentDescription">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ipsam architecto voluptas at hic ipsa nostrum in similique debitis perferendis.
+                            </h4>
+                            <div class="selectBox">
+                                <div class="selectBox1 discussionBox">
+                                    <div class="selectView">
+                                        <input id="classMat" name="classMat" type="button" value="Class Materials">
+                                        <img src="/web/img/ICN_DROP.png" alt="">
+                                    </div>
+                                    <ul class="selectBox1-hdnMenu1 classMatBox" id="discussionContentDownload">
+                                        <li>
+                                            <input type="radio" value="None Materials" id="none" name="classMatSelect1">
+                                            <label for="none">
+                                                <span>None Materials</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" value="None Materials" id="test1" name="classMatSelect1">
+                                            <label for="test1">
+                                                <span><a href="/file/1633339481137UGthh.jpg" download>download</a></span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="classParticipatingContentArea commonArea">
+                            <h5 id= "discussionSize">
+                                Discussions 365 
+                            </h5>
+                            <div class="discussionWrap">
+                               
+                                <div class="discussion">
+                                    <div class="ring hover-ring">
+                                        <img src="/web/img/dummyIcon_50.png" alt="">
+                                    </div>
+                                    <div class="detailText">
+                                        <h6>Daniel Espada</h6>
+                                        <p>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos doloremque magnam expedita doloribus sit. Molestias maiores nihil ratione ducimus ipsum cum! Vitae ab fugiat sit quos, facere quaerat beatae autem quibusdam cum a tempore illum repellat nostrum, praesentium, debitis consectetur voluptatem ad eos ut non inventore! Pariatur magni dignissimos temporibus.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="writeArea">
+                                <textarea style="resize: none;" id = "newDiscussion" placeholder="write what you think"></textarea>
+                            </div>
+                            <div class="submitBtn" id="discussionSubmitButtonArea">
+                                <button onclick="commentDiscussion()">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <%- include ./common/commonScript.html%> <%- include ./common/commonFooter.html%>
+        <script src="/web/js/tabEvent.js"></script>
+        <script>
+
+
+            //푸터 화면별 show, hide
+            $(window).on('resize load', function() {
+                    if($(this).innerWidth() <= 767)
+                    {
+                        $('.footerWrap').show();
+                    }
+                    else
+                    {
+                        $('.footerWrap').hide();
+                    }
+                })
+
+            enrollClassInfo= <%-JSON.stringify(enrollClassInfo)%>;
+            classObject = <%-JSON.stringify(ClassObject.classObject)%>;
+
+            $(function () {
+                // console.log(JSON.stringify(classObject.chapterList));
+                var chapterList = classObject.chapterList;
+                var chapterNum='<%=chapter%>'
+                var contentNum='<%=content%>'
+                var thisClass=[]
+                thisClass.chapter=chapterNum;
+                thisClass.contentNum=contentNum;
+                chapterList.forEach(function(chapter){
+                    if(chapter.chapterNum==chapterNum){
+                        thisClass.contentName=chapter.chapterContentsList[contentNum].title;
+                    }
+                })
+                //개발 후 res로 받음
+                // var thisClass = JSON.stringify(thisClass)''
+                // var thisClass = {"chapter":1, "contentNum":0, "contentName":"서베이"}
+                $('audio').mediaelementplayer({
+                //'재생버튼','플레이바','남은재생시간','트랙(없어도 현재 문제없음)','풀스크린(없어도 현재 문제없음)'
+                features: ['playpause','progress','current','tracks','fullscreen']
+                });
+                setSideNavi(classObject, enrollClassInfo.classProgress);
+                setChapterInfoInit(thisClass)
+                classParticipateEventListener();
+            })
+
+            function enrollThisClass(chapterNum, contentNum, contentTitle, isCompleted, type){
+                // console.log(`${chapterNum}     ${contentNum}    ${contentTitle}`)
+                var thisClass = {"chapter":chapterNum, "contentNum":contentNum, "contentName":contentTitle};
+                setChapterInfoInit(thisClass);
+                if(isCompleted!='completed' &&(type!='quiz'||type!='survey')){
+
+                    saveProgress(chapterNum, contentNum, 'normal')
+                }
+
+            }
+
+            function setChapterInfoInit(thisClass){
+
+                setClassBasicInfo(classObject.title, thisClass);
+
+                setThisChapterContent(classObject.chapterList[thisClass.chapter-1], thisClass)
+            }            
+
+            function setClassBasicInfo(title, thisClass){
+                makeIdHtml('participateContentsTitle', title)
+                makeIdHtml('participatingChapter', "Chapter " + thisClass.chapter)
+                makeIdHtml('participatingChapterTitle', thisClass.contentName)
+            }
+
+            function setSideNavi(classObject, enrollClassInfo){
+
+                var sideHtml='';
+
+                classObject.chapterList.forEach(function(thisChapter){
+                    sideHtml += `<div class="hiddenDetail-chapter contentsTab">
+                                <button class="chapterNo">
+                                    <div>
+                                        <strong>${thisChapter.chapterNum}</strong>
+                                        <h5>${thisChapter.chapterTitle}</h5>
+                                    </div>
+                                </button>
+                                <ul class="tabInTab">
+                                    ${getSideNaviTaps(thisChapter.chapterNum, thisChapter.chapterContentsList, enrollClassInfo)}
+                                </ul>
+                            </div>`
+                })
+
+                makeIdHtml('participateContentsSideNavi', sideHtml);
+                tabClose();
+            }
+
+            function getSideNaviTaps(chapterNum, chapterList, enrollClassInfo){
+                var tapHtml = '';
+                var settedProgress = getThisProgress(chapterNum, enrollClassInfo).progress;
+                // console.log(JSON.stringify(settedProgress) +'                                   3343434');
+                var isCompleted='';
+                for(var i=0; i<chapterList.length;i++){
+                    if(settedProgress!=null||settedProgress!=undefined){
+                        for(var j=0; j<settedProgress.length; j++){
+                            if(settedProgress[j].contentNum==i){
+                                   if(settedProgress[j].progress=='completed'){
+                                       isCompleted='completed'
+                                   }
+                            }
+                        }
+                    }
+                    tapHtml+=`<li class="${chapterList[i].type}Tab ${isCompleted}">
+                                <a onclick="enrollThisClass(${chapterNum},  ${i}, '${chapterList[i].title}', '${isCompleted}', '${chapterList[i].type}')">
+                                    <img src="/web/img/classDetail/chapterIcon/ICN_${(chapterList[i].type).toUpperCase()}.png" alt="">
+                                    <span>${chapterList[i].title}</span>
+                                </a>
+                            </li>`
+                            isCompleted='';
+                };
+                return tapHtml;
+            }
+
+            function setThisChapterContent(classObject, thisClass){
+                // console.log(JSON.stringify(classObject.chapterContentsList[thisClass.contentNum]))
+                var thisChapter = classObject.chapterContentsList[thisClass.contentNum];
+                // console.log(JSON.stringify(thisChapter) + '      thischapter')
+                document.querySelectorAll('.allContents-common').forEach(function(content){
+                    content.style.display="none";
+                })
+                document.getElementById(thisChapter.type+'Content').style.display='';
+                var type = thisChapter.type;
+                makeIdHtml(type+'Title', thisChapter.title)
+                if(type=='survey'){
+                    fillSurveyContent(thisChapter, thisClass);
+                    makeSubmitButton(thisClass, thisChapter.type)
+                }else if(type=='quiz'){
+                    fillQuizContent(thisChapter, thisClass);
+                    makeSubmitButton(thisClass, thisChapter.type)
+                }else if(type=='video'){
+                    fillVideoContent(thisChapter);
+                }else if(type=='audio'){
+                    fillAudioContent(thisChapter);
+                }else if(type=='reading'){
+                    fillReadingContent(thisChapter);
+                }else if(type=='discussion'){
+                    fillDiscussionContent(thisChapter, thisClass);
+                    makeSubmitButtonDiscussion(thisClass, thisChapter.type)
+                }
+            }
+
+            //make video contents
+
+            function fillVideoContent(thisChapter){
+                var videoContentHtml = `<iframe src="${thisChapter.videoFile.filePath}"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>`
+                makeIdHtml('videoplayerContent', videoContentHtml);
+                document.querySelector('#videoContentDescription').innerHTML=thisChapter.description;
+                // console.log(thisChapter.listDownloadFile.length + '          get length download');
+
+                var downloadMethod=getDownloadContentsHtml(thisChapter.listDownloadFile)
+                makeIdHtml('videoContentDownload', downloadMethod);
+                var scriptMethod = getDownloadContentsHtml([])
+                makeIdHtml('scriptSelectBox', scriptMethod)
+            }
+
+            function fillAudioContent(thisChapter){
+                var audioContentHtml = `<audio class="audio" controls src="${thisChapter.audioFile.filePath}">
+                                    </audio>`
+                document.querySelector('#audioContentDescription').innerHTML=thisChapter.content;
+
+            }
+
+            function fillDiscussionContent(thisChapter, thisClass){
+                // console.log(JSON.stringify(thisClass) + ' lsakfdjlkasdfjlk');
+                getDiscussionList(thisClass.chapter, thisClass.contentNum);
+                makeIdHtml('discussionContentDescription', thisChapter.content);
+                // document.querySelector('#discussionContentDescription').innerHTML=thisChapter.content;
+                var downloadMethod=getDownloadContentsHtml(thisChapter.listDownloadFile)
+                makeIdHtml('discussionContentDownload', downloadMethod);
+            }
+
+            function getDiscussionList(chapterNum, contentNum){
+                // console.log(chapterNum + ' ' + contentNum)
+                var jsonObject = {};
+                jsonObject.protocol = 'getDiscussionList';
+                jsonObject.classID = '<%-classId%>';
+                jsonObject.chapterNum = chapterNum;
+                jsonObject.contentNum = contentNum;
+                protocolSendAjaxWithCallBack(jsonObject, function(result){
+                    setDiscusssionList(result.commentList)
+                })
+            }
+
+            function setDiscusssionList(comments){
+                // console.log(JSON.stringify(comments) + ' comment')
+                document.querySelector('#discussionSize').innerHTML=`${comments.length} Discussions`
+                var discussionLists ='';
+                comments.forEach(function(comment){
+                    discussionLists += ` <div class="discussion">
+                                    <div class="ring hover-ring">
+                                        <img src="/web/img/userRing/${comment.uid}.png" alt="">
+                                    </div>
+                                    <div class="detailText">
+                                        <h6>${comment.userName}</h6>
+                                        <p>
+                                            ${comment.comment}
+                                        </p>
+                                    </div>
+                                </div>`
+                })
+                document.querySelector('.discussionWrap').innerHTML=discussionLists;
+
+
+            }
+
+
+            //서베이 컨텐츠 내용 입력
+            function fillSurveyContent(thisChapter, thisClass){
+
+                var quizSurveyHtml = getSurveyQuizListHtml(thisChapter.content);
+                makeIdHtml('surveyQuizWrap', quizSurveyHtml);
+
+                try{
+                    var chapterLoc = getThisChapterProgress(enrollClassInfo.classProgress, thisClass.chapter);
+                    // console.log(thisChapter.content + '    content')
+                    var contentLoc = getThisContentProgress(enrollClassInfo.classProgress[chapterLoc].progress, thisClass.contentNum); 
+                    answerList = enrollClassInfo.classProgress[chapterLoc].progress[contentLoc].userAnswer;
+                    // console.log(`get chapterloc :   ${chapterLoc}              ${contentLoc}` )
+                    // console.log(JSON.stringify(thisChapter)+ '                123')
+                    surveyResultSet(thisChapter.content, answerList)
+                }catch(error){
+                    console.log(error)
+                }
+
+            }
+            //make quiz list
+            async function fillQuizContent(thisChapter, thisClass){
+                // console.log(JSON.stringify(thisClass))
+                var answerList ='';
+                // console.log(JSON.stringify(enrollClassInfo.classProgress[chapterLoc].progress[contentLoc].userAnswer) + '          123')
+                var quizHtml = getQuizListHtml(thisChapter.quizList);
+                await makeIdHtml('quizQuizWrap', quizHtml)
+                
+                try{
+                    var chapterLoc = getThisChapterProgress(enrollClassInfo.classProgress, thisClass.chapter);
+                    var contentLoc = getThisContentProgress(enrollClassInfo.classProgress[chapterLoc].progress, thisClass.contentNum); 
+                    answerList = enrollClassInfo.classProgress[chapterLoc].progress[contentLoc].userAnswer;
+                    // console.log(`get chapterloc :   ${chapterLoc}              ${contentLoc}` )
+                    quizResultSet(thisChapter.quizList, answerList)
+                }catch(error){
+                    console.log(error)
+                }
+            }
+
+            function fillReadingContent(thisChapter){
+
+                var readingContent = '';
+                if(thisChapter.readingFile != undefined){
+                    readingContent = `<embed class="embedFile" src= "${thisChapter.readingFile.filePath}" height= "600px">`
+                }else{
+                    readingContent = thisChapter.content
+                }
+                makeIdHtml('readingContentText', readingContent)
+                var downloadMethod=getDownloadContentsHtml(thisChapter.listDownloadFile)
+                makeIdHtml('readingContentDownload', downloadMethod)
+            }
+
+            function getDownloadContentsHtml(fileList){
+                var fileListHtml = '';
+                if(fileList.length > 0){
+                    fileList.forEach(function(fileInfo){
+                        fileListHtml+=`<li>
+                                            <input type="radio" value="None Materials" id="test1" name="classMatSelect1">
+                                            <label for="none">
+                                                <span><a href="${fileInfo.filePath}" download>${fileInfo.fileOriginalName}</a></span>
+                                            </label>
+                                        </li>`
+                    })
+
+                }else{
+                    fileListHtml =` <li>
+                                            <input type="radio" value="None Materials" id="none" name="classMatSelect1">
+                                            <label for="none">
+                                                <span>None Materials</span>
+                                            </label>
+                                        </li>`
+                }
+                return fileListHtml;
+            }
+
+            function getSurveyQuizListHtml(contents){
+                
+                var surveyQuizHtml = '';
+                var quizNum =1;
+                contents.forEach(function(content){
+                    surveyQuizHtml+=`<div class="quizWrap" >
+                                    <div class="number">
+                                        <strong>
+                                            Survey ${quizNum}.
+                                        </strong>
+                                    </div>
+                                    <div class="detail">
+                                        <h5>
+                                            ${content.question}
+                                        </h5>
+                                            ${getSurveyQuizAnswerList(quizNum, content.answerList)}
+                                        </div>
+                                    </div>
+                                </div>`
+                    quizNum+=1;
+                });
+                return surveyQuizHtml;
+
+            };
+
+            function getQuizListHtml(contents) {
+                // console.log(JSON.stringify(enrollClassInfo))
+                // console.log(JSON.stringify(contents.answerList))
+                var quizHtml = '';
+                var quizNum =1;
+                contents.forEach(function(content){
+                    quizHtml+=`<div class="quizWrap wrong">
+                                    <div class="number">
+                                        <strong>
+                                            Quiz ${quizNum}.
+                                        </strong>
+                                        <span id="quizResultArea${quizNum}">
+                                            ( 1point )
+                                        </span>
+                                    </div>
+                                    <div class="detail">
+                                        <h5>
+                                            ${content.question}
+                                        </h5>
+                                        <div class="answerWrap">
+                                            ${getQuizAnswerList(quizNum, content.answerList)}
+                                        </div>
+                                        <div class="answerEx">
+                                            <p>
+                                                ${content.quizExplanation}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>`
+                    quizNum+=1;
+                });
+                return quizHtml;
+            }
+
+            function surveyResultSet(content, answerList){
+                var thisRadioBox='';
+                for(var i =0; i<answerList.length; i++){
+                    if(content[i].answerList.length>0){
+                        thisRadioBox=document.getElementById('survey'+(i+1)+'-'+answerList[i]);
+                        thisRadioBox.checked = true
+                    }else{
+                        document.querySelector('#surveyTextArea'+(i+1)).value = answerList[i]
+                    }
+                }
+            }
+
+            function quizResultSet(content, answerList){
+                // console.log(JSON.stringify(answerList)      + '  lkjasd')
+                // console.log('######@#@#@#@#@# '+JSON.stringify(content))
+                var thisRadioBox='';
+                for(var i =0; i<answerList.length; i++){
+                    thisRadioBox=document.getElementById('quiz'+(i+1)+'-'+answerList[i]);
+                    if(content[i].answer==answerList[i]){
+                      
+                        document.getElementById('quizResultArea'+(i+1)).classList.add('type1')
+                        // console.log('                     ' + 'quiz'+i+'-'+answerList[i] +'  ###')
+                        thisRadioBox.parentElement.classList.add('rightAns')
+                    }else{
+                        document.querySelector('#quizResultArea'+(i+1)).classList.add('type2')
+                        thisRadioBox.parentElement.classList.add('worngAns');
+                    }
+                    thisRadioBox.checked = true
+                }
+
+            }
+
+            function getSurveyQuizAnswerList(quizNum, answerList){
+                // console.log(answerList.length  + '   mnb  ')
+                var answerHtml ='';
+                if(answerList.length>0){
+                    answerHtml +=`<div class="answerWrap">`
+                    for(var i=0; i<answerList.length; i++){
+                        answerHtml+=`<div class="radioAnswer">
+                                        <input type="radio" id="survey${quizNum}-${i+1}" name="survey${quizNum}">
+                                        <label for="survey${quizNum}-${i+1}">
+                                            <span></span>
+                                            <strong>${answerList[i]}</strong>
+                                        </label>
+                                    </div>`
+                    }
+                    answerHtml+=`</div>`
+                }else{
+                    answerHtml=`<div class="surveyTextAnswer" >
+                                    <textarea id="surveyTextArea${quizNum}" placeholder="Write what you think " style="resize: none;"></textarea>
+                                </div>`
+                }
+                return answerHtml;
+            };
+
+            function getQuizAnswerList(quizNum, answerList){
+                var answerHtml ='';
+                for(var i=0; i<answerList.length; i++){
+                    answerHtml+=`<div class="radioAnswer">
+                                    <input type="radio" id="quiz${quizNum}-${i+1}" name="quiz${quizNum}">
+                                    <label for="quiz${quizNum}-${i+1}">
+                                        <span></span>
+                                        <strong>${answerList[i]}</strong>
+                                    </label>
+                                </div>`
+                }
+                return answerHtml;
+            }
+
+
+            function makeSubmitButton(thisClass, type){
+                if(type=='quiz'){
+                    //퀴즈일 경우 스코어 추가
+                }
+
+                makeIdHtml(type+'SubmitButtonArea', `<button onclick="saveProgress('${thisClass.chapter}', '${thisClass.contentNum}', '${type}')">Submit</button>`)
+            }
+
+            function makeSubmitButtonDiscussion(thisClass, type){
+                makeIdHtml(type+'SubmitButtonArea', `<button onclick="commentDiscussion('${thisClass.chapter}', '${thisClass.contentNum}', '${type}')">Submit</button>`)
+            }
+
+
+            function commentDiscussion(chapterNum, contentNum, type){
+                var jsonObject = {};
+                var commentObject = {};
+                commentObject.comment=document.querySelector('#newDiscussion').value;
+                commentObject.uid='<%-user.userUID%>';
+                commentObject.userName='<%-user.userName%>';
+                commentObject.writeTime=new Date();
+                jsonObject.protocol = 'commentDiscussion'
+                jsonObject.classId = '<%-classId%>'
+                jsonObject.chapterNum = chapterNum;
+                jsonObject.contentNum = contentNum;
+                jsonObject.comment = commentObject;
+                protocolSendAjaxWithCallBack(jsonObject, function(result){
+                    getDiscussionList(chapterNum, contentNum)
+                })
+            }
+
+
+            function saveProgress(chapterNum, contentNum, type){
+                
+                var chapterLoc = getThisChapterProgress(enrollClassInfo.classProgress, chapterNum);
+                var contentLoc ='';
+                if(chapterLoc==undefined){
+                    chapterLoc=enrollClassInfo.classProgress.length;
+                    var chapterProgress = {};
+                    chapterProgress.chapterNum=chapterNum;
+                    chapterProgress.progress=[];
+                    enrollClassInfo.classProgress[chapterLoc]=chapterProgress;
+                    contentLoc=0;
+                }else{
+                    contentLoc = getThisContentProgress(enrollClassInfo.classProgress[chapterLoc].progress, contentNum);
+                }
+                // console.log(JSON.stringify(enrollClassInfo.classProgress[chapterLoc])   +'  123123');
+                // console.log(contentLoc+ '             3213123')
+                if (contentLoc==undefined){
+                    contentLoc= enrollClassInfo.classProgress[chapterLoc].progress.length;
+                }
+
+                var thisProgress={};
+                if(type!='normal'){
+                    var quizList = document.getElementById(type+'QuizWrap').querySelectorAll('.quizWrap');
+                    var userAnswer = [];
+                    var quizNum=0;
+                    var ans ='';
+                    // console.log(quizList.toString());
+                    quizList.forEach(function(quiz){
+                        var childNodeSurvey = quiz.querySelector('#surveyTextArea'+(quizNum+1));
+                        if(childNodeSurvey){
+                            ans = childNodeSurvey.value
+                        }else{
+                            var answerList=quiz.querySelector('.answerWrap').querySelectorAll('[type="radio"]');
+                            answerList.forEach(function(answer){
+                                if(answer.checked){
+                                    var checkedAnswer = answer.getAttribute('id');
+                                    var checkedAnswerNum  = answer.getAttribute('id').substring(checkedAnswer.indexOf('-')+1, checkedAnswer.length);
+                                    ans =checkedAnswerNum;
+                                }
+                            })
+                        }
+                        userAnswer[quizNum]=ans;
+                        quizNum++
+                    })
+                    // console.log(userAnswer);
+                    // console.log(JSON.stringify((enrollClassInfo.classProgress[chapterLoc].progress)))
+                    thisProgress.userAnswer=userAnswer;
+
+                }
+                
+                thisProgress.contentNum=contentNum;
+                thisProgress.progress='completed';
+                enrollClassInfo.classProgress[chapterLoc].progress[contentLoc]=thisProgress;
+                // console.log(JSON.stringify(enrollClassInfo.classProgress) +'     #########')
+                var tabList = document.querySelectorAll('.tabInTab')
+                var contentLength=0;
+                tabList.forEach(function(tab){
+                    contentLength+=tab.children.length;
+                });
+ 
+                tabList[chapterNum-1].children[contentNum].classList.add('completed');
+                
+
+                var completedList =    document.querySelectorAll('.completed')
+
+                // console.log(contentLength + '                     length  ' + completedList.length )
+                var jsonObject = {}
+                jsonObject.protocol = "updateClassProgress";
+                jsonObject.enrollClassInfo = enrollClassInfo;
+                if(contentLength==completedList.length){
+                    // console.log('comecheck')
+                 jsonObject.isCompleted = 'completed';   
+                }
+                protocolSendAjaxWithCallBack(jsonObject, function(result){
+                    if(type!='normal'){
+                        window.location.href=`/classParticipateContents/<%-classId%>.${chapterNum}.${contentNum}`;
+                    }
+                })
+
+            }
+
+            function saveProgressNorm(chapterNum, contentNum){
+
+            }
+
+            function getThisChapterProgress(progress, chapterNum){
+                
+                for(var i=0; i<progress.length; i++){
+                    if(progress[i].chapterNum==chapterNum){
+                        return i;
+                    }
+                }
+
+            }
+
+            function getThisContentProgress(progress, contentNum){
+                for(var i=0; i<progress.length; i++){
+                    if(progress[i].contentNum==contentNum){
+                        // console.log('cimec cehck ');
+                        return i;
+                    }
+                }
+            }
+
+
+
+            function getThisProgress(chapterNum, progress){
+                // console.log(JSON.stringify(progress) + '#######################progress')
+                var setProgress ='';
+                progress.forEach(function(thisProgress){
+                    setProgress = chapterNum==thisProgress.chapterNum?thisProgress:setProgress;
+                })
+                return setProgress;
+            }
+            
+            document.addEventListener('click', function(element){
+                var selectBoxes = document.querySelectorAll('.classMatBox')
+                selectBoxes.forEach(function(selectbox){
+                    var selectBoxClassList = selectbox.classList;
+                    if(selectBoxClassList.contains('active')){
+                        if(selectBoxClassList.contains('temp')){
+                            selectBoxClassList.remove('temp')
+                        }else{                            
+                            selectBoxClassList.remove('active');
+                        }
+                    
+                    }
+                })
+            })
+
+            document.querySelectorAll('#classMat').forEach(function(selectBox){
+                selectBox.addEventListener('click', function(){
+                    selectBox.parentElement.parentElement.querySelector('.classMatBox').classList.add('active', 'temp')
+                })
+            })
+            function makeIdHtml(id, html){
+                document.getElementById(id).innerHTML=html;
+            }
+
+        </script>
+    </div>
+</body>
+
+</html>
+
+
+

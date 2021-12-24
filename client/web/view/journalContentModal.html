@@ -1,0 +1,366 @@
+<!--  저널보기팝업 -->
+<div class="modal modal15" id="modal15ID">
+    <div>
+        <div class="top">
+            <button class="top-xBtn" onclick="customModalClose(15)">
+                <img src="/web/img/ICN_CLOSE.png" alt="">
+            </button>
+            <div class="top-titleArea">
+                <h4 class="topTitle" id="journalModalTopTile">
+                </h4>
+                <input type="hidden" id="journalUniqueID" value="">
+                <ul class="topBtns">
+                    <li class="shaere">
+                        <button id="journalModalShareBtnControl" style="display: none;">
+                            <img src="/web/img/ICN_SHARE.png" alt="">
+                        </button>
+                    </li>
+                    <li class="bookmark" id="journalModalBookMarkBtnControl" style="display: none;">
+                        <button>
+                            <img src="/web/img/ICN_BOOKMARK.png" alt="">
+                        </button>
+                    </li>
+                    <li class="hdn">
+                        <button>
+                            <img src="/web/img/ICN_REPORT.png" alt="">
+                        </button>
+                        <ul class="hdn-Btn" id="hdn-BtnControlID">
+                            <li id="journalModalReportBtnControl" style="display: none;">
+                                <button>Report</button>
+                            </li>
+                            <li id="journalModalDeleteBtnControl" style="display: none;">
+                                <button onclick="journalDeleteFunc()">Delete</button>
+                            </li>
+                            <li id="journalModalEditBtnControl" style="display: none;">
+                                <button id="journalModalEditBtnID">Edit</button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="middle">
+            <div class="middle-fixContent">
+                <div class="middle-fixContent-infos">
+                    <div class="ringInfo">
+                        <div class="ring hover-ring">
+                            <img id="journalModalUserRingID" src="/web/img/dummyIcon_50.png" alt="">
+                        </div>
+                        <h5 class="name" id="journalModalUserNameID">
+                        </h5>
+                        <strong class="type" id="journalModalUserHostType" style="display: none;">
+                        </strong>
+                    </div>
+                    <div class="detailInfo">
+                        <strong class="timeInfo" id="journalModalTotalTimeID">
+                        </strong>
+                        <span class="scopeInfo" data-type="" id="journalModalScopeID">
+                            <img src="" alt="">
+                        </span>
+                        <span class="weatherInfo">
+                            <img id="journalModalWeatherIconControlID" src="/web/img/weather/sunney.png" alt="">
+                        </span>
+                        <span class="dateInfo" id="journalModalDateID">
+                        </span>
+                    </div>
+                </div>
+                <div class="middle-fixContent-text">
+                    <p id="journalModalContentID"></p>
+                    <div class="tags" id="journalModalTagControlID">
+                        <span class="tag">
+                            #tagtagtag
+                        </span>
+                    </div>
+                </div>
+            </div>  
+            <!-- 오디오 -->
+            <div class="middle-content audio" id="journalModalAudioControlID" style="display: none;">
+                <div class="audioWrap">
+                    <div class="content">
+                        <h5>Audio Journal</h5>
+                        <audio id="journalModalAudioSrcID" class="audio" controls src="">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 이미지,영상 슬라이드 -->
+            <div class="middle-content slide" id="journalModalImageAndVideoControlID" style="display: none;">
+                <div class="gratitudeBtns">
+                    <button class="leftBtn">
+                        <i class="xi-angle-left"></i>
+                    </button>
+                    <button class="rightBtn">
+                        <i class="xi-angle-right"></i>
+                    </button>
+                </div>
+                <div class="slideFrame" id="journalModalImageAndVideoAppendID"></div>
+            </div>
+            
+            <!-- 바디스캔 -->
+            <div class="middle-content bodyScan" id="journalModalBodyScanControlID" style="display: none;">
+                <div class="bodyScanWrap">
+                    <div class="bodyArea" id="bodyAreaControlID">
+                        <img id="bodyImgID" src="/web/img/bodyScan/body.png" alt="" style="z-index: 10;">
+                        <%
+                            var bodyScanImg = [
+                                "abdomen",
+                                "arms",
+                                "back",
+                                "brain",
+                                "buttocks",
+                                "chest",
+                                "eyes",
+                                "face",
+                                "fee",
+                                "genitals",
+                                "head",
+                                "legs",
+                                "lips",
+                                "neck",
+                                "nose",
+                                "pelvis",
+                                "shoulder",
+                                "throat"
+                            ];
+
+                            for(var i = 0; i < bodyScanImg.length; i++)
+                            {
+                        %>
+                            <img id="<%=bodyScanImg[i]%>ImgID" src="/web/img/bodyScan/<%=bodyScanImg[i]%>.png" alt="" style="display: none; z-index: 11;">
+                        <%
+                            }
+                        %>
+                    </div>
+                    <div class="figureBoxArea" id="bodyScanAppendID">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 이모션 -->
+            <div class="middle-content emotion" id="journalModalEmotionControlID" style="display: none;">
+            </div>
+
+            <!-- 키워드 -->
+            <div class="middle-content keyword" id="journalModalKeyWordControlID" style="display: none;">
+            </div>
+
+            <!-- 스탬프 -->
+            <div class="middle-content stapm" id="journalModalStampEntryControlID" style="display: none;">
+                <div class="stampWrap" id="appendStampWrapID">
+                </div>
+            </div>
+
+            <!-- 마인드풀니스챌린지 -->
+            <div class="middle-content mindful" id="journalModalMindfulControlID" style="display: none;">
+                <div class="mindfullWrap">
+                    <ul class="chkWrap">
+                        <li>
+                            <input type="checkBox" id="chk1" checked disabled>
+                            <label for="chk1">
+                                <span class="box"></span>
+                                <span class="text">
+                                    Show respect toward nature, animals, and other living beings. 
+                                </span>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkBox" id="chk2" disabled>
+                            <label for="chk2">
+                                <span class="box"></span>
+                                <span class="text">
+                                    Love and thank others more/express loving and grateful mind more often. 
+                                </span>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkBox" id="chk3" disabled>
+                            <label for="chk3">
+                                <span class="box"></span>
+                                <span class="text">
+                                    Do not blame or hate others.
+                                </span>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkBox" id="chk4" disabled>
+                            <label for="chk4">
+                                <span class="box"></span>
+                                <span class="text">
+                                    Speak kindly and calmly.
+                                </span>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkBox" id="chk5" disabled>
+                            <label for="chk5">
+                                <span class="box"></span>
+                                <span class="text">
+                                    Listen mindfully with an open mind.
+                                </span>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkBox" id="chk6" disabled>
+                            <label for="chk6">
+                                <span class="box"></span>
+                                <span class="text">
+                                    Respect thoughts and opinions that are different from mine. 
+                                </span>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkBox" id="chk7" disabled>
+                            <label for="chk7">
+                                <span class="box"></span>
+                                <span class="text">
+                                    Practice self-care and set aside me-time regularly. 
+                                </span>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkBox" id="chk8" disabled>
+                            <label for="chk8">
+                                <span class="box"></span>
+                                <span class="text">
+                                    Reflect on my wrongdoings and apologize quickly.
+                                </span>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkBox" id="chk9" disabled>
+                            <label for="chk9">
+                                <span class="box"></span>
+                                <span class="text">
+                                    Try practicing a zero-waste lifestyle.
+                                </span>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkBox" id="chk10" disabled>
+                            <label for="chk10">
+                                <span class="box"></span>
+                                <span class="text">
+                                    Do one kind act daily.
+                                </span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 이모티콘일지(무드엔트리) -->
+            <div class="middle-content moodEntry" id="journalModalMoodEntryControlID" style="display: none;">
+                <div class="emojiWrap" id="appendEmojiWrapID">
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <!-- 하단 고정 슬라이드 -->
+            <div class="bottom-fixContent">
+                <div class="bottom-fixContent-top">
+                    <h6><%=translation.loginAndJoin.Related_Class%></h6>
+                    <div class="classListbtns">
+                        <button class="leftBtn">
+                            <i class="xi-angle-left"></i>
+                        </button>
+                        <button class="rightBtn">
+                            <i class="xi-angle-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="bottom-fixContent-bottom" id="journalMoadlRelatedClassID">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function() {
+        //상단 히든드롭박스 온오프
+        $('.hdn > button').click(function() {
+            $(this).next('.hdn-Btn').toggleClass('active');
+        })
+
+        //중앙 감사저널 슬라이드
+        $('.gratitudeBtns > button').click(function() {
+            if($(this).hasClass('rightBtn'))
+            {
+                var num = $('.slideFrame > [data-num].active').data('num') + 1;
+                $('[data-num]').each(function() {
+                    $(this).removeClass('active');
+                });
+                if(num >= $('[data-num]').length + 1)
+                {
+                    $('[data-num="1"]').addClass('active');
+                }
+                else
+                {
+                    $('[data-num='+num+']').each(function()
+                    {
+                        $(this).addClass('active');
+                    });
+                }
+            }
+            else if($(this).hasClass('leftBtn'))
+            {
+                var num = $('.slideFrame > [data-num].active').data('num') - 1;
+                $('[data-num]').each(function() {
+                    $(this).removeClass('active');
+                });
+                if(num <= 0)
+                {
+                    $('[data-num='+$('[data-num]').length+']').addClass('active');
+                }
+                else
+                {
+                    $('[data-num='+num+']').each(function()
+                    {
+                        $(this).addClass('active');
+                    });
+                }
+            }
+        })
+
+        //하단 신설 클래스리스트 슬라이드
+        $('.classListbtns > button').click(function() {
+            if($(this).hasClass('rightBtn'))
+            {
+                var no = $('.bottom-fixContent-bottom > [data-journal].active').data('journal') + 1;
+                $('[data-journal]').each(function() {
+                    $(this).removeClass('active');
+                });
+                if(no >= $('[data-journal]').length + 1)
+                {
+                    $('[data-journal="1"]').addClass('active');
+                }
+                else
+                {
+                    $('[data-journal='+no+']').each(function()
+                    {
+                        $(this).addClass('active');
+                    });
+                }
+            }
+            else if($(this).hasClass('leftBtn'))
+            {
+                var no = $('.bottom-fixContent-bottom > [data-journal].active').data('journal') - 1;
+                $('[data-journal]').each(function() {
+                    $(this).removeClass('active');
+                });
+                if(no <= 0)
+                {
+                    $('[data-journal='+$('[data-journal]').length+']').addClass('active');
+                }
+                else
+                {
+                    $('[data-journal='+no+']').each(function()
+                    {
+                        $(this).addClass('active');
+                    });
+                }
+            }
+        })
+
+    })
+</script>

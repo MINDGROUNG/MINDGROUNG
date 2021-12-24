@@ -1,0 +1,3912 @@
+<!-- 챕터삭제 경고모달 -->
+<div class="modal modal37">
+    <div>
+        <div class="xBtn">
+            <button onclick="customModalClose(37)">
+                <i class="xi-close"></i>
+            </button>
+        </div>
+        <div class="contents">
+            <h5 class="title">
+                Warning
+            </h5>
+            <div class="detail">
+                <p>
+                    If you delete the chapter,<br/>
+                    all entered information will be deleted.​
+                </p>
+            </div>
+            <div class="btns" id = "chapterContentDeleteBtns">
+                <!-- <button class="noBtn-on" onclick="customModalClose(37)">
+                    No
+                </button>
+                <button class="yesBtn-on">
+                    Yes
+                </button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="hostStudioCommonLayout">
+    <article>
+        <div class="commonTitleArea createClass">
+            <h2><%=translation.openClass.ClassCreation%></h2>
+            <div class="getExistingData">
+                <button onclick="customModal(39)">
+                    <i class="xi-file-download-o"></i>
+                    <span>
+                        Get Existing Data
+                    </span>
+                </button>
+                <!-- 오픈 할 수 있는 클래스리스트 보기 -->
+                <div class="modal modal39">
+                    <div>
+                        <div class="xBtn">
+                            <button onclick="customModalClose(39)">
+                                <i class="xi-close"></i>
+                            </button>
+                        </div>
+                        <div class="contents">
+                            <h4>
+                                My Classes
+                            </h4>
+                            <div class="classList">
+                                <%
+                                    for(var i = 1; i < 5; i++)
+                                    {
+                                %>
+                                <div class="commonChkThumb">
+                                    <div class="chkArea">
+                                        <div class="chkClass">
+                                            <input type="checkBox" id="class<%=i%>">
+                                            <label for="class<%=i%>">
+                                                <span class="box"></span>
+                                                <span class="text">
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="classThumb">
+                                        <div class="thumbArea" style="background-image: url('/web/img/eventDetail/thumb.png');">
+                                            <div class="graBar"></div>
+                                        </div>
+                                        <div class="detailArea">
+                                            <div>
+                                                <h4 class="detailArea-title">
+                                                    Class title
+                                                </h4>
+                                                <div class="ringInfo">
+                                                    <div class="ring hover-ring">
+                                                        <img src="/web/img/dummyIcon_30.png" alt="">
+                                                    </div>
+                                                    <h5 class="name">
+                                                        Daniel Espada
+                                                    </h5>
+                                                    <strong class="type">
+                                                        Brand
+                                                    </strong>
+                                                </div>
+                                            </div>
+                                            <p class="text">
+                                                Mindfulness, Mindfulness-Based Childbirth and Parenting(MBCP)​
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%
+                                    }
+                                %>
+                            </div>
+                            <div class="pagingList">
+                                <button class="prevBtn-on pagingBtn">
+                                    <i class="xi-angle-left"></i>
+                                </button>
+                                <ul class="pageNumberBtns">
+                                    <li>
+                                        <button class="numberBtn-on">1</button>
+                                    </li>
+                                    <li>
+                                        <button class="numberBtn-on">2</button>
+                                    </li>
+                                    <li>
+                                        <button class="numberBtn-on active">3</button>
+                                    </li>
+                                    <li>
+                                        <button class="numberBtn-on">4</button>
+                                    </li>
+                                    <li>
+                                        <button class="numberBtn-on">5</button>
+                                    </li>
+                                </ul>
+                                <button class="nextBtn-on pagingBtn">
+                                    <i class="xi-angle-right"></i>
+                                </button>
+                            </div>
+                            <div class="openBtn">
+                                <button class="openBtn-on">Open</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mainContentsArea classesCreate">
+            <div class="swiper-container stepNav">
+                <ul class="swiper-wrapper">
+                    <!-- <!- active  complete->  -->
+                    <li class="step1Btn stpeBtns swiper-slide active" id='studioServiceIcon'>
+                        <button class="stpe1Btn-on" onclick="moveTo('studioService', thisLocation, 1)">
+                            <span class="text">1. <%=translation.openClass.Studio_Service%></span>
+                            <span class="doneIcon"><img src="/web/img/ICN_DONE.png" alt=""></span>
+                        </button>
+                    </li>
+                    <li class="step2Btn stpeBtns swiper-slide" id = "topicsIcon" onclick="moveTo('topics', thisLocation, 1)">
+                        <button class="stpe2Btn-on">
+                            <span class="text">2. <%=translation.openClass.Topics%></span>
+                            <span class="doneIcon"><img src="/web/img/ICN_DONE.png" alt=""></span>
+                        </button>
+                    </li>
+                    <li class="step3Btn stpeBtns swiper-slide" id = "languageIcon" onclick="moveTo('language', thisLocation, 1)">
+                        <button class="stpe3Btn-on">
+                            <span class="text">3. <%=translation.openClass.Language%></span>
+                            <span class="doneIcon"><img src="/web/img/ICN_DONE.png" alt=""></span>
+                        </button>
+                    </li>
+                    <li class="step4Btn stpeBtns swiper-slide" id ="classTitleIcon" onclick="moveTo('classTitle', thisLocation, 1)">
+                        <button class="stpe4Btn-on">
+                            <span class="text">4. <%=translation.openClass.Class_Title_Description%></span>
+                            <span class="doneIcon"><img src="/web/img/ICN_DONE.png" alt=""></span>
+                        </button>
+                    </li>
+                    <li class="step5Btn stpeBtns swiper-slide" id = "videosIcon" onclick="moveTo('videos', thisLocation, 1)">
+                        <button class="stpe5Btn-on">
+                            <span class="text">5. <%=translation.openClass.Videos_Images%></span>
+                            <span class="doneIcon"><img src="/web/img/ICN_DONE.png" alt=""></span>
+                        </button>
+                    </li>
+                    <li class="step6Btn stpeBtns swiper-slide" id = "dpmIcon" onclick="moveTo('dpm', thisLocation, 1)">
+                        <button class="stpe6Btn-on">
+                            <span class="text" id ='dpmText'>6. <%=translation.openClass.Date_Place%></span>
+                            <span class="doneIcon"><img src="/web/img/ICN_DONE.png" alt=""></span>
+                        </button>
+                    </li>
+                    <li class="step6Btn stpeBtns swiper-slide" id = "classDevelopIcon" onclick="moveTo('classDevelop', thisLocation, 1)">
+                        <button class="stpe6Btn-on">
+                            <span class="text">6. <%=translation.openClass.Class_Development%></span>
+                            <span class="doneIcon"><img src="/web/img/ICN_DONE.png" alt=""></span>
+                        </button>
+                    </li>
+                    <li class="step7Btn stpeBtns swiper-slide" id = "salePeriodIcon" onclick="moveTo('salePeriod', thisLocation, 1)">
+                        <button class="stpe7Btn-on">
+                            <span class="text">7. <%=translation.openClass.Sale_Period%></span>
+                            <span class="doneIcon"><img src="/web/img/ICN_DONE.png" alt=""></span>
+                        </button>
+                    </li>
+                    <li class="step7Btn stpeBtns swiper-slide" id = "certificationIcon" onclick="moveTo('certification', thisLocation, 1)">
+                        <button class="stpe7Btn-on">
+                            <span class="text">7. <%=translation.openClass.Certification%></span>
+                            <span class="doneIcon"><img src="/web/img/ICN_DONE.png" alt=""></span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="mainContents">
+                <!-- 1단계. 스튜디오 서비스 -->
+                <div class="studioService commonStep" id = 'studioService'>
+                    <div>
+                        <div class="subTitle">
+                            <h3><%=translation.openClass.Which_class_listing_service_do_you_need%></h3>
+                        </div>
+                        <div class="studioService-contents">
+                            <div class="mainBtns">
+                                <div class="programBtn">
+                                    <button class="programBtn-on commonPickBtn" data-num="0" onclick="choosePremium('normal')">
+                                        <h5>
+                                            <%=translation.classManagement.Class_Program_Listing%>
+                                        </h5>
+                                        <p>
+                                            <%=translation.openClass.I_need_to_post_my_class_program_for_sales%>
+                                        </p>
+                                    </button>
+                                </div>
+                                <div class="developmentBtn">
+                                    <button class="developmentBtn-on commonPickBtn" data-num="1" onclick="choosePremium('premium')">
+                                        <h5>
+                                            <%=translation.classManagement.Class_Development_Listing%>
+                                        </h5>
+                                        <p>
+                                            <span>
+                                                <%=translation.openClass.I_need_to_develop_a_course_of_class_program_and_publish_for_sales%>
+                                            </span><br/>
+                                            <sapn class="small">
+                                                <%=translation.openClass.There_is_a_monthly_or_annual_fee_for_opening_classes_through_the_Class_Development_Listing%>
+                                            </sapn>
+                                        </p>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mainForm">
+                                <div class="get-commonForm 폼들어오는곳">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pageBtns">
+                        <div class="moveBtns">
+                            <button class="nextBtn-on" onclick="moveTo('topics', 'studioService', 0)">
+                                <%=translation.openClass.Next%>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 2단계. 토픽-->
+                 <div class="topics commonStep" id ='topics' style="display:none">
+                    <div>
+                        <div class="subTitle">
+                            <h3><%=translation.openClass.Which_kind_of_class_program_are_you_opening%></h3>
+                        </div>
+                        <div class="topics-contents">
+                            <div class="commonSelectArea format">
+                                <div class="title">
+                                    <h5><%=translation.openClass.Format%></h5>
+                                </div>
+                                <div class="selectWtap formatSelectBox">
+                                    <div class="selectBox1 formatBox1">
+                                        <div class="selectView">
+                                            <input id="format1" name="selectVal" data-select="0" type="button" value="<%=translation.loginAndJoin.Select%>">
+                                            <img src="/web/img/ICN_DROP.png" alt="">
+                                        </div>
+                                        <ul class="selectBox1-hdnMenu1 targetMenu topicsHdnMenu formatSelectBox1">
+                                            <li>
+                                                <input type="radio" value="<%=translation.classManagement.Online%>" id="online" name="formatSelect1">
+                                                <label for="online">
+                                                    <span><%=translation.classManagement.Online%></span>
+                                                </label>
+                                            </li>
+                                            <!-- <li>
+                                                <input type="radio" value="<%=translation.classManagement.Offline%>" id="offline" name="formatSelect1" disabled>
+                                                <label for="offline">
+                                                    <span><%=translation.classManagement.Offline%></span>
+                                                </label>
+                                            </li> -->
+                                        </ul>
+                                    </div>
+                                    <div class="selectBox1 formatBox2">
+                                        <div class="selectView">
+                                            <input id="format2" name="selectVal" data-select="0" type="button" value="<%=translation.loginAndJoin.Select%>" value1="">
+                                            <img src="/web/img/ICN_DROP.png" alt="">
+                                        </div>
+                                        <ul class="selectBox1-hdnMenu1 targetMenu topicsHdnMenu formatSelectBox2">
+                                        </ul>
+                                    </div>
+                                    <div class="selectBox1 formatBox3 hidden">
+                                        <div class="selectView">
+                                            <input id="format3" type="text" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="commonSelectArea category">
+                                <div class="title">
+                                    <h5><%=translation.openClass.Category%></h5>
+                                </div>
+                                <div class="selectWtap categorySelectBox">
+                                    <div class="selectBox1 categoryBox1">
+                                        <div class="selectView">
+                                            <input id="category1" name="selectVal" data-select="0" type="button" value="<%=translation.loginAndJoin.Select%>" value1="">
+                                            <img src="/web/img/ICN_DROP.png" alt="">
+                                        </div>
+                                        <ul class="selectBox1-hdnMenu1 targetMenu topicsHdnMenu categorySelectBox1">
+                                        </ul>
+                                    </div>
+                                    <div class="getBox">
+                                        <div class="selectBox1 categoryBox2">
+                                            <div class="onlySelect">
+                                                <div class="selectView">
+                                                    <input id="category2" name="selectVal" data-select="0" type="button" value="<%=translation.loginAndJoin.Select%>">
+                                                    <img src="/web/img/ICN_DROP.png" alt="">
+                                                </div>
+                                                <ul class="selectBox1-hdnMenu1 targetMenu topicsHdnMenu categorySelectBox2">
+                                                </ul> <div class="hiddenDetail-chapter">
+                                                    <button class="chapterNo">
+                                                        <div>
+                                                            <strong>2</strong>
+                                                            <h5>Chapter</h5>
+                                                        </div>
+                                                        <div class="centerText">
+                                                            Necessity of self-reflection
+                                                        </div>
+                                                        <div class="arrowImg">
+                                                            <img src="/web/img/ICN_EXPAND.png" alt="">
+                                                        </div>
+                                                    </button>
+                                                    <ul class="tabInTab">
+                                                        <li class="videoTab">
+                                                            <a href="javascript:avoid(0)">
+                                                                <img src="/web/img/classDetail/chapterIcon/ICN_VIDEO.png" alt="">
+                                                                <span>Methodology of Meditation</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="audioTab">
+                                                            <a href="javascript:avoid(0)">
+                                                                <img src="/web/img/classDetail/chapterIcon/ICN_AUDIO.png" alt="">
+                                                                <span>Self- reflection</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="readingTab">
+                                                            <a href="javascript:avoid(0)">
+                                                                <img src="/web/img/classDetail/chapterIcon/ICN_READING.png" alt="">
+                                                                <span>Academic research on self-reflection</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="quizTab">
+                                                            <a href="javascript:avoid(0)">
+                                                                <img src="/web/img/classDetail/chapterIcon/ICN_QUIZ.png" alt="">
+                                                                <span>Ultimate purpose of self-reflection</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="surveyTab">
+                                                            <a href="javascript:avoid(0)">
+                                                                <img src="/web/img/classDetail/chapterIcon/ICN_SURVEY.png" alt="">
+                                                                <span>Draw my life graph</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="discutionTab">
+                                                            <a href="javascript:avoid(0)">
+                                                                <img src="/web/img/classDetail/chapterIcon/ICN_DISCUSSION.png" alt="">
+                                                                <span>Happiness and human completion</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="liveTab">
+                                                            <a href="javascript:avoid(0)">
+                                                                <img src="/web/img/classDetail/chapterIcon/ICN_LIVE.png" alt="">
+                                                                <span>Human recognition</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="otherInput" id="categoryOtherInput" style="display:none">
+                                        <input id="categoryOtherInputValue" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="commonSelectArea level">
+                                <div class="title">
+                                    <h5>Level</h5>
+                                </div>
+                                <div class="selectWtap levelSelectBox">
+                                    <div class="selectBox1 levelBox1">
+                                        <div class="selectView">
+                                            <input id="level" type="button" value="<%=translation.loginAndJoin.See_All%>" value1="All">
+                                            <img src="/web/img/ICN_DROP.png" alt="">
+                                        </div>
+                                        <ul class="selectBox1-hdnMenu1 targetMenu topicsHdnMenu levelSelectBox1">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pageBtns">
+                        <div class="backBtns">
+                            <button class="backBtn-on" onclick="moveTo('studioService', 'topics', 1)">
+                                <%=translation.openClass.Back%>
+                            </buuton>
+                        </div>
+                        <div class="moveBtns">
+                            <button class="nextBtn-on" onclick="moveTo('language', 'topics', 0)">
+                                <%=translation.openClass.Next%>
+                            </button>
+                        </div>
+                    </div>
+                </div> 
+                <!-- 3단계 랭귀지 -->
+                <div class="language commonStep" id = 'language' style="display:none">
+                    <div>
+                        <div class="subTitle">
+                            <h3><%=translation.openClass.Choose_the_main_language_for_your_class%></h3>
+                            <span><%=translation.openClass.Your_service_must_be_delivered_in_this_language%></span>
+                        </div>
+                        <div class="selectWtap mainLanguage commonLanguage">
+                            <div class="selectBox1" id = "mainlanguageBox">
+                                <div class="selectView" >
+                                    <input id="mainLanguage" type="button" value="<%=translation.loginAndJoin.Select%>" onclick="appendMainLanguageList()">
+                                    <img src="/web/img/ICN_DROP.png" alt="">
+                                </div>
+                                <ul class="selectBox1-hdnMenu1 targetMenu mainLanguageBox" id ='mainLanguageBox'>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="otherLanguage commonLanguage" id = 'otherLanguageDom' style="display:none">
+                            <div class="subTitle">
+                                <h4><%=translation.openClass.Choose_other%></h4>
+                                <span><%=translation.openClass.Languages_that_the_class_will_be_available_in%></span>
+                            </div>
+                            <div class="getOtherLanguage" id = 'otherLangDom'>
+                            </div>
+                            <div class="selectWtap subLanguare">
+                                <div class="selectBox1">
+                                    <div class="selectView">
+                                        <input id="subLanguare" type="button" value="<%=translation.openClass.Add_Language%>">
+                                        <img src="/web/img/ICN_DROP.png" alt="">
+                                    </div>
+                                    <div class="selectBox1-hdnMenu1 otherLangBox">
+                                        <div class="moTitle">
+                                            <div class="downImg">
+                                                <img src="/web/img/down.png" alt="">
+                                            </div>
+                                            <div class="lanSelectBoxCloseBtn">
+                                                <button>
+                                                    <i class="xi-close"></i>
+                                                </button>
+                                            </div>
+                                            <h6>
+                                                Language
+                                            </h6>
+                                        </div>
+                                        <ul class="otherLanguageBox">
+                                        </ul>
+                                        <div class="otherLanguageBox-saveBtn" onclick="addOtherLangList()">
+                                            <button class="saveBtn-on" onclick="addOtherLangList()">
+                                                <%=translation.dashBoard.Save%>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pageBtns">
+                        <div class="backBtns">
+                            <button class="backBtn-on" onclick="moveTo('topics', 'language', 1)">
+                                <%=translation.openClass.Back%>
+                            </buuton>
+                        </div>
+                        <div class="moveBtns">
+                            <button class="nextBtn-on" onclick="moveTo('classTitle', 'language', 0)">
+                                <%=translation.openClass.Next%>
+                            </button>
+                        </div>
+                    </div>
+                </div> 
+                <!-- 4단계 클래스타이틀 -->
+                 <div class="classTitle commonStep" id = 'classTitle' style="display:none">
+                    <div>
+                        <div class="subTitle">
+                            <h3><%=translation.openClass.Class_Title_Description%></h3>
+                        </div>
+                        <div class="titleArea commonArea">
+                            <h4><%=translation.openClass.Title%></h4>
+                            <div class="inputArea" id="classTitleInputArea">
+                                <input type="text" id="classTitleInput" maxlength="100" onkeyup="limitText('classTitleInput', 'classTitleCount', 100)">
+                                <p class="countNum">
+                                    <span class="classTitleCount">0</span> / 100
+                                </p>
+                            </div>
+                        </div>
+                        <div class="descArea commonArea">
+                            <h4><%=translation.openClass.Description%></h4>
+                            <div class="inputArea" id="classDescArea">
+                                <textarea maxlength="1500" id="classDesc" onkeyup="limitText('classDesc', 'classDescCount', 1500)"></textarea>
+                                <p class="countNum">
+                                    <span class="descCount classDescCount">0</span> / 1500
+                                </p>
+                            </div>
+                        </div>
+                        <div class="keyWordsArea">
+                            <div>
+                                <h4><%=translation.openClass.Key_words%></h4>
+                                <span class="subText"><%=translation.openClass.You_can_only_select_five_keywords%></span>
+                            </div>
+                            <div class="completeKeyWordsArea">
+                                <div class="completeKeyWords">
+                                    <div class="getKeyWords chkBoxWrap">
+                                    </div>
+                                    <button class="showKeywords" onclick="$(this).parents('.keyWordsArea').toggleClass('active')">
+                                        <img src="/web/img/ICN_DROP.png" alt="">
+                                    </button>
+                                </div>
+                                <div class="allKeywords">
+                                    <div class="lifeStyleWrap">
+                                        <h5><%=translation.openClass.Lifestyle%></h5>
+                                        <div class="chkBoxWrap lifestyle">
+                        
+                                        </div>
+                                    </div>
+                                    <div class="workWrap">
+                                        <h5><%=translation.openClass.Work%></h5>
+                                        <div class="chkBoxWrap work">
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="healthWrap">
+                                        <h5><%=translation.openClass.Health%></h5>
+                                        <div class="chkBoxWrap health">
+                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pageBtns">
+                        <div class="backBtns">
+                            <button class="backBtn-on" onclick="moveTo('language', 'classTitle', 1)">
+                                <%=translation.openClass.Back%>
+                            </buuton>
+                        </div>
+                        <div class="moveBtns">
+                            <button class="nextBtn-on" onclick="moveTo('videos', 'classTitle', 0)">
+                                <%=translation.openClass.Next%>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+               <!-- 5단계 비디오&이미지 -->
+               <div class="videos-images commonStep" id = "videos" style="display: none">
+                <div>
+                    <div class="subTitle">
+                        <div>
+                            <h3><%=translation.openClass.Add_a_video_and_images_for_your_class_introduction%></h3>
+                            <span>
+                                <%=translation.openClass.Please_add_high_quality_video_and_images_to_showcase_your_content_and_class%>
+                            </span>
+                        </div>
+                        <p>
+                            <img src="/web/img/ICN_WARNING.png" alt="">
+                            <span>
+                                <%=translation.openClass.Warning_Please_only_use_images_you_are_licensed_to_use%>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="upload-mainCover commonUpload">
+                        <div class="uploadAreaTitle">
+                            <h4><%=translation.openClass.Main_Cover_Video_or_Image%></h4>
+                        </div>
+                        <div class="uploadBtn">
+                            <input type="file" id="uploadMainContent" accept="image/* , video/*" onchange="imageUploadFunc(this)">
+                            <label for="uploadMainContent">
+                                <!-- <img src="/web/img/BTN_ADD.png" alt=""> -->
+                            </label>
+                        </div>
+                        <div class="mainContentThumbArea commonThumbArea">
+                            <!--메인 썸네일 들어가는곳-->
+                        </div>
+                    </div>
+                        <!-- <img style="background-image: url('/web/img/createEvent/thumb.png');" id="preview-image" src="">
+                        <input style="display: block;" type="file" id="input-image"> -->
+                        <div class="upload-galleryImg commonUpload">
+                            <div class="uploadAreaTitle">
+                                <h4><%=translation.openClass.Gallery_Images%></h4>
+                                <span><%=translation.openClass.up_to_1_15_image_file%></span>
+                            </div>
+                            <div class="uploadBtn">
+                                <input type="file" name="uploadMainContents" id="uploadMainContents" accept="image/*" multiple onchange="imageUploadsFunc(this)">
+                                <!-- <input type="file" id="uploadMainContents" multiple> -->
+                                <label for="uploadMainContents">
+                                    <!-- <img src="/web/img/BTN_ADD.png" alt=""> -->
+                                </label>
+                            </div>
+                            <div class="galleryThumbArea commonThumbArea">
+                                <div id="preview">
+                                    
+                                </div>                       
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pageBtns">
+                        <div class="backBtns">
+                            <button class="backBtn-on" onclick="moveTo('classTitle', 'videos', 1)">
+                                <%=translation.openClass.Back%>
+                            </buuton>
+                        </div>
+                        <div class="moveBtns">
+                            <button class="nextBtn-on" onclick="moveTo('dpm', 'videos', 0)">
+                                <%=translation.openClass.Next%>
+                            </button>
+                        </div>
+                    </div>
+                </div> 
+                <!-- 6단계 날짜/시간&장소(1단계에서 class&program단순판매선택했을때 진행하는 단꼐) -->
+                <div class="date-place-method commonStep" id = "dpm" style="display: none">
+                    <div>
+                        <div class="subTitle">
+                            <h3><%=translation.openClass.Please_enter_the_class_time_and_place%></h3>
+                        </div>
+                        <div class="dateInputArea">
+                            <div class="dateInput-calendar">
+                                <!-- 회석 -->
+                                <div id="pickerBox1">
+                                    <!-- 캘린더영역 -->
+                                </div>
+                            </div>
+                            <div class="dateInput-time">
+                                <div class="dateInfo">
+                                    <h6><%=translation.openClass.Date%></h6>
+                                    <strong class="getDate" id="getClassOpenDate">
+                                        <%=translation.openClass.Please_select_a_date%>
+                                    </strong>
+                                </div>
+                                <div class="timeInfo">
+                                    <h6><%=translation.openClass.Time%></h6>
+                                    <div>
+                                        <div class="timeInfo-input">
+                                            <div class="timeInfo-input1">
+                                                <input type="text" id="onlyTime1" placeholder="00" maxlength="2" onkeyup="timeCheck(this,1)">
+                                                <span>:</span>
+                                                <input type="text" id="onlyMinutes1" placeholder="00" maxlength="2" onkeyup="timeCheck(this,2)">
+                                            </div>
+                                            <span>
+                                                ~
+                                            </span>
+                                            <div class="timeInfo-input2">
+                                                <input type="text" id="onlyTime2" placeholder="00" onkeyup="timeCheck(this,3)">
+                                                <span>:</span>
+                                                <input type="text" id="onlyMinutes2" placeholder="00" onkeyup="timeCheck(this,4)">
+                                            </div>
+                                        </div>
+                                        <div class="totalTime" id="totalTimeArea">
+                                            <strong>
+                                                <span id="classTotalTimeArea">0</span> <%=translation.openClass.Minutes%>
+                                            </strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <script>
+                                    var time1 = 0;
+                                    var time2 = 0;
+                                    var time3 = 0;
+                                    var time4 = 0;
+                                    var calculateTime = '';
+                                    function timeCheck(e,type)
+                                    {
+                                        var regExpHour = /(^[0-9]{1}$|^[1]{1}[0-9]{1}$|^[2][0-3]{1}|^23$)/g;
+                                        var regExpMinute = /(^[0-9]{1}$|^[1-5]{1}[0-9]{1}$|^59$)/g;
+
+                                        if(e.value==='')
+                                        {
+                                            return;
+                                        }
+
+                                        if(type === 1 || type === 3)
+                                        {
+                                            if(!regExpHour.test(e.value))
+                                            {
+                                                e.value = '';
+                                            }
+                                        }
+                                        
+                                        if(type === 2 || type === 4)
+                                        {
+                                            if(!regExpMinute.test(e.value))
+                                            {
+                                                e.value = '';
+                                            }
+                                        }
+
+                                        switch (type) {
+                                            case 1:time1 = e.value;
+                                                break;
+                                            case 2:time2 = e.value;
+                                                break;
+                                            case 3:time3 = e.value;
+                                                break;
+                                            case 4:time4 = e.value;
+                                                break;
+                                        }
+
+                                        calculateTime = ((time3 * 60) + (time4 * 1)) - ((time1 * 60) + (time2 * 1));
+
+                                        document.querySelector('.totalTime span').innerText = calculateTime;
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                        <div class="place-methodArea">
+                            <div class="ifPlace" id='ifPlace' style="display:none">
+                                <div class="contentsTitle">
+                                    <h4><%=translation.openClass.Place_Address%></h4>
+                                </div>
+                                <div class="addressInputArea" id="googleMapAddressArea">
+                                    <input type="text" id="googleMapAddress" placeholder="Address">
+                                    <button id="googleMapSearch" value="Geocode" onclick="googleMapSearch()"><%=translation.openClass.Search%></button>
+                                </div>
+                                <div class="mapArea">
+                                    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313549.9076670893!2d125.63011886114498!3d35.80266851494636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356455ebcb11ba9b%3A0x91249b00ba88db4b!2z64yA7ZWc66-86rWt!5e0!3m2!1sko!2skr!4v1630908295624!5m2!1sko!2skr" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
+                                    <div id="googleMap" style="width:100%; height:100%;"></div>
+                                </div>
+                            </div>
+                            <div class="ifMethod" id ='ifMethod'  style="display:none">
+                                <div class="contentsTitle">
+                                    <h4><%=translation.openClass.Method%></h4>
+                                    <span>
+                                        <%=translation.openClass.Please_provide_a_link_to_take_the_class_and_the_contents_This_information_is_only_exposed_to_those_who_have_purchased_the_class%>
+                                    </span>
+                                </div>
+                                <div class="inputArea" id='methodInfoArea'>
+                                    <textarea maxlength="1500" id="methodInfo" maxlength="1500" onkeyup="limitText('methodInfo', 'methodDescCount', 1500)"></textarea>
+                                    <p class="countNum">
+                                        <span class="methodDescCount">0</span> / 1500
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pageBtns">
+                        <div class="backBtns">
+                            <button class="backBtn-on" onclick="moveTo('videos', 'dpm', 1)">
+                                <%=translation.openClass.Back%>
+                            </buuton>
+                        </div>
+                        <div class="moveBtns">
+                            <button class="nextBtn-on" onclick="moveTo('salePeriod', 'dpm', 0)">
+                                <%=translation.openClass.Next%>
+                            </button>
+                        </div>
+                    </div>
+                </div> 
+                <!-- 6단계 클래스콘텐츠설정(Class  Development Listing 선택시)-->
+                <div class="classDevelop commonStep" id ="classDevelop" style="display: none">
+                    <div>
+                        <div class="subTitle">
+                            <h3><%=translation.openClass.Create_contents_for_your_class%></h3>
+                        </div>
+                        <div class="commonSetting setting-chapters">
+                            <h4><%=translation.openClass.Class_Chapters%></h4>
+                            <div class="addChapters">
+                                <ul class="chapters" id = "chapterList">
+                                    <li id ="chapterButton1">
+                                        <button class="chapterButton active" id = "chapterButtonCircle1" onclick="selectAndSaveData(1)">1</button>
+                                    </li>
+                                </ul>
+                                <div class="addChaptersBtns">
+                                    <button class="delChapterBtn-on" onclick="chapterButtonController('remove')">-</button>
+                                    <button class="addChapterBtn-on" onclick="chapterButtonController('add')">+</button>+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="commonSetting setting-title">
+                            <h4><%=translation.openClass.Chapter_Title%></h4>
+                            <div class="setting-title-inputArea" id = "classSettingTitleArea">
+                                <input type="text" id="classSettingTitle" maxlength="100" onkeyup="limitText('classSettingTitle', 'countSettingTitle', 100)">
+                                <p>
+                                    <span class="countSettingTitle">0</span>/100
+                                </p>
+                            </div>
+                        </div>
+                        <div class="commonSetting setting-desc">
+                            <h4><%=translation.openClass.Chapter_Description%></h4>
+                            <div class="setting-desc-inputArea" id ="classSettingDescArea">
+                                <textarea id="classSettingDesc" maxlength="500" maxlength="100" onkeyup="limitText('classSettingDesc', 'countSettingDesc', 500)"></textarea>
+                                <p>
+                                    <span class="countSettingDesc">0</span>/500
+                                </p>
+                            </div>
+                        </div>
+                        <div class="commonSetting setting-contents">
+                            <h4><%=translation.openClass.Class_Contents%></h4>
+                            <div class="setting-contents-list" >
+                                <ul id ="setting-contents-list">
+                                    <!-- <li class="contentInfo">
+                                        <div class="left">
+                                            <img src="/web/img/contentsIcon/1.png" alt="">
+                                            <span>Title: Learning To Surrender</span>
+                                        </div>
+                                        <div class="right">
+                                            <button class="detailsBtn-on">Details</button>
+                                            <button class="delBtn-on">
+                                                <img src="/web/img/ICN_DELETE.png" alt="">
+                                            </button>
+                                        </div>
+                                    </li>
+                                    <li class="contentInfo">
+                                        <div class="left">
+                                            <img src="/web/img/contentsIcon/1.png" alt="">
+                                            <span>Title: Learning To Surrender</span>
+                                        </div>
+                                        <div class="right">
+                                            <button class="detailsBtn-on">Details</button>
+                                            <button class="delBtn-on">
+                                                <img src="/web/img/ICN_DELETE.png" alt="">
+                                            </button>
+                                        </div>
+                                    </li> -->
+                                </ul>
+                                <div class="addContentsBtn">
+                                    <button class="addContentsBtn-onf" onclick="customModal(18)">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pageBtns">
+                        <div class="backBtns">
+                            <button class="backBtn-on" onclick="moveTo('videos', 'classDevelop', 1)">
+                                <%=translation.openClass.Back%>
+                            </buuton>
+                        </div>
+                        <div class="moveBtns">
+                            <button class="nextBtn-on" onclick="moveTo('certification', 'classDevelop', 0)">
+                                <%=translation.openClass.Next%>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 7단계 수료증 템플릿 방식(Class Development Listing 선택시) -->
+                <div class="certification commonStep" id = "certification" style="display: none">
+                    <div>
+                        <div class="subTitle">
+                            <h3><%=translation.openClass.Please_select_a_certificate_template%></h3>
+                        </div>
+                        <div class="templateArea">
+                            <div class="commonTemplate tem1" id="commonTemplate1">
+                                <div class="imgArea" style="background-image: url('/web/img/certification/1.png');" onclick="customModal(19, '/web/img/certification/1.png')">
+                                    <div class="hoverPopup" id="">
+                                        <span><%=translation.openClass.View%></span>
+                                    </div>
+                                </div>
+                                <button class="temSelectBtn-on" onclick="changeButtonColor(this, 'commonTemplate1')">
+                                    <%=translation.loginAndJoin.Select%>
+                                </button>
+                            </div>
+                            <div class="commonTemplate tem2" id="commonTemplate2">
+                                <div class="imgArea" style="background-image: url('/web/img/certification/2.png');" onclick="customModal(19, '/web/img/certification/2.png')">
+                                    <div class="hoverPopup" id="" >
+                                        <span><%=translation.openClass.View%></span>
+                                    </div>
+                                </div>
+                                <button class="temSelectBtn-on" onclick="changeButtonColor(this, 'commonTemplate2')">
+                                    <%=translation.loginAndJoin.Select%>
+                                </button>
+                            </div>
+                            <div class="commonTemplate tem3" id="commonTemplate3">
+                                <div class="imgArea" style="background-image: url('/web/img/certification/3.png');" onclick="customModal(19, '/web/img/certification/3.png')">
+                                    <div class="hoverPopup" id=""">
+                                        <span><%=translation.openClass.View%></span>
+                                    </div>
+                                </div>
+                                <button class="temSelectBtn-on" onclick="changeButtonColor(this, 'commonTemplate3')">
+                                    <%=translation.loginAndJoin.Select%>
+                                </button>
+                            </div>
+                            <div class="noTem" id="commonTemplate0">
+                                <div class="noneImg">
+                                    <strong>
+                                        <%=translation.openClass.No_certificate_of_completion%>
+                                    </strong>
+                                </div>
+                                <button class="temSelectBtn-on" onclick="changeButtonColor(this, 'commonTemplate0')">
+                                    <%=translation.loginAndJoin.Select%>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="uploadTemplateArea">
+                            <div class="uploadTemplateBtn">
+                                <div class="uploadTemplateBtn-on">
+                                    <input type="file" id="uploadTemplate" onchange="certificationUploadFunc(this)">
+                                    <label for="uploadTemplate">
+                                        <strong>
+                                            <%=translation.openClass.Upload_a_new_template%>
+                                        </strong>
+                                    </label>
+                                </div>
+                                <button class="openGuideModal" onclick="customModal(21)">
+                                    <img src="/web/img/ICN_INFO.png" alt="">
+                                </button>
+                                <div class="modal modal21">
+                                    <div>
+                                        <div class="xBtn">
+                                            <button onclick="customModalClose(21)">
+                                                <img src="/web/img/ICN_CLOSE.png" alt="">
+                                            </button>
+                                        </div>
+                                        <div class="title">
+                                            <h3><%=translation.openClass.CertificatesTemplateGuide%></h3>
+                                        </div>
+                                        <div class="showImgArea">
+                                            <div class="imgGuide">
+                                                <img src="/web/img/cer_guide_cap.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="get-uploadTemplate">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pageBtns">
+                        <div class="backBtns">
+                            <button class="backBtn-on" onclick="moveTo('classDevelop', 'certification', 1)">
+                                <%=translation.openClass.Back%>
+                            </buuton>
+                        </div>
+                        <div class="moveBtns">
+                            <button class="nextBtn-on moveToNextButton" onclick="checkPayment('certification')">
+                                <%=translation.openClass.Next%>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 7단계-1 판매기간설정(class&program단순판매선택) -->
+                <div class="salePeriod commonStep" id="salePeriod" style="display:none">
+                    <div>
+                        <div class="subTitle">
+                            <h3><%=translation.openClass.Please_set_the_class_sales_start_and_sales_completion_time%></h3>
+                        </div>
+                        <div class="dateInputArea">
+                            <div class="dateInput-calendar">
+                                <div id="pickerBox2">
+                                    <!-- 캘린더영역 -->
+                                </div>
+                            </div>
+                            <div class="dateInput-time">
+                                <div class="dateInfo">
+                                    <h6><%=translation.openClass.Date%></h6>
+                                    <div>
+                                        <input id="classSellStartDate" type="text" value="<%=translation.openClass.Please_select_a_date%>" readonly>
+                                        <span>~</span>
+                                        <input id="classSellEndDate" type="text" value="<%=translation.openClass.Please_select_a_date%>" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pageBtns">
+                        <div class="backBtns">
+                            <button class="backBtn-on" onclick="moveTo('dpm', 'salePeriod', 1)">
+								<%=translation.openClass.Back%>
+                            </buuton>
+                        </div>
+                        <div class="moveBtns">
+                            <button class="nextBtn-on moveToNextButton" onclick="checkPayment()">
+                                <%=translation.openClass.Next%>
+                            </button>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </article>
+
+    <div class="modal modal17">
+        <div>
+            <div class="xBtn">
+                <button onclick="customModalClose(17)">
+                    <img src="/web/img/ICN_CLOSE_40.png" alt="">
+                </button>
+            </div>
+            <div class="title">
+                <h3><%=translation.openClass.Image_Editor%></h3>
+            </div>
+            <div class="showImgArea" id = "showImgArea">
+                <!-- <div id= "editImg" style="background-image: url('/web/img/eventDetail/thumb.png');"> -->
+                <!-- <div id= "editImg">
+                </div> -->
+                <canvas id = "canvasImgContainer">
+                </canvas>
+            </div>
+            <div class="saveBtn">
+                <button class="saveBtn-on" id="editImgBtn">
+                    <%=translation.dashBoard.Save%>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="modal modal96">
+        <div>
+            <div class="xBtn">
+                <button onclick="customModalClose(96)">
+                    <i class="xi-close"></i>
+                </button>
+            </div>
+            <h4>
+                <%=translation.openClass.Host_Studio_Service%><br><%=translation.openClass.For_Class_development_Listing%>
+            </h4>
+            <!-- <div id="paypal-button-container" style="width: 100%; height: 100%;"></div> -->
+            <ul class="choiceWrap">
+                <li id="subscribeMonth">
+                    <p><%=translation.openClass.Monthly_service_fee%></p>
+                    <h3><%=translation.openClass.Dollar55%></h3>
+                    <!-- <div id="paypal-button-container" style="width: 200px; height: 60px;"></div> -->
+                    <button onclick="classObjectInsertMongo('month')"><%=translation.loginAndJoin.Select%></button>
+                    <div id="paypal-button-container-month" style="width: 196px;padding-top:5px"></div>
+        
+                </li>
+                <li id="subscribeYear">
+                    <p><%=translation.openClass.Annual_service_fee%></p>
+                    <h3><%=translation.openClass.Dollar599%></h3>
+                    <button onclick="classObjectInsertMongo('year')"><%=translation.loginAndJoin.Select%></button>
+                    <div id="paypal-button-container-year" style="width: 196px;padding-top:5px"></div>
+                </li>
+            </ul>
+            <span class="textBox">
+                <%=translation.openClass.The_service_fee_is_paid_monthly_or_annually_according_to_the_selected_method%>
+                <br><%=translation.openClass.The_program_sales_commission_is_30percent_of_the_sales_amount_when_selling_Classes%>
+                <br><%=translation.openClass.By_continuing_with_purchase_you_agree_to_our_Terms_of_Service%> <a href="#"><%=translation.footer.Terms_of_Service%></a>
+            </span>
+        </div>
+        <!-- <div id="paypal-button-container" style="width: 200px; height: 60px;"></div> -->
+    </div>
+    <div class="modal modal19">
+        <div>
+            <div class="xBtn">
+                <button onclick="customModalClose(19)">
+                    <img src="/web/img/ICN_CLOSE_40.png" alt="">
+                </button>
+            </div>
+            <div class="title">
+                <h3><%=translation.openClass.CertificatesTemplate%></h3>
+            </div>
+            <div class="showImgArea">
+                <div id="certificatesDetail"></div>
+            </div>
+        </div>
+    </div>
+    <%- include ./createClassDevelopmentModal.html%>
+
+    <input type="file" id="videoContentsTemp" accept="video/*" style="display: none;">
+    <input type="file" id="audioContentsTemp" style="display: none;">
+</section>
+<script src="/web/js/createClassStudioService.js"></script>
+<script src="/web/js/createClassStudioTopics.js"></script>
+<script src="/web/js/createClassStudioLanguage.js"></script>
+<script src="/web/js/createClassStudioClassTitle.js"></script>
+<!-- <script src="/web/js/keywordsList.js"></script> -->
+<!-- 캘린더 이벤트 -->
+<script src="/web/js/customPicker/customPicker.js"></script>
+<script>
+    var calendarCheck = true;
+    var saveFirstDate;
+    var option = {
+        pastDateNotCheck:true,//과거날짜 선택여부
+        singleDate:true,//싱글데이트 여부
+    }
+    var option2 = {
+        pastDateNotCheck:true,//과거날짜 선택여부
+        todayStart:false,
+        nDayCheck:{
+            check:true,
+            days:14
+        },//n일 체크
+    }
+    setInterval(function()
+    {
+        if(calendarCheck)
+        {
+            entwizCalendar.init("pickerBox1",option);
+            console.log('나는 pickerBox1 init~~~');
+            
+            calendarCheck = false;
+        }
+    },1000);
+
+    //스와이퍼
+    var swiper = new Swiper(".stepNav", {
+        slidesPerView: "auto",
+        observer: true,
+        observeParents: true,
+        observeSlideChildren: true
+    });
+
+    // $(window).on('load resize', function() {
+    //     var swiper = undefined;
+    //     if($(this).innerWidth() <= 1880)
+    //     {
+    //         swiper = new Swiper(".stepNav", {
+    //             slidesPerView: "auto",
+    //             observer: true,
+    //             observeParents: true,
+    //             observeSlideChildren: true
+    //         });
+    //     }
+    //     else
+    //     {
+    //         swiper.destroy();
+    //         swiper = undefined;
+    //         $('.swiper-wrapper').removeAttr('style');
+    //         $('.swiper-slide').removeAttr('style');
+    //     }
+    // })
+
+
+    //옵션박스 외부 클릭시 옵션박스 닫기
+    $('html').click(function(e) {
+        if(!$(e.target).hasClass('selectBox1-hdnMenu1'))
+        {
+            $('.targetMenu').removeClass('active');
+        }
+    })
+    
+    //선택한 옵션값 넣기
+    $(document).on('click', 'input[type="button"]', function() {
+        $(this).parent('.selectView').next('.selectBox1-hdnMenu1').toggleClass('active');
+
+        //topics
+        //첫번째 포맷 카테고리
+        $('input[name="formatSelect1"]').on('click', function() {
+            var selectVal = $(this).val();
+            $(this).parents('.selectBox1').find('#format1').val(selectVal).css('color', '#fcfcfc');
+            $(this).parents('.selectBox1-hdnMenu1').removeClass('active')
+        });
+        
+        //두번째 포맷 카테고리
+        $('input[name="formatSelect2"]').on('click', function() {
+            var selectVal = $(this).val();
+            var selectedShow = document.getElementById(selectVal+'inner').innerText;
+            document.getElementById('format2').value1 = selectVal;
+            $(this).parents('.selectBox1').find('#format2').val(selectedShow).css('color', '#fcfcfc');
+            $(this).parents('.selectBox1-hdnMenu1').removeClass('active')
+        });
+
+        //회석
+        $('input[name="formatSelect2"]').on('change', function() {
+            var selectVal = $(this).val();
+            if(selectVal == 'Other' || selectVal == '기타')
+            {
+                $('.formatBox3').removeClass('hidden');
+            }
+            else
+            {
+                $('.formatBox3').addClass('hidden');
+            }
+        });
+
+        //첫번째 카테고리 카테고리
+        $('input[name="categotyOption"]').on('click', function() {
+            var selectVal = $(this).val();
+            console.log('get select val : ' + selectVal);
+            var selectedShow = document.getElementById(selectVal+'inner').innerText;
+            document.getElementById('category1').value1 = selectVal;
+            $(this).parents('.selectBox1').find('#category1').val(selectedShow).css('color', '#fcfcfc');
+
+            $(this).parents('.selectBox1-hdnMenu1').removeClass('active');
+
+            var categoryOption = "";
+            var optionName = "";
+
+            //선택창이 뜰지 직접입력이 뜰지?
+            if(selectVal == "Mindfulness" || selectVal == "Meditation" || selectVal == "Yoga" || selectVal == "Somatic")
+            {
+                var selectBox = '<div class="selectBox1 categoryBox2">' +
+                                    '<div class="onlySelect">' +
+                                        '<div class="selectView">' +
+                                            '<input id="category2" type="button" value="<%=translation.loginAndJoin.Select%>">' +
+                                            '<img src="/web/img/ICN_DROP.png" alt="">' +
+                                        '</div>' +
+                                        '<ul class="selectBox1-hdnMenu1 targetMenu topicsHdnMenu categorySelectBox2"></ul>' +
+                                    '</div>' +
+                                '</div>'
+
+                    $('.getBox').html(selectBox);
+            }
+            else
+            {
+                var inputBox = '<div class="onlyInput">' +
+                                    '<input type="text" id="directInpt">' +
+                                '</div>'
+                $('.getBox').html(inputBox);
+            }
+            //선택에따른 각각의 셀렉트박스
+            if(selectVal == "Mindfulness")
+            {
+                optionName = categoryMindFulness;
+            }
+            else if(selectVal == "Meditation")
+            { 
+                optionName = categoryMeditation;
+            }
+            else if(selectVal == "Yoga")
+            {
+                optionName = categoryYoga;
+            }
+            else if(selectVal == "Somatic")
+            {
+                optionName = categorySomatics;
+            }
+            
+
+
+            for(var i = 0; i < optionName.length; i++)
+            {
+                var inner = optionName[i];
+                if(inner=='Others'){
+                    categoryOption = categoryOption + '<li>'+
+                                        '<input type="radio" value="'+optionName[i]+'" id="'+optionName[i]+'sub" name="categoryMindFulness" onclick="addCategoryInputBox(\'others\')">' +
+                                        '<label for="'+optionName[i]+'sub">' +
+                                            '<span>'+inner+'</span>' +
+                                        '</label>' +
+                                    '</li>'
+                }else{
+                    categoryOption = categoryOption + '<li>'+
+                                        '<input type="radio" value="'+optionName[i]+'" id="'+optionName[i]+'sub" name="categoryMindFulness" onclick="addCategoryInputBox(\'normal\')">' +
+                                        '<label for="'+optionName[i]+'sub">' +
+                                            '<span>'+inner+'</span>' +
+                                        '</label>' +
+                                    '</li>'
+                }
+            }
+            $('.categorySelectBox2').html(categoryOption)
+            addCategoryInputBox('normal')
+
+        });
+
+        //4가지 유형의 셀렉박스
+        $('input[name="categoryMindFulness"]').on('click', function() {
+            var selectVal = $(this).val();
+            $(this).parents('.onlySelect').find('#category2').val(selectVal).css('color', '#fcfcfc');
+        })
+
+        //레벨카테고리
+        $('input[name="levelOption"]').on('click', function() {
+            var selectVal = $(this).val();
+            var selectedShow = document.getElementById(selectVal+'inner').innerText;
+            document.getElementById('level').value1 = selectVal;
+            $(this).parents('.selectBox1').find('#level').val(selectedShow).css('color', '#fcfcfc');
+            $(this).parents('.selectBox1-hdnMenu1').removeClass('active')
+        });
+
+        //language
+        //첫번째 언어 카테고리
+        $('input[name="defaultLanguageOption"]').on('click', function() {
+            var selectVal = $(this).val();
+            $(this).parents('.selectBox1').find('#mainLanguage').val(selectVal).css('color', '#fcfcfc');
+            $(this).parents('.selectBox1-hdnMenu1').removeClass('active')
+            appendMainLanguageList();
+            appendOtherLanguageList();
+            document.getElementById('otherLangDom').innerHTML =''
+        });
+
+    })
+
+    $('.chapterButton').click(function() {
+        $('.chapterButton').removeClass('active');
+        $(this).addClass('active');
+    });
+
+
+    var classObject = {};
+    classObject.isFree='paid';
+    classObject.certificationSelect = 'noSelect';
+    classObject.chapterList=[];
+
+    function objectReset(){
+        classObject = {};  
+        classObject.isFree='paid';
+        classObject.chapterList=[];
+        classObject.certificationSelect = 'noSelect';
+    }
+
+    function imgReset(){
+        console.log(' is come to reset')
+        var singleFileList = [];
+        var certificationSingleFileList = [];
+        var certificationFileList = [];
+        var multipleFileList = [];
+        console.log(JSON.stringify(singleFileList))
+    }
+
+    function changeButtonColor(e, parentId)
+    {
+
+        var btnList = document.getElementsByClassName("temSelectBtn-on")
+        for(var i = 0; i<btnList.length; i++){
+            btnList[i].classList.remove('active');
+            console.log('come check')
+        }
+      //  if($(e).hasClass('active'))
+      //  {
+      //      $(e).removeClass('active')
+      //  }
+      //  else
+      //  {
+      //      $(e).addClass('active')
+       // }
+        
+        classObject.certificationSelect = parentId;
+
+        $(e).addClass('active')
+    }
+
+    thisLocation='studioService';
+
+    function makeBorderRed(id){
+        document.getElementById(id).style.borderColor = "#eb5757";
+    }
+
+    var certificationFlag = false;
+
+    // paging
+    function moveTo(target, before, isBefore){
+        thisLocation=target;
+        if(target==before){
+            return;
+        }
+
+        //Validation
+        var selectText = '<%=translation.loginAndJoin.Select%>';
+        console.log("selectText = " + selectText)
+
+        
+        
+        if(before=='classDevelop'){
+            console.log('is before check')
+            var thisChapter =document.getElementsByClassName('chapterButton active')[0].innerText;
+            selectAndSaveData(0);
+        }
+
+
+        // 1단계 다음 버튼시
+        if(target == 'topics')
+        {
+            if(!$(".commonPickBtn").hasClass("active"))
+            {
+                alert("클래스 방식을 선택해주세요.")
+                return;
+            }
+
+            if(classObject.isFree === 'paid')
+            {
+                if(document.getElementById('inputPrice').value === '')
+                {
+                    alert('가격을 입력해주세요.');
+                    document.getElementById('inputPrice').style.borderColor = "#eb5757";
+                    return;
+                }
+
+                priceTemp = document.getElementById('selectPrice').value;
+                if(priceTemp === '$ USD')
+                {
+                    if(document.getElementById('inputPrice').value > 909)
+                    {
+                        alert('Available for less than 910$');
+                        return;
+                    }
+                }
+                if(priceTemp === '₩ KRW')
+                {
+                    if(document.getElementById('inputPrice').value > 999999)
+                    {
+                        alert('1000000원 미만만 가능합니다.');
+                        return;
+                    }
+                }
+            }
+            if(document.getElementById('audience').value == 'select'||document.getElementById('audience').value=='선택'){
+                makeBorderRed('audienceSelectBox');
+                return;
+            }
+
+            if(document.getElementById('audience').value=='input'||document.getElementById('audience').value=='직접 입력'){
+                if(document.getElementById('inputAudience').value==''){
+                    makeBorderRed('inputAudience');
+                    return;
+                }
+            }
+        }
+         // 2단계 다음 버튼시
+        else if (target == 'language')
+        {
+            $('input[name="selectVal"]').each(function()
+            {
+                if($(this).val() == selectText)
+                {
+                    $(this).closest('.selectBox1').css('border-color','#eb5757');
+                }
+                else
+                {
+                    $(this).closest('.selectBox1').css('border-color','rgba(255, 255, 255, 0.45)');
+                }
+            });
+            if($('#format1').val() == selectText)
+            {
+                alert('포맷을 선택해주세요.');
+                return;
+            }
+
+            if($('#format2').val() == selectText)
+            {
+                alert('포맷 상세를 선택해주세요.');
+                return;
+            }
+
+            if($('#category1').val() == selectText)
+            {
+                alert('카테고리를 선택해주세요.');
+                return;
+            }
+
+            if($('#category2').val() == selectText || $('#category2').val() === 'Select')
+            {
+                alert('카테고리 상세를 선택해주세요.');
+                $('#category2').closest('.selectBox1').css('border-color','#eb5757');
+                return;
+            }
+            if($('#directInpt').val() === '')
+            {
+                alert('카테고리 상세를 입력해주세요.');
+                $('#directInpt').css('border','1px solid #eb5757');
+                return;
+            }
+            if(document.getElementById('level').value1 == undefined ||  document.getElementById('level').value1 == '') {
+                alert('레벨을 선택해주세요.');
+                $('#level').css('border','1px solid #eb5757');
+                $('#level').css('border-radius','6px');
+                return;
+            }
+        }
+        //타이틀 버튼시
+        else if(target=='classTitle'){
+            if(document.getElementById('mainLanguage').value==selectText){
+                makeBorderRed('mainlanguageBox');
+                return;
+            }
+        }
+        // 3단계 다음 버튼시
+        else if (target == 'videos')
+        {
+            if($('#classTitleInput').val() == '')
+            {
+                alert('제목을 입력해주세요.');
+                makeBorderRed('classTitleInputArea')
+                return;
+            }
+
+            if($('#classDesc').val() == '')
+            {
+                alert('소개를 입력해주세요.');
+                makeBorderRed('classDescArea');
+                return;
+            }
+        }
+        // 4단계 다음 버튼시
+        else if (target == 'dpm')
+        {
+            //========#pickerBox2달력 초기화
+            $('#pickerBox2 > *').remove();
+            $('#classSellStartDate').val('<%=translation.openClass.Please_select_a_date%>')
+            $('#classSellEndDate').val('<%=translation.openClass.Please_select_a_date%>')
+            //========#pickerBox2달력 초기화
+            //ifcheck
+            if(classIdForEdit.length<1){
+                if(singleFileList.length===0)
+                {
+                    alert('메인 영상 또는 이미지를 업로드해주세요.');
+                    return;
+                }
+
+                if(document.getElementsByClassName('mainContentThumb').length < 2)
+                {
+                    alert('갤러리 이미지를 최소 1개 이상 업로드해주세요.');
+                    return;
+                }
+            }
+        }
+        else if(target =='certification')
+        {
+            chapterList = classObject.chapterList;
+            for(var i =0 ; i<chapterList.length ; i++){
+                if(chapterList[i].chapterTitle.length<1){
+                    alert(`챕터 ${chapterList[i].chapterNum}의 제목을 입력해 주세요`)
+                    makeBorderRed('classSettingTitleArea');
+                    return;
+                }else if(chapterList[i].chapterDescription.length<1){
+                    alert(`챕터 ${chapterList[i].chapterNum}의 소개를 입력해 주세요`)
+                    makeBorderRed('classSettingDescArea');
+                    return;
+                }else if(chapterList[i].chapterContentsList==undefined||chapterList[i].chapterContentsList=='undefined'){
+                    alert(`챕터 ${chapterList[i].chapterNum}의 컨텐츠를 추가해 주세요`)
+                    return;
+                }    
+            }
+
+
+            if(document.getElementById('classSettingTitle').value==''){
+                makeBorderRed('classSettingTitleArea');
+                alert(`챕터 제목을 입력해 주세요`)
+                return;
+            }
+            if(document.getElementById('classSettingDesc').value==''){
+                makeBorderRed('classSettingDescArea');
+                alert(`챕터 소개를 입력해 주세요`)
+                return;
+            }
+            if(!document.getElementById('setting-contents-list').hasChildNodes){
+                makeBorderRed('classSettingDescArea');
+                alert(`챕터 소개를 입력해 주세요`)
+                return;
+            }
+        }
+        else if(target =='salePeriod'){
+            var dateText = '<%=translation.openClass.Please_select_a_date%>'
+            var pickerBox2Check = true;
+            console.log('come check');
+            option2.nDayCheck.days = (((new Date(saveFirstDate).getTime() - 32400000)-new Date(new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate()).getTime()) / (1000 * 60 * 60 * 24))+1;
+
+            // 여기가 원래  init 자리
+            if(pickerBox2Check) {
+                entwizCalendar.init("pickerBox2",option2);
+                pickerBox2Check = false;
+            }
+            
+
+            if((document.getElementById('getClassOpenDate').innerHTML).includes(dateText)){
+                alert('날자를 지정해 주세요.');
+                return;
+            }
+            if(parseInt(document.getElementById('classTotalTimeArea').innerHTML)<1){
+                alert('시간을 지정해 주세요');
+                makeBorderRed('totalTimeArea');
+                return;
+            }
+
+            if((document.getElementById('format1').value=='offline'||document.getElementById('format1').value=='오프라인')&&document.getElementById('googleMapAddress').value==''){
+                makeBorderRed('googleMapAddressArea')
+                alert('위치를 지정해 주세요.');
+                return;
+            }
+            if((document.getElementById('format1').value=='online'||document.getElementById('format1').value=='온라인')&&document.getElementById('methodInfo').value==''){
+                makeBorderRed('methodInfoArea')
+                alert('방법을 지정해 주세요.');
+                return;
+            }
+        }
+        
+
+
+
+
+
+
+
+        if(target == 'dpm'&&classObject.premium!='premium'){
+            if(classIdForEdit.length>0){
+                checkDateInDpm();
+            }
+            classObject.online = document.getElementById('format1').value;
+            var inner = '';
+            if(document.getElementById('format1').value=='<%=translation.classManagement.Online%>'){
+                classObject.online='online';
+                inner = '6. <%=translation.openClass.Date_Method%>'
+                document.getElementById('ifPlace').style.display='none';
+                document.getElementById('ifMethod').style.display='';
+            }else{
+                classObject.online='offline';
+                inner='6. <%=translation.openClass.Date_Place%>'
+                document.getElementById('ifPlace').style.display='';
+                mindgroundMap();
+                document.getElementById('ifMethod').style.display='none';
+            }
+            document.getElementById('dpmText').innerText = inner
+
+        }else if(target == 'dpm'&&classObject.premium=='premium'){
+            target='classDevelop';
+            classObject.online='online';
+        }
+
+        document.getElementById(target).style.display = '';
+
+        document.getElementById(before).style.display ='none';
+        if(before == 'dpm'){
+            document.getElementById('classDevelop').style.display = 'none'
+            var develop = document.getElementById('classDevelopIcon');
+            develop.classList.remove('active');
+            develop.classList.remove('recent')
+        }else if(before =='classDevelop'){
+            document.getElementById('dpm').style.display ='none';
+            var develop = document.getElementById('dpmIcon');
+            develop.classList.remove('active');
+            develop.classList.remove('recent')
+        }
+
+        if(isBefore){
+            document.getElementById(before+'Icon').classList.remove('active');
+            var targetIcon = document.getElementById(target+'Icon').classList;
+            // targetIcon.remove('complete')
+            targetIcon.add('active');
+        }else{
+            document.getElementById(target+'Icon').classList.add('active')
+            document.getElementById(target+'Icon').classList.add('recent')
+            var targetIcon = document.getElementById(before+'Icon').classList;
+            targetIcon.add('complete');
+            targetIcon.remove('active')
+            targetIcon.remove('recent')
+        }
+
+
+        
+        if(target === "classDevelop")
+        {
+            var text = '<li class="stpeBtns swiper-slide"></li>'
+            document.querySelector('.swiper-wrapper').innerHTML += text
+        }
+    }
+
+    //수정 클래스 아이디
+    classIdForEdit = '';
+    //수정 이미지 리스트
+    thumbNailSubForEdit =[];
+    //삭제될 이미지 리스트
+    imgRemoveList=[]
+    
+    // 삭제될 certification 리스트
+    var certificationRemoveList = [];
+    
+    //클래스 수정
+    function editClass(objectNum){
+        
+        var tempClass = <%-JSON.stringify(listClassObject)%>;
+        console.log(`comecheck ${JSON.stringify(tempClass[i])}`)
+        classObject = tempClass[objectNum].classObject;
+        classIdForEdit = tempClass[objectNum]._id;
+        selectContents('classesCreate', 'classEdit')
+
+    }
+
+    //클래스 정보 입력
+    function editClassSetting(){
+        studioServiceSetting();
+        subjectSetting();
+        languageSetting();
+        classSubjectSetting();
+        classImgSetting();
+        if(classObject.premium=='premium'){
+            makeClassSetting()
+        }
+        else
+        {
+            classDpmSetting();
+            classSellDateSetting()
+            
+        }
+    }
+
+    function makeClassSetting(){
+        chapterListForEdit = classObject.chapterList[0];
+        for(var i =1; i<chapterListForEdit.length; i++){
+            document.getElementsByClassName('addChapterBtn-on')[0].click();
+        }
+        console.log(JSON.stringify(classObject.chapterList[0]) +'asdasdads');
+        document.getElementById('classSettingTitle').value=chapterListForEdit.chapterTitle;
+        document.getElementById('classSettingDesc').value=chapterListForEdit.chapterDescription;
+        appendContentList(0);
+    }
+
+    //스튜디오 서비스 샛팅
+    function studioServiceSetting(){
+        console.log('get class object' + classObject.premium);
+
+        document.getElementsByClassName('get-commonForm')[0].innerHTML=commonForm;
+        if(classObject.isFree!='paid'){
+            document.getElementById('providing').checked=true;
+            isFreeCheck(document.getElementById('providing'));
+        }else{
+            var params = new URL(location.href);
+            var lang = params.searchParams.get("clang");
+
+            if(lang=='en'){
+                document.getElementById('inputPrice').value = classObject.usd;
+                document.getElementById('getInputPrice').value=classObject.krw;
+            }else{
+                document.getElementById('inputPrice').value = classObject.krw;
+                document.getElementById('getInputPrice').value=classObject.usd;
+            }
+        }
+
+        if(classObject.premium=='premium'){
+            document.getElementsByClassName('developmentBtn-on')[0].classList.add('active');
+            choosePremium('premium');
+            $('.get-commonForm').append(onlyDevelopInputBox);
+            document.getElementById('availableDays').value=classObject.availableDays;
+
+        }else{
+            document.getElementsByClassName('programBtn-on')[0].classList.add('active');
+            choosePremium('normal');
+        }
+
+        if(classObject.audience=='Unlimited'){
+            document.getElementById('audience').value ='무제한'
+        }else{
+            document.getElementById('audience').value ='직접입력'
+            $('.createInputBox').html('<input type="text" id="inputAudience">');
+            document.getElementById('inputAudience').value = classObject.audience;
+        }
+        
+
+        studioServiceBoxChange()
+    
+    }
+
+
+    //주제 수정
+    function subjectSetting(){
+        var course = '';
+        if(classObject.online=='online'){
+            course = '<%=translation.classManagement.Online%>';
+        }else{
+            course =  '<%=translation.classManagement.Offline%>'
+        }
+
+        document.getElementById('format1').value=course;
+        document.getElementById('format2').click();
+        document.getElementById(classObject.course).click();
+        document.getElementById('category1').click();
+        document.getElementById(classObject.mainCategory).click();
+        document.getElementById('category2').click();
+        document.getElementById(classObject.subCategory+'sub').click();
+        document.getElementById('level').click();
+        document.getElementById(classObject.level+'2').click();
+        
+    }
+
+    //언어 수정
+
+    function languageSetting(){
+        document.getElementById('mainLanguage').value=classObject.mainLanguage;
+        appendMainLanguageList()
+        appendOtherLanguageList()
+        for(var i = 0; i<classObject.otherLanguage.length;i++){
+            document.getElementById(classObject.otherLanguage[i]+'2').checked=true;
+        }
+        addOtherLangList();
+    }
+
+    //클래스 제목 및 소개 수정
+    function classSubjectSetting(){
+
+        document.getElementById('classTitleInput').value=classObject.title;
+        document.getElementById('classDesc').value=classObject.description;
+        var keyword = classObject.keywords;
+        for(var i =0; i<keyword.length; i++){
+            document.getElementById(keyword[i]).click();
+        }
+
+    }
+
+    //이미지 수정 ######
+    function classImgSetting(){
+        singleFileList.push(classObject.thumbNailMain);
+        document.querySelector('.mainContentThumbArea.commonThumbArea').innerHTML = '';
+        document.querySelector('#preview').innerHTML = '';
+        let thumbNailMain =
+        `<div class="mainContentThumb commonThumb" style="background-color: rgb(255, 255, 255);background-image: url('${classObject.thumbNailMain.filePath}');">
+            <div class="innerBtns">
+                <button class="thumbEditBtn" onclick="customModal(17,this)">
+                    <img src="/web/img/ICN_EDIT.png" alt="">
+                </button>
+                <button type="button" onclick="removeFile(this,0, 'main')">
+                    <img src="/web/img/ICN_DELETE.png" alt="">
+                </button>
+            </div>
+        </div>`
+        document.querySelector('.mainContentThumbArea.commonThumbArea').innerHTML = thumbNailMain;
+
+        let thunmNailSubList=classObject.thumbNailSub;
+        thumbNailSubForEdit=thunmNailSubList;
+        for(var i =0; i<thunmNailSubList.length; i++)
+        {
+            multipleFileList.push(thunmNailSubList[i])
+
+            let thunmNailSub = 
+            `<div class="mainContentThumb commonThumb" style="background-image: url('${thunmNailSubList[i].filePath}');">
+                <div class="innerBtns">
+                    <button class="thumbEditBtn" onclick="customModal(17,this)"></button>
+                    <button type="button" data-name="footerImg.png" onclick="removeFile(this,1, ${i})">
+                        <img src="/web/img/ICN_DELETE.png" alt="">
+                    </button>
+                </div>
+            </div>`
+            document.querySelector('#preview').innerHTML += thunmNailSub;
+        }
+    }
+    
+    //dpm 수정
+    function classDpmSetting(){
+        var classOpenDate = classObject.classOpenDate.openDate;
+        classOpenDate = makeDateToForm(classOpenDate)
+        console.log(classOpenDate + '     class open date');
+        
+        sessionStorage.setItem('dpmDateBeforeChecker', classOpenDate);
+        document.getElementById('getClassOpenDate').innerText=classOpenDate.openDate;
+        document.getElementById('classTotalTimeArea').innerText=classOpenDate.classPeriod;
+        if(classObject.online=='online'){
+            document.getElementById('methodInfo').value = classOpenDate.classMethod;
+        }else{
+            document.getElementById('googleMapAddress').value=classOpenDate.classLocation;
+        }
+    }
+
+    //판매 날짜 수정
+    function classSellDateSetting(){
+        console.log('come check' + classObject.classSellStartDate)
+        document.getElementById('classSellStartDate').value = classObject.classSellStartDate;
+        document.getElementById('classSellEndDate').value = classObject.classSellEndDate;
+    }
+
+    var hadCheckedBefore = 'false';
+    function checkDateInDpm(){
+        if(hadCheckedBefore=='false'){
+            hadCheckedBefore = 'true'
+            var checkedDate = makeDateToForm(classObject.classOpenDate.openDate);
+            // document.querySelectorAll('[data-date="20211007"]')[0].click()
+            // 
+            var checkdateInterval = setInterval(function() {
+                    if(document.querySelectorAll('[data-date="'+checkedDate+'"]')[0]!=undefined&&document.querySelectorAll('[data-date="'+checkedDate+'"]')[0]!=null){
+                        document.querySelectorAll('[data-date="'+checkedDate+'"]')[0].click()
+                        clearInterval(checkdateInterval)
+                    }else if(document.getElementById('getClassOpenDate').innerText!=classObject.classOpenDate.openDate){
+                        clearInterval(checkdateInterval);
+                    }
+
+                },1000);
+
+        }
+    }
+    var dateIsChanged ='false';
+    document.getElementById('getClassOpenDate').addEventListener('change', function(){
+        console.log('checek Date interval')
+        clearInterval(checkdateInterval);
+    })
+
+    function makeDateToForm(date){
+        var regex = /[^0-9]/g;	
+        date = date.replace(regex, '');
+        console.log('get date ' + date);
+        return date;
+    }
+
+    function deleteClass(id){
+        var jsonObject = {};
+                
+        jsonObject.protocol = 'deleteClass';
+        jsonObject.id = id;
+        protocolSendAjaxWithCallBack(jsonObject, function(result){
+           
+           if(result.resultCode==0){
+               document.getElementById(id).remove();
+            }
+            else
+            {
+                console.log('false');
+            }
+        });
+    }
+	
+	// paging
+    // function moveTo(target, before, isBefore){
+    //     document.getElementById(target).style.display = '';
+    
+    //     document.getElementById(before).style.display ='none';
+    //     if(isBefore){
+    //         document.getElementById(before+'Icon').classList.remove('active');
+    //         var targetIcon = document.getElementById(target+'Icon').classList;
+    //         targetIcon.remove('complete')
+    //         targetIcon.add('active');
+    //     }else{
+    //         document.getElementById(target+'Icon').classList.add('active')
+    //         var targetIcon = document.getElementById(before+'Icon').classList;
+    //         targetIcon.remove('active')
+    //         targetIcon.add('complete');
+    //     }
+    //     if(target === "classDevelop")
+    //     {
+    //         var text = '<li class="stpeBtns swiper-slide"></li>'
+    //         document.querySelector('.swiper-wrapper').innerHTML += text
+    //     }
+    //     if(target == 'dpm'){
+    //         temp()
+    //     }
+    // }
+
+    // choose premium
+    function choosePremium(value){
+        classObject.premium = value;
+        var formatDom = document.getElementById('format1');
+        var formatData = '<%=translation.classManagement.Online%>';
+        if(value=='premium'){
+            formatDom.value=formatData;
+            formatDom.disabled = true;
+            document.getElementById('dpmIcon').classList.remove('complete')
+            document.getElementById('dpmIcon').classList.remove('recent')
+            document.getElementById('dpmIcon').classList.remove('active')
+            document.getElementById('salePeriodIcon').classList.remove('complete')
+            document.getElementById('salePeriodIcon').classList.remove('recent')
+            document.getElementById('salePeriodIcon').classList.remove('active')
+        }else{
+            formatDom.disabled = false;
+            document.getElementById('classDevelopIcon').classList.remove('complete')
+            document.getElementById('classDevelopIcon').classList.remove('recent')
+            document.getElementById('classDevelopIcon').classList.remove('active')
+            document.getElementById('certificationIcon').classList.remove('complete')
+            document.getElementById('certificationIcon').classList.remove('recent')
+            document.getElementById('certificationIcon').classList.remove('active')
+            
+        }
+
+    }
+
+    function isFreeCheck(e){
+
+        if(e.checked){
+            classObject.isFree='free';
+            document.getElementById('inputPrice').value=0;
+            document.getElementById('inputPrice').disabled=true;
+            document.getElementById('getInputPrice').value=0;
+        }else{
+            classObject.isFree='paid';
+            document.getElementById('inputPrice').disabled=false;
+            document.getElementById('inputPrice').value='';
+            document.getElementById('getInputPrice').value='';
+        }
+
+    }
+
+    //add or remove class chapter button
+    function chapterButtonController(action){
+        var chapterList = document.getElementById('chapterList')
+        //get current sum of chapter buttons num and add 1 to get next button number
+        var currentNum = chapterList.children.length;
+        var nextButtonNum =currentNum +1;
+        
+        //check is add or remove
+        if(action=='add'){
+            var html = '<li id ="chapterButton'+nextButtonNum+'"> '+
+                            '<button class="chapterButton" id = "chapterButtonCircle'+nextButtonNum+'" onclick="selectAndSaveData('+nextButtonNum+')">'+nextButtonNum+'</button>'+
+                    '</li>'
+
+            //make buttons list 
+            chapterList.innerHTML = chapterList.innerHTML+html;
+        }else{
+            //delete last button when current Num is not 1
+            if(document.getElementsByClassName('chapterButton active')[0].innerText==currentNum){
+                document.getElementById('chapterButtonCircle1').classList.add('active');
+                var chapterLoc = getChapterContentLoc(1)
+                if(chapterLoc!='none'){
+                    setThisChapterInfo(chapterLoc)
+                }
+            }
+            if(currentNum!=1){
+                document.getElementById('chapterButton'+currentNum).remove();
+            }
+        }
+        
+    }
+
+    // 챕터 정보 입력
+    function setThisChapterInfo(chapterLoc){
+
+        document.getElementById('classSettingTitle').value=classObject.chapterList[chapterLoc].chapterTitle;
+        document.getElementById('classSettingDesc').value=classObject.chapterList[chapterLoc].chapterDescription;
+        appendContentList(chapterLoc);
+    }
+
+    //select chapter and save data
+    function selectAndSaveData(num){
+        //do save and change in case chapterList has more than 2 children node
+        if(document.getElementById('chapterList').children.length!=1||num==0){
+            
+            //remove current active attribute and add active to next circle button 
+            var thisChapter =document.getElementsByClassName('chapterButton active')[0];
+            console.log('chekcer before ')
+            console.log('get this chapter : ' + thisChapter.innerText)
+            console.log('checker after');
+            
+            var thisData ={};
+            thisData.chapterNum = thisChapter.innerText;
+            thisData.chapterTitle = document.getElementById('classSettingTitle').value;
+            thisData.chapterDescription = document.getElementById('classSettingDesc').value;
+            thisChapter.classList.remove('active');
+            if(num!=0){
+                document.getElementById('chapterButtonCircle'+num).classList.add('active');
+            }else{
+                console.log(thisChapter.chapterNum+'asd')
+                document.getElementById('chapterButtonCircle'+thisData.chapterNum).classList.add('active');
+            };
+
+            //check it has data and if it so save that locations
+            var getChapterNumInObject='none';
+            var checkExists ='none'
+            for(var i =0; i<classObject.chapterList.length; i++) {
+                console.log(`get this chapter     ${thisChapter.innerText}     classObjectChapter   ${classObject.chapterList[i].chapterNum}`)
+                if(thisChapter.innerText==classObject.chapterList[i].chapterNum){
+                    console.log(`is come to save locaton     ${i}`)
+                    getChapterNumInObject=i;
+                }
+                
+                if(num==classObject.chapterList[i].chapterNum){
+                    var checkExists = i;
+                }
+            }
+
+                
+                //if chapterlist already have current chapter data, overried newdata to that data, else push newdata
+                if(getChapterNumInObject!='none'){
+                    thisData.chapterContentsList =classObject.chapterList[getChapterNumInObject].chapterContentsList;
+                    console.log(JSON.stringify(classObject.chapterList) + '       before')
+                    classObject.chapterList[getChapterNumInObject]=thisData;
+                    console.log(JSON.stringify(classObject.chapterList) + '       before')
+                }else{
+                    classObject.chapterList.push(thisData);
+                }
+            if(num!=0){
+                //if chapterlist have next chapter data, load that and write on the input else remove all input data
+                if(checkExists=='none'){
+                    document.getElementById('classSettingTitle').value='';
+                    document.getElementById('classSettingDesc').value='';
+                }else{
+                    document.getElementById('classSettingTitle').value=classObject.chapterList[checkExists].chapterTitle;
+                    document.getElementById('classSettingDesc').value=classObject.chapterList[checkExists].chapterDescription;
+    
+                }
+                appendContentList(checkExists);  
+            
+            }
+        }
+        console.log(JSON.stringify(classObject));
+    
+    }
+
+    function makeContentList(contentName){
+        var thisChapter =document.getElementsByClassName('chapterButton active')[0].innerText;
+        if(contentName=='video'){
+            saveVideoContent(thisChapter);
+        }else if(contentName=='audio'){
+            saveAudioContent(thisChapter);
+        }else if(contentName=='reading'){
+            console.log(contentName + '     ########get content name ');
+            
+            // 읽기 제목 검증
+            if(document.getElementById('readingContentTitle').value == '') {
+                alert('읽기 제목을 입력해주세요.');
+                return false;
+            }
+
+            saveReadingContents(thisChapter);
+        }else if(contentName=='quiz'){
+            console.log(contentName + '     ########get content name ');
+            saveQuizContents(thisChapter);
+        }else if(contentName=='survey'){
+            saveSurveyContents(thisChapter);
+        }else if(contentName=='discussion'){
+            saveDiscussionContents(thisChapter);
+        }else if(contentName=='live'){
+            
+        }
+    }
+
+    //check this chapter already has data or not if so get loc
+    function getChapterContentLoc(thisChapter){
+        var getChapterNumInObject='none';
+        for(var i =0; i<classObject.chapterList.length; i++) {
+           if(thisChapter==classObject.chapterList[i].chapterNum){
+                getChapterNumInObject=i;
+            }
+        }
+        return getChapterNumInObject;
+    }
+
+    //classObject.chapterList[chapterloc].chapterContent.quiz[quizLoc]
+    function chapterContentQuiz(thisChapter){
+
+        var chapterLoc = getChapterContentLoc(thisChapter);
+        var thisData ={};
+        thisData.contentName= 'quiz';
+        thisData.basicInfo = document.getElementById('quizTitle').value;
+        var chapterContents=[]
+        if(chapterLoc=='none'){
+            thisData.chapterNum=thisChapter;
+        }else{
+
+        }
+
+    }
+
+    function addContentQuiz(e){
+        var tempDom = document.createElement('div');
+        tempDom.innerHTML =makeQuizs();
+        var parentNode=e.parentElement.parentElement.after(tempDom.firstChild);
+        changeContentName('quiz');
+    }
+
+    function addContentSurvey(type, e){
+        var tempDom = document.createElement('div');
+        tempDom.innerHTML =makeSurvey(type);
+
+        var thisDom = e.parentElement.parentElement.parentElement.parentElement;
+
+        // console.log(e.parentElement.parentElement.parentElement.parentElement.parentElement.classList.contains('survey') + '          is contain')
+        // console.log(e.parentElement.parentElement.parentElement.parentElement.classList.contains('survey') + '          is contain')
+        // if(type==)
+
+        // var parentNode=e.parentElement.parentElement.parentElement.parentElement.parentElement.after(tempDom.firstChild);
+        var parentNode;
+        // var parentNode=e.parentElement.parentElement.parentElement.parentElement.parentElement.after(tempDom.firstChild);
+        if(thisDom.classList.contains('survey')){
+            parentNode = thisDom.after(tempDom.firstChild);
+        }else{
+            parentNod=thisDom.parentElement.after(tempDom.firstChild);
+        }
+        changeContentName('survey');
+        addSurveyHide()
+    }
+
+    function changeContentName(type){
+        var contentNumDom = document.getElementsByClassName('contentNumText');
+        var contentNum=1
+        for(var i=0;i<contentNumDom.length; i++){
+            if(type=='survey'){
+                contentNumDom[i].innerHTML='<%=translation.openClass.Survey%>' + contentNum+'.';
+            }else{
+                contentNumDom[i].innerHTML='<%=translation.openClass.Quiz%>' + contentNum+'.';
+            }
+            contentNum+=1;
+        }
+    }
+    
+    function deleteContentSurvey(e){
+        var surveyList = document.getElementById('surveyContentWrap');
+        if(surveyList.children.length>1){
+            var targetElement = e.parentElement.parentElement;
+            if(targetElement.classList.contains('survey')){
+                targetElement.remove()
+            }else{
+                targetElement.parentElement.remove();
+            }
+        }
+        changeContentName('survey')
+    }
+
+
+    
+//퀴즈 번호, 선택지 번호,
+//purpose : makeList = 최초 생성, addList 리스트 추가
+    function makeQuizList(quizNum, answerNum, purpose){
+        if(purpose=='addList'){
+            answerNum = document.getElementsByClassName('quizListNum'+quizNum).length+1;
+        }
+
+
+        var appendAnswerInner = ""
+                                + '<div class="chkAnswer">'
+                                + '<input type="radio" id="answer'+quizNum+'-'+answerNum+'" name="answer'+quizNum+'">'
+                                + '<label for="answer'+quizNum+'-'+answerNum+'">'
+                                + '<span class="dot"></span>'
+                                + '</label>'
+                                + '</div>'
+                                + '<div class="answerText">'
+                                + '<input type="text" id="answerList'+quizNum+'-'+answerNum+'" placeholder="Option '+answerNum+'(Direct Input)">'
+                                + '</div>';
+        var appendAnswer = "";
+        appendAnswer += '<li class="answer quizListNum'+quizNum+'">'
+                    + appendAnswerInner
+                    + '</li>';
+
+            var newAppendAnswer = document.createElement('li');
+            newAppendAnswer.classList.add("answer", "quizListNum"+quizNum)
+            newAppendAnswer.innerHTML = appendAnswerInner;
+
+        if(purpose=='makeList'){
+            return appendAnswer;
+        }else{
+            // document.getElementById('quizOptionList'+quizNum).innerHTML=document.getElementById('quizOptionList'+quizNum).innerHTML+appendAnswer;
+            document.getElementById('quizOptionList'+quizNum).appendChild(newAppendAnswer);
+        }
+    }
+
+    function makeAnswerList(surveyNum, answerNum, purpose){
+
+        if(purpose=='addList'){
+            answerNum = document.getElementsByClassName('answerListNum'+surveyNum).length+1;
+        }
+
+
+        var appendAnswerInner = ''
+                            +'<div class="answerText">'
+                            +'<input type="text" id="surveyAnswerList'+surveyNum+'-'+answerNum+'" placeholder="<%=translation.openClass.Option%> '+answerNum+'(<%=translation.openClass.Direct_Input%>)">'
+                            +'</div>';
+
+
+        var appendAnswer ='<li class="answer answerListNum'+surveyNum+'">'
+                        +appendAnswerInner
+                        +'</li>'
+
+        var newAppendAnswer = document.createElement('li');
+        newAppendAnswer.classList.add("answer", "answerListNum"+surveyNum)
+        newAppendAnswer.innerHTML = appendAnswerInner;
+        if(purpose=='makeList'){
+            return appendAnswer;
+        }else{
+            document.getElementById('quizOptionList'+surveyNum).appendChild(newAppendAnswer);
+        }        
+        
+
+    }
+    
+    function deleteAnswerList(num){
+        var answerList = document.getElementById('quizOptionList'+num);
+        if(answerList.children.length>2){
+            console.log(answerList.children.length);
+            answerList.removeChild(answerList.lastElementChild);
+        }
+    }
+
+    function deleteContentQuiz(e){
+        console.log(`comecheck`)
+        var surveyList = document.getElementById('quizContentWrap');
+        if(surveyList.children.length>1){
+            e.parentElement.parentElement.remove()
+            changeContentName('quiz')
+        }
+    }
+
+    //마지막 선택지 삭제
+    function deleteQuizList(quizNum){
+        var answerList = document.getElementById('quizOptionList'+quizNum);
+        if(answerList.children.length>2){
+            console.log(answerList.children.length);
+            answerList.removeChild(answerList.lastElementChild);
+        }
+    }
+    function checkText(e,type)
+    {
+        if(type===0)
+        {
+            $(e).val($(e).val()+'%')
+        }
+        else if(type===1)
+        {
+            $(e).val($(e).val()+'점')
+        }
+    }
+    function removeText(e,type)
+    {
+        if(type===0)
+        {
+            $(e).val($(e).val().replace('%',''))
+        }
+        else if(type===1)
+        {
+            $(e).val($(e).val().replace('점',''))
+        }
+    }
+    
+
+    // 퀴즈 정보 저장
+    //{"title":"제목", "type":"퀴즈", "quizList":[퀴즈리스트], "passingScore":"합격점수"}
+    function saveQuizContents(thisChapter){
+        var quizListInContents = document.getElementsByClassName('quiz contentsQuizList');
+        var quizNum = quizListInContents.length;
+        var chapterLoc = getChapterContentLoc(thisChapter);
+        // 퀴즈 객체
+        var quizObject ={};
+        // 퀴즈 리스트
+        var quizList =[];
+        //각각의 퀴즈들
+        var quizContent={};
+        //선택지
+        var answerList =[];
+        //선택지 숫자
+        var answerNum =0;
+        for(var i =1; i<quizNum+1;i++){
+            quizContent={};
+            answerList =[];
+            answerNum = document.getElementById('quizOptionList'+i).getElementsByTagName('li').length;
+            for(var j=1;j<answerNum+1; j++){
+                answerList.push(document.getElementById('answerList'+i+'-'+j).value)
+            }
+            quizContent.question=document.getElementsByName('quizTitle'+i)[0].value;
+            quizContent.answerList = answerList;
+            var answer = document.querySelectorAll('input[name="answer'+i+'"]:checked')[0].getAttribute('id');
+            quizContent.answer = answer.charAt(answer.length-1);
+            quizContent.quizPoint = document.getElementById('quizPoint');
+            quizContent.quizExplanation = document.getElementById('quizExplanation'+i).value;
+            quizList.push(quizContent);
+            
+        }
+        // classObject.chapterList[chapterLoc].chapterContentsList =chapterContentList;
+        // classObject.chapterList[chapterLoc].chapterContents=chapterContentList;
+        
+        // var chapterContestList = classObject.chapterList[chapterLoc].chapterContents;
+        // console.log(chapterContestList + 'content lsit');
+        quizObject.title = document.getElementById('quizTitle').value;
+        quizObject.type = 'quiz'
+        quizObject.quizList = quizList;
+        quizObject.passingScore = document.getElementById('passingScore').value;
+        console.log(JSON.stringify(quizObject) + '    ######## quiz ')
+
+       
+        makeContentListSetting(chapterLoc, thisChapter, quizObject);
+        // classObject.chapterList[chapterLoc].chapterContentsList.push(quizObject);
+        console.log(JSON.stringify(classObject))
+        //컨텐츠 리스트 추가
+
+    }
+
+    
+
+
+    function saveVideoContent(thisChapter){
+        var chapterLoc = getChapterContentLoc(thisChapter);
+        var videoObject = {};
+        videoObject.type = 'video';
+        videoObject.title = document.getElementById('videoContentTitle').value;
+        videoObject.description = document.getElementById('videoContentDescText').value;
+
+        //영상
+        videoObject.videoFile = saveFileToServer('videoContentsTemp');
+        
+        //다운로드 가능한 자료
+        videoObject.listDownloadFile = saveListFileToServer('uploadBtn6');
+
+        //영상 썸네일
+        var base64String = document.querySelector('.contentFileUpload-thumb .getFile').style.backgroundImage.replace('url("', '').replace('")', '');
+        videoObject.videoThumbNail = saveBase64FileToServer(base64String, videoObject.videoFile.fileOriginalName+" thumbnail.png");
+
+        makeContentListSetting(chapterLoc, thisChapter, videoObject);
+    }
+
+    function saveAudioContent(thisChapter){
+        var chapterLoc = getChapterContentLoc(thisChapter);
+        var audioObject = {};
+        audioObject.type = 'audio';
+        audioObject.title = document.getElementById('audioContentTitle').value
+        audioObject.content = document.getElementById('audioContentDesc').value;
+
+        //오디오
+        audioObject.audioFile = saveFileToServer('audioContentsTemp');
+
+        //다운로드 가능한 자료
+        audioObject.listDownloadFile = saveListFileToServer('uploadBtn1');
+        
+
+        makeContentListSetting(chapterLoc, thisChapter, audioObject);
+    }
+
+    // //리딩 컨텐츠
+    function saveReadingContents(thisChapter){
+        var chapterLoc = getChapterContentLoc(thisChapter);
+        var readingObject = {};
+        readingObject.type = 'reading';
+        readingObject.title = document.getElementById('readingContentTitle').value;
+        readingObject.content = document.getElementById('readingContentDesc').value;
+
+
+        //읽기 자료
+        readingObject.readingFile = saveFileToServer('readingUploadBtn1');
+
+        //다운로드 가능한 자료
+        readingObject.listDownloadFile = saveListFileToServer('readingUploadBtn2');
+        
+
+        chapterLoc = makeContentListSetting(chapterLoc, thisChapter, readingObject);
+
+    }
+
+
+    //서베이 컨텐트   
+    function saveSurveyContents(thisChapter){
+        
+        var surveyListInContents = document.getElementsByClassName('survey');
+        var surveyNum = surveyListInContents.length;
+        var chapterLoc = getChapterContentLoc(thisChapter);
+
+        var discussionObject = {};
+        var surveyList = [];
+        var surveyContent = {};
+        var answerList =[];
+        var answerNum =0;
+
+        console.log('checker1');
+
+        for(var i =1; i<surveyNum+1; i++){
+            var innerNum=i+1
+            surveyContent={};
+            console.log('before check undefined');
+            var testsample = document.getElementById('quizOptionList'+i)
+            console.log('bwefore');
+            console.log(testsample);
+            console.log('bwefor2e');
+            if(testsample!=null){
+                console.log('not undefined')
+                answerList =[];
+                answerNum = document.getElementById('quizOptionList'+i).getElementsByTagName('li').length;
+                for(var j=1;j<answerNum+1; j++){
+                    answerList.push(document.getElementById('surveyAnswerList'+i+'-'+j).value)
+                }
+            }
+            console.log('after if ');
+            surveyContent.question=document.getElementsByName('surveyTitle'+i)[0].value;
+            surveyContent.answerList = answerList;
+            console.log('after value check');
+            surveyList.push(surveyContent);
+
+        }
+        console.log('checker2');
+        discussionObject.type = 'survey';
+        discussionObject.title = document.getElementById('surveyTitle').value;
+        discussionObject.content = surveyList;
+        makeContentListSetting(chapterLoc, thisChapter, discussionObject);
+
+    }
+
+    function saveDiscussionContents(thisChapter){
+        var chapterLoc = getChapterContentLoc(thisChapter);
+        var discussionObject = {};
+        discussionObject.title =document.getElementById('discussionTitle').value;
+        discussionObject.type = "discussion";
+        discussionObject.content = document.getElementById('disGuidelines').value;
+
+        //다운로드 가능한 자료
+        discussionObject.listDownloadFile = saveListFileToServer('disUploadBtn2');
+
+        chapterLoc = makeContentListSetting(chapterLoc, thisChapter, discussionObject)
+    }
+
+ //클래스 오브잭트{ 챕터리스트 :[{챕터번호: 번호, 챕터컨텐츠:[{컨텐츠번호: 번호, 컨텐츠타입: 퀴즈}]}]
+    function makeContentListSetting(chapterLoc, thisChapter, contentObject){
+        var chapterContentList = [];
+        if(chapterLoc!='none'){
+            if(classObject.chapterList[chapterLoc].chapterContentsList==undefined){
+                classObject.chapterList[chapterLoc].chapterContentsList=chapterContentList;
+            }
+        }else{
+            var tempChapter = classObject.chapterList;
+            var tempChapterData={};
+            tempChapterData.chapterNum=thisChapter;
+            tempChapterData.chapterContentsList = chapterContentList;
+            tempChapter.push(tempChapterData);
+            classObject.chapterList=tempChapter;
+            chapterLoc=getChapterContentLoc(thisChapter);
+        }
+
+        classObject.chapterList[chapterLoc].chapterContentsList.push(contentObject);
+        appendContentList(chapterLoc)
+        customModalClose(18)
+    }
+
+
+
+    function appendContentList(chapterLoc){
+        if(chapterLoc=='none'||classObject.chapterList[chapterLoc].chapterContentsList==undefined){
+            document.getElementById('setting-contents-list').innerHTML=''
+        }else{
+            var appendObject = classObject.chapterList[chapterLoc].chapterContentsList;
+            var appendContentList= '';
+            for(var i =0; i<appendObject.length; i++){
+            var appendedContent =    ' <li class="contentInfo" id="addedContents'+i+'">'
+                                    +  '     <div class="left">'
+                                    +  '         <img src="/web/img/contentsIcon/1.png" alt="">'
+                                    +  '         <span> Title: '+appendObject[i].title+'</span>'
+                                    +  '     </div>'
+                                    +  '     <div class="right">'
+                                    +  '         <button class="detailsBtn-on">Details</button>'
+                                    +  '         <button class="delBtn-on" onclick="customModal(37)">'
+                                    +  '             <img src="/web/img/ICN_DELETE.png" alt="" onclick="makeChapterDeleteAlertBtns('+chapterLoc+', '+i+')">'
+                                    +  '         </button>'
+                                    +  '     </div>'
+                                    +  ' </li>';
+                appendContentList+=appendedContent;
+             }
+        document.getElementById('setting-contents-list').innerHTML = appendContentList;
+        
+        }
+    }
+
+    function makeChapterDeleteAlertBtns(chapterLoc, contentNum){
+        var chapterContentsDeleteBtns = `<button class="noBtn-on" onclick="customModalClose(37)">
+                                            No
+                                        </button>
+                                        <button class="yesBtn-on" onclick="deleteContents(${chapterLoc}, ${contentNum})">
+                                            Yes
+                                        </button>`
+        document.querySelector('#chapterContentDeleteBtns').innerHTML = chapterContentsDeleteBtns;
+    }
+
+    function deleteContents(chapterLoc, num){
+        document.getElementById('addedContents'+num).remove();
+        classObject.chapterList[chapterLoc].chapterContentsList.splice(num, 1);
+        customModalClose(37)
+    }
+
+
+    //1단계 유형선택
+    var commonForm = 
+    '<div class="commonForm">' +
+        '<div class="inputPrice">' +
+            '<div class="title">' +
+                '<h6><%=translation.openClass.Price%></h6>' +
+                '<div class="chkBox">' +
+                    '<input type="checkbox" onclick="isFreeCheck(this)" id="providing">' +
+                    '<label for="providing">' +
+                        '<span class="box" "></span>' +
+                        '<span class="text"><%=translation.openClass.Providing_free_classes%></span>' +
+                    '</label>' +
+                '</div>' +
+            '</div>' +
+            '<div class="inputArea classSale1">' +
+                '<div>' +
+                    '<div class="box1">' +
+                        '<input type="text" id="inputPrice" onchange="valueChange()" onKeyup="this.value=this.value.replace(/[^0-9]/g,\'\')"/>' +
+                        '<div class="selectBox1">' +
+                            '<div class="selectView ssPage">' +
+                                '<input id="selectPrice" type="button" value="₩ <%=translation.openClass.KRW%>">' +
+                                '<img src="/web/img/ICN_DROP.png" alt="">' +
+                            '</div>' +
+                            '<ul class="selectBox1-hdnMenu1">' +
+                                '<li>' +
+                                    '<input type="radio" value="<%=translation.openClass.USD%>" id="usd" name="selectPrice">' +
+                                    '<label for="usd">' +
+                                        '<span><%=translation.openClass.USD%></span>' +
+                                    '</label>' +
+                                '</li>' +
+                                '<li>' +
+                                    '<input type="radio" value="₩ <%=translation.openClass.KRW%>" id="krw" name="selectPrice">' +
+                                    '<label for="krw">' +
+                                        '<span>₩ <%=translation.openClass.KRW%></span>' +
+                                    '</label>' +
+                                '</li>' +
+                            '</ul>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="box2">' +
+                        '<input type="text" id="getInputPrice" disabled>' +
+                        '<span class="priceUnit" id ="moneyUnit">' +
+                        '</span>' +
+                    '</div>' +
+                '</div>' +
+                '<p>' +
+                    '* <%=translation.openClass.Please_note_that_the_amount_calculated_based_on_the_bank_exchange_rate_is_for_reference_only_When_placing_an_order_with_a_credit_card_the_amount_refunded_in_case__of_cancellation_return_may_differ_from_the_order_amount_due_to_exchange_rate_fluctuations%>' +
+                '</p>' +
+            '</div>' +
+        '</div>' +
+        '<div class="selectAudience">' +
+            '<div class="title">' +
+                '<h6><%=translation.openClass.Audience_Limit%></h6>' +
+            '</div>' +
+            '<div class="selectArea">' +
+                '<div class="selectBox1" id="audienceSelectBox">' +
+                    '<div class="selectView ssPage">' +
+                        '<input id="audience" type="button" value="<%=translation.loginAndJoin.Select%>">' +
+                        '<img src="/web/img/ICN_DROP.png" alt="">' +
+                    '</div>' +
+                    '<ul class="selectBox1-hdnMenu1">' +
+                        '<li>' +
+                            '<input type="radio" value="<%=translation.openClass.Unlimited%>" id="unlimited" name="audience">' +
+                            '<label for="unlimited">' +
+                                '<span><%=translation.openClass.Unlimited%></span>' +
+                            '</label>' +
+                        '</li>' +
+                        '<li>' +
+                            '<input type="radio" value="<%=translation.openClass.Input%>" id="input" name="audience">' +
+                            '<label for="input">' +
+                                '<span><%=translation.openClass.Input%></span>' +
+                            '</label>' +
+                        '</li>' +
+                    '</ul>' +
+                '</div>' +
+                '<div class="createInputBox">' +
+                    // '<input type="text" id="inputAudience">' +
+                '</div>' +
+            '</div>' +
+        '</div>' +
+    '</div>';
+
+    var onlyDevelopInputBox =  
+        '<div class="onlyDevelopInputBox">' +
+            '<div class="title">' +
+                '<h6><%=translation.openClass.Class_time_available%></h6>' +
+            '</div>' +
+            '<div class="inputArea">' +
+                '<input type="text" maxlength="3" placeholder="1 - 365" id = "availableDays" onkeyup="yearNumberCheck(this)">' +
+                '<span>' +
+                    '<%=translation.openClass.Day_s%>' +
+                '</span>' +
+            '</div>' +
+        '</div>';
+
+
+
+    //언어옵션
+    var defaultLanguage = [
+        'English',
+        '한국어',
+        '<%=translation.openClass.Spanish%>',
+        '<%=translation.openClass.French%>',
+        '<%=translation.openClass.German%>',
+        '<%=translation.openClass.Russian%>',
+        '<%=translation.openClass.Japanese%>',
+        '<%=translation.openClass.Chinese%>',
+        '<%=translation.openClass.Italian%>'
+    ]
+
+    var otherLanguage = [
+        'English',
+        '한국어',
+        '<%=translation.openClass.Spanish%>',
+        '<%=translation.openClass.French%>',
+        '<%=translation.openClass.German%>',
+        '<%=translation.openClass.Russian%>',
+        '<%=translation.openClass.Japanese%>',
+        '<%=translation.openClass.Chinese%>',
+        '<%=translation.openClass.Italian%>'
+    ]
+
+    var keywordsList = [
+            {
+                title: 'lifestyle',
+                keywords: [
+                    {
+                        name:'Sleep',
+                        data:'<%=translation.openClass.Sleep%>'
+                    },
+                    {
+                        name:'Focus',
+                        data:'<%=translation.openClass.Focus%>'
+                    },
+                    {
+                        name:'Study',
+                        data:'<%=translation.openClass.Study%>'
+                    },
+                    {
+                        name:'Relaxation',
+                        data:'<%=translation.openClass.Relaxation%>'
+                    },
+                    {
+                        name:'Family',
+                        data:'<%=translation.openClass.Family%>'
+                    },
+                    {
+                        name:'Love',
+                        data:'<%=translation.openClass.Love%>'
+                    },
+                    {
+                        name:'Relationship',
+                        data:'<%=translation.openClass.Relationship%>'
+                    },
+                    {
+                        name:'Stress',
+                        data:'<%=translation.openClass.Stress%>'
+                    },
+                    {
+                        name:'Balance',
+                        data:'<%=translation.openClass.Balance%>'
+                    },
+                    {
+                        name:'Leisure',
+                        data:'<%=translation.openClass.Leisure%>'
+                    },
+                    {
+                        name:'Hobby',
+                        data:'<%=translation.openClass.Hobby%>'
+                    },
+                    {
+                        name:'Self_improvement',
+                        data:'<%=translation.openClass.Self_improvement%>'
+                    },
+                    {
+                        name:'Positivity',
+                        data:'<%=translation.openClass.Positivity%>'
+                    },
+                    {
+                        name:'Happiness',
+                        data:'<%=translation.openClass.Happiness%>'
+                    },
+                    {
+                        name:'Self_esteem',
+                        data:'<%=translation.openClass.Self_esteem%>'
+                    },
+                    {
+                        name:'Couple',
+                        data:'<%=translation.openClass.Couple%>'
+                    },
+                    {
+                        name:'Children',
+                        data:'<%=translation.openClass.Children%>'
+                    },
+                    {
+                        name:'Parenting',
+                        data:'<%=translation.openClass.Parenting%>'
+                    },
+                    {
+                        name:'Peace',
+                        data:'<%=translation.openClass.Peace%>'
+                    },
+                    {
+                        name:'Rest',
+                        data:'<%=translation.openClass.Rest%>',
+                    },
+                    {
+                        name:'Cooking',
+                        data:'<%=translation.openClass.Cooking%>'
+                    },
+                    {
+                        name:'Community',
+                        data:'<%=translation.openClass.Community%>',
+                    },
+                    {
+                        name:'Habbit',
+                        data:'<%=translation.openClass.Habbit%>',
+                    },
+                    {
+                        name:'Spirituality',
+                        data:'<%=translation.openClass.Spirituality%>',
+                    },
+                    {
+                        name:'Compassion',
+                        data:'<%=translation.openClass.Compassion%>'
+                    },
+                ]
+            },
+            {
+                title: 'work',
+                keywords: [
+                    {
+                        name:'Leadership',
+                        data:'<%=translation.openClass.Leadership%>'
+                    },
+                    {
+                        name:'Work',
+                        data:'<%=translation.openClass.Work%>'
+                    },
+                    {
+                        name:'Career',
+                        data:'<%=translation.openClass.Career%>'
+                    },
+                    {
+                        name:'Productivity',
+                        data:'<%=translation.openClass.Productivity%>'
+                    },
+                    {
+                        name:'Business',
+                        data:'<%=translation.openClass.Business%>'
+                    },
+                    {
+                        name:'Motivation',
+                        data:'<%=translation.openClass.Motivation%>'
+                    },
+                    {
+                        name:'Communication',
+                        data:'<%=translation.openClass.Communication%>'
+                    },
+                    {
+                        name:'Academic',
+                        data:'<%=translation.openClass.Academic%>'
+                    },
+                    {
+                        name:'School',
+                        data:'<%=translation.openClass.School%>'
+                    },
+                    {
+                        name:'Education',
+                        data:'<%=translation.openClass.Education%>'
+                    },
+                ]
+            },
+            {
+                title: 'health',
+                keywords: [
+                    {
+                        name:'Anxiety',
+                        data:'<%=translation.openClass.Anxiety%>'
+                    },
+                    {
+                        name:'Depression',
+                        data:'<%=translation.openClass.Depression%>'
+                    },
+                    {
+                        name:'Resilience',
+                        data:'<%=translation.openClass.Resilience%>'
+                    },
+                    {
+                        name:'Poisoning',
+                        data:'<%=translation.openClass.Poisoning%>'
+                    },
+                    {
+                        name:'Health',
+                        data:'<%=translation.openClass.Health%>'
+                    },
+                    {
+                        name:'Eating_Disorder',
+                        data:'<%=translation.openClass.Eating_Disorder%>'
+                    },
+                    {
+                        name:'Panic_Disorder',
+                        data:'<%=translation.openClass.Panic_Disorder%>'
+                    },
+                    {
+                        name:'Well_being',
+                        data:'<%=translation.openClass.Well_being%>'
+                    },
+                    {
+                        name:'Self_care',
+                        data:'<%=translation.openClass.Self_care%>'
+                    },
+                    {
+                        name:'Healthcare',
+                        data:'<%=translation.openClass.Healthcare%>'
+                    },
+                    {
+                        name:'Neuroscience',
+                        data:'<%=translation.openClass.Neuroscience%>'
+                    },
+                    {
+                        name:'Weight_Loss',
+                        data:'<%=translation.openClass.Weight_Loss%>'
+                    },
+                    {
+                        name:'Flexibility',
+                        data:'<%=translation.openClass.Flexibility%>'
+                    },
+                    {
+                        name:'Strength',
+                        data:'<%=translation.openClass.Strength%>'
+                    },
+                    {
+                        name:'Detox',
+                        data:'<%=translation.openClass.Detox%>'
+                    },
+                    {
+                        name:'Trauma',
+                        data:'<%=translation.openClass.Trauma%>'
+                    },
+                    {
+                        name:'Anger',
+                        data:'<%=translation.openClass.Anger%>'
+                    },
+                    {
+                        name:'Mental_Health',
+                        data:'<%=translation.openClass.Mental_Health%>'
+                    },
+                    
+                ]
+            }
+        ]
+
+//체크박스리스트
+for(var i = 0; i < keywordsList.length; i++)
+{
+    for(var z = 0; z < keywordsList[i].keywords.length; z++)
+    {
+        var chkTag = '<div class="chkBox">' +
+                        '<input type="checkbox" id="'+keywordsList[i].keywords[z].name+'" data-keyword="'+keywordsList[i].keywords[z].name+'">' +
+                        '<label for="'+keywordsList[i].keywords[z].name+'">' +
+                            keywordsList[i].keywords[z].data +
+                        '</label>' +
+                    '</div>'
+        if(keywordsList[i].title == 'lifestyle')
+        {
+            $('.lifestyle').append(chkTag);
+        }
+        else if(keywordsList[i].title == 'work')
+        {
+            $('.work').append(chkTag);
+        }
+        else if(keywordsList[i].title == 'health')
+        {
+            $('.health').append(chkTag);
+        }
+    }
+}
+
+
+    $('.nextBtn-on').click(function() {
+        // window.screen.width = 1921+'px';
+        // $(window).innerWidth(1920)
+    });
+
+    // Certificate Select Button Click Function
+    $('.temSelectBtn-on').on('click', function(){
+        $('.temSelectBtn-on').removeClass('active');
+
+        $(this).addClass('active');
+    });
+
+    // Swiper Click Move page
+    $('.swiper-wrapper > li').on('click', function(){
+        var selectPageId = $(this).attr('id');
+        var selectPage = selectPageId.replace('Icon', '');
+        
+        $('.swiper-wrapper > li').removeClass('active');
+        $('#' + selectPageId).addClass('active');
+
+        $('.mainContents > div').css('display', 'none');
+        $('#' + selectPage).css('display', 'block');
+    });
+
+
+    // 클래스 5단계 메인 image, video Select
+    function readImage(input) 
+    {
+        console.log('이미지 추가')
+    // 인풋 태그에 파일이 있는 경우
+    if(input.files && input.files[0]) 
+        {
+            // 이미지 파일인지 검사 (생략)
+
+            // FileReader 인스턴스 생성
+            const reader = new FileReader()
+            // 이미지가 로드가 된 경우
+            reader.onload = e => 
+            {
+                const previewImage = document.getElementById("preview-image")
+                previewImage.src = e.target.result
+            }
+                            // reader가 이미지 읽도록 하기
+            reader.readAsDataURL(input.files[0])
+        }
+    }
+
+    // input file에 change 이벤트 부여
+    // const inputFile = document.getElementById("uploadMainContent");
+    // const video = document.getElementById("video");
+
+    // inputFile.addEventListener("change", function()
+    // {
+    //     const file = inputFile.files[0];
+    //     const videourl = URL.createObjectURL(file);
+    //     video.setAttribute("src", videourl);
+    //     video.play();
+    // })
+
+
+    // const inputImage = document.getElementById("uploadMainContent")
+    // inputImage.addEventListener("change",function(e){ 
+    //     console.log('???????')
+    //     var fileReader = new FileReader();
+    //     fileReader.onload = function() 
+    //     {
+    //         console.log(document.getElementById('preview-image').src)
+    //         document.getElementById('preview-image').src = fileReader.result;
+    //     };
+    //     fileReader.readAsDataURL(file);
+    //     readImage(e.target)
+    // })
+    var singleFileList = [];
+    var certificationSingleFileList = [];
+    var certificationFileList = [];
+    var multipleFileList = [];
+
+    async function imageUploadFunc(e)
+    {
+        var file = await e.files[0];
+
+        singleFileList = [];
+        singleFileList.push(file)
+
+        var fileReader = new FileReader();
+        var box1 = document.createElement("div");
+        box1.classList.add('mainContentThumb');
+        box1.classList.add('commonThumb');
+        $('.mainContentThumbArea > *').remove();
+
+        var checkUploadType = (file.type).split('/');
+        if(checkUploadType[0] == 'video') {
+            box1.innerHTML += `<video id="srcInsertID" type="video/*" src=""></video>`;
+            box1.innerHTML += 
+            '<div class="innerBtns">'+
+                '<button class="thumbEditBtn" onclick="customModal(17,this)">'+
+                    '<img src="/web/img/ICN_EDIT.png" alt="">'+
+                '</button>'+
+                '<button type="button" onclick="removeFile(this,0)">'+
+                    '<img src="/web/img/ICN_DELETE.png" alt="">'+
+                '</button>'+
+            '</div>';
+
+            document.querySelector('.mainContentThumbArea').appendChild(box1);
+            document.getElementById('srcInsertID').setAttribute('src', URL.createObjectURL(file));
+            document.getElementById('uploadMainContent').value = '';
+            return;
+        }
+        
+        console.log(file);
+        
+        fileReader.onload = function() 
+        {
+            console.log('######' + fileReader.type);
+            box1.style.backgroundColor = '#fff';
+            box1.style.backgroundImage = 'url("'+fileReader.result+'")';
+            box1.innerHTML = 
+            '<div class="innerBtns">'+
+                '<button class="thumbEditBtn" onclick="customModal(17,this)">'+
+                    '<img src="/web/img/ICN_EDIT.png" alt="">'+
+                '</button>'+
+                '<button type="button" onclick="removeFile(this,0)">'+
+                    '<img src="/web/img/ICN_DELETE.png" alt="">'+
+                '</button>'+
+            '</div>'
+        };
+        document.querySelector('.mainContentThumbArea').appendChild(box1);
+        fileReader.type = file.type;
+        fileReader.readAsDataURL(file);
+
+        document.getElementById('uploadMainContent').value = '';
+    }
+
+    // 5단계 갤러리 이미지 Select
+    function imageUploadsFunc(e)
+    {
+        var fileArr = Array.from(e.files)
+        if(fileArr.length < (16 - multipleFileList.length))
+        {
+            fileArr.forEach(function(file)
+            {
+                multipleFileList.push(file)
+                var reader = new FileReader()
+                var box1 = document.createElement("div")
+                var box2 = document.createElement("div")
+                box1.classList.add("mainContentThumb")
+                box1.classList.add("commonThumb")
+                box2.classList.add("innerBtns")
+                box2.innerHTML = 
+                '<button class="thumbEditBtn" onclick="customModal(17,this)">'+
+                '<img src="/web/img/ICN_EDIT.png" alt="">'+
+                '</button>'+
+                '<button type="button" data-name="'+file.name+'" onclick="removeFile(this,1)">'+
+                    '<img src="/web/img/ICN_DELETE.png" alt="">'+
+                '</button>';
+                reader.onload = function(e)
+                {
+                    box1.style.backgroundColor = '#fff';
+                    box1.style.backgroundImage = 'url("'+e.target.result+'")'
+                }
+                box1.appendChild(box2)
+                document.getElementById('preview').appendChild(box1)
+                reader.readAsDataURL(file)
+            })
+
+            document.getElementById('uploadMainContents').value = '';
+        }
+        else
+        {
+            alert('최대 파일수를 넘었습니다.')
+        }
+    }
+
+    function certificationUploadFunc(e)
+    {
+        var file = e.files[0];
+        certificationSingleFileList = [];
+        certificationSingleFileList.push(file)
+        var fileReader = new FileReader();
+        
+        var box1 = document.createElement("div");
+        box1.classList.add('commonTemplate');
+        box1.classList.add('tem5');
+        box1.setAttribute('id', 'customTemplate');
+        
+        var box2 = document.createElement("div");
+        box2.classList.add('getImg');
+        box2.setAttribute('id', 'getTemplateImg');
+        
+        var btnTag = document.createElement('div');
+        btnTag.innerHTML = `<button class="temSelectBtn-on" onclick="changeButtonColor(this, 'customTemplate')"><%=translation.loginAndJoin.Select%></button>`;
+
+        $('.get-uploadTemplate > *').remove();
+        
+        var btnList = document.getElementsByClassName("temSelectBtn-on")
+        for(var i = 0; i<btnList.length; i++){
+            btnList[i].classList.remove('active');
+        }
+
+        classObject.certificationSelect = 'noSelect';
+        
+        fileReader.onload = function() 
+        {
+            box2.style.backgroundColor = '#fff';
+            box2.style.backgroundImage = 'url("'+fileReader.result+'")';
+        };
+        box1.appendChild(box2);
+        box1.appendChild(btnTag);
+        document.querySelector('.get-uploadTemplate').appendChild(box1);
+        fileReader.readAsDataURL(file);
+
+        document.getElementById('uploadTemplate').value = '';
+    }
+   
+    //파일 삭제
+    function removeFile(e,type, editNum)
+    {
+        if(type===0)
+        {
+            singleFileList = [];
+        }
+        else
+        {
+            var removeIndex = $(e).closest('.mainContentThumb').index();
+                        
+            multipleFileList.splice(removeIndex, 1);
+        }
+        imgRemoveList.push(editNum);
+        $(e).closest('.mainContentThumb').remove();
+        console.log(imgRemoveList);
+    }
+    
+    $(document).ready(function (e){
+    $("#uploadMainContents").change(function(e)
+    {
+        var files = e.target.files;
+        var arr =Array.prototype.slice.call(files);
+                    
+        //업로드 가능 파일인지 체크
+        for(var i=0;i<files.length;i++)
+        {
+            if(!checkExtension(files[i].name,files[i].size))
+            {
+                return false;
+            }
+        }
+                    
+         preview(arr);
+                    
+                    
+    });//file change
+                    
+        function checkExtension(fileName,fileSize)
+        {
+
+            var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+            var maxSize = 20971520;  //20MB
+                    
+            if(fileSize >= maxSize)
+            {
+                alert('파일 사이즈 초과');
+                $("#uploadMainContents").val("");  //파일 초기화
+                return false;
+            }
+                    
+            if(regex.test(fileName))
+            {
+                alert('업로드 불가능한 파일이 있습니다.');
+                $("#uploadMainContents']").val("");  //파일 초기화
+                return false;
+            }
+
+            return true;
+        }
+                    
+        function preview(arr)
+        {
+            arr.forEach(function(f)
+            {
+                        
+                //파일명이 길면 파일명...으로 처리
+                var fileName = f.name;
+                if(fileName.length > 10)
+                {
+                    fileName = fileName.substring(0,7)+"...";
+                }
+                            
+                //div에 이미지 추가
+                var str = '<div style="display: inline-flex; padding: 10px;"><li>';
+                str += '<span>'+fileName+'</span><br>';
+                            
+                //이미지 파일 미리보기
+                if(f.type.match('image.*')){
+                var reader = new FileReader(); 
+                reader.onload = function (e) 
+                { //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
+                    //str += '<button type="button" class="delBtn" value="'+f.name+'" style="background: red">x</button><br>';
+                    str += '<img src="'+e.target.result+'" title="'+f.name+'" style="width :115px ; height : 115px;" />';
+                    str += '</li></div>';
+                    $(str).appendTo('#preview');
+                } 
+                    reader.readAsDataURL(f);
+                }
+                
+                else
+                {
+                    str += '<img src="/resources/img/fileImg.png" title="'+f.name+'" style="width :115px ; height : 115px;" /><button><img src="/web/img/ICN_DELETE.png" alt=""></button>';
+                    $(str).appendTo('#preview');
+                }
+            });//arr.forEach
+        }
+    });
+
+    function checkPayment(type)
+    {
+
+        if(type === 'certification' && classObject.certificationSelect === 'noSelect')
+        {
+            alert('수료증을 선택해주세요.');
+            return false;
+        }
+
+        if(type === 'certification')
+        {
+            certificationFlag = true;
+        }
+
+        if(classObject.premium=='normal'){    
+        }
+        console.log('coemc heck');
+
+        var button = document.getElementsByClassName('moveToNextButton');
+        for(var i=0; i<button.length; i++)
+        {
+            button[i].disabled=true;
+        }
+        if(classObject.isPremium=='normal')
+        {
+            if(classIdForEdit.length>0)
+            {
+                classObjectEditMongo('pass')
+            }
+            else
+            {
+                document.getElementById('loadingPopupControlID').classList.add('active')
+                classObjectInsertMongo('pass');
+                
+            }
+        }
+        <%
+            //바로 패스
+            // 결제 연동후 적용
+            // if(isNeedPayment == 0)
+            //결제 연동후 제거
+            if(true)
+            {
+        %>
+            if(classIdForEdit.length>0)
+            {
+                classObjectEditMongo('pass')
+            }
+            else
+            {
+                classObjectInsertMongo('pass');
+            }
+        <%
+            }
+            //결제 진행
+            else
+            {
+        %>
+                if(classObject.premium=='normal')
+                {    
+                    if(classIdForEdit.length>0)
+                    {
+                        classObjectEditMongo('pass')
+                    }
+                    else
+                    {
+                        classObjectInsertMongo('pass');
+                    }
+                }
+                else
+                { 
+                    alert('등록 단계에서는 별도 비용 없으며, 향후 서비스 오픈 후 추가 결제 진행할 예정입니다. 선택 버튼을 클릭하면 클래스가 저장됩니다.');
+                    customModal(96);
+
+                    //==================================
+                    //페이팔 버튼 생성
+                    //==================================
+                    //월 버튼 생성
+                    paypal.Buttons({
+                        style: {
+                        layout: 'horizontal',
+                        color:   'gold',
+                        shape:   'pill',
+                        label:   'paypal',
+                        tagline: 'false',
+                        size: 'responsive'
+                    },
+                    createSubscription: function(data, actions) {
+                        return actions.subscription.create({
+                        'plan_id': 'P-5R133595HC547832EMES6VOQ'
+                        });
+                    },
+                    onApprove: function(data, actions) {
+                        var jsonObject = {};
+
+                        jsonObject.protocol = 'serverPayTest';
+                        jsonObject.data = data;
+                        jsonObject.pgType = 'paypal';
+                        jsonObject.type = 'subscribe';
+                        jsonObject.purchaseInterval = 1;
+                        jsonObject.itemName = 'Host subscribe 1 month';
+                        
+                        console.log("data = " + JSON.stringify(data))
+                        protocolSendAjaxWithCallBack(jsonObject, function(result){
+
+                            if(result.resultCode==0)
+                            {
+                                classObjectInsertMongo('month');
+                                // 결제 완료 (로그)
+                                // alert('Transaction approved by ' + JSON.stringify(result));
+                            }
+                            else
+                            {
+                                alert("결제 실패 서버에러 : " + result.message);
+                            }
+                        })
+                    },
+                    onError: function (err) {
+                        // For example, redirect to a specific error page
+                        var paypalErrorMessage = JSON.parse(err.message.replace('Create Subscription Api response error:', '')).message;
+                        alert(paypalErrorMessage);
+                    }
+                    }).render('#paypal-button-container-month');
+
+                    //연 버튼 생성
+                    paypal.Buttons({
+                        style: {
+                        layout: 'horizontal',
+                        color:   'gold',
+                        shape:   'pill',
+                        label:   'paypal',
+                        tagline: 'false',
+                        size: 'responsive'
+                    },
+                    createSubscription: function(data, actions) {
+                        return actions.subscription.create({
+                        'plan_id': 'P-8HW48882EY419100YMES62LA'
+                        });
+                    },
+                    onApprove: function(data, actions) {
+                        var jsonObject = {};
+
+                        jsonObject.protocol = 'serverPayTest';
+                        jsonObject.data = data;
+                        jsonObject.pgType = 'paypal';
+                        jsonObject.type = 'subscribe';
+                        jsonObject.purchaseInterval = 12;
+                        jsonObject.itemName = 'Host subscribe 1 year';
+
+                        protocolSendAjaxWithCallBack(jsonObject, function(result){
+
+                            if(result.resultCode==0)
+                            {
+                                classObjectInsertMongo('year');
+                                // 결제 완료 (로그)
+                                // alert('Transaction approved by ' + JSON.stringify(result));
+                            }
+                            else
+                            {
+                                alert("결제 실패 서버에러 : " + result.message);
+                            }
+                        })
+                    },
+                    onError: function (err) {
+                        // For example, redirect to a specific error page
+                        var paypalErrorMessage = JSON.parse(err.message.replace('Create Subscription Api response error:', '')).message;
+                        alert(paypalErrorMessage);
+                    }
+                    }).render('#paypal-button-container-year');
+
+                    // //버튼 날리기
+                    // $(function()
+                    // {
+                    //     setTimeout(function()
+                    //     {
+                    //         // customModal(96);
+                    //         $("#paypal-button-container-month").appendTo($("#subscribeMonth"));
+                    //         $("#paypal-button-container-month").attr("style", "width: 196px;padding-top:5px")
+
+                    //         $("#paypal-button-container-year").appendTo($("#subscribeYear"));
+                    //         $("#paypal-button-container-year").attr("style", "width: 196px;padding-top:5px")
+                            
+                    //     }, 3000); //딜레이 후 던지기
+                        
+                    // })
+                }
+        <%
+            }
+        %>
+    }
+    //클래스 수정 위한 이미지 url 정보
+    thumbNailSubForEditClass =[];
+    var newThumbNailSub = []
+
+    function setThumbNailSubEditData(){
+        
+        var subThumbNailList = document.getElementById('preview').children;
+        console.log(subThumbNailList.length + ' get length');
+        for(var i =0; i<subThumbNailList.length; i++) {
+            thumbNailSubForEditClass.push(subThumbNailList[i].style.backgroundImage.replace('url("', '').replace('")', ''))
+        }
+        var subThumbNailListEx = classObject.thumbNailSub
+        console.log(JSON.stringify(thumbNailSubForEditClass))
+
+        for(var i =0 ; i<subThumbNailListEx.length ; i++) {
+
+            if(!thumbNailSubForEditClass.includes(subThumbNailListEx[i].filePath)){
+                console.log(subThumbNailListEx[i].filePath+ ' is contain')
+                console.log('################################')
+            }else{
+                console.log(subThumbNailListEx[i].filePath+ ' is not')
+                newThumbNailSub.push(subThumbNailListEx[i])
+            }
+        }
+        console.log(newThumbNailSub)
+        
+    }
+
+    function classObjectEditMongo(payType)
+    {
+        document.getElementById('loadingPopupControlID').classList.add('active')
+        setTimeout(function(){
+            temp('edit');
+            // console.log("classObject = " + JSON.stringify(classObject))
+            var sendJsonObject = {};
+            sendJsonObject.payType = payType;
+            sendJsonObject.classObject = JSON.stringify(classObject);
+            sendJsonObject.classId = classIdForEdit;
+
+            $.ajax({
+                type : "POST",
+                url:"/protocol/classObjectUpdateMongo",
+                data: JSON.stringify(sendJsonObject),
+                processData: false,
+                contentType: "application/json; charset=UTF-8",
+                success : function(data){
+                    alert('클래스가 수정되었습니다.');
+                    window.location.href = '/hostStudio';
+                },
+                error : function(error)
+                {
+                    alert('클래스 정보 수정을 실패했습니다.');
+                    document.getElementById('loadingPopupControlID').classList.remove('active');
+                }
+            });
+        }, 1000); 
+
+    }
+
+    function classObjectInsertMongo(payType)
+    {
+        
+        document.getElementById('loadingPopupControlID').classList.add('active')
+        setTimeout(function(){
+                    temp('insert');
+                var sendJsonObject = {};
+                sendJsonObject.payType = payType;
+                sendJsonObject.classObject = JSON.stringify(classObject);
+
+                $.ajax({
+                    type : "POST",
+                    url:"/protocol/classObjectInsertMongo",
+                    data: JSON.stringify(sendJsonObject),
+                    processData: false,
+                    contentType: "application/json; charset=UTF-8",
+                    success : function(data){
+                        alert('클래스 개설 정보가 저장되었습니다.');
+                        location.href = '/hostStudio';
+                    },
+                    error : function(error)
+                    {
+                        alert('클래스 개설 정보 저장을 실패했습니다.');
+                        document.getElementById('loadingPopupControlID').classList.remove('active');
+                    }
+                });
+        }, 1000); 
+
+        // document.getElementById('loadingPopupControlID').classList.add('active')
+      
+    }
+
+
+
+
+
+    function valueChange(){
+        var thisVal = document.getElementById('selectPrice').value;
+        var originPrice = document.getElementById('inputPrice').value;
+        if(thisVal=='₩ KRW'){
+            document.getElementById('getInputPrice').value=originPrice*10/11000;
+            document.getElementById('moneyUnit').innerHTML='USD';
+
+        }else{
+            document.getElementById('getInputPrice').value=originPrice*1100;
+            document.getElementById('moneyUnit').innerHTML='KRW';
+
+        }
+
+    }
+
+
+    function addCategoryInputBox(value){
+        if(value=='others'){
+            document.getElementById('categoryOtherInput').style.display='';
+        }else{
+            document.getElementById('categoryOtherInput').style.display='none';
+        }
+    }
+
+    //최대 365일
+    function yearNumberCheck(e)
+    {
+        if(!isNaN(e.value))
+        {
+            if(e.value > 365)
+            {
+                alert('수강 가능 시간은 최대 365일입니다.')
+                e.value = '';
+            }
+        }
+    }
+
+    //수료증 팝업 이벤트
+    function certificatesPopup(imgurl)
+    {
+        console.log(imgurl)
+        customModal(19);
+    }
+
+    //수료증 직접등록
+    function uploadTemplateUpload(){
+        var uploadTemplate = document.getElementById('uploadTemplate');
+        var getTemplateImg = document.getElementById('getTemplateImg');
+        var getUploadTemplateImg = document.querySelector('.get-uploadTemplate');
+        var btnTag = document.createElement('div');
+        btnTag.innerHTML = "<button class='temSelectBtn-on' onclick='changeButtonColor(this)'></button>";
+        uploadTemplate.addEventListener('change', function(e) {
+            var file = e.target.files[0].name;
+            getTemplateImg.classList.add('getImg');
+            getTemplateImg.style.backgroundImage = 'url("/web/img/'+file+'")'
+            getUploadTemplateImg.append(btnTag);
+        });
+    }
+
+    var filesListWrap = []//리스트 파일 객체
+   
+    function fileListUpload(e)
+    {
+        filesListWrap = [];
+        for(var i = 0; i < e.files.length; i++)
+        {
+            filesListWrap.push(e.files[i]);
+        }
+        $('.filesListWrap > *').remove();
+
+        for(var i = 0; i < e.files.length; i++)
+        {
+            var text = '<li class="materialsFile-getFileName"><span class="materialsFile-fileName">'+e.files[i].name+'</span><button class="delBtn-on" type="button" onclick="removefileList(this,\''+e.files[i].name+'\')">삭제</button></li>'
+            $('.filesListWrap').append(text)
+        }
+    }
+    function removefileList(e,name)
+    {
+        for(var i = 0; i < filesListWrap.length; i++)
+        {
+            if(filesListWrap[i].name===name)
+            {
+                filesListWrap.splice(i,1)
+                break;
+            }
+        }
+        $(e).parent().remove();
+        // console.log('앙 리스트2',filesListWrap)
+    }
+    
+    var googleMapOptions = '';
+    var googleMap = '';
+    var geocoder = '';
+    var getClassLatitude;
+    var getClassLongitude;
+    var brandLocation = {};
+    
+    // 기존의 Marker를 지우기 위해 마커를 담는 배열
+    var arrayGoogleMapMarker = [];
+
+    // Google Map API 주소의 callback 파라미터와 동일한 이름의 함수
+    function mindgroundMap(type) 
+    {
+        // default 중심 위치는 서울특별시
+        googleMapOptions= { center : new google.maps.LatLng(37.55430979366699, 126.98747449784453), zoom : 8 };
+
+        if(type == 'profile') {
+            googleMap = new google.maps.Map(document.getElementById("profileGoogleMap"), googleMapOptions);
+        } else {
+            googleMap = new google.maps.Map(document.getElementById("googleMap"), googleMapOptions);
+        }
+
+            geocoder = new google.maps.Geocoder();
+        }
+
+    function geocodeAddress(geocoder, googleMap, flag)
+    {
+        if(flag == 'profile') {
+            // 기존의 Marker를 지운다.
+            if(arrayGoogleMapMarker.length > 0)
+            {
+                arrayGoogleMapMarker[0].setMap(null);
+            }
+
+            // set Address
+            var address = document.getElementById('profileGoogleSearchID').value;
+            brandLocation.address = address;
+
+            geocoder.geocode({ 'address' : address }, function(result, status)
+            {
+                if(status === 'OK')
+                {
+                    var googleMapMarker = new google.maps.Marker({ position: result[0].geometry.location });
+                    
+                    arrayGoogleMapMarker[0] = googleMapMarker;
+
+                    // Marker를 맵에 찍는다.
+                    arrayGoogleMapMarker[0].setMap(googleMap);
+                    
+                    googleMap.setCenter(result[0].geometry.location);
+                    googleMap.setZoom(17);
+                    
+                    getClassLatitude = googleMapMarker.position.lat();
+                    getClassLongitude = googleMapMarker.position.lng();
+                    brandLocation.lat = getClassLatitude;
+                    brandLocation.lng = getClassLongitude;
+                    console.log('lat = ' + getClassLatitude + ' long = ' + getClassLongitude);
+                }
+                else
+                {
+                    if(status === 'INVALID_REQUEST')
+                    {
+                        alert('주소를 입력해주세요.');
+                    }
+                    else
+                    {
+                        console.log('geocode error ' + status);
+                    }
+                }
+            });
+        } else {
+            // 기존의 Marker를 지운다.
+            if(arrayGoogleMapMarker.length > 0)
+            {
+                arrayGoogleMapMarker[0].setMap(null);
+            }
+
+            // set Address
+            var address = document.getElementById('googleMapAddress').value;
+
+            geocoder.geocode({ 'address' : address }, function(result, status)
+            {
+                if(status === 'OK')
+                {
+                    var googleMapMarker = new google.maps.Marker({ position: result[0].geometry.location });
+                    
+                    arrayGoogleMapMarker[0] = googleMapMarker;
+
+                    // Marker를 맵에 찍는다.
+                    arrayGoogleMapMarker[0].setMap(googleMap);
+                    
+                    googleMap.setCenter(result[0].geometry.location);
+                    googleMap.setZoom(17);
+                    
+                    getClassLatitude = googleMapMarker.position.lat();
+                    getClassLongitude = googleMapMarker.position.lng();
+                    console.log('lat = ' + getClassLatitude + ' long = ' + getClassLongitude);
+                }
+                else
+                {
+                    if(status === 'INVALID_REQUEST')
+                    {
+                        alert('주소를 입력해주세요.');
+                    }
+                    else
+                    {
+                        console.log('geocode error ' + status);
+                    }
+                }
+            });
+        }
+    }
+
+    // googleMapSearch onclick Function
+    function googleMapSearch(flag)
+    {
+        geocodeAddress(geocoder, googleMap, flag);
+    };
+
+
+    function temp(type)
+    {
+        
+        classObject.krw = document.getElementById('inputPrice').value;
+        classObject.usd =  document.getElementById('getInputPrice').value;
+        if(document.getElementById('audience').value!='<%=translation.openClass.Input%>'){
+            classObject.audience = 'Unlimited';
+        }else{
+            classObject.audience = document.getElementById('inputAudience').value;
+        }
+        classObject.currentAudience = 0;
+
+        classObject.availableDays = (classObject.premium=='premium') ? document.getElementById('availableDays').value : 0;
+    
+    // topics
+        classObject.course = document.getElementById('format2').value1;
+        classObject.mainCategory = document.getElementById('category1').value1;
+
+        classObject.subCategory =(document.getElementById('directInpt')!=null) ? document.getElementById('directInpt').value : document.getElementById('category2').value;
+        if(classObject.subCategory=='Others'){
+            classObject.subCategory=document.getElementById('categoryOtherInputValue').value;
+        }
+        classObject.level = document.getElementById('level').value1;
+
+        //language
+        var el = document.getElementsByClassName('addLangText')
+        var otherLanguage = [];
+        console.log(el.length);
+        console.log('asd');
+        for(list in el){
+            el[list].innerHTML!=undefined ? otherLanguage.push(el[list].innerHTML) : '';
+        }
+        classObject.otherLanguage =otherLanguage;
+
+        //title & descriptions
+        classObject.title = document.getElementById('classTitleInput').value;
+        console.log(document.getElementById('classTitle').value + '   ' + classObject.title)
+        classObject.description = document.getElementById('classDesc').value;
+        
+        var keywordLists =[]
+        var keywordEl = document.getElementsByClassName('chkKeyWord');
+        for(list in keywordEl){
+            keywordEl[list].innerHTML !== undefined ? keywordLists.push(keywordEl[list].getAttribute('id').replaceAll('comple', '')) :'';
+        } 
+        classObject.keywords=keywordLists;
+
+       
+    
+        // 썸네일 써브
+        // 기존 저장 방식에서는 2번에 걸처 6개의 파일을 업로드하면 두번째 업로드 파일들만 input files에 담겨 있어 classObejct에 정상적으로 데이터가 들어가지 않아
+        // preview 출력 및 업로드 파일을 담고 있는 Arrray multipleFileList를 최종적으로 가져와 file 저장을 하는 방식으로 변경했습니다.
+        function saveListFileToServerV2(fileList)
+        {
+
+            let listUploadFiles = [];
+
+            if(fileList.length > 0)
+            {
+                var uploadMainContentsLength = fileList.length;
+                try{
+                    for(var i = 0 ; i < uploadMainContentsLength ; i++)
+                    {
+                                if(fileList[i].type!==undefined){
+                                var formData = new FormData();
+                                formData.append('uploadFile', fileList[i], fileList[i].name)
+                                $.ajax({
+                                    type : "POST",
+                                    url:"/protocol/protocolFileUpload",
+                                    data : formData,
+                                    processData : false,
+                                    contentType : false,
+                                    async: false,
+                                    timeout: 6000000,
+                                    success : function(data){
+                                        listUploadFiles.push(data.listFileInfo[0]);
+                                    }
+                                })
+                            }
+            
+                        }
+                        
+                    }catch(e){
+                        
+                }
+    
+            }
+            console.log(JSON.stringify(listUploadFiles) + ' 123123123')
+            return listUploadFiles;
+        }
+        
+        if(type=='edit'){
+            setThumbNailSubEditData()
+            try{
+                classObject.thumbNailMain = saveFileToServerV2(singleFileList);
+            }catch(e){
+                        
+            }
+            //썸네일 써브
+            classObject.thumbNailSub = saveListFileToServerV2(multipleFileList);
+
+        }else{
+            classObject.thumbNailMain = saveFileToServerV2(singleFileList);
+            //썸네일 써브
+            classObject.thumbNailSub = saveListFileToServerV2(multipleFileList);
+        }
+        // videos & images
+
+        for(var i =0 ; i<thumbNailSubForEdit.length ; i++){
+            if(!imgRemoveList.includes(i)){
+                console.log(`is come check ${i}, ${thumbNailSubForEdit[i]}`)
+                classObject.thumbNailSub.push(thumbNailSubForEdit[i]);
+            }
+        }
+
+        //dpm
+        var classOpenDate = {}
+        classOpenDate.openDate=document.getElementById('getClassOpenDate').innerHTML;
+        
+        var checkTime1 = document.getElementById('onlyTime1').value;
+        var checkTime2 = document.getElementById('onlyTime2').value;
+        var checkMinutes1 = document.getElementById('onlyMinutes1').value;
+        var checkMinutes2 = document.getElementById('onlyMinutes2').value;
+
+        if(checkTime1 === '')
+        {
+            checkTime1 = '00';
+        }
+        else if(checkTime1.toString().length === 1)
+        {
+            checkTime1 = '0' + checkTime1;
+        }
+        if(checkTime2 === '')
+        {
+            checkTime2 = '00';
+        }
+        else if(checkTime2.toString().length === 1)
+        {
+            checkTime2 = '0' + checkTime2;
+        }
+        if(checkMinutes1 === '')
+        {
+            checkMinutes1 = '00';
+        }
+        else if(checkMinutes1.toString().length === 1)
+        {
+            checkMinutes1 = '0' + checkMinutes1;
+        }
+        if(checkMinutes2 === '')
+        {
+            checkMinutes2 = '00';
+        }
+        else if(checkMinutes2.toString().length === 1)
+        {
+            checkMinutes2 = '0' + checkMinutes2;
+        }
+        
+        classOpenDate.openTime = checkTime1 + ':' + checkMinutes1;
+        classOpenDate.endTime = checkTime2 + ':' + checkMinutes2;
+        classOpenDate.classPeriod = document.getElementById('classTotalTimeArea').value;
+        
+        if(classObject.online=='online'){
+            classOpenDate.classMethod = document.getElementById('methodInfo').value;
+        }else{
+            classOpenDate.classLocation = document.getElementById('googleMapAddress').value;
+            classOpenDate.classLatitude = getClassLatitude;
+            classOpenDate.classLongitude = getClassLongitude;
+        }
+
+        classObject.classOpenDate = classOpenDate;
+
+        //
+        classObject.classSellStartDate = document.getElementById('classSellStartDate').value;
+        classObject.classSellEndDate = document.getElementById('classSellEndDate').value;
+
+        //챕터 리스트 순서 수정
+        tempChapterObject=[]
+        for(var i=1; i<classObject.chapterList.length+1; i++){
+            for(var j=0; j<classObject.chapterList.length; j++){
+                if(classObject.chapterList[j].chapterNum==i){
+                    tempChapterObject.push(classObject.chapterList[j])
+                    console.log(JSON.stringify(tempChapterObject))
+                }
+            }
+        }
+        classObject.chapterList=tempChapterObject;
+
+        if(certificationFlag)
+        {
+            if(classObject.certificationSelect === 'customTemplate')
+            {
+                classObject.certification = saveFileToServerV2(certificationSingleFileList);
+            }
+            else
+            {
+                if(classObject.certificationSelect === 'commonTemplate0')
+                {
+                    classObject.certification = {'filePath' : 'noTem'};
+                }
+                else
+                {
+                    var tempSelect = classObject.certificationSelect;
+                    var tempSelectNum = tempSelect.charAt(tempSelect.length - 1);
+                    var tempFilePath = `/web/img/certification/${tempSelectNum}.png`;
+                    classObject.certification = {'filePath' : tempFilePath};
+                }
+            }
+        }
+    }
+</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATfYV535tXnxiEu1KCbvOlGx6IoqySFlA&callback=mindgroundMap"></script>

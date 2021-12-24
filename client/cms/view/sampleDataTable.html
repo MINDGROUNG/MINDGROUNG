@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <%-include common/commonHead.html%>
+    <body>
+        <%-include common/commonHeader.html%>
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+        <!-- START CONTENT -->
+        <div class="content">
+            <!-- Start Page Header -->
+            <div class="page-header">
+                <h1 class="title">Blank Page</h1>
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="#">Extra Pages</a></li>
+                    <li class="active">Blank Page</li>
+                </ol>
+
+                <!-- End Page Header Right Div -->
+            </div>
+            <!-- End Page Header -->
+            <div class="row presentation">
+
+                <div class="col-lg-8 col-md-6 titles">
+                    <span class="icon color10-bg"><i class="fa fa-table"></i></span>
+                    <h1>샘플 레이아웃</h1>
+                    <h4>추가가 필요한 레이아웃은 요청하기</h4>
+                </div>
+            
+                <div class="col-lg-4 col-md-6">
+                    <ul class="list-unstyled list">
+                    <li><i class="fa fa-check"></i>데이터 테이블 적용</li><li>
+                    </li></ul>
+                </div>
+            
+            </div>
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+            <!-- START CONTAINER -->
+            <div class="container-default">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-title">
+                                DAtaTables
+                            </div>
+
+                            <div class="panel-body table-responsive">
+                                <table id="example" class="table display">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Position</td>
+                                            <td>Office</td>
+                                            <td>Age</td>
+                                            <td>Start date</td>
+                                            <td>Salary</td>
+                                            <td>Name</td>
+                                            <td>Position</td>
+                                            <td>Office</td>
+                                            <td>Age</td>
+                                            <td>Start date</td>
+                                            <td>Salary</td>
+                                            <td>Name</td>
+                                            <td>Position</td>
+                                            <td>Office</td>
+                                            <td>Age</td>
+                                            <td>Start date</td>
+                                            <td>Salary</td>
+                                            <td>Name</td>
+                                            <td>Position</td>
+                                            <td>Office</td>
+                                            <td>Age</td>
+                                            <td>Start date</td>
+                                            <td>Salary</td>
+                                            <td>Name</td>
+                                            <td>Position</td>
+                                            <td>Office</td>
+                                            <td>Age</td>
+                                            <td>Start date</td>
+                                            <td>Salary</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Position</td>
+                                            <td>Office</td>
+                                            <td>Age</td>
+                                            <td>Start date</td>
+                                            <td>Salary</td>
+                                            <td>Name</td>
+                                            <td>Position</td>
+                                            <td>Office</td>
+                                            <td>Age</td>
+                                            <td>Start date</td>
+                                            <td>Salary</td>
+                                            <td>Name</td>
+                                            <td>Position</td>
+                                            <td>Office</td>
+                                            <td>Age</td>
+                                            <td>Start date</td>
+                                            <td>Salary</td>
+                                            <td>Name</td>
+                                            <td>Position</td>
+                                            <td>Office</td>
+                                            <td>Age</td>
+                                            <td>Start date</td>
+                                            <td>Salary</td>
+                                            <td>Name</td>
+                                            <td>Position</td>
+                                            <td>Office</td>
+                                            <td>Age</td>
+                                            <td>Start date</td>
+                                            <td>Salary</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END CONTAINER -->
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+            <%-include common/commonFooter.html%>
+        </div>
+        <!-- End Content -->
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+        <%-include common/commonScript.html%>
+        <script>
+        ///////////데이터 테이블//////////////
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'excel', 'print'
+                ]
+            });
+        });
+        ///////////데이터 테이블//////////////
+        </script>
+    </body>
+</html>

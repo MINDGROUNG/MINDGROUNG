@@ -1,0 +1,750 @@
+//믹스인
+@mixin fs($size, $lineHeight, $weight: normal) {
+    //font-size,line-height,font-weight
+    font-size: $size;
+    line-height: $lineHeight;
+    font-weight: $weight;
+}
+@mixin wh($width: auto, $height: auto) {
+    //width,height
+    width: $width;
+    height: $height;
+}
+@mixin border($px, $sharp, $color) {
+    //border
+    border: $px $sharp $color;
+}
+@mixin resetBtn {
+    padding: 0;
+    border: 0;
+    background: none;
+    outline: none;
+}
+@mixin bgImg {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@mixin flexbox($jc: center, $al: center, $fs: row) {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: $jc;
+    align-items: $al;
+    flex-direction: $fs;
+}
+
+@mixin flex($values) {
+    -webkit-box-flex: $values;
+    -moz-box-flex: $values;
+    -webkit-flex: $values;
+    -ms-flex: $values;
+    flex: $values;
+}
+
+@mixin order($val) {
+    -webkit-box-ordinal-group: $val;
+    -moz-box-ordinal-group: $val;
+    -ms-flex-order: $val;
+    -webkit-order: $val;
+    order: $val;
+}
+
+@mixin absoluteCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin ellipsis($wlc) {
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $wlc;
+    -webkit-box-orient: vertical;
+}
+
+//마인드그라운드에서 자주 사용되는 폰트사이즈 & 컬러 , 레이아웃
+@mixin regularFs($s, $l: 1, $c: #fff) {
+    font-size: $s;
+    font-weight: 400;
+    line-height: $l;
+    color: $c;
+}
+
+@mixin boldFs($s, $l: 1, $c: #fff) {
+    font-size: $s;
+    font-weight: 700;
+    line-height: $l;
+    color: $c;
+}
+
+@mixin slickBtn {
+    position: absolute;
+    @include resetBtn();
+    color: #fff;
+    font-size: 24px;
+}
+
+//저널 카드 레이아웃별 가로크기 변경
+@mixin cardWidth($w) {
+    width: calc((100% - 90px) /#{$w});
+}
+
+//자주사용할 컬러칩
+$bgColor: #202020;
+$bgColor_03: rgba(0, 0, 0, 0.3);
+$bgColor_06: rgba(0, 0, 0, 0.6);
+$bgColor_08: rgba(0, 0, 0, 0.8);
+$bgColor2: #45454f;
+$boxColor: #2e2e34;
+$lightpurple: #aeacff;
+$lightpurple_03: rgba(174, 172, 255, 0.3);
+$lightpurple_06: rgba(174, 172, 255, 0.6);
+$noneActive: rgba(255, 255, 255, 0.3);
+$fontcolor1: rgba(255, 255, 255, 0.6);
+$fontcolor2: rgba(255, 255, 255, 0.45);
+
+.thumbBox {
+    display: block;
+}
+
+.marginAuto {
+    // width: 1685px;
+    // width: 1920px;
+    // margin: 0 auto;
+    // box-sizing: border-box;
+}
+
+.marginAuto_s {
+    width: 1115px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.minHeight {
+    // min-height: calc(100vh - 625px);
+    min-height: calc(100vh - 597px);
+}
+
+.wrap {
+    padding-top: 60px;
+    .headerWrap{
+        .modalPop{
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: none;
+            .modalBack{
+                width: 100vw;
+                height: 100vh;
+                background-color: #202020;
+                top: 0;
+                position: absolute;
+            }
+            //마이페이지-리뷰작성
+            .modalPopReview{
+                padding: 60px 50px;
+                box-sizing: border-box;
+                background-color: #2e2e34;
+                width: calc(100% - 40px);
+                max-width: 970px;
+                // height: 900px;
+                height: calc(100vh - 100px);
+                max-height: 915px;
+                position: absolute;
+                top: 0;bottom: 0;left: 0;right: 0;margin: auto;
+                z-index: 4;
+                border-radius: 15px;
+                .writeForm{
+                    position: relative;
+                    margin-bottom: 20px;
+                    .xMark{
+                        font-size: 20px;
+                        color: #fff;
+                        text-align: right;
+                        position: absolute;
+                        top:-36px;
+                        right: -35px;
+                    }
+                    h2{
+                        font-family: 'Noto Sans KR';
+                        color: #fff;
+                        font-size: 16px;
+                        line-height: 1;
+                    }
+                }
+                .content{
+                    height: calc(100% - 30px);
+                    padding-right: 15px;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    &::-webkit-scrollbar {
+                        width: 8px;
+                    }
+                    &::-webkit-scrollbar-thumb {
+                        background-color: rgba(255, 255, 255, 0.7);
+                        border-radius: 5px;
+                    }
+                    .label{
+                        height: 86px;
+                        width: calc(100% - 2px);
+                        border: 1px solid rgba(255, 255, 255, 0.45);
+                        border-radius: 10px;
+                        textarea{
+                            width: 100%;
+                            background-color: transparent;
+                            border-collapse: collapse;
+                            overflow-x: hidden;
+                            border: none;
+                            resize: none;
+                            overflow-y:scroll;
+                            height: 56px;
+                            box-sizing: border-box;
+                            padding: 18px;
+                            outline: none;
+                            font-family: 'Noto Sans';
+                            font-weight: 400;
+                            color: #fff;
+                            &::placeholder{
+                                font-family: "Noto Sans";
+                                font-weight: 400;
+                                color:rgba(255, 255, 255, 0.45);
+                            }
+                            &::-webkit-scrollbar{
+                                width: 16px;
+                            }
+                            &::-webkit-scrollbar-thumb{
+                                border-radius: 12px;
+                                background-color: rgba(255, 255, 255, 0.7);
+                                border: 4px solid transparent;
+                                background-clip: padding-box;
+                            }
+                            &::-webkit-scrollbar-track{
+                                background-color: transparent;
+                            }
+                        }
+                        .count500{
+                            padding-right: 20px;
+                            font-size: 12px;
+                            color: rgba(255, 255, 255, 0.45);
+                            text-align: right;
+                        }
+                    }
+                    .surveyChoice{
+                        margin-top: 30px;
+                        .levelHeader{
+                            display: flex;
+                            align-items: center;
+                            border-bottom: 2px solid #6f6f7b;
+                            h2{
+                                font-size: 12px;
+                                color: #fff;
+                                text-align: center;
+                                width: 118px;
+                                line-height: 30px;
+                                font-weight: 500;
+                                background-color: #6f6f7b;
+                                border-radius: 10px 10px 0 0;
+                            }
+                            p {
+                                font-size: 12px;
+                                line-height: 1;
+                                color: rgba(255, 255, 255, 0.6);
+                                font-weight: 400;
+                                margin-left: 20px;
+                            }
+                        }
+                        .moText {
+                            display: none;
+                            font-size: 12px;
+                            line-height: 1;
+                            color: rgba(255, 255, 255, 0.6);
+                            font-weight: 400;
+                        }
+                        .levelBody{
+                            margin-top: 10px;
+                            article{
+                                padding: 10px 0;
+                                border: 10px 0;
+                                h3{
+                                    font-size: 14px;
+                                    line-height: 1.6;
+                                    color: #fcfcfc;
+                                    font-weight: 500;
+                                }
+                                .selectSurvey{
+                                    max-width: 580px;
+                                    width: 100%;
+                                    margin: 0 auto;
+                                    margin-top: 15px;
+                                    ul.btnPic{
+                                        display: flex;
+                                        justify-content: space-around;
+                                        li{
+                                            width: calc(20% - 94px);
+                                            margin: 0 auto;
+                                            .out{
+                                                width: 20px;
+                                                height: 20px;
+                                                border-radius: 20px;
+                                                border: 1px solid #aeacff;
+                                                background-color:#2e2e34;
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
+                                                .in{
+
+                                                }
+                                            }
+                                            &.clicked{
+                                                .in{
+                                                    width: 14px;
+                                                    height: 14px;
+                                                    background-color: #aeacff;
+                                                    border-radius: 14px;
+                                                }
+                                            }
+                                        }
+                                        
+                                    }
+                                    hr{
+                                        background-color: #aeacff;
+                                        height: 2px;
+                                        border: 0;
+                                        position: absolute;
+                                        top: 9px;right: 0;left: 0;margin: auto;
+                                        width: 100%;
+                                        z-index: -1;
+                                        width: 80%;
+                                    }
+                                    .step{
+                                        margin-top: 6px;
+                                        ol{
+                                            display: flex;
+                                            justify-content: space-around;
+
+                                            
+                                            li{
+                                                width: calc(20% - 107px);
+                                                margin: 0 auto;
+                                                font-size: 12px;color: #fcfcfc;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                    }
+                    .complete{
+                        font-size: 12px;
+                        color: rgba(255, 255, 255, 0.6);
+                        text-align: center;
+                        margin-top: 20px;
+                        font-weight: 400;
+                        line-height: 22px;
+                    }
+                    .btnReview{
+                        width: 177px;
+                        margin: 0 auto;
+                        margin-top: 5px;
+                        button{
+                            font-size: 16px;
+                            width: 177px;
+                            height: 50px;
+                            background-color: #7548f5;
+                            outline: 0;
+                            border: 0;
+                            color: #fff;
+                            border-radius: 25px;
+                        }
+                    }
+                }
+            }
+        }
+        .modalCertificate{
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: none;
+            .modalBack{
+                width: 100vw;
+                height: 100vh;
+                background-color: rgba(#202020, 0.6);
+                top: 0;
+                position: absolute;
+            }
+            //마이페이지-수료증보기
+            .modalPopReview{
+                padding: 0 50px;
+                box-sizing: border-box;
+                background-color: #2e2e34;
+                width: calc(100% - 40px);
+                max-width: 970px;
+                // height: 900px;
+                height: calc(100vh - 50px);
+                max-height: 865px;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+                z-index: 4;
+                border-radius: 15px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .content{
+                    width: 100%;
+                    height: 100%;
+                    padding: 60px 0 40px;
+                    box-sizing: border-box;
+                    .writeForm{
+                        position: relative;
+                        .xMark {
+                            font-size: 20px;
+                            color: #fff;
+                            position: absolute;
+                            top: -40px;
+                            right: -20px;
+                        }
+                        .certificateTitle{
+                            display: flex;
+                            margin-bottom: 40px;
+                            h2{
+                                font-size: 16px;
+                                line-height: 1;
+                                color: #fff;
+                            }
+                            p{
+                                font-size: 14px;
+                                line-height: 1;
+                                color: #fff;
+                                border-bottom: 1px solid #fcfcfc;
+                                // width: 69px;
+                                margin-left: 30px;
+                            }
+                        }
+                    }
+                    .mainArea {
+                        padding: 0 100px;
+                        .certificate {
+                            padding-top: 100%;
+                            height: 100%;
+                            width: 72%;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            background-size: cover;
+                            margin: 0 auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .generalSetting{
+        .generalSettingSection{
+            display: flex;
+            justify-content: space-between;
+            .language{
+                width: 542px;
+                h2{
+                    font-size: 20px;
+                    color: #fff;
+                    line-height: 1.5;
+                    font-weight: 700;
+                }
+                .languageSelect{
+                    margin-top: 10px;
+                    padding: 30px 0;
+                    display: flex;
+                    justify-content: space-between;
+                    border-top: 1px solid #fff;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+                    h3{
+                        font-weight: 700;
+                        font-size: 16px;
+                        color: #fff;
+                        line-height: 40px;
+                    }
+                    .settingLanguage {
+                        width: 255px;
+                        .selectBox-hdnMenu {
+                            label {
+                                width: calc(100% - 20px);
+                            }
+                        }
+                    }
+                }
+                .saveBtn{
+                    margin-top: 20px;
+                    width: 176px;
+                    margin-left: auto;
+                    button{
+                        width: 176px;
+                        height: 40px;
+                        color: #fff;
+                        outline: none;
+                        border: 0;
+                        background-color: #7548f5;
+                        border-radius: 20px;
+                    }
+                }
+            }
+            .notification{
+                width: 399px;
+                h2{
+                    font-size: 20px;
+                    color: #fff;
+                    line-height: 1.5;
+                    font-weight: 700;
+                }
+                .notificationSet{
+                    margin-top: 10px;
+                    border-top: 1px solid #fff;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+                    padding-bottom: 30px;
+                    .notificationContent{
+                        display: flex;
+                        justify-content: space-between;
+                        margin-top: 30px;
+                        h3{
+                            font-weight: 700;
+                            font-size: 16px;
+                            color: #fff;
+                            line-height: 40px;
+                        }
+                        .notifiChkWrap {
+                            @include flexbox();
+                            .switcth {
+                                input[type="checkbox"] {
+                                    display: none;
+                                    & + .ballWrap {
+                                        position: relative;
+                                        display: inline-block;
+                                        @include wh(50px, 30px);
+                                        background-color: #45454f;
+                                        border-radius: 999px;
+                                        .ball {
+                                            position: absolute;
+                                            top: 50%;
+                                            transform: translateY(-50%);
+                                            left: 5px;
+                                            display: inline-block;
+                                            @include wh(20px, 20px);
+                                            background-color: #fff;
+                                            border-radius: 50%;
+                                            transition: .3s;
+                                        }
+                                    }
+                                }
+                                input[type="checkbox"]:checked {
+                                    & + .ballWrap {
+                                        background-color: #7548f5;
+                                        .ball {
+                                            left: 25px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+                .saveBtn{
+                    margin-top: 20px;
+                    width: 176px;
+                    margin-left: auto;
+                    button{
+                        width: 176px;
+                        height: 40px;
+                        color: #fff;
+                        outline: none;
+                        border: 0;
+                        background-color: #7548f5;
+                        border-radius: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1280px) and (max-width: 1554px) {
+    //제너럴세팅
+    .wrap {
+        .generalSetting {
+            .generalSettingSection {
+                .language {
+                    width: calc(50% - 10px);
+                    .languageSelect {
+                        h3 {
+                            font-size: 12px;
+                        }
+                    }
+                }
+                .notification {
+                    width: calc(50% - 10px);
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1279px) {
+    //제너럴세팅
+    .wrap {
+        .headerWrap {
+            .modalCertificate {
+                // 수료증
+                .modalPopReview {
+                    max-width: 400px;
+                    height: calc(100vh - 270px);
+                    max-height: 580px;
+                    padding: 0;
+                    border-radius: 5px;
+                    .content {
+                        height: 100%;
+                        padding: 60px 20px 30px;
+                        box-sizing: border-box;
+                        .writeForm {
+                            .xMark {
+                                font-size: 24px;
+                                right: 0;
+                            }
+                            .certificateTitle {
+                                flex-direction: column;
+                                h2 {
+                                    margin-bottom: 15px;
+                                }
+                                p {
+                                    width: fit-content;
+                                    margin-left: 0;
+                                }
+                            }
+                        }
+                        .mainArea {
+                            padding: 0;
+                            .certificate {
+                                width: 100%;
+                                max-width: 295px;
+                                height: 410px;
+                                padding-top: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .generalSetting {
+            .generalSettingSection {
+                flex-direction: column;
+                .language {
+                    width: 100%;
+                    h2 {
+                        font-size: 24px;
+                    }
+                    .languageSelect {
+                        margin-top: 20px;
+                        flex-direction: column;
+                        h3 {
+                            margin-bottom: 20px;
+                        }
+                        .settingLanguage {
+                            width: 100%;
+                        }
+                    }
+                    .saveBtn {
+                        width: 100%;
+                        text-align: center;
+                        margin-bottom: 60px;
+                        button {
+                            @include wh(220px, 40px);
+                        }
+                    }
+                }
+                .notification {
+                    width: 100%;
+                    h2 {
+                        font-size: 24px;
+                    }
+                    .notificationSet {
+                        margin-top: 20px;
+                    }
+                    .saveBtn {
+                        width: 100%;
+                        text-align: center;
+                        margin-bottom: 60px;
+                        button {
+                            @include wh(220px, 40px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .wrap {
+        .headerWrap {
+            .modalPop {
+                //리뷰달기
+                .modalPopReview {
+                    padding: 60px 20px;
+                    border-radius: 5px;
+                    .writeForm {
+                        .xMark {
+                            right: 0;
+                        }
+                    }
+                    .content {
+                        .label {
+                            border-radius: 5px;
+                        }
+                        .surveyChoice {
+                            .levelHeader {
+                                & > p {
+                                    display: none;
+                                }
+                            }
+                            .moText {
+                                display: block;
+                                padding-top: 10px;
+                                line-height: 1.4;
+                            }
+                            .levelBody {
+                                article {
+                                    .selectSurvey {
+                                        margin-top: 20px;
+                                        .step {
+                                            ol {
+                                                li {
+                                                    padding-left: 10px;
+                                                }
+                                            }
+                                        }
+                                    }   
+                                }
+                            }
+                        }
+                        .btnReview {
+                            width: 100%;
+                            text-align: center;
+                            button {
+                                @include wh(220px, 40px);
+                            }
+                        }
+                    }
+                }   
+            }
+        }
+    }
+}

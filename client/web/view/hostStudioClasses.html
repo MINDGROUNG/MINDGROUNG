@@ -1,0 +1,532 @@
+<div class="modal modal34">
+    <div>
+        <div class="fixInfo">
+            <div class="icon-text">
+                <strong>
+                    Participants
+                </strong>
+                <span>450 participants in total​</span>
+            </div>
+            <div class="xBtn">
+                <button onclick="customModalClose(34)">
+                    <i class="xi-close"></i>
+                </button>
+            </div>
+        </div>
+        <div class="contents">
+            <!-- 리스트가 있을 때 -->
+            <div class="friendList-list-has">
+                <%
+                    for(var i = 0; i < 10; i++)
+                    {
+                %>
+                <div class="friendList-list-content">
+                    <div class="userInfo">
+                        <div class="friendList-list-content-img">
+                            <img src="/web/img/userRing/1.png" alt="">
+                        </div>
+                        <div class="friendList-list-content-text">
+                            <h6>
+                                Hannah Brown
+                            </h6>
+                            <p>
+                                <%=translation.hostStudio.Teacher%>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="friendList-list-content-btn">
+                        <button data-no="0">
+                            Following
+                        </button>
+                    </div>
+                </div>
+                <%
+                    }
+                %>
+            </div>
+            <!-- 리스트가 없을 때! -->
+            <!-- <div class="friendList-list-none">
+                <strong>
+                    No participant yet​
+                </strong>
+            </div> -->
+        </div>
+    </div>
+</div>
+<section class="hostStudioCommonLayout">
+    <article>
+        <div class="commonTitleArea">
+            <h2><%=translation.dashBoard.Classes_Management%></h2>
+            <div class="sideContents classesTitleInner">
+                <!-- 셀렉박스 들어갈 곳 -->
+                <div class="selectWrap">
+                    <button class="getDateBtn-on">
+                        <div>
+                            <strong class="getText">2021.05.22 ~ 2021.05.30</strong>
+                        </div>
+                        <span class="icon">
+                            <img src="/web/img/ICN_DROP.png" alt="">
+                        </span>
+                    </button>
+                    <div class="hdnSelectBox">
+                        <div class="moTitleArea">
+                            <div>
+                                <img src="/web/img/down.png" alt="">
+                            </div>
+                            <div>
+                                <button>
+                                    <img src="/web/img/btn_close_small.png" alt="">
+                                </button>
+                                <h5>Time Period</h5>
+                            </div>
+                        </div>
+                        <div class="selectArea">
+                            <div class="select-cate-date">
+                                <span class="cateText">
+                                    <%=translation.dashBoard.All%>
+                                </span>
+                                <strong class="dateNumber">
+                                    <!-- 2020.05.01 ~ 2021.12.01 -->
+                                </strong>
+                            </div>
+                            <div class="chkBoxList">
+                                <div class="chkbox">
+                                    <input type="radio" id="all_classes" name="dateChk">
+                                    <label for="all_classes">
+                                        <span class="box"></span>
+                                        <span class="text"><%=translation.dashBoard.All%></span>
+                                    </label>
+                                </div>
+                                <div class="chkbox">
+                                    <input type="radio" id="yesterday_classes" name="dateChk">
+                                    <label for="yesterday_classes">
+                                        <span class="box"></span>
+                                        <span class="text"><%=translation.dashBoard.Yesterday%></span>
+                                    </label>
+                                </div>
+                                <div class="chkbox">
+                                    <input type="radio" id="last7_classes" name="dateChk">
+                                    <label for="last7_classes">
+                                        <span class="box"></span>
+                                        <span class="text"><%=translation.dashBoard.Last_7_days%></span>
+                                    </label>
+                                </div>
+                                <div class="chkbox">
+                                    <input type="radio" id="last30_classes" name="dateChk">
+                                    <label for="last30_classes">
+                                        <span class="box"></span>
+                                        <span class="text"><%=translation.dashBoard.Last_30_days%></span>
+                                    </label>
+                                </div>
+                                <div class="chkbox">
+                                    <div>
+                                        <input type="radio" id="selectPeriod_classes" name="dateChk">
+                                        <label for="selectPeriod_classes">
+                                            <span class="box"></span>
+                                            <span class="text"><%=translation.dashBoard.Select_period%></span>
+                                        </label>
+                                    </div>
+                                    <div class="rawInputBox">
+                                        <input type="text">
+                                        <span>~</span>
+                                        <input type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="saveArea">
+                            <button class="saveBtn-on">
+                                <%=translation.dashBoard.Save%>
+                            </button>
+                        </div>
+                        <div class="onlyFixed"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mainContentsArea classes">
+            <div class="tabs">
+                <ul>
+                    <li>
+                        <button class="tabs-inner tabsAll hostClass active" data-tabs="allClasses">
+                            <%=translation.dashBoard.All%>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="tabs-inner tabsFriends hostClass" data-tabs="onlineClasses">
+                            <%=translation.classManagement.Online%>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="tabs-inner tabsClass hostClass" data-tabs="offlineClasses">
+                            <%=translation.classManagement.Offline%>
+                        </button>
+                    </li>
+                </ul>
+                <div class="createClassBtn">
+                    <button class="createClassBtn-on" id="classesCreate" onclick="selectContents('classesCreate')">
+                        <%=translation.classManagement.Create_a_new_class%>
+                    </button>
+                </div>
+            </div>
+            <div class="mainContents">
+                <div class="allClasses active commonList hostClass">
+                    <div class="<%=listClassObject.length > 0 ? 'hasClasses' : 'noneClasses'%>">
+                        <%
+                            if(listClassObject.length === 0)
+                            {
+                                
+                        %>
+                                <strong><%=translation.classManagement.No_class_yet%></strong>
+                        <%
+                            }
+                        %>
+                        <!-- MongoDB Data를 이용한 클래스 목록 Test -->
+                        <%
+                            for(var i = 0 ; i < listClassObject.length ; i++)
+                            {
+                                let classObject = listClassObject[i];
+                                let writeDate = new Date(classObject.regedate)
+                                console.log(writeDate);
+                                let classObjectData = classObject.classObject;
+                                var classOnOffType = classObjectData.online;
+                        %>
+                        <div class="classesCard <%=classOnOffType%>" id = "<%=classObject._id%>">
+                            <div class="classesCard-top">
+                                <div class="detailInfo">
+                                    <div class="info1">
+                                        <strong class="cate"><%=classObjectData.premium == 'normal' ? translation.classManagement.Class_Program_Listing : translation.classManagement.Class_Development_Listing%> </strong>
+                                        <span class="date"><%=translation.classManagement.Created_on%> <%= writeDate.getFullYear() %>.<%= writeDate.getMonth()+1 %>.<%= writeDate.getDate() %></span>
+                                    </div>
+                                    <div class="info2">
+                                        <div class="classesThumb" style="background-image: url('<%=(classObjectData.thumbNailMain && classObjectData.thumbNailMain != {} ) ? classObjectData.thumbNailMain.filePath : ``%>');">
+                                        </div>
+                                        <div class="text">
+                                            <h4 class="text-title">
+                                                <%=classObjectData.title%>
+                                            </h4>
+                                            <div class="text-detail">
+                                                <ul class="text-detail-top stringInfo">
+                                                    <li>
+                                                        <strong>
+                                                            <%=translation.openClass.Format%>
+                                                        </strong>
+                                                        <span>
+                                                            <%=classObjectData.course%>
+                                                        </span>
+                                                    </li>
+                                                    <li>
+                                                        <strong>
+                                                            <%=translation.openClass.Category%>
+                                                        </strong>
+                                                        <span>
+                                                            <%=classObjectData.mainCategory%>,<%=classObjectData.subCategory%>
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                                <ul class="text-detail-bottom numberinfo">
+                                                    <li class="modalBtn" onclick="customModal(34)">
+                                                        <span><%=translation.classManagement.Participants%></span>
+                                                        <strong><%= classObject.participants.length%></strong>
+                                                    </li>
+                                                    <li>
+                                                        <span><%=translation.dashBoard.Reviews%></span>
+                                                        <strong>0</strong>
+                                                    </li>
+                                                    <li>
+                                                        <span><%=translation.dashBoard.Revenue%></span>
+                                                        <strong>$0</strong>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pentagongraph">
+                                    <div>
+                                        <%- include ./commonPentagon.html%>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="classesCard-bottom">
+                                <div class="toggleBtn">
+                                    <button class="toggleBtn-on">
+                                        <span class="ball"></span>
+                                        <strong class="text"><%=translation.classManagement.Hide%></strong>
+                                    </button>
+                                </div>
+                                <div class="btnIcons">
+                                    <button class="editBtn-on" onclick="editClass('<%=i%>')">
+                                        <img src="/web/img/ICN_EDIT.png" alt="">
+                                    </button>
+                                    <button class="deleteBtn-on" onclick="deleteClass('<%=classObject._id%>')">
+                                        <img src="/web/img/ICN_DELETE.png" alt="" >
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <%
+                            }
+                        %>
+                        <!-- ====================================== -->
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+                <div class="onlineClasses commonList hostClass">
+                    <div class="<%=listClassObject.length > 0 ? 'hasClasses' : 'noneClasses'%>">
+                        <%
+                            if(listClassObject.length === 0)
+                            {
+                                
+                        %>
+                                <strong><%=translation.classManagement.No_class_yet%></strong>
+                        <%
+                            }
+                        %>
+                        <!-- MongoDB Data를 이용한 클래스 목록 Test -->
+                        <%
+                            for(var i = 0 ; i < listClassObject.length ; i++)
+                            {
+                                let classObject = listClassObject[i];
+                                let classObjectData = classObject.classObject;
+                                if(classObjectData.online === 'online')
+                                {
+                                
+                        %>
+                        <div class="classesCard" id = "<%=classObject._id%>">
+                            <div class="classesCard-top">
+                                <div class="detailInfo">
+                                    <div class="info1">
+                                        <strong class="cate"><%=classObjectData.premium == 'normal' ? translation.classManagement.Class_Program_Listing : translation.classManagement.Class_Development_Listing%> </strong>
+                                        <span class="date"><%=translation.classManagement.Created_on%></span>
+                                    </div>
+                                    <div class="info2">
+                                        <div class="classesThumb" style="background-image: url('<%=(classObjectData.thumbNailMain && classObjectData.thumbNailMain != {} ) ? classObjectData.thumbNailMain.filePath : ``%>');">
+                                        </div>
+                                        <div class="text">
+                                            <h4 class="text-title">
+                                                <%=classObjectData.title%>
+                                            </h4>
+                                            <div class="text-detail">
+                                                <ul class="text-detail-top stringInfo">
+                                                    <li>
+                                                        <strong>
+                                                            <%=translation.openClass.Format%>
+                                                        </strong>
+                                                        <span>
+                                                            <%=classObjectData.course%>
+                                                        </span>
+                                                    </li>
+                                                    <li>
+                                                        <strong>
+                                                            <%=translation.openClass.Category%>
+                                                        </strong>
+                                                        <span>
+                                                            <%=classObjectData.mainCategory%>,<%=classObjectData.subCategory%>
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                                <ul class="text-detail-bottom numberinfo">
+                                                    <li class="modalBtn" onclick="customModal(34)">
+                                                        <span><%=translation.classManagement.Participants%></span>
+                                                        <strong>0</strong>
+                                                    </li>
+                                                    <li>
+                                                        <span><%=translation.dashBoard.Reviews%></span>
+                                                        <strong>0</strong>
+                                                    </li>
+                                                    <li>
+                                                        <span><%=translation.dashBoard.Revenue%></span>
+                                                        <strong>$0</strong>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pentagongraph">
+                                    <div>
+                                        <%- include ./commonPentagon.html%>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="classesCard-bottom">
+                                <div class="toggleBtn">
+                                    <button class="toggleBtn-on">
+                                        <span class="ball"></span>
+                                        <strong class="text"><%=translation.classManagement.Hide%></strong>
+                                    </button>
+                                </div>
+                                <div class="btnIcons">
+                                    <button class="editBtn-on" onclick="editClass('<%=i%>')">
+                                        <img src="/web/img/ICN_EDIT.png" alt="">
+                                    </button>
+                                    <button class="deleteBtn-on" onclick="deleteClass('<%=classObject._id%>')">
+                                        <img src="/web/img/ICN_DELETE.png" alt="" >
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <%
+                                }
+                            }
+                        %>
+                        <!-- ====================================== -->
+                    </div>
+                </div>
+                <div class="offlineClasses commonList hostClass">
+                    <div class="<%=listClassObject.length > 0 ? 'hasClasses' : 'noneClasses'%>">
+                        <%
+                            if(listClassObject.length === 0)
+                            {
+                                
+                        %>
+                                <strong><%=translation.classManagement.No_class_yet%></strong>
+                        <%
+                            }
+                        %>
+                        <!-- MongoDB Data를 이용한 클래스 목록 Test -->
+                        <%
+                            for(var i = 0 ; i < listClassObject.length ; i++)
+                            {
+                                let classObject = listClassObject[i];
+                                let classObjectData = classObject.classObject;
+
+                                if(classObjectData.online === 'offline')
+                                {
+                        %>
+                        <div class="classesCard" id = "<%=classObject._id%>">
+                            <div class="classesCard-top">
+                                <div class="detailInfo">
+                                    <div class="info1">
+                                        <strong class="cate"><%=classObjectData.premium == 'normal' ? translation.classManagement.Class_Program_Listing : translation.classManagement.Class_Development_Listing%> </strong>
+                                        <span class="date"><%=translation.classManagement.Created_on%> </span>
+                                    </div>
+                                    <div class="info2">
+                                        <div class="classesThumb" style="background-image: url('<%=(classObjectData.thumbNailMain && classObjectData.thumbNailMain != {} ) ? classObjectData.thumbNailMain.filePath : ``%>');">
+                                        </div>
+                                        <div class="text">
+                                            <h4 class="text-title">
+                                                <%=classObjectData.title%>
+                                            </h4>
+                                            <div class="text-detail">
+                                                <ul class="text-detail-top stringInfo">
+                                                    <li>
+                                                        <strong>
+                                                            <%=translation.openClass.Format%>
+                                                        </strong>
+                                                        <span>
+                                                            <%=classObjectData.course%>
+                                                        </span>
+                                                    </li>
+                                                    <li>
+                                                        <strong>
+                                                            <%=translation.openClass.Category%>
+                                                        </strong>
+                                                        <span>
+                                                            <%=classObjectData.mainCategory%>,<%=classObjectData.subCategory%>
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                                <ul class="text-detail-bottom numberinfo">
+                                                    <li class="modalBtn" onclick="customModal(34)">
+                                                        <span><%=translation.classManagement.Participants%></span>
+                                                        <strong>0</strong>
+                                                    </li>
+                                                    <li>
+                                                        <span><%=translation.dashBoard.Reviews%></span>
+                                                        <strong>0</strong>
+                                                    </li>
+                                                    <li>
+                                                        <span><%=translation.dashBoard.Revenue%></span>
+                                                        <strong>$0</strong>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pentagongraph">
+                                    <div>
+                                        <%- include ./commonPentagon.html%>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="classesCard-bottom">
+                                <div class="toggleBtn">
+                                    <button class="toggleBtn-on">
+                                        <span class="ball"></span>
+                                        <strong class="text"><%=translation.classManagement.Hide%></strong>
+                                    </button>
+                                </div>
+                                <div class="btnIcons">
+                                    <button class="editBtn-on" onclick="editClass('<%=i%>')">
+                                        <img src="/web/img/ICN_EDIT.png" alt="">
+                                    </button>
+                                    <button class="deleteBtn-on" onclick="deleteClass('<%=classObject._id%>')">
+                                        <img src="/web/img/ICN_DELETE.png" alt="" >
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <%
+                                }
+                            }
+                        %>
+                        <!-- ====================================== -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>
+<script>
+    var translationJson = <%-JSON.stringify(translation)%>//JSON.stringify()
+    console.log(translationJson['changeLang'])
+
+    //탭버튼
+    $('.tabs-inner.hostClass').click(function() {
+        console.log('is come studioclass')
+        $('.tabs-inner.hostClass').removeClass('active');
+        $(this).each(function() {
+            $(this).addClass('active')
+        })
+        $('.commonList.hostClass').removeClass('active');
+        $('.'+$(this).data('tabs')+'').addClass('active')
+    });
+
+    //클래스 하이드,쇼 버튼
+    $('.toggleBtn-on').click(function() {
+        var changeText = $(this).children('.text').html() == '<%=translation.classManagement.Hide%>' ? '<%=translation.classManagement.Show%>' : '<%=translation.classManagement.Hide%>';
+        $(this).parent('.toggleBtn').toggleClass('active');
+        $(this).children('.text').html(changeText);
+    });
+
+    //팔로우버튼 on & off
+    $('.friendList-list-content-btn > button').on({
+        'click': function() {
+            if($(this).attr('data-no') == 0)
+            {
+                $(this).addClass('active');
+                $(this).text('Follow');
+                $(this).attr('data-no', '1');
+            }
+            else
+            {
+                $(this).removeClass('active');
+                $(this).text('Following');
+                $(this).attr('data-no', '0');
+            }
+        }
+    })
+</script>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <%-include common/commonHead.html%>
+    <body>
+        <%-include common/commonHeader.html%>
+        <%- include ./journalModal.html%>
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+        <!-- START CONTENT -->
+        <div class="content dashboard">
+            <!-- Start Page Header -->
+            <div class="page-header">
+                <h1 class="title">
+                    <a style="color: #fff;">콘텐츠 관리</a>
+                    <span style="display: inline-block; margin: 0 15px;"><i class="xi-angle-right-min"></i></span>
+                    <a style="color: #fff;">저널 관리</a>
+                    <span style="display: inline-block; margin: 0 15px;"><i class="xi-angle-right-min"></i></span>
+                    <a href="/admin/contentsJournal" style="color: #fff;">저널</a>
+                </h1>
+                <!-- End Page Header Right Div -->
+            </div>
+            <!-- START CONTAINER -->
+            <div class="container-default">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-12 dashboardBox" style="margin-bottom: 50px; padding-top: 30px; padding-bottom: 30px;">
+                            <div class="row searchChks mainBanner">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label fixText">기간</label>
+                                        <div class="col-sm-10">
+                                            <div style="display: flex; align-items: center;">
+                                                <div class="calendarWrap">
+                                                    <button><img src="/web/img/ICN_CALENDAR.png" alt=""></button>
+                                                    <input type="text" value="0000.00.00 - 0000.00.00" readonly>
+                                                </div>
+                                                <div class="commonChkBox" data-check="checkbox1">
+                                                    <input type="checkbox" id="chk">
+                                                    <label for="chk">
+                                                        <span class="box"></span>
+                                                        <span class="text">전체 기간</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label fixText">카테고리</label>
+                                        <div class="col-sm-10">
+                                            <div class="chkboxWrap flexWarp" style="padding: 20px 90px 0; height: auto;">
+                                                <%
+                                                    var category1 = ['전체', '감사일지', '바디스캔', '감정스캔', '이모티콘 일지', '생각스캔', '키워드 일지', '스탬프 일지', '마인드풀 챌린지 리스트', '아사나 저널']
+                                                    for(var i = 0; i < 10; i++)
+                                                    {
+                                                %>
+                                                <div class="commonChkBox circle journal" data-check="checkbox1" style="width: 185px; margin-bottom: 20px;">
+                                                    <input type="checkbox" id="cate1Chk<%=i%>">
+                                                    <label for="cate1Chk<%=i%>">
+                                                        <span class="box"></span>
+                                                        <span class="text"><%=category1[i]%></span>
+                                                    </label>
+                                                </div>
+                                                <%
+                                                    }
+                                                %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label fixText">사이트 언어</label>
+                                        <div class="col-sm-10">
+                                            <div class="chkboxWrap">
+                                                <%
+                                                    var category2 = ['전체', '국문 사이트', '영문 사이트']
+                                                    for(var i = 0; i < 3; i++)
+                                                    {
+                                                %>
+                                                <div class="commonChkBox circle" data-check="checkbox1">
+                                                    <input type="checkbox" id="cate2Chk<%=i%>">
+                                                    <label for="cate2Chk<%=i%>">
+                                                        <span class="box"></span>
+                                                        <span class="text"><%=category2[i]%></span>
+                                                    </label>
+                                                </div>
+                                                <%
+                                                    }
+                                                %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label fixText">저널 내용</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="inputText form-control" placeholder="입력" data-check="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label form-label fixText">저널 작성자</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="inputText form-control" placeholder="입력" data-check="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 30px; padding-right: 15px;">
+                                <div class="col-md-12">
+                                    <div class="btnsWrap" style="text-align: right;">
+                                        <button type="button" class="cancelBtn">초기화</button>
+                                        <button type="button" class="saveBtn">검색</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row dashboard dataList">
+                    <div class="col-md-12">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                            <h3 class="color4 title-m-bd" style="margin: 0;">
+                                저널 리스트
+                            </h3>
+                            <button style="background: none; outline: none; border: none; font-size: 14px; font-weight: bold; color: #fff; text-decoration: underline;">
+                                엑셀다운로드
+                            </button>
+                        </div>
+                        <div class="panel-body table-responsive">
+                            <table id="example" class="table display">
+                                <thead>
+                                    <tr>
+                                        <th>NO.</th>
+                                        <th>등록 시간</th>
+                                        <th>저널 카테고리</th>
+                                        <th>회원 이메일​</th>
+                                        <th>저널 작성자</th>
+                                        <th>저널 내용</th>
+                                        <th>관련 클래스</th>
+                                        <th>상세 정보</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>501</td>
+                                        <td>2021.01.01 12:00:00</td>
+                                        <td>키워드 일지</td>
+                                        <td>000@000.com​</td>
+                                        <td>회원 이름​</td>
+                                        <td>
+                                            <span class="ellipsis" style="max-width: 225px; margin: 0 auto;">저널내용저널내용저널내용저널내용저널내용저널내용널내용널내용널내용저널내용저널내용저널내용저널내용저널내용저널내용널내용널내용널내용</span>
+                                        </td>
+                                        <td>3​</td>
+                                        <td>
+                                            <a onclick="openJournalModal()" style="cursor: pointer;">상세보기</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- <div class="panel panel-default">
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <%-include common/commonFooter.html%>
+        </div>
+        <!-- End Content -->
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+        <%-include common/commonScript.html%>
+        <script>
+        ///////////데이터 테이블//////////////
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'excel', 'print'
+                ]
+            });
+        });
+        ///////////데이터 테이블//////////////
+        </script>
+    </body>
+</html>
